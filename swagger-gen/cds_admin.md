@@ -686,7 +686,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSrequestmetadataupdate">RequestMetaDataUpdate</h3>
 <p id="tocSrequestmetadataupdate" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apirequestmetadataupdate"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_requestmetadataupdate"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apirequestmetadataupdate"></a>
+</p>
 
 ```json
 {
@@ -715,7 +718,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSresponsemetricslistv5">ResponseMetricsListV5</h3>
 <p id="tocSresponsemetricslistv5" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apiresponsemetricslistv5"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_responsemetricslist"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apiresponsemetricslistv5"></a>
+</p>
 
 ```json
 {
@@ -1203,7 +1209,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSavailabilitymetricsv2">AvailabilityMetricsV2</h3>
 <p id="tocSavailabilitymetricsv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apiavailabilitymetricsv2"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_availabilitymetrics"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apiavailabilitymetricsv2"></a>
+</p>
 
 ```json
 {
@@ -1248,7 +1257,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSperformancemetricsv3">PerformanceMetricsV3</h3>
 <p id="tocSperformancemetricsv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apiperformancemetricsv3"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_performancemetrics"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apiperformancemetricsv3"></a>
+</p>
 
 ```json
 {
@@ -1366,39 +1378,86 @@ This operation may only be called by the CDR Register
 |» currentDay|[RateString](#common-field-types)|conditional|Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
 |» previousDays|[[RateString]](#common-field-types)|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |highPriority|object|mandatory|Percentage of high priority calls within the performance thresholds|
-|» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
-|» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|» currentDay|[[PerformanceHours](#schemacdr-admin-apiperformancehours)]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» previousDays|[[PerformancePreviousDays](#schemacdr-admin-apiperformancepreviousdays)]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |largePayload|object|mandatory|Percentage of large payload calls within the performance thresholds|
-|» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
-|» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|» currentDay|[[PerformanceHours](#schemacdr-admin-apiperformancehours)]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» previousDays|[[PerformancePreviousDays](#schemacdr-admin-apiperformancepreviousdays)]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |lowPriority|object|mandatory|Percentage of low priority calls within the performance thresholds|
-|» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
-|» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|» currentDay|[[PerformanceHours](#schemacdr-admin-apiperformancehours)]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» previousDays|[[PerformancePreviousDays](#schemacdr-admin-apiperformancepreviousdays)]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |unattended|object|mandatory|Percentage of unattended calls within the performance thresholds|
-|» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
-|» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|» currentDay|[[PerformanceHours](#schemacdr-admin-apiperformancehours)]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» previousDays|[[PerformancePreviousDays](#schemacdr-admin-apiperformancepreviousdays)]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |unauthenticated|object|mandatory|Percentage of unauthenticated calls within the performance thresholds|
-|» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
-|» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|» currentDay|[[PerformanceHours](#schemacdr-admin-apiperformancehours)]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|» previousDays|[[PerformancePreviousDays](#schemacdr-admin-apiperformancepreviousdays)]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |secondary|object|conditional|Percentage of Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster|
 |» primary|object|mandatory|Percentage of Shared Responsibility calls within the performance thresholds for the primary data holder|
-|»» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
-|»» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|»» currentDay|[[PerformanceHours](#schemacdr-admin-apiperformancehours)]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|»» previousDays|[[PerformancePreviousDays](#schemacdr-admin-apiperformancepreviousdays)]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |» secondary|object|mandatory|Percentage of Shared Responsibility calls within the performance thresholds for the secondary data holder|
-|»» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
-|»» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|»» currentDay|[[PerformanceHours](#schemacdr-admin-apiperformancehours)]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|»» previousDays|[[PerformancePreviousDays](#schemacdr-admin-apiperformancepreviousdays)]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |largeSecondary|object|conditional|Percentage of large Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster|
 |» primary|object|mandatory|Percentage of large Shared Responsibility calls within the performance thresholds for the secondary data holder|
-|»» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
-|»» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|»» currentDay|[[PerformanceHours](#schemacdr-admin-apiperformancehours)]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|»» previousDays|[[PerformancePreviousDays](#schemacdr-admin-apiperformancepreviousdays)]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
 |» secondary|object|mandatory|Percentage of large Shared Responsibility calls within the performance thresholds for the secondary data holder|
-|»» currentDay|[[RateString]](#common-field-types)|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
-|»» previousDays|[array]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+|»» currentDay|[[PerformanceHours](#schemacdr-admin-apiperformancehours)]|conditional|Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+|»» previousDays|[[PerformancePreviousDays](#schemacdr-admin-apiperformancepreviousdays)]|conditional|Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero|
+
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSperformancepreviousdays">PerformancePreviousDays</h3>
+<p id="tocSperformancepreviousdays" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-admin-api_schema-base_performancepreviousdays"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apiperformancepreviousdays"></a>
+</p>
+
+```json
+[
+  "string"
+]
+
+```
+
+*Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder*
+
+<h3 id="cdr-admin-api_performancepreviousdays_properties">Properties</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|[[PerformanceHours](#schemacdr-admin-apiperformancehours)]|mandatory|Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder|
+
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSperformancehours">PerformanceHours</h3>
+<p id="tocSperformancehours" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-admin-api_schema-base_performancehours"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apiperformancehours"></a>
+</p>
+
+```json
+"string"
+
+```
+
+*Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero*
+
+<h3 id="cdr-admin-api_performancehours_properties">Properties</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|[RateString](#common-field-types)|mandatory|Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero|
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSinvocationmetricsv3">InvocationMetricsV3</h3>
 <p id="tocSinvocationmetricsv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apiinvocationmetricsv3"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_invocationmetrics"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apiinvocationmetricsv3"></a>
+</p>
 
 ```json
 {
@@ -1479,7 +1538,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h3>
 <p id="tocSaverageresponsemetricsv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apiaverageresponsemetricsv2"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_averageresponsemetrics"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apiaverageresponsemetricsv2"></a>
+</p>
 
 ```json
 {
@@ -1584,7 +1646,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSsessioncountmetricsv2">SessionCountMetricsV2</h3>
 <p id="tocSsessioncountmetricsv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apisessioncountmetricsv2"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_sessioncountmetrics"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apisessioncountmetricsv2"></a>
+</p>
 
 ```json
 {
@@ -1608,7 +1673,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSaveragetpsmetricsv2">AverageTPSMetricsV2</h3>
 <p id="tocSaveragetpsmetricsv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apiaveragetpsmetricsv2"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_averagetpsmetrics"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apiaveragetpsmetricsv2"></a>
+</p>
 
 ```json
 {
@@ -1653,7 +1721,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSpeaktpsmetricsv2">PeakTPSMetricsV2</h3>
 <p id="tocSpeaktpsmetricsv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apipeaktpsmetricsv2"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_peaktpsmetrics"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apipeaktpsmetricsv2"></a>
+</p>
 
 ```json
 {
@@ -1698,7 +1769,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSerrormetricsv2">ErrorMetricsV2</h3>
 <p id="tocSerrormetricsv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apierrormetricsv2"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_errormetrics"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apierrormetricsv2"></a>
+</p>
 
 ```json
 {
@@ -1767,7 +1841,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSrejectionmetricsv3">RejectionMetricsV3</h3>
 <p id="tocSrejectionmetricsv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apirejectionmetricsv3"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_rejectionmetrics"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apirejectionmetricsv3"></a>
+</p>
 
 ```json
 {
@@ -1803,7 +1880,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSsecondaryholdermetricsv2">SecondaryHolderMetricsV2</h3>
 <p id="tocSsecondaryholdermetricsv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apisecondaryholdermetricsv2"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_secondaryholdermetrics"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apisecondaryholdermetricsv2"></a>
+</p>
 
 ```json
 {
@@ -1839,7 +1919,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSauthorisationmetricsv2">AuthorisationMetricsV2</h3>
 <p id="tocSauthorisationmetricsv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apiauthorisationmetricsv2"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_authorisationmetrics"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apiauthorisationmetricsv2"></a>
+</p>
 
 ```json
 {
@@ -2026,7 +2109,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSlinks">Links</h3>
 <p id="tocSlinks" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apilinks"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_links"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apilinks"></a>
+</p>
 
 ```json
 {
@@ -2044,7 +2130,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSmeta">Meta</h3>
 <p id="tocSmeta" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apimeta"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_meta"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apimeta"></a>
+</p>
 
 ```json
 {}
@@ -2058,7 +2147,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSmetaerror">MetaError</h3>
 <p id="tocSmetaerror" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apimetaerror"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_metaerror"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apimetaerror"></a>
+</p>
 
 ```json
 {
@@ -2078,7 +2170,10 @@ This operation may only be called by the CDR Register
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-admin-apiresponseerrorlistv2"></a>
+<p>
+  <a id="cdr-admin-api_schema-base_responseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apiresponseerrorlistv2"></a>
+</p>
 
 ```json
 {

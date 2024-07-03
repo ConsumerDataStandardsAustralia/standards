@@ -91,9 +91,7 @@ The identifier **MUST** be unique per customer according to the definition of cu
 
 The Data Holder **MUST** provide the CDR Arrangement ID as the claim ``cdr_arrangement_id`` in the Token End Point response and Token Introspection End Point response.
 
-```diff
-Removed two outdated statements relating to the introduction of concurrent consent and retrospectively generating a cdr_arrangement_id.
-```
+
 
 Statements related to the CDR Arrangement ID:
 

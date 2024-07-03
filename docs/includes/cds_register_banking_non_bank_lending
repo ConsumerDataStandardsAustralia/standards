@@ -725,7 +725,10 @@ This operation does not require authentication
 
 <p id="tocSresponseregisterdataholderbrandlist" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_responseregisterdataholderbrandlist"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -817,7 +820,10 @@ This operation does not require authentication
 
 <p id="tocSregisterdataholderbrand" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderbrand"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_registerdataholderbrand"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderbrand"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -966,7 +972,10 @@ This operation does not require authentication
 
 <p id="tocSresponsedataholdersbrandsummarylist" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiresponsedataholdersbrandsummarylist"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_responsedataholdersbrandsummarylist"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apiresponsedataholdersbrandsummarylist"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1025,7 +1034,10 @@ This operation does not require authentication
 
 <p id="tocSdataholderbrandsummary" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apidataholderbrandsummary"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_dataholderbrandsummary"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apidataholderbrandsummary"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"interimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1144,7 +1156,10 @@ This operation does not require authentication
 
 <p id="tocSdataholdersstatuslist" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apidataholdersstatuslist"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_dataholdersstatuslist"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apidataholdersstatuslist"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1193,7 +1208,10 @@ This operation does not require authentication
 
 <p id="tocSdataholderstatus" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apidataholderstatus"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_dataholderstatus"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apidataholderstatus"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
@@ -1246,7 +1264,10 @@ This operation does not require authentication
 
 <p id="tocSlegalentitydetail" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apilegalentitydetail"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_legalentitydetail"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apilegalentitydetail"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1309,7 +1330,7 @@ This operation does not require authentication
 <td>registeredCountry</td>
 <td>string</td>
 <td>optional</td>
-<td>Country of registeration (if the company is registered outside Australia)</td>
+<td>Country of registration (if the company is registered outside Australia)</td>
 </tr>
 <tr>
 <td>abn</td>
@@ -1395,7 +1416,10 @@ This operation does not require authentication
 
 <p id="tocSregisterdataholderbrandserviceendpoint" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_registerdataholderbrandserviceendpoint"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"publicBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1460,7 +1484,10 @@ This operation does not require authentication
 
 <p id="tocSregisterdataholderauth" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderauth"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_registerdataholderauth"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderauth"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"registerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SIGNED-JWT"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"jwksEndpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -1511,7 +1538,10 @@ This operation does not require authentication
 
 <p id="tocSlinkspaginated" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apilinkspaginated"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_linkspaginated"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apilinkspaginated"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1567,7 +1597,10 @@ This operation does not require authentication
 
 <p id="tocSmetapaginated" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apimetapaginated"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_metapaginated"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apimetapaginated"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
@@ -1602,7 +1635,10 @@ This operation does not require authentication
 
 <p id="tocSlinks" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apilinks"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_links"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apilinks"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1630,7 +1666,10 @@ This operation does not require authentication
 
 <p id="tocSmeta" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apimeta"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_meta"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apimeta"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
 </span></code></pre>
@@ -1642,7 +1681,10 @@ This operation does not require authentication
 
 <p id="tocSmetaerror" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apimetaerror"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_metaerror"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apimetaerror"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1672,7 +1714,10 @@ This operation does not require authentication
 
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseerrorlistv2"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_responseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseerrorlistv2"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1709,7 +1754,10 @@ This operation does not require authentication
 
 <p id="tocSresponseerrorlistv2_errors" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseerrorlistv2_errors"></a></p>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_responseerrorlistv2_errors"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseerrorlistv2_errors"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">

@@ -7573,7 +7573,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyplanlistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyplanlistresponse"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplanlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplanlistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7665,7 +7668,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyplanresponsev3" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyplanresponsev3"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplanresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplanresponsev3"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"planId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8251,7 +8257,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyservicepointlistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyservicepointlistresponse"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyservicepointlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointlistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePoints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -8325,7 +8334,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyservicepointdetailresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetailresponse"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyservicepointdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetailresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8457,7 +8469,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyusagelistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyusagelistresponse"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyusagelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyusagelistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"reads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -8546,7 +8561,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyderlistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyderlistresponse"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyderlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyderlistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"derRecords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -8657,7 +8675,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyderdetailresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyderdetailresponse"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyderdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyderdetailresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8751,7 +8772,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyaccountlistresponsev2" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountlistresponsev2"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyaccountlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyaccountlistresponsev2"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -8831,7 +8855,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyaccountdetailresponsev4" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailresponsev4"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyaccountdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailresponsev4"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9284,7 +9311,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergypaymentscheduleresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergypaymentscheduleresponse"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energypaymentscheduleresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergypaymentscheduleresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"paymentSchedules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9364,7 +9394,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyconcessionsresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyconcessionsresponse"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyconcessionsresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyconcessionsresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"concessions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9431,7 +9464,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergybalancelistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergybalancelistresponse"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energybalancelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybalancelistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9507,7 +9543,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergybalanceresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergybalanceresponse"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energybalanceresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybalanceresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -9559,7 +9598,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyinvoicelistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoicelistresponse"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyinvoicelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyinvoicelistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"invoices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9674,7 +9716,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergybillinglistresponsev3" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergybillinglistresponsev3"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energybillinglistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybillinglistresponsev3"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9819,7 +9864,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apiresponseerrorlistv2"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_responseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apiresponseerrorlistv2"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -9886,7 +9934,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyplan" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyplan"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplan"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplan"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"planId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10111,7 +10162,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyplandetailv3" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyplandetailv3"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplandetail"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplandetailv3"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"planId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10747,7 +10801,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyplancontractv3" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyplancontractv3"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplancontract"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplancontractv3"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"additionalFeeInformation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"pricingModel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SINGLE_RATE"</span><span class="p">,</span><span class="w">
@@ -11175,7 +11232,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyplancontractfullv3" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyplancontractfullv3"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplancontractfull"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplancontractfullv3"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"additionalFeeInformation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"pricingModel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SINGLE_RATE"</span><span class="p">,</span><span class="w">
@@ -11545,7 +11605,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyplancontrolledloadv2" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyplancontrolledloadv2"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplancontrolledload"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplancontrolledloadv2"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11918,7 +11981,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyplanincentives" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyplanincentives"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplanincentives"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplanincentives"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11993,7 +12059,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyplandiscounts" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyplandiscounts"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplandiscounts"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplandiscounts"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12181,7 +12250,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyplangreenpowercharges" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyplangreenpowercharges"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplangreenpowercharges"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplangreenpowercharges"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12307,7 +12379,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyplaneligibility" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyplaneligibility"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplaneligibility"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplaneligibility"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXISTING_CUST"</span><span class="p">,</span><span class="w">
@@ -12447,7 +12522,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyplanfees" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyplanfees"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplanfees"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplanfees"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXIT"</span><span class="p">,</span><span class="w">
@@ -12633,7 +12711,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyplansolarfeedintariffv3" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyplansolarfeedintariffv3"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplansolarfeedintariff"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplansolarfeedintariffv3"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12998,7 +13079,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyplantariffperiodv2" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyplantariffperiodv2"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplantariffperiod"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplantariffperiodv2"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIRONMENTAL"</span><span class="p">,</span><span class="w">
@@ -13670,7 +13754,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyservicepoint" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyservicepoint"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyservicepoint"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepoint"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nationalMeteringId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -13883,7 +13970,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyservicepointdetail" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetail"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyservicepointdetail"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetail"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nationalMeteringId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14487,7 +14577,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyusageread" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyusageread"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyusageread"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyusageread"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14693,7 +14786,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyderrecord" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyderrecord"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyderrecord"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyderrecord"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"approvedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -15089,7 +15185,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyaccountbasev2" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountbasev2"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyaccountbase"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyaccountbasev2"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15163,7 +15262,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyaccountv2" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountv2"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyaccount"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyaccountv2"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15270,7 +15372,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyaccountdetailv4" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailv4"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyaccountdetail"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailv4"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15943,7 +16048,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergypaymentschedule" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergypaymentschedule"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energypaymentschedule"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergypaymentschedule"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"paymentScheduleUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cardDebit"</span><span class="p">,</span><span class="w">
@@ -16221,7 +16329,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyconcession" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyconcession"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyconcession"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyconcession"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIXED_AMOUNT"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16352,7 +16463,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyinvoice" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoice"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyinvoice"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyinvoice"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16562,7 +16676,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyinvoicegasusagecharges" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoicegasusagecharges"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyinvoicegasusagecharges"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyinvoicegasusagecharges"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16687,7 +16804,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyinvoiceelectricityusagecharges" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceelectricityusagecharges"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyinvoiceelectricityusagecharges"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceelectricityusagecharges"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalGenerationCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16812,7 +16932,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergyinvoiceaccountcharges" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceaccountcharges"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energyinvoiceaccountcharges"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceaccountcharges"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalDiscounts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -16856,7 +16979,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergybillingtransactionv3" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingtransactionv3"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energybillingtransaction"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybillingtransactionv3"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -17044,7 +17170,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergybillingusagetransactionv2" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingusagetransactionv2"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energybillingusagetransaction"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybillingusagetransactionv2"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -17273,7 +17402,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergybillingdemandtransactionv3" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingdemandtransactionv3"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energybillingdemandtransaction"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybillingdemandtransactionv3"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -17506,7 +17638,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergybillingonceofftransaction" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingonceofftransaction"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energybillingonceofftransaction"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybillingonceofftransaction"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -17555,7 +17690,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergybillingothertransaction" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingothertransaction"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energybillingothertransaction"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybillingothertransaction"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -17719,7 +17857,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSenergybillingpaymenttransaction" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apienergybillingpaymenttransaction"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_energybillingpaymenttransaction"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybillingpaymenttransaction"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DIRECT_DEBIT"</span><span class="w">
@@ -17792,7 +17933,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apicommonphysicaladdress"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_commonphysicaladdress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apicommonphysicaladdress"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -17884,7 +18028,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apicommonsimpleaddress"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_commonsimpleaddress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apicommonsimpleaddress"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -17963,7 +18110,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocScommonpafaddress" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apicommonpafaddress"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_commonpafaddress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apicommonpafaddress"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -18140,7 +18290,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSrequestservicepointidlist" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apirequestservicepointidlist"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_requestservicepointidlist"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apirequestservicepointidlist"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePointIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -18185,7 +18338,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSrequestaccountidlist" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apirequestaccountidlist"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_requestaccountidlist"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apirequestaccountidlist"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -18230,7 +18386,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSlinks" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apilinks"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_links"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apilinks"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -18258,7 +18417,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSmeta" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apimeta"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_meta"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apimeta"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
 </span></code></pre>
@@ -18270,7 +18432,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSlinkspaginated" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apilinkspaginated"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_linkspaginated"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apilinkspaginated"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -18326,7 +18491,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSmetapaginated" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-apimetapaginated"></a></p>
+<p>
+  <a id="cdr-energy-api_schema-base_metapaginated"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apimetapaginated"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">

@@ -1,0 +1,421 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Consumer Data Standards - v1.31.0 Release Notes</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="no-code-layout includes includes_releasenotes includes_releasenotes_releasenotes" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#v1-31-0-release-notes" class="toc-h1 toc-link" data-title="V1.31.0 Release Notes">V1.31.0 Release Notes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#changes-made" class="toc-h2 toc-link" data-title="Changes Made">Changes Made</a>
+                  </li>
+                  <li>
+                    <a href="#general-changes" class="toc-h2 toc-link" data-title="General Changes">General Changes</a>
+                  </li>
+                  <li>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
+                  <li>
+                    <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
+                  </li>
+                  <li>
+                    <a href="#api-endpoints" class="toc-h2 toc-link" data-title="API Endpoints">API Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#information-security-profile" class="toc-h2 toc-link" data-title="Information Security Profile">Information Security Profile</a>
+                  </li>
+                  <li>
+                    <a href="#register-standards" class="toc-h2 toc-link" data-title="Register Standards">Register Standards</a>
+                  </li>
+                  <li>
+                    <a href="#consumer-experience" class="toc-h2 toc-link" data-title="Consumer Experience">Consumer Experience</a>
+                  </li>
+                  <li>
+                    <a href="#non-functional-requirements" class="toc-h2 toc-link" data-title="Non-Functional Requirements">Non-Functional Requirements</a>
+                  </li>
+                  <li>
+                    <a href="#additional-standards" class="toc-h2 toc-link" data-title="Additional Standards">Additional Standards</a>
+                  </li>
+                  <li>
+                    <a href="#known-issues" class="toc-h2 toc-link" data-title="Known Issues">Known Issues</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../index.html'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="content">
+        <h1 id='v1-31-0-release-notes'>V1.31.0 Release Notes</h1>
+<p>Release notes for version v1.31.0 of the <a href="../../">CDR Standards</a>.</p>
+<h2 id='changes-made'>Changes Made</h2><h3 id='change-requests'>Change Requests</h3>
+<p>This release addresses the following minor defects raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues">Standards Staging</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/377">Standards Staging #377 - Review FDO table</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/394">Standards Staging #394 - Fix typo &#39;registeration&#39;</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/395">Standards Staging #395 - Enhancements to Banking documentation</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/396">Standards Staging #396 - Improve clarity of the PerformanceMetricsV3 structure</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/400">Standards Staging #400 - Enable generic links to schemas</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/402">Standards Staging #402 - Update Consumer Data Right link</a></li>
+</ul>
+
+<p>This release addresses the following change requests raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues">Standards Maintenance</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/415">Standards Maintenance #415 - Disambiguation of the claims for a response from the introspection endpoint</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/615">Standards Maintenance #615 - Plan Obligation Milestones for 2025</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/633">Standards Maintenance #633 - Collection Consents - Authorisation Amendment</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/634">Standards Maintenance #634 - Potential error in Telco specification</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/640">Standards Maintenance #640 - Retirement date for Get Generic Plan Detail v2 and Get Energy Account Detail v3</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/643">Standards Maintenance #643 - Update TLS cipher suite requirements to address DHEat Attacks and Raccoon Attack vulnerabilities</a></li>
+</ul>
+<h3 id='decision-proposals'>Decision Proposals</h3>
+<p>This release addresses the following Decision Proposals published on <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues">Standards</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/347">Decision Proposal #347 - Maintenance Iteration 19</a></li>
+</ul>
+<h2 id='general-changes'>General Changes</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Enable generic links to schemas</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/400"><strong>Standards Staging #400</strong></a>: Added anchors to allow linking to a schema base (without a specific version) from guidance material</td>
+<td>Applies to all schemas</td>
+</tr>
+<tr>
+<td>Updated Consumer Data Right link</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/402"><strong>Standards Staging #402</strong></a>: Updated Consumer Data Right website link</td>
+<td><a href="../../#introduction">Introduction</a></td>
+</tr>
+</tbody></table>
+<h2 id='introduction'>Introduction</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Updated FDO table</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/377"><strong>Standards Staging #377</strong></a>: Removed Future Dated Obligations prior to 2024. Earlier obligations may be viewed in Archived versions</td>
+<td><a href="../../#future-dated-obligations">Future Dated Obligations</a><br><a href="../../#archives">Archives</a></td>
+</tr>
+<tr>
+<td>Updated Obligation Date Schedule</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/615"><strong>Standards Maintenance #615</strong></a>: Added 2025 dates to the Obligation Date Schedule and removed dates prior to 2024</td>
+<td><a href="../../includes/endpoint-version-schedule/#obligation-dates-schedule">Obligation Date Schedule</a></td>
+</tr>
+<tr>
+<td>Energy API retirement date change</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/640"><strong>Standards Maintenance #640</strong></a>: Changed retirement date of  Get Generic Plan Detail v2 and Get Energy Account Detail v3 to March 3rd 2025</td>
+<td><a href="../../#future-dated-obligations">Future Dated Obligations</a></td>
+</tr>
+</tbody></table>
+<h2 id='high-level-standards'>High Level Standards</h2>
+<p>None</p>
+<h2 id='api-endpoints'>API Endpoints</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Enhancements to Banking documentation</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/395"><strong>Standards Staging #395</strong></a>: In addition to minor styling updates, aligned Banking documentation to enhancements applied in the Candidate Standards</td>
+<td><a href="../../#banking-apis">Banking APIs</a><br><a href="../../#additional-standards">Additional Standards</a></td>
+</tr>
+<tr>
+<td>Clarified PerformanceMetricsV3 structure</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/396"><strong>Standards Staging #396</strong></a>: Clarified PerformanceMetricsV3 structure to ensure previousDays arrays are represented correctly</td>
+<td><a href="../../#cdr-admin-api_schemas_tocSperformancemetricsv3">PerformanceMetricsV3</a></td>
+</tr>
+</tbody></table>
+<h2 id='information-security-profile'>Information Security Profile</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Introspection endpoint clarification</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/415"><strong>Standards Maintenance #415</strong></a>: Clarified that a Token Introspection End Point response must include specific fields only for currently active tokens</td>
+<td><a href="../../#introspection-end-point">Introspection End Point</a></td>
+</tr>
+<tr>
+<td>Arrangement amendment clarification</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/633"><strong>Standards Maintenance #633</strong></a>: Updated the &quot;Specifying an existing arrangement&quot; section clarifying the requirements for amending existing arrangements</td>
+<td><a href="../../#specifying-an-existing-arrangement">Specifying an existing arrangement</a></td>
+</tr>
+<tr>
+<td>Deprecation of vulnerable ciphers</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/643"><strong>Standards Maintenance #643</strong></a>: Allow data holders to deprecate use of vulnerable TLS ciphers</td>
+<td><a href="../../#ciphers">Ciphers</a></td>
+</tr>
+</tbody></table>
+<h2 id='register-standards'>Register Standards</h2>
+<p>None</p>
+<h2 id='consumer-experience'>Consumer Experience</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Arrangement amendment clarification</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/633"><strong>Standards Maintenance #633</strong></a>: <ul><li>Updated &quot;Authorisation: Amending consent&quot; CX standard noting it needs to align with security requirements for specifiying an existing arrangement.</li><li> Added &quot;Amendment of Collection Consents and Authorisations&quot; CX standard to clarify CDR Arrangement ID is required for consent and authorisation amendments</li></ul></td>
+<td><a href="../../#amending-authorisation-standards">Amending Authorisation Standards</a> </br><a href="../../#consumer-experience_consent-standards">Consent Standards</a></td>
+</tr>
+</tbody></table>
+<h2 id='non-functional-requirements'>Non-Functional Requirements</h2>
+<p>None</p>
+<h2 id='additional-standards'>Additional Standards</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Fixed typo</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/394"><strong>Standards Staging #394</strong></a>: Fixed typo in &#39;Country of registeration&#39; in the Candidate Standards for the Banking and Non-Bank Lending sector</td>
+<td><a href="../../#additional-standards">Additional Standards</a></td>
+</tr>
+<tr>
+<td>Removed duplicate TelcoAccount schema</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/634"><strong>Standards Maintenance #634</strong></a>: Removed duplicate <code>TelcoAccount</code> schema in the <code>TelcoAccountDetailResponseData</code> schema, in the &#39;Get Telco Account Detail&#39; endpoint in the Telco Candidate Standards</td>
+<td><a href="../../#additional-standards">Additional Standards</a></td>
+</tr>
+</tbody></table>
+<h2 id='known-issues'>Known Issues</h2>
+<p>None</p>
+
+      </div>
+    </div>
+  </body>
+</html>

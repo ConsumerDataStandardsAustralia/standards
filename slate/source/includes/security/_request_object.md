@@ -91,18 +91,22 @@ To accomplish this, the Data Holder **MUST** support an additional claim in the 
 
 Note that the period of `one year` in the above statements **SHOULD** be interpreted as 365, 24 hour days (or 31,536,000 seconds).
 
-```diff
-Updated statement referring to the `sharing_expires_at` claim, replacing it with a reference to the `exp` field:
-- The Data Recipient Software Product is able to obtain the expiration of sharing via the `sharing_expires_at` claim.
-+ The Data Recipient Software Product is able to obtain the expiration of the sharing arrangement by presenting a refresh token to the token introspection endpoint. The expiration value is provided in the `exp` field in the response.
-```
+
 
 The Data Recipient Software Product is able to obtain the expiration of the sharing arrangement by presenting a refresh token to the token introspection endpoint. The expiration value is provided in the `exp` field in the response.
 
-### Specifying an existing arrangement
-Provided a Data Holder supports PAR, they **MUST** also support the ``cdr_arrangement_id`` claim provided in the Request Object sent to the [PAR End Point](#pushed-authorisation-end-point). The Data Recipient Software Product **MAY** provide the ``cdr_arrangement_id`` claim in the Request Object sent to the [PAR End Point](#pushed-authorisation-end-point).
 
-If a Data Recipient Software Product provides the ``cdr_arrangement_id`` claim in the request object to the Data Holder's [PAR End Point](#pushed-authorisation-end-point), the Data Holder **MUST** revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the Data Recipient Software Product.
+### Specifying an existing arrangement
+```diff
+Updated the "Specifying an existing arrangement" section clarifying the requirements for amending existing arrangements
+```
+To facilitate the amending of an existing arrangement, the following statements apply:
+
+* Data Holders **MUST** support the `cdr_arrangement_id` claim provided in the Request Object.
+* The Data Recipient Software Product **MUST** provide the `cdr_arrangement_id` claim in the Request Object if requesting to amend a current authorisation in accordance with [Consent: Amendment of Collection Consents and Authorisations](#consumer-experience_consent-standards).
+* Data Holders **MUST** treat the request under the [Amending Authorisation Standards](#amending-authorisation-standards) if the `cdr_arrangement_id` claim is provided.
+
+If a Data Recipient Software Product provides the `cdr_arrangement_id` claim in the request object to the Data Holder's [PAR endpoint](#pushed-authorisation-end-point), the Data Holder **MUST** revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the Data Recipient Software Product.
 
 
 ### Request Object Submission
@@ -121,9 +125,7 @@ In addition:
 
 Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation end point according to **[[PAR]](#nref-PAR)**.
 
-```diff
-Clarified documentation to show that the "require_pushed_authorization_requests" parameter should be a Boolean `true`
-```
+
 
 * Data Holders **MUST** support **[[RFC9126]](#nref-RFC9126)** (PAR) using **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) with S256 as the code challenge method in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server).
 *	Data Holders **MUST** require PAR for authorisation request data in accordance with **[[RFC9126]](#nref-RFC9126)** where "require_pushed_authorization_requests" parameter is set to `true`.

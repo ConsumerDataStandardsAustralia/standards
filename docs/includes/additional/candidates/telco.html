@@ -606,7 +606,8 @@ This means that:
 </ul>
 </aside>
 <p>This specification defines the APIs for Data Holders exposing Telecommunications endpoints.</p>
-
+<pre class="highlight diff tab-diff"><code>Removed duplicate `TelcoAccount` schema in the `TelcoAccountDetailResponseData` schema, in the 'Get Telco Account Detail' endpoint in the Telco Candidate Standards
+</code></pre>
 <table>
 <tr><td><a href='../../../includes/swagger/cds_telco.json'>Telco OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='../../../includes/swagger/cds_telco.yaml'>Telco OpenAPI Specification (YAML)</a></td></tr>
@@ -6053,7 +6054,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproductlistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproductlistresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductlistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -6145,7 +6149,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproductresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproductresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6336,7 +6343,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcousageresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcousageresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousageresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousageresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6436,7 +6446,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoserviceusageresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusageresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoserviceusageresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusageresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6529,7 +6542,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoserviceusagelistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusagelistresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoserviceusagelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusagelistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -6631,7 +6647,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoaccountlistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoaccountlistresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountlistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -6709,7 +6728,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoaccountdetailresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6787,7 +6809,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcopaymentscheduleresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduleresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcopaymentscheduleresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduleresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"paymentSchedules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -6868,7 +6893,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoconcessionsresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoconcessionsresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoconcessionsresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoconcessionsresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"concessions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -6936,7 +6964,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcobalancelistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcobalancelistresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobalancelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobalancelistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7056,7 +7087,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcobalanceresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcobalanceresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobalanceresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobalanceresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7162,7 +7196,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcotransactionlistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcotransactionlistresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcotransactionlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcotransactionlistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7261,7 +7298,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSmetaerror" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apimetaerror"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_metaerror"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apimetaerror"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -7291,7 +7331,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apiresponseerrorlistv2"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_responseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apiresponseerrorlistv2"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -7352,7 +7395,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproduct" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproduct"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproduct"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproduct"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effectiveFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7563,7 +7609,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcocontract" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcocontract"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcocontract"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcocontract"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7614,7 +7663,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoservicedetail" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoservicedetail"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicedetail"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicedetail"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -7642,7 +7694,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoaccountusage" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoaccountusage"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountusage"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountusage"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7730,7 +7785,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoserviceusage" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusage"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoserviceusage"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusage"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7835,7 +7893,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoaccountbase" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoaccountbase"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountbase"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountbase"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7923,7 +7984,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoaccountresponsedata" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoaccountresponsedata"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountresponsedata"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -7992,7 +8056,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoaccountdetailresponsedata" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailresponsedata"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountdetailresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailresponsedata"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8062,24 +8129,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacdr-telco-apitelcoaccount">TelcoAccount</a></td>
-<td>mandatory</td>
-<td>The array of plans containing services and associated plan details</td>
-</tr>
-</tbody></table>
-
-<p><em>and</em></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><em>anonymous</em></td>
 <td><a href="#schemacdr-telco-apitelcoaccountdetail">TelcoAccountDetail</a></td>
 <td>mandatory</td>
 <td>The array of plans containing services and associated plan details</td>
@@ -8090,7 +8139,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcopaymentschedule" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedule"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcopaymentschedule"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedule"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"paymentScheduleUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cardDebit"</span><span class="p">,</span><span class="w">
@@ -8198,7 +8250,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoconcession" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoconcession"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoconcession"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoconcession"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONCESSION"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8321,7 +8376,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoinvoice" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoinvoice"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoice"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoice"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8516,7 +8574,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcousage" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcousage"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousage"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousage"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"upload"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -8598,7 +8659,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoinvoiceaccountcharges" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceaccountcharges"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoiceaccountcharges"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceaccountcharges"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalUsageCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalOnceOffCharges"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8660,7 +8724,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcobillingtransaction" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcobillingtransaction"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobillingtransaction"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobillingtransaction"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"executionDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8798,7 +8865,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcobillingaccounttransaction" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcobillingaccounttransaction"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobillingaccounttransaction"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobillingaccounttransaction"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"serviceIds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8873,7 +8943,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcobillingonceofftransaction" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcobillingonceofftransaction"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobillingonceofftransaction"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobillingonceofftransaction"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -8922,7 +8995,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcobillingothertransaction" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcobillingothertransaction"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobillingothertransaction"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobillingothertransaction"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"invoiceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9034,7 +9110,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcobillingpaymenttransaction" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcobillingpaymenttransaction"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobillingpaymenttransaction"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobillingpaymenttransaction"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DIRECT_DEBIT"</span><span class="w">
@@ -9111,7 +9190,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcobalance" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcobalance"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobalance"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobalance"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -9201,7 +9283,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoservicebalance" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalance"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalance"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalance"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9317,7 +9402,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoplantype" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoplantype"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoplantype"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoplantype"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="s2">"METERED"</span><span class="w">
 
 </span></code></pre>
@@ -9371,7 +9459,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apicommonphysicaladdress"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_commonphysicaladdress"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apicommonphysicaladdress"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9463,7 +9554,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apicommonsimpleaddress"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_commonsimpleaddress"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apicommonsimpleaddress"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9542,7 +9636,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocScommonpafaddress" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apicommonpafaddress"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_commonpafaddress"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apicommonpafaddress"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -9719,7 +9816,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSlinks" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apilinks"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_links"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apilinks"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -9747,7 +9847,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSmeta" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apimeta"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_meta"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apimeta"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
 </span></code></pre>
@@ -9759,7 +9862,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSlinkspaginated" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apilinkspaginated"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_linkspaginated"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apilinkspaginated"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9815,7 +9921,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocSmetapaginated" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apimetapaginated"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_metapaginated"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apimetapaginated"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
@@ -9850,7 +9959,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproductlistresponsedata" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproductlistresponsedata"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductlistresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductlistresponsedata"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -9917,7 +10029,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcousagelistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcousagelistresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagelistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -10021,7 +10136,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcousagelistresponsedata" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcousagelistresponsedata"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagelistresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagelistresponsedata"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -10107,7 +10225,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoaccountlistresponsedata" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoaccountlistresponsedata"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountlistresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountlistresponsedata"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -10160,7 +10281,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcopaymentscheduleresponsedata" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduleresponsedata"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcopaymentscheduleresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduleresponsedata"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"paymentSchedules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -10216,7 +10340,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoconcessionsresponsedata" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoconcessionsresponsedata"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoconcessionsresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoconcessionsresponsedata"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"concessions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -10259,7 +10386,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcobalancelistresponsedata" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcobalancelistresponsedata"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobalancelistresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobalancelistresponsedata"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -10354,7 +10484,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcobalanceresponsedata" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcobalanceresponsedata"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobalanceresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobalanceresponsedata"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -10451,7 +10584,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoinvoiceresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoiceresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"invoices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -10574,7 +10710,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoinvoicelistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicelistresponse"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoicelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicelistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"invoices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -10704,7 +10843,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoinvoicelistresponsedata" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicelistresponsedata"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoicelistresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicelistresponsedata"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"invoices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -10809,7 +10951,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcotransactionlistresponsedata" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcotransactionlistresponsedata"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcotransactionlistresponsedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcotransactionlistresponsedata"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -10883,7 +11028,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproductpricing" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproductpricing"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductpricing"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductpricing"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10932,7 +11080,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoadditionalinformation" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoadditionalinformation"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoadditionalinformation"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoadditionalinformation"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"overviewUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"termsUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -10990,7 +11141,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproductdetailmeteringcharges" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailmeteringcharges"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetailmeteringcharges"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailmeteringcharges"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11046,7 +11200,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproductdetailfeature" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailfeature"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetailfeature"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailfeature"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11138,7 +11295,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproductdetailbundles" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailbundles"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetailbundles"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailbundles"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11193,7 +11353,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproductdetailplan" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailplan"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetailplan"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailplan"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11247,7 +11410,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproductdetailplanfeature" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailplanfeature"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetailplanfeature"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailplanfeature"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -11282,7 +11448,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproductdetaildiscountfeature" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetaildiscountfeature"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetaildiscountfeature"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetaildiscountfeature"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -11317,7 +11486,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproductdetaildiscounts" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetaildiscounts"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetaildiscounts"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetaildiscounts"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11371,7 +11543,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproductdetailincentivefeature" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailincentivefeature"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetailincentivefeature"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailincentivefeature"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -11406,7 +11581,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproductdetailincentives" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailincentives"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetailincentives"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailincentives"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11460,7 +11638,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoproductdetail" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetail"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoproductdetail"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetail"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meteringCharges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -11573,7 +11754,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoaccountusageservices" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoaccountusageservices"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountusageservices"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountusageservices"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11650,7 +11834,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoaccountplanoverview" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplanoverview"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountplanoverview"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplanoverview"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11694,7 +11881,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoaccountplan" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplan"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountplan"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplan"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MOBILE"</span><span class="p">,</span><span class="w">
@@ -11790,7 +11980,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoaccount" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoaccount"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccount"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccount"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -11834,7 +12027,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoaccountplandetail" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplandetail"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountplandetail"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplandetail"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"planDetail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -11880,7 +12076,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoaccountdetailauthorisedcontacts" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailauthorisedcontacts"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountdetailauthorisedcontacts"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailauthorisedcontacts"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11938,7 +12137,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoaccountdetail" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetail"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoaccountdetail"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetail"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -12029,7 +12231,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcopaymentschedulecarddebit" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedulecarddebit"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcopaymentschedulecarddebit"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedulecarddebit"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"cardScheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VISA"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"paymentFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12119,7 +12324,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcopaymentscheduledirectdebit" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduledirectdebit"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcopaymentscheduledirectdebit"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduledirectdebit"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"isTokenised"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"bsb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12199,7 +12407,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcopaymentscheduledigitalwallet" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduledigitalwallet"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcopaymentscheduledigitalwallet"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduledigitalwallet"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12306,7 +12517,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcopaymentschedulemanualpayment" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedulemanualpayment"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcopaymentschedulemanualpayment"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedulemanualpayment"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"billFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -12336,7 +12550,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoinvoiceperiod" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceperiod"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoiceperiod"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceperiod"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -12373,7 +12590,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoinvoicepayontimediscount" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicepayontimediscount"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoicepayontimediscount"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoicepayontimediscount"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"discountAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gstAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12417,7 +12637,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcousagedatroaming" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcousagedatroaming"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagedatroaming"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagedatroaming"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"download"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -12454,7 +12677,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcousagedata" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcousagedata"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagedata"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"upload"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"download"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -12515,7 +12741,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcousagevoicenational" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcousagevoicenational"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagevoicenational"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagevoicenational"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -12559,7 +12788,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcousagevoiceinternational" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcousagevoiceinternational"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagevoiceinternational"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagevoiceinternational"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -12603,7 +12835,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcousagevoiceroaming" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcousagevoiceroaming"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagevoiceroaming"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagevoiceroaming"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -12647,7 +12882,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcousagevoice" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcousagevoice"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagevoice"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagevoice"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"national"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12703,7 +12941,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcousagemessagingsms" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcousagemessagingsms"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagemessagingsms"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagemessagingsms"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"national"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -12754,7 +12995,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcousagemessagingmms" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcousagemessagingmms"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagemessagingmms"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagemessagingmms"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"national"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"international"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -12805,7 +13049,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcousagemessaging" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcousagemessaging"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcousagemessaging"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcousagemessaging"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"sms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"national"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -12852,7 +13099,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoinvoiceaccountchargesothercharges" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceaccountchargesothercharges"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoinvoiceaccountchargesothercharges"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceaccountchargesothercharges"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12942,7 +13192,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcobillingaccounttransactionadjustments" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcobillingaccounttransactionadjustments"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcobillingaccounttransactionadjustments"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcobillingaccounttransactionadjustments"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -12977,7 +13230,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoservicebalancedataroaming" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancedataroaming"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancedataroaming"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancedataroaming"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"download"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -13021,7 +13277,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoservicebalancedata" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancedata"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancedata"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancedata"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"METERED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -13090,7 +13349,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoservicebalancevoicenational" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoicenational"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancevoicenational"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoicenational"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -13141,7 +13403,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoservicebalancevoiceinternational" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoiceinternational"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancevoiceinternational"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoiceinternational"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -13192,7 +13457,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoservicebalancevoiceroaming" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoiceroaming"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancevoiceroaming"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoiceroaming"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -13243,7 +13511,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoservicebalancevoice" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoice"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancevoice"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoice"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"METERED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"national"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13309,7 +13580,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoservicebalancemessagingsms" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessagingsms"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancemessagingsms"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessagingsms"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"national"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -13367,7 +13641,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoservicebalancemessagingmms" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessagingmms"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancemessagingmms"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessagingmms"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"national"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -13425,7 +13702,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoservicebalancemessaging" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessaging"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalancemessaging"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessaging"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"METERED"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"sms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13481,7 +13761,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p id="tocStelcoservicebalances" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalances"></a></p>
+<p>
+  <a id="cdr-telco-api_schema-base_telcoservicebalances"></a>
+  <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalances"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"METERED"</span><span class="p">,</span><span class="w">

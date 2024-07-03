@@ -12,7 +12,7 @@
       "url": "https://opensource.org/licenses/MIT"
     },
     "title": "CDR Telco API",
-    "version": "1.30.0"
+    "version": "1.31.0"
   },
   "servers": [ {
     "url": "https://data.holder.com.au/cds-au/v1"
@@ -2647,8 +2647,6 @@
       "TelcoAccountDetailResponseData": {
         "allOf": [ {
           "$ref": "#/components/schemas/TelcoAccountBase"
-        }, {
-          "$ref": "#/components/schemas/TelcoAccount"
         }, {
           "$ref": "#/components/schemas/TelcoAccountDetail"
         } ]

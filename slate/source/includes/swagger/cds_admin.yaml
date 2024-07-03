@@ -11,7 +11,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Admin API
-  version: 1.30.0
+  version: 1.31.0
 servers:
 - url: https://data.holder.com.au/cds-au/v1
 paths:
@@ -397,68 +397,54 @@ components:
           performance:
             unattended:
               previousDays:
-              - - previousDays
-                - previousDays
-              - - previousDays
-                - previousDays
+              - null
+              - null
               currentDay:
-              - currentDay
-              - currentDay
+              - null
+              - null
             secondary:
               secondary:
                 previousDays:
-                - - previousDays
-                  - previousDays
-                - - previousDays
-                  - previousDays
+                - null
+                - null
                 currentDay:
-                - currentDay
-                - currentDay
+                - null
+                - null
               primary:
                 previousDays:
-                - - previousDays
-                  - previousDays
-                - - previousDays
-                  - previousDays
+                - null
+                - null
                 currentDay:
-                - currentDay
-                - currentDay
+                - null
+                - null
             highPriority:
               previousDays:
-              - - previousDays
-                - previousDays
-              - - previousDays
-                - previousDays
+              - null
+              - null
               currentDay:
-              - currentDay
-              - currentDay
+              - null
+              - null
             largePayload:
               previousDays:
-              - - previousDays
-                - previousDays
-              - - previousDays
-                - previousDays
+              - null
+              - null
               currentDay:
-              - currentDay
-              - currentDay
+              - null
+              - null
             unauthenticated:
               previousDays:
-              - - previousDays
-                - previousDays
-              - - previousDays
-                - previousDays
+              - null
+              - null
               currentDay:
-              - currentDay
-              - currentDay
+              - null
+              - null
             lowPriority:
               previousDays:
-              - - previousDays
-                - previousDays
-              - - previousDays
-                - previousDays
+              - null
+              - null
               currentDay:
-              - currentDay
-              - currentDay
+              - null
+              - null
             aggregate:
               previousDays:
               - previousDays
@@ -467,22 +453,18 @@ components:
             largeSecondary:
               secondary:
                 previousDays:
-                - - previousDays
-                  - previousDays
-                - - previousDays
-                  - previousDays
+                - null
+                - null
                 currentDay:
-                - currentDay
-                - currentDay
+                - null
+                - null
               primary:
                 previousDays:
-                - - previousDays
-                  - previousDays
-                - - previousDays
-                  - previousDays
+                - null
+                - null
                 currentDay:
-                - currentDay
-                - currentDay
+                - null
+                - null
           sessionCount:
             previousDays:
             - 2
@@ -646,68 +628,54 @@ components:
       example:
         unattended:
           previousDays:
-          - - previousDays
-            - previousDays
-          - - previousDays
-            - previousDays
+          - null
+          - null
           currentDay:
-          - currentDay
-          - currentDay
+          - null
+          - null
         secondary:
           secondary:
             previousDays:
-            - - previousDays
-              - previousDays
-            - - previousDays
-              - previousDays
+            - null
+            - null
             currentDay:
-            - currentDay
-            - currentDay
+            - null
+            - null
           primary:
             previousDays:
-            - - previousDays
-              - previousDays
-            - - previousDays
-              - previousDays
+            - null
+            - null
             currentDay:
-            - currentDay
-            - currentDay
+            - null
+            - null
         highPriority:
           previousDays:
-          - - previousDays
-            - previousDays
-          - - previousDays
-            - previousDays
+          - null
+          - null
           currentDay:
-          - currentDay
-          - currentDay
+          - null
+          - null
         largePayload:
           previousDays:
-          - - previousDays
-            - previousDays
-          - - previousDays
-            - previousDays
+          - null
+          - null
           currentDay:
-          - currentDay
-          - currentDay
+          - null
+          - null
         unauthenticated:
           previousDays:
-          - - previousDays
-            - previousDays
-          - - previousDays
-            - previousDays
+          - null
+          - null
           currentDay:
-          - currentDay
-          - currentDay
+          - null
+          - null
         lowPriority:
           previousDays:
-          - - previousDays
-            - previousDays
-          - - previousDays
-            - previousDays
+          - null
+          - null
           currentDay:
-          - currentDay
-          - currentDay
+          - null
+          - null
         aggregate:
           previousDays:
           - previousDays
@@ -716,22 +684,18 @@ components:
         largeSecondary:
           secondary:
             previousDays:
-            - - previousDays
-              - previousDays
-            - - previousDays
-              - previousDays
+            - null
+            - null
             currentDay:
-            - currentDay
-            - currentDay
+            - null
+            - null
           primary:
             previousDays:
-            - - previousDays
-              - previousDays
-            - - previousDays
-              - previousDays
+            - null
+            - null
             currentDay:
-            - currentDay
-            - currentDay
+            - null
+            - null
       properties:
         aggregate:
           $ref: '#/components/schemas/PerformanceMetricsV3_aggregate'
@@ -759,6 +723,18 @@ components:
       x-conditional:
       - secondary
       - largeSecondary
+    PerformancePreviousDays:
+      description: Array of contiguous hourly metrics for the specified day.  Each
+        element represents a 1 hour period starting from 12am-1am.  Timezone for determining
+        12am must be consistent but is at the discretion of the Data Holder
+      items:
+        $ref: '#/components/schemas/PerformanceHours'
+      type: array
+    PerformanceHours:
+      description: Percentage of calls within the performance threshold for the specified
+        hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero
+      type: string
+      x-cds-type: RateString
     InvocationMetricsV3:
       description: Number of API calls in each performance tier over time
       example:
@@ -1384,68 +1360,54 @@ components:
         performance:
           unattended:
             previousDays:
-            - - previousDays
-              - previousDays
-            - - previousDays
-              - previousDays
+            - null
+            - null
             currentDay:
-            - currentDay
-            - currentDay
+            - null
+            - null
           secondary:
             secondary:
               previousDays:
-              - - previousDays
-                - previousDays
-              - - previousDays
-                - previousDays
+              - null
+              - null
               currentDay:
-              - currentDay
-              - currentDay
+              - null
+              - null
             primary:
               previousDays:
-              - - previousDays
-                - previousDays
-              - - previousDays
-                - previousDays
+              - null
+              - null
               currentDay:
-              - currentDay
-              - currentDay
+              - null
+              - null
           highPriority:
             previousDays:
-            - - previousDays
-              - previousDays
-            - - previousDays
-              - previousDays
+            - null
+            - null
             currentDay:
-            - currentDay
-            - currentDay
+            - null
+            - null
           largePayload:
             previousDays:
-            - - previousDays
-              - previousDays
-            - - previousDays
-              - previousDays
+            - null
+            - null
             currentDay:
-            - currentDay
-            - currentDay
+            - null
+            - null
           unauthenticated:
             previousDays:
-            - - previousDays
-              - previousDays
-            - - previousDays
-              - previousDays
+            - null
+            - null
             currentDay:
-            - currentDay
-            - currentDay
+            - null
+            - null
           lowPriority:
             previousDays:
-            - - previousDays
-              - previousDays
-            - - previousDays
-              - previousDays
+            - null
+            - null
             currentDay:
-            - currentDay
-            - currentDay
+            - null
+            - null
           aggregate:
             previousDays:
             - previousDays
@@ -1454,22 +1416,18 @@ components:
           largeSecondary:
             secondary:
               previousDays:
-              - - previousDays
-                - previousDays
-              - - previousDays
-                - previousDays
+              - null
+              - null
               currentDay:
-              - currentDay
-              - currentDay
+              - null
+              - null
             primary:
               previousDays:
-              - - previousDays
-                - previousDays
-              - - previousDays
-                - previousDays
+              - null
+              - null
               currentDay:
-              - currentDay
-              - currentDay
+              - null
+              - null
         sessionCount:
           previousDays:
           - 2
@@ -1752,13 +1710,11 @@ components:
       description: Percentage of high priority calls within the performance thresholds
       example:
         previousDays:
-        - - previousDays
-          - previousDays
-        - - previousDays
-          - previousDays
+        - null
+        - null
         currentDay:
-        - currentDay
-        - currentDay
+        - null
+        - null
       properties:
         currentDay:
           description: Array of contiguous hourly metrics for the current day.  Each
@@ -1766,11 +1722,7 @@ components:
             determining 12am must be consistent but is at the discretion of the Data
             Holder
           items:
-            description: Percentage of calls within the performance threshold for
-              the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-              value or zero
-            type: string
-            x-cds-type: RateString
+            $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
@@ -1778,17 +1730,7 @@ components:
             entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
             must be a positive or zero
           items:
-            description: Array of contiguous hourly metrics for the specified day.  Each
-              element represents a 1 hour period starting from 12am-1am.  Timezone
-              for determining 12am must be consistent but is at the discretion of
-              the Data Holder
-            items:
-              description: Percentage of calls within the performance threshold for
-                the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-                value or zero
-              type: string
-              x-cds-type: RateString
-            type: array
+            $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
       type: object
       x-conditional:
@@ -1798,13 +1740,11 @@ components:
       description: Percentage of large payload calls within the performance thresholds
       example:
         previousDays:
-        - - previousDays
-          - previousDays
-        - - previousDays
-          - previousDays
+        - null
+        - null
         currentDay:
-        - currentDay
-        - currentDay
+        - null
+        - null
       properties:
         currentDay:
           description: Array of contiguous hourly metrics for the current day.  Each
@@ -1812,11 +1752,7 @@ components:
             determining 12am must be consistent but is at the discretion of the Data
             Holder
           items:
-            description: Percentage of calls within the performance threshold for
-              the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-              value or zero
-            type: string
-            x-cds-type: RateString
+            $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
@@ -1824,17 +1760,7 @@ components:
             entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
             must be a positive or zero
           items:
-            description: Array of contiguous hourly metrics for the specified day.  Each
-              element represents a 1 hour period starting from 12am-1am.  Timezone
-              for determining 12am must be consistent but is at the discretion of
-              the Data Holder
-            items:
-              description: Percentage of calls within the performance threshold for
-                the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-                value or zero
-              type: string
-              x-cds-type: RateString
-            type: array
+            $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
       type: object
       x-conditional:
@@ -1844,13 +1770,11 @@ components:
       description: Percentage of low priority calls within the performance thresholds
       example:
         previousDays:
-        - - previousDays
-          - previousDays
-        - - previousDays
-          - previousDays
+        - null
+        - null
         currentDay:
-        - currentDay
-        - currentDay
+        - null
+        - null
       properties:
         currentDay:
           description: Array of contiguous hourly metrics for the current day.  Each
@@ -1858,11 +1782,7 @@ components:
             determining 12am must be consistent but is at the discretion of the Data
             Holder
           items:
-            description: Percentage of calls within the performance threshold for
-              the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-              value or zero
-            type: string
-            x-cds-type: RateString
+            $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
@@ -1870,17 +1790,7 @@ components:
             entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
             must be a positive or zero
           items:
-            description: Array of contiguous hourly metrics for the specified day.  Each
-              element represents a 1 hour period starting from 12am-1am.  Timezone
-              for determining 12am must be consistent but is at the discretion of
-              the Data Holder
-            items:
-              description: Percentage of calls within the performance threshold for
-                the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-                value or zero
-              type: string
-              x-cds-type: RateString
-            type: array
+            $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
       type: object
       x-conditional:
@@ -1890,13 +1800,11 @@ components:
       description: Percentage of unattended calls within the performance thresholds
       example:
         previousDays:
-        - - previousDays
-          - previousDays
-        - - previousDays
-          - previousDays
+        - null
+        - null
         currentDay:
-        - currentDay
-        - currentDay
+        - null
+        - null
       properties:
         currentDay:
           description: Array of contiguous hourly metrics for the current day.  Each
@@ -1904,11 +1812,7 @@ components:
             determining 12am must be consistent but is at the discretion of the Data
             Holder
           items:
-            description: Percentage of calls within the performance threshold for
-              the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-              value or zero
-            type: string
-            x-cds-type: RateString
+            $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
@@ -1916,17 +1820,7 @@ components:
             entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
             must be a positive or zero
           items:
-            description: Array of contiguous hourly metrics for the specified day.  Each
-              element represents a 1 hour period starting from 12am-1am.  Timezone
-              for determining 12am must be consistent but is at the discretion of
-              the Data Holder
-            items:
-              description: Percentage of calls within the performance threshold for
-                the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-                value or zero
-              type: string
-              x-cds-type: RateString
-            type: array
+            $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
       type: object
       x-conditional:
@@ -1936,13 +1830,11 @@ components:
       description: Percentage of unauthenticated calls within the performance thresholds
       example:
         previousDays:
-        - - previousDays
-          - previousDays
-        - - previousDays
-          - previousDays
+        - null
+        - null
         currentDay:
-        - currentDay
-        - currentDay
+        - null
+        - null
       properties:
         currentDay:
           description: Array of contiguous hourly metrics for the current day.  Each
@@ -1950,11 +1842,7 @@ components:
             determining 12am must be consistent but is at the discretion of the Data
             Holder
           items:
-            description: Percentage of calls within the performance threshold for
-              the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-              value or zero
-            type: string
-            x-cds-type: RateString
+            $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
@@ -1962,17 +1850,7 @@ components:
             entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
             must be a positive or zero
           items:
-            description: Array of contiguous hourly metrics for the specified day.  Each
-              element represents a 1 hour period starting from 12am-1am.  Timezone
-              for determining 12am must be consistent but is at the discretion of
-              the Data Holder
-            items:
-              description: Percentage of calls within the performance threshold for
-                the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-                value or zero
-              type: string
-              x-cds-type: RateString
-            type: array
+            $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
       type: object
       x-conditional:
@@ -1983,13 +1861,11 @@ components:
         thresholds for the primary data holder
       example:
         previousDays:
-        - - previousDays
-          - previousDays
-        - - previousDays
-          - previousDays
+        - null
+        - null
         currentDay:
-        - currentDay
-        - currentDay
+        - null
+        - null
       properties:
         currentDay:
           description: Array of contiguous hourly metrics for the current day.  Each
@@ -1997,11 +1873,7 @@ components:
             determining 12am must be consistent but is at the discretion of the Data
             Holder
           items:
-            description: Percentage of calls within the performance threshold for
-              the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-              value or zero
-            type: string
-            x-cds-type: RateString
+            $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
@@ -2009,17 +1881,7 @@ components:
             entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
             must be a positive or zero
           items:
-            description: Array of contiguous hourly metrics for the specified day.  Each
-              element represents a 1 hour period starting from 12am-1am.  Timezone
-              for determining 12am must be consistent but is at the discretion of
-              the Data Holder
-            items:
-              description: Percentage of calls within the performance threshold for
-                the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-                value or zero
-              type: string
-              x-cds-type: RateString
-            type: array
+            $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
       type: object
       x-conditional:
@@ -2030,13 +1892,11 @@ components:
         thresholds for the secondary data holder
       example:
         previousDays:
-        - - previousDays
-          - previousDays
-        - - previousDays
-          - previousDays
+        - null
+        - null
         currentDay:
-        - currentDay
-        - currentDay
+        - null
+        - null
       properties:
         currentDay:
           description: Array of contiguous hourly metrics for the current day.  Each
@@ -2044,11 +1904,7 @@ components:
             determining 12am must be consistent but is at the discretion of the Data
             Holder
           items:
-            description: Percentage of calls within the performance threshold for
-              the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-              value or zero
-            type: string
-            x-cds-type: RateString
+            $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
@@ -2056,17 +1912,7 @@ components:
             entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
             must be a positive or zero
           items:
-            description: Array of contiguous hourly metrics for the specified day.  Each
-              element represents a 1 hour period starting from 12am-1am.  Timezone
-              for determining 12am must be consistent but is at the discretion of
-              the Data Holder
-            items:
-              description: Percentage of calls within the performance threshold for
-                the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-                value or zero
-              type: string
-              x-cds-type: RateString
-            type: array
+            $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
       type: object
       x-conditional:
@@ -2079,22 +1925,18 @@ components:
       example:
         secondary:
           previousDays:
-          - - previousDays
-            - previousDays
-          - - previousDays
-            - previousDays
+          - null
+          - null
           currentDay:
-          - currentDay
-          - currentDay
+          - null
+          - null
         primary:
           previousDays:
-          - - previousDays
-            - previousDays
-          - - previousDays
-            - previousDays
+          - null
+          - null
           currentDay:
-          - currentDay
-          - currentDay
+          - null
+          - null
       properties:
         primary:
           $ref: '#/components/schemas/PerformanceMetricsV3_secondary_primary'
@@ -2109,13 +1951,11 @@ components:
         thresholds for the secondary data holder
       example:
         previousDays:
-        - - previousDays
-          - previousDays
-        - - previousDays
-          - previousDays
+        - null
+        - null
         currentDay:
-        - currentDay
-        - currentDay
+        - null
+        - null
       properties:
         currentDay:
           description: Array of contiguous hourly metrics for the current day.  Each
@@ -2123,11 +1963,7 @@ components:
             determining 12am must be consistent but is at the discretion of the Data
             Holder
           items:
-            description: Percentage of calls within the performance threshold for
-              the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-              value or zero
-            type: string
-            x-cds-type: RateString
+            $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
@@ -2135,17 +1971,7 @@ components:
             entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
             must be a positive or zero
           items:
-            description: Array of contiguous hourly metrics for the specified day.  Each
-              element represents a 1 hour period starting from 12am-1am.  Timezone
-              for determining 12am must be consistent but is at the discretion of
-              the Data Holder
-            items:
-              description: Percentage of calls within the performance threshold for
-                the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive
-                value or zero
-              type: string
-              x-cds-type: RateString
-            type: array
+            $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
       type: object
       x-conditional:
@@ -2158,22 +1984,18 @@ components:
       example:
         secondary:
           previousDays:
-          - - previousDays
-            - previousDays
-          - - previousDays
-            - previousDays
+          - null
+          - null
           currentDay:
-          - currentDay
-          - currentDay
+          - null
+          - null
         primary:
           previousDays:
-          - - previousDays
-            - previousDays
-          - - previousDays
-            - previousDays
+          - null
+          - null
           currentDay:
-          - currentDay
-          - currentDay
+          - null
+          - null
       properties:
         primary:
           $ref: '#/components/schemas/PerformanceMetricsV3_largeSecondary_primary'

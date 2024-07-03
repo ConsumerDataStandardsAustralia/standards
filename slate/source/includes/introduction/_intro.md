@@ -1,9 +1,11 @@
 
 ```diff
-Improved line wrapping to avoid horizontal scrollbars in the 'Non-normative Examples' and 'Version Delta' tab columns.
+Added anchors to allow linking to a schema base (without a specific version) from guidance material
+
+Updated 'Consumer Data Right' website link
 ```
 
-These standards have been developed as part of the Australian Government's introduction of the [Consumer Data Right](https://www.accc.gov.au/focus-areas/consumer-data-right "ACCC Consumer Data Right webpage") legislation to give Australians greater control over their data.
+These standards have been developed as part of the Australian Government's introduction of the [Consumer Data Right](https://www.cdr.gov.au/) legislation to give Australians greater control over their data.
 
 The Consumer Data Right (CDR) is intended to be applied sector by sector across the whole economy, beginning in the banking, energy and telecommunications sectors.  These standards have been developed to facilitate the Consumer Data Right by acting as a specific baseline for implementation.
 
@@ -19,7 +21,7 @@ Some of these standards will be binding data standards under the Competition and
 
 ## Version
 
-These standards represent version 1.30.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
+These standards represent version 1.31.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
 
 ## Interpretation
 

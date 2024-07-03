@@ -4720,7 +4720,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanlistresponse">EnergyPlanListResponse</h3>
 <p id="tocSenergyplanlistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplanlistresponse"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplanlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplanlistresponse"></a>
+</p>
 
 ```json
 {
@@ -4787,7 +4790,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanresponsev3">EnergyPlanResponseV3</h3>
 <p id="tocSenergyplanresponsev3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplanresponsev3"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplanresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplanresponsev3"></a>
+</p>
 
 ```json
 {
@@ -5353,7 +5359,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
 <p id="tocSenergyservicepointlistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyservicepointlistresponse"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyservicepointlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointlistresponse"></a>
+</p>
 
 ```json
 {
@@ -5402,7 +5411,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
 <p id="tocSenergyservicepointdetailresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetailresponse"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyservicepointdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetailresponse"></a>
+</p>
 
 ```json
 {
@@ -5514,7 +5526,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
 <p id="tocSenergyusagelistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyusagelistresponse"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyusagelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyusagelistresponse"></a>
+</p>
 
 ```json
 {
@@ -5578,7 +5593,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyderlistresponse">EnergyDerListResponse</h3>
 <p id="tocSenergyderlistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyderlistresponse"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyderlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyderlistresponse"></a>
+</p>
 
 ```json
 {
@@ -5664,7 +5682,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
 <p id="tocSenergyderdetailresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyderdetailresponse"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyderdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyderdetailresponse"></a>
+</p>
 
 ```json
 {
@@ -5738,7 +5759,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountlistresponsev2">EnergyAccountListResponseV2</h3>
 <p id="tocSenergyaccountlistresponsev2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyaccountlistresponsev2"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyaccountlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyaccountlistresponsev2"></a>
+</p>
 
 ```json
 {
@@ -5793,7 +5817,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountdetailresponsev4">EnergyAccountDetailResponseV4</h3>
 <p id="tocSenergyaccountdetailresponsev4" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailresponsev4"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyaccountdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailresponsev4"></a>
+</p>
 
 ```json
 {
@@ -6226,7 +6253,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergypaymentscheduleresponse">EnergyPaymentScheduleResponse</h3>
 <p id="tocSenergypaymentscheduleresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergypaymentscheduleresponse"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energypaymentscheduleresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergypaymentscheduleresponse"></a>
+</p>
 
 ```json
 {
@@ -6281,7 +6311,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyconcessionsresponse">EnergyConcessionsResponse</h3>
 <p id="tocSenergyconcessionsresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyconcessionsresponse"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyconcessionsresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyconcessionsresponse"></a>
+</p>
 
 ```json
 {
@@ -6323,7 +6356,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybalancelistresponse">EnergyBalanceListResponse</h3>
 <p id="tocSenergybalancelistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergybalancelistresponse"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energybalancelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybalancelistresponse"></a>
+</p>
 
 ```json
 {
@@ -6364,7 +6400,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybalanceresponse">EnergyBalanceResponse</h3>
 <p id="tocSenergybalanceresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergybalanceresponse"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energybalanceresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybalanceresponse"></a>
+</p>
 
 ```json
 {
@@ -6391,7 +6430,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h3>
 <p id="tocSenergyinvoicelistresponse" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyinvoicelistresponse"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyinvoicelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyinvoicelistresponse"></a>
+</p>
 
 ```json
 {
@@ -6481,7 +6523,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillinglistresponsev3">EnergyBillingListResponseV3</h3>
 <p id="tocSenergybillinglistresponsev3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergybillinglistresponsev3"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energybillinglistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybillinglistresponsev3"></a>
+</p>
 
 ```json
 {
@@ -6601,7 +6646,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apiresponseerrorlistv2"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_responseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apiresponseerrorlistv2"></a>
+</p>
 
 ```json
 {
@@ -6633,7 +6681,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplan">EnergyPlan</h3>
 <p id="tocSenergyplan" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplan"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplan"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplan"></a>
+</p>
 
 ```json
 {
@@ -6714,7 +6765,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplandetailv3">EnergyPlanDetailV3</h3>
 <p id="tocSenergyplandetailv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplandetailv3"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplandetail"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplandetailv3"></a>
+</p>
 
 ```json
 {
@@ -7288,7 +7342,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontractv3">EnergyPlanContractV3</h3>
 <p id="tocSenergyplancontractv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplancontractv3"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplancontract"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplancontractv3"></a>
+</p>
 
 ```json
 {
@@ -7579,7 +7636,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontractfullv3">EnergyPlanContractFullV3</h3>
 <p id="tocSenergyplancontractfullv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplancontractfullv3"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplancontractfull"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplancontractfullv3"></a>
+</p>
 
 ```json
 {
@@ -7871,7 +7931,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontrolledloadv2">EnergyPlanControlledLoadV2</h3>
 <p id="tocSenergyplancontrolledloadv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplancontrolledloadv2"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplancontrolledload"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplancontrolledloadv2"></a>
+</p>
 
 ```json
 [
@@ -7999,7 +8062,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanincentives">EnergyPlanIncentives</h3>
 <p id="tocSenergyplanincentives" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplanincentives"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplanincentives"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplanincentives"></a>
+</p>
 
 ```json
 [
@@ -8035,7 +8101,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplandiscounts">EnergyPlanDiscounts</h3>
 <p id="tocSenergyplandiscounts" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplandiscounts"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplandiscounts"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplandiscounts"></a>
+</p>
 
 ```json
 [
@@ -8105,7 +8174,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplangreenpowercharges">EnergyPlanGreenPowerCharges</h3>
 <p id="tocSenergyplangreenpowercharges" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplangreenpowercharges"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplangreenpowercharges"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplangreenpowercharges"></a>
+</p>
 
 ```json
 [
@@ -8157,7 +8229,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplaneligibility">EnergyPlanEligibility</h3>
 <p id="tocSenergyplaneligibility" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplaneligibility"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplaneligibility"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplaneligibility"></a>
+</p>
 
 ```json
 [
@@ -8209,7 +8284,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanfees">EnergyPlanFees</h3>
 <p id="tocSenergyplanfees" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplanfees"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplanfees"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplanfees"></a>
+</p>
 
 ```json
 [
@@ -8273,7 +8351,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplansolarfeedintariffv3">EnergyPlanSolarFeedInTariffV3</h3>
 <p id="tocSenergyplansolarfeedintariffv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplansolarfeedintariffv3"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplansolarfeedintariff"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplansolarfeedintariffv3"></a>
+</p>
 
 ```json
 [
@@ -8398,7 +8479,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplantariffperiodv2">EnergyPlanTariffPeriodV2</h3>
 <p id="tocSenergyplantariffperiodv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyplantariffperiodv2"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyplantariffperiod"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyplantariffperiodv2"></a>
+</p>
 
 ```json
 [
@@ -8611,7 +8695,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepoint">EnergyServicePoint</h3>
 <p id="tocSenergyservicepoint" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyservicepoint"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyservicepoint"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepoint"></a>
+</p>
 
 ```json
 {
@@ -8681,7 +8768,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
 <p id="tocSenergyservicepointdetail" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetail"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyservicepointdetail"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetail"></a>
+</p>
 
 ```json
 {
@@ -8891,7 +8981,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyusageread">EnergyUsageRead</h3>
 <p id="tocSenergyusageread" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyusageread"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyusageread"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyusageread"></a>
+</p>
 
 ```json
 {
@@ -8966,7 +9059,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyderrecord">EnergyDerRecord</h3>
 <p id="tocSenergyderrecord" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyderrecord"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyderrecord"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyderrecord"></a>
+</p>
 
 ```json
 {
@@ -9094,7 +9190,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountbasev2">EnergyAccountBaseV2</h3>
 <p id="tocSenergyaccountbasev2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyaccountbasev2"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyaccountbase"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyaccountbasev2"></a>
+</p>
 
 ```json
 {
@@ -9127,7 +9226,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountv2">EnergyAccountV2</h3>
 <p id="tocSenergyaccountv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyaccountv2"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyaccount"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyaccountv2"></a>
+</p>
 
 ```json
 {
@@ -9177,7 +9279,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountdetailv4">EnergyAccountDetailV4</h3>
 <p id="tocSenergyaccountdetailv4" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailv4"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyaccountdetail"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyaccountdetailv4"></a>
+</p>
 
 ```json
 {
@@ -9694,7 +9799,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergypaymentschedule">EnergyPaymentSchedule</h3>
 <p id="tocSenergypaymentschedule" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergypaymentschedule"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energypaymentschedule"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergypaymentschedule"></a>
+</p>
 
 ```json
 {
@@ -9785,7 +9893,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyconcession">EnergyConcession</h3>
 <p id="tocSenergyconcession" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyconcession"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyconcession"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyconcession"></a>
+</p>
 
 ```json
 {
@@ -9835,7 +9946,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoice">EnergyInvoice</h3>
 <p id="tocSenergyinvoice" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyinvoice"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyinvoice"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyinvoice"></a>
+</p>
 
 ```json
 {
@@ -9931,7 +10045,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</h3>
 <p id="tocSenergyinvoicegasusagecharges" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyinvoicegasusagecharges"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyinvoicegasusagecharges"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyinvoicegasusagecharges"></a>
+</p>
 
 ```json
 {
@@ -9980,7 +10097,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</h3>
 <p id="tocSenergyinvoiceelectricityusagecharges" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceelectricityusagecharges"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyinvoiceelectricityusagecharges"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceelectricityusagecharges"></a>
+</p>
 
 ```json
 {
@@ -10029,7 +10149,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</h3>
 <p id="tocSenergyinvoiceaccountcharges" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceaccountcharges"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energyinvoiceaccountcharges"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceaccountcharges"></a>
+</p>
 
 ```json
 {
@@ -10053,7 +10176,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingtransactionv3">EnergyBillingTransactionV3</h3>
 <p id="tocSenergybillingtransactionv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergybillingtransactionv3"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energybillingtransaction"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybillingtransactionv3"></a>
+</p>
 
 ```json
 {
@@ -10171,7 +10297,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingusagetransactionv2">EnergyBillingUsageTransactionV2</h3>
 <p id="tocSenergybillingusagetransactionv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergybillingusagetransactionv2"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energybillingusagetransaction"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybillingusagetransactionv2"></a>
+</p>
 
 ```json
 {
@@ -10250,7 +10379,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingdemandtransactionv3">EnergyBillingDemandTransactionV3</h3>
 <p id="tocSenergybillingdemandtransactionv3" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergybillingdemandtransactionv3"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energybillingdemandtransaction"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybillingdemandtransactionv3"></a>
+</p>
 
 ```json
 {
@@ -10330,7 +10462,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingonceofftransaction">EnergyBillingOnceOffTransaction</h3>
 <p id="tocSenergybillingonceofftransaction" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergybillingonceofftransaction"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energybillingonceofftransaction"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybillingonceofftransaction"></a>
+</p>
 
 ```json
 {
@@ -10354,7 +10489,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h3>
 <p id="tocSenergybillingothertransaction" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergybillingothertransaction"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energybillingothertransaction"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybillingothertransaction"></a>
+</p>
 
 ```json
 {
@@ -10416,7 +10554,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h3>
 <p id="tocSenergybillingpaymenttransaction" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apienergybillingpaymenttransaction"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_energybillingpaymenttransaction"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergybillingpaymenttransaction"></a>
+</p>
 
 ```json
 {
@@ -10448,7 +10589,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 <p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apicommonphysicaladdress"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_commonphysicaladdress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apicommonphysicaladdress"></a>
+</p>
 
 ```json
 {
@@ -10509,7 +10653,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
 <p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apicommonsimpleaddress"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_commonsimpleaddress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apicommonsimpleaddress"></a>
+</p>
 
 ```json
 {
@@ -10543,7 +10690,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
 <p id="tocScommonpafaddress" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apicommonpafaddress"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_commonpafaddress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apicommonpafaddress"></a>
+</p>
 
 ```json
 {
@@ -10605,7 +10755,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSrequestservicepointidlist">RequestServicePointIdList</h3>
 <p id="tocSrequestservicepointidlist" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apirequestservicepointidlist"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_requestservicepointidlist"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apirequestservicepointidlist"></a>
+</p>
 
 ```json
 {
@@ -10630,7 +10783,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSrequestaccountidlist">RequestAccountIdList</h3>
 <p id="tocSrequestaccountidlist" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apirequestaccountidlist"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_requestaccountidlist"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apirequestaccountidlist"></a>
+</p>
 
 ```json
 {
@@ -10655,7 +10811,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSlinks">Links</h3>
 <p id="tocSlinks" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apilinks"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_links"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apilinks"></a>
+</p>
 
 ```json
 {
@@ -10673,7 +10832,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSmeta">Meta</h3>
 <p id="tocSmeta" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apimeta"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_meta"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apimeta"></a>
+</p>
 
 ```json
 {}
@@ -10687,7 +10849,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
 <p id="tocSlinkspaginated" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apilinkspaginated"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_linkspaginated"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apilinkspaginated"></a>
+</p>
 
 ```json
 {
@@ -10713,7 +10878,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSmetapaginated">MetaPaginated</h3>
 <p id="tocSmetapaginated" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-energy-apimetapaginated"></a>
+<p>
+  <a id="cdr-energy-api_schema-base_metapaginated"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apimetapaginated"></a>
+</p>
 
 ```json
 {

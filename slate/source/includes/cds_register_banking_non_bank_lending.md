@@ -401,7 +401,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h3>
 <p id="tocSresponseregisterdataholderbrandlist" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_responseregisterdataholderbrandlist"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseregisterdataholderbrandlist"></a>
+</p>
 
 ```json
 {
@@ -473,7 +476,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSregisterdataholderbrand">RegisterDataHolderBrand</h3>
 <p id="tocSregisterdataholderbrand" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderbrand"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_registerdataholderbrand"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderbrand"></a>
+</p>
 
 ```json
 {
@@ -546,7 +552,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSresponsedataholdersbrandsummarylist">ResponseDataHoldersBrandSummaryList</h3>
 <p id="tocSresponsedataholdersbrandsummarylist" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apiresponsedataholdersbrandsummarylist"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_responsedataholdersbrandsummarylist"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apiresponsedataholdersbrandsummarylist"></a>
+</p>
 
 ```json
 {
@@ -585,7 +594,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSdataholderbrandsummary">DataHolderBrandSummary</h3>
 <p id="tocSdataholderbrandsummary" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apidataholderbrandsummary"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_dataholderbrandsummary"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apidataholderbrandsummary"></a>
+</p>
 
 ```json
 {
@@ -632,7 +644,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSdataholdersstatuslist">DataHoldersStatusList</h3>
 <p id="tocSdataholdersstatuslist" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apidataholdersstatuslist"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_dataholdersstatuslist"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apidataholdersstatuslist"></a>
+</p>
 
 ```json
 {
@@ -661,7 +676,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSdataholderstatus">DataHolderStatus</h3>
 <p id="tocSdataholderstatus" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apidataholderstatus"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_dataholderstatus"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apidataholderstatus"></a>
+</p>
 
 ```json
 {
@@ -688,7 +706,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSlegalentitydetail">LegalEntityDetail</h3>
 <p id="tocSlegalentitydetail" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apilegalentitydetail"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_legalentitydetail"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apilegalentitydetail"></a>
+</p>
 
 ```json
 {
@@ -719,7 +740,7 @@ This operation does not require authentication
 |logoUri|[URIString](#common-field-types)|mandatory|Legal Entity logo URI|
 |registrationNumber|string|optional|Unique registration number (if the company is registered outside Australia)|
 |registrationDate|[DateString](#common-field-types)|optional|Date of registration (if the company is registered outside Australia)|
-|registeredCountry|string|optional|Country of registeration (if the company is registered outside Australia)|
+|registeredCountry|string|optional|Country of registration (if the company is registered outside Australia)|
 |abn|string|optional|Australian Business Number for the organisation|
 |acn|string|optional|Australian Company Number for the organisation|
 |arbn|string|optional|Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies|
@@ -743,7 +764,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h3>
 <p id="tocSregisterdataholderbrandserviceendpoint" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_registerdataholderbrandserviceendpoint"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderbrandserviceendpoint"></a>
+</p>
 
 ```json
 {
@@ -773,7 +797,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSregisterdataholderauth">RegisterDataHolderAuth</h3>
 <p id="tocSregisterdataholderauth" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderauth"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_registerdataholderauth"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apiregisterdataholderauth"></a>
+</p>
 
 ```json
 {
@@ -801,7 +828,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
 <p id="tocSlinkspaginated" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apilinkspaginated"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_linkspaginated"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apilinkspaginated"></a>
+</p>
 
 ```json
 {
@@ -827,7 +857,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSmetapaginated">MetaPaginated</h3>
 <p id="tocSmetapaginated" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apimetapaginated"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_metapaginated"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apimetapaginated"></a>
+</p>
 
 ```json
 {
@@ -847,7 +880,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSlinks">Links</h3>
 <p id="tocSlinks" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apilinks"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_links"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apilinks"></a>
+</p>
 
 ```json
 {
@@ -865,7 +901,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSmeta">Meta</h3>
 <p id="tocSmeta" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apimeta"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_meta"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apimeta"></a>
+</p>
 
 ```json
 {}
@@ -879,7 +918,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSmetaerror">MetaError</h3>
 <p id="tocSmetaerror" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apimetaerror"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_metaerror"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apimetaerror"></a>
+</p>
 
 ```json
 {
@@ -899,7 +941,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseerrorlistv2"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_responseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseerrorlistv2"></a>
+</p>
 
 ```json
 {
@@ -926,7 +971,10 @@ This operation does not require authentication
 <h3 class="schema-toc" id="cdr-participant-discovery-api_schemas_tocSresponseerrorlistv2_errors">ResponseErrorListV2_errors</h3>
 <p id="tocSresponseerrorlistv2_errors" class="orig-anchor"></p>
 
-<a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseerrorlistv2_errors"></a>
+<p>
+  <a id="cdr-participant-discovery-api_schema-base_responseerrorlistv2_errors"></a>
+  <a class="schema-anchor" id="schemacdr-participant-discovery-apiresponseerrorlistv2_errors"></a>
+</p>
 
 ```json
 {

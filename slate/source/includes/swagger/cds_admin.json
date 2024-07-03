@@ -12,7 +12,7 @@
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Admin API",
-    "version" : "1.30.0"
+    "version" : "1.31.0"
   },
   "servers" : [ {
     "url" : "https://data.holder.com.au/cds-au/v1"
@@ -288,6 +288,18 @@
         "required" : [ "highPriority", "largePayload", "lowPriority", "unattended", "unauthenticated" ],
         "type" : "object",
         "x-conditional" : [ "secondary", "largeSecondary" ]
+      },
+      "PerformancePreviousDays" : {
+        "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+        "items" : {
+          "$ref" : "#/components/schemas/PerformanceHours"
+        },
+        "type" : "array"
+      },
+      "PerformanceHours" : {
+        "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+        "type" : "string",
+        "x-cds-type" : "RateString"
       },
       "InvocationMetricsV3" : {
         "description" : "Number of API calls in each performance tier over time",
@@ -660,22 +672,14 @@
           "currentDay" : {
             "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
-              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-              "type" : "string",
-              "x-cds-type" : "RateString"
+              "$ref" : "#/components/schemas/PerformanceHours"
             },
             "type" : "array"
           },
           "previousDays" : {
             "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
             "items" : {
-              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
-              "items" : {
-                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-                "type" : "string",
-                "x-cds-type" : "RateString"
-              },
-              "type" : "array"
+              "$ref" : "#/components/schemas/PerformancePreviousDays"
             },
             "type" : "array"
           }
@@ -689,22 +693,14 @@
           "currentDay" : {
             "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
-              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-              "type" : "string",
-              "x-cds-type" : "RateString"
+              "$ref" : "#/components/schemas/PerformanceHours"
             },
             "type" : "array"
           },
           "previousDays" : {
             "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
             "items" : {
-              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
-              "items" : {
-                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-                "type" : "string",
-                "x-cds-type" : "RateString"
-              },
-              "type" : "array"
+              "$ref" : "#/components/schemas/PerformancePreviousDays"
             },
             "type" : "array"
           }
@@ -718,22 +714,14 @@
           "currentDay" : {
             "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
-              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-              "type" : "string",
-              "x-cds-type" : "RateString"
+              "$ref" : "#/components/schemas/PerformanceHours"
             },
             "type" : "array"
           },
           "previousDays" : {
             "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
             "items" : {
-              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
-              "items" : {
-                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-                "type" : "string",
-                "x-cds-type" : "RateString"
-              },
-              "type" : "array"
+              "$ref" : "#/components/schemas/PerformancePreviousDays"
             },
             "type" : "array"
           }
@@ -747,22 +735,14 @@
           "currentDay" : {
             "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
-              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-              "type" : "string",
-              "x-cds-type" : "RateString"
+              "$ref" : "#/components/schemas/PerformanceHours"
             },
             "type" : "array"
           },
           "previousDays" : {
             "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
             "items" : {
-              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
-              "items" : {
-                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-                "type" : "string",
-                "x-cds-type" : "RateString"
-              },
-              "type" : "array"
+              "$ref" : "#/components/schemas/PerformancePreviousDays"
             },
             "type" : "array"
           }
@@ -776,22 +756,14 @@
           "currentDay" : {
             "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
-              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-              "type" : "string",
-              "x-cds-type" : "RateString"
+              "$ref" : "#/components/schemas/PerformanceHours"
             },
             "type" : "array"
           },
           "previousDays" : {
             "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
             "items" : {
-              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
-              "items" : {
-                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-                "type" : "string",
-                "x-cds-type" : "RateString"
-              },
-              "type" : "array"
+              "$ref" : "#/components/schemas/PerformancePreviousDays"
             },
             "type" : "array"
           }
@@ -805,22 +777,14 @@
           "currentDay" : {
             "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
-              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-              "type" : "string",
-              "x-cds-type" : "RateString"
+              "$ref" : "#/components/schemas/PerformanceHours"
             },
             "type" : "array"
           },
           "previousDays" : {
             "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
             "items" : {
-              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
-              "items" : {
-                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-                "type" : "string",
-                "x-cds-type" : "RateString"
-              },
-              "type" : "array"
+              "$ref" : "#/components/schemas/PerformancePreviousDays"
             },
             "type" : "array"
           }
@@ -834,22 +798,14 @@
           "currentDay" : {
             "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
-              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-              "type" : "string",
-              "x-cds-type" : "RateString"
+              "$ref" : "#/components/schemas/PerformanceHours"
             },
             "type" : "array"
           },
           "previousDays" : {
             "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
             "items" : {
-              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
-              "items" : {
-                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-                "type" : "string",
-                "x-cds-type" : "RateString"
-              },
-              "type" : "array"
+              "$ref" : "#/components/schemas/PerformancePreviousDays"
             },
             "type" : "array"
           }
@@ -876,22 +832,14 @@
           "currentDay" : {
             "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
-              "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-              "type" : "string",
-              "x-cds-type" : "RateString"
+              "$ref" : "#/components/schemas/PerformanceHours"
             },
             "type" : "array"
           },
           "previousDays" : {
             "description" : "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
             "items" : {
-              "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
-              "items" : {
-                "description" : "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
-                "type" : "string",
-                "x-cds-type" : "RateString"
-              },
-              "type" : "array"
+              "$ref" : "#/components/schemas/PerformancePreviousDays"
             },
             "type" : "array"
           }

@@ -1722,7 +1722,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSenergyservicepointlistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponse"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePoints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1796,7 +1799,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSenergyservicepointdetailresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponse"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1928,7 +1934,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSenergyusagelistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusagelistresponse"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyusagelistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusagelistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"reads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2017,7 +2026,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSenergyderlistresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderlistresponse"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyderlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderlistresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"derRecords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2128,7 +2140,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSenergyderdetailresponse" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderdetailresponse"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyderdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderdetailresponse"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2222,7 +2237,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_responseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -2289,7 +2307,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSenergyservicepoint" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepoint"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepoint"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepoint"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nationalMeteringId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2502,7 +2523,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSenergyservicepointdetail" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetail"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointdetail"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetail"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nationalMeteringId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3106,7 +3130,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSenergyusageread" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusageread"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyusageread"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusageread"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3312,7 +3339,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSenergyderrecord" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderrecord"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_energyderrecord"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderrecord"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"approvedCapacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -3708,7 +3738,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonphysicaladdress"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_commonphysicaladdress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonphysicaladdress"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3800,7 +3833,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocScommonsimpleaddress" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonsimpleaddress"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_commonsimpleaddress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonsimpleaddress"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -3879,7 +3915,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocScommonpafaddress" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonpafaddress"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_commonpafaddress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonpafaddress"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4056,7 +4095,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSrequestservicepointidlist" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apirequestservicepointidlist"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_requestservicepointidlist"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apirequestservicepointidlist"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"servicePointIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4101,7 +4143,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSlinks" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apilinks"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_links"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apilinks"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4129,7 +4174,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSmeta" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimeta"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_meta"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimeta"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
 </span></code></pre>
@@ -4141,7 +4189,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSlinkspaginated" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apilinkspaginated"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_linkspaginated"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apilinkspaginated"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -4197,7 +4248,10 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p id="tocSmetapaginated" class="orig-anchor"></p>
 
-<p><a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimetapaginated"></a></p>
+<p>
+  <a id="cdr-energy-secondary-data-holder-api_schema-base_metapaginated"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimetapaginated"></a>
+</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
