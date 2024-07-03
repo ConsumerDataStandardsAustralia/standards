@@ -51,7 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 | Updated FDO table | [**Standards Staging #377**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/377): Removed Future Dated Obligations prior to 2024. Earlier obligations may be viewed in Archived versions | [Future Dated Obligations](../../#future-dated-obligations)<br>[Archives](../../#archives)
-| Updated Obligation Date Schedule | [**Standards Maintenance #615**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/615): Added 2025 dates to the Obligation Date Schedule and removed dates prior to 2024 | [Future Dated Obligations](../../index.html?diff#future-dated-obligations)
+| Updated Obligation Date Schedule | [**Standards Maintenance #615**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/615): Added 2025 dates to the Obligation Date Schedule and removed dates prior to 2024 | [Obligation Date Schedule](../../includes/endpoint-version-schedule/#obligation-dates-schedule)
 | Energy API retirement date change| [**Standards Maintenance #640**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/640): Changed retirement date of  Get Generic Plan Detail v2 and Get Energy Account Detail v3 to March 3rd 2025 | [Future Dated Obligations](../../#future-dated-obligations)
 
 
