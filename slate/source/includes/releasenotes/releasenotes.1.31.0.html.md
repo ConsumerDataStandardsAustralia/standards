@@ -56,8 +56,8 @@ This release addresses the following Decision Proposals published on [Standards]
 
 
 ## High Level Standards
-|Change|Description|Link|
-|------|-----------|----|
+
+None
 
 
 ## API Endpoints
@@ -75,8 +75,8 @@ This release addresses the following Decision Proposals published on [Standards]
 | Deprecation of vulnerable ciphers | [**Standards Maintenance #643**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/643): Allow data holders to deprecate use of vulnerable TLS ciphers | [Ciphers](../../#ciphers)
 
 ## Register Standards
-|Change|Description|Link|
-|------|-----------|----|
+
+None
 
 
 ## Consumer Experience
@@ -85,9 +85,8 @@ This release addresses the following Decision Proposals published on [Standards]
 | Arrangement amendment clarification | [**Standards Maintenance #633**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/633): <ul><li>Updated "Authorisation: Amending consent" CX standard noting it needs to align with security requirements for specifiying an existing arrangement.</li><li> Added "Amendment of Collection Consents and Authorisations" CX standard to clarify CDR Arrangement ID is required for consent and authorisation amendments</li></ul> | [Amending Authorisation Standards](../../#amending-authorisation-standards) </br>[Consent Standards](../../#consumer-experience_consent-standards)
 
 ## Non-Functional Requirements
-|Change|Description|Link|
-|------|-----------|----|
 
+None
 
 ## Additional Standards
 |Change|Description|Link|
@@ -97,5 +96,5 @@ This release addresses the following Decision Proposals published on [Standards]
 
 
 ## Known Issues
-|Change|Description|Link|
-|------|-----------|----|
+
+None
