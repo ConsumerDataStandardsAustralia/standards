@@ -1,7 +1,5 @@
 ### Introspection End Point
-```diff
-Clarified that a Token Introspection End Point response must include specific fields only for currently active tokens
-```
+
 | Description | Value   |
 |---|---|
 | Hosted By  | Data Holder  |

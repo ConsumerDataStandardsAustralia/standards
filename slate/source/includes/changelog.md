@@ -6,6 +6,7 @@ The following table lists the changes made to these standards in reverse date or
 
 |Change Date|Version|Description|Detail of change|
 |-----------|-------|-----------|----------------|
+|TBC | 1.32.0 | Changes TBC | See [release notes](includes/releasenotes/releasenotes.1.32.0.html) and [Decision XXX](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX) for details. |
 |03/07/2024 | 1.31.0 | Changes from Maintenance Iteration 19 | See [release notes](includes/releasenotes/releasenotes.1.31.0.html) and [Decision 347](https://github.com/ConsumerDataStandardsAustralia/standards/issues/347) for details. |
 |24/04/2024 | 1.30.0 | Changes from maintenance iteration 18 | See [release notes](includes/releasenotes/releasenotes.1.30.0.html) and [Decision 340](https://github.com/ConsumerDataStandardsAustralia/standards/issues/340) for details. |
 |28/02/2024 | 1.29.1 | Patch release fixing minor issues | See [release notes](includes/releasenotes/releasenotes.1.29.1.html) for details. |

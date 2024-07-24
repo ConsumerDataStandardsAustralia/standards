@@ -6,6 +6,7 @@ The following table lists archived versions of the Consumer Data Standards.  The
 
 |Release Date|Version|Description|
 |-------------|-------|-----------|
+|<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.31.0/'>03/07/2024</a> | 1.31.0 | <a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.31.0/'>Changes from Maintenance Iteration 19</a> |
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.30.0/'>24/04/2024</a> | 1.30.0 | <a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.30.0/'>Changes from maintenance iteration 18</a> |
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.29.1/'>28/02/2024</a> | 1.29.1 | <a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.29.1/'>Patch release fixing minor issues</a> |
 |<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.29.0/'>21/12/2023</a> | 1.29.0 | <a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.29.0/'>Changes from maintenance iteration 17.  Also includes CX Standards changes to uplift Data Holder Dashboards and accommodate Business Consumers</a> |

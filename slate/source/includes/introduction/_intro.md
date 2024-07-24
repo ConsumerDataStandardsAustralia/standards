@@ -1,9 +1,5 @@
 
-```diff
-Added anchors to allow linking to a schema base (without a specific version) from guidance material
 
-Updated 'Consumer Data Right' website link
-```
 
 These standards have been developed as part of the Australian Government's introduction of the [Consumer Data Right](https://www.cdr.gov.au/) legislation to give Australians greater control over their data.
 
@@ -21,7 +17,7 @@ Some of these standards will be binding data standards under the Competition and
 
 ## Version
 
-These standards represent version 1.31.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
+These standards represent version 1.32.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
 
 ## Interpretation
 

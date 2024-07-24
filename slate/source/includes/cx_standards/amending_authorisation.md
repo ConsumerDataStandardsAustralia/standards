@@ -1,8 +1,6 @@
 ## Amending Authorisation Standards
 
-```diff
-Updated "Authorisation: Amending consent" CX standard noting it needs to align with security requirements for specifiying an existing arrangement 
-```
+
 
 |Area|CX Standard|
 |-------------------|------------------------------|
