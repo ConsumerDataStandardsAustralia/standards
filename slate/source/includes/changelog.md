@@ -1,5 +1,11 @@
 # Changelog and archives
 
+<p>
+  <a id="change-log"></a>
+  <a id="archives"></a>
+</p>
+
+
 ```diff
 Merged the Change Log and Archives sections. Archived versions are available through the links in the Version column.
 ```
