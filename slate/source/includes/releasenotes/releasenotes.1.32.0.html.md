@@ -46,6 +46,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Changed URIStrin example | [**Standards Maintenance #647**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647): Updated URIString example to use HTTPS not HTTP. Addresses [issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647#issuecomment-2234764756)| [Security Profile](../../#common-field-types)
 
 
 ## API Endpoints
