@@ -208,9 +208,12 @@ In addition to the requirements for [Private Key JWT Client Authentication](#pri
 ```diff
 - authorisation_code
 + authorization_code
+
+Changed the statements regarding client ID issuance due to redundant statement. Removes:
+- The client ID represents the ID issued to the Data Recipient Software Product by the Data Holder upon successful dynamic client registration.
+
 ```
 
-* The client ID represents the ID issued to the Data Recipient Software Product by the Data Holder upon successful dynamic client registration.
 * The authorisation grant's `client_id` parameter value **MUST** represent the ID issued to the Data Recipient Software Product by the Data Holder upon successful dynamic client registration.
 * The authorisation grant's `grant_type` parameter value **MUST** only be included when invoking the Token End point and **MUST** be set to `authorization_code` or `client_credentials`. The value `refresh_token` is also valid when refreshing an access token.
 

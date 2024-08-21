@@ -57,6 +57,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 | Typo fix for `authorization_code` | [**Standards Maintenance #647**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647): Corrected spelling mistake. Addresses [issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647#issuecomment-2199060934)| [Security Profile](../../#security-profile)
+| Removed redundant statement | [**Standards Maintenance #647**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647): Simplified and removed redundant statement for client ID issuance. Addresses [issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647#issuecomment-2212872798)| [Security Profile](../../#security-profile)
 
 
 ## Register Standards
