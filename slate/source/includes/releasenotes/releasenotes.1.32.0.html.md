@@ -51,6 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Corrected field description for `tariffUType` | [**Standards Maintenance #647**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647): Updated the field description for `tariffUType` where the incorrect description was copied in error. Addresses [issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647#issuecomment-2222175955)| [Energy APIs](../../#energy-apis)
 
 
 ## Information Security Profile
