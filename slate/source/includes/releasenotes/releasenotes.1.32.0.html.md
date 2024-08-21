@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #647 - Maintenance Iteration 20 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647)
 
 
 ### Decision Proposals
@@ -56,6 +56,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Typo fix for `authorization_code` | [**Standards Maintenance #647**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647): Corrected spelling mistake. Addresses [issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647#issuecomment-2199060934)| [Security Profile](../../#security-profile)
 
 
 ## Register Standards

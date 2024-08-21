@@ -205,9 +205,14 @@ In addition to the requirements for [Self-signed JWT Client Authentication](#sel
 
 In addition to the requirements for [Private Key JWT Client Authentication](#private-key-jwt-client-authentication) the following requirements **MUST** be supported:
 
+```diff
+- authorisation_code
++ authorization_code
+```
+
 * The client ID represents the ID issued to the Data Recipient Software Product by the Data Holder upon successful dynamic client registration.
 * The authorisation grant's `client_id` parameter value **MUST** represent the ID issued to the Data Recipient Software Product by the Data Holder upon successful dynamic client registration.
-* The authorisation grant's `grant_type` parameter value **MUST** only be included when invoking the Token End point and **MUST** be set to `authorisation_code` or `client_credentials`. The value `refresh_token` is also valid when refreshing an access token.
+* The authorisation grant's `grant_type` parameter value **MUST** only be included when invoking the Token End point and **MUST** be set to `authorization_code` or `client_credentials`. The value `refresh_token` is also valid when refreshing an access token.
 
 
 
