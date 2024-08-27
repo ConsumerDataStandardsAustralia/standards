@@ -306,7 +306,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
+            "description": "The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
               "type": "string",
               "default": "1"
@@ -590,7 +590,7 @@
           "arbn": {
             "maxLength": 9,
             "type": "string",
-            "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
+            "description": "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies"
           }
         }
       },
@@ -693,7 +693,7 @@
           "arbn": {
             "maxLength": 9,
             "type": "string",
-            "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
+            "description": "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies"
           },
           "anzsicDivision": {
             "maxLength": 100,

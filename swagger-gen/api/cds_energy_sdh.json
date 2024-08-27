@@ -1043,7 +1043,7 @@
                   },
                   "thoroughfareNumber1Suffix": {
                     "type": "string",
-                    "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated"
+                    "description": "Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_ is populated"
                   },
                   "thoroughfareNumber2": {
                     "type": "integer",
@@ -1052,7 +1052,7 @@
                   },
                   "thoroughfareNumber2Suffix": {
                     "type": "string",
-                    "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated"
+                    "description": "Suffix for the second thoroughfare number. Only relevant if _thoroughfareNumber2_ is populated"
                   },
                   "flatUnitType": {
                     "type": "string",

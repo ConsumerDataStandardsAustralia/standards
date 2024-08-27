@@ -58,7 +58,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -76,7 +76,7 @@
           {
             "name": "x-cds-client-headers",
             "in": "header",
-            "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+            "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true,
@@ -192,7 +192,7 @@
           {
             "name": "x-fapi-auth-date",
             "in": "header",
-            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+            "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true
@@ -210,7 +210,7 @@
           {
             "name": "x-cds-client-headers",
             "in": "header",
-            "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+            "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
               "type": "string",
               "x-conditional": true,
@@ -639,7 +639,7 @@
         "properties": {
           "lastUpdateTime": {
             "type": "string",
-            "description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
+            "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
             "x-cds-type": "DateTimeString"
           },
           "firstName": {
@@ -659,7 +659,7 @@
           },
           "prefix": {
             "type": "string",
-            "description": "Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)"
+            "description": "Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)"
           },
           "suffix": {
             "type": "string",
@@ -740,7 +740,7 @@
           },
           "agentFirstName": {
             "type": "string",
-            "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field"
+            "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present. The single name should be in the lastName field"
           },
           "agentLastName": {
             "type": "string",
@@ -748,7 +748,7 @@
           },
           "agentRole": {
             "type": "string",
-            "description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known"
+            "description": "The role of the individual identified as the agent who is providing authorisation. Expected to be used for display. Default to Unspecified if the role is not known"
           },
           "businessName": {
             "type": "string",
@@ -772,7 +772,7 @@
           },
           "isACNCRegistered": {
             "type": "boolean",
-            "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
+            "description": "True if registered with the ACNC. False if not. Absent or null if not confirmed.",
             "x-cds-type": "Boolean"
           },
           "industryCode": {
@@ -803,7 +803,7 @@
           },
           "registeredCountry": {
             "type": "string",
-            "description": "Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent",
+            "description": "Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes. Assumed to be AUS if absent",
             "x-cds-type": "ExternalRef"
           },
           "establishmentDate": {
@@ -1027,7 +1027,7 @@
         "properties": {
           "dpid": {
             "type": "string",
-            "description": "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier"
+            "description": "Unique identifier for an address as defined by Australia Post. Also known as Delivery Point Identifier"
           },
           "thoroughfareNumber1": {
             "type": "integer",
@@ -1036,7 +1036,7 @@
           },
           "thoroughfareNumber1Suffix": {
             "type": "string",
-            "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated"
+            "description": "Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_ is populated"
           },
           "thoroughfareNumber2": {
             "type": "integer",
@@ -1045,7 +1045,7 @@
           },
           "thoroughfareNumber2Suffix": {
             "type": "string",
-            "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated"
+            "description": "Suffix for the second thoroughfare number. Only relevant if _thoroughfareNumber2_ is populated"
           },
           "flatUnitType": {
             "type": "string",
@@ -1218,7 +1218,7 @@
       "RequestHeader_x-fapi-auth-date": {
         "name": "x-fapi-auth-date",
         "in": "header",
-        "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+        "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
         "schema": {
           "type": "string",
           "x-conditional": true
@@ -1236,7 +1236,7 @@
       "RequestHeader_x-cds-client-headers": {
         "name": "x-cds-client-headers",
         "in": "header",
-        "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+        "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
         "schema": {
           "type": "string",
           "x-conditional": true,

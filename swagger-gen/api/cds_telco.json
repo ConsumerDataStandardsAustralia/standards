@@ -34,7 +34,7 @@
           }
         }, {
           "name": "billing-type",
-          "description": "Used to filter results on the billing-type field.  Any one of the valid values for this field can be supplied. If absent, defaults to include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID', 'ALL'",
+          "description": "Used to filter results on the billing-type field. Any one of the valid values for this field can be supplied. If absent, defaults to include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID', 'ALL'",
           "in": "query",
           "required": false,
           "schema": {
@@ -53,7 +53,7 @@
           }
         }, {
           "name": "updated-since",
-          "description": "Only include products that have been updated after the specified date and time.  If absent defaults to include all plans",
+          "description": "Only include products that have been updated after the specified date and time. If absent defaults to include all plans",
           "in": "query",
           "required": false,
           "schema": {
@@ -513,7 +513,7 @@
           }
         }, {
           "name": "updated-since",
-          "description": "Only include accounts that have been updated after the specified date and time.  If absent defaults to include all plans",
+          "description": "Only include accounts that have been updated after the specified date and time. If absent defaults to include all plans",
           "in": "query",
           "required": false,
           "schema": {
@@ -1805,7 +1805,7 @@
       },
       "newest-time": {
         "name": "newest-time",
-        "description": "Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type",
+        "description": "Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type",
         "in": "query",
         "required": false,
         "schema": {
@@ -1815,7 +1815,7 @@
       },
       "oldest-time": {
         "name": "oldest-time",
-        "description": "Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type",
+        "description": "Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months. Format is aligned to DateTimeString common type",
         "in": "query",
         "required": false,
         "schema": {
@@ -1825,7 +1825,7 @@
       },
       "newest-date": {
         "name": "newest-date",
-        "description": "Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
+        "description": "Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type",
         "in": "query",
         "required": false,
         "schema": {
@@ -1835,7 +1835,7 @@
       },
       "oldest-date": {
         "name": "oldest-date",
-        "description": "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
+        "description": "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type",
         "in": "query",
         "required": false,
         "schema": {
@@ -1855,7 +1855,7 @@
       },
       "page-size": {
         "name": "page-size",
-        "description": "Page size to request.  Default is 25 (standard pagination)",
+        "description": "Page size to request. Default is 25 (standard pagination)",
         "in": "query",
         "required": false,
         "schema": {
@@ -1892,7 +1892,7 @@
       },
       "x-fapi-auth-date": {
         "name": "x-fapi-auth-date",
-        "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+        "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
         "in": "header",
         "required": false,
         "schema": {
@@ -1911,7 +1911,7 @@
       },
       "x-cds-client-headers": {
         "name": "x-cds-client-headers",
-        "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+        "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
         "in": "header",
         "required": false,
         "schema": {
@@ -2543,7 +2543,7 @@
       "TelcoServiceDetail": {
         "properties": {
           "serviceId": {
-            "description": "The tokenised ID of the service identifier for use in the CDR APIs. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).  Created according to the CDR rules for [CDR ID permanence](#id-permanence)",
+            "description": "The tokenised ID of the service identifier for use in the CDR APIs. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). Created according to the CDR rules for [CDR ID permanence](#id-permanence)",
             "type": "string"
           }
         },
@@ -2768,7 +2768,7 @@
             "x-cds-type": "AmountString"
           },
           "gstAmount": {
-            "description": "The total GST amount for this invoice.  If absent then zero is assumed",
+            "description": "The total GST amount for this invoice. If absent then zero is assumed",
             "type": "string",
             "x-cds-type": "AmountString"
           },
@@ -2842,7 +2842,7 @@
             "$ref": "#/components/schemas/TelcoInvoiceAccountChargesOtherCharges"
           },
           "totalGst": {
-            "description": "The total GST for all account level charges.  If absent then zero is assumed",
+            "description": "The total GST for all account level charges. If absent then zero is assumed",
             "type": "string",
             "x-cds-type": "AmountString"
           }
@@ -2862,7 +2862,7 @@
             "x-cds-type": "DateTimeString"
           },
           "gst": {
-            "description": "The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed",
+            "description": "The GST incurred in the transaction. Should not be included for credits or payments. If absent zero is assumed",
             "type": "string",
             "x-cds-type": "AmountString"
           },
@@ -2913,7 +2913,7 @@
             "x-cds-type": "DateTimeString"
           },
           "amount": {
-            "description": "The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
+            "description": "The amount charged or credited for this transaction prior to any adjustments being applied. A negative value indicates a credit",
             "type": "string",
             "x-cds-type": "AmountString"
           },
@@ -2939,7 +2939,7 @@
             "type": "string"
           },
           "amount": {
-            "description": "The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit",
+            "description": "The amount of the charge or credit. A positive value indicates a charge and a negative value indicates a credit",
             "type": "string",
             "x-cds-type": "AmountString"
           },
@@ -3131,7 +3131,7 @@
         "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf",
         "properties": {
           "dpid": {
-            "description": "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier",
+            "description": "Unique identifier for an address as defined by Australia Post. Also known as Delivery Point Identifier",
             "type": "string"
           },
           "thoroughfareNumber1": {
@@ -3891,12 +3891,12 @@
             "type": "string"
           },
           "paymentFrequency": {
-            "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "description": "The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type": "string",
             "x-cds-type": "ExternalRef"
           },
           "calculationType": {
-            "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+            "description": "The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
             "enum": [ "STATIC", "BALANCE", "CALCULATED" ],
             "type": "string"
           }
@@ -3908,24 +3908,24 @@
         "description": "Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit",
         "properties": {
           "isTokenised": {
-            "description": "Flag indicating that the account details are tokenised and cannot be shared.  False if absent",
+            "description": "Flag indicating that the account details are tokenised and cannot be shared. False if absent",
             "type": "boolean"
           },
           "bsb": {
-            "description": "The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
+            "description": "The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces. Is required if isTokenised is absent or false",
             "type": "string"
           },
           "accountNumber": {
-            "description": "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
+            "description": "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces. Is required if isTokenised is absent or false",
             "type": "string"
           },
           "paymentFrequency": {
-            "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "description": "The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type": "string",
             "x-cds-type": "ExternalRef"
           },
           "calculationType": {
-            "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+            "description": "The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
             "enum": [ "STATIC", "BALANCE", "CALCULATED" ],
             "type": "string"
           }
@@ -3956,12 +3956,12 @@
             "type": "string"
           },
           "paymentFrequency": {
-            "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "description": "The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type": "string",
             "x-cds-type": "ExternalRef"
           },
           "calculationType": {
-            "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+            "description": "The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
             "enum": [ "STATIC", "BALANCE", "CALCULATED" ],
             "type": "string"
           }
@@ -3973,7 +3973,7 @@
         "description": "Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment",
         "properties": {
           "billFrequency": {
-            "description": "The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "description": "The frequency with which a bill will be issued. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type": "string",
             "x-cds-type": "ExternalRef"
           }
@@ -4007,7 +4007,7 @@
             "x-cds-type": "AmountString"
           },
           "gstAmount": {
-            "description": "The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed",
+            "description": "The GST amount that will be discounted if the invoice is paid by the date specified. If absent then zero is assumed",
             "type": "string",
             "x-cds-type": "AmountString"
           },
