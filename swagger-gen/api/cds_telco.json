@@ -20,7 +20,7 @@
   "paths": {
     "/telco/products": {
       "get": {
-        "description": "Obtain a list of telco products that are currently offered to the market.\n\nNote that the results returned by this end point are expected to be ordered in descending order according to `lastUpdated`.",
+        "description": "Obtain a list of telco products that are currently offered to the market.\n\nNote that the results returned by this endpoint are expected to be ordered in descending order according to `lastUpdated`.",
         "operationId": "listProducts",
         "parameters": [ {
           "name": "type",
@@ -700,7 +700,7 @@
     },
     "/telco/accounts/{accountId}/payment-schedule": {
       "get": {
-        "description": "Obtain the agreed payment schedule and details, if any, for a specific telco account. \n\nSome general notes about this end point:\n\n <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>",
+        "description": "Obtain the agreed payment schedule and details, if any, for a specific telco account. \n\nSome general notes about this endpoint:\n\n <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>",
         "operationId": "getPaymentSchedule",
         "parameters": [ {
           "$ref": "#/components/parameters/accountId"
@@ -1762,7 +1762,7 @@
     "headers": {
       "x-v": {
         "schema": {
-          "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+          "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
           "type": "string"
         }
       },
@@ -1785,7 +1785,7 @@
       },
       "accountId": {
         "name": "accountId",
-        "description": "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
+        "description": "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements",
         "in": "path",
         "required": true,
         "schema": {
@@ -1865,7 +1865,7 @@
       },
       "x-v": {
         "name": "x-v",
-        "description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+        "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
         "in": "header",
         "required": true,
         "schema": {
@@ -1874,7 +1874,7 @@
       },
       "x-min-v": {
         "name": "x-min-v",
-        "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+        "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
         "in": "header",
         "required": false,
         "schema": {
