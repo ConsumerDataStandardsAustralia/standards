@@ -17,7 +17,7 @@ Release notes for version v1.32.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #426 - Error in Telco OAS components](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/426)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -76,6 +76,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Additional Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Correction to Telco specification | [**Standards Staging #426**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/426): Corrected error in specification of response headers | [Candidate Standards](../../#candidate-standards)
 
 
 ## Known Issues
