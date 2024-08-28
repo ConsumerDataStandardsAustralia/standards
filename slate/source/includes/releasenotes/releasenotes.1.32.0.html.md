@@ -17,7 +17,7 @@ Release notes for version v1.32.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #417 - Non-existent property "amount" listed as required](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/417)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -51,6 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Corrected required properties | [**Standards Staging #417**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/417): Corrected mistake in the _timeVaryingTariffs_ schema which specified _amount_ as a required property | [Energy APIs](../../#energy-apis)
 
 
 ## Information Security Profile
