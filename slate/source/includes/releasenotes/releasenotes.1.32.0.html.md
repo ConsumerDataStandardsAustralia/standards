@@ -17,7 +17,7 @@ Release notes for version v1.32.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #419 - Field name styling](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/419)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -51,6 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Update field name styling | [**Standards Staging #419**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/419): Updated styling of field names in the Banking APIs section, including Product Categories and Product & Account Components | [Banking APIs](../../#banking-apis)
 
 
 ## Information Security Profile

@@ -2622,7 +2622,7 @@
           {
             "name": "type",
             "in": "query",
-            "description": "Filter on the payee type field. In addition to normal type field values, `ALL` can be specified to retrieve all payees. If absent the assumed value is `ALL`.",
+            "description": "Filter on the payee _type_ field. In addition to normal _type_ field values, `ALL` can be specified to retrieve all payees. If absent the assumed value is `ALL`.",
             "schema": {
               "type": "string",
               "default": "ALL",
@@ -2993,7 +2993,7 @@
           {
             "name": "effective",
             "in": "query",
-            "description": "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are `CURRENT`, `FUTURE` and `ALL`. If absent defaults to `CURRENT`.",
+            "description": "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the _effectiveFrom_ and _effectiveTo_ fields. Valid values are `CURRENT`, `FUTURE` and `ALL`. If absent defaults to `CURRENT`.",
             "schema": {
               "type": "string",
               "default": "CURRENT",
