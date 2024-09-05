@@ -46,7 +46,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
-| Updated AmountString description | [**Standards Maintenance #652**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/652): Updated description of `AmountString` field clarifying the currency format and noting it defaults to AUD | [Common Field Types](../../#common-field-types)
+| Updated AmountString description | [**Standards Maintenance #652**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/652): Updated the description of the AmountString field type, clarifying the currency format and noting it defaults to AUD. | [Common Field Types](../../#common-field-types)
 
 ## API Endpoints
 |Change|Description|Link|
