@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #653 - EnergyPlanTariffPeriod - cater for plans with no dailySupplyCharge](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/653)
 
 
 ### Decision Proposals
@@ -51,7 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
-
+| Amend <i>dailySupplyChargeType</i> description | [**Standards Maintenance #653**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/653): Amended the  description of the <i>dailySupplyChargeType</i> field to remove the default value assumption of `SINGLE` if the field is not provided, allowing plans without a specific daily supply charge to be shared. This change will be included in the existing 11 Nov 2024 FDO for Get Generic Plan Detail v4 and Get Energy Account Detail v5, and will be treated as errata to avoid a version update.| [EnergyPlanContractV3](../../#cdr-energy-api_schemas_tocSenergyplancontractv3)
 
 ## Information Security Profile
 |Change|Description|Link|
