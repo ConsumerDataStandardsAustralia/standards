@@ -2,6 +2,11 @@
 {{ data.cds_uniqueAnchorPrefix = data.title_prefix + '_' + data.cds_operationUniqueSlug; }}
 
 <h2 id="{{= data.cds_uniqueAnchorPrefix }}">{{= data.operationUniqueName}}</h2>
+{{? data.operation["x-diff"] }}
+```diff
+{{= data.operation["x-diff"]}}
+```
+{{?}}
 <p id="{{= data.cds_operationUniqueSlug}}" class="orig-anchor"></p>
 
 {{? data.operation.operationId}}
@@ -43,6 +48,11 @@
 |   |  |
 |---|--|
 |Version|**{{? data.operation["x-version"]}}{{= data.operation["x-version"]}}{{??}}Versioning is not supported for this endpoint{{?}}**
+
+{{? data.operation["x-version-notes"]}}
+<h3 id="{{= data.cds_uniqueAnchorPrefix }}_version-notes">Version Notes</h3>
+{{= data.operation["x-version-notes"]}}
+{{?}}
 
 {{? data.parameters && data.parameters.length }}
 {{#def.parameters}}
