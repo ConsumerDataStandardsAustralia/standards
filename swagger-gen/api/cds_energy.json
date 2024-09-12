@@ -674,7 +674,7 @@
             },
             "EnergyPlanContractV3": {
                 "type": "object",
-                "x-diff": "Updated description of dailySupplyChargeType from: \n+ Specifies if daily supply charge is single or banded. Default value is SINGLE if field not provided with a new line\nto:\n- Specifies if daily supply charge is single or banded.",
+                "x-diff": "Updated description of dailySupplyChargeType from: \n- Specifies if daily supply charge is single or banded. Default value is SINGLE if field not provided with a new line\nto:\n+ Specifies if daily supply charge is single or banded.",
                 "required": [
                     "pricingModel",
                     "isFixed",
