@@ -338,17 +338,17 @@ function getBodyParameterExamples(data) {
     }
     if (common.doContentType(data.consumes, 'json')) {
         content += '```json\n';
-        content += safejson(obj,null,2) + '\n';
+        content += safejson(obj,null,2).replace(/\n+$/, '') + '\n';
         content += '```\n\n';
     }
     if (common.doContentType(data.consumes, 'yaml')) {
         content += '```yaml\n';
-        content += yaml.safeDump(obj) + '\n';
+        content += yaml.safeDump(obj).replace(/\n+$/, '') + '\n';
         content += '```\n\n';
     }
     if (common.doContentType(data.consumes, 'form')) {
         content += '```yaml\n';
-        content += yaml.safeDump(obj) + '\n';
+        content += yaml.safeDump(obj).replace(/\n+$/, '') + '\n';
         content += '```\n\n';
     }
     if (common.doContentType(data.consumes, 'xml') && (typeof obj === 'object')) {
@@ -512,12 +512,12 @@ function getResponseExamples(data) {
         }
         if (common.doContentType(example.cta, 'json')) {
             content += '```json\n';
-            content += safejson(example.value, null, 2) + '\n';
+            content += safejson(example.value, null, 2).replace(/\n+$/, '') + '\n';
             content += '```\n\n';
         }
         if (common.doContentType(example.cta, 'yaml')) {
             content += '```yaml\n';
-            content += yaml.safeDump(example.value) + '\n';
+            content += yaml.safeDump(example.value).replace(/\n+$/, '') + '\n';
             content += '```\n\n';
         }
         let xmlObj = example.value;

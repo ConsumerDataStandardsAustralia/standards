@@ -8,6 +8,9 @@
 {{?}}
 
 {{ data.methodUpper = data.method.verb.toUpperCase(); }}
+{{ data.orig_baseUrl = data.orig_baseUrl || data.baseUrl; }}
+{{ data.baseUrl = (data.operation.servers && data.operation.servers[0].url) || data.orig_baseUrl; }}
+{{ data.host = data.baseUrl.replace(/^https?:\/\//, '').split('/', 1)[0].toLowerCase(); }}
 {{ data.url = data.utils.slashes(data.baseUrl + data.method.path); }}
 {{ data.parameters = data.operation.parameters; }}
 {{ data.enums = []; }}
