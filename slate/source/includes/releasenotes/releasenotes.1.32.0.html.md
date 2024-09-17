@@ -33,7 +33,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Fix typos | [**Standards Staging #411**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/411): Fixed typos and formatting in multiple specification files (documentation) | N/A
+| Fix typos | [**Standards Staging #411**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/411): Fixed typos and formatting in multiple specification files (documentation) including correction to the '400 - Missing _Required_ Field' error title. | N/A
 
 
 ## Introduction
