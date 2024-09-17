@@ -17,7 +17,7 @@ Release notes for version v1.32.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #437 - Remove Known Issues](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/437)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -81,3 +81,4 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Known Issues
 |Change|Description|Link|
 |------|-----------|----|
+| Remove Known issues | [**Standards Staging #437**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/437): Removed three known issues related to Register endpoint specfications that are resolved | [Known Issues](../../#known-issues)
