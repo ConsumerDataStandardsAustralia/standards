@@ -2,11 +2,6 @@
 {{ data.cds_uniqueAnchorPrefix = data.title_prefix + '_' + data.cds_operationUniqueSlug; }}
 
 <h2 id="{{= data.cds_uniqueAnchorPrefix }}">{{= data.operationUniqueName}}</h2>
-{{? data.operation["x-diff"] }}
-```diff
-{{= data.operation["x-diff"]}}
-```
-{{?}}
 <p id="{{= data.cds_operationUniqueSlug}}" class="orig-anchor"></p>
 
 {{? data.operation.operationId}}
