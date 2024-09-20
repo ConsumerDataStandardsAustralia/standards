@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #648 - Adopt BCP 195 for TLS ciphers](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/648)
 
 
 ### Decision Proposals
@@ -56,7 +56,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-
+| Adopt BCP195 for supported ciphers | Update TLS Cipher requirements to align to FAPI 2.0 and adoption of BCP 195. Addresses [issue 648](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/648#issue-2383325264). | [Security Profile -> Transaction Security -> Ciphers](../../#transaction-security)|
 
 ## Register Standards
 |Change|Description|Link|

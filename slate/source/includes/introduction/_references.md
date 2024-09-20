@@ -1,9 +1,13 @@
 ## Normative References
 
-
+```diff
++ Added BCP195 to the list of normative references
+- Removed BCP195 from the list of informative references
+```
 
 | **Reference**  | **Description**  | **Version** |
 |-|-|-|
+| <a id="nref-BCP195"></a>**[BCP195]** | Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS): <https://tools.ietf.org/html/bcp195> | |
 | <a id="nref-DCR"></a>**[DCR]**          | OAuth 2.0 Dynamic Client Registration Protocol: <https://datatracker.ietf.org/doc/html/rfc7591>|July 2015
 | <a id="nref-FAPI-1-0-Baseline"></a>**[FAPI-1.0-Baseline]**  | Financial-grade API Security Profile 1.0 - Part 1: Baseline: <https://openid.net/specs/openid-financial-api-part-1-1_0.html> | March 2021
 | <a id="nref-FAPI-1-0-Advanced"></a>**[FAPI-1.0-Advanced]**  | Financial-grade API Security Profile 1.0 - Part 2: Advanced: <https://openid.net/specs/openid-financial-api-part-2-1_0.html> | March 2021
@@ -43,7 +47,6 @@
 | <a id="iref-ACCC"></a>**[ACCC]**                | The Australian Competition and Consumer Commission is responsible for accrediting data recipients to participate in CDR, building and maintaining the Register of data recipients and data holders, providing support and guidance to participants and promoting compliance with the CDR rules and standards, including taking enforcement action where necessary.<br/><https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0> |
 | <a id="iref-ANZSCO"></a>**[ANZSCO]**            | ANZSCO - Australian and New Zealand Standard Classification of Occupations : <http://www.abs.gov.au/ANZSCO> |
 | <a id="iref-ANZSIC-2006"></a>**[ANZSIC-2006]**  | 1292.0 - Australian and New Zealand Standard Industrial Classification (ANZSIC), 2006 (Revision 2.0)  : <http://www.abs.gov.au/anzsic> |
-| <a id="iref-BCP195"></a>**[BCP195]**            | Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS): <https://tools.ietf.org/html/bcp195> |
 | <a id="iref-CDR"></a>**[CDR]**                  | Consumer Data Right: <https://www.cdr.gov.au>|
 | <a id="iref-E-164"></a>**[E.164]**              | The international public telecommunication numbering plan: <http://www.itu.int/rec/T-REC-E.164-201011-I/en> |
 | <a id="iref-FAPI"></a>**[FAPI]**                | Financial-Grade API - Home Page <https://openid.net/wg/fapi/>|
