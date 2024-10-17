@@ -36,7 +36,7 @@ echo "*** OAS Validator: " $VALID_OAS
 
 # generate
 echo "*** Generating $OUTPUT_FORMAT"
-java -jar $OAS_CODEGEN/openapi-generator-cli-6.6.0.jar generate -i $INPUT_SWAGGER -g $OUTPUT_FORMAT -o $SWAGGER_CODEGEN_OUTPUT > $SWAGGER_CODEGEN_OUTPUT/log.txt 2>&1
+java -jar $OAS_CODEGEN/openapi-generator-cli-5.2.1.jar generate -i $INPUT_SWAGGER -g $OUTPUT_FORMAT -o $SWAGGER_CODEGEN_OUTPUT > $SWAGGER_CODEGEN_OUTPUT/log.txt 2>&1
 
 echo `cat $SWAGGER_CODEGEN_OUTPUT/README.md`
 
