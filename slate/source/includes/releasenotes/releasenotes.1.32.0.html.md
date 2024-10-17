@@ -46,7 +46,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
-| Common Field Types examples | [**Standards Staging #410**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/410): Clarified formatting of RateString type and updated styling of Valid Examples  | [Common Field Types](../../#common-field-types)
+| Common Field Types examples | [**Standards Staging #410**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/410): Clarified formatting of RateString type | [Common Field Types](../../#common-field-types)
 
 
 ## API Endpoints
