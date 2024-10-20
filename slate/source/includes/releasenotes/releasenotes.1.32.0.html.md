@@ -17,7 +17,8 @@ Release notes for version v1.32.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #410 - Clarify RateString description and examples](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/410)
+- [Standards Staging #413 - Merge Change Log and Archives sections](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/413)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -33,6 +34,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
+| Changelog section | [**Standards Staging #413**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/413): Merged the Change Log and Archives sections | [Changelog and archives](../../#changelog-and-archives)
 | Adjustment rate format clarification | [**Standards Maintenance #641**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/641): Clarified the format of 'bonus', 'discount' and 'penalty' adjustment rate values | [Deposit Adjustment Rate Types](../../#tocSproductdepositadjustmentratetypedoc)<br>[Lending Adjustment Rate Types](../../#tocSproductlendingadjustmentratetypedoc)
 
 
@@ -44,6 +46,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Common Field Types examples | [**Standards Staging #410**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/410): Clarified formatting of RateString type | [Common Field Types](../../#common-field-types)
 
 
 ## API Endpoints
