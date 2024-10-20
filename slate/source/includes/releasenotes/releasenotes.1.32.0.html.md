@@ -22,7 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #641 - Update CDS documentation to clarify expected rate value 'sign' (+/-) for each RateType](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/641)
 
 
 ### Decision Proposals
@@ -35,6 +35,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 | Changelog section | [**Standards Staging #413**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/413): Merged the Change Log and Archives sections | [Changelog and archives](../../#changelog-and-archives)
+| Adjustment rate format clarification | [**Standards Maintenance #641**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/641): Clarified the format of 'bonus', 'discount' and 'penalty' adjustment rate values | [Deposit Adjustment Rate Types](../../#tocSproductdepositadjustmentratetypedoc)<br>[Lending Adjustment Rate Types](../../#tocSproductlendingadjustmentratetypedoc)
 
 
 ## Introduction
