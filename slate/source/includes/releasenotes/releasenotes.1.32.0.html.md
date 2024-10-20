@@ -17,6 +17,7 @@ Release notes for version v1.32.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
+- [Standards Staging #410 - Clarify RateString description and examples](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/410)
 - [Standards Staging #413 - Merge Change Log and Archives sections](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/413)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
@@ -44,6 +45,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Common Field Types examples | [**Standards Staging #410**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/410): Clarified formatting of RateString type | [Common Field Types](../../#common-field-types)
 
 
 ## API Endpoints
