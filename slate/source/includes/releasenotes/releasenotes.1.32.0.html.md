@@ -17,7 +17,7 @@ Release notes for version v1.32.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #411 - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/411)
+- [Standards Staging #411 - Fix typos](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/411)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
