@@ -19,6 +19,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 - [Standards Staging #410 - Clarify RateString description and examples](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/410)
 - [Standards Staging #413 - Merge Change Log and Archives sections](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/413)
+- [Standards Staging #417 - Non-existent property "amount" listed as required](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/417)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -52,6 +53,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Corrected required properties | [**Standards Staging #417**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/417): Corrected mistake in the _timeVaryingTariffs_ schema which specified _amount_ as a required property | [Energy APIs](../../#energy-apis)
 
 
 ## Information Security Profile
