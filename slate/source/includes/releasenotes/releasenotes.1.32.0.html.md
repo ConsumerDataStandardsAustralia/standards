@@ -18,6 +18,7 @@ Release notes for version v1.32.0 of the [CDR Standards](../../index.html).
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
 - [Standards Staging #410 - Clarify RateString description and examples](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/410)
+- [Standards Staging #413 - Merge Change Log and Archives sections](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/413)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -33,9 +34,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail | [Standards section](../../#section)
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail | [Standards section](../../#section)
-| Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail | [Standards section](../../#section)
+| Changelog section | [**Standards Staging #413**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/413): Merged the Change Log and Archives sections | [Changelog and archives](../../#changelog-and-archives)
 
 
 ## Introduction
