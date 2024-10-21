@@ -28,6 +28,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 - [Standards Maintenance #641 - Update CDS documentation to clarify expected rate value 'sign' (+/-) for each RateType](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/641)
 - [Standards Maintenance #652 - Specify units of currency to be used for the AmountString field type](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/652)
+- [Standards Maintenance #653 - EnergyPlanTariffPeriod - cater for plans with no dailySupplyCharge](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/653)
 
 
 ### Decision Proposals
@@ -63,6 +64,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Corrected required properties | [**Standards Staging #417**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/417): Corrected mistake in the _timeVaryingTariffs_ schema which specified _amount_ as a required property | [Energy APIs](../../#energy-apis)
 | Update field name styling | [**Standards Staging #419**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/419): Updated styling of field names in the Banking APIs section, including Product Categories and Product & Account Components | [Banking APIs](../../#banking-apis)
+| Amend <i>dailySupplyChargeType</i> description | [**Standards Maintenance #653**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/653): Amended the  description of the <i>EnergyPlanTariffPeriodV2.dailySupplyChargeType</i> field to remove the default value assumption of `SINGLE` if the field is not provided, allowing plans without a specific daily supply charge to be shared. This change will be included in the existing 11 Nov 2024 FDO for Get Generic Plan Detail v4 and Get Energy Account Detail v5, and will be treated as errata to avoid a version update.| [Energy APIs](../../#energy-apis)
 
 
 ## Information Security Profile
