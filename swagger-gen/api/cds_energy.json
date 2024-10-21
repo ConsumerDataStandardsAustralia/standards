@@ -1432,7 +1432,7 @@
                             "description": "Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs",
                             "items":{
                                 "type": "object",
-                                "required": ["amount", "timeVariations","displayName"],
+                                "required": ["timeVariations","displayName"],
                                 "properties": {
                                     "type": {
                                         "type": "string",
@@ -1560,7 +1560,7 @@
                         },
                         "dailySupplyChargeType": {
                             "type": "string",
-                            "description": "Specifies if daily supply charge is single or banded. Default value is SINGLE if field not provided",
+                            "description": "Specifies if daily supply charge is single or banded.",
                             "enum": ["SINGLE",
                                 "BAND"
                             ]
@@ -4851,6 +4851,7 @@
 					"Generic Tariffs"
 				],
                 "x-version": "3",
+                "x-version-notes": "- The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.",
 				"parameters": [{
 						"name": "planId",
 						"description": "ID of the specific plan requested",
@@ -5871,6 +5872,7 @@
 					"Energy Accounts"
 				],
                 "x-version": "4",
+                "x-version-notes": "- The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.",
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
