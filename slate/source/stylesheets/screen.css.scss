@@ -640,13 +640,14 @@ html, body {
     @extend %code-font;
     padding-top: 2em;
     padding-bottom: 2em;
-    padding: 2em $main-padding;
+    padding: 1.5em $main-padding;
   }
 
   blockquote {
     &>p {
       background-color: $code-annotation-bg;
-      padding: $code-annotation-padding 2em;
+      /* padding: $code-annotation-padding 2em; */
+      padding: 0.6em 2em 0.8em 2em;
       color: #eee;
     }
   }
