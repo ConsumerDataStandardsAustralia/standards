@@ -1,9 +1,10 @@
 openapi: 3.0.3
 info:
   title: CDR Participant Discovery API
-  version: 1.31.0
+  version: 1.32.0
 servers:
-- url: https://<register-base-url>/
+- description: Production TLS
+  url: https://api.cdr.gov.au
 paths:
   /idp/.well-known/openid-configuration:
     get:
@@ -71,7 +72,7 @@ paths:
           type: string
           x-cds-type: ExternalRef
         style: simple
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The Register should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -85,7 +86,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The Register should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -135,8 +136,8 @@ paths:
           description: Success
           headers:
             x-v:
-              description: The version of the API end point that the CDR Register
-                has responded with.
+              description: The version of the API endpoint that the CDR Register has
+                responded with.
               explode: false
               schema:
                 type: string
@@ -163,6 +164,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: Unsupported Version
+      servers:
+      - description: Production MTLS
+        url: https://secure.api.cdr.gov.au
       summary: Get Data Holder Brands
       tags:
       - Register
@@ -190,7 +194,7 @@ paths:
           type: string
           x-cds-type: Enum
         style: simple
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The Register should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -204,7 +208,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The Register should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -236,8 +240,8 @@ paths:
           description: Success
           headers:
             x-v:
-              description: The version of the API end point that the CDR Register
-                has responded with.
+              description: The version of the API endpoint that the CDR Register has
+                responded with.
               explode: false
               schema:
                 type: string
@@ -305,7 +309,7 @@ paths:
           type: string
           x-cds-type: Enum
         style: simple
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The Register should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -319,7 +323,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The Register should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -367,8 +371,8 @@ paths:
           description: Success
           headers:
             x-v:
-              description: The version of the API end point that the CDR Register
-                has responded with.
+              description: The version of the API endpoint that the CDR Register has
+                responded with.
               explode: false
               schema:
                 default: "1"
@@ -414,6 +418,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: SSA validation failed
+      servers:
+      - description: Production MTLS
+        url: https://secure.api.cdr.gov.au
       summary: Get Software Statement Assertion (SSA)
       tags:
       - Register
@@ -441,10 +448,10 @@ paths:
           type: string
           x-cds-type: Enum
         style: simple
-      - description: The version of the API end point requested by the client. Must
-          be set to a positive integer.  For backwards compatiblity defaults to 1
-          if absent. Note that once version 1 is decommissioned the header will be
-          mandatory for a valid response to be obtained
+      - description: The version of the API endpoint requested by the client. Must
+          be set to a positive integer. For backwards compatiblity defaults to 1 if
+          absent. Note that once version 1 is decommissioned the header will be mandatory
+          for a valid response to be obtained
         explode: false
         in: header
         name: x-v
@@ -454,8 +461,8 @@ paths:
           type: string
         style: simple
       - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
-          of the API end point requested by the client. Must be set to a positive
-          integer if provided.
+          of the API endpoint requested by the client. Must be set to a positive integer
+          if provided.
         explode: false
         in: header
         name: x-min-v
@@ -483,8 +490,8 @@ paths:
           description: Success
           headers:
             x-v:
-              description: The version of the API end point that the CDR Register
-                has responded with.
+              description: The version of the API endpoint that the CDR Register has
+                responded with.
               explode: false
               schema:
                 type: string
@@ -546,7 +553,7 @@ paths:
           type: string
           x-cds-type: Enum
         style: simple
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The Register should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -560,7 +567,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The Register should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -592,8 +599,8 @@ paths:
           description: Success
           headers:
             x-v:
-              description: The version of the API end point that the CDR Register
-                has responded with.
+              description: The version of the API endpoint that the CDR Register has
+                responded with.
               explode: false
               schema:
                 type: string
@@ -655,7 +662,7 @@ paths:
           type: string
           x-cds-type: Enum
         style: simple
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The Register should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -669,7 +676,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The Register should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -701,8 +708,8 @@ paths:
           description: Success
           headers:
             x-v:
-              description: The version of the API end point that the CDR Register
-                has responded with.
+              description: The version of the API endpoint that the CDR Register has
+                responded with.
               explode: false
               schema:
                 type: string
@@ -764,7 +771,7 @@ paths:
           type: string
           x-cds-type: Enum
         style: simple
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The Register should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -778,7 +785,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The Register should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -810,8 +817,8 @@ paths:
           description: Success
           headers:
             x-v:
-              description: The version of the API end point that the CDR Register
-                has responded with.
+              description: The version of the API endpoint that the CDR Register has
+                responded with.
               explode: false
               schema:
                 type: string
@@ -863,7 +870,7 @@ components:
         x-cds-type: ExternalRef
       style: simple
     XV:
-      description: Version of the API end point requested by the client. Must be set
+      description: Version of the API endpoint requested by the client. Must be set
         to a positive integer. The Register should respond with the highest supported
         version between [x-min-v](#request-headers) and [x-v](#request-headers). If
         the value of [x-min-v](#request-headers) is equal to or higher than the value
@@ -893,7 +900,7 @@ components:
         x-cds-type: Enum
       style: simple
     XMinV:
-      description: Minimum version of the API end point requested by the client. Must
+      description: Minimum version of the API endpoint requested by the client. Must
         be set to a positive integer if provided. The Register should respond with
         the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
         If all versions requested are not supported then the Register must respond
@@ -1067,8 +1074,8 @@ components:
             type: string
           type: array
         response_types_supported:
-          description: JSON array containing a list of the OAuth 2.0 response_type
-            values that the CDR Registrer supports
+          description: JSON array containing a list of the OAuth 2.0 _response_type_
+            values that the CDR Register supports.
           items:
             type: string
           type: array
@@ -1492,7 +1499,7 @@ components:
           maxLength: 9
           type: string
         arbn:
-          description: Australian Registered Body Number.  ARBNs are issued to registrable
+          description: Australian Registered Body Number. ARBNs are issued to registrable
             Australian bodies and foreign companies
           maxLength: 9
           type: string
@@ -1986,7 +1993,7 @@ components:
           maxLength: 9
           type: string
         arbn:
-          description: Australian Registered Body Number.  ARBNs are issued to registrable
+          description: Australian Registered Body Number. ARBNs are issued to registrable
             Australian bodies and foreign companies
           maxLength: 9
           type: string

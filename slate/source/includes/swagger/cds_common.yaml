@@ -11,7 +11,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Common API
-  version: 1.31.0
+  version: 1.32.0
 servers:
 - url: https://data.holder.com.au/cds-au/v1
 paths:
@@ -34,7 +34,7 @@ paths:
         For example, a person whose given names are "John Paul Winston" but the data holder cannot determine what is the first name, can return `"firstName": "John Paul Winston"`.
       operationId: getCustomer
       parameters:
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -48,7 +48,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -72,9 +72,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
-          for all resource calls (customer present and unattended). Not required for
-          unauthenticated calls.
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.
+          Required for all resource calls (customer present and unattended). Not required
+          for unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -96,9 +96,9 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
-          present calls.  Not required for unattended or unauthenticated calls.
+          present calls. Not required for unattended or unauthenticated calls.
         explode: false
         in: header
         name: x-cds-client-headers
@@ -119,7 +119,7 @@ paths:
           description: Success
           headers:
             x-v:
-              description: The [version](#response-headers) of the API end point that
+              description: The [version](#response-headers) of the API endpoint that
                 the data holder has responded with.
               explode: false
               schema:
@@ -141,8 +141,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -187,7 +187,7 @@ paths:
         Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)
       operationId: getCustomerDetail
       parameters:
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -201,7 +201,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -225,9 +225,9 @@ paths:
           type: string
         style: simple
       - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
-          for all resource calls (customer present and unattended). Not required for
-          unauthenticated calls.
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.
+          Required for all resource calls (customer present and unattended). Not required
+          for unauthenticated calls.
         explode: false
         in: header
         name: x-fapi-auth-date
@@ -249,9 +249,9 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
-          present calls.  Not required for unattended or unauthenticated calls.
+          present calls. Not required for unattended or unauthenticated calls.
         explode: false
         in: header
         name: x-cds-client-headers
@@ -272,7 +272,7 @@ paths:
           description: Success
           headers:
             x-v:
-              description: The [version](#response-headers) of the API end point that
+              description: The [version](#response-headers) of the API endpoint that
                 the data holder has responded with.
               explode: false
               schema:
@@ -294,8 +294,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -337,7 +337,7 @@ paths:
       description: Obtain a health check status for the implementation
       operationId: getStatus
       parameters:
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -351,7 +351,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -372,7 +372,7 @@ paths:
           description: Success
           headers:
             x-v:
-              description: The [version](#response-headers) of the API end point that
+              description: The [version](#response-headers) of the API endpoint that
                 the data holder has responded with.
               explode: false
               schema:
@@ -384,8 +384,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
         "406":
           content:
             application/json:
@@ -403,7 +403,7 @@ paths:
       description: Obtain a list of scheduled outages for the implementation
       operationId: getOutages
       parameters:
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -417,7 +417,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -438,7 +438,7 @@ paths:
           description: Success
           headers:
             x-v:
-              description: The [version](#response-headers) of the API end point that
+              description: The [version](#response-headers) of the API endpoint that
                 the data holder has responded with.
               explode: false
               schema:
@@ -450,8 +450,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
         "406":
           content:
             application/json:
@@ -467,7 +467,7 @@ paths:
 components:
   parameters:
     RequestHeader_x-v:
-      description: Version of the API end point requested by the client. Must be set
+      description: Version of the API endpoint requested by the client. Must be set
         to a positive integer. The data holder should respond with the highest supported
         version between [x-min-v](#request-headers) and [x-v](#request-headers). If
         the value of [x-min-v](#request-headers) is equal to or higher than the value
@@ -482,7 +482,7 @@ components:
         type: string
       style: simple
     RequestHeader_x-min-v:
-      description: Minimum version of the API end point requested by the client. Must
+      description: Minimum version of the API endpoint requested by the client. Must
         be set to a positive integer if provided. The data holder should respond with
         the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
         If all versions requested are not supported then the data holder must respond
@@ -508,9 +508,9 @@ components:
       style: simple
     RequestHeader_x-fapi-auth-date:
       description: The time when the customer last logged in to the Data Recipient
-        Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required
-        for all resource calls (customer present and unattended). Not required for
-        unauthenticated calls.
+        Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.
+        Required for all resource calls (customer present and unattended). Not required
+        for unauthenticated calls.
       explode: false
       in: header
       name: x-fapi-auth-date
@@ -534,9 +534,9 @@ components:
       style: simple
     RequestHeader_x-cds-client-headers:
       description: The customer's original standard http headers [Base64](#common-field-types)
-        encoded, including the original User Agent header, if the customer is currently
+        encoded, including the original User-Agent header, if the customer is currently
         logged in to the Data Recipient Software Product. Mandatory for customer present
-        calls.  Not required for unattended or unauthenticated calls.
+        calls. Not required for unattended or unauthenticated calls.
       explode: false
       in: header
       name: x-cds-client-headers
@@ -616,7 +616,7 @@ components:
           x-cds-type: ExternalRef
         isPartial:
           description: Flag that indicates, if present and set to true, that the outage
-            is only partial meaning that only a subset of normally available end points
+            is only partial meaning that only a subset of normally available endpoints
             will be affected by the outage
           type: boolean
           x-cds-type: Boolean
@@ -707,7 +707,7 @@ components:
       properties:
         lastUpdateTime:
           description: The date and time that this record was last updated by the
-            customer.  If no update has occurred then this date should reflect the
+            customer. If no update has occurred then this date should reflect the
             initial creation date for the data
           type: string
           x-cds-type: DateTimeString
@@ -727,8 +727,8 @@ components:
             type: string
           type: array
         prefix:
-          description: Also known as title or salutation.  The prefix to the name
-            (e.g. Mr, Mrs, Ms, Miss, Sir, etc)
+          description: Also known as title or salutation. The prefix to the name (e.g.
+            Mr, Mrs, Ms, Miss, Sir, etc)
           type: string
         suffix:
           description: Used for a trailing suffix to the name (e.g. Jr)
@@ -789,7 +789,7 @@ components:
         agentFirstName:
           description: The first name of the individual providing access on behalf
             of the organisation. For people with single names this field need not
-            be present.  The single name should be in the lastName field
+            be present. The single name should be in the lastName field
           type: string
         agentLastName:
           description: The last name of the individual providing access on behalf
@@ -798,7 +798,7 @@ components:
           type: string
         agentRole:
           description: The role of the individual identified as the agent who is providing
-            authorisation.  Expected to be used for display. Default to Unspecified
+            authorisation. Expected to be used for display. Default to Unspecified
             if the role is not known
           type: string
         businessName:
@@ -819,8 +819,8 @@ components:
             if an ACN is applicable for the organisation type
           type: string
         isACNCRegistered:
-          description: True if registered with the ACNC.  False if not. Absent or
-            null if not confirmed.
+          description: True if registered with the ACNC. False if not. Absent or null
+            if not confirmed.
           type: boolean
           x-cds-type: Boolean
         industryCode:
@@ -852,7 +852,7 @@ components:
           type: string
         registeredCountry:
           description: Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html)
-            country codes.  Assumed to be AUS if absent
+            country codes. Assumed to be AUS if absent
           type: string
           x-cds-type: ExternalRef
         establishmentDate:
@@ -1004,8 +1004,8 @@ components:
         by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)
       properties:
         dpid:
-          description: Unique identifier for an address as defined by Australia Post.  Also
-            known as Delivery Point Identifier
+          description: Unique identifier for an address as defined by Australia Post.
+            Also known as Delivery Point Identifier
           type: string
         thoroughfareNumber1:
           description: Thoroughfare number for a property (first number in a property
@@ -1013,7 +1013,7 @@ components:
           type: integer
           x-cds-type: PositiveInteger
         thoroughfareNumber1Suffix:
-          description: Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1
+          description: Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_
             is populated
           type: string
         thoroughfareNumber2:
@@ -1022,8 +1022,8 @@ components:
           type: integer
           x-cds-type: PositiveInteger
         thoroughfareNumber2Suffix:
-          description: Suffix for the second thoroughfare number. Only relevant is
-            thoroughfareNumber2 is populated
+          description: Suffix for the second thoroughfare number. Only relevant if
+            _thoroughfareNumber2_ is populated
           type: string
         flatUnitType:
           description: Type of flat or unit for the address
@@ -1135,7 +1135,7 @@ components:
       properties:
         status:
           description: Enumeration with values. OK (implementation is fully functional).
-            PARTIAL_FAILURE (one or more end points are unexpectedly unavailable).
+            PARTIAL_FAILURE (one or more endpoints are unexpectedly unavailable).
             UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE
             (an advertised outage is in effect)
           enum:

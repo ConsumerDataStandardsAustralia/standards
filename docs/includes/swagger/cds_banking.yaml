@@ -11,7 +11,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Banking API
-  version: 1.31.0
+  version: 1.32.0
 servers:
 - url: https://data.holder.com.au/cds-au/v1
 paths:
@@ -157,7 +157,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -202,9 +202,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -398,7 +398,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -443,9 +443,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -589,7 +589,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -608,7 +608,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestAccountIds'
-        description: The list of account IDs to obtain balances for.
+        description: The list of _accountId_ values to obtain balances for.
         required: true
       responses:
         "200":
@@ -641,9 +641,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -779,7 +779,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -824,8 +824,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -963,7 +963,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -1008,8 +1008,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1238,7 +1238,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -1283,10 +1283,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
-            Date](#error-400-field-invalid-date-time)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Date](#error-400-field-invalid-date-time)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1450,7 +1450,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -1495,9 +1495,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
-            Date](#error-400-field-invalid-date-time)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
+            - Invalid Date](#error-400-field-invalid-date-time)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1656,7 +1656,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -1701,9 +1701,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -1916,7 +1916,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -1961,9 +1961,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -2107,7 +2107,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -2126,7 +2126,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestAccountIds'
-        description: Array of specific accountIds to obtain authorisations for.
+        description: Array of _accountId_ values to obtain authorisations for.
         required: true
       responses:
         "200":
@@ -2159,9 +2159,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -2324,7 +2324,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -2369,9 +2369,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -2587,7 +2587,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -2632,9 +2632,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -2781,7 +2781,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -2800,7 +2800,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestAccountIds'
-        description: Array of specific accountIds to obtain scheduled payments for.
+        description: Array of _accountId_ values to obtain scheduled payments for.
           The accounts specified are the source of funds for the payments returned.
         required: true
       responses:
@@ -2834,9 +2834,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -2902,9 +2902,9 @@ paths:
         Obsolete versions: [v1](includes/obsolete/get-payees-v1.html).
       operationId: listPayees
       parameters:
-      - description: Filter on the payee type field. In addition to normal type field
-          values, `ALL` can be specified to retrieve all payees. If absent the assumed
-          value is `ALL`.
+      - description: Filter on the payee _type_ field. In addition to normal _type_
+          field values, `ALL` can be specified to retrieve all payees. If absent the
+          assumed value is `ALL`.
         explode: true
         in: query
         name: type
@@ -3004,7 +3004,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -3049,9 +3049,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -3189,7 +3189,7 @@ paths:
           type: string
         style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
-          encoded, including the original User Agent header, if the customer is currently
+          encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
           present calls. Not required for unattended or unauthenticated calls.
         explode: false
@@ -3234,9 +3234,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -3326,7 +3326,7 @@ paths:
 
         - Each element in an array has the same structure so that clients can reliably interpret the payloads
         - Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.
-        - Each element has a field name [_additionalValue_](#productfeaturetypedoc). This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the `ADDITIONAL_CARDS` feature is the number of cards allowed while the contents of this field for the `MAX_LIMIT` constraint would be the maximum credit limit allowed for the product.
+        - Each element has a field named [_additionalValue_](#productfeaturetypedoc). This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the `ADDITIONAL_CARDS` feature is the number of cards allowed while the contents of this field for the `MAX_LIMIT` constraint would be the maximum credit limit allowed for the product.
         - An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.
         - An element in these arrays may contain an _additionalInfo_ and _additionalInfoUri_ field. The _additionalInfo_ field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The _additionalInfoUri_ provides a link to externally hosted information specifically relevant to that feature of the product.
         - Depending on the type of data being represented there may be additional specific fields.
@@ -3335,7 +3335,7 @@ paths:
 
         As the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.
 
-        These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.
+        These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use different HTML anchors to focus on a specific topic such as eligibility or fees.
 
         #### Linkage To Accounts
         From the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge. Rates and features of the product may change and a discount may be negotiated for the account.
@@ -3347,14 +3347,14 @@ paths:
         #### Dates
         It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank. To minimise the volume and frequency of these calls the ability to set a _lastUpdated_ field with the date and time of the last update to this product is included. A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the _updated-since_ query parameter.
 
-        In addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
+        In addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no longer offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
 
         Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/obsolete/get-products-v2.html).
       operationId: listProducts
       parameters:
       - description: Allows for the filtering of products based on whether the current
-          time is within the period of time defined as effective by the effectiveFrom
-          and effectiveTo fields. Valid values are `CURRENT`, `FUTURE` and `ALL`.
+          time is within the period of time defined as effective by the _effectiveFrom_
+          and _effectiveTo_ fields. Valid values are `CURRENT`, `FUTURE` and `ALL`.
           If absent defaults to `CURRENT`.
         explode: true
         in: query
@@ -3480,10 +3480,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
-            Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page
-            Size](#error-400-field-invalid-page-size)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
+            - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li></ul>
         "406":
           content:
             application/json:
@@ -3569,8 +3569,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
         "404":
           content:
             application/json:
@@ -3661,7 +3661,7 @@ components:
       style: simple
     RequestHeader_x-cds-client-headers:
       description: The customer's original standard http headers [Base64](#common-field-types)
-        encoded, including the original User Agent header, if the customer is currently
+        encoded, including the original User-Agent header, if the customer is currently
         logged in to the Data Recipient Software Product. Mandatory for customer present
         calls. Not required for unattended or unauthenticated calls.
       explode: false
@@ -4309,7 +4309,7 @@ components:
             mandatory or not is dependent on the value of [_constraintType_](#tocSproductconstrainttypedoc).
           type: string
         additionalInfo:
-          description: Display text providing more information the constraint.
+          description: Display text providing more information on the constraint.
           type: string
         additionalInfoUri:
           description: Link to a web page with more information on the constraint.
@@ -5026,8 +5026,8 @@ components:
           type: boolean
           x-cds-type: Boolean
         offsetAccountIds:
-          description: The accountIDs of the configured offset accounts attached to
-            this loan. Only offset accounts that can be accessed under the current
+          description: The _accountId_ values of the configured offset accounts attached
+            to this loan. Only offset accounts that can be accessed under the current
             authorisation should be included. It is expected behaviour that _offsetAccountEnabled_
             is set to `true` but the _offsetAccountIds_ field is absent or empty.
             This represents a situation where an offset account exists but details
@@ -6416,13 +6416,14 @@ components:
       - payeeReference
     BankingScheduledPaymentFrom:
       description: Object containing details of the source of the payment. Currently
-        only specifies an account ID but provided as an object to facilitate future
+        only specifies an _accountId_ but provided as an object to facilitate future
         extensibility and consistency with the _to_ object.
       example:
         accountId: accountId
       properties:
         accountId:
-          description: ID of the account that is the source of funds for the payment.
+          description: _accountId_ of the account that is the source of funds for
+            the payment.
           type: string
           x-cds-type: ASCIIString
       required:
@@ -6730,7 +6731,7 @@ components:
           type: integer
           x-cds-type: PositiveInteger
         thoroughfareNumber1Suffix:
-          description: Suffix for the thoroughfare number. Only relevant is _thoroughfareNumber1_
+          description: Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_
             is populated.
           type: string
         thoroughfareNumber2:
@@ -6739,7 +6740,7 @@ components:
           type: integer
           x-cds-type: PositiveInteger
         thoroughfareNumber2Suffix:
-          description: Suffix for the second thoroughfare number. Only relevant is
+          description: Suffix for the second thoroughfare number. Only relevant if
             _thoroughfareNumber2_ is populated.
           type: string
         flatUnitType:
@@ -6927,8 +6928,8 @@ components:
         - accountIds
       properties:
         accountIds:
+          description: Array of _accountId_ values.
           items:
-            description: Array of specific accountIds to obtain authorisations for.
             type: string
             x-cds-type: ASCIIString
           type: array
@@ -7084,7 +7085,7 @@ components:
             $ref: '#/components/schemas/BankingProductEligibility'
           type: array
         fees:
-          description: Fees applicable for the product.
+          description: Fees applicable to the product.
           items:
             $ref: '#/components/schemas/BankingProductFee'
           type: array
@@ -7162,7 +7163,7 @@ components:
         loan:
           $ref: '#/components/schemas/BankingLoanAccountV2'
         depositRate:
-          description: current rate to calculate interest earned being applied to
+          description: Current rate to calculate interest earned being applied to
             deposit balances as it stands at the time of the API call.
           type: string
           x-cds-type: RateString

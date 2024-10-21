@@ -7,42 +7,34 @@
 
 ```http
 GET /energy/plans HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
-
 };
 
-fetch('/energy/plans',
-{
+fetch('/energy/plans', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/plans`
 
 Obtain a list of energy plans that are currently offered to the market.
 
-Note that the results returned by this end point are expected to be ordered in descending order according to `lastUpdated`.
+Note that the results returned by this endpoint are expected to be ordered in descending order according to `lastUpdated`.
 
 <h3 id="cdr-energy-api_get-generic-plans_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -60,8 +52,8 @@ Note that the results returned by this end point are expected to be ordered in d
 |brand|query|string|optional|Used to filter results on the brand field.  If absent defaults to include all plans|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 
 <h4 id="cdr-energy-api_get-generic-plans_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -140,7 +132,7 @@ Note that the results returned by this end point are expected to be ordered in d
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPlanListResponse](#schemacdr-energy-apienergyplanlistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -148,7 +140,7 @@ Note that the results returned by this end point are expected to be ordered in d
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 
   
     <aside class="success">
@@ -164,35 +156,27 @@ This operation does not require authentication
 
 ```http
 GET /energy/plans/{planId} HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
-
 };
 
-fetch('/energy/plans/{planId}',
-{
+fetch('/energy/plans/{planId}', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/plans/{planId}`
@@ -206,13 +190,16 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html) [v2](inc
 |---|--|
 |Version|**3**
 
+<h3 id="cdr-energy-api_get-generic-plan-detail_version-notes">Version Notes</h3>
+- The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.
+
 <h3 id="cdr-energy-api_get-generic-plan-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |planId|path|string|mandatory|ID of the specific plan requested|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -775,7 +762,7 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html) [v2](inc
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPlanResponseV3](#schemacdr-energy-apienergyplanresponsev3)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -783,7 +770,7 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html) [v2](inc
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 
   
     <aside class="success">
@@ -799,7 +786,6 @@ This operation does not require authentication
 
 ```http
 GET /energy/electricity/servicepoints HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -807,12 +793,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -821,21 +805,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/electricity/servicepoints',
-{
+fetch('/energy/electricity/servicepoints', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/electricity/servicepoints`
@@ -853,12 +832,12 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -903,7 +882,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyServicePointListResponse](#schemacdr-energy-apienergyservicepointlistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -911,7 +890,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -934,7 +913,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/electricity/servicepoints/{servicePointId} HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -942,12 +920,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -956,21 +932,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/electricity/servicepoints/{servicePointId}',
-{
+fetch('/energy/electricity/servicepoints/{servicePointId}', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/electricity/servicepoints/{servicePointId}`
@@ -986,13 +957,13 @@ Obtain detailed standing information for a specific service point that is owned 
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|servicePointId|path|string|mandatory|ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId.|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|servicePointId|path|string|mandatory|ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data endpoint.  Note that it is not a nationalMeteringId.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1101,7 +1072,7 @@ Obtain detailed standing information for a specific service point that is owned 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyServicePointDetailResponse](#schemacdr-energy-apienergyservicepointdetailresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -1109,7 +1080,7 @@ Obtain detailed standing information for a specific service point that is owned 
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -1132,7 +1103,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/electricity/servicepoints/{servicePointId}/usage HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1140,12 +1110,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -1154,21 +1122,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/electricity/servicepoints/{servicePointId}/usage',
-{
+fetch('/energy/electricity/servicepoints/{servicePointId}/usage', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/electricity/servicepoints/{servicePointId}/usage`
@@ -1184,18 +1147,18 @@ Obtain a list of electricity usage data from a particular service point
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|servicePointId|path|string|mandatory|ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId.|
+|servicePointId|path|string|mandatory|ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data endpoint.  Note that it is not a nationalMeteringId.|
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
 |interval-reads|query|[Enum](#common-field-types)|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-energy-api_get-usage-for-service-point_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -1263,7 +1226,7 @@ Obtain a list of electricity usage data from a particular service point
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-apienergyusagelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
@@ -1272,7 +1235,7 @@ Obtain a list of electricity usage data from a particular service point
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -1296,7 +1259,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/electricity/servicepoints/usage HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1304,12 +1266,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -1318,21 +1278,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/electricity/servicepoints/usage',
-{
+fetch('/energy/electricity/servicepoints/usage', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/electricity/servicepoints/usage`
@@ -1353,12 +1308,12 @@ Obtain usage data for all service points associated with the customer
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-energy-api_get-bulk-usage_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -1426,7 +1381,7 @@ Obtain usage data for all service points associated with the customer
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-apienergyusagelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -1434,7 +1389,7 @@ Obtain usage data for all service points associated with the customer
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -1457,7 +1412,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 POST /energy/electricity/servicepoints/usage HTTP/1.1
-
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -1466,7 +1420,6 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
@@ -1488,21 +1441,17 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/electricity/servicepoints/usage',
-{
+fetch('/energy/electricity/servicepoints/usage', {
   method: 'POST',
   body: inputBody,
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `POST /energy/electricity/servicepoints/usage`
@@ -1536,12 +1485,12 @@ Obtain the electricity usage data for a specific set of service points
 |interval-reads|query|[Enum](#common-field-types)|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |body|body|[RequestServicePointIdList](#schemacdr-energy-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 
 <h4 id="cdr-energy-api_get-usage-for-specific-service-points_enumerated-values-parameters">Enumerated Values</h4>
@@ -1610,7 +1559,7 @@ Obtain the electricity usage data for a specific set of service points
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-apienergyusagelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -1618,7 +1567,7 @@ Obtain the electricity usage data for a specific set of service points
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -1641,7 +1590,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/electricity/servicepoints/{servicePointId}/der HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1649,12 +1597,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -1663,21 +1609,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/electricity/servicepoints/{servicePointId}/der',
-{
+fetch('/energy/electricity/servicepoints/{servicePointId}/der', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/electricity/servicepoints/{servicePointId}/der`
@@ -1693,13 +1634,13 @@ Obtain a list of DER data from a particular service point
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|servicePointId|path|string|mandatory|ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId.|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|servicePointId|path|string|mandatory|ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data endpoint.  Note that it is not a nationalMeteringId.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1770,7 +1711,7 @@ Obtain a list of DER data from a particular service point
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyDerDetailResponse](#schemacdr-energy-apienergyderdetailresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -1778,7 +1719,7 @@ Obtain a list of DER data from a particular service point
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -1801,7 +1742,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/electricity/servicepoints/der HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1809,12 +1749,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -1823,21 +1761,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/electricity/servicepoints/der',
-{
+fetch('/energy/electricity/servicepoints/der', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/electricity/servicepoints/der`
@@ -1855,12 +1788,12 @@ Obtain DER data for all service points associated with the customer
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1942,7 +1875,7 @@ Obtain DER data for all service points associated with the customer
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyDerListResponse](#schemacdr-energy-apienergyderlistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -1950,7 +1883,7 @@ Obtain DER data for all service points associated with the customer
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -1973,7 +1906,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 POST /energy/electricity/servicepoints/der HTTP/1.1
-
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -1982,7 +1914,6 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
@@ -2004,21 +1935,17 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/electricity/servicepoints/der',
-{
+fetch('/energy/electricity/servicepoints/der', {
   method: 'POST',
   body: inputBody,
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `POST /energy/electricity/servicepoints/der`
@@ -2049,12 +1976,12 @@ Obtain DER data for a specific set of service points
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |body|body|[RequestServicePointIdList](#schemacdr-energy-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 
 > Example responses
@@ -2137,7 +2064,7 @@ Obtain DER data for a specific set of service points
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyDerListResponse](#schemacdr-energy-apienergyderlistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -2145,7 +2072,7 @@ Obtain DER data for a specific set of service points
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -2168,7 +2095,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/accounts HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2176,12 +2102,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -2190,21 +2114,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/accounts',
-{
+fetch('/energy/accounts', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/accounts`
@@ -2225,12 +2144,12 @@ Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)
 |open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-energy-api_get-energy-accounts_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -2289,7 +2208,7 @@ Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountListResponseV2](#schemacdr-energy-apienergyaccountlistresponsev2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -2297,7 +2216,7 @@ Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -2320,7 +2239,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/accounts/{accountId} HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2328,12 +2246,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -2342,21 +2258,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/accounts/{accountId}',
-{
+fetch('/energy/accounts/{accountId}', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/accounts/{accountId}`
@@ -2370,17 +2281,20 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
 |---|--|
 |Version|**4**
 
+<h3 id="cdr-energy-api_get-energy-account-detail_version-notes">Version Notes</h3>
+- The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.
+
 <h3 id="cdr-energy-api_get-energy-account-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List endpoint.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2810,7 +2724,7 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyAccountDetailResponseV4](#schemacdr-energy-apienergyaccountdetailresponsev4)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -2818,7 +2732,7 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -2841,7 +2755,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/accounts/{accountId}/payment-schedule HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2849,12 +2762,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -2863,28 +2774,23 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/accounts/{accountId}/payment-schedule',
-{
+fetch('/energy/accounts/{accountId}/payment-schedule', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/accounts/{accountId}/payment-schedule`
 
 Obtain the agreed payment schedule and details, if any, for a specific energy account. 
 
-Some general notes about this end point:
+Some general notes about this endpoint:
 
  <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>
 
@@ -2897,13 +2803,13 @@ Some general notes about this end point:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List endpoint.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2954,7 +2860,7 @@ Some general notes about this end point:
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyPaymentScheduleResponse](#schemacdr-energy-apienergypaymentscheduleresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -2962,7 +2868,7 @@ Some general notes about this end point:
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -2985,7 +2891,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/accounts/{accountId}/concessions HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2993,12 +2898,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -3007,21 +2910,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/accounts/{accountId}/concessions',
-{
+fetch('/energy/accounts/{accountId}/concessions', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/accounts/{accountId}/concessions`
@@ -3037,13 +2935,13 @@ Obtain the details of any concessions or arrangements applied to a specific ener
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List endpoint.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -3081,7 +2979,7 @@ Obtain the details of any concessions or arrangements applied to a specific ener
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyConcessionsResponse](#schemacdr-energy-apienergyconcessionsresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -3089,7 +2987,7 @@ Obtain the details of any concessions or arrangements applied to a specific ener
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -3112,7 +3010,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/accounts/{accountId}/balance HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -3120,12 +3017,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -3134,21 +3029,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/accounts/{accountId}/balance',
-{
+fetch('/energy/accounts/{accountId}/balance', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/accounts/{accountId}/balance`
@@ -3164,13 +3054,13 @@ Obtain the current balance for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List endpoint.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -3193,7 +3083,7 @@ Obtain the current balance for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBalanceResponse](#schemacdr-energy-apienergybalanceresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -3201,7 +3091,7 @@ Obtain the current balance for a specific account
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -3224,7 +3114,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/accounts/balances HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -3232,12 +3121,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -3246,21 +3133,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/accounts/balances',
-{
+fetch('/energy/accounts/balances', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/accounts/balances`
@@ -3278,12 +3160,12 @@ Obtain the current balance for all accounts
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -3318,7 +3200,7 @@ Obtain the current balance for all accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBalanceListResponse](#schemacdr-energy-apienergybalancelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -3326,7 +3208,7 @@ Obtain the current balance for all accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -3349,7 +3231,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 POST /energy/accounts/balances HTTP/1.1
-
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -3358,7 +3239,6 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
@@ -3380,21 +3260,17 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/accounts/balances',
-{
+fetch('/energy/accounts/balances', {
   method: 'POST',
   body: inputBody,
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `POST /energy/accounts/balances`
@@ -3425,12 +3301,12 @@ Obtain the current balance for a specified set of accounts
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 
 > Example responses
@@ -3466,7 +3342,7 @@ Obtain the current balance for a specified set of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBalanceListResponse](#schemacdr-energy-apienergybalancelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -3474,7 +3350,7 @@ Obtain the current balance for a specified set of accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -3497,7 +3373,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/accounts/{accountId}/invoices HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -3505,12 +3380,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -3519,21 +3392,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/accounts/{accountId}/invoices',
-{
+fetch('/energy/accounts/{accountId}/invoices', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/accounts/{accountId}/invoices`
@@ -3549,17 +3417,17 @@ Obtain the invoices for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List endpoint.|
 |newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -3645,7 +3513,7 @@ Obtain the invoices for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyInvoiceListResponse](#schemacdr-energy-apienergyinvoicelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
@@ -3654,7 +3522,7 @@ Obtain the invoices for a specific account
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -3678,7 +3546,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/accounts/invoices HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -3686,12 +3553,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -3700,21 +3565,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/accounts/invoices',
-{
+fetch('/energy/accounts/invoices', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/accounts/invoices`
@@ -3734,12 +3594,12 @@ Obtain the invoices for all accounts
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -3825,7 +3685,7 @@ Obtain the invoices for all accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyInvoiceListResponse](#schemacdr-energy-apienergyinvoicelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -3833,7 +3693,7 @@ Obtain the invoices for all accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -3856,7 +3716,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 POST /energy/accounts/invoices HTTP/1.1
-
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -3865,7 +3724,6 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
@@ -3887,21 +3745,17 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/accounts/invoices',
-{
+fetch('/energy/accounts/invoices', {
   method: 'POST',
   body: inputBody,
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `POST /energy/accounts/invoices`
@@ -3934,12 +3788,12 @@ Obtain invoices for a specified set of accounts
 |oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 
 > Example responses
@@ -4026,7 +3880,7 @@ Obtain invoices for a specified set of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyInvoiceListResponse](#schemacdr-energy-apienergyinvoicelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -4034,7 +3888,7 @@ Obtain invoices for a specified set of accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -4057,7 +3911,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/accounts/{accountId}/billing HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -4065,12 +3918,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -4079,21 +3930,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/accounts/{accountId}/billing',
-{
+fetch('/energy/accounts/{accountId}/billing', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/accounts/{accountId}/billing`
@@ -4114,17 +3960,17 @@ Deprecated Versions:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List endpoint.|
 |newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type|
 |oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -4240,7 +4086,7 @@ Deprecated Versions:
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponseV3](#schemacdr-energy-apienergybillinglistresponsev3)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
@@ -4249,7 +4095,7 @@ Deprecated Versions:
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -4273,7 +4119,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET /energy/accounts/billing HTTP/1.1
-
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -4281,12 +4126,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -4295,21 +4138,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/accounts/billing',
-{
+fetch('/energy/accounts/billing', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /energy/accounts/billing`
@@ -4334,12 +4172,12 @@ Deprecated Versions:
 |oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -4455,7 +4293,7 @@ Deprecated Versions:
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponseV3](#schemacdr-energy-apienergybillinglistresponsev3)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -4463,7 +4301,7 @@ Deprecated Versions:
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -4486,7 +4324,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 POST /energy/accounts/billing HTTP/1.1
-
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -4495,7 +4332,6 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
@@ -4517,21 +4353,17 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('/energy/accounts/billing',
-{
+fetch('/energy/accounts/billing', {
   method: 'POST',
   body: inputBody,
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `POST /energy/accounts/billing`
@@ -4569,12 +4401,12 @@ Deprecated Versions:
 |oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
 |body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 
 > Example responses
@@ -4691,7 +4523,7 @@ Deprecated Versions:
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyBillingListResponseV3](#schemacdr-energy-apienergybillinglistresponsev3)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
 
@@ -4699,7 +4531,7 @@ Deprecated Versions:
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -4775,7 +4607,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyplanlistresponse_properties">Properties</h3>
@@ -5345,7 +5176,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyplanresponsev3_properties">Properties</h3>
@@ -5396,7 +5226,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyservicepointlistresponse_properties">Properties</h3>
@@ -5512,7 +5341,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyservicepointdetailresponse_properties">Properties</h3>
@@ -5578,7 +5406,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyusagelistresponse_properties">Properties</h3>
@@ -5667,7 +5494,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyderlistresponse_properties">Properties</h3>
@@ -5745,7 +5571,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyderdetailresponse_properties">Properties</h3>
@@ -5802,7 +5627,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyaccountlistresponsev2_properties">Properties</h3>
@@ -6239,7 +6063,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyaccountdetailresponsev4_properties">Properties</h3>
@@ -6296,7 +6119,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-energy-api_energypaymentscheduleresponse_properties">Properties</h3>
@@ -6341,7 +6163,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyconcessionsresponse_properties">Properties</h3>
@@ -6383,7 +6204,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_energybalancelistresponse_properties">Properties</h3>
@@ -6415,7 +6235,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-energy-api_energybalanceresponse_properties">Properties</h3>
@@ -6508,7 +6327,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyinvoicelistresponse_properties">Properties</h3>
@@ -6631,7 +6449,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_energybillinglistresponsev3_properties">Properties</h3>
@@ -6664,7 +6481,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-energy-api_responseerrorlistv2_properties">Properties</h3>
@@ -6719,7 +6535,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     ]
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyplan_properties">Properties</h3>
@@ -7314,7 +7129,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     ]
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyplandetailv3_properties">Properties</h3>
@@ -7589,7 +7403,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyplancontractv3_properties">Properties</h3>
@@ -7893,7 +7706,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "string"
   ]
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyplancontractfullv3_properties">Properties</h3>
@@ -7985,7 +7797,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     ]
   }
 ]
-
 ```
 
 *Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD*
@@ -8076,7 +7887,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "eligibility": "string"
   }
 ]
-
 ```
 
 *Optional list of incentives available for the contract*
@@ -8130,7 +7940,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   }
 ]
-
 ```
 
 *Optional list of discounts available for the contract*
@@ -8195,7 +8004,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     ]
   }
 ]
-
 ```
 
 *Optional list of charges applicable to green power*
@@ -8242,7 +8050,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "description": "string"
   }
 ]
-
 ```
 
 *Eligibility restrictions or requirements*
@@ -8299,7 +8106,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "description": "string"
   }
 ]
-
 ```
 
 *An array of fees applicable to the plan*
@@ -8401,7 +8207,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     ]
   }
 ]
-
 ```
 
 *Array of feed in tariffs for solar power*
@@ -8416,7 +8221,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |endDate|[DateString](#common-field-types)|optional|The end date of the application of the feed in tariff|
 |scheme|[Enum](#common-field-types)|mandatory|The applicable scheme|
 |payerType|[Enum](#common-field-types)|mandatory|The type of the payer|
-|tariffUType|[Enum](#common-field-types)|mandatory|The type of the payer|
+|tariffUType|[Enum](#common-field-types)|mandatory|Reference to the applicable tariff structure|
 |singleTariff|object|conditional|Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff|
 |» rates|[object]|mandatory|Array of feed in rates|
 |»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
@@ -8558,7 +8363,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     ]
   }
 ]
-
 ```
 
 *Array of tariff periods*
@@ -8571,7 +8375,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |displayName|string|mandatory|The name of the tariff period|
 |startDate|string|mandatory|The start date of the tariff period in a calendar year.  Formatted in mm-dd format|
 |endDate|string|mandatory|The end date of the tariff period in a calendar year.  Formatted in mm-dd format|
-|dailySupplyChargeType|[Enum](#common-field-types)|optional|Specifies if daily supply charge is single or banded. Default value is SINGLE if field not provided|
+|dailySupplyChargeType|[Enum](#common-field-types)|optional|Specifies if daily supply charge is single or banded.|
 |dailySupplyCharge|[AmountString](#common-field-types)|conditional|The amount of access charge for the tariff period, in dollars per day exclusive of GST. Mandatory if dailySupplyChargeType is SINGLE|
 |bandedDailySupplyCharges|[object]|conditional|Array representing banded daily supply charge rates.  Mandatory if dailySupplyChargeType is BAND|
 |» unitPrice|[AmountString](#common-field-types)|mandatory|The amount of daily supply charge for the band, in dollars per day exclusive of GST|
@@ -8715,7 +8519,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "threshold": "LOW"
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyservicepoint_properties">Properties</h3>
@@ -8863,7 +8666,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyservicepointdetail_properties">Properties</h3>
@@ -9016,7 +8818,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     ]
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyusageread_properties">Properties</h3>
@@ -9116,7 +8917,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyderrecord_properties">Properties</h3>
@@ -9203,7 +9003,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "openStatus": "CLOSED",
   "creationDate": "string"
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyaccountbasev2_properties">Properties</h3>
@@ -9252,7 +9051,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyaccountv2_properties">Properties</h3>
@@ -9747,7 +9545,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyaccountdetailv4_properties">Properties</h3>
@@ -9832,7 +9629,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "billFrequency": "string"
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_energypaymentschedule_properties">Properties</h3>
@@ -9913,7 +9709,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "INVOICE"
   ]
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyconcession_properties">Properties</h3>
@@ -10007,7 +9802,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "paymentStatus": "PAID"
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyinvoice_properties">Properties</h3>
@@ -10065,7 +9859,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   ],
   "totalGst": "string"
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyinvoicegasusagecharges_properties">Properties</h3>
@@ -10117,7 +9910,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   ],
   "totalGst": "string"
 }
-
 ```
 
 <h3 id="cdr-energy-api_energyinvoiceelectricityusagecharges_properties">Properties</h3>
@@ -10160,7 +9952,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "totalDiscounts": "string",
   "totalGst": "string"
 }
-
 ```
 
 *Object contains account level charges and credits related to electricity usage*
@@ -10267,7 +10058,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "method": "DIRECT_DEBIT"
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_energybillingtransactionv3_properties">Properties</h3>
@@ -10327,7 +10117,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-energy-api_energybillingusagetransactionv2_properties">Properties</h3>
@@ -10409,7 +10198,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-energy-api_energybillingdemandtransactionv3_properties">Properties</h3>
@@ -10474,7 +10262,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "amount": "string",
   "description": "string"
 }
-
 ```
 
 <h3 id="cdr-energy-api_energybillingonceofftransaction_properties">Properties</h3>
@@ -10516,7 +10303,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-energy-api_energybillingothertransaction_properties">Properties</h3>
@@ -10564,7 +10350,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "amount": "string",
   "method": "DIRECT_DEBIT"
 }
-
 ```
 
 <h3 id="cdr-energy-api_energybillingpaymenttransaction_properties">Properties</h3>
@@ -10632,7 +10417,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "state": "string"
   }
 }
-
 ```
 
 <h3 id="cdr-energy-api_commonphysicaladdress_properties">Properties</h3>
@@ -10669,7 +10453,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "state": "string",
   "country": "AUS"
 }
-
 ```
 
 *Required if addressUType is set to simple*
@@ -10720,7 +10503,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "postcode": "string",
   "state": "string"
 }
-
 ```
 
 *Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf*
@@ -10731,9 +10513,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |dpid|string|optional|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
 |thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address)|
-|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
+|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_ is populated|
 |thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
-|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
+|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant if _thoroughfareNumber2_ is populated|
 |flatUnitType|string|optional|Type of flat or unit for the address|
 |flatUnitNumber|string|optional|Unit number (including suffix, if applicable)|
 |floorLevelType|string|optional|Type of floor or level for the address|
@@ -10769,7 +10551,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-energy-api_requestservicepointidlist_properties">Properties</h3>
@@ -10797,7 +10578,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-energy-api_requestaccountidlist_properties">Properties</h3>
@@ -10820,7 +10600,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "self": "string"
 }
-
 ```
 
 <h3 id="cdr-energy-api_links_properties">Properties</h3>
@@ -10839,7 +10618,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {}
-
 ```
 
 <h3 id="cdr-energy-api_meta_properties">Properties</h3>
@@ -10862,7 +10640,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "next": "string",
   "last": "string"
 }
-
 ```
 
 <h3 id="cdr-energy-api_linkspaginated_properties">Properties</h3>
@@ -10888,7 +10665,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "totalRecords": 0,
   "totalPages": 0
 }
-
 ```
 
 <h3 id="cdr-energy-api_metapaginated_properties">Properties</h3>

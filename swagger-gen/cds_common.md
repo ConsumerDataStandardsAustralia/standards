@@ -15,12 +15,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -29,21 +27,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/common/customer',
-{
+fetch('https://data.holder.com.au/cds-au/v1/common/customer', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /common/customer`
@@ -72,12 +65,12 @@ For example, a person whose given names are "John Paul Winston" but the data hol
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -129,14 +122,14 @@ For example, a person whose given names are "John Paul Winston" but the data hol
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomer](#schemacdr-common-apiresponsecommoncustomer)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
 <h3 id="cdr-common-api_get-customer_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -166,12 +159,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -180,21 +171,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/common/customer/detail',
-{
+fetch('https://data.holder.com.au/cds-au/v1/common/customer/detail', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /common/customer/detail`
@@ -212,12 +198,12 @@ Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -367,14 +353,14 @@ Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonCustomerDetailV2](#schemacdr-common-apiresponsecommoncustomerdetailv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
 <h3 id="cdr-common-api_get-customer-detail_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 |200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
@@ -400,31 +386,24 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/discovery/status',
-{
+fetch('https://data.holder.com.au/cds-au/v1/discovery/status', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /discovery/status`
@@ -440,8 +419,8 @@ Obtain a health check status for the implementation
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -468,14 +447,14 @@ Obtain a health check status for the implementation
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseCommonDiscoveryStatus](#schemacdr-common-apiresponsecommondiscoverystatus)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
 <h3 id="cdr-common-api_get-status_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 
   
     <aside class="success">
@@ -495,31 +474,24 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/discovery/outages',
-{
+fetch('https://data.holder.com.au/cds-au/v1/discovery/outages', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /discovery/outages`
@@ -535,8 +507,8 @@ Obtain a list of scheduled outages for the implementation
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -566,14 +538,14 @@ Obtain a list of scheduled outages for the implementation
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseDiscoveryOutagesList](#schemacdr-common-apiresponsediscoveryoutageslist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-common-apiresponseerrorlistv2)|
 
 <h3 id="cdr-common-api_get-outages_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 
   
     <aside class="success">
@@ -606,7 +578,6 @@ This operation does not require authentication
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-common-api_responsecommondiscoverystatus_properties">Properties</h3>
@@ -614,7 +585,7 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» status|[Enum](#common-field-types)|mandatory|Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)|
+|» status|[Enum](#common-field-types)|mandatory|Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more endpoints are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)|
 |» explanation|string|conditional|Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK|
 |» detectionTime|[DateTimeString](#common-field-types)|optional|The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE|
 |» expectedResolutionTime|[DateTimeString](#common-field-types)|optional|The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.|
@@ -656,7 +627,6 @@ This operation does not require authentication
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-common-api_responsediscoveryoutageslist_properties">Properties</h3>
@@ -683,7 +653,6 @@ This operation does not require authentication
   "isPartial": true,
   "explanation": "string"
 }
-
 ```
 
 <h3 id="cdr-common-api_discoveryoutage_properties">Properties</h3>
@@ -692,7 +661,7 @@ This operation does not require authentication
 |---|---|---|---|
 |outageTime|[DateTimeString](#common-field-types)|mandatory|Date and time that the outage is scheduled to begin|
 |duration|[ExternalRef](#common-field-types)|mandatory|Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|isPartial|[Boolean](#common-field-types)|optional|Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage|
+|isPartial|[Boolean](#common-field-types)|optional|Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available endpoints will be affected by the outage|
 |explanation|string|mandatory|Provides an explanation of the current outage that can be displayed to an end customer|
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsecommoncustomer">ResponseCommonCustomer</h3>
@@ -742,7 +711,6 @@ This operation does not require authentication
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-common-api_responsecommoncustomer_properties">Properties</h3>
@@ -908,7 +876,6 @@ This operation does not require authentication
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-common-api_responsecommoncustomerdetailv2_properties">Properties</h3>
@@ -950,18 +917,17 @@ This operation does not require authentication
   "occupationCode": "string",
   "occupationCodeVersion": "ANZSCO_1220.0_2006_V1.0"
 }
-
 ```
 
 <h3 id="cdr-common-api_commonperson_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|lastUpdateTime|[DateTimeString](#common-field-types)|optional|The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data|
+|lastUpdateTime|[DateTimeString](#common-field-types)|optional|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
 |firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided.|
 |lastName|string|mandatory|For people with single names the single name should be in this field|
 |middleNames|[string]|mandatory|Field is mandatory but array may be empty|
-|prefix|string|optional|Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
+|prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
 |suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
 |occupationCode|[ExternalRef](#common-field-types)|optional|Value is a valid **[[ANZSCO]](#iref-ANZSCO)** Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported **[[ANZSCO]](#iref-ANZSCO)** versions, then it must not be supplied.|
 |occupationCodeVersion|[Enum](#common-field-types)|conditional|The applicable **[[ANZSCO]](#iref-ANZSCO)** release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``|
@@ -1054,7 +1020,6 @@ This operation does not require authentication
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-common-api_commonpersondetailv2_properties">Properties</h3>
@@ -1100,7 +1065,6 @@ This operation does not require authentication
   "registeredCountry": "string",
   "establishmentDate": "string"
 }
-
 ```
 
 <h3 id="cdr-common-api_commonorganisation_properties">Properties</h3>
@@ -1108,19 +1072,19 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |lastUpdateTime|[DateTimeString](#common-field-types)|optional|The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data|
-|agentFirstName|string|optional|The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field|
+|agentFirstName|string|optional|The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present. The single name should be in the lastName field|
 |agentLastName|string|mandatory|The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field|
-|agentRole|string|mandatory|The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known|
+|agentRole|string|mandatory|The role of the individual identified as the agent who is providing authorisation. Expected to be used for display. Default to Unspecified if the role is not known|
 |businessName|string|mandatory|Name of the organisation|
 |legalName|string|optional|Legal name, if different to the business name|
 |shortName|string|optional|Short name used for communication, if different to the business name|
 |abn|string|optional|Australian Business Number for the organisation|
 |acn|string|optional|Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type|
-|isACNCRegistered|[Boolean](#common-field-types)|optional|True if registered with the ACNC.  False if not. Absent or null if not confirmed.|
+|isACNCRegistered|[Boolean](#common-field-types)|optional|True if registered with the ACNC. False if not. Absent or null if not confirmed.|
 |industryCode|[ExternalRef](#common-field-types)|optional|A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.|
 |industryCodeVersion|[Enum](#common-field-types)|conditional|The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``|
 |organisationType|[Enum](#common-field-types)|mandatory|Legal organisation type|
-|registeredCountry|[ExternalRef](#common-field-types)|optional|Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent|
+|registeredCountry|[ExternalRef](#common-field-types)|optional|Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes. Assumed to be AUS if absent|
 |establishmentDate|[DateString](#common-field-types)|optional|The date the organisation described was established|
 
 <h4 id="cdr-common-api_commonorganisation_enumerated-values-main">Enumerated Values</h4>
@@ -1202,7 +1166,6 @@ This operation does not require authentication
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-common-api_commonorganisationdetailv2_properties">Properties</h3>
@@ -1238,7 +1201,6 @@ This operation does not require authentication
   "extension": "string",
   "fullNumber": "string"
 }
-
 ```
 
 <h3 id="cdr-common-api_commonphonenumber_properties">Properties</h3>
@@ -1278,7 +1240,6 @@ This operation does not require authentication
   "purpose": "HOME",
   "address": "string"
 }
-
 ```
 
 <h3 id="cdr-common-api_commonemailaddress_properties">Properties</h3>
@@ -1345,7 +1306,6 @@ This operation does not require authentication
   },
   "purpose": "MAIL"
 }
-
 ```
 
 <h3 id="cdr-common-api_commonphysicaladdresswithpurpose_properties">Properties</h3>
@@ -1419,7 +1379,6 @@ This operation does not require authentication
     "state": "string"
   }
 }
-
 ```
 
 <h3 id="cdr-common-api_commonphysicaladdress_properties">Properties</h3>
@@ -1456,7 +1415,6 @@ This operation does not require authentication
   "state": "string",
   "country": "AUS"
 }
-
 ```
 
 <h3 id="cdr-common-api_commonsimpleaddress_properties">Properties</h3>
@@ -1505,7 +1463,6 @@ This operation does not require authentication
   "postcode": "string",
   "state": "string"
 }
-
 ```
 
 *Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)*
@@ -1514,11 +1471,11 @@ This operation does not require authentication
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|dpid|string|optional|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
+|dpid|string|optional|Unique identifier for an address as defined by Australia Post. Also known as Delivery Point Identifier|
 |thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address)|
-|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
+|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_ is populated|
 |thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
-|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
+|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant if _thoroughfareNumber2_ is populated|
 |flatUnitType|string|optional|Type of flat or unit for the address|
 |flatUnitNumber|string|optional|Unit number (including suffix, if applicable)|
 |floorLevelType|string|optional|Type of floor or level for the address|
@@ -1549,7 +1506,6 @@ This operation does not require authentication
 {
   "self": "string"
 }
-
 ```
 
 <h3 id="cdr-common-api_links_properties">Properties</h3>
@@ -1568,7 +1524,6 @@ This operation does not require authentication
 
 ```json
 {}
-
 ```
 
 <h3 id="cdr-common-api_meta_properties">Properties</h3>
@@ -1587,7 +1542,6 @@ This operation does not require authentication
 {
   "urn": "string"
 }
-
 ```
 
 *Additional data for customised error codes*
@@ -1619,7 +1573,6 @@ This operation does not require authentication
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-common-api_responseerrorlistv2_properties">Properties</h3>

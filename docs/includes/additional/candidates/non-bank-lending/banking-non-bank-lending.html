@@ -708,8 +708,7 @@ the Consumer Data Standards not referenced are considered normative.</p>
 
 <p><br/></p>
 <h1 style="display:none"></h1>
-<h1 id='register-apis'>Register APIs</h1><pre class="highlight diff tab-diff"><code>Fixed typo in 'Country of registeration' in the description of registeredCountry
-</code></pre>
+<h1 id='register-apis'>Register APIs</h1>
 <p>The following section provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata.
 These endpoints are exposed by the Register and consumed by Data Holders and Data Recipients.</p>
 
@@ -719,11 +718,10 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
   These statuses are provided authoritatively by the Register to allow participants to determine whether a connecting third-party is permitted to perform registration requests or data sharing requests.
 </aside>
 
-<p><br>
 <table>
 <tr><td><a href='../../../../includes/swagger/cds_register_banking_non_bank_lending.json'>Register OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='../../../../includes/swagger/cds_register_banking_non_bank_lending.yaml'>Register OpenAPI Specification (YAML)</a></td></tr>
-</table></p>
+</table>
 
 <h2 id="cdr-participant-discovery-api_get-data-holder-brands">Get Data Holder Brands</h2>
 
@@ -734,34 +732,27 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
 </blockquote>
 
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-holders/brands</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-
-Accept: application/json
-Authorization: string
-x-v: 1
-x-min-v: string
-
+<span class="na">Host</span><span class="p">:</span> <span class="s">&lt;register-base-url&gt;</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">1</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-holders/brands'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-holders/brands'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 
 <p><code>GET /cdr-register/v1/{industry}/data-holders/brands</code></p>
@@ -814,14 +805,14 @@ x-min-v: string
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
+<td>The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
+<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API endpoint requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
 <tr>
 <td>updated-since</td>
@@ -987,7 +978,7 @@ x-min-v: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td>The version of the API end point that the CDR Register has responded with.</td>
+<td>The version of the API endpoint that the CDR Register has responded with.</td>
 </tr>
 <tr>
 <td>401</td>
@@ -1010,34 +1001,27 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-holders/brands/summary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-
-Accept: application/json
-x-v: string
-x-min-v: string
-If-None-Match: string
-
+<span class="na">Host</span><span class="p">:</span> <span class="s">&lt;register-base-url&gt;</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">If-None-Match</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-holders/brands/summary'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-holders/brands/summary'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /cdr-register/v1/{industry}/data-holders/brands/summary</code></p>
 
@@ -1082,14 +1066,14 @@ If-None-Match: string
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer.</td>
+<td>The version of the API endpoint requested by the client. Must be set to a positive integer.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
+<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API endpoint requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
 <tr>
 <td>If-None-Match</td>
@@ -1214,7 +1198,7 @@ If-None-Match: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td>The version of the API end point that the CDR Register has responded with.</td>
+<td>The version of the API endpoint that the CDR Register has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -1242,34 +1226,27 @@ This operation does not require authentication
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-holders/status</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-
-Accept: application/json
-x-v: 1
-x-min-v: string
-If-None-Match: string
-
+<span class="na">Host</span><span class="p">:</span> <span class="s">&lt;register-base-url&gt;</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">1</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">If-None-Match</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-holders/status'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://&lt;register-base-url&gt;/cdr-register/v1/{industry}/data-holders/status'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /cdr-register/v1/{industry}/data-holders/status</code></p>
 
@@ -1314,14 +1291,14 @@ If-None-Match: string
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
+<td>The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API end point requested by the client. Must be set to a positive integer if provided.</td>
+<td>The <a href="https://consumerdatastandardsaustralia.github.io/standards/#http-headers">minimum version</a> of the API endpoint requested by the client. Must be set to a positive integer if provided.</td>
 </tr>
 <tr>
 <td>If-None-Match</td>
@@ -1430,7 +1407,7 @@ If-None-Match: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td>The version of the API end point that the CDR Register has responded with.</td>
+<td>The version of the API endpoint that the CDR Register has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -1514,7 +1491,6 @@ This operation does not require authentication
     </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <p><em>Response containing a list of CDR Register Data Holder Brand objects</em></p>
@@ -1596,7 +1572,6 @@ This operation does not require authentication
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <h3 id="cdr-participant-discovery-api_registerdataholderbrand_properties">Properties</h3>
@@ -1734,7 +1709,6 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <h3 id="cdr-participant-discovery-api_responsedataholdersbrandsummarylist_properties">Properties</h3>
@@ -1790,7 +1764,6 @@ This operation does not require authentication
   </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"arbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <h3 id="cdr-participant-discovery-api_dataholderbrandsummary_properties">Properties</h3>
@@ -1861,7 +1834,7 @@ This operation does not require authentication
 <td>arbn</td>
 <td>string</td>
 <td>optional</td>
-<td>Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies</td>
+<td>Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies</td>
 </tr>
 </tbody></table>
 
@@ -1912,7 +1885,6 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <h3 id="cdr-participant-discovery-api_dataholdersstatuslist_properties">Properties</h3>
@@ -1958,7 +1930,6 @@ This operation does not require authentication
   </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <h3 id="cdr-participant-discovery-api_dataholderstatus_properties">Properties</h3>
@@ -2026,7 +1997,6 @@ This operation does not require authentication
   </span><span class="s2">"organisationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOLE_TRADER"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <p><em>The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)</em></p>
@@ -2093,7 +2063,7 @@ This operation does not require authentication
 <td>arbn</td>
 <td>string</td>
 <td>optional</td>
-<td>Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies</td>
+<td>Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies</td>
 </tr>
 <tr>
 <td>anzsicDivision</td>
@@ -2174,7 +2144,6 @@ This operation does not require authentication
   </span><span class="s2">"extensionBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"websiteUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <p><em>Endpoints related to Data Holder Brand services</em></p>
@@ -2240,7 +2209,6 @@ This operation does not require authentication
   </span><span class="s2">"registerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SIGNED-JWT"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"jwksEndpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <p><em>Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication</em></p>
@@ -2299,7 +2267,6 @@ This operation does not require authentication
   </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <h3 id="cdr-participant-discovery-api_linkspaginated_properties">Properties</h3>
@@ -2357,7 +2324,6 @@ This operation does not require authentication
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <h3 id="cdr-participant-discovery-api_metapaginated_properties">Properties</h3>
@@ -2396,7 +2362,6 @@ This operation does not require authentication
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <h3 id="cdr-participant-discovery-api_links_properties">Properties</h3>
@@ -2427,7 +2392,6 @@ This operation does not require authentication
 </p>
 
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-
 </span></code></pre>
 
 <h3 id="cdr-participant-discovery-api_meta_properties">Properties</h3>
@@ -2446,7 +2410,6 @@ This operation does not require authentication
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <p><em>Additional data for customised error codes</em></p>
@@ -2490,7 +2453,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <h3 id="cdr-participant-discovery-api_responseerrorlistv2_properties">Properties</h3>
@@ -2528,7 +2490,6 @@ This operation does not require authentication
     </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 
 <h3 id="cdr-participant-discovery-api_responseerrorlistv2_errors_properties">Properties</h3>
@@ -2567,8 +2528,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 <h1 style="display:none"></h1>
-<h1 id='banking-apis'>Banking APIs</h1><pre class="highlight diff tab-diff"><code>In addition to minor styling updates, aligned Banking documentation to enhancements applied in the Candidate Standards
-</code></pre>
+<h1 id='banking-apis'>Banking APIs</h1>
 <p>This specification defines the APIs for Data Holders exposing Banking endpoints.</p>
 
 <table>
@@ -2591,9 +2551,7 @@ This operation does not require authentication
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -2602,21 +2560,16 @@ This operation does not require authentication
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /banking/accounts</code></p>
 
@@ -2724,7 +2677,7 @@ This operation does not require authentication
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -2856,7 +2809,7 @@ This operation does not require authentication
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -2936,9 +2889,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -2947,21 +2898,16 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/balances'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/balances'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /banking/accounts/balances</code></p>
 
@@ -3069,7 +3015,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -3203,7 +3149,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -3284,7 +3230,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
   "data": {
@@ -3303,21 +3248,17 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/balances'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/balances'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>POST /banking/accounts/balances</code></p>
 
@@ -3414,14 +3355,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
 <td>body</td>
 <td><a href="#schemacdr-banking-apirequestaccountids">RequestAccountIds</a></td>
 <td>mandatory</td>
-<td>The list of account IDs to obtain balances for.</td>
+<td>The list of <em>accountId</em> values to obtain balances for.</td>
 </tr>
 </tbody></table>
 
@@ -3481,7 +3422,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -3561,9 +3502,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -3572,21 +3511,16 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /banking/accounts/{accountId}/balance</code></p>
 
@@ -3664,7 +3598,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -3713,7 +3647,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -3793,9 +3727,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -3804,21 +3736,16 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /banking/accounts/{accountId}</code></p>
 
@@ -3898,7 +3825,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4149,7 +4076,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -4229,9 +4156,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -4240,21 +4165,16 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /banking/accounts/{accountId}/transactions</code></p>
 
@@ -4396,7 +4316,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4463,7 +4383,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -4555,9 +4475,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -4566,21 +4484,16 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /banking/accounts/{accountId}/transactions/{transactionId}</code></p>
 
@@ -4665,7 +4578,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4731,7 +4644,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -4811,9 +4724,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -4822,21 +4733,16 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /banking/accounts/{accountId}/direct-debits</code></p>
 
@@ -4928,7 +4834,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -4986,7 +4892,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -5078,9 +4984,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -5089,21 +4993,16 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /banking/accounts/direct-debits</code></p>
 
@@ -5211,7 +5110,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -5343,7 +5242,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -5424,7 +5323,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
   "data": {
@@ -5443,21 +5341,17 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>POST /banking/accounts/direct-debits</code></p>
 
@@ -5554,14 +5448,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
 <td>body</td>
 <td><a href="#schemacdr-banking-apirequestaccountids">RequestAccountIds</a></td>
 <td>mandatory</td>
-<td>Array of specific accountIds to obtain authorisations for.</td>
+<td>Array of <em>accountId</em> values to obtain authorisations for.</td>
 </tr>
 </tbody></table>
 
@@ -5619,7 +5513,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -5699,9 +5593,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -5710,21 +5602,16 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /banking/accounts/{accountId}/payments/scheduled</code></p>
 
@@ -5818,7 +5705,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -5964,7 +5851,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -6056,9 +5943,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -6067,21 +5952,16 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payments/scheduled'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /banking/payments/scheduled</code></p>
 
@@ -6189,7 +6069,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -6409,7 +6289,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -6490,7 +6370,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
   "data": {
@@ -6509,21 +6388,17 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payments/scheduled'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>POST /banking/payments/scheduled</code></p>
 
@@ -6622,14 +6497,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 <tr>
 <td>body</td>
 <td>body</td>
 <td><a href="#schemacdr-banking-apirequestaccountids">RequestAccountIds</a></td>
 <td>mandatory</td>
-<td>Array of specific accountIds to obtain scheduled payments for. The accounts specified are the source of funds for the payments returned.</td>
+<td>Array of <em>accountId</em> values to obtain scheduled payments for. The accounts specified are the source of funds for the payments returned.</td>
 </tr>
 </tbody></table>
 
@@ -6775,7 +6650,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -6855,9 +6730,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -6866,21 +6739,16 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payees'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payees'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /banking/payees</code></p>
 
@@ -6918,7 +6786,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
-<td>Filter on the payee type field. In addition to normal type field values, <code>ALL</code> can be specified to retrieve all payees. If absent the assumed value is <code>ALL</code>.</td>
+<td>Filter on the payee <em>type</em> field. In addition to normal <em>type</em> field values, <code>ALL</code> can be specified to retrieve all payees. If absent the assumed value is <code>ALL</code>.</td>
 </tr>
 <tr>
 <td>page</td>
@@ -6974,7 +6842,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -7057,7 +6925,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -7137,9 +7005,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -7148,21 +7014,16 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId}'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /banking/payees/{payeeId}</code></p>
 
@@ -7244,7 +7105,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -7335,7 +7196,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -7423,28 +7284,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/products'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/products'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /banking/products</code></p>
 
@@ -7459,7 +7313,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <ul>
 <li>Each element in an array has the same structure so that clients can reliably interpret the payloads</li>
 <li>Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.</li>
-<li>Each element has a field name <a href="#productfeaturetypedoc"><em>additionalValue</em></a>. This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the <code>ADDITIONAL_CARDS</code> feature is the number of cards allowed while the contents of this field for the <code>MAX_LIMIT</code> constraint would be the maximum credit limit allowed for the product.</li>
+<li>Each element has a field named <a href="#productfeaturetypedoc"><em>additionalValue</em></a>. This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the <code>ADDITIONAL_CARDS</code> feature is the number of cards allowed while the contents of this field for the <code>MAX_LIMIT</code> constraint would be the maximum credit limit allowed for the product.</li>
 <li>An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.</li>
 <li>An element in these arrays may contain an <em>additionalInfo</em> and <em>additionalInfoUri</em> field. The <em>additionalInfo</em> field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The <em>additionalInfoUri</em> provides a link to externally hosted information specifically relevant to that feature of the product.</li>
 <li>Depending on the type of data being represented there may be additional specific fields.</li>
@@ -7467,7 +7321,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h4 id='uris-to-more-information'>URIs To More Information</h4>
 <p>As the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.</p>
 
-<p>These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.</p>
+<p>These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use different HTML anchors to focus on a specific topic such as eligibility or fees.</p>
 <h4 id='linkage-to-accounts'>Linkage To Accounts</h4>
 <p>From the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge. Rates and features of the product may change and a discount may be negotiated for the account.</p>
 
@@ -7477,7 +7331,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h4 id='dates'>Dates</h4>
 <p>It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank. To minimise the volume and frequency of these calls the ability to set a <em>lastUpdated</em> field with the date and time of the last update to this product is included. A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the <em>updated-since</em> query parameter.</p>
 
-<p>In addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.</p>
+<p>In addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no longer offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.</p>
 
 <p>Obsolete versions: <a href="../../../obsolete/get-products-v1.html">v1</a>, <a href="../../../obsolete/get-products-v2.html">v2</a>, <a href="../../../obsolete/get-products-v3.html">v3</a>.</p>
 
@@ -7511,7 +7365,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
-<td>Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are <code>CURRENT</code>, <code>FUTURE</code> and <code>ALL</code>. If absent defaults to <code>CURRENT</code>.</td>
+<td>Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the <em>effectiveFrom</em> and <em>effectiveTo</em> fields. Valid values are <code>CURRENT</code>, <code>FUTURE</code> and <code>ALL</code>. If absent defaults to <code>CURRENT</code>.</td>
 </tr>
 <tr>
 <td>updated-since</td>
@@ -7736,7 +7590,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -7787,28 +7641,21 @@ This operation does not require authentication
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/products/{productId}'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/products/{productId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /banking/products/{productId}</code></p>
 
@@ -8087,7 +7934,7 @@ This operation does not require authentication
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-banking-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -8144,7 +7991,6 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_requestaccountids_properties">Properties</h3>
 
@@ -8166,7 +8012,7 @@ This operation does not require authentication
 <td>» accountIds</td>
 <td><a href="#common-field-types">[ASCIIString]</a></td>
 <td>mandatory</td>
-<td>none</td>
+<td>Array of <em>accountId</em> values.</td>
 </tr>
 <tr>
 <td>meta</td>
@@ -8257,7 +8103,6 @@ This operation does not require authentication
     </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_responsebankingproductlistv3_properties">Properties</h3>
 
@@ -8359,7 +8204,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingproductv5_properties">Properties</h3>
 
@@ -8508,7 +8352,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Object that contains links to additional information on specific topics.</em></p>
 
@@ -8596,7 +8439,6 @@ This operation does not require authentication
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingproductadditionalinformationv2_additionalinformationuris_properties">Properties</h3>
 
@@ -8828,7 +8670,6 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_responsebankingproductbyidv5_properties">Properties</h3>
 
@@ -9060,7 +8901,6 @@ This operation does not require authentication
     </span><span class="s2">"maximumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingproductdetailv5_properties">Properties</h3>
 
@@ -9165,7 +9005,6 @@ This operation does not require authentication
     </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingproductbundle_properties">Properties</h3>
 
@@ -9223,7 +9062,6 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingproductfeaturev3_properties">Properties</h3>
 
@@ -9405,7 +9243,6 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingproductconstraint_properties">Properties</h3>
 
@@ -9487,7 +9324,6 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingproducteligibility_properties">Properties</h3>
 
@@ -9626,7 +9462,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingproductfee_properties">Properties</h3>
 
@@ -9798,7 +9633,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingproductdiscount_properties">Properties</h3>
 
@@ -9922,7 +9756,6 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingproductdiscounteligibility_properties">Properties</h3>
 
@@ -10054,7 +9887,6 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingproductdepositrate_properties">Properties</h3>
 
@@ -10190,7 +10022,6 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingproductlendingratev2_properties">Properties</h3>
 
@@ -10375,7 +10206,6 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Defines the criteria and conditions for which a rate applies.</em></p>
 
@@ -10485,7 +10315,6 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Defines a condition for the applicability of a tiered rate.</em></p>
 
@@ -10529,7 +10358,6 @@ This operation does not require authentication
   </span><span class="s2">"minimumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maximumSplit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingproductinstalments_properties">Properties</h3>
 
@@ -10616,7 +10444,6 @@ This operation does not require authentication
     </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_responsebankingaccountlistv3_properties">Properties</h3>
 
@@ -10674,7 +10501,6 @@ This operation does not require authentication
   </span><span class="s2">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS_LOANS"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingaccountv3_properties">Properties</h3>
 
@@ -11016,7 +10842,6 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_responsebankingaccountbyidv4_properties">Properties</h3>
 
@@ -11272,7 +11097,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingaccountdetailv4_properties">Properties</h3>
 
@@ -11362,7 +11186,7 @@ This operation does not require authentication
 <td>» depositRate</td>
 <td><a href="#common-field-types">RateString</a></td>
 <td>optional</td>
-<td>current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call.</td>
+<td>Current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call.</td>
 </tr>
 <tr>
 <td>» lendingRate</td>
@@ -11509,7 +11333,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Details of instalment features on the account.</em></p>
 
@@ -11578,7 +11401,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankinginstalmentplans_properties">Properties</h3>
 
@@ -11640,7 +11462,6 @@ This operation does not require authentication
   </span><span class="s2">"amountDue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankinginstalmentplanschedule_properties">Properties</h3>
 
@@ -11681,7 +11502,6 @@ This operation does not require authentication
   </span><span class="s2">"maturityCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"maturityInstructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOLD_ON_MATURITY"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingtermdepositaccount_properties">Properties</h3>
 
@@ -11761,7 +11581,6 @@ This operation does not require authentication
   </span><span class="s2">"paymentCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"paymentDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingcreditcardaccount_properties">Properties</h3>
 
@@ -11826,7 +11645,6 @@ This operation does not require authentication
   </span><span class="s2">"repaymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTEREST_ONLY"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"repaymentFrequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingloanaccountv2_properties">Properties</h3>
 
@@ -11914,7 +11732,7 @@ This operation does not require authentication
 <td>offsetAccountIds</td>
 <td><a href="#common-field-types">[ASCIIString]</a></td>
 <td>optional</td>
-<td>The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that <em>offsetAccountEnabled</em> is set to <code>true</code> but the <em>offsetAccountIds</em> field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation.</td>
+<td>The <em>accountId</em> values of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that <em>offsetAccountEnabled</em> is set to <code>true</code> but the <em>offsetAccountIds</em> field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation.</td>
 </tr>
 <tr>
 <td>repaymentType</td>
@@ -11994,7 +11812,6 @@ This operation does not require authentication
     </span><span class="s2">"isQueryParamUnsupported"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_responsebankingtransactionlist_properties">Properties</h3>
 
@@ -12060,7 +11877,6 @@ This operation does not require authentication
   </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"apcaNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingtransaction_properties">Properties</h3>
 
@@ -12277,7 +12093,6 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_responsebankingtransactionbyid_properties">Properties</h3>
 
@@ -12348,7 +12163,6 @@ This operation does not require authentication
     </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingtransactiondetail_properties">Properties</h3>
 
@@ -12499,7 +12313,6 @@ This operation does not require authentication
     </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_responsebankingaccountsbalancelist_properties">Properties</h3>
 
@@ -12565,7 +12378,6 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_responsebankingaccountsbalancebyid_properties">Properties</h3>
 
@@ -12619,7 +12431,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingbalance_properties">Properties</h3>
 
@@ -12687,7 +12498,6 @@ This operation does not require authentication
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingbalancepurse_properties">Properties</h3>
 
@@ -12745,7 +12555,6 @@ This operation does not require authentication
     </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_responsebankingpayeelistv2_properties">Properties</h3>
 
@@ -12853,7 +12662,6 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_responsebankingpayeebyidv2_properties">Properties</h3>
 
@@ -12900,7 +12708,6 @@ This operation does not require authentication
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BILLER"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingpayeev2_properties">Properties</h3>
 
@@ -13034,7 +12841,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingpayeedetailv2_properties">Properties</h3>
 
@@ -13154,7 +12960,6 @@ This operation does not require authentication
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABN"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingdomesticpayee_properties">Properties</h3>
 
@@ -13227,7 +13032,6 @@ This operation does not require authentication
   </span><span class="s2">"bsb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingdomesticpayeeaccount_properties">Properties</h3>
 
@@ -13270,7 +13074,6 @@ This operation does not require authentication
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"cardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingdomesticpayeecard_properties">Properties</h3>
 
@@ -13303,7 +13106,6 @@ This operation does not require authentication
   </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABN"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingdomesticpayeepayid_properties">Properties</h3>
 
@@ -13374,7 +13176,6 @@ This operation does not require authentication
   </span><span class="s2">"crn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"billerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingbillerpayee_properties">Properties</h3>
 
@@ -13435,7 +13236,6 @@ This operation does not require authentication
     </span><span class="s2">"legalEntityIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankinginternationalpayee_properties">Properties</h3>
 
@@ -13559,7 +13359,6 @@ This operation does not require authentication
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EMAIL"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYPAL_AU"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingdigitalwalletpayee_properties">Properties</h3>
 
@@ -13664,7 +13463,6 @@ This operation does not require authentication
     </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_responsebankingdirectdebitauthorisationlist_properties">Properties</h3>
 
@@ -13722,7 +13520,6 @@ This operation does not require authentication
   </span><span class="s2">"lastDebitDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"lastDebitAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingdirectdebit_properties">Properties</h3>
 
@@ -13775,7 +13572,6 @@ This operation does not require authentication
   </span><span class="s2">"acn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"arbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingauthorisedentity_properties">Properties</h3>
 
@@ -13944,7 +13740,6 @@ This operation does not require authentication
     </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_responsebankingscheduledpaymentslistv2_properties">Properties</h3>
 
@@ -14090,7 +13885,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingscheduledpaymentv2_properties">Properties</h3>
 
@@ -14136,7 +13930,7 @@ This operation does not require authentication
 <td>from</td>
 <td><a href="#schemacdr-banking-apibankingscheduledpaymentfrom">BankingScheduledPaymentFrom</a></td>
 <td>mandatory</td>
-<td>Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the <em>to</em> object.</td>
+<td>Object containing details of the source of the payment. Currently only specifies an <em>accountId</em> but provided as an object to facilitate future extensibility and consistency with the <em>to</em> object.</td>
 </tr>
 <tr>
 <td>paymentSet</td>
@@ -14242,7 +14036,6 @@ This operation does not require authentication
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry.</em></p>
 
@@ -14345,7 +14138,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Object containing details of the destination of the payment. Used to specify a variety of payment destination types.</em></p>
 
@@ -14460,9 +14252,8 @@ This operation does not require authentication
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
-<p><em>Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the <em>to</em> object.</em></p>
+<p><em>Object containing details of the source of the payment. Currently only specifies an <em>accountId</em> but provided as an object to facilitate future extensibility and consistency with the <em>to</em> object.</em></p>
 
 <h3 id="cdr-banking-api_bankingscheduledpaymentfrom_properties">Properties</h3>
 
@@ -14478,7 +14269,7 @@ This operation does not require authentication
 <td>accountId</td>
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>mandatory</td>
-<td>ID of the account that is the source of funds for the payment.</td>
+<td><em>accountId</em> of the account that is the source of funds for the payment.</td>
 </tr>
 </tbody></table>
 
@@ -14518,7 +14309,6 @@ This operation does not require authentication
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Object containing the detail of the schedule for the payment.</em></p>
 
@@ -14607,7 +14397,6 @@ This operation does not require authentication
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"paymentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Indicates that the payment is a once off payment on a specific future date. Mandatory if <em>recurrenceUType</em> is set to <code>onceOff</code>.</em></p>
 
@@ -14648,7 +14437,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Indicates that the schedule of payments is defined by a series of intervals. Mandatory if <em>recurrenceUType</em> is set to <code>intervalSchedule</code>.</em></p>
 
@@ -14726,7 +14514,6 @@ This operation does not require authentication
   </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"dayInInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_bankingscheduledpaymentinterval_properties">Properties</h3>
 
@@ -14767,7 +14554,6 @@ This operation does not require authentication
   </span><span class="s2">"lastWeekDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRI"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nonBusinessDayTreatment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AFTER"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if <em>recurrenceUType</em> is set to <code>lastWeekDay</code>.</em></p>
 
@@ -14878,7 +14664,6 @@ This operation does not require authentication
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if <em>recurrenceUType</em> is set to <code>eventBased</code>.</em></p>
 
@@ -14945,7 +14730,6 @@ This operation does not require authentication
     </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_commonphysicaladdress_properties">Properties</h3>
 
@@ -15013,7 +14797,6 @@ This operation does not require authentication
   </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_commonsimpleaddress_properties">Properties</h3>
 
@@ -15107,7 +14890,6 @@ This operation does not require authentication
   </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>.</em></p>
 
@@ -15137,7 +14919,7 @@ This operation does not require authentication
 <td>thoroughfareNumber1Suffix</td>
 <td>string</td>
 <td>optional</td>
-<td>Suffix for the thoroughfare number. Only relevant is <em>thoroughfareNumber1</em> is populated.</td>
+<td>Suffix for the thoroughfare number. Only relevant if <em>thoroughfareNumber1</em> is populated.</td>
 </tr>
 <tr>
 <td>thoroughfareNumber2</td>
@@ -15149,7 +14931,7 @@ This operation does not require authentication
 <td>thoroughfareNumber2Suffix</td>
 <td>string</td>
 <td>optional</td>
-<td>Suffix for the second thoroughfare number. Only relevant is <em>thoroughfareNumber2</em> is populated.</td>
+<td>Suffix for the second thoroughfare number. Only relevant if <em>thoroughfareNumber2</em> is populated.</td>
 </tr>
 <tr>
 <td>flatUnitType</td>
@@ -15266,7 +15048,6 @@ This operation does not require authentication
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_links_properties">Properties</h3>
 
@@ -15295,7 +15076,6 @@ This operation does not require authentication
   <a class="schema-anchor" id="schemacdr-banking-apimeta"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_meta_properties">Properties</h3>
 
@@ -15316,7 +15096,6 @@ This operation does not require authentication
   </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_linkspaginated_properties">Properties</h3>
 
@@ -15372,7 +15151,6 @@ This operation does not require authentication
   </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_metapaginated_properties">Properties</h3>
 
@@ -15411,7 +15189,6 @@ This operation does not require authentication
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isQueryParamUnsupported"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_metapaginatedtransaction_properties">Properties</h3>
 
@@ -15468,7 +15245,6 @@ This operation does not require authentication
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Additional data for customised error codes.</em></p>
 
@@ -15510,7 +15286,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-banking-api_responseerrorlistv2_properties">Properties</h3>
 
@@ -15563,7 +15338,6 @@ This operation does not require authentication
   <a class="schema-anchor" id="schemacdr-banking-apibankingproductcategoryv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="s2">"BUSINESS_LOANS"</span><span class="w">
-
 </span></code></pre>
 <p><em>The category to which a product or account belongs. See <a href="#product-categories">here</a> for more details.</em></p>
 

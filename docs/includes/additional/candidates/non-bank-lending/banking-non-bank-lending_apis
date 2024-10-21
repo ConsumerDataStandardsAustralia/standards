@@ -1,5 +1,4 @@
-<h1 id='banking-apis'>Banking APIs</h1><pre class="highlight diff tab-diff"><code>In addition to minor styling updates, aligned Banking documentation to enhancements applied in the Candidate Standards
-</code></pre>
+<h1 id='banking-apis'>Banking APIs</h1>
 <p>This specification defines the APIs for Data Holders exposing Banking endpoints.</p>
 
 <table>

@@ -1,0 +1,23 @@
+<h1 id='additional-standards'>Additional Standards</h1>
+<p>The Consumer Data Standards also incorporate other non-binding standards that are developed to facilitate consultation and feedback or to facilitate voluntary extension of CDR implementations.</p>
+
+<p>These standards fall into three categories:</p>
+
+<ol>
+<li><code>Candidate</code> standards that are non-binding and stable</li>
+<li><code>Draft</code> standards that are non-binding but volatile as they are under development</li>
+<li><code>Experimental</code> standards that are transient and created to test concepts</li>
+</ol>
+<h2 id='candidate-standards'>Candidate Standards</h2><pre class="highlight diff tab-diff"><code>Updated Telco specification to ensure response header details are displayed correctly
+</code></pre>
+<p>The Consumer Data Standards currently include the following Candidate Standards:</p>
+
+<ul>
+<li><a href="./includes/additional/candidates/telco/telco.html">Candidate Standards for the Telecommunications sector</a></li>
+<li><a href="./includes/additional/candidates/dp306/banking-dp306.html">Candidate Standards for Banking Decision Proposal 306</a></li>
+<li><a href="./includes/additional/candidates/non-bank-lending/banking-non-bank-lending.html">Candidate Standards for the Banking and Non-Bank Lending sector</a></li>
+</ul>
+<h2 id='draft-standards'>Draft Standards</h2>
+<p>The Consumer Data Standards do not currently include any Draft Standards.</p>
+<h2 id='experimental-standards'>Experimental Standards</h2>
+<p>The experimental standards developed by the Data Standards Body are developed in this <a href="https://github.com/ConsumerDataStandardsAustralia/standards-experimental">GitHub repository</a> and are <a href="https://consumerdatastandardsaustralia.github.io/standards-experimental/">published here</a>.</p>
