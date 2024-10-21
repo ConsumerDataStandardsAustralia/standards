@@ -8,6 +8,12 @@ Clarified formatting of RateString type
 
 The following table outlines the common data types for fields used in the standard.
 
+```diff
+Change to URIString example:
+- "http://www.google.com"
++ "https://www.example.com"
+```
+
 Type | Description | Valid Examples
 -----|-------------|---------------
 String | Standard UTF-8 string but unrestricted in content. Any valid Unicode character can be used. |
@@ -28,5 +34,5 @@ RateString | A string representing a percentage (e.g., an interest rate). For ex
 AmountString | A string representing a monetary amount in currency units with fractional units after a decimal point (e.g., if working with Australian dollars: "123.45" for one hundred and twenty-three dollars and forty-five cents).<br/>- A positive, zero or negative number<br/>- Negative numbers identified with a ‘-‘ prefix<br/>- Currency symbols MUST NOT be supplied<br/>- At least 1 and up to a total of 16 significant digits before decimal point<br/>- Minimum 2 digits following a decimal point (more digits allowable but only if required)<br/>- No additional formatting, eg thousand separating commas<br/>- Assumed to be in AUD unless specified otherwise | “0.01”<br/>“10.00”<br/>“1234567.89”<br/>“-1001.23”<br/>“1.999”
 MaskedPANString | Masked credit card number. Lower case ‘x’ MUST be used to mask numbers and only the last four digits MUST be exposed to facilitate identification. This type is expected to be used for display so the format MUST be logical for this context | "xxxx xxxx xxxx 1234"
 MaskedAccountString | Masked bank account number genericised for a variety of account types.  MUST be represented as the full account number would normally be represented for display (including formatting) but with all digits except the last four replaced with a lowercase x. This type is expected to be used for display so the format MUST be logical for this context | "xxxx xxxx xxxx 1234"<br/>"xxx-xxx xxxxx1234"
-URIString | A valid URI | "http://www.google.com"
+URIString | A valid URI | "https://www.example.com"
 ExternalRef | The format is defined by an external reference such as ISO standard or an RFC | Swift bank codes using [ISO 9362](https://www.iso.org/standard/60390.html)

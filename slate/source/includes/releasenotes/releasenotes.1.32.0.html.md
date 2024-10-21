@@ -30,6 +30,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance #641 - Update CDS documentation to clarify expected rate value 'sign' (+/-) for each RateType](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/641)
+- [Standards Maintenance #647 - Maintenance Iteration 20 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647)
 - [Standards Maintenance #648 - Adopt BCP 195 for TLS ciphers](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/648)
 - [Standards Maintenance #652 - Specify units of currency to be used for the AmountString field type](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/652)
 - [Standards Maintenance #653 - EnergyPlanTariffPeriod - cater for plans with no dailySupplyCharge](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/653)
@@ -62,6 +63,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 | Common Field Types examples | [**Standards Staging #410**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/410): Clarified formatting of RateString type | [Common Field Types](../../#common-field-types)
+| Changed URIString example | [**Standards Maintenance #647**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647): Updated URIString example to use HTTPS not HTTP. Addresses [issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647#issuecomment-2234764756) | [Security Profile](../../#common-field-types)
 | Updated AmountString description | [**Standards Maintenance #652**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/652): Updated the description of the AmountString field type, clarifying the currency format and noting it defaults to AUD. | [Common Field Types](../../#common-field-types)
 
 
@@ -70,13 +72,17 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Corrected required properties | [**Standards Staging #417**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/417): Corrected mistake in the _timeVaryingTariffs_ schema which specified _amount_ as a required property | [Energy APIs](../../#energy-apis)
 | Update field name styling | [**Standards Staging #419**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/419): Updated styling of field names in the Banking APIs section, including Product Categories and Product & Account Components | [Banking APIs](../../#banking-apis)
+| Corrected field description for `tariffUType` | [**Standards Maintenance #647**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647): Updated the field description for `tariffUType` where the incorrect description was copied in error. Addresses [issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647#issuecomment-2222175955) | [Energy APIs](../../#energy-apis)
 | Amend <i>dailySupplyChargeType</i> description | [**Standards Maintenance #653**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/653): Amended the  description of the <i>EnergyPlanTariffPeriodV2.dailySupplyChargeType</i> field to remove the default value assumption of `SINGLE` if the field is not provided, allowing plans without a specific daily supply charge to be shared. This change will be included in the existing 11 Nov 2024 FDO for Get Generic Plan Detail v4 and Get Energy Account Detail v5, and will be treated as errata to avoid a version update.| [Energy APIs](../../#energy-apis)
 
 
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Typo fix for `authorization_code` | [**Standards Maintenance #647**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647): Corrected spelling mistake. Addresses [issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647#issuecomment-2199060934) | [Security Profile](../../#security-profile)
+| Removed redundant statement | [**Standards Maintenance #647**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647): Simplified and removed redundant statement for client ID issuance. Addresses [issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647#issuecomment-2212872798) | [Security Profile](../../#security-profile)
 | Adopt BCP195 for supported ciphers | Update TLS Cipher requirements to align to FAPI 2.0 and adoption of BCP195. Addresses [issue 648](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/648#issue-2383325264). | [Security Profile -> Transaction Security -> Ciphers](../../#transaction-security)|
+
 
 ## Register Standards
 |Change|Description|Link|
