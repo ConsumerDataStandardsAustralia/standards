@@ -9,12 +9,10 @@ diff_regex = re.compile(r'```diff(.*?)```', re.DOTALL) #regex for diff blocks
 new_version = "-1.-1.-1"
 current_version = "-2.-2.-2"
 exclude_list = ["_version_delta_intro.md"] # Define the exclude_list for diff block removal
-changelog_table_header = "|Change Date|Version|Description|Detail of change|"
-archives_table_header = "|Release Date|Version|Description|"
+changelog_table_header = "| Date | Version | Description | Detail of change |"
 SWAGGERGENAPIPATH = '../swagger-gen/api'
 INTROMDPATH = '../slate/source/includes/introduction/_intro.md'
 CHANGEPATH  = '../slate/source/includes/changelog.md'
-ARCHIVESPATH  = '../slate/source/includes/archives.md'
 RELEASENOTESPATH = "../slate/source/includes/releasenotes"
 
 def set_new_minor_version(content):
@@ -150,37 +148,15 @@ def create_releasenotes():
         print(f"Release notes file '{filename}' created successfully.")
 
 ###########################################################
-# Add entry for previous version to the archives table
-def add_archives_entry():
-    # Get latest changelog entry
-    current_changelog_entry = get_first_entry(CHANGEPATH, changelog_table_header)
-    
-    # Create archive fields
-    archive_change_date, archive_version, archive_description, _ = map(str.strip, current_changelog_entry.split('|')[1:5])
-    
-    # Add link to archive date
-    archive_change_date = f"<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-{archive_version}/'>{archive_change_date}</a>"
-
-    # Add link to archive description
-    archive_description = f"<a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-{archive_version}/'>{archive_description}</a>"
-    
-    # Create new archive entry
-    new_archive_entry = create_new_entry(archive_change_date, archive_version, archive_description)
-    
-    # Add new archive entry
-    add_new_entry(ARCHIVESPATH, archives_table_header, new_archive_entry)
-    print("Current version added to archives.")
-
-###########################################################
-# Add an entry to the change log table for the new version
+# Add an entry to the changelog table for the new version
 def add_changelog_entry():
      
-    # Create new change log entry
-    new_changelog_entry = create_new_entry("TBC", new_version, "Changes TBC", f"See [release notes](includes/releasenotes/releasenotes.{new_version}.html) and [Decision XXX](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX) for details.")
+    # Create new changelog entry
+    new_changelog_entry = create_new_entry("TBC", f"[{new_version}](https://consumerdatastandardsaustralia.github.io/standards-archives/standards-{new_version}/)", "Changes TBC", f"See [release notes](includes/releasenotes/releasenotes.{new_version}.html) and [Decision XXX](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX) for details.")
     
-    # Add new change log entry
+    # Add new changelog entry
     add_new_entry(CHANGEPATH, changelog_table_header, new_changelog_entry)
-    print("New entry added to the change log.")
+    print("New entry added to the changelog.")
 
 
 ###########################################################
@@ -255,7 +231,6 @@ def main():
     update_version_in_intro()
     update_version_in_master_swagger()
     create_releasenotes()
-    add_archives_entry()
     add_changelog_entry()
     if "-ndiff" in sys.argv:
         print("'-ndiff' argument provided. diff blocks will not be removed")
