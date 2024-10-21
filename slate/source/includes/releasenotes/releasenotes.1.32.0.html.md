@@ -29,6 +29,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance #641 - Update CDS documentation to clarify expected rate value 'sign' (+/-) for each RateType](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/641)
+- [Standards Maintenance #648 - Adopt BCP 195 for TLS ciphers](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/648)
 - [Standards Maintenance #652 - Specify units of currency to be used for the AmountString field type](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/652)
 - [Standards Maintenance #653 - EnergyPlanTariffPeriod - cater for plans with no dailySupplyCharge](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/653)
 
@@ -73,7 +74,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-
+| Adopt BCP195 for supported ciphers | Update TLS Cipher requirements to align to FAPI 2.0 and adoption of BCP195. Addresses [issue 648](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/648#issue-2383325264). | [Security Profile -> Transaction Security -> Ciphers](../../#transaction-security)|
 
 ## Register Standards
 |Change|Description|Link|
