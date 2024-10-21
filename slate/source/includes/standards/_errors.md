@@ -301,9 +301,9 @@ The following error codes apply to responses from the CDR Register. Data Recipie
 
 | Error Title            | Error Code                           | HTTP Status Category | Description |  
 | :--------------------- | :----------------------------------- | :------------------- | :---------- |  
-| <a id="register-error-404-field-invalid-brand"></a>Invalid Brand | <code>urn:au-cds:error:cds-register:<br/>Field/InvalidBrand</code> | 404 (Not Found) | The brand provided to get the Data Recipient Software Product software statement assertion is invalid. Applies to the `dataRecipientBrandId` path parameter for CDR Register APIs. |
-| <a id="register-error-400-field-invalid-industry"></a>Invalid Industry | <code>urn:au-cds:error:cds-register:<br/>Field/InvalidIndustry</code> | 404 (Not Found) | The industry requested in the path to get Data Recipient Software Product or Data Holder metadata is invalid / does not exist and cannot be found. Applies to the `industry` path parameter for CDR Register APIs. |
-| <a id="register-error-403-field-invalid-software-product"></a>Invalid Software Product | <code>urn:au-cds:error:cds-register:<br/>Field/InvalidSoftwareProduct</code> | 404 (Not Found) | The software product requested to get the Data Recipient Software Product software statement assertion is invalid or cannot be found. Applies to the `softwareProductId` path parameter. |
+| <a id="register-error-404-field-invalid-brand"></a>Invalid Brand | <code>urn:au-cds:error:cds-register:<br/>Field/InvalidBrand</code> | <span style="white-space: nowrap;">404 (Not Found)</span> | The brand provided to get the Data Recipient Software Product software statement assertion is invalid. Applies to the `dataRecipientBrandId` path parameter for CDR Register APIs. |
+| <a id="register-error-404-field-invalid-industry"></a>Invalid Industry | <code>urn:au-cds:error:cds-register:<br/>Field/InvalidIndustry</code> | 404 (Not Found) | The industry requested in the path to get Data Recipient Software Product or Data Holder metadata is invalid / does not exist and cannot be found. Applies to the `industry` path parameter for CDR Register APIs. |
+| <a id="register-error-404-field-invalid-software-product"></a>Invalid Software Product | <code>urn:au-cds:error:cds-register:<br/>Field/InvalidSoftwareProduct</code> | 404 (Not Found) | The software product requested to get the Data Recipient Software Product software statement assertion is invalid or cannot be found. Applies to the `softwareProductId` path parameter. |
 
 ### Processing Errors
 

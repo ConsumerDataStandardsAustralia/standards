@@ -18,6 +18,7 @@ Release notes for version v1.32.0 of the [CDR Standards](../../index.html).
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
 - [Standards Staging #410 - Clarify RateString description and examples](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/410)
+- [Standards Staging #411 - Fix typos](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/411)
 - [Standards Staging #413 - Merge Change Log and Archives sections](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/413)
 - [Standards Staging #417 - Non-existent property "amount" listed as required](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/417)
 - [Standards Staging #418 - Add a link to CX Guidelines to the left menu pane of the Standards](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/418)
@@ -45,6 +46,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail | [Standards section](../../#section)
 | Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail | [Standards section](../../#section)
+| Fix typos | [**Standards Staging #411**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/411): Fixed typos and formatting in multiple specification files (documentation) including correction to the '400 - Missing _Required_ Field' error title. | N/A
 | Changelog section | [**Standards Staging #413**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/413): Merged the Change Log and Archives sections | [Changelog and archives](../../#changelog-and-archives)
 | Add CX Guidelines link | [**Standards Staging #418**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/418): Added CX Guidelines link to side/footer navigation | [Introduction](../../#introduction)
 | Improve Code sample styling | [**Standards Staging #438**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/438): Improved styling of 'Code samples' displayed in the Non-Normative Examples tab and updated the Register server URL in the OpenAPI specification to refer to the actual Base URLs | [Code samples throughout](../../?examples)<br>[Register APIs](../../?diff#register-apis)
