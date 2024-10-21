@@ -42,7 +42,6 @@ includes:
   - separator
   - known-issues
   - changelog
-  - archives
 
 search: true
 ---

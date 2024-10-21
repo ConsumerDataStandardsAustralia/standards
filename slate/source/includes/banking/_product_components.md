@@ -157,13 +157,17 @@ VARIABLE | A variable base rate for the product | NA
 <a id="productdepositadjustmentratetypedoc"></a>
 <ul><li id="tocSproductdepositadjustmentratetypedoc"><b>Deposit Adjustment Rate Types</b></li></ul>
 
+```diff
+Clarified the format of deposit 'bonus' adjustment rate values
+```
+
 A product may have zero, one, or multiple adjustment rates that are taken to apply to a Base rate.
 
 Value | Description | Use of additionalValue Field
 -- | -- | --
-BONUS | A bonus rate available by meeting a specific criteria | A description of the criteria to obtain the bonus
-BUNDLE_BONUS | A bonus rate obtained by originating a bundle instead of a standalone product | The name of the bundle
-INTRODUCTORY | An introductory bonus that will expire after a set period | The period of time for the introductory rate. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+BONUS | A bonus rate available by meeting a specific criteria. A deposit 'bonus' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Bonus). | A description of the criteria to obtain the bonus.
+BUNDLE_BONUS | A bonus rate obtained by originating a bundle instead of a standalone product. A deposit 'bonus' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Bonus). | The name of the bundle.
+INTRODUCTORY | An introductory bonus that will expire after a set period. A deposit 'bonus' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Bonus). | The period of time for the introductory rate. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations).
 
 
 
@@ -194,15 +198,19 @@ VARIABLE | A variable base rate for the product | NA
 <a id="productlendingadjustmentratetypedoc"></a>
 <ul><li id="tocSproductlendingadjustmentratetypedoc"><b>Lending Adjustment Rate Types</b></li></ul>
 
+```diff
+Clarified the format of lending 'discount' and 'penalty' adjustment rate values
+```
+
 A product may have zero, one, or multiple adjustment rates that are taken to apply to a Base rate.
 
 Value | Description | Use of additionalValue Field
 -- | -- | --
-BUNDLE_DISCOUNT_FIXED | A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product | The name of the bundle
-BUNDLE_DISCOUNT_VARIABLE | A discount rate off the variable rate obtained by originating a bundle instead of a standalone product | The name of the bundle
-DISCOUNT | A specific discount rate that may be applied. A discount rate reduces the interest payable | Description of the discount rate that is applicable
-INTRODUCTORY | An introductory discount that will expire after a set period | The period of time for the introductory rate. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-PENALTY | A specific penalty rate that may be applied. A penalty rate increases the interest payable | Description of the penalty rate that is applicable
+BUNDLE_DISCOUNT_FIXED | A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | The name of the bundle.
+BUNDLE_DISCOUNT_VARIABLE | A discount rate off the variable rate obtained by originating a bundle instead of a standalone product. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | The name of the bundle.
+DISCOUNT | A specific discount rate that may be applied. A discount rate reduces the interest payable. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | Description of the discount rate that is applicable.
+INTRODUCTORY | An introductory discount that will expire after a set period. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | The period of time for the introductory rate. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations).
+PENALTY | A specific penalty rate that may be applied. A penalty rate increases the interest payable. A lending 'penalty' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Penalty). | Description of the penalty rate that is applicable.
 
 
 <a id="bankingtermdepositaccountedoc"></a>
