@@ -31,7 +31,7 @@ mkdir $SWAGGER_CODEGEN_OUTPUT
 
 #codegen validator
 echo "*** Checking OAS Validator ***"
-VALID_OAS=$(java -jar $OAS_CODEGEN/openapi-generator-cli.jar validate -i $INPUT_SWAGGER)
+VALID_OAS=$(java -jar $OAS_CODEGEN/openapi-generator-cli-6.6.0.jar validate -i $INPUT_SWAGGER)
 echo "*** OAS Validator: " $VALID_OAS
 
 # generate
