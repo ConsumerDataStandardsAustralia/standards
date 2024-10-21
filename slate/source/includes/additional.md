@@ -1,13 +1,5 @@
 # Additional Standards
 
-```diff
-In addition to minor styling updates, aligned Banking documentation to enhancements applied in the Candidate Standards
-
-Removed duplicate `TelcoAccount` schema in the `TelcoAccountDetailResponseData` schema, in the 'Get Telco Account Detail' endpoint in the Telco Candidate Standards
-
-Fixed typo in 'Country of registeration' in the Candidate Standards for the Banking and Non-Bank Lending sector
-```
-
 The Consumer Data Standards also incorporate other non-binding standards that are developed to facilitate consultation and feedback or to facilitate voluntary extension of CDR implementations.
 
 These standards fall into three categories:
@@ -18,9 +10,13 @@ These standards fall into three categories:
 
 ## Candidate Standards
 
+```diff
+Updated Telco specification to ensure response header details are displayed correctly
+```
+
 The Consumer Data Standards currently include the following Candidate Standards:
 
-- [Candidate Standards for the Telecommunications sector](./includes/additional/candidates/telco.html)
+- [Candidate Standards for the Telecommunications sector](./includes/additional/candidates/telco/telco.html)
 - [Candidate Standards for Banking Decision Proposal 306](./includes/additional/candidates/dp306/banking-dp306.html)
 - [Candidate Standards for the Banking and Non-Bank Lending sector](./includes/additional/candidates/non-bank-lending/banking-non-bank-lending.html)
 

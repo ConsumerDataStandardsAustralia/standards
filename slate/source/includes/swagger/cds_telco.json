@@ -12,7 +12,7 @@
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Telco API",
-    "version" : "1.31.0"
+    "version" : "1.32.0"
   },
   "servers" : [ {
     "url" : "https://data.holder.com.au/cds-au/v1"
@@ -20,7 +20,7 @@
   "paths" : {
     "/telco/products" : {
       "get" : {
-        "description" : "Obtain a list of telco products that are currently offered to the market.\n\nNote that the results returned by this end point are expected to be ordered in descending order according to `lastUpdated`.",
+        "description" : "Obtain a list of telco products that are currently offered to the market.\n\nNote that the results returned by this endpoint are expected to be ordered in descending order according to `lastUpdated`.",
         "operationId" : "listProducts",
         "parameters" : [ {
           "description" : "Used to filter results on the type field. Any one of the valid values for this field can be supplied. If absent, defaults to include ALL products. Valid values are [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service. BROADBAND fixed internet service or ALL",
@@ -35,7 +35,7 @@
           },
           "style" : "form"
         }, {
-          "description" : "Used to filter results on the billing-type field.  Any one of the valid values for this field can be supplied. If absent, defaults to include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID', 'ALL'",
+          "description" : "Used to filter results on the billing-type field. Any one of the valid values for this field can be supplied. If absent, defaults to include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID', 'ALL'",
           "explode" : true,
           "in" : "query",
           "name" : "billing-type",
@@ -58,7 +58,7 @@
           },
           "style" : "form"
         }, {
-          "description" : "Only include products that have been updated after the specified date and time.  If absent defaults to include all plans",
+          "description" : "Only include products that have been updated after the specified date and time. If absent defaults to include all plans",
           "explode" : true,
           "in" : "query",
           "name" : "updated-since",
@@ -90,7 +90,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Page size to request.  Default is 25 (standard pagination)",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
           "explode" : true,
           "in" : "query",
           "name" : "page-size",
@@ -101,7 +101,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -111,7 +111,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -145,7 +145,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
           },
           "406" : {
             "content" : {
@@ -188,7 +188,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -198,7 +198,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -232,7 +232,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
           },
           "404" : {
             "content" : {
@@ -275,7 +275,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "oldest-date",
@@ -286,7 +286,7 @@
           "style" : "form",
           "x-cds-type" : "DateString"
         }, {
-          "description" : "Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "newest-date",
@@ -297,7 +297,7 @@
           "style" : "form",
           "x-cds-type" : "DateString"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -307,7 +307,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -327,7 +327,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -348,7 +348,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -387,7 +387,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -451,7 +451,7 @@
         "description" : "Obtain usage data for all services associated with the customer",
         "operationId" : "listUsage",
         "parameters" : [ {
-          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "oldest-date",
@@ -462,7 +462,7 @@
           "style" : "form",
           "x-cds-type" : "DateString"
         }, {
-          "description" : "Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "newest-date",
@@ -484,7 +484,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Page size to request.  Default is 25 (standard pagination)",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
           "explode" : true,
           "in" : "query",
           "name" : "page-size",
@@ -495,7 +495,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -505,7 +505,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -525,7 +525,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -546,7 +546,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -585,7 +585,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -643,7 +643,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Page size to request.  Default is 25 (standard pagination)",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
           "explode" : true,
           "in" : "query",
           "name" : "page-size",
@@ -654,7 +654,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -664,7 +664,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -684,7 +684,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -705,7 +705,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -747,7 +747,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -808,7 +808,7 @@
           },
           "style" : "form"
         }, {
-          "description" : "Only include accounts that have been updated after the specified date and time.  If absent defaults to include all plans",
+          "description" : "Only include accounts that have been updated after the specified date and time. If absent defaults to include all plans",
           "explode" : true,
           "in" : "query",
           "name" : "updated-since",
@@ -830,7 +830,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Page size to request.  Default is 25 (standard pagination)",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
           "explode" : true,
           "in" : "query",
           "name" : "page-size",
@@ -841,7 +841,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -851,7 +851,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -871,7 +871,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -892,7 +892,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -931,7 +931,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -980,7 +980,7 @@
         "description" : "Obtain detailed information for a specific telco account",
         "operationId" : "getAccount",
         "parameters" : [ {
-          "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
+          "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -990,7 +990,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1000,7 +1000,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1020,7 +1020,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -1041,7 +1041,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -1080,7 +1080,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -1126,10 +1126,10 @@
     },
     "/telco/accounts/{accountId}/payment-schedule" : {
       "get" : {
-        "description" : "Obtain the agreed payment schedule and details, if any, for a specific telco account. \n\nSome general notes about this end point:\n\n <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>",
+        "description" : "Obtain the agreed payment schedule and details, if any, for a specific telco account. \n\nSome general notes about this endpoint:\n\n <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>",
         "operationId" : "getPaymentSchedule",
         "parameters" : [ {
-          "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
+          "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -1139,7 +1139,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1149,7 +1149,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1169,7 +1169,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -1190,7 +1190,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -1229,7 +1229,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -1278,7 +1278,7 @@
         "description" : "Obtain the details of any concessions or arrangements applied to a specific telco account",
         "operationId" : "getConcessions",
         "parameters" : [ {
-          "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
+          "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -1288,7 +1288,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1298,7 +1298,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1318,7 +1318,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -1339,7 +1339,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -1378,7 +1378,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -1427,7 +1427,7 @@
         "description" : "Obtain the current balance for a specific account",
         "operationId" : "getBalanceForAccount",
         "parameters" : [ {
-          "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
+          "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -1437,7 +1437,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1447,7 +1447,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1467,7 +1467,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -1488,7 +1488,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -1527,7 +1527,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -1587,7 +1587,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Page size to request.  Default is 25 (standard pagination)",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
           "explode" : true,
           "in" : "query",
           "name" : "page-size",
@@ -1598,7 +1598,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1608,7 +1608,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1628,7 +1628,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -1649,7 +1649,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -1688,7 +1688,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -1746,7 +1746,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Page size to request.  Default is 25 (standard pagination)",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
           "explode" : true,
           "in" : "query",
           "name" : "page-size",
@@ -1757,7 +1757,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1767,7 +1767,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1787,7 +1787,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -1808,7 +1808,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -1850,7 +1850,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -1899,7 +1899,7 @@
         "description" : "Obtain the invoices for a specific account",
         "operationId" : "getInvoicesForAccount",
         "parameters" : [ {
-          "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
+          "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -1909,7 +1909,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1919,7 +1919,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1939,7 +1939,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -1960,7 +1960,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -1999,7 +1999,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -2063,7 +2063,7 @@
         "description" : "Obtain the invoices for all accounts",
         "operationId" : "listInvoices",
         "parameters" : [ {
-          "description" : "Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "newest-date",
@@ -2074,7 +2074,7 @@
           "style" : "form",
           "x-cds-type" : "DateString"
         }, {
-          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "oldest-date",
@@ -2096,7 +2096,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Page size to request.  Default is 25 (standard pagination)",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
           "explode" : true,
           "in" : "query",
           "name" : "page-size",
@@ -2107,7 +2107,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2117,7 +2117,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2137,7 +2137,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -2158,7 +2158,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -2197,7 +2197,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -2244,7 +2244,7 @@
         "description" : "Obtain invoices for a specified set of accounts",
         "operationId" : "listInvoicesForAccounts",
         "parameters" : [ {
-          "description" : "Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "newest-date",
@@ -2255,7 +2255,7 @@
           "style" : "form",
           "x-cds-type" : "DateString"
         }, {
-          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
+          "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type",
           "explode" : true,
           "in" : "query",
           "name" : "oldest-date",
@@ -2277,7 +2277,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Page size to request.  Default is 25 (standard pagination)",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
           "explode" : true,
           "in" : "query",
           "name" : "page-size",
@@ -2288,7 +2288,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2298,7 +2298,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2318,7 +2318,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -2339,7 +2339,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -2381,7 +2381,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -2430,7 +2430,7 @@
         "description" : "Obtain the billing transactions for a specific account",
         "operationId" : "getTransactionsForAccount",
         "parameters" : [ {
-          "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
+          "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements",
           "explode" : false,
           "in" : "path",
           "name" : "accountId",
@@ -2440,7 +2440,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type",
+          "description" : "Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type",
           "explode" : true,
           "in" : "query",
           "name" : "newest-time",
@@ -2451,7 +2451,7 @@
           "style" : "form",
           "x-cds-type" : "DateTimeString"
         }, {
-          "description" : "Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type",
+          "description" : "Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months. Format is aligned to DateTimeString common type",
           "explode" : true,
           "in" : "query",
           "name" : "oldest-time",
@@ -2473,7 +2473,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Page size to request.  Default is 25 (standard pagination)",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
           "explode" : true,
           "in" : "query",
           "name" : "page-size",
@@ -2484,7 +2484,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2494,7 +2494,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2514,7 +2514,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -2535,7 +2535,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -2574,7 +2574,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -2638,7 +2638,7 @@
         "description" : "Obtain billing transactions for all accounts",
         "operationId" : "listTransactions",
         "parameters" : [ {
-          "description" : "Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type",
+          "description" : "Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type",
           "explode" : true,
           "in" : "query",
           "name" : "newest-time",
@@ -2649,7 +2649,7 @@
           "style" : "form",
           "x-cds-type" : "DateTimeString"
         }, {
-          "description" : "Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type",
+          "description" : "Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months. Format is aligned to DateTimeString common type",
           "explode" : true,
           "in" : "query",
           "name" : "oldest-time",
@@ -2671,7 +2671,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Page size to request.  Default is 25 (standard pagination)",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
           "explode" : true,
           "in" : "query",
           "name" : "page-size",
@@ -2682,7 +2682,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2692,7 +2692,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2712,7 +2712,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -2733,7 +2733,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -2772,7 +2772,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -2819,7 +2819,7 @@
         "description" : "Obtain transactions for a specified set of accounts",
         "operationId" : "listBillingForAccounts",
         "parameters" : [ {
-          "description" : "Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type",
+          "description" : "Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type",
           "explode" : true,
           "in" : "query",
           "name" : "newest-time",
@@ -2830,7 +2830,7 @@
           "style" : "form",
           "x-cds-type" : "DateTimeString"
         }, {
-          "description" : "Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type",
+          "description" : "Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months. Format is aligned to DateTimeString common type",
           "explode" : true,
           "in" : "query",
           "name" : "oldest-time",
@@ -2852,7 +2852,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Page size to request.  Default is 25 (standard pagination)",
+          "description" : "Page size to request. Default is 25 (standard pagination)",
           "explode" : true,
           "in" : "query",
           "name" : "page-size",
@@ -2863,7 +2863,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2873,7 +2873,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2893,7 +2893,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-auth-date",
@@ -2914,7 +2914,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+          "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
           "in" : "header",
           "name" : "x-cds-client-headers",
@@ -2956,7 +2956,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
                 "$ref" : "#/components/headers/x-fapi-interaction-id"
@@ -3004,17 +3004,17 @@
   "components" : {
     "headers" : {
       "x-v" : {
+        "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
         "explode" : false,
         "schema" : {
-          "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
           "type" : "string"
         },
         "style" : "simple"
       },
       "x-fapi-interaction-id" : {
+        "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
         "explode" : false,
         "schema" : {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "type" : "string"
         },
         "style" : "simple"
@@ -3033,7 +3033,7 @@
         "style" : "simple"
       },
       "accountId" : {
-        "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements",
+        "description" : "ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements",
         "explode" : false,
         "in" : "path",
         "name" : "accountId",
@@ -3057,7 +3057,7 @@
         "style" : "form"
       },
       "newest-time" : {
-        "description" : "Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type",
+        "description" : "Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type",
         "explode" : true,
         "in" : "query",
         "name" : "newest-time",
@@ -3069,7 +3069,7 @@
         "x-cds-type" : "DateTimeString"
       },
       "oldest-time" : {
-        "description" : "Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type",
+        "description" : "Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months. Format is aligned to DateTimeString common type",
         "explode" : true,
         "in" : "query",
         "name" : "oldest-time",
@@ -3081,7 +3081,7 @@
         "x-cds-type" : "DateTimeString"
       },
       "newest-date" : {
-        "description" : "Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type",
+        "description" : "Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type",
         "explode" : true,
         "in" : "query",
         "name" : "newest-date",
@@ -3093,7 +3093,7 @@
         "x-cds-type" : "DateString"
       },
       "oldest-date" : {
-        "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type",
+        "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type",
         "explode" : true,
         "in" : "query",
         "name" : "oldest-date",
@@ -3117,7 +3117,7 @@
         "x-cds-type" : "PositiveInteger"
       },
       "page-size" : {
-        "description" : "Page size to request.  Default is 25 (standard pagination)",
+        "description" : "Page size to request. Default is 25 (standard pagination)",
         "explode" : true,
         "in" : "query",
         "name" : "page-size",
@@ -3129,7 +3129,7 @@
         "x-cds-type" : "PositiveInteger"
       },
       "x-v" : {
-        "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+        "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
         "explode" : false,
         "in" : "header",
         "name" : "x-v",
@@ -3140,7 +3140,7 @@
         "style" : "simple"
       },
       "x-min-v" : {
-        "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+        "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
         "explode" : false,
         "in" : "header",
         "name" : "x-min-v",
@@ -3162,7 +3162,7 @@
         "style" : "simple"
       },
       "x-fapi-auth-date" : {
-        "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+        "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
         "explode" : false,
         "in" : "header",
         "name" : "x-fapi-auth-date",
@@ -3185,7 +3185,7 @@
         "style" : "simple"
       },
       "x-cds-client-headers" : {
-        "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+        "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
         "explode" : false,
         "in" : "header",
         "name" : "x-cds-client-headers",
@@ -3791,7 +3791,7 @@
       "TelcoServiceDetail" : {
         "properties" : {
           "serviceId" : {
-            "description" : "The tokenised ID of the service identifier for use in the CDR APIs. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).  Created according to the CDR rules for [CDR ID permanence](#id-permanence)",
+            "description" : "The tokenised ID of the service identifier for use in the CDR APIs. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). Created according to the CDR rules for [CDR ID permanence](#id-permanence)",
             "type" : "string"
           }
         },
@@ -4016,7 +4016,7 @@
             "x-cds-type" : "AmountString"
           },
           "gstAmount" : {
-            "description" : "The total GST amount for this invoice.  If absent then zero is assumed",
+            "description" : "The total GST amount for this invoice. If absent then zero is assumed",
             "type" : "string",
             "x-cds-type" : "AmountString"
           },
@@ -4090,7 +4090,7 @@
             "$ref" : "#/components/schemas/TelcoInvoiceAccountChargesOtherCharges"
           },
           "totalGst" : {
-            "description" : "The total GST for all account level charges.  If absent then zero is assumed",
+            "description" : "The total GST for all account level charges. If absent then zero is assumed",
             "type" : "string",
             "x-cds-type" : "AmountString"
           }
@@ -4110,7 +4110,7 @@
             "x-cds-type" : "DateTimeString"
           },
           "gst" : {
-            "description" : "The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed",
+            "description" : "The GST incurred in the transaction. Should not be included for credits or payments. If absent zero is assumed",
             "type" : "string",
             "x-cds-type" : "AmountString"
           },
@@ -4161,7 +4161,7 @@
             "x-cds-type" : "DateTimeString"
           },
           "amount" : {
-            "description" : "The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
+            "description" : "The amount charged or credited for this transaction prior to any adjustments being applied. A negative value indicates a credit",
             "type" : "string",
             "x-cds-type" : "AmountString"
           },
@@ -4187,7 +4187,7 @@
             "type" : "string"
           },
           "amount" : {
-            "description" : "The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit",
+            "description" : "The amount of the charge or credit. A positive value indicates a charge and a negative value indicates a credit",
             "type" : "string",
             "x-cds-type" : "AmountString"
           },
@@ -4379,7 +4379,7 @@
         "description" : "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf",
         "properties" : {
           "dpid" : {
-            "description" : "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier",
+            "description" : "Unique identifier for an address as defined by Australia Post. Also known as Delivery Point Identifier",
             "type" : "string"
           },
           "thoroughfareNumber1" : {
@@ -5129,12 +5129,12 @@
             "type" : "string"
           },
           "paymentFrequency" : {
-            "description" : "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "description" : "The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           },
           "calculationType" : {
-            "description" : "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+            "description" : "The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
             "enum" : [ "STATIC", "BALANCE", "CALCULATED" ],
             "type" : "string"
           }
@@ -5146,24 +5146,24 @@
         "description" : "Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit",
         "properties" : {
           "isTokenised" : {
-            "description" : "Flag indicating that the account details are tokenised and cannot be shared.  False if absent",
+            "description" : "Flag indicating that the account details are tokenised and cannot be shared. False if absent",
             "type" : "boolean"
           },
           "bsb" : {
-            "description" : "The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
+            "description" : "The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces. Is required if isTokenised is absent or false",
             "type" : "string"
           },
           "accountNumber" : {
-            "description" : "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
+            "description" : "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces. Is required if isTokenised is absent or false",
             "type" : "string"
           },
           "paymentFrequency" : {
-            "description" : "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "description" : "The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           },
           "calculationType" : {
-            "description" : "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+            "description" : "The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
             "enum" : [ "STATIC", "BALANCE", "CALCULATED" ],
             "type" : "string"
           }
@@ -5194,12 +5194,12 @@
             "type" : "string"
           },
           "paymentFrequency" : {
-            "description" : "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "description" : "The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           },
           "calculationType" : {
-            "description" : "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+            "description" : "The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
             "enum" : [ "STATIC", "BALANCE", "CALCULATED" ],
             "type" : "string"
           }
@@ -5211,7 +5211,7 @@
         "description" : "Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment",
         "properties" : {
           "billFrequency" : {
-            "description" : "The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "description" : "The frequency with which a bill will be issued. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           }
@@ -5245,7 +5245,7 @@
             "x-cds-type" : "AmountString"
           },
           "gstAmount" : {
-            "description" : "The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed",
+            "description" : "The GST amount that will be discounted if the invoice is paid by the date specified. If absent then zero is assumed",
             "type" : "string",
             "x-cds-type" : "AmountString"
           },

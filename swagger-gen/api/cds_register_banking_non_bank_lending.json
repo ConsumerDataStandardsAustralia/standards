@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Participant Discovery API",
-    "version": "1.31.0"
+    "version": "1.32.0"
   },
   "servers": [
     {
@@ -50,7 +50,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
+            "description": "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
               "type": "string",
               "default": 1
@@ -59,7 +59,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }
@@ -99,7 +99,7 @@
             "description": "Success",
             "headers": {
               "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
+                "description": "The version of the API endpoint that the CDR Register has responded with.",
                 "schema": {
                   "type": "string"
                 }
@@ -181,7 +181,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "description": "The version of the API endpoint requested by the client. Must be set to a positive integer.",
             "required": true,
             "schema": {
               "type": "string"
@@ -190,7 +190,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }
@@ -210,7 +210,7 @@
             "description": "Success",
             "headers": {
               "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
+                "description": "The version of the API endpoint that the CDR Register has responded with.",
                 "schema": {
                   "type": "string"
                 }
@@ -306,7 +306,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
+            "description": "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
               "type": "string",
               "default": "1"
@@ -315,7 +315,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }
@@ -335,7 +335,7 @@
             "description": "Success",
             "headers": {
               "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
+                "description": "The version of the API endpoint that the CDR Register has responded with.",
                 "schema": {
                   "type": "string"
                 }
@@ -590,7 +590,7 @@
           "arbn": {
             "maxLength": 9,
             "type": "string",
-            "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
+            "description": "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies"
           }
         }
       },
@@ -693,7 +693,7 @@
           "arbn": {
             "maxLength": 9,
             "type": "string",
-            "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
+            "description": "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies"
           },
           "anzsicDivision": {
             "maxLength": 100,
@@ -979,7 +979,7 @@
       "XV": {
         "name": "x-v",
         "in": "header",
-        "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+        "description": "The version of the API endpoint requested by the client. Must be set to a positive integer.",
         "schema": {
           "type": "string"
         }
@@ -1004,7 +1004,7 @@
       "XMinV": {
         "name": "x-min-v",
         "in": "header",
-        "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+        "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
         "schema": {
           "type": "string"
         }

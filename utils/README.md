@@ -5,9 +5,8 @@ The new_version_setup.py script configures a new branch in preparation for stagi
 It does the following:
 * Change the version number of the standards in the intro markdown
 * Change the version number in each of the master swagger files in swagger-gen
-* Add an entry to the change log table for the new version
+* Add an entry to the Changelog and archives table for the new version
 * Create the release notes file for the new version with blank content and all of the references to the version updated
-* Add an entry for the previous version in the archives table
 * Remove all of the diff statements except for the one in the intro section that outlines how the diff tab works (_version_delta_intro.md)
 
 ## Usage

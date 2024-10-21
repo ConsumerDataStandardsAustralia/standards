@@ -1,232 +1,244 @@
-<h1 id='change-log'>Change Log</h1>
-<p>The following table lists the changes made to these standards in reverse date order (most recent change is at the top).</p>
+<h1 id='changelog-and-archives'>Changelog and archives</h1>
+<p>
+  <a id="change-log"></a>
+  <a id="archives"></a>
+</p>
+<pre class="highlight diff tab-diff"><code>Merged the Change Log and Archives sections. Archived versions are available through the links in the Version column.
+</code></pre>
+<p>The following table lists the changes made to these standards in reverse date order (most recent change and current version is at the top). Archived versions are prior versions of the standards that are available for reference only and not considered binding.</p>
 
 <table><thead>
 <tr>
-<th>Change Date</th>
+<th>Date</th>
 <th>Version</th>
 <th>Description</th>
 <th>Detail of change</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>21/10/2024</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.32.0/'>1.32.0</a></td>
+<td>Changes from Maintenance Iteration 20.</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.32.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/353">Decision 353</a> for details.</td>
+</tr>
+<tr>
 <td>03/07/2024</td>
-<td>1.31.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.31.0/'>1.31.0</a></td>
 <td>Changes from Maintenance Iteration 19</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.31.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/347">Decision 347</a> for details.</td>
 </tr>
 <tr>
 <td>24/04/2024</td>
-<td>1.30.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.30.0/'>1.30.0</a></td>
 <td>Changes from maintenance iteration 18</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.30.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/340">Decision 340</a> for details.</td>
 </tr>
 <tr>
 <td>28/02/2024</td>
-<td>1.29.1</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.29.1/'>1.29.1</a></td>
 <td>Patch release fixing minor issues</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.29.1.html">release notes</a> for details.</td>
 </tr>
 <tr>
 <td>21/12/2023</td>
-<td>1.29.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.29.0/'>1.29.0</a></td>
 <td>Changes from maintenance iteration 17.  Also includes CX Standards changes to uplift Data Holder Dashboards and accommodate Business Consumers</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.29.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/318">Decision 318</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/328">Decision 328</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/333">Decision 333</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/334">Decision 334</a> for details.</td>
 </tr>
 <tr>
 <td>10/11/2023</td>
-<td>1.28.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.28.0/'>1.28.0</a></td>
 <td>Candidate standards arising from Decision 306 and updated draft non-bank lending standards</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.28.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/306">Decision 306</a> for details.</td>
 </tr>
 <tr>
 <td>10/10/2023</td>
-<td>1.27.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.27.0/'>1.27.0</a></td>
 <td>Changes arising from Decision 313 (Maintenance Iteration 16)</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.27.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/313">Decision 313</a> for details.</td>
 </tr>
 <tr>
 <td>24/08/2023</td>
-<td>1.26.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.26.0/'>1.26.0</a></td>
 <td>Changes to obligations for the implementation of Get Metrics</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.26.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/322">Decision 322</a> for details.</td>
 </tr>
 <tr>
 <td>08/07/2023</td>
-<td>1.25.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.25.0/'>1.25.0</a></td>
 <td>Changes arising from Decision 303 (Maintenance iteration 15) and Decision 288 (Metrics and NFRs)</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.25.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/303">Decision 303</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/288">Decision 288</a> for details.</td>
 </tr>
 <tr>
 <td>07/05/2023</td>
-<td>1.24.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.24.0/'>1.24.0</a></td>
 <td>Changes arising from Decision 281 (Maintenance iteration 14)</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.24.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/281">Decision 281</a> for details.</td>
 </tr>
 <tr>
 <td>14/04/2023</td>
-<td>1.23.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.23.0/'>1.23.0</a></td>
 <td>Changes arising from Decision Proposal 298</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.23.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/298">Decision 298</a> for details.</td>
 </tr>
 <tr>
 <td>22/03/2023</td>
-<td>1.22.1</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.1/'>1.22.1</a></td>
 <td>Patch release including updates to draft Telco standards</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.22.1.html">release notes</a> for details.</td>
 </tr>
 <tr>
 <td>22/12/2022</td>
-<td>1.22.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.22.0/'>1.22.0</a></td>
 <td>Changes arising from Decision 271 (Maintenance iteration 13)</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.22.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/272">Decision 272</a> for details.</td>
 </tr>
 <tr>
 <td>16/12/2022</td>
-<td>1.21.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.21.0/'>1.21.0</a></td>
 <td>Changes arising from Decision 282</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.21.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/282">Decision 282</a> for details.</td>
 </tr>
 <tr>
 <td>03/11/2022</td>
-<td>1.20.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.20.0/'>1.20.0</a></td>
 <td>Changes arising from Decision 259 (Maintenance iteration 12)</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.20.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/259">Decision 259</a> for details.  Also includes first draft of Telco standards</td>
 </tr>
 <tr>
 <td>13/09/2022</td>
-<td>1.19.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.19.0/'>1.19.0</a></td>
 <td>Changes arising from Decision 260 (Energy Closed Accounts)</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.19.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/260">Decision 260</a> for details</td>
 </tr>
 <tr>
 <td>11/08/2022</td>
-<td>1.18.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.18.0/'>1.18.0</a></td>
 <td>Changes arising from Decision 249 (Maintenance iteration 11)</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.18.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/249">Decision 249</a> for details</td>
 </tr>
 <tr>
 <td>23/05/2022</td>
-<td>1.17.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.17.0/'>1.17.0</a></td>
 <td>Changes arising from Decision 237 (Maintenance Iteration 10)</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.17.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/237">Decision 237</a> for details</td>
 </tr>
 <tr>
 <td>22/03/2022</td>
-<td>1.16.1</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.16.1/'>1.16.1</a></td>
 <td>Minor errata and documentation fixes.  Update of swagger files to OAS3</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.16.1.html">release notes</a> for details</td>
 </tr>
 <tr>
 <td>04/02/2022</td>
-<td>1.16.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.16.0/'>1.16.0</a></td>
 <td>Changes arising from Decision 222 (Insights and Trusted Adviser Disclosure Consents CX Standards)</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.16.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/222">Decision 222</a> for details</td>
 </tr>
 <tr>
 <td>23/12/2021</td>
-<td>1.15.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.15.0/'>1.15.0</a></td>
 <td>Changes arising from Decision 199 (Binding Energy Standards), Decision 162 (Joint Account CX standards), Decision 209 (FAPI 1.0 migration), Decision 216 (OIDC Profile Scope) and Decision 212 (Maintenance Iteration 9 change requests)</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.15.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/199">Decision 199</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/162">Decision 162</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/209">Decision 209</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/212">Decision 212</a>, and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/216">Decision 216</a> for details</td>
 </tr>
 <tr>
 <td>29/10/2021</td>
-<td>1.14.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.14.0/'>1.14.0</a></td>
 <td>Inclusion of full candidate level standards for the energy sector</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.14.0.html">release notes</a> for details</td>
 </tr>
 <tr>
 <td>22/10/2021</td>
-<td>1.13.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.13.0/'>1.13.0</a></td>
 <td>Changes arising from Decisions 206 (Register Standards), 191 and 192</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.13.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/206">Decision 206</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/191">Decision 191</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/192">Decision 192</a> for details</td>
 </tr>
 <tr>
 <td>14/10/2021</td>
-<td>1.12.0</td>
-<td>Inclusion of a series of decisions related to energy and non-functional requirements</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.12.0/'>1.12.0</a></td>
+<td>Inclusion of a series of decisions related to energy and non-functional requirements. Changes arising from Decision Proposals 193 and 208.</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.12.0.html">release notes</a> for details</td>
 </tr>
 <tr>
 <td>05/10/2021</td>
-<td>1.11.1</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.11.1/'>1.11.1</a></td>
 <td>Minor errata and documentation fixes</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.11.1.html">release notes</a> for details</td>
 </tr>
 <tr>
 <td>30/06/2021</td>
-<td>1.11.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.11.0/'>1.11.0</a></td>
 <td>Changes arising from Decision Proposals 160, 187 and maintenance iteration 7 Decision Proposal 178</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.11.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/160">Decision 160</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/187">Decision 187</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/178">Decision 178</a> for details</td>
 </tr>
 <tr>
 <td>01/06/2021</td>
-<td>1.10.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.10.0/'>1.10.0</a></td>
 <td>Changes arising from Enhanced Error Handling decision proposals</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.10.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/154">Decision 154</a> for details</td>
 </tr>
 <tr>
 <td>29/04/2021</td>
-<td>1.9.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.9.0/'>1.9.0</a></td>
 <td>Changes arising from the sixth Data Standards Maintenance Iteration</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.9.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/161">Decision 161</a> for details</td>
 </tr>
 <tr>
 <td>16/04/2021</td>
-<td>1.8.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.8.0/'>1.8.0</a></td>
 <td>CX Standards for Amending Consent</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.8.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/144">Decision 144</a> for details</td>
 </tr>
 <tr>
 <td>10/03/2021</td>
-<td>1.7.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.7.0/'>1.7.0</a></td>
 <td>Changes arising from the fifth Banking Maintenance Iteration</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.7.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/159">Decision 159</a> for details</td>
 </tr>
 <tr>
 <td>23/12/2020</td>
-<td>1.6.0</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.6.0/'>1.6.0</a></td>
 <td>DP325 to address urgent community request regarding audience claim for client authentication for data recipients calling data holders</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.6.0.html">release notes</a> for details</td>
 </tr>
 <tr>
-<td>25/9/2020</td>
-<td>1.5.1</td>
+<td>25/09/2020</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.5.1/'>1.5.1</a></td>
 <td>Revert 1.5.0 CRN update</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.5.1.html">release notes</a> for details</td>
 </tr>
 <tr>
-<td>16/9/2020</td>
-<td>1.5.0</td>
-<td>Second Banking Maintenance Iteration 4 Release</td>
+<td>16/09/2020</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.5.0/'>1.5.0</a></td>
+<td>Second Banking Maintenance Iteration 4 Release (Banking Maintenance Iteration 4 Release)</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.5.0.html">release notes</a> for details</td>
 </tr>
 <tr>
-<td>12/8/2020</td>
-<td>1.4.0</td>
-<td>Banking Maintenance Iteration 4 Release</td>
+<td>12/08/2020</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.4.0/'>1.4.0</a></td>
+<td>Banking Maintenance Iteration 4 Release (Banking Maintenance Iteration 3 Release)</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.4.0.html">release notes</a> for details</td>
 </tr>
 <tr>
-<td>22/5/2020</td>
-<td>1.3.1</td>
-<td>Maintenance updates</td>
+<td>22/05/2020</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.3.1/'>1.3.1</a></td>
+<td>Maintenance updates (May Banking Maintenance Iteration 2 Release)</td>
 <td>Error Fixes<br/>See <a href="includes/releasenotes/releasenotes.1.3.1.html">release notes</a> for detail</td>
 </tr>
 <tr>
-<td>17/4/2020</td>
-<td>1.3.0</td>
-<td>Minor Update Release</td>
+<td>17/04/2020</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.3.0/'>1.3.0</a></td>
+<td>Minor Update Release (April 1.3.0 Release)</td>
 <td>Incorporates maintenance iteration 2 changes along with a number other CX and technical changes<br/>See <a href="includes/releasenotes/releasenotes.1.3.0.html">release notes</a> for detail</td>
 </tr>
 <tr>
-<td>31/1/2020</td>
-<td>1.2.0</td>
-<td>Phase 2 Baseline</td>
+<td>31/01/2020</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.2.0/'>1.2.0</a></td>
+<td>Phase 2 Baseline (January 1.2.0 Release)</td>
 <td>Baseline version for the Phase 2 implementation of the CDR regime<br/>See <a href="includes/releasenotes/releasenotes.1.2.0.html">release notes</a> for detail</td>
 </tr>
 <tr>
-<td>20/1/2020</td>
+<td>20/01/2020</td>
 <td>1.1.1</td>
 <td>Maintenance updates</td>
 <td>Error Fixes<br/>See <a href="includes/releasenotes/releasenotes.1.1.1.html">release notes</a> for detail</td>
@@ -244,151 +256,151 @@
 <td>Minor defect changes and clarifications.<br/>See <a href="includes/releasenotes/releasenotes.1.0.1.html">release notes</a> for detail</td>
 </tr>
 <tr>
-<td>30/9/2019</td>
-<td>1.0.0</td>
-<td>Baseline version 1</td>
+<td>30/09/2019</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.0.0/'>1.0.0</a></td>
+<td>Baseline version 1 (September 1.0.0 Release)</td>
 <td>This release is the baseline release for the standards that are intended for implementation February 2020 and contains minor updates as well as changes to align to the locked down CDR Rules and the updated CDR Register design</td>
 </tr>
 <tr>
-<td>4/9/2019</td>
-<td>0.9.6</td>
-<td>Defect fix release</td>
+<td>04/09/2019</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-0.9.6/'>0.9.6</a></td>
+<td>Defect fix release (September fixes update)</td>
 <td>This release addresses a series of documentation issues and other clarifications as identified via GitHub feedback</td>
 </tr>
 <tr>
-<td>15/7/2019</td>
-<td>0.9.5</td>
-<td>Incorporated May 2019 Feedback</td>
+<td>15/07/2019</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-0.9.5/'>0.9.5</a></td>
+<td>Incorporated May 2019 Feedback (July 2019 Working Draft)</td>
 <td>This version incorporates the decisions arising from the consultation feedback obtained on the May 2019 draft of the standards (v0.9.3)</td>
 </tr>
 <tr>
-<td>27/6/2019</td>
+<td>27/06/2019</td>
 <td>0.9.4</td>
 <td>Documentation and error fixes from May draft</td>
 <td><ul><li>Added missing versioning headers x-v/ x-min-v</li><li>Removed Banking API&#39;s tag </li><li>Fixed nonBusinessDayTreatment enum default is an array</li><li>Removal of empty x-scope in product reference</li><li>BankingScheduledPaymentRecurrence removed required intervals field</li><li>Added Swagger Contact object</li><li>BankingScheduledPaymentRecurrence removed required intervals field</li><li>Minor updates to static documentation typos/ broken links</li><li>Added cross links to additionalValue descriptions for Product Reference enums</li><li>Minor updates to product reference samples</li></ul></td>
 </tr>
 <tr>
-<td>29/5/2019</td>
-<td>0.9.3</td>
-<td>Final updates for May Draft</td>
+<td>29/05/2019</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-0.9.3/'>0.9.3</a></td>
+<td>Final updates for May Draft (May 2019 Working Draft)</td>
 <td>Addition of Discoverability, InfoSec Profile and minor corrections</td>
 </tr>
 <tr>
-<td>28/5/2019</td>
+<td>28/05/2019</td>
 <td>0.9.2</td>
 <td>Admin End Points</td>
 <td>Added separate swagger/yaml as well as documentation for admin end points</td>
 </tr>
 <tr>
-<td>28/5/2019</td>
+<td>28/05/2019</td>
 <td>0.9.1</td>
 <td>Modified BankingProductRateTier.maximumValue to optional</td>
 <td>Rebuild of docs</td>
 </tr>
 <tr>
-<td>28/5/2019</td>
+<td>28/05/2019</td>
 <td>0.9.0</td>
 <td>Incorporated Scheduled Payments Decision proposal 51</td>
 <td>Swagger updates and Documentation changes</td>
 </tr>
 <tr>
-<td>13/5/2019</td>
+<td>13/05/2019</td>
 <td>0.8.4</td>
 <td>InfoSec Update</td>
 <td>Imported the InfoSec content without update for recent proposals</td>
 </tr>
 <tr>
-<td>12/5/2019</td>
+<td>12/05/2019</td>
 <td>0.8.3</td>
 <td>Optionality Update</td>
 <td>Clarified the meaning of a field declaration of optional</td>
 </tr>
 <tr>
-<td>7/5/2019</td>
+<td>07/05/2019</td>
 <td>0.8.2</td>
 <td>Minor fixes</td>
 <td>Minor fixes for product category enum</td>
 </tr>
 <tr>
-<td>6/4/2019</td>
+<td>06/04/2019</td>
 <td>0.8.1</td>
 <td>Negative Rates</td>
 <td>Modified RateString to allow for negative rates and not just positive or zero rates</td>
 </tr>
 <tr>
-<td>3/4/2019</td>
+<td>03/04/2019</td>
 <td>0.8.0</td>
 <td>Accounts and Balances v1 final</td>
 <td>Applied changes to prepare for v1 version of Accounts and Balances end points and payloads documentation</td>
 </tr>
 <tr>
-<td>27/4/2019</td>
+<td>27/04/2019</td>
 <td>0.7.0</td>
 <td>April Feedback</td>
 <td>Incorporated feedback from v1 draft decisions and feedback cycle 5</td>
 </tr>
 <tr>
-<td>23/4/2019</td>
+<td>23/04/2019</td>
 <td>0.6.0</td>
 <td>Payees &amp; Customer v1 draft</td>
 <td>Applied changes to prepare for v1 version of Payees &amp; Customer end points and payloads documentation</td>
 </tr>
 <tr>
-<td>16/4/2019</td>
+<td>16/04/2019</td>
 <td>0.5.0</td>
 <td>Transaction v1 draft</td>
 <td>Applied changes to prepare for v1 version of Transaction end points and payloads documentation</td>
 </tr>
 <tr>
-<td>16/4/2019</td>
+<td>16/04/2019</td>
 <td>0.4.0</td>
 <td>Direct Debit Auth v1 draft</td>
 <td>Applied changes to prepare for v1 version of Direct Debit Authorisations end points and payloads documentation</td>
 </tr>
 <tr>
-<td>9/4/2019</td>
+<td>09/04/2019</td>
 <td>0.3.0</td>
 <td>Product Reference v1 final</td>
 <td>Synchronised standards documentation and swagger with final Decision 054 - Product Reference v1</td>
 </tr>
 <tr>
-<td>11/3/2019</td>
+<td>11/03/2019</td>
 <td>0.2.0</td>
 <td>Product Reference v1 draft</td>
 <td>Applied changes to prepare for v1 version of Product Reference end points and payloads</td>
 </tr>
 <tr>
-<td>22/2/2019</td>
+<td>22/02/2019</td>
 <td>0.2.0</td>
 <td>Rate tier name</td>
 <td>Addition of a name field for rate tiers</td>
 </tr>
 <tr>
-<td>21/2/2019</td>
+<td>21/02/2019</td>
 <td>0.2.0</td>
 <td>Rate tiering</td>
 <td>Added rate tiering and additional rate types based on community feedback</td>
 </tr>
 <tr>
-<td>19/2/2019</td>
+<td>19/02/2019</td>
 <td>0.2.0</td>
 <td>Fees and Discounts</td>
 <td>Updated product and account fees, discounts and elibilities based on community feedback</td>
 </tr>
 <tr>
-<td>19/2/2019</td>
+<td>19/02/2019</td>
 <td>0.2.0</td>
 <td>Doc Sync</td>
 <td>Synchronised the API documentation with the swagger files</td>
 </tr>
 <tr>
-<td>11/2/2019</td>
+<td>11/02/2019</td>
 <td>0.2.0</td>
 <td>Consistency Fixes</td>
 <td>Fixes to end points for consistency across the standard.  Changes as follows:<ul><li>Made the use of the data object consistent (all objects with mixin for properties)</li><li>Modifed the ErrorList object to ResponseErrorList as it really is a response object</li><li>Fixed required status for links and meta properties</li><li>Added query paging params for POST queries that return lists</li></ul></td>
 </tr>
 <tr>
-<td>4/2/2019</td>
+<td>04/02/2019</td>
 <td>0.2.0</td>
 <td>Object Model Names</td>
 <td>Updated the swagger json and yaml files to make the object model names consistent</td>
@@ -401,8 +413,14 @@
 </tr>
 <tr>
 <td>20/12/2018</td>
-<td>0.2.0</td>
-<td>Version 0.20</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/infosec-0.1/'>0.1.0</a></td>
+<td>Infosec version 0.1 (Christmas 2018 Working Draft - InfoSec Profile)</td>
+<td>Infosec version 0.1</td>
+</tr>
+<tr>
+<td>20/12/2018</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-0.20/'>0.2.0</a></td>
+<td>Version 0.20 (Christmas 2018 Working Draft - Standards)</td>
 <td>Version updated formally to version 0.20 for Christmas Draft</td>
 </tr>
 <tr>
@@ -494,5 +512,11 @@
 <td>0.1.0</td>
 <td>Addition of change log</td>
 <td>This change log was added to the standards documentation</td>
+</tr>
+<tr>
+<td>02/11/2018</td>
+<td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-0.1/'>0.1.0</a></td>
+<td>(November 2018 Working Draft)</td>
+<td>November 2018 Working Draft</td>
 </tr>
 </tbody></table>

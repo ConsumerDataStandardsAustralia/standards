@@ -10,7 +10,6 @@ POST https://data.holder.com.au/register HTTP/1.1
 Host: data.holder.com.au
 Content-Type: application/jwt
 Accept: application/json
-
 ```
 
 ```javascript--nodejs
@@ -19,21 +18,17 @@ const inputBody = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...';
 const headers = {
   'Content-Type':'application/jwt',
   'Accept':'application/json'
-
 };
 
-fetch('https://data.holder.com.au/register',
-{
+fetch('https://data.holder.com.au/register', {
   method: 'POST',
   body: inputBody,
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `POST /register`
@@ -46,7 +41,6 @@ This endpoint does not require CORS.
 
 ```yaml
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-
 ```
 
 <h3 id="cdr-dynamic-client-registration-api_register-data-recipient-oauth-client_endpoint-version">Endpoint Version</h3>
@@ -135,30 +129,23 @@ GET https://data.holder.com.au/register/{ClientId} HTTP/1.1
 Host: data.holder.com.au
 Accept: application/json
 Authorization: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'Authorization':'string'
-
 };
 
-fetch('https://data.holder.com.au/register/{ClientId}',
-{
+fetch('https://data.holder.com.au/register/{ClientId}', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /register/{ClientId}`
@@ -263,7 +250,6 @@ Host: data.holder.com.au
 Content-Type: application/jwt
 Accept: application/json
 Authorization: string
-
 ```
 
 ```javascript--nodejs
@@ -273,21 +259,17 @@ const headers = {
   'Content-Type':'application/jwt',
   'Accept':'application/json',
   'Authorization':'string'
-
 };
 
-fetch('https://data.holder.com.au/register/{ClientId}',
-{
+fetch('https://data.holder.com.au/register/{ClientId}', {
   method: 'PUT',
   body: inputBody,
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `PUT /register/{ClientId}`
@@ -298,7 +280,6 @@ Update a Client Registration for a given Client ID.
 
 ```yaml
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-
 ```
 
 <h3 id="cdr-dynamic-client-registration-api_update-data-recipient-registration_endpoint-version">Endpoint Version</h3>
@@ -398,31 +379,23 @@ To perform this operation, you must be authenticated and authorised with the fol
 ```http
 DELETE https://data.holder.com.au/register/{ClientId} HTTP/1.1
 Host: data.holder.com.au
-
 Authorization: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Authorization':'string'
-
 };
 
-fetch('https://data.holder.com.au/register/{ClientId}',
-{
+fetch('https://data.holder.com.au/register/{ClientId}', {
   method: 'DELETE',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `DELETE /register/{ClientId}`
@@ -478,7 +451,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-
 ```
 
 *The registration request JWT to be used to register with a Data Holder. The schema of the payload section of the decoded string(JWT) is defined in [ClientRegistration](#cdr-dynamic-client-registration-api_schemas_tocSclientregistration).*
@@ -542,7 +514,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "software_roles": "data-recipient-software-product",
   "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"
 }
-
 ```
 
 <h3 id="cdr-dynamic-client-registration-api_registrationproperties_properties">Properties</h3>
@@ -666,7 +637,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "software_roles": "data-recipient-software-product",
   "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"
 }
-
 ```
 
 <h3 id="cdr-dynamic-client-registration-api_clientregistration_properties">Properties</h3>
@@ -677,7 +647,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
 |» iss|string|mandatory|Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register|
-|» iat|[ExternalRef](#common-field-types)|mandatory|The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
+|» iat|[ExternalRef](#common-field-types)|mandatory|The time at which the request was issued by the Data Recipient expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
 |» exp|[ExternalRef](#common-field-types)|mandatory|The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
 |» jti|string|mandatory|Unique identifier for the JWT, used to prevent replay of the token|
 |» aud|[URIString](#common-field-types)|mandatory|Contains the Data Holder issuer value as described in the OIDC Discovery Document|
@@ -701,7 +671,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "error": "invalid_redirect_uri",
   "error_description": "string"
 }
-
 ```
 
 <h3 id="cdr-dynamic-client-registration-api_registrationerror_properties">Properties</h3>

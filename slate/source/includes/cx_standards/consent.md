@@ -1,9 +1,6 @@
 <h2 class="schema-heading" id="consumer-experience_consent-standards">Consent Standards</h2>
 
-```diff
-Added following CX Standard to clarify CDR Arrangement ID is required for consent and authorisation amendments:
-+ Consent: Amendment of Collection Consents and Authorisations
-```
+
 
 |Area|CX Standard|
 |-------------------|------------------------------|

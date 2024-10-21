@@ -3,7 +3,7 @@
   "info": {
     "title": "CDR Dynamic Client Registration API",
     "description": "This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.",
-    "version": "1.31.0"
+    "version": "1.32.0"
   },
   "servers": [
     {
@@ -550,7 +550,7 @@
               },
               "iat": {
                 "type": "integer",
-                "description": "The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
+                "description": "The time at which the request was issued by the Data Recipient expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
                 "example": 1571808167,
                 "x-cds-type": "ExternalRef"
               },

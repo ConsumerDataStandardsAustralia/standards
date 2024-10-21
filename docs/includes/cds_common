@@ -14,9 +14,7 @@
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -25,21 +23,16 @@
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/common/customer'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/common/customer'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /common/customer</code></p>
 
@@ -87,14 +80,14 @@
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -108,7 +101,7 @@
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -122,7 +115,7 @@
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -189,7 +182,7 @@
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -214,7 +207,7 @@
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -257,9 +250,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -268,21 +259,16 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/common/customer/detail'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/common/customer/detail'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /common/customer/detail</code></p>
 
@@ -320,14 +306,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -341,7 +327,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
 </tr>
 <tr>
 <td>x-fapi-customer-ip-address</td>
@@ -355,7 +341,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">Base64</a></td>
 <td>conditional</td>
-<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.</td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
 </tr>
 </tbody></table>
 
@@ -520,7 +506,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -545,7 +531,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -584,28 +570,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/discovery/status'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/discovery/status'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /discovery/status</code></p>
 
@@ -641,14 +620,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 
@@ -690,7 +669,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -715,7 +694,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 </tbody></table>
 
@@ -735,28 +714,21 @@ This operation does not require authentication
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/discovery/outages'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/discovery/outages'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /discovery/outages</code></p>
 
@@ -792,14 +764,14 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 </tbody></table>
 
@@ -844,7 +816,7 @@ This operation does not require authentication
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -869,7 +841,7 @@ This operation does not require authentication
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 </tbody></table>
 
@@ -900,7 +872,6 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_responsecommondiscoverystatus_properties">Properties</h3>
 
@@ -922,7 +893,7 @@ This operation does not require authentication
 <td>» status</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
-<td>Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)</td>
+<td>Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more endpoints are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)</td>
 </tr>
 <tr>
 <td>» explanation</td>
@@ -1012,7 +983,6 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_responsediscoveryoutageslist_properties">Properties</h3>
 
@@ -1064,7 +1034,6 @@ This operation does not require authentication
   </span><span class="s2">"isPartial"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_discoveryoutage_properties">Properties</h3>
 
@@ -1092,7 +1061,7 @@ This operation does not require authentication
 <td>isPartial</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
-<td>Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage</td>
+<td>Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available endpoints will be affected by the outage</td>
 </tr>
 <tr>
 <td>explanation</td>
@@ -1148,7 +1117,6 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_responsecommoncustomer_properties">Properties</h3>
 
@@ -1360,7 +1328,6 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_responsecommoncustomerdetailv2_properties">Properties</h3>
 
@@ -1448,7 +1415,6 @@ This operation does not require authentication
   </span><span class="s2">"occupationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"occupationCodeVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANZSCO_1220.0_2006_V1.0"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_commonperson_properties">Properties</h3>
 
@@ -1464,7 +1430,7 @@ This operation does not require authentication
 <td>lastUpdateTime</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
-<td>The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data</td>
+<td>The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data</td>
 </tr>
 <tr>
 <td>firstName</td>
@@ -1488,7 +1454,7 @@ This operation does not require authentication
 <td>prefix</td>
 <td>string</td>
 <td>optional</td>
-<td>Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)</td>
+<td>Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)</td>
 </tr>
 <tr>
 <td>suffix</td>
@@ -1614,7 +1580,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_commonpersondetailv2_properties">Properties</h3>
 
@@ -1697,7 +1662,6 @@ This operation does not require authentication
   </span><span class="s2">"registeredCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"establishmentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_commonorganisation_properties">Properties</h3>
 
@@ -1719,7 +1683,7 @@ This operation does not require authentication
 <td>agentFirstName</td>
 <td>string</td>
 <td>optional</td>
-<td>The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field</td>
+<td>The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present. The single name should be in the lastName field</td>
 </tr>
 <tr>
 <td>agentLastName</td>
@@ -1731,7 +1695,7 @@ This operation does not require authentication
 <td>agentRole</td>
 <td>string</td>
 <td>mandatory</td>
-<td>The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known</td>
+<td>The role of the individual identified as the agent who is providing authorisation. Expected to be used for display. Default to Unspecified if the role is not known</td>
 </tr>
 <tr>
 <td>businessName</td>
@@ -1767,7 +1731,7 @@ This operation does not require authentication
 <td>isACNCRegistered</td>
 <td><a href="#common-field-types">Boolean</a></td>
 <td>optional</td>
-<td>True if registered with the ACNC.  False if not. Absent or null if not confirmed.</td>
+<td>True if registered with the ACNC. False if not. Absent or null if not confirmed.</td>
 </tr>
 <tr>
 <td>industryCode</td>
@@ -1791,7 +1755,7 @@ This operation does not require authentication
 <td>registeredCountry</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
-<td>Enumeration with values from <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country codes.  Assumed to be AUS if absent</td>
+<td>Enumeration with values from <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country codes. Assumed to be AUS if absent</td>
 </tr>
 <tr>
 <td>establishmentDate</td>
@@ -1908,7 +1872,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_commonorganisationdetailv2_properties">Properties</h3>
 
@@ -1971,7 +1934,6 @@ This operation does not require authentication
   </span><span class="s2">"extension"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fullNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_commonphonenumber_properties">Properties</h3>
 
@@ -2074,7 +2036,6 @@ This operation does not require authentication
   </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_commonemailaddress_properties">Properties</h3>
 
@@ -2178,7 +2139,6 @@ This operation does not require authentication
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAIL"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_commonphysicaladdresswithpurpose_properties">Properties</h3>
 
@@ -2299,7 +2259,6 @@ This operation does not require authentication
     </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_commonphysicaladdress_properties">Properties</h3>
 
@@ -2367,7 +2326,6 @@ This operation does not require authentication
   </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_commonsimpleaddress_properties">Properties</h3>
 
@@ -2461,7 +2419,6 @@ This operation does not require authentication
   </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a></em></p>
 
@@ -2479,7 +2436,7 @@ This operation does not require authentication
 <td>dpid</td>
 <td>string</td>
 <td>optional</td>
-<td>Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier</td>
+<td>Unique identifier for an address as defined by Australia Post. Also known as Delivery Point Identifier</td>
 </tr>
 <tr>
 <td>thoroughfareNumber1</td>
@@ -2491,7 +2448,7 @@ This operation does not require authentication
 <td>thoroughfareNumber1Suffix</td>
 <td>string</td>
 <td>optional</td>
-<td>Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated</td>
+<td>Suffix for the thoroughfare number. Only relevant if <em>thoroughfareNumber1</em> is populated</td>
 </tr>
 <tr>
 <td>thoroughfareNumber2</td>
@@ -2503,7 +2460,7 @@ This operation does not require authentication
 <td>thoroughfareNumber2Suffix</td>
 <td>string</td>
 <td>optional</td>
-<td>Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated</td>
+<td>Suffix for the second thoroughfare number. Only relevant if <em>thoroughfareNumber2</em> is populated</td>
 </tr>
 <tr>
 <td>flatUnitType</td>
@@ -2620,7 +2577,6 @@ This operation does not require authentication
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_links_properties">Properties</h3>
 
@@ -2649,7 +2605,6 @@ This operation does not require authentication
   <a class="schema-anchor" id="schemacdr-common-apimeta"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_meta_properties">Properties</h3>
 
@@ -2666,7 +2621,6 @@ This operation does not require authentication
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Additional data for customised error codes</em></p>
 
@@ -2708,7 +2662,6 @@ This operation does not require authentication
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-common-api_responseerrorlistv2_properties">Properties</h3>
 

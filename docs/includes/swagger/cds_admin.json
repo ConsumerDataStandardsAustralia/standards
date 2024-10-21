@@ -3,16 +3,16 @@
   "info" : {
     "contact" : {
       "email" : "contact@consumerdatastandards.gov.au",
-      "name" : "Consumer Data Standards Administration End Points",
+      "name" : "Consumer Data Standards Administration endpoints",
       "url" : "https://consumerdatastandards.gov.au"
     },
-    "description" : "Data Holder Consumer Data Standards Administration End Points created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker",
+    "description" : "Data Holder Consumer Data Standards Administration endpoints created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker",
     "license" : {
       "name" : "MIT License",
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Admin API",
-    "version" : "1.31.0"
+    "version" : "1.32.0"
   },
   "servers" : [ {
     "url" : "https://data.holder.com.au/cds-au/v1"
@@ -23,7 +23,7 @@
         "description" : "Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained",
         "operationId" : "metadataUpdate",
         "parameters" : [ {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -33,7 +33,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -63,7 +63,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -80,7 +80,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
           },
           "406" : {
             "content" : {
@@ -103,7 +103,7 @@
     },
     "/admin/metrics" : {
       "get" : {
-        "description" : "This end point allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this end point are determined by the non-functional requirements for the CDR regime.\n\nThis end point is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version **MUST** be implemented by **May 13th 2024**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nDeprecated versions:\n\n- [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023.  Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version\n- [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**\n\nIf the Data Holder supports private_key_jwt client authentication they MUST validate the scope.",
+        "description" : "This endpoint allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this endpoint are determined by the non-functional requirements for the CDR regime.\n\nThis endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version **MUST** be implemented by **May 13th 2024**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nDeprecated versions:\n\n- [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023. Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version\n- [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**\n\nIf the Data Holder supports private_key_jwt client authentication they MUST validate the scope.",
         "operationId" : "getMetrics",
         "parameters" : [ {
           "description" : "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL. If absent the default is ALL.",
@@ -118,7 +118,7 @@
           },
           "style" : "form"
         }, {
-          "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -128,7 +128,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -150,7 +150,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -167,7 +167,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
+            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
           },
           "406" : {
             "content" : {
@@ -191,7 +191,7 @@
   "components" : {
     "parameters" : {
       "RequestHeader_x-v" : {
-        "description" : "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+        "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
         "explode" : false,
         "in" : "header",
         "name" : "x-v",
@@ -202,7 +202,7 @@
         "style" : "simple"
       },
       "RequestHeader_x-min-v" : {
-        "description" : "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+        "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
         "explode" : false,
         "in" : "header",
         "name" : "x-min-v",
@@ -290,7 +290,7 @@
         "x-conditional" : [ "secondary", "largeSecondary" ]
       },
       "PerformancePreviousDays" : {
-        "description" : "Array of contiguous hourly metrics for the specified day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+        "description" : "Array of contiguous hourly metrics for the specified day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
         "items" : {
           "$ref" : "#/components/schemas/PerformanceHours"
         },
@@ -441,7 +441,7 @@
         "type" : "object"
       },
       "SecondaryHolderMetricsV2" : {
-        "description" : "Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+        "description" : "Errors and rejections received by the primary data holder from the secondary data holder. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
         "properties" : {
           "errors" : {
             "$ref" : "#/components/schemas/SecondaryHolderMetricsV2_errors"
@@ -670,7 +670,7 @@
         "description" : "Percentage of high priority calls within the performance thresholds",
         "properties" : {
           "currentDay" : {
-            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "description" : "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
               "$ref" : "#/components/schemas/PerformanceHours"
             },
@@ -691,7 +691,7 @@
         "description" : "Percentage of large payload calls within the performance thresholds",
         "properties" : {
           "currentDay" : {
-            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "description" : "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
               "$ref" : "#/components/schemas/PerformanceHours"
             },
@@ -712,7 +712,7 @@
         "description" : "Percentage of low priority calls within the performance thresholds",
         "properties" : {
           "currentDay" : {
-            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "description" : "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
               "$ref" : "#/components/schemas/PerformanceHours"
             },
@@ -733,7 +733,7 @@
         "description" : "Percentage of unattended calls within the performance thresholds",
         "properties" : {
           "currentDay" : {
-            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "description" : "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
               "$ref" : "#/components/schemas/PerformanceHours"
             },
@@ -754,7 +754,7 @@
         "description" : "Percentage of unauthenticated calls within the performance thresholds",
         "properties" : {
           "currentDay" : {
-            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "description" : "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
               "$ref" : "#/components/schemas/PerformanceHours"
             },
@@ -775,7 +775,7 @@
         "description" : "Percentage of Shared Responsibility calls within the performance thresholds for the primary data holder",
         "properties" : {
           "currentDay" : {
-            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "description" : "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
               "$ref" : "#/components/schemas/PerformanceHours"
             },
@@ -796,7 +796,7 @@
         "description" : "Percentage of Shared Responsibility calls within the performance thresholds for the secondary data holder",
         "properties" : {
           "currentDay" : {
-            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "description" : "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
               "$ref" : "#/components/schemas/PerformanceHours"
             },
@@ -830,7 +830,7 @@
         "description" : "Percentage of large Shared Responsibility calls within the performance thresholds for the secondary data holder",
         "properties" : {
           "currentDay" : {
-            "description" : "Array of contiguous hourly metrics for the current day.  Each element represents a 1 hour period starting from 12am-1am.  Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+            "description" : "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
             "items" : {
               "$ref" : "#/components/schemas/PerformanceHours"
             },
@@ -961,7 +961,7 @@
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
       "InvocationMetricsV3_secondary" : {
-        "description" : "API call counts for the Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+        "description" : "API call counts for the Shared Responsibility Data Requests tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
         "properties" : {
           "currentDay" : {
             "description" : "API call counts for current day",
@@ -981,7 +981,7 @@
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
       "InvocationMetricsV3_largeSecondary" : {
-        "description" : "API call counts for the large Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+        "description" : "API call counts for the large Shared Responsibility Data Requests tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
         "properties" : {
           "currentDay" : {
             "description" : "API call counts for current day",
@@ -1127,7 +1127,7 @@
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
       "AverageResponseMetricsV2_secondary" : {
-        "description" : "Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+        "description" : "Average response time for the secondary tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
         "properties" : {
           "primary" : {
             "$ref" : "#/components/schemas/AverageResponseMetricsV2_secondary_primary"
@@ -1140,7 +1140,7 @@
         "type" : "object"
       },
       "AverageResponseMetricsV2_largeSecondary" : {
-        "description" : "Average response time for the large payload tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+        "description" : "Average response time for the large payload tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
         "properties" : {
           "primary" : {
             "$ref" : "#/components/schemas/AverageResponseMetricsV2_secondary_primary"
@@ -1285,14 +1285,14 @@
         "properties" : {
           "currentDay" : {
             "additionalProperties" : {
-              "description" : "Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for",
+              "description" : "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for",
               "type" : "integer",
               "x-cds-type" : "NaturalNumber"
             },
             "description" : "Error counts, by HTTP error code, for current day",
             "properties" : {
               "500" : {
-                "description" : "Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts",
+                "description" : "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts",
                 "type" : "integer",
                 "x-cds-type" : "NaturalNumber"
               }
@@ -1303,13 +1303,13 @@
             "description" : "Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
               "additionalProperties" : {
-                "description" : "Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for",
+                "description" : "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for",
                 "type" : "integer",
                 "x-cds-type" : "NaturalNumber"
               },
               "properties" : {
                 "500" : {
-                  "description" : "Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts",
+                  "description" : "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts",
                   "type" : "integer",
                   "x-cds-type" : "NaturalNumber"
                 }
@@ -1327,14 +1327,14 @@
         "properties" : {
           "currentDay" : {
             "additionalProperties" : {
-              "description" : "Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for",
+              "description" : "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for",
               "type" : "integer",
               "x-cds-type" : "NaturalNumber"
             },
             "description" : "Error counts, by HTTP error code, for current day",
             "properties" : {
               "500" : {
-                "description" : "Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts",
+                "description" : "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts",
                 "type" : "integer",
                 "x-cds-type" : "NaturalNumber"
               }
@@ -1345,13 +1345,13 @@
             "description" : "Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items" : {
               "additionalProperties" : {
-                "description" : "Number of errors for a specific HTTP error code.  Note that the property name must be 3 digits represent the HTTP error code the error is for",
+                "description" : "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for",
                 "type" : "integer",
                 "x-cds-type" : "NaturalNumber"
               },
               "properties" : {
                 "500" : {
-                  "description" : "Number of errors for HTTP error code 500.  Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax.  See the `additionalProperties` field in this schema for the generic property structure for error code counts",
+                  "description" : "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts",
                   "type" : "integer",
                   "x-cds-type" : "NaturalNumber"
                 }
@@ -1365,7 +1365,7 @@
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
       "RejectionMetricsV3_authenticated" : {
-        "description" : "Rejection counts for all authenticated end points",
+        "description" : "Rejection counts for all authenticated endpoints",
         "properties" : {
           "currentDay" : {
             "description" : "Number of calls rejected for current day",
@@ -1385,7 +1385,7 @@
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
       "RejectionMetricsV3_unauthenticated" : {
-        "description" : "Rejection counts for all unauthenticated end points",
+        "description" : "Rejection counts for all unauthenticated endpoints",
         "properties" : {
           "currentDay" : {
             "description" : "Number of calls rejected for current day",
@@ -1828,7 +1828,7 @@
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
       "AuthorisationMetricsV2_abandonmentsByStage" : {
-        "description" : "Customer abandonment count per stage of the consent flow.  Note that the aggregated abandonment count for all stages for a period should equal the count in `abandonedConsentFlowCount` for the same period (ie. each abandoned consent should assigned to one, and only one, stage)",
+        "description" : "Customer abandonment count per stage of the consent flow. Note that the aggregated abandonment count for all stages for a period should equal the count in `abandonedConsentFlowCount` for the same period (ie. each abandoned consent should assigned to one, and only one, stage)",
         "properties" : {
           "preIdentification" : {
             "$ref" : "#/components/schemas/AuthorisationMetricsV2_abandonmentsByStage_preIdentification"

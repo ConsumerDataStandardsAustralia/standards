@@ -7,37 +7,30 @@
 
 ```http
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands HTTP/1.1
-
+Host: <register-base-url>
 Accept: application/json
 Authorization: string
 x-v: 1
 x-min-v: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'Authorization':'string',
   'x-v':'1',
   'x-min-v':'string'
-
 };
 
-fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands',
-{
+fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /cdr-register/v1/{industry}/data-holders/brands`
@@ -57,8 +50,8 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.
 |---|---|---|---|---|
 |industry|path|[Enum](#common-field-types)|mandatory|The industry the participant is retrieving data for (Banking, etc)|
 |Authorization|header|[ExternalRef](#common-field-types)|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|optional|The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.|
 |updated-since|query|[DateTimeString](#common-field-types)|optional|query filter returns results updated since the specified date-time|
 |page|query|[PositiveInteger](#common-field-types)|optional|the page number to return|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|the number of records to return per page|
@@ -146,7 +139,7 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The version of the API end point that the CDR Register has responded with.|
+|200|x-v|string|The version of the API endpoint that the CDR Register has responded with.|
 |401|WWW-Authenticate|[ExternalRef](#common-field-types)|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**|
 
   
@@ -166,37 +159,30 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```http
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands/summary HTTP/1.1
-
+Host: <register-base-url>
 Accept: application/json
 x-v: string
 x-min-v: string
 If-None-Match: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string',
   'If-None-Match':'string'
-
 };
 
-fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands/summary',
-{
+fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-holders/brands/summary', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /cdr-register/v1/{industry}/data-holders/brands/summary`
@@ -215,8 +201,8 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-sum
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|[Enum](#common-field-types)|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|mandatory|The version of the API end point requested by the client. Must be set to a positive integer.|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|mandatory|The version of the API endpoint requested by the client. Must be set to a positive integer.|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|[ASCIIString](#common-field-types)|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 <h4 id="cdr-participant-discovery-api_get-data-holder-brands-summary_enumerated-values-parameters">Enumerated Values</h4>
@@ -272,7 +258,7 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-sum
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The version of the API end point that the CDR Register has responded with.|
+|200|x-v|string|The version of the API endpoint that the CDR Register has responded with.|
 |200|Etag|[ASCIIString](#common-field-types)|Entity tag that uniquely represents the requested resource.|
 |304|Etag|[ASCIIString](#common-field-types)|Entity tag that uniquely represents the requested resource.|
 
@@ -290,37 +276,30 @@ This operation does not require authentication
 
 ```http
 GET https://<register-base-url>/cdr-register/v1/{industry}/data-holders/status HTTP/1.1
-
+Host: <register-base-url>
 Accept: application/json
 x-v: 1
 x-min-v: string
 If-None-Match: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'1',
   'x-min-v':'string',
   'If-None-Match':'string'
-
 };
 
-fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-holders/status',
-{
+fetch('https://<register-base-url>/cdr-register/v1/{industry}/data-holders/status', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /cdr-register/v1/{industry}/data-holders/status`
@@ -339,8 +318,8 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|[Enum](#common-field-types)|mandatory|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|optional|The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
-|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|optional|The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained|
+|x-min-v|header|string|optional|The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.|
 |If-None-Match|header|[ASCIIString](#common-field-types)|optional|Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
 <h4 id="cdr-participant-discovery-api_get-data-holder-statuses_enumerated-values-parameters">Enumerated Values</h4>
@@ -385,7 +364,7 @@ Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The version of the API end point that the CDR Register has responded with.|
+|200|x-v|string|The version of the API endpoint that the CDR Register has responded with.|
 |200|Etag|[ASCIIString](#common-field-types)|Entity tag that uniquely represents the requested resource.|
 |304|Etag|[ASCIIString](#common-field-types)|Entity tag that uniquely represents the requested resource.|
 
@@ -460,7 +439,6 @@ This operation does not require authentication
     "totalRecords": 0
   }
 }
-
 ```
 
 *Response containing a list of CDR Register Data Holder Brand objects*
@@ -520,7 +498,6 @@ This operation does not require authentication
   ],
   "lastUpdated": "string"
 }
-
 ```
 
 <h3 id="cdr-participant-discovery-api_registerdataholderbrand_properties">Properties</h3>
@@ -580,7 +557,6 @@ This operation does not require authentication
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-participant-discovery-api_responsedataholdersbrandsummarylist_properties">Properties</h3>
@@ -614,7 +590,6 @@ This operation does not require authentication
   "acn": "string",
   "arbn": "string"
 }
-
 ```
 
 <h3 id="cdr-participant-discovery-api_dataholderbrandsummary_properties">Properties</h3>
@@ -630,7 +605,7 @@ This operation does not require authentication
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory|The date/time that the Data Holder Brand data was last updated in the Register|
 |abn|string|optional|Australian Business Number for the organisation|
 |acn|string|optional|Australian Company Number for the organisation|
-|arbn|string|optional|Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies|
+|arbn|string|optional|Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies|
 
 <h4 id="cdr-participant-discovery-api_dataholderbrandsummary_enumerated-values-main">Enumerated Values</h4>
 
@@ -662,7 +637,6 @@ This operation does not require authentication
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-participant-discovery-api_dataholdersstatuslist_properties">Properties</h3>
@@ -686,7 +660,6 @@ This operation does not require authentication
   "legalEntityId": "string",
   "status": "ACTIVE"
 }
-
 ```
 
 <h3 id="cdr-participant-discovery-api_dataholderstatus_properties">Properties</h3>
@@ -726,7 +699,6 @@ This operation does not require authentication
   "organisationType": "SOLE_TRADER",
   "status": "ACTIVE"
 }
-
 ```
 
 *The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)*
@@ -743,7 +715,7 @@ This operation does not require authentication
 |registeredCountry|string|optional|Country of registration (if the company is registered outside Australia)|
 |abn|string|optional|Australian Business Number for the organisation|
 |acn|string|optional|Australian Company Number for the organisation|
-|arbn|string|optional|Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies|
+|arbn|string|optional|Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies|
 |anzsicDivision|[ExternalRef](#common-field-types)|optional|ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**|
 |organisationType|[Enum](#common-field-types)|optional|Legal organisation type|
 |status|[Enum](#common-field-types)|mandatory|none|
@@ -778,7 +750,6 @@ This operation does not require authentication
   "extensionBaseUri": "string",
   "websiteUri": "string"
 }
-
 ```
 
 *Endpoints related to Data Holder Brand services*
@@ -807,7 +778,6 @@ This operation does not require authentication
   "registerUType": "SIGNED-JWT",
   "jwksEndpoint": "string"
 }
-
 ```
 
 *Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication*
@@ -841,7 +811,6 @@ This operation does not require authentication
   "prev": "string",
   "self": "string"
 }
-
 ```
 
 <h3 id="cdr-participant-discovery-api_linkspaginated_properties">Properties</h3>
@@ -867,7 +836,6 @@ This operation does not require authentication
   "totalPages": 0,
   "totalRecords": 0
 }
-
 ```
 
 <h3 id="cdr-participant-discovery-api_metapaginated_properties">Properties</h3>
@@ -889,7 +857,6 @@ This operation does not require authentication
 {
   "self": "string"
 }
-
 ```
 
 <h3 id="cdr-participant-discovery-api_links_properties">Properties</h3>
@@ -908,7 +875,6 @@ This operation does not require authentication
 
 ```json
 {}
-
 ```
 
 <h3 id="cdr-participant-discovery-api_meta_properties">Properties</h3>
@@ -927,7 +893,6 @@ This operation does not require authentication
 {
   "urn": "string"
 }
-
 ```
 
 *Additional data for customised error codes*
@@ -959,7 +924,6 @@ This operation does not require authentication
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-participant-discovery-api_responseerrorlistv2_properties">Properties</h3>
@@ -985,7 +949,6 @@ This operation does not require authentication
     "urn": "string"
   }
 }
-
 ```
 
 <h3 id="cdr-participant-discovery-api_responseerrorlistv2_errors_properties">Properties</h3>

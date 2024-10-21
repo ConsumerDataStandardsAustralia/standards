@@ -15,12 +15,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -29,21 +27,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /banking/accounts`
@@ -71,7 +64,7 @@ Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html).
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-banking-api_get-accounts_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -134,7 +127,7 @@ Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html).
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountListV2](#schemacdr-banking-apiresponsebankingaccountlistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -173,12 +166,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -187,21 +178,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/balances',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/balances', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /banking/accounts/balances`
@@ -227,7 +213,7 @@ Obtain balances for multiple, filtered accounts.
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-banking-api_get-bulk-balances_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -292,7 +278,7 @@ Obtain balances for multiple, filtered accounts.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceList](#schemacdr-banking-apiresponsebankingaccountsbalancelist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -332,7 +318,6 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
@@ -354,21 +339,17 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/balances',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/balances', {
   method: 'POST',
   body: inputBody,
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `POST /banking/accounts/balances`
@@ -404,8 +385,8 @@ Obtain balances for a specified list of accounts.
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-|body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|The list of account IDs to obtain balances for.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|The list of _accountId_ values to obtain balances for.|
 
 > Example responses
 
@@ -450,7 +431,7 @@ Obtain balances for a specified list of accounts.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceList](#schemacdr-banking-apiresponsebankingaccountsbalancelist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -489,12 +470,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -503,21 +482,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /banking/accounts/{accountId}/balance`
@@ -539,7 +513,7 @@ Obtain the balance for a single specified account.
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -573,7 +547,7 @@ Obtain the balance for a single specified account.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceById](#schemacdr-banking-apiresponsebankingaccountsbalancebyid)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -612,12 +586,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -626,21 +598,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /banking/accounts/{accountId}`
@@ -664,7 +631,7 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](incl
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -877,7 +844,7 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](incl
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountByIdV3](#schemacdr-banking-apiresponsebankingaccountbyidv3)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -916,12 +883,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -930,21 +895,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /banking/accounts/{accountId}/transactions`
@@ -983,7 +943,7 @@ Some general notes that apply to all endpoints that retrieve transactions:
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1035,7 +995,7 @@ Some general notes that apply to all endpoints that retrieve transactions:
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionList](#schemacdr-banking-apiresponsebankingtransactionlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -1076,12 +1036,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -1090,21 +1048,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /banking/accounts/{accountId}/transactions/{transactionId}`
@@ -1127,7 +1080,7 @@ Obtain detailed information on a transaction for a specific account.
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1178,7 +1131,7 @@ Obtain detailed information on a transaction for a specific account.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionById](#schemacdr-banking-apiresponsebankingtransactionbyid)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -1217,12 +1170,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -1231,21 +1182,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /banking/accounts/{accountId}/direct-debits`
@@ -1269,7 +1215,7 @@ Obtain direct debit authorisations for a specific account.
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1312,7 +1258,7 @@ Obtain direct debit authorisations for a specific account.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -1353,12 +1299,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -1367,21 +1311,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /banking/accounts/direct-debits`
@@ -1407,7 +1346,7 @@ Obtain direct debit authorisations for multiple, filtered accounts.
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-banking-api_get-bulk-direct-debits_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -1470,7 +1409,7 @@ Obtain direct debit authorisations for multiple, filtered accounts.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -1510,7 +1449,6 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
@@ -1532,21 +1470,17 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits', {
   method: 'POST',
   body: inputBody,
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `POST /banking/accounts/direct-debits`
@@ -1582,8 +1516,8 @@ Obtain direct debit authorisations for a specified list of accounts.
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-|body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|Array of specific accountIds to obtain authorisations for.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|Array of _accountId_ values to obtain authorisations for.|
 
 > Example responses
 
@@ -1626,7 +1560,7 @@ Obtain direct debit authorisations for a specified list of accounts.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -1665,12 +1599,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -1679,21 +1611,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /banking/accounts/{accountId}/payments/scheduled`
@@ -1719,7 +1646,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1850,7 +1777,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -1891,12 +1818,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -1905,21 +1830,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/payments/scheduled',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/payments/scheduled', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /banking/payments/scheduled`
@@ -1947,7 +1867,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html).
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-banking-api_get-scheduled-payments-bulk_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -2098,7 +2018,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html).
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -2138,7 +2058,6 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
@@ -2160,21 +2079,17 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/payments/scheduled',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/payments/scheduled', {
   method: 'POST',
   body: inputBody,
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `POST /banking/payments/scheduled`
@@ -2212,8 +2127,8 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-ac
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-|body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|Array of specific accountIds to obtain scheduled payments for. The accounts specified are the source of funds for the payments returned.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|body|body|[RequestAccountIds](#schemacdr-banking-apirequestaccountids)|mandatory|Array of _accountId_ values to obtain scheduled payments for. The accounts specified are the source of funds for the payments returned.|
 
 > Example responses
 
@@ -2344,7 +2259,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-ac
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -2383,12 +2298,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -2397,21 +2310,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/payees',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/payees', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /banking/payees`
@@ -2429,7 +2337,7 @@ Obsolete versions: [v1](includes/obsolete/get-payees-v1.html).
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|type|query|[Enum](#common-field-types)|optional|Filter on the payee type field. In addition to normal type field values, `ALL` can be specified to retrieve all payees. If absent the assumed value is `ALL`.|
+|type|query|[Enum](#common-field-types)|optional|Filter on the payee _type_ field. In addition to normal _type_ field values, `ALL` can be specified to retrieve all payees. If absent the assumed value is `ALL`.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
 |x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
@@ -2437,7 +2345,7 @@ Obsolete versions: [v1](includes/obsolete/get-payees-v1.html).
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-banking-api_get-payees_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -2485,7 +2393,7 @@ Obsolete versions: [v1](includes/obsolete/get-payees-v1.html).
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeListV2](#schemacdr-banking-apiresponsebankingpayeelistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -2524,12 +2432,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -2538,21 +2444,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId}',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId}', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /banking/payees/{payeeId}`
@@ -2578,7 +2479,7 @@ Obsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html).
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2654,7 +2555,7 @@ Obsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html).
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeByIdV2](#schemacdr-banking-apiresponsebankingpayeebyidv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -2691,31 +2592,24 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/products',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/products', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /banking/products`
@@ -2733,7 +2627,7 @@ In the product detail payload there are a number of arrays articulating generic 
 
 - Each element in an array has the same structure so that clients can reliably interpret the payloads
 - Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.
-- Each element has a field name [_additionalValue_](#productfeaturetypedoc). This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the `ADDITIONAL_CARDS` feature is the number of cards allowed while the contents of this field for the `MAX_LIMIT` constraint would be the maximum credit limit allowed for the product.
+- Each element has a field named [_additionalValue_](#productfeaturetypedoc). This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the `ADDITIONAL_CARDS` feature is the number of cards allowed while the contents of this field for the `MAX_LIMIT` constraint would be the maximum credit limit allowed for the product.
 - An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.
 - An element in these arrays may contain an _additionalInfo_ and _additionalInfoUri_ field. The _additionalInfo_ field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The _additionalInfoUri_ provides a link to externally hosted information specifically relevant to that feature of the product.
 - Depending on the type of data being represented there may be additional specific fields.
@@ -2742,7 +2636,7 @@ In the product detail payload there are a number of arrays articulating generic 
 
 As the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.
 
-These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use difference HTML anchors to focus on a specific topic such as eligibility or fees.
+These URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use different HTML anchors to focus on a specific topic such as eligibility or fees.
 
 #### Linkage To Accounts
 From the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge. Rates and features of the product may change and a discount may be negotiated for the account.
@@ -2754,7 +2648,7 @@ Similarly, many of the fields and objects in the product payload will appear in 
 #### Dates
 It is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank. To minimise the volume and frequency of these calls the ability to set a _lastUpdated_ field with the date and time of the last update to this product is included. A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the _updated-since_ query parameter.
 
-In addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no long offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
+In addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no longer offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
 
 Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/obsolete/get-products-v2.html).
 
@@ -2767,7 +2661,7 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/o
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|effective|query|[Enum](#common-field-types)|optional|Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are `CURRENT`, `FUTURE` and `ALL`. If absent defaults to `CURRENT`.|
+|effective|query|[Enum](#common-field-types)|optional|Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the _effectiveFrom_ and _effectiveTo_ fields. Valid values are `CURRENT`, `FUTURE` and `ALL`. If absent defaults to `CURRENT`.|
 |updated-since|query|[DateTimeString](#common-field-types)|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all products.|
 |brand|query|string|optional|Filter results based on a specific brand.|
 |product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
@@ -2881,7 +2775,7 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/o
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductListV2](#schemacdr-banking-apiresponsebankingproductlistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -2909,31 +2803,24 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/products/{productId}',
-{
+fetch('https://data.holder.com.au/cds-au/v1/banking/products/{productId}', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /banking/products/{productId}`
@@ -3157,7 +3044,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](incl
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductByIdV4](#schemacdr-banking-apiresponsebankingproductbyidv4)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
@@ -3193,7 +3080,6 @@ This operation does not require authentication
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-banking-api_requestaccountids_properties">Properties</h3>
@@ -3201,7 +3087,7 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» accountIds|[[ASCIIString]](#common-field-types)|mandatory|none|
+|» accountIds|[[ASCIIString]](#common-field-types)|mandatory|Array of _accountId_ values.|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductlistv2">ResponseBankingProductListV2</h3>
@@ -3286,7 +3172,6 @@ This operation does not require authentication
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-banking-api_responsebankingproductlistv2_properties">Properties</h3>
@@ -3363,7 +3248,6 @@ This operation does not require authentication
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingproductv4_properties">Properties</h3>
@@ -3432,7 +3316,6 @@ This operation does not require authentication
     }
   ]
 }
-
 ```
 
 *Object that contains links to additional information on specific topics.*
@@ -3465,7 +3348,6 @@ This operation does not require authentication
   "description": "string",
   "additionalInfoUri": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingproductadditionalinformationv2_additionalinformationuris_properties">Properties</h3>
@@ -3674,7 +3556,6 @@ This operation does not require authentication
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-banking-api_responsebankingproductbyidv4_properties">Properties</h3>
@@ -3878,7 +3759,6 @@ This operation does not require authentication
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingproductdetailv4_properties">Properties</h3>
@@ -3898,7 +3778,7 @@ This operation does not require authentication
 |» features|[[BankingProductFeatureV2](#schemacdr-banking-apibankingproductfeaturev2)]|optional|Array of features available for the product.|
 |» constraints|[[BankingProductConstraint](#schemacdr-banking-apibankingproductconstraint)]|optional|Constraints on the application for or operation of the product such as minimum balances or limit thresholds.|
 |» eligibility|[[BankingProductEligibility](#schemacdr-banking-apibankingproducteligibility)]|optional|Eligibility criteria for the product.|
-|» fees|[[BankingProductFee](#schemacdr-banking-apibankingproductfee)]|optional|Fees applicable for the product.|
+|» fees|[[BankingProductFee](#schemacdr-banking-apibankingproductfee)]|optional|Fees applicable to the product.|
 |» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional|Interest rates available for deposits.|
 |» lendingRates|[[BankingProductLendingRateV2](#schemacdr-banking-apibankingproductlendingratev2)]|optional|Interest rates charged against lending balances.|
 
@@ -3920,7 +3800,6 @@ This operation does not require authentication
     "string"
   ]
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingproductbundle_properties">Properties</h3>
@@ -3948,7 +3827,6 @@ This operation does not require authentication
   "additionalInfo": "string",
   "additionalInfoUri": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingproductfeaturev2_properties">Properties</h3>
@@ -4009,7 +3887,6 @@ This operation does not require authentication
   "additionalInfo": "string",
   "additionalInfoUri": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingproductconstraint_properties">Properties</h3>
@@ -4018,7 +3895,7 @@ This operation does not require authentication
 |---|---|---|---|
 |constraintType|[Enum](#common-field-types)|mandatory|The type of constraint described. For further details, refer to [Product Constraint Types](#tocSproductconstrainttypedoc).|
 |additionalValue|string|conditional|Generic field containing additional information relevant to the [_constraintType_](#tocSproductconstrainttypedoc) specified. Whether mandatory or not is dependent on the value of [_constraintType_](#tocSproductconstrainttypedoc).|
-|additionalInfo|string|optional|Display text providing more information the constraint.|
+|additionalInfo|string|optional|Display text providing more information on the constraint.|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on the constraint.|
 
 <h4 id="cdr-banking-api_bankingproductconstraint_enumerated-values-main">Enumerated Values</h4>
@@ -4046,7 +3923,6 @@ This operation does not require authentication
   "additionalInfo": "string",
   "additionalInfoUri": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingproducteligibility_properties">Properties</h3>
@@ -4119,7 +3995,6 @@ This operation does not require authentication
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingproductfee_properties">Properties</h3>
@@ -4183,7 +4058,6 @@ This operation does not require authentication
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingproductdiscount_properties">Properties</h3>
@@ -4227,7 +4101,6 @@ This operation does not require authentication
   "additionalInfo": "string",
   "additionalInfoUri": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingproductdiscounteligibility_properties">Properties</h3>
@@ -4290,7 +4163,6 @@ This operation does not require authentication
   "additionalInfo": "string",
   "additionalInfoUri": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingproductdepositrate_properties">Properties</h3>
@@ -4355,7 +4227,6 @@ This operation does not require authentication
   "additionalInfo": "string",
   "additionalInfoUri": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingproductlendingratev2_properties">Properties</h3>
@@ -4419,7 +4290,6 @@ This operation does not require authentication
   "additionalInfo": "string",
   "additionalInfoUri": "string"
 }
-
 ```
 
 *Defines the criteria and conditions for which a rate applies.*
@@ -4461,7 +4331,6 @@ This operation does not require authentication
   "additionalInfo": "string",
   "additionalInfoUri": "string"
 }
-
 ```
 
 *Defines a condition for the applicability of a tiered rate.*
@@ -4511,7 +4380,6 @@ This operation does not require authentication
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-banking-api_responsebankingaccountlistv2_properties">Properties</h3>
@@ -4544,7 +4412,6 @@ This operation does not require authentication
   "productCategory": "BUSINESS_LOANS",
   "productName": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingaccountv2_properties">Properties</h3>
@@ -4782,7 +4649,6 @@ This operation does not require authentication
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-banking-api_responsebankingaccountbyidv3_properties">Properties</h3>
@@ -4995,7 +4861,6 @@ This operation does not require authentication
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingaccountdetailv3_properties">Properties</h3>
@@ -5018,7 +4883,7 @@ This operation does not require authentication
 |» termDeposit|[[BankingTermDepositAccount](#schemacdr-banking-apibankingtermdepositaccount)]|conditional|none|
 |» creditCard|[BankingCreditCardAccount](#schemacdr-banking-apibankingcreditcardaccount)|conditional|none|
 |» loan|[BankingLoanAccountV2](#schemacdr-banking-apibankingloanaccountv2)|conditional|none|
-|» depositRate|[RateString](#common-field-types)|optional|current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call.|
+|» depositRate|[RateString](#common-field-types)|optional|Current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call.|
 |» lendingRate|[RateString](#common-field-types)|optional|The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call.|
 |» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional|Fully described deposit rates for this account based on the equivalent structure in Product Reference.|
 |» lendingRates|[[BankingProductLendingRateV2](#schemacdr-banking-apibankingproductlendingratev2)]|optional|Fully described lending rates for this account based on the equivalent structure in Product Reference.|
@@ -5068,7 +4933,6 @@ This operation does not require authentication
   "maturityCurrency": "string",
   "maturityInstructions": "HOLD_ON_MATURITY"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingtermdepositaccount_properties">Properties</h3>
@@ -5104,7 +4968,6 @@ This operation does not require authentication
   "paymentCurrency": "string",
   "paymentDueDate": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingcreditcardaccount_properties">Properties</h3>
@@ -5144,7 +5007,6 @@ This operation does not require authentication
   "repaymentType": "INTEREST_ONLY",
   "repaymentFrequency": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingloanaccountv2_properties">Properties</h3>
@@ -5163,7 +5025,7 @@ This operation does not require authentication
 |minRedraw|[AmountString](#common-field-types)|optional|Minimum redraw amount.|
 |minRedrawCurrency|[CurrencyString](#common-field-types)|optional|If absent assumes `AUD`.|
 |offsetAccountEnabled|[Boolean](#common-field-types)|optional|Set to `true` if one or more offset accounts are configured for this loan account.|
-|offsetAccountIds|[[ASCIIString]](#common-field-types)|optional|The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that _offsetAccountEnabled_ is set to `true` but the _offsetAccountIds_ field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation.|
+|offsetAccountIds|[[ASCIIString]](#common-field-types)|optional|The _accountId_ values of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that _offsetAccountEnabled_ is set to `true` but the _offsetAccountIds_ field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation.|
 |repaymentType|[Enum](#common-field-types)|optional|Options in place for repayments. If absent defaults to `PRINCIPAL_AND_INTEREST`.|
 |repaymentFrequency|[ExternalRef](#common-field-types)|optional|The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
 
@@ -5221,7 +5083,6 @@ This operation does not require authentication
     "isQueryParamUnsupported": false
   }
 }
-
 ```
 
 <h3 id="cdr-banking-api_responsebankingtransactionlist_properties">Properties</h3>
@@ -5262,7 +5123,6 @@ This operation does not require authentication
   "crn": "string",
   "apcaNumber": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingtransaction_properties">Properties</h3>
@@ -5349,7 +5209,6 @@ This operation does not require authentication
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-banking-api_responsebankingtransactionbyid_properties">Properties</h3>
@@ -5400,7 +5259,6 @@ This operation does not require authentication
     "service": "X2P1.01"
   }
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingtransactiondetail_properties">Properties</h3>
@@ -5473,7 +5331,6 @@ This operation does not require authentication
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-banking-api_responsebankingaccountsbalancelist_properties">Properties</h3>
@@ -5514,7 +5371,6 @@ This operation does not require authentication
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-banking-api_responsebankingaccountsbalancebyid_properties">Properties</h3>
@@ -5548,7 +5404,6 @@ This operation does not require authentication
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingbalance_properties">Properties</h3>
@@ -5576,7 +5431,6 @@ This operation does not require authentication
   "amount": "string",
   "currency": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingbalancepurse_properties">Properties</h3>
@@ -5619,7 +5473,6 @@ This operation does not require authentication
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-banking-api_responsebankingpayeelistv2_properties">Properties</h3>
@@ -5702,7 +5555,6 @@ This operation does not require authentication
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-banking-api_responsebankingpayeebyidv2_properties">Properties</h3>
@@ -5729,7 +5581,6 @@ This operation does not require authentication
   "type": "BILLER",
   "creationDate": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingpayeev2_properties">Properties</h3>
@@ -5816,7 +5667,6 @@ This operation does not require authentication
     }
   }
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingpayeedetailv2_properties">Properties</h3>
@@ -5872,7 +5722,6 @@ This operation does not require authentication
     "type": "ABN"
   }
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingdomesticpayee_properties">Properties</h3>
@@ -5906,7 +5755,6 @@ This operation does not require authentication
   "bsb": "string",
   "accountNumber": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingdomesticpayeeaccount_properties">Properties</h3>
@@ -5929,7 +5777,6 @@ This operation does not require authentication
 {
   "cardNumber": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingdomesticpayeecard_properties">Properties</h3>
@@ -5952,7 +5799,6 @@ This operation does not require authentication
   "identifier": "string",
   "type": "ABN"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingdomesticpayeepayid_properties">Properties</h3>
@@ -5986,7 +5832,6 @@ This operation does not require authentication
   "crn": "string",
   "billerName": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingbillerpayee_properties">Properties</h3>
@@ -6027,7 +5872,6 @@ This operation does not require authentication
     "legalEntityIdentifier": "string"
   }
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankinginternationalpayee_properties">Properties</h3>
@@ -6066,7 +5910,6 @@ This operation does not require authentication
   "type": "EMAIL",
   "provider": "PAYPAL_AU"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingdigitalwalletpayee_properties">Properties</h3>
@@ -6126,7 +5969,6 @@ This operation does not require authentication
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-banking-api_responsebankingdirectdebitauthorisationlist_properties">Properties</h3>
@@ -6159,7 +6001,6 @@ This operation does not require authentication
   "lastDebitDateTime": "string",
   "lastDebitAmount": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingdirectdebit_properties">Properties</h3>
@@ -6187,7 +6028,6 @@ This operation does not require authentication
   "acn": "string",
   "arbn": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingauthorisedentity_properties">Properties</h3>
@@ -6326,7 +6166,6 @@ This operation does not require authentication
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-banking-api_responsebankingscheduledpaymentslistv2_properties">Properties</h3>
@@ -6447,7 +6286,6 @@ This operation does not require authentication
     }
   }
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingscheduledpaymentv2_properties">Properties</h3>
@@ -6459,7 +6297,7 @@ This operation does not require authentication
 |payerReference|string|mandatory|The reference for the transaction that will be used by the originating institution for the purposes of constructing a statement narrative on the payer’s account. Empty string if no data provided.|
 |payeeReference|string|conditional|The reference for the transaction, if applicable, that will be provided by the originating institution for all payments in the payment set. Empty string if no data provided.|
 |status|[Enum](#common-field-types)|mandatory|Indicates whether the schedule is currently active. The value `SKIP` is equivalent to `ACTIVE` except that the customer has requested the next normal occurrence to be skipped.|
-|from|[BankingScheduledPaymentFrom](#schemacdr-banking-apibankingscheduledpaymentfrom)|mandatory|Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the _to_ object.|
+|from|[BankingScheduledPaymentFrom](#schemacdr-banking-apibankingscheduledpaymentfrom)|mandatory|Object containing details of the source of the payment. Currently only specifies an _accountId_ but provided as an object to facilitate future extensibility and consistency with the _to_ object.|
 |paymentSet|[[BankingScheduledPaymentSetV2](#schemacdr-banking-apibankingscheduledpaymentsetv2)]|mandatory|[The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry.]|
 |recurrence|[BankingScheduledPaymentRecurrence](#schemacdr-banking-apibankingscheduledpaymentrecurrence)|mandatory|Object containing the detail of the schedule for the payment.|
 
@@ -6540,7 +6378,6 @@ This operation does not require authentication
   "amount": "string",
   "currency": "string"
 }
-
 ```
 
 *The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry.*
@@ -6618,7 +6455,6 @@ This operation does not require authentication
     }
   }
 }
-
 ```
 
 *Object containing details of the destination of the payment. Used to specify a variety of payment destination types.*
@@ -6660,16 +6496,15 @@ This operation does not require authentication
 {
   "accountId": "string"
 }
-
 ```
 
-*Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the _to_ object.*
+*Object containing details of the source of the payment. Currently only specifies an _accountId_ but provided as an object to facilitate future extensibility and consistency with the _to_ object.*
 
 <h3 id="cdr-banking-api_bankingscheduledpaymentfrom_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|[ASCIIString](#common-field-types)|mandatory|ID of the account that is the source of funds for the payment.|
+|accountId|[ASCIIString](#common-field-types)|mandatory|_accountId_ of the account that is the source of funds for the payment.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrence">BankingScheduledPaymentRecurrence</h3>
 <p id="tocSbankingscheduledpaymentrecurrence" class="orig-anchor"></p>
@@ -6708,7 +6543,6 @@ This operation does not require authentication
     "description": "string"
   }
 }
-
 ```
 
 *Object containing the detail of the schedule for the payment.*
@@ -6745,7 +6579,6 @@ This operation does not require authentication
 {
   "paymentDate": "string"
 }
-
 ```
 
 *Indicates that the payment is a once off payment on a specific future date. Mandatory if _recurrenceUType_ is set to `onceOff`.*
@@ -6776,7 +6609,6 @@ This operation does not require authentication
     }
   ]
 }
-
 ```
 
 *Indicates that the schedule of payments is defined by a series of intervals. Mandatory if _recurrenceUType_ is set to `intervalSchedule`.*
@@ -6812,7 +6644,6 @@ This operation does not require authentication
   "interval": "string",
   "dayInInterval": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_bankingscheduledpaymentinterval_properties">Properties</h3>
@@ -6838,7 +6669,6 @@ This operation does not require authentication
   "lastWeekDay": "FRI",
   "nonBusinessDayTreatment": "AFTER"
 }
-
 ```
 
 *Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if _recurrenceUType_ is set to `lastWeekDay`.*
@@ -6881,7 +6711,6 @@ This operation does not require authentication
 {
   "description": "string"
 }
-
 ```
 
 *Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if _recurrenceUType_ is set to `eventBased`.*
@@ -6938,7 +6767,6 @@ This operation does not require authentication
     "state": "string"
   }
 }
-
 ```
 
 <h3 id="cdr-banking-api_commonphysicaladdress_properties">Properties</h3>
@@ -6975,7 +6803,6 @@ This operation does not require authentication
   "state": "string",
   "country": "AUS"
 }
-
 ```
 
 <h3 id="cdr-banking-api_commonsimpleaddress_properties">Properties</h3>
@@ -7024,7 +6851,6 @@ This operation does not require authentication
   "postcode": "string",
   "state": "string"
 }
-
 ```
 
 *Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).*
@@ -7035,9 +6861,9 @@ This operation does not require authentication
 |---|---|---|---|
 |dpid|string|optional|Unique identifier for an address as defined by Australia Post. Also known as Delivery Point Identifier.|
 |thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address).|
-|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant is _thoroughfareNumber1_ is populated.|
+|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_ is populated.|
 |thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address, e.g., 23-25).|
-|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant is _thoroughfareNumber2_ is populated.|
+|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant if _thoroughfareNumber2_ is populated.|
 |flatUnitType|string|optional|Type of flat or unit for the address.|
 |flatUnitNumber|string|optional|Unit number (including suffix, if applicable).|
 |floorLevelType|string|optional|Type of floor or level for the address.|
@@ -7068,7 +6894,6 @@ This operation does not require authentication
 {
   "self": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_links_properties">Properties</h3>
@@ -7087,7 +6912,6 @@ This operation does not require authentication
 
 ```json
 {}
-
 ```
 
 <h3 id="cdr-banking-api_meta_properties">Properties</h3>
@@ -7110,7 +6934,6 @@ This operation does not require authentication
   "next": "string",
   "last": "string"
 }
-
 ```
 
 <h3 id="cdr-banking-api_linkspaginated_properties">Properties</h3>
@@ -7136,7 +6959,6 @@ This operation does not require authentication
   "totalRecords": 0,
   "totalPages": 0
 }
-
 ```
 
 <h3 id="cdr-banking-api_metapaginated_properties">Properties</h3>
@@ -7160,7 +6982,6 @@ This operation does not require authentication
   "totalPages": 0,
   "isQueryParamUnsupported": false
 }
-
 ```
 
 <h3 id="cdr-banking-api_metapaginatedtransaction_properties">Properties</h3>
@@ -7190,7 +7011,6 @@ This operation does not require authentication
 {
   "urn": "string"
 }
-
 ```
 
 *Additional data for customised error codes.*
@@ -7222,7 +7042,6 @@ This operation does not require authentication
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-banking-api_responseerrorlistv2_properties">Properties</h3>
@@ -7245,7 +7064,6 @@ This operation does not require authentication
 
 ```json
 "BUSINESS_LOANS"
-
 ```
 
 *The category to which a product or account belongs. See [here](#product-categories) for more details.*

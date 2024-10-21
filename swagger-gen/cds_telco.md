@@ -11,38 +11,31 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/products',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/products', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /telco/products`
 
 Obtain a list of telco products that are currently offered to the market.
 
-Note that the results returned by this end point are expected to be ordered in descending order according to `lastUpdated`.
+Note that the results returned by this endpoint are expected to be ordered in descending order according to `lastUpdated`.
 
 <h3 id="cdr-telco-api_get-telco-products_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -54,14 +47,14 @@ Note that the results returned by this end point are expected to be ordered in d
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |type|query|[Enum](#common-field-types)|optional|Used to filter results on the type field. Any one of the valid values for this field can be supplied. If absent, defaults to include ALL products. Valid values are [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service. BROADBAND fixed internet service or ALL|
-|billing-type|query|[Enum](#common-field-types)|optional|Used to filter results on the billing-type field.  Any one of the valid values for this field can be supplied. If absent, defaults to include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID', 'ALL'|
+|billing-type|query|[Enum](#common-field-types)|optional|Used to filter results on the billing-type field. Any one of the valid values for this field can be supplied. If absent, defaults to include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID', 'ALL'|
 |effective|query|[Enum](#common-field-types)|optional|Allows for the filtering of productd based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'|
-|updated-since|query|[DateTimeString](#common-field-types)|optional|Only include products that have been updated after the specified date and time.  If absent defaults to include all plans|
+|updated-since|query|[DateTimeString](#common-field-types)|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all plans|
 |brand|query|string|optional|Used to filter results on the brand field. If absent, defaults to include all products. For service providers that operate a number of mobile and internet brands|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 
 <h4 id="cdr-telco-api_get-telco-products_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -145,7 +138,7 @@ Note that the results returned by this end point are expected to be ordered in d
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoProductListResponse](#schemacdr-telco-apitelcoproductlistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -153,7 +146,7 @@ Note that the results returned by this end point are expected to be ordered in d
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
 
   
     <aside class="success">
@@ -173,31 +166,24 @@ Host: data.holder.com.au
 Accept: application/json
 x-v: string
 x-min-v: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
   'x-min-v':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/products/{productId}',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/products/{productId}', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /telco/products/{productId}`
@@ -214,8 +200,8 @@ Obtain detailed information on a single telco prouct offered openly to the marke
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |productId|path|string|mandatory|ID of the specific product requested|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 
 > Example responses
 
@@ -335,7 +321,7 @@ Obtain detailed information on a single telco prouct offered openly to the marke
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoProductResponse](#schemacdr-telco-apitelcoproductresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -343,7 +329,7 @@ Obtain detailed information on a single telco prouct offered openly to the marke
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
 
   
     <aside class="success">
@@ -367,12 +353,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -381,21 +365,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{serviceId}/usage',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{serviceId}/usage', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /telco/accounts/{serviceId}/usage`
@@ -412,14 +391,14 @@ Obtain a usage data from a particular service Id
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |serviceId|path|string|mandatory|ID of the specific service requested. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). This is a tokenised ID returned from the account. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -489,7 +468,7 @@ Obtain a usage data from a particular service Id
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoServiceUsageResponse](#schemacdr-telco-apitelcoserviceusageresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
@@ -498,12 +477,12 @@ Obtain a usage data from a particular service Id
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|404|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
-|422|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -530,12 +509,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -544,21 +521,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/usage',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/usage', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /telco/accounts/usage`
@@ -574,16 +546,16 @@ Obtain usage data for all services associated with the customer
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -664,7 +636,7 @@ Obtain usage data for all services associated with the customer
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoUsageListResponse](#schemacdr-telco-apitelcousagelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -672,11 +644,11 @@ Obtain usage data for all services associated with the customer
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
-|422|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -704,7 +676,6 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
@@ -726,21 +697,17 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/usage',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/usage', {
   method: 'POST',
   body: inputBody,
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `POST /telco/accounts/usage`
@@ -770,13 +737,13 @@ Obtain usage data for a specific service
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 |body|body|[serviceIdList](#schemacdr-telco-apiserviceidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
 |» data|body|object|mandatory|none|
 |»» serviceIds|body|[string]|mandatory|Array of specific serviceIds to obtain data for. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements|
@@ -861,7 +828,7 @@ Obtain usage data for a specific service
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoUsageListResponse](#schemacdr-telco-apitelcousagelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -869,11 +836,11 @@ Obtain usage data for a specific service
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
-|422|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -900,12 +867,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -914,21 +879,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /telco/accounts`
@@ -945,15 +905,15 @@ Obtain the list of telco accounts available under the authorised consent
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|updated-since|query|[DateString](#common-field-types)|optional|Only include accounts that have been updated after the specified date and time.  If absent defaults to include all plans|
+|updated-since|query|[DateString](#common-field-types)|optional|Only include accounts that have been updated after the specified date and time. If absent defaults to include all plans|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-telco-api_get-telco-accounts_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -1016,7 +976,7 @@ Obtain the list of telco accounts available under the authorised consent
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoAccountListResponse](#schemacdr-telco-apitelcoaccountlistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -1024,11 +984,11 @@ Obtain the list of telco accounts available under the authorised consent
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
-|422|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1055,12 +1015,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -1069,21 +1027,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /telco/accounts/{accountId}`
@@ -1099,13 +1052,13 @@ Obtain detailed information for a specific telco account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1160,7 +1113,7 @@ Obtain detailed information for a specific telco account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoAccountDetailResponse](#schemacdr-telco-apitelcoaccountdetailresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -1168,11 +1121,11 @@ Obtain detailed information for a specific telco account
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|404|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1199,12 +1152,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -1213,28 +1164,23 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/payment-schedule',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/payment-schedule', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /telco/accounts/{accountId}/payment-schedule`
 
 Obtain the agreed payment schedule and details, if any, for a specific telco account. 
 
-Some general notes about this end point:
+Some general notes about this endpoint:
 
  <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>
 
@@ -1247,13 +1193,13 @@ Some general notes about this end point:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1311,7 +1257,7 @@ Some general notes about this end point:
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoPaymentScheduleResponse](#schemacdr-telco-apitelcopaymentscheduleresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -1319,11 +1265,11 @@ Some general notes about this end point:
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|404|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1350,12 +1296,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -1364,21 +1308,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/concessions',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/concessions', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /telco/accounts/{accountId}/concessions`
@@ -1394,13 +1333,13 @@ Obtain the details of any concessions or arrangements applied to a specific telc
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1445,7 +1384,7 @@ Obtain the details of any concessions or arrangements applied to a specific telc
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoConcessionsResponse](#schemacdr-telco-apitelcoconcessionsresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -1453,11 +1392,11 @@ Obtain the details of any concessions or arrangements applied to a specific telc
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|404|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1484,12 +1423,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -1498,21 +1435,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/balance',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/balance', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /telco/accounts/{accountId}/balance`
@@ -1528,13 +1460,13 @@ Obtain the current balance for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1617,7 +1549,7 @@ Obtain the current balance for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoBalanceResponse](#schemacdr-telco-apitelcobalanceresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -1625,11 +1557,11 @@ Obtain the current balance for a specific account
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|404|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1656,12 +1588,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -1670,21 +1600,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/balance',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/balance', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /telco/accounts/balance`
@@ -1701,13 +1626,13 @@ Obtain the current balance for all accounts
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1804,7 +1729,7 @@ Obtain the current balance for all accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoBalanceListResponse](#schemacdr-telco-apitelcobalancelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -1812,11 +1737,11 @@ Obtain the current balance for all accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
-|422|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -1844,7 +1769,6 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
@@ -1866,21 +1790,17 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/balance',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/balance', {
   method: 'POST',
   body: inputBody,
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `POST /telco/accounts/balance`
@@ -1910,13 +1830,13 @@ Obtain the current balance for a specified set of accounts
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 |body|body|[accountIdList](#schemacdr-telco-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for. In accordance with [CDR ID permanence](#id-permanence) requirements|
@@ -2017,7 +1937,7 @@ Obtain the current balance for a specified set of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoBalanceListResponse](#schemacdr-telco-apitelcobalancelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid Telco Account](#error-422-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -2025,11 +1945,11 @@ Obtain the current balance for a specified set of accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
-|422|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2056,12 +1976,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -2070,21 +1988,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/invoices',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/invoices', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /telco/accounts/{accountId}/invoices`
@@ -2100,13 +2013,13 @@ Obtain the invoices for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2206,7 +2119,7 @@ Obtain the invoices for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoInvoiceResponse](#schemacdr-telco-apitelcoinvoiceresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
@@ -2215,12 +2128,12 @@ Obtain the invoices for a specific account
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|404|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
-|422|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2247,12 +2160,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -2261,21 +2172,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/invoices',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/invoices', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /telco/accounts/invoices`
@@ -2291,16 +2197,16 @@ Obtain the invoices for all accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2407,7 +2313,7 @@ Obtain the invoices for all accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoInvoiceListResponse](#schemacdr-telco-apitelcoinvoicelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -2415,11 +2321,11 @@ Obtain the invoices for all accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
-|422|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2447,7 +2353,6 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
@@ -2469,21 +2374,17 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/invoices',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/invoices', {
   method: 'POST',
   body: inputBody,
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `POST /telco/accounts/invoices`
@@ -2512,16 +2413,16 @@ Obtain invoices for a specified set of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 |body|body|[accountIdList](#schemacdr-telco-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for. In accordance with [CDR ID permanence](#id-permanence) requirements|
@@ -2632,7 +2533,7 @@ Obtain invoices for a specified set of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoInvoiceListResponse](#schemacdr-telco-apitelcoinvoicelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid Telco Account](#error-422-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -2640,11 +2541,11 @@ Obtain invoices for a specified set of accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
-|422|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2671,12 +2572,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -2685,21 +2584,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/transactions',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/transactions', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /telco/accounts/{accountId}/transactions`
@@ -2715,17 +2609,17 @@ Obtain the billing transactions for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List end point. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type|
-|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months. Format is aligned to DateTimeString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2801,7 +2695,7 @@ Obtain the billing transactions for a specific account
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoTransactionListResponse](#schemacdr-telco-apitelcotransactionlistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Telco Account](#error-404-unavailable-telco-account)</li><li>[404 - Invalid Telco Account](#error-404-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
@@ -2810,12 +2704,12 @@ Obtain the billing transactions for a specific account
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|404|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
-|422|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -2842,12 +2736,10 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
-
 const headers = {
   'Accept':'application/json',
   'x-v':'string',
@@ -2856,21 +2748,16 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/transactions',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/transactions', {
   method: 'GET',
-
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `GET /telco/accounts/transactions`
@@ -2886,16 +2773,16 @@ Obtain billing transactions for all accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type|
-|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months. Format is aligned to DateTimeString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2971,7 +2858,7 @@ Obtain billing transactions for all accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoTransactionListResponse](#schemacdr-telco-apitelcotransactionlistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -2979,11 +2866,11 @@ Obtain billing transactions for all accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
-|422|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3011,7 +2898,6 @@ x-fapi-interaction-id: string
 x-fapi-auth-date: string
 x-fapi-customer-ip-address: string
 x-cds-client-headers: string
-
 ```
 
 ```javascript--nodejs
@@ -3033,21 +2919,17 @@ const headers = {
   'x-fapi-auth-date':'string',
   'x-fapi-customer-ip-address':'string',
   'x-cds-client-headers':'string'
-
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/transactions',
-{
+fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/transactions', {
   method: 'POST',
   body: inputBody,
   headers: headers
-})
-.then(function(res) {
+}).then(function(res) {
     return res.json();
 }).then(function(body) {
     console.log(body);
 });
-
 ```
 
 `POST /telco/accounts/transactions`
@@ -3076,16 +2958,16 @@ Obtain transactions for a specified set of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type|
-|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months. Format is aligned to DateTimeString common type|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
 |x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 |body|body|[accountIdList](#schemacdr-telco-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
 |» data|body|object|mandatory|none|
 |»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for. In accordance with [CDR ID permanence](#id-permanence) requirements|
@@ -3165,7 +3047,7 @@ Obtain transactions for a specified set of accounts
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[TelcoTransactionListResponse](#schemacdr-telco-apitelcotransactionlistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Telco Account](#error-422-unavailable-telco-account)</li><li>[422 - Invalid Telco Account](#error-422-invalid-telco-account)</li></ul>|[ResponseErrorListV2](#schemacdr-telco-apiresponseerrorlistv2)|
 
@@ -3173,11 +3055,11 @@ Obtain transactions for a specified set of accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|none|
-|200|x-fapi-interaction-id|string|none|
-|400|x-fapi-interaction-id|string|none|
-|406|x-fapi-interaction-id|string|none|
-|422|x-fapi-interaction-id|string|none|
+|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
@@ -3255,7 +3137,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproductlistresponse_properties">Properties</h3>
@@ -3381,7 +3262,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproductresponse_properties">Properties</h3>
@@ -3481,7 +3361,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcousageresponse_properties">Properties</h3>
@@ -3557,7 +3436,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoserviceusageresponse_properties">Properties</h3>
@@ -3642,7 +3520,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoserviceusagelistresponse_properties">Properties</h3>
@@ -3703,7 +3580,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoaccountlistresponse_properties">Properties</h3>
@@ -3764,7 +3640,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoaccountdetailresponse_properties">Properties</h3>
@@ -3828,7 +3703,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcopaymentscheduleresponse_properties">Properties</h3>
@@ -3879,7 +3753,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoconcessionsresponse_properties">Properties</h3>
@@ -3982,7 +3855,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcobalancelistresponse_properties">Properties</h3>
@@ -4071,7 +3943,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcobalanceresponse_properties">Properties</h3>
@@ -4153,7 +4024,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcotransactionlistresponse_properties">Properties</h3>
@@ -4176,7 +4046,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "urn": "string"
 }
-
 ```
 
 *Additional data for customised error codes*
@@ -4208,7 +4077,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_responseerrorlistv2_properties">Properties</h3>
@@ -4268,7 +4136,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "bundleUri": "string"
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproduct_properties">Properties</h3>
@@ -4323,7 +4190,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "duration": 0,
   "contractUri": "string"
 }
-
 ```
 
 *Summary of the contract details. Mandatory if the billing type is POST_PAID and a contract agreement is required with the service provider for the plan*
@@ -4349,14 +4215,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "serviceId": "string"
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoservicedetail_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|serviceId|string|mandatory|The tokenised ID of the service identifier for use in the CDR APIs. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).  Created according to the CDR rules for [CDR ID permanence](#id-permanence)|
+|serviceId|string|mandatory|The tokenised ID of the service identifier for use in the CDR APIs. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). Created according to the CDR rules for [CDR ID permanence](#id-permanence)|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountusage">TelcoAccountUsage</h3>
 <p id="tocStelcoaccountusage" class="orig-anchor"></p>
@@ -4424,7 +4289,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoaccountusage_properties">Properties</h3>
@@ -4493,7 +4357,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoserviceusage_properties">Properties</h3>
@@ -4525,7 +4388,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "brand": "string",
   "openStatus": "CLOSED"
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoaccountbase_properties">Properties</h3>
@@ -4580,7 +4442,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoaccountresponsedata_properties">Properties</h3>
@@ -4641,7 +4502,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoaccountdetailresponsedata_properties">Properties</h3>
@@ -4694,7 +4554,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "billFrequency": "string"
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcopaymentschedule_properties">Properties</h3>
@@ -4740,7 +4599,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "INVOICE"
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoconcession_properties">Properties</h3>
@@ -4853,7 +4711,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "paymentStatus": "PAID"
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoinvoice_properties">Properties</h3>
@@ -4866,7 +4723,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |dueDate|[DateString](#common-field-types)|optional|The date that the invoice is due to be paid|
 |period|[TelcoInvoicePeriod](#schemacdr-telco-apitelcoinvoiceperiod)|conditional|Object containing the start and end date for the period covered by the invoice. Mandatory if any usage based charges are included in the invoice|
 |invoiceAmount|[AmountString](#common-field-types)|optional|The net amount due for this invoice regardless of previous balance|
-|gstAmount|[AmountString](#common-field-types)|optional|The total GST amount for this invoice.  If absent then zero is assumed|
+|gstAmount|[AmountString](#common-field-types)|optional|The total GST amount for this invoice. If absent then zero is assumed|
 |payOnTimeDiscount|[TelcoInvoicePayOnTimeDiscount](#schemacdr-telco-apitelcoinvoicepayontimediscount)|optional|A discount for on time payment|
 |balanceAtIssue|[AmountString](#common-field-types)|mandatory|The account balance at the time the invoice was issued|
 |services|[string]|mandatory|An array of service IDs to which this invoice applies. May be empty if the invoice contains no usage related charges|
@@ -4934,7 +4791,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   }
 }
-
 ```
 
 *Object containing usage summary*
@@ -4967,7 +4823,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "totalGst": "string"
 }
-
 ```
 
 *Object contain charges and credits related to usage*
@@ -4980,7 +4835,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from usage for the period covered by the invoice (exclusive of GST)|
 |totalDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice|
 |otherCharges|[TelcoInvoiceAccountChargesOtherCharges](#schemacdr-telco-apitelcoinvoiceaccountchargesothercharges)|optional|Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST)|
-|totalGst|[AmountString](#common-field-types)|optional|The total GST for all account level charges.  If absent then zero is assumed|
+|totalGst|[AmountString](#common-field-types)|optional|The total GST for all account level charges. If absent then zero is assumed|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingtransaction">TelcoBillingTransaction</h3>
 <p id="tocStelcobillingtransaction" class="orig-anchor"></p>
@@ -5036,7 +4891,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "method": "DIRECT_DEBIT"
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcobillingtransaction_properties">Properties</h3>
@@ -5045,7 +4899,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |accountId|string|mandatory|The ID of the account for which the transaction occurred. accountId must comply in accordance with [CDR ID permanence](#id-permanence)|
 |executionDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the transaction occurred|
-|gst|[AmountString](#common-field-types)|optional|The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed|
+|gst|[AmountString](#common-field-types)|optional|The GST incurred in the transaction. Should not be included for credits or payments. If absent zero is assumed|
 |transactionUType|[Enum](#common-field-types)|mandatory|Indicator of the type of transaction object present in this record|
 |account|[TelcoBillingAccountTransaction](#schemacdr-telco-apitelcobillingaccounttransaction)|optional|none|
 |onceOff|[TelcoBillingOnceOffTransaction](#schemacdr-telco-apitelcobillingonceofftransaction)|conditional|none|
@@ -5084,7 +4938,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcobillingaccounttransaction_properties">Properties</h3>
@@ -5096,7 +4949,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |description|string|optional|Optional description of the transaction that can be used for display purposes|
 |startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period starts|
 |endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period ends|
-|amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
+|amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied. A negative value indicates a credit|
 |adjustments|[[TelcoBillingAccountTransactionAdjustments](#schemacdr-telco-apitelcobillingaccounttransactionadjustments)]|optional|Optional array of adjustments arising for this transaction|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingonceofftransaction">TelcoBillingOnceOffTransaction</h3>
@@ -5114,7 +4967,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "amount": "string",
   "description": "string"
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcobillingonceofftransaction_properties">Properties</h3>
@@ -5123,7 +4975,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|
 |serviceId|string|optional|The ID of the service identifier to which this transaction applies if any. E.g a [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements|
 |invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|amount|[AmountString](#common-field-types)|mandatory|The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit|
+|amount|[AmountString](#common-field-types)|mandatory|The amount of the charge or credit. A positive value indicates a charge and a negative value indicates a credit|
 |description|string|mandatory|A free text description of the item|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingothertransaction">TelcoBillingOtherTransaction</h3>
@@ -5150,7 +5002,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcobillingothertransaction_properties">Properties</h3>
@@ -5189,7 +5040,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "amount": "string",
   "method": "DIRECT_DEBIT"
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcobillingpaymenttransaction_properties">Properties</h3>
@@ -5284,7 +5134,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 *Object containing account service usage summary*
@@ -5363,7 +5212,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   }
 }
-
 ```
 
 *Telco balances for a service*
@@ -5389,7 +5237,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 "METERED"
-
 ```
 
 *Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported*
@@ -5455,7 +5302,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "state": "string"
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_commonphysicaladdress_properties">Properties</h3>
@@ -5492,7 +5338,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "state": "string",
   "country": "AUS"
 }
-
 ```
 
 *Required if addressUType is set to simple*
@@ -5543,7 +5388,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "postcode": "string",
   "state": "string"
 }
-
 ```
 
 *Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf*
@@ -5552,7 +5396,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|dpid|string|optional|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
+|dpid|string|optional|Unique identifier for an address as defined by Australia Post. Also known as Delivery Point Identifier|
 |thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address)|
 |thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
 |thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
@@ -5587,7 +5431,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "self": "string"
 }
-
 ```
 
 <h3 id="cdr-telco-api_links_properties">Properties</h3>
@@ -5606,7 +5449,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 ```json
 {}
-
 ```
 
 <h3 id="cdr-telco-api_meta_properties">Properties</h3>
@@ -5629,7 +5471,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "next": "string",
   "last": "string"
 }
-
 ```
 
 <h3 id="cdr-telco-api_linkspaginated_properties">Properties</h3>
@@ -5655,7 +5496,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "totalRecords": 0,
   "totalPages": 0
 }
-
 ```
 
 <h3 id="cdr-telco-api_metapaginated_properties">Properties</h3>
@@ -5716,7 +5556,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproductlistresponsedata_properties">Properties</h3>
@@ -5801,7 +5640,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcousagelistresponse_properties">Properties</h3>
@@ -5882,7 +5720,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcousagelistresponsedata_properties">Properties</h3>
@@ -5928,7 +5765,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoaccountlistresponsedata_properties">Properties</h3>
@@ -5977,7 +5813,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcopaymentscheduleresponsedata_properties">Properties</h3>
@@ -6013,7 +5848,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoconcessionsresponsedata_properties">Properties</h3>
@@ -6101,7 +5935,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcobalancelistresponsedata_properties">Properties</h3>
@@ -6185,7 +6018,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     ]
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcobalanceresponsedata_properties">Properties</h3>
@@ -6290,7 +6122,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "meta": {}
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoinvoiceresponse_properties">Properties</h3>
@@ -6403,7 +6234,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "totalPages": 0
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoinvoicelistresponse_properties">Properties</h3>
@@ -6503,7 +6333,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoinvoicelistresponsedata_properties">Properties</h3>
@@ -6570,7 +6399,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcotransactionlistresponsedata_properties">Properties</h3>
@@ -6594,7 +6422,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "period": "string",
   "amount": "string"
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproductpricing_properties">Properties</h3>
@@ -6622,7 +6449,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "pricingUri": "string",
   "bundleUri": "string"
 }
-
 ```
 
 *Object that contains links to additional information on specific topics*
@@ -6653,7 +6479,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "maximumValue": "string",
   "period": "string"
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproductdetailmeteringcharges_properties">Properties</h3>
@@ -6680,7 +6505,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "description": "string",
   "category": "DATA"
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproductdetailfeature_properties">Properties</h3>
@@ -6727,7 +6551,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproductdetailbundles_properties">Properties</h3>
@@ -6759,7 +6582,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproductdetailplan_properties">Properties</h3>
@@ -6784,7 +6606,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "displayName": "string",
   "description": "string"
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproductdetailplanfeature_properties">Properties</h3>
@@ -6807,7 +6628,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "displayName": "string",
   "description": "string"
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproductdetaildiscountfeature_properties">Properties</h3>
@@ -6837,7 +6657,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproductdetaildiscounts_properties">Properties</h3>
@@ -6862,7 +6681,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "displayName": "string",
   "description": "string"
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproductdetailincentivefeature_properties">Properties</h3>
@@ -6892,7 +6710,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproductdetailincentives_properties">Properties</h3>
@@ -6977,7 +6794,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoproductdetail_properties">Properties</h3>
@@ -7051,7 +6867,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoaccountusageservices_properties">Properties</h3>
@@ -7074,7 +6889,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "startDate": "string",
   "endDate": "string"
 }
-
 ```
 
 *Mandatory if openStatus is OPEN*
@@ -7109,7 +6923,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "endDate": "string"
   }
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoaccountplan_properties">Properties</h3>
@@ -7159,7 +6972,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 *The array of plans containing services and associated plan details*
@@ -7192,7 +7004,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     ]
   }
 }
-
 ```
 
 *Detail on the plan applicable to this account. Mandatory if openStatus is OPEN*
@@ -7222,7 +7033,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "prefix": "string",
   "suffix": "string"
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcoaccountdetailauthorisedcontacts_properties">Properties</h3>
@@ -7272,7 +7082,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   ]
 }
-
 ```
 
 *The array of plans containing services and associated plan details*
@@ -7309,7 +7118,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "paymentFrequency": "string",
   "calculationType": "STATIC"
 }
-
 ```
 
 *Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit*
@@ -7319,8 +7127,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |cardScheme|[Enum](#common-field-types)|mandatory|The type of credit card held on file|
-|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 
 <h4 id="cdr-telco-api_telcopaymentschedulecarddebit_enumerated-values-main">Enumerated Values</h4>
 
@@ -7352,7 +7160,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "paymentFrequency": "string",
   "calculationType": "STATIC"
 }
-
 ```
 
 *Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit*
@@ -7361,11 +7168,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|isTokenised|boolean|optional|Flag indicating that the account details are tokenised and cannot be shared.  False if absent|
-|bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
-|accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
-|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|isTokenised|boolean|optional|Flag indicating that the account details are tokenised and cannot be shared. False if absent|
+|bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces. Is required if isTokenised is absent or false|
+|accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces. Is required if isTokenised is absent or false|
+|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 
 <h4 id="cdr-telco-api_telcopaymentscheduledirectdebit_enumerated-values-main">Enumerated Values</h4>
 
@@ -7392,7 +7199,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "paymentFrequency": "string",
   "calculationType": "STATIC"
 }
-
 ```
 
 *Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet*
@@ -7405,8 +7211,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |identifier|string|mandatory|The identifier of the digital wallet (dependent on type)|
 |type|[Enum](#common-field-types)|mandatory|The type of the digital wallet identifier|
 |provider|[Enum](#common-field-types)|mandatory|The provider of the digital wallet|
-|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
 
 <h4 id="cdr-telco-api_telcopaymentscheduledigitalwallet_enumerated-values-main">Enumerated Values</h4>
 
@@ -7433,7 +7239,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 {
   "billFrequency": "string"
 }
-
 ```
 
 *Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment*
@@ -7442,7 +7247,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceperiod">TelcoInvoicePeriod</h3>
 <p id="tocStelcoinvoiceperiod" class="orig-anchor"></p>
@@ -7457,7 +7262,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "startDate": "string",
   "endDate": "string"
 }
-
 ```
 
 *Object containing the start and end date for the period covered by the invoice. Mandatory if any usage based charges are included in the invoice*
@@ -7483,7 +7287,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "gstAmount": "string",
   "date": "string"
 }
-
 ```
 
 *A discount for on time payment*
@@ -7493,7 +7296,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |discountAmount|[AmountString](#common-field-types)|mandatory|The amount that will be discounted if the invoice is paid by the date specified|
-|gstAmount|[AmountString](#common-field-types)|optional|The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed|
+|gstAmount|[AmountString](#common-field-types)|optional|The GST amount that will be discounted if the invoice is paid by the date specified. If absent then zero is assumed|
 |date|[DateString](#common-field-types)|mandatory|The date by which the invoice must be paid to receive the pay on time discount|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagedatroaming">TelcoUsageDatRoaming</h3>
@@ -7509,7 +7312,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "download": 0,
   "amount": "string"
 }
-
 ```
 
 *Roaming Data Usage*
@@ -7540,7 +7342,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "amount": "string"
   }
 }
-
 ```
 
 *Summary of data usage*
@@ -7569,7 +7370,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "number": 0,
   "amount": "string"
 }
-
 ```
 
 *National voice calls*
@@ -7596,7 +7396,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "number": 0,
   "amount": "string"
 }
-
 ```
 
 *International voice calls. Requied if international calling is supported*
@@ -7623,7 +7422,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "number": 0,
   "amount": "string"
 }
-
 ```
 
 *Roaming voice calls, Required if roaming is supported*
@@ -7662,7 +7460,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "amount": "string"
   }
 }
-
 ```
 
 *Summary of voice calls. Required if voice calls are included in product plan*
@@ -7690,7 +7487,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "roaming": 0,
   "amount": "string"
 }
-
 ```
 
 *Summary of SMS usage*
@@ -7719,7 +7515,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "roaming": 0,
   "amount": "string"
 }
-
 ```
 
 *Summary of MMS usage*
@@ -7756,7 +7551,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "amount": "string"
   }
 }
-
 ```
 
 *Summary of messaging. Required if messaging services is included in the product plan*
@@ -7782,7 +7576,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "description": "string",
   "type": "SERVICE"
 }
-
 ```
 
 *Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST)*
@@ -7822,7 +7615,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "amount": "string",
   "description": "string"
 }
-
 ```
 
 <h3 id="cdr-telco-api_telcobillingaccounttransactionadjustments_properties">Properties</h3>
@@ -7846,7 +7638,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "download": 0,
   "amount": "string"
 }
-
 ```
 
 *Balance of data roaming charges. Required unless planType is UNSUPPORTED*
@@ -7880,7 +7671,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "amount": "string"
   }
 }
-
 ```
 
 *Summary of data balances*
@@ -7911,7 +7701,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "number": 0,
   "amount": "string"
 }
-
 ```
 
 *National voice calls*
@@ -7940,7 +7729,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "number": 0,
   "amount": "string"
 }
-
 ```
 
 *International voice calls*
@@ -7969,7 +7757,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "number": 0,
   "amount": "string"
 }
-
 ```
 
 *Roaming voice calls*
@@ -8013,7 +7800,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "amount": "string"
   }
 }
-
 ```
 
 *Summary of voice balances. Required if voice calls are included in product plan*
@@ -8043,7 +7829,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "roaming": 0,
   "amount": "string"
 }
-
 ```
 
 *Summary of SMS Balance. Required if the service plan supports SMS messaging*
@@ -8074,7 +7859,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "roaming": 0,
   "amount": "string"
 }
-
 ```
 
 *Summary of MMS Balance. Required if the service plan supports MMS messaging*
@@ -8115,7 +7899,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "amount": "string"
   }
 }
-
 ```
 
 *Summary of messaging. Required if messaging services is included in the product plan*
@@ -8189,7 +7972,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     }
   }
 }
-
 ```
 
 *A summary of Service balances*

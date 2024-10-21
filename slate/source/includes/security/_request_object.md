@@ -97,9 +97,7 @@ The Data Recipient Software Product is able to obtain the expiration of the shar
 
 
 ### Specifying an existing arrangement
-```diff
-Updated the "Specifying an existing arrangement" section clarifying the requirements for amending existing arrangements
-```
+
 To facilitate the amending of an existing arrangement, the following statements apply:
 
 * Data Holders **MUST** support the `cdr_arrangement_id` claim provided in the Request Object.

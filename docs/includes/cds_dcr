@@ -9,27 +9,22 @@
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/jwt</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/jwt'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/register'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/register'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>POST /register</code></p>
 
@@ -41,7 +36,6 @@
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight yaml tab-yaml"><code><span class="s">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</span>
-
 </code></pre>
 <h3 id="cdr-dynamic-client-registration-api_register-data-recipient-oauth-client_endpoint-version">Endpoint Version</h3>
 
@@ -166,27 +160,20 @@ This operation does not require authentication
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/register/{ClientId}'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/register/{ClientId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /register/{ClientId}</code></p>
 
@@ -348,28 +335,23 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/jwt</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">string</span>
-
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/jwt'</span><span class="p">,</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/register/{ClientId}'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/register/{ClientId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>PUT /register/{ClientId}</code></p>
 
@@ -379,7 +361,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight yaml tab-yaml"><code><span class="s">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</span>
-
 </code></pre>
 <h3 id="cdr-dynamic-client-registration-api_update-data-recipient-registration_endpoint-version">Endpoint Version</h3>
 
@@ -547,28 +528,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">https://data.holder.com.au/register/{ClientId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
-
-Authorization: string
-
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/register/{ClientId}'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/register/{ClientId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'DELETE'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>DELETE /register/{ClientId}</code></p>
 
@@ -685,7 +658,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistrationrequest"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."</span><span class="w">
-
 </span></code></pre>
 <p><em>The registration request JWT to be used to register with a Data Holder. The schema of the payload section of the decoded string(JWT) is defined in <a href="#cdr-dynamic-client-registration-api_schemas_tocSclientregistration">ClientRegistration</a>.</em></p>
 
@@ -759,7 +731,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"software_roles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data-recipient-software-product"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-dynamic-client-registration-api_registrationproperties_properties">Properties</h3>
 
@@ -1118,7 +1089,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"software_roles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data-recipient-software-product"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-dynamic-client-registration-api_clientregistration_properties">Properties</h3>
 
@@ -1148,7 +1118,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>» iat</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
-<td>The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC</td>
+<td>The time at which the request was issued by the Data Recipient expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC</td>
 </tr>
 <tr>
 <td>» exp</td>
@@ -1200,7 +1170,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_redirect_uri"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-dynamic-client-registration-api_registrationerror_properties">Properties</h3>
 

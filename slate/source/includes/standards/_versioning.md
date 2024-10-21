@@ -7,7 +7,7 @@ The standards have adopted a two level versioning strategy.  The high level stan
 > Sample versioning of the standards documentation is as follows:
 `1.12.2 - meaning major version 1, minor version 12 and bugfix version 2 `
 
-The standards documentation will be versioned using three version parts `<major>.<minor>.<bug fix>`.  This version will be used to describe updates in the [Change Log](#change-log).
+The standards documentation will be versioned using three version parts `<major>.<minor>.<bug fix>`.  This version will be used to describe updates in the [Changelog](#changelog-and-archives).
 
 Each of the three components will be independently incrementing integers and are described as follows:
 

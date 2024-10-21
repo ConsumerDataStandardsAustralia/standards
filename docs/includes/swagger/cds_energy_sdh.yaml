@@ -1,9 +1,9 @@
 openapi: 3.0.3
 info:
-  description: Consumer Data Right end points and payloads for Secondary Data Holder
+  description: Consumer Data Right endpoints and payloads for Secondary Data Holder
     for the Energy sector
   title: CDR Energy Secondary Data Holder API
-  version: 1.31.0
+  version: 1.32.0
 servers:
 - url: /
 paths:
@@ -31,7 +31,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -45,7 +45,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -100,7 +100,7 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The [version](#response-headers) of the API end point that
+              description: The [version](#response-headers) of the API endpoint that
                 the data holder has responded with.
               explode: false
               schema:
@@ -122,8 +122,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
             - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
@@ -194,7 +194,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -208,7 +208,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -255,7 +255,7 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The [version](#response-headers) of the API end point that
+              description: The [version](#response-headers) of the API endpoint that
                 the data holder has responded with.
               explode: false
               schema:
@@ -277,8 +277,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -403,7 +403,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -417,7 +417,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -464,7 +464,7 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The [version](#response-headers) of the API end point that
+              description: The [version](#response-headers) of the API endpoint that
                 the data holder has responded with.
               explode: false
               schema:
@@ -486,10 +486,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
-            Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -622,7 +622,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -636,7 +636,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -691,7 +691,7 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The [version](#response-headers) of the API end point that
+              description: The [version](#response-headers) of the API endpoint that
                 the data holder has responded with.
               explode: false
               schema:
@@ -713,10 +713,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
-            Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400
+            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -787,7 +787,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -801,7 +801,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -848,7 +848,7 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The [version](#response-headers) of the API end point that
+              description: The [version](#response-headers) of the API endpoint that
                 the data holder has responded with.
               explode: false
               schema:
@@ -870,8 +870,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
@@ -949,7 +949,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Version of the API end point requested by the client. Must be
+      - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
           supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
           If the value of [x-min-v](#request-headers) is equal to or higher than the
@@ -963,7 +963,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API end point requested by the client.
+      - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
           with the highest supported version between [x-min-v](#request-headers) and
           [x-v](#request-headers). If all versions requested are not supported then
@@ -1018,7 +1018,7 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The [version](#response-headers) of the API end point that
+              description: The [version](#response-headers) of the API endpoint that
                 the data holder has responded with.
               explode: false
               schema:
@@ -1040,8 +1040,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
             - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
@@ -1195,7 +1195,7 @@ components:
       style: form
       x-cds-type: PositiveInteger
     x-v:
-      description: Version of the API end point requested by the client. Must be set
+      description: Version of the API endpoint requested by the client. Must be set
         to a positive integer. The data holder should respond with the highest supported
         version between [x-min-v](#request-headers) and [x-v](#request-headers). If
         the value of [x-min-v](#request-headers) is equal to or higher than the value
@@ -1210,7 +1210,7 @@ components:
         type: string
       style: simple
     x-min-v:
-      description: Minimum version of the API end point requested by the client. Must
+      description: Minimum version of the API endpoint requested by the client. Must
         be set to a positive integer if provided. The data holder should respond with
         the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
         If all versions requested are not supported then the data holder must respond
@@ -1258,8 +1258,8 @@ components:
       description: Successful response
       headers:
         x-v:
-          description: The [version](#response-headers) of the API end point that
-            the data holder has responded with.
+          description: The [version](#response-headers) of the API endpoint that the
+            data holder has responded with.
           explode: false
           schema:
             type: string
@@ -1281,8 +1281,8 @@ components:
       description: Successful response
       headers:
         x-v:
-          description: The [version](#response-headers) of the API end point that
-            the data holder has responded with.
+          description: The [version](#response-headers) of the API endpoint that the
+            data holder has responded with.
           explode: false
           schema:
             type: string
@@ -1304,8 +1304,8 @@ components:
       description: Successful response
       headers:
         x-v:
-          description: The [version](#response-headers) of the API end point that
-            the data holder has responded with.
+          description: The [version](#response-headers) of the API endpoint that the
+            data holder has responded with.
           explode: false
           schema:
             type: string
@@ -1327,8 +1327,8 @@ components:
       description: Successful response
       headers:
         x-v:
-          description: The [version](#response-headers) of the API end point that
-            the data holder has responded with.
+          description: The [version](#response-headers) of the API endpoint that the
+            data holder has responded with.
           explode: false
           schema:
             type: string
@@ -1350,8 +1350,8 @@ components:
       description: Successful response
       headers:
         x-v:
-          description: The [version](#response-headers) of the API end point that
-            the data holder has responded with.
+          description: The [version](#response-headers) of the API endpoint that the
+            data holder has responded with.
           explode: false
           schema:
             type: string
@@ -2577,7 +2577,7 @@ components:
           type: integer
           x-cds-type: PositiveInteger
         thoroughfareNumber1Suffix:
-          description: Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1
+          description: Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_
             is populated
           type: string
         thoroughfareNumber2:
@@ -2586,8 +2586,8 @@ components:
           type: integer
           x-cds-type: PositiveInteger
         thoroughfareNumber2Suffix:
-          description: Suffix for the second thoroughfare number. Only relevant is
-            thoroughfareNumber2 is populated
+          description: Suffix for the second thoroughfare number. Only relevant if
+            _thoroughfareNumber2_ is populated
           type: string
         flatUnitType:
           description: Type of flat or unit for the address

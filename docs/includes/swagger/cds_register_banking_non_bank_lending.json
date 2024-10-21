@@ -2,7 +2,7 @@
   "openapi" : "3.0.3",
   "info" : {
     "title" : "CDR Participant Discovery API",
-    "version" : "1.31.0"
+    "version" : "1.32.0"
   },
   "servers" : [ {
     "url" : "https://<register-base-url>/"
@@ -36,7 +36,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The version of the API end point requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
+          "description" : "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -47,7 +47,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+          "description" : "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -104,7 +104,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The version of the API end point that the CDR Register has responded with.",
+                "description" : "The version of the API endpoint that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -171,7 +171,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.",
+          "description" : "The version of the API endpoint requested by the client. Must be set to a positive integer.",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -181,7 +181,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+          "description" : "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -214,7 +214,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The version of the API end point that the CDR Register has responded with.",
+                "description" : "The version of the API endpoint that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -299,7 +299,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
+          "description" : "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -310,7 +310,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+          "description" : "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -343,7 +343,7 @@
             "description" : "Success",
             "headers" : {
               "x-v" : {
-                "description" : "The version of the API end point that the CDR Register has responded with.",
+                "description" : "The version of the API endpoint that the CDR Register has responded with.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string"
@@ -417,7 +417,7 @@
         "style" : "simple"
       },
       "XV" : {
-        "description" : "The version of the API end point requested by the client. Must be set to a positive integer.",
+        "description" : "The version of the API endpoint requested by the client. Must be set to a positive integer.",
         "explode" : false,
         "in" : "header",
         "name" : "x-v",
@@ -441,7 +441,7 @@
         "style" : "simple"
       },
       "XMinV" : {
-        "description" : "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+        "description" : "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
         "explode" : false,
         "in" : "header",
         "name" : "x-min-v",
@@ -702,7 +702,7 @@
             "type" : "string"
           },
           "arbn" : {
-            "description" : "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies",
+            "description" : "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies",
             "maxLength" : 9,
             "type" : "string"
           }
@@ -791,7 +791,7 @@
             "type" : "string"
           },
           "arbn" : {
-            "description" : "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies",
+            "description" : "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies",
             "maxLength" : 9,
             "type" : "string"
           },

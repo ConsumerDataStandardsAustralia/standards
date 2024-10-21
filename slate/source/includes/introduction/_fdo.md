@@ -1,14 +1,6 @@
 ## Future Dated Obligations
 
-```diff
-Added 2025 dates to the Obligation Date Schedule and removed dates prior to 2024
 
-Removed Obligations prior to 2024. Earlier obligations may be viewed in Archived versions
-
-Changed retirement date of following energy endpoints to 3rd March 2025
- Get Generic Plan Detail v2
- Get Energy Account Detail v3
-```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 
 
@@ -36,3 +28,4 @@ The table below highlights these areas of the standards.
 |[Get Billing For Specific Accounts](#cdr-energy-api_get-billing-for-specific-accounts)|Data Holders **MAY** retire v2 of this endpoint by **September 9th 2024** if they implement v3| September 9th 2024 |
 |[Get Generic Plan Detail](#cdr-energy-api_get-generic-plan-detail)|<ul><li>Data Holders **MUST** implement v3 of this endpoint by **November 11th 2024**</li><li>Data Holder **MAY** retire v2 of this endpoint by **March 3rd 2025**</li></ul>| November 11th 2024 |
 |[Get Energy Account Detail](#cdr-energy-api_get-energy-account-detail)|<ul><li>Data Holders **MUST** implement v4 of this endpoint by **November 11th 2024**</li><li>Data Holder **MAY** retire v3 of this endpoint by **March 3rd 2025**</li></ul>| November 11th 2024 |
+|[Transaction Security Ciphers](#transaction-security)|Data Holders and Data Recipients **MUST** only support BCP195 recommended ciphers by **March 17th 2025**| March 17th 2025 |

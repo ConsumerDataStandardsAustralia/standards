@@ -6,14 +6,12 @@
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/secondary/energy/electricity/servicepoints</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-
-Content-Type: application/json
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-cds-arrangement: string
-
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-arrangement</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
   "data": {
@@ -30,21 +28,17 @@ x-cds-arrangement: string
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-arrangement'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'/secondary/energy/electricity/servicepoints'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'/secondary/energy/electricity/servicepoints'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>POST /secondary/energy/electricity/servicepoints</code></p>
 
@@ -106,14 +100,14 @@ x-cds-arrangement: string
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -194,7 +188,7 @@ x-cds-arrangement: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -225,7 +219,7 @@ x-cds-arrangement: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -265,36 +259,28 @@ This operation may only be called by an Energy Retailer using the information se
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/secondary/energy/electricity/servicepoints/{servicePointId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-cds-arrangement: string
-
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-arrangement</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-arrangement'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'/secondary/energy/electricity/servicepoints/{servicePointId}'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'/secondary/energy/electricity/servicepoints/{servicePointId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /secondary/energy/electricity/servicepoints/{servicePointId}</code></p>
 
@@ -337,14 +323,14 @@ x-cds-arrangement: string
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -482,7 +468,7 @@ x-cds-arrangement: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -513,7 +499,7 @@ x-cds-arrangement: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -553,36 +539,28 @@ This operation may only be called by an Energy Retailer using the information se
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/secondary/energy/electricity/servicepoints/{servicePointId}/usage</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-cds-arrangement: string
-
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-arrangement</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-arrangement'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'/secondary/energy/electricity/servicepoints/{servicePointId}/usage'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'/secondary/energy/electricity/servicepoints/{servicePointId}/usage'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /secondary/energy/electricity/servicepoints/{servicePointId}/usage</code></p>
 
@@ -660,14 +638,14 @@ x-cds-arrangement: string
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -778,7 +756,7 @@ x-cds-arrangement: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -815,7 +793,7 @@ x-cds-arrangement: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -861,14 +839,12 @@ This operation may only be called by an Energy Retailer using the information se
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/secondary/energy/electricity/servicepoints/usage</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-
-Content-Type: application/json
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-cds-arrangement: string
-
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-arrangement</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
   "data": {
@@ -885,21 +861,17 @@ x-cds-arrangement: string
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-arrangement'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'/secondary/energy/electricity/servicepoints/usage'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'/secondary/energy/electricity/servicepoints/usage'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>POST /secondary/energy/electricity/servicepoints/usage</code></p>
 
@@ -982,14 +954,14 @@ x-cds-arrangement: string
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -1107,7 +1079,7 @@ x-cds-arrangement: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-field-invalid-date-time">400 - Invalid Date</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -1138,7 +1110,7 @@ x-cds-arrangement: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -1178,36 +1150,28 @@ This operation may only be called by an Energy Retailer using the information se
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/secondary/energy/electricity/servicepoints/{servicePointId}/der</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-cds-arrangement: string
-
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-arrangement</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-arrangement'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'/secondary/energy/electricity/servicepoints/{servicePointId}/der'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'/secondary/energy/electricity/servicepoints/{servicePointId}/der'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>GET /secondary/energy/electricity/servicepoints/{servicePointId}/der</code></p>
 
@@ -1250,14 +1214,14 @@ x-cds-arrangement: string
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -1357,7 +1321,7 @@ x-cds-arrangement: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -1388,7 +1352,7 @@ x-cds-arrangement: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -1428,14 +1392,12 @@ This operation may only be called by an Energy Retailer using the information se
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/secondary/energy/electricity/servicepoints/der</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-
-Content-Type: application/json
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-cds-arrangement: string
-
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-arrangement</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
   "data": {
@@ -1452,21 +1414,17 @@ x-cds-arrangement: string
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-cds-arrangement'</span><span class="p">:</span><span class="s1">'string'</span>
-
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'/secondary/energy/electricity/servicepoints/der'</span><span class="p">,</span>
-<span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'/secondary/energy/electricity/servicepoints/der'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
-
 </code></pre>
 <p><code>POST /secondary/energy/electricity/servicepoints/der</code></p>
 
@@ -1528,14 +1486,14 @@ x-cds-arrangement: string
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If the value of <a href="#request-headers">x-min-v</a> is equal to or higher than the value of <a href="#request-headers">x-v</a> then the <a href="#request-headers">x-min-v</a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See <a href="#request-headers">HTTP Headers</a></td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers">x-min-v</a> and <a href="#request-headers">x-v</a>. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
@@ -1653,7 +1611,7 @@ x-cds-arrangement: string
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
 <td><a href="#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
@@ -1684,7 +1642,7 @@ x-cds-arrangement: string
 <td>200</td>
 <td>x-v</td>
 <td>string</td>
-<td>The <a href="#response-headers">version</a> of the API end point that the data holder has responded with.</td>
+<td>The <a href="#response-headers">version</a> of the API endpoint that the data holder has responded with.</td>
 </tr>
 <tr>
 <td>200</td>
@@ -1757,7 +1715,6 @@ This operation may only be called by an Energy Retailer using the information se
     </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_energyservicepointlistresponse_properties">Properties</h3>
 
@@ -1898,7 +1855,6 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_energyservicepointdetailresponse_properties">Properties</h3>
 
@@ -1984,7 +1940,6 @@ This operation may only be called by an Energy Retailer using the information se
     </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_energyusagelistresponse_properties">Properties</h3>
 
@@ -2098,7 +2053,6 @@ This operation may only be called by an Energy Retailer using the information se
     </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_energyderlistresponse_properties">Properties</h3>
 
@@ -2201,7 +2155,6 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_energyderdetailresponse_properties">Properties</h3>
 
@@ -2253,7 +2206,6 @@ This operation may only be called by an Energy Retailer using the information se
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_responseerrorlistv2_properties">Properties</h3>
 
@@ -2325,7 +2277,6 @@ This operation may only be called by an Energy Retailer using the information se
     </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_energyservicepoint_properties">Properties</h3>
 
@@ -2616,7 +2567,6 @@ This operation may only be called by an Energy Retailer using the information se
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_energyservicepointdetail_properties">Properties</h3>
 
@@ -3163,7 +3113,6 @@ This operation may only be called by an Energy Retailer using the information se
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_energyusageread_properties">Properties</h3>
 
@@ -3394,7 +3343,6 @@ This operation may only be called by an Energy Retailer using the information se
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_energyderrecord_properties">Properties</h3>
 
@@ -3779,7 +3727,6 @@ This operation may only be called by an Energy Retailer using the information se
     </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_commonphysicaladdress_properties">Properties</h3>
 
@@ -3847,7 +3794,6 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Required if addressUType is set to simple</em></p>
 
@@ -3943,7 +3889,6 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if addressUType is set to paf</em></p>
 
@@ -3973,7 +3918,7 @@ This operation may only be called by an Energy Retailer using the information se
 <td>thoroughfareNumber1Suffix</td>
 <td>string</td>
 <td>optional</td>
-<td>Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated</td>
+<td>Suffix for the thoroughfare number. Only relevant if <em>thoroughfareNumber1</em> is populated</td>
 </tr>
 <tr>
 <td>thoroughfareNumber2</td>
@@ -3985,7 +3930,7 @@ This operation may only be called by an Energy Retailer using the information se
 <td>thoroughfareNumber2Suffix</td>
 <td>string</td>
 <td>optional</td>
-<td>Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated</td>
+<td>Suffix for the second thoroughfare number. Only relevant if <em>thoroughfareNumber2</em> is populated</td>
 </tr>
 <tr>
 <td>flatUnitType</td>
@@ -4107,7 +4052,6 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_requestservicepointidlist_properties">Properties</h3>
 
@@ -4150,7 +4094,6 @@ This operation may only be called by an Energy Retailer using the information se
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_links_properties">Properties</h3>
 
@@ -4179,7 +4122,6 @@ This operation may only be called by an Energy Retailer using the information se
   <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimeta"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_meta_properties">Properties</h3>
 
@@ -4200,7 +4142,6 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_linkspaginated_properties">Properties</h3>
 
@@ -4256,7 +4197,6 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <h3 id="cdr-energy-secondary-data-holder-api_metapaginated_properties">Properties</h3>
 
