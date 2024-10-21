@@ -14,7 +14,7 @@ The following table lists the changes made to these standards in reverse date or
 
 | Date | Version | Description | Detail of change |
 |-----------|-------|-----------|----------------|
-| TBC | <a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.32.0/'>1.32.0</a> | Changes TBC | See [release notes](includes/releasenotes/releasenotes.1.32.0.html) and [Decision XXX](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX) for details. |
+| 21/10/2024 | <a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.32.0/'>1.32.0</a> | Changes from Maintenance Iteration 20. | See [release notes](includes/releasenotes/releasenotes.1.32.0.html) and [Decision 353](https://github.com/ConsumerDataStandardsAustralia/standards/issues/353) for details. |
 | 03/07/2024 | <a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.31.0/'>1.31.0</a> | Changes from Maintenance Iteration 19 | See [release notes](includes/releasenotes/releasenotes.1.31.0.html) and [Decision 347](https://github.com/ConsumerDataStandardsAustralia/standards/issues/347) for details. |
 | 24/04/2024 | <a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.30.0/'>1.30.0</a> | Changes from maintenance iteration 18 | See [release notes](includes/releasenotes/releasenotes.1.30.0.html) and [Decision 340](https://github.com/ConsumerDataStandardsAustralia/standards/issues/340) for details. |
 | 28/02/2024 | <a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.29.1/'>1.29.1</a> | Patch release fixing minor issues | See [release notes](includes/releasenotes/releasenotes.1.29.1.html) for details. |

@@ -39,14 +39,12 @@ This release addresses the following change requests raised on [Standards Mainte
 ### Decision Proposals
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Decision Proposal #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
+- [Decision Proposal #353 - Maintenance Iteration 20](https://github.com/ConsumerDataStandardsAustralia/standards/issues/353)
 
 
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail | [Standards section](../../#section)
-| Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail | [Standards section](../../#section)
 | Fix typos | [**Standards Staging #411**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/411): Fixed typos and formatting in multiple specification files (documentation) including correction to the '400 - Missing _Required_ Field' error title. | N/A
 | Changelog section | [**Standards Staging #413**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/413): Merged the Change Log and Archives sections | [Changelog and archives](../../#changelog-and-archives)
 | Add CX Guidelines link | [**Standards Staging #418**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/418): Added CX Guidelines link to side/footer navigation | [Introduction](../../#introduction)
@@ -55,8 +53,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 
 ## Introduction
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## High Level Standards
@@ -81,22 +78,19 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Typo fix for `authorization_code` | [**Standards Maintenance #647**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647): Corrected spelling mistake. Addresses [issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647#issuecomment-2199060934) | [Security Profile](../../#security-profile)
 | Removed redundant statement | [**Standards Maintenance #647**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647): Simplified and removed redundant statement for client ID issuance. Addresses [issue comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/647#issuecomment-2212872798) | [Security Profile](../../#security-profile)
-| Adopt BCP195 for supported ciphers | Update TLS Cipher requirements to align to FAPI 2.0 and adoption of BCP195. Addresses [issue 648](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/648#issue-2383325264). | [Security Profile -> Transaction Security -> Ciphers](../../#transaction-security)|
+| Adopt BCP195 for supported ciphers | [**Standards Maintenance #648**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/648): Update TLS Cipher requirements to align to FAPI 2.0 and adoption of BCP195. | [Security Profile -> Transaction Security -> Ciphers](../../#transaction-security)|
 
 
 ## Register Standards
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Consumer Experience
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Non-Functional Requirements
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Additional Standards
