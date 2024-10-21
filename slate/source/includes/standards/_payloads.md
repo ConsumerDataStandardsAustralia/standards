@@ -7,10 +7,10 @@ This section of the standard outlines the request and response payload structure
 
 ```
 {
-  “data”: {
+  "data": {
     ...
   },
-  “meta”: {
+  "meta": {
     ...
   }
 }
@@ -28,13 +28,13 @@ The definition of the contents for the `data` object and `meta` object will be d
 
 ```
 {
-  “data”: {
+  "data": {
     ...
   },
-  “links”: {
-    “self”: “...”
+  "links": {
+    "self": "..."
   },
-  “meta”: {
+  "meta": {
     ...
   }
 }
@@ -44,16 +44,16 @@ The definition of the contents for the `data` object and `meta` object will be d
 
 ```
 {
-  “errors”: [
+  "errors": [
     {
-      “code”: “...”,
-      “title”: “...”,
-      “detail”: “...”
+      "code": "...",
+      "title": "...",
+      "detail": "..."
     }, {
-      “code”: “...”,
-      “title”: “...”,
-      “detail”: “...”,
-      “meta”: {
+      "code": "...",
+      "title": "...",
+      "detail": "...",
+      "meta": {
         ...
       }
     }
@@ -146,7 +146,7 @@ For instance, if a Data Holder holds data in digital form for a Customer that is
 
 An empty field (ie. a field that is not present in a payload) will be considered equivalent with a field that is present with a `null` value.
 
-An empty string (`“”`) is not considered to be equivalent to `null`.
+An empty string (`""`) is not considered to be equivalent to `null`.
 
 A Boolean value of false is not considered to be equivalent to `null`. Optional Boolean fields, by implication, have three possible values: true, false and indeterminate (ie. `null`).
 
@@ -155,16 +155,16 @@ A Boolean value of false is not considered to be equivalent to `null`. Optional 
 > Sample union object structure:
 
 ```
-“data”: {
+"data": {
 	[
 		{
-			“shapeUType”: “circle”,
-			“circle”: {
+			"shapeUType": "circle",
+			"circle": {
 			}
 		},
 		{
-			“shapeUType”: “square”,
-			“square”: {
+			"shapeUType": "square",
+			"square": {
 			}
 		}
 	]

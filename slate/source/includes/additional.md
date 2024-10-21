@@ -1,7 +1,5 @@
 # Additional Standards
 
-
-
 The Consumer Data Standards also incorporate other non-binding standards that are developed to facilitate consultation and feedback or to facilitate voluntary extension of CDR implementations.
 
 These standards fall into three categories:
@@ -12,9 +10,13 @@ These standards fall into three categories:
 
 ## Candidate Standards
 
+```diff
+Updated Telco specification to ensure response header details are displayed correctly
+```
+
 The Consumer Data Standards currently include the following Candidate Standards:
 
-- [Candidate Standards for the Telecommunications sector](./includes/additional/candidates/telco.html)
+- [Candidate Standards for the Telecommunications sector](./includes/additional/candidates/telco/telco.html)
 - [Candidate Standards for Banking Decision Proposal 306](./includes/additional/candidates/dp306/banking-dp306.html)
 - [Candidate Standards for the Banking and Non-Bank Lending sector](./includes/additional/candidates/non-bank-lending/banking-non-bank-lending.html)
 

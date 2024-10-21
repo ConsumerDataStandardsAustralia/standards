@@ -6,7 +6,8 @@
   },
   "servers": [
     {
-      "url": "https://<register-base-url>/"
+      "url": "https://api.cdr.gov.au",
+      "description": "Production TLS"
     }
   ],
   "tags": [],
@@ -57,6 +58,12 @@
     },
     "/cdr-register/v1/{industry}/data-holders/brands": {
       "get": {
+        "servers": [
+          {
+            "url": "https://secure.api.cdr.gov.au",
+            "description": "Production MTLS"
+          }
+        ],
         "tags": [
           "Register"
         ],
@@ -93,7 +100,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+            "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
             "required": true,
             "schema": {
               "type": "string"
@@ -102,7 +109,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
+            "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
             "schema": {
               "type": "string"
             }
@@ -142,7 +149,7 @@
             "description": "Success",
             "headers": {
               "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
+                "description": "The version of the API endpoint that the CDR Register has responded with.",
                 "schema": {
                   "type": "string"
                 }
@@ -223,7 +230,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+            "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
             "required": true,
             "schema": {
               "type": "string"
@@ -232,7 +239,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
+            "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
             "schema": {
               "type": "string"
             }
@@ -252,7 +259,7 @@
             "description": "Success",
             "headers": {
               "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
+                "description": "The version of the API endpoint that the CDR Register has responded with.",
                 "schema": {
                   "type": "string"
                 }
@@ -321,6 +328,12 @@
     },
     "/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa": {
       "get": {
+        "servers": [
+          {
+            "url": "https://secure.api.cdr.gov.au",
+            "description": "Production MTLS"
+          }
+        ],
         "tags": [
           "Register"
         ],
@@ -347,7 +360,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+            "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
             "required": true,
             "schema": {
               "type": "string"
@@ -356,7 +369,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
+            "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
             "schema": {
               "type": "string"
             }
@@ -395,7 +408,7 @@
             "description": "Success",
             "headers": {
               "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
+                "description": "The version of the API endpoint that the CDR Register has responded with.",
                 "schema": {
                   "type": "string",
                   "default": "1"
@@ -507,7 +520,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.  For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
+            "description": "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
             "schema": {
               "type": "string",
               "default": "1"
@@ -516,7 +529,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }
@@ -536,7 +549,7 @@
             "description": "Success",
             "headers": {
               "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
+                "description": "The version of the API endpoint that the CDR Register has responded with.",
                 "schema": {
                   "type": "string"
                 }
@@ -621,7 +634,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+            "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
             "required": true,
             "schema": {
               "type": "string"
@@ -630,7 +643,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
+            "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
             "schema": {
               "type": "string"
             }
@@ -650,7 +663,7 @@
             "description": "Success",
             "headers": {
               "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
+                "description": "The version of the API endpoint that the CDR Register has responded with.",
                 "schema": {
                   "type": "string"
                 }
@@ -735,7 +748,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+            "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
             "required": true,
             "schema": {
               "type": "string"
@@ -744,7 +757,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
+            "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
             "schema": {
               "type": "string"
             }
@@ -764,7 +777,7 @@
             "description": "Success",
             "headers": {
               "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
+                "description": "The version of the API endpoint that the CDR Register has responded with.",
                 "schema": {
                   "type": "string"
                 }
@@ -849,7 +862,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+            "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
             "required": true,
             "schema": {
               "type": "string"
@@ -858,7 +871,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
+            "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
             "schema": {
               "type": "string"
             }
@@ -878,7 +891,7 @@
             "description": "Success",
             "headers": {
               "x-v": {
-                "description": "The version of the API end point that the CDR Register has responded with.",
+                "description": "The version of the API endpoint that the CDR Register has responded with.",
                 "schema": {
                   "type": "string"
                 }
@@ -1008,7 +1021,7 @@
           },
           "response_types_supported": {
             "type": "array",
-            "description": "JSON array containing a list of the OAuth 2.0 response_type values that the CDR Registrer supports",
+            "description": "JSON array containing a list of the OAuth 2.0 _response_type_ values that the CDR Register supports.",
             "items": {
               "type": "string"
             }
@@ -1298,7 +1311,7 @@
           "arbn": {
             "maxLength": 9,
             "type": "string",
-            "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
+            "description": "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies"
           }
         }
       },
@@ -1679,7 +1692,7 @@
           "arbn": {
             "maxLength": 9,
             "type": "string",
-            "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
+            "description": "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies"
           },
           "anzsicDivision": {
             "maxLength": 100,
@@ -1965,7 +1978,7 @@
       "XV": {
         "name": "x-v",
         "in": "header",
-        "description": "Version of the API end point requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+        "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
         "schema": {
           "type": "string"
         }
@@ -1989,7 +2002,7 @@
       "XMinV": {
         "name": "x-min-v",
         "in": "header",
-        "description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
+        "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
         "schema": {
           "type": "string"
         }

@@ -1,6 +1,13 @@
 
 # Energy APIs
 
+```diff
+Updated description of EnergyPlanTariffPeriodV2.dailySupplyChargeType from: 
+- Specifies if daily supply charge is single or banded. Default value is SINGLE if field not provided with a new line.
+to:
++ Specifies if daily supply charge is single or banded.
+```
+
 This specification defines the APIs for Data Holders exposing Energy endpoints.
 
 <table>
@@ -8,11 +15,14 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
-
 ```diff
 For tariffUType the in EnergyPlanSolarFeedInTariffV3, the following change has been made:
 - The type of the payer
 + Reference to the applicable tariff structure
+```
+
+```diff
+Corrected mistake in the timeVaryingTariffs schema which specified amount as a required property
 ```
 
 <%= partial "includes/cds_energy.md" %>

@@ -2,7 +2,7 @@
 	"openapi": "3.0.3",
 	"info": {
 		"title": "CDR Energy API",
-		"description": "Consumer Data Right end points and payloads for the Energy sector",
+		"description": "Consumer Data Right endpoints and payloads for the Energy sector",
         "version": "1.32.0"
 	},
 	"components": {
@@ -1432,7 +1432,7 @@
                             "description": "Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs",
                             "items":{
                                 "type": "object",
-                                "required": ["amount", "timeVariations","displayName"],
+                                "required": ["timeVariations","displayName"],
                                 "properties": {
                                     "type": {
                                         "type": "string",
@@ -1560,7 +1560,7 @@
                         },
                         "dailySupplyChargeType": {
                             "type": "string",
-                            "description": "Specifies if daily supply charge is single or banded. Default value is SINGLE if field not provided",
+                            "description": "Specifies if daily supply charge is single or banded.",
                             "enum": ["SINGLE",
                                 "BAND"
                             ]
@@ -3995,7 +3995,7 @@
                   },
                   "thoroughfareNumber1Suffix": {
                     "type": "string",
-                    "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated"
+                    "description": "Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_ is populated"
                   },
                   "thoroughfareNumber2": {
                     "type": "integer",
@@ -4004,7 +4004,7 @@
                   },
                   "thoroughfareNumber2Suffix": {
                     "type": "string",
-                    "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated"
+                    "description": "Suffix for the second thoroughfare number. Only relevant if _thoroughfareNumber2_ is populated"
                   },
                   "flatUnitType": {
                     "type": "string",
@@ -4200,7 +4200,7 @@
 		"parameters": {
 			"servicePointId": {
 				"name": "servicePointId",
-				"description": "ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId.",
+				"description": "ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data endpoint.  Note that it is not a nationalMeteringId.",
 				"in": "path",
 				"required": true,
 				"schema": {
@@ -4209,7 +4209,7 @@
 			},
 			"accountId": {
 				"name": "accountId",
-				"description": "ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
+				"description": "ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List endpoint.",
 				"in": "path",
 				"required": true,
 				"schema": {
@@ -4321,7 +4321,7 @@
 			},
 			"x-v": {
 				"name": "x-v",
-				"description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+				"description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
 				"in": "header",
 				"required": true,
 				"schema": {
@@ -4330,7 +4330,7 @@
 			},
 			"x-min-v": {
 				"name": "x-min-v",
-				"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+				"description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
 				"in": "header",
 				"required": false,
 				"schema": {
@@ -4367,7 +4367,7 @@
 			},
 			"x-cds-client-headers": {
 				"name": "x-cds-client-headers",
-				"description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
+				"description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
 				"in": "header",
 				"required": false,
 				"x-conditional": true,
@@ -4382,7 +4382,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4400,7 +4400,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4418,7 +4418,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4442,7 +4442,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4466,7 +4466,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4490,7 +4490,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4514,7 +4514,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4538,7 +4538,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4562,7 +4562,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4586,7 +4586,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4610,7 +4610,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4634,7 +4634,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4658,7 +4658,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4682,7 +4682,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4706,7 +4706,7 @@
 				"description": "Successful response",
                 "headers": {
                     "x-v": {
-                        "description": "The [version](#response-headers) of the API end point that the data holder has responded with.",
+                        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
                         "schema": {
                             "type": "string"
                         }
@@ -4733,7 +4733,7 @@
 			"get": {
 				"summary": "Get Generic Plans",
 				"operationId": "listPlans",
-				"description": "Obtain a list of energy plans that are currently offered to the market.\n\nNote that the results returned by this end point are expected to be ordered in descending order according to `lastUpdated`.",
+				"description": "Obtain a list of energy plans that are currently offered to the market.\n\nNote that the results returned by this endpoint are expected to be ordered in descending order according to `lastUpdated`.",
 				"tags": [
                     "Energy",
 					"Generic Tariffs"
@@ -4809,7 +4809,7 @@
 						"$ref": "#/components/responses/planList"
 					},
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "content": {
         					"application/json": {
                                 "schema": {
@@ -4851,6 +4851,7 @@
 					"Generic Tariffs"
 				],
                 "x-version": "3",
+                "x-version-notes": "- The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.",
 				"parameters": [{
 						"name": "planId",
 						"description": "ID of the specific plan requested",
@@ -4872,7 +4873,7 @@
 						"$ref": "#/components/responses/planDetail"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "content": {
         					"application/json": {
                                 "schema": {
@@ -4947,7 +4948,7 @@
 						"$ref": "#/components/responses/servicePointList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -5043,7 +5044,7 @@
 						"$ref": "#/components/responses/servicePointDetail"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -5154,7 +5155,7 @@
 						"$ref": "#/components/responses/usageList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -5280,7 +5281,7 @@
 						"$ref": "#/components/responses/usageList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -5397,7 +5398,7 @@
 						"$ref": "#/components/responses/usageList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -5493,7 +5494,7 @@
 						"$ref": "#/components/responses/derDetail"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -5592,7 +5593,7 @@
 						"$ref": "#/components/responses/derList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -5700,7 +5701,7 @@
 						"$ref": "#/components/responses/derList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -5802,7 +5803,7 @@
 						"$ref": "#/components/responses/accountListV2"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -5871,6 +5872,7 @@
 					"Energy Accounts"
 				],
                 "x-version": "4",
+                "x-version-notes": "- The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.",
 				"parameters": [{
 						"$ref": "#/components/parameters/accountId"
 					},
@@ -5898,7 +5900,7 @@
 						"$ref": "#/components/responses/accountDetailV3"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -5958,7 +5960,7 @@
 			"get": {
 				"summary": "Get Agreed Payment Schedule",
 				"operationId": "getPaymentSchedule",
-				"description": "Obtain the agreed payment schedule and details, if any, for a specific energy account. \n\nSome general notes about this end point:\n\n <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>",
+				"description": "Obtain the agreed payment schedule and details, if any, for a specific energy account. \n\nSome general notes about this endpoint:\n\n <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>",
                 "x-scopes": [
                     "energy:accounts.paymentschedule:read"
                 ],
@@ -5994,7 +5996,7 @@
 						"$ref": "#/components/responses/accountPaymentScheduleDetail"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -6090,7 +6092,7 @@
 						"$ref": "#/components/responses/accountConcessionsDetail"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -6186,7 +6188,7 @@
 						"$ref": "#/components/responses/balanceDetail"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -6285,7 +6287,7 @@
 						"$ref": "#/components/responses/balanceList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -6393,7 +6395,7 @@
 						"$ref": "#/components/responses/balanceList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -6501,7 +6503,7 @@
 						"$ref": "#/components/responses/invoiceList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -6624,7 +6626,7 @@
 						"$ref": "#/components/responses/invoiceList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -6738,7 +6740,7 @@
 						"$ref": "#/components/responses/invoiceList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -6846,7 +6848,7 @@
 						"$ref": "#/components/responses/billingList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -6969,7 +6971,7 @@
 						"$ref": "#/components/responses/billingList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
@@ -7083,7 +7085,7 @@
 						"$ref": "#/components/responses/billingList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
