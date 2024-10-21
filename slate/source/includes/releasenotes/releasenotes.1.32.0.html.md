@@ -21,6 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 - [Standards Staging #413 - Merge Change Log and Archives sections](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/413)
 - [Standards Staging #417 - Non-existent property "amount" listed as required](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/417)
 - [Standards Staging #418 - Add a link to CX Guidelines to the left menu pane of the Standards](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/418)
+- [Standards Staging #419 - Field name styling](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/419)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -58,6 +59,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 | Corrected required properties | [**Standards Staging #417**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/417): Corrected mistake in the _timeVaryingTariffs_ schema which specified _amount_ as a required property | [Energy APIs](../../#energy-apis)
+| Update field name styling | [**Standards Staging #419**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/419): Updated styling of field names in the Banking APIs section, including Product Categories and Product & Account Components | [Banking APIs](../../#banking-apis)
 
 
 ## Information Security Profile
