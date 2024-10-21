@@ -22,6 +22,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 - [Standards Staging #417 - Non-existent property "amount" listed as required](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/417)
 - [Standards Staging #418 - Add a link to CX Guidelines to the left menu pane of the Standards](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/418)
 - [Standards Staging #419 - Field name styling](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/419)
+- [Standards Staging #426 - Error in Telco OAS components](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/426)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -85,6 +86,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Additional Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Correction to Telco specification | [**Standards Staging #426**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/426): Corrected error in specification of response headers | [Candidate Standards](../../#candidate-standards)
 
 
 ## Known Issues

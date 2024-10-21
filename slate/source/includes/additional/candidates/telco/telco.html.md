@@ -6,11 +6,11 @@ language_tabs:
   - diff: Version Delta
 
 toc_footers:
-  - <a href='../../../index.html'>Consumer Data Standards</a>
+  - <a href='../../../../index.html'>Consumer Data Standards</a>
 
 includes:
   - additional/candidates/candidate_header
-  - additional/candidates/telco_apis
+  - additional/candidates/telco/telco_apis
   - cds_telco
 
 search: true
