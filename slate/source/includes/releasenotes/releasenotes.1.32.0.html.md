@@ -23,6 +23,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 - [Standards Staging #418 - Add a link to CX Guidelines to the left menu pane of the Standards](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/418)
 - [Standards Staging #419 - Field name styling](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/419)
 - [Standards Staging #426 - Error in Telco OAS components](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/426)
+- [Standards Staging #437 - Remove Known Issues](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/437)
 - [Standards Staging #438 - Improve code sample section styling](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/438)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
@@ -98,3 +99,4 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Known Issues
 |Change|Description|Link|
 |------|-----------|----|
+| Remove Known issues | [**Standards Staging #437**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/437): Removed three known issues related to Register endpoint specfications that are resolved | [Known Issues](../../#known-issues)
