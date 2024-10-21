@@ -6,7 +6,8 @@
   },
   "servers": [
     {
-      "url": "https://<register-base-url>/"
+      "url": "https://api.cdr.gov.au",
+      "description": "Production TLS"
     }
   ],
   "tags": [],
@@ -57,6 +58,12 @@
     },
     "/cdr-register/v1/{industry}/data-holders/brands": {
       "get": {
+        "servers": [
+          {
+            "url": "https://secure.api.cdr.gov.au",
+            "description": "Production MTLS"
+          }
+        ],
         "tags": [
           "Register"
         ],
@@ -321,6 +328,12 @@
     },
     "/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa": {
       "get": {
+        "servers": [
+          {
+            "url": "https://secure.api.cdr.gov.au",
+            "description": "Production MTLS"
+          }
+        ],
         "tags": [
           "Register"
         ],

@@ -547,7 +547,7 @@
           }
         ],
         "requestBody": {
-          "description": "The list of account IDs to obtain balances for.",
+          "description": "The list of _accountId_ values to obtain balances for.",
           "content": {
             "application/json": {
               "schema": {
@@ -1905,7 +1905,7 @@
           }
         ],
         "requestBody": {
-          "description": "Array of specific accountIds to obtain authorisations for.",
+          "description": "Array of _accountId_ values to obtain authorisations for.",
           "content": {
             "application/json": {
               "schema": {
@@ -2512,7 +2512,7 @@
           }
         ],
         "requestBody": {
-          "description": "Array of specific accountIds to obtain scheduled payments for. The accounts specified are the source of funds for the payments returned.",
+          "description": "Array of _accountId_ values to obtain scheduled payments for. The accounts specified are the source of funds for the payments returned.",
           "content": {
             "application/json": {
               "schema": {
@@ -2622,7 +2622,7 @@
           {
             "name": "type",
             "in": "query",
-            "description": "Filter on the payee type field. In addition to normal type field values, `ALL` can be specified to retrieve all payees. If absent the assumed value is `ALL`.",
+            "description": "Filter on the payee _type_ field. In addition to normal _type_ field values, `ALL` can be specified to retrieve all payees. If absent the assumed value is `ALL`.",
             "schema": {
               "type": "string",
               "default": "ALL",
@@ -2993,7 +2993,7 @@
           {
             "name": "effective",
             "in": "query",
-            "description": "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are `CURRENT`, `FUTURE` and `ALL`. If absent defaults to `CURRENT`.",
+            "description": "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the _effectiveFrom_ and _effectiveTo_ fields. Valid values are `CURRENT`, `FUTURE` and `ALL`. If absent defaults to `CURRENT`.",
             "schema": {
               "type": "string",
               "default": "CURRENT",
@@ -3246,9 +3246,9 @@
             "properties": {
               "accountIds": {
                 "type": "array",
+                "description": "Array of _accountId_ values.",
                 "items": {
                   "type": "string",
-                  "description": "Array of specific accountIds to obtain authorisations for.",
                   "x-cds-type": "ASCIIString"
                 }
               }
@@ -4514,7 +4514,7 @@
           },
           "offsetAccountIds": {
             "type": "array",
-            "description": "The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that _offsetAccountEnabled_ is set to `true` but the _offsetAccountIds_ field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation.",
+            "description": "The _accountId_ values of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that _offsetAccountEnabled_ is set to `true` but the _offsetAccountIds_ field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation.",
             "items": {
               "type": "string",
               "x-cds-type": "ASCIIString"
@@ -5524,11 +5524,11 @@
         "properties": {
           "accountId": {
             "type": "string",
-            "description": "ID of the account that is the source of funds for the payment.",
+            "description": "_accountId_ of the account that is the source of funds for the payment.",
             "x-cds-type": "ASCIIString"
           }
         },
-        "description": "Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the _to_ object."
+        "description": "Object containing details of the source of the payment. Currently only specifies an _accountId_ but provided as an object to facilitate future extensibility and consistency with the _to_ object."
       },
       "BankingScheduledPaymentRecurrence": {
         "required": [
