@@ -1,10 +1,6 @@
 ## Product Categories
 
-```diff
-Updated the description of the Product Categories section
-- The Product Category enumeration lists the available product categories for categorising products and accounts.
-+ The productCategory enumeration provides the values for categorising products and accounts.
-```
+
 
 The [_productCategory_ enumeration](#cdr-banking-api_schemas_tocSbankingproductcategory) provides the values for categorising products and accounts. These are explained in the following tables:
 

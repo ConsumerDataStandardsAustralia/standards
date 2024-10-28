@@ -10,9 +10,7 @@ These standards fall into three categories:
 
 ## Candidate Standards
 
-```diff
-Updated Telco specification to ensure response header details are displayed correctly
-```
+
 
 The Consumer Data Standards currently include the following Candidate Standards:
 

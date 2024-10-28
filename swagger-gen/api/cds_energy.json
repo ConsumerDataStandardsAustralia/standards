@@ -3,7 +3,7 @@
 	"info": {
 		"title": "CDR Energy API",
 		"description": "Consumer Data Right endpoints and payloads for the Energy sector",
-        "version": "1.32.0"
+        "version": "1.33.0"
 	},
 	"components": {
 		"schemas": {

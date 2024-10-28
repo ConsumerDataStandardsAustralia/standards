@@ -27,11 +27,7 @@ OAUTB SHALL NOT be supported due to a lack industry support.
 ### Ciphers
 
 
-```diff
-Obligation change from March 17th 2025:
-- Removed specific named ciphers
-+ Adopted BCP195
-```
+
 
 **Until March 17th 2025, the following SHALL requirements apply:**
 

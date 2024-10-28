@@ -1,9 +1,6 @@
 ## Normative References
 
-```diff
-+ Added BCP195 to the list of normative references
-- Removed BCP195 from the list of informative references
-```
+
 
 | **Reference**  | **Description**  | **Version** |
 |-|-|-|
@@ -42,9 +39,7 @@
 
 ## Informative References
 
-```diff
-Improved styling of 'Code samples' displayed in the Non-Normative Examples tab
-```
+
 
 | **Reference**  | **Description**                                                                                                                                                                   |
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

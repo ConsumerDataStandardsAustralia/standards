@@ -1,18 +1,10 @@
 ## Common Field Types
 
-```diff
-Updated description of `AmountString` field clarifying the currency format and noting it defaults to AUD 
 
-Clarified formatting of RateString type
-```
 
 The following table outlines the common data types for fields used in the standard.
 
-```diff
-Change to URIString example:
-- "http://www.google.com"
-+ "https://www.example.com"
-```
+
 
 Type | Description | Valid Examples
 -----|-------------|---------------
