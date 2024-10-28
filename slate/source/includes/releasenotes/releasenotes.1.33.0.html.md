@@ -56,6 +56,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Refresh Token expiry | [**Standards Maintenance #667**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/667): Refresh token expiry must be set to the sharing duration of the consent | [Security Profile -> Tokens -> Refresh Tokens](../../#tokens)
 
 
 ## Register Standards

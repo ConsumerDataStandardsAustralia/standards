@@ -54,16 +54,24 @@ The process for refreshing an Access Token is described in [section 12.1](https:
 * Data Holders **MUST** reject token request with an authorization code (Section 1.3.1 of **[[RFC6749]](#nref-RFC6749)**) if it has been previously used
 
 
+```diff
+Updated the refresh token expiry time to be issued equal to the sharing duration authorised by the customer
+```
+
 ### Refresh Token
-Refresh Tokens **MUST** be supported by Data Holders.
+Refresh Tokens **MUST** be supported by Data Holders in accordance with [section 12](https://openid.net/specs/openid-connect-core-1_0.html#RefreshTokens) of **[[OIDC]](#nref-OIDC)**.
 
-The usage of Refresh Tokens is specified in [section 12](https://openid.net/specs/openid-connect-core-1_0.html#RefreshTokens) of **[[OIDC]](#nref-OIDC)**.
+In addition Data Holders:
 
-The expiration time for a Refresh Token **MUST** be set by the Data Holder.
+- **MUST NOT** cycle refresh tokens (rotation).
 
-Refresh Token expiration **MAY** be any length of time greater than 28 days but **MUST NOT** exceed the end of the duration of sharing consented to by the Consumer.
+**From May 12th 2025**,
 
-*	Data Holders **MUST NOT** cycle refresh tokens (rotation). In other words, Refresh Tokens **SHOULD** be issued with an "exp" equal to the sharing duration authorised by the Customer.
+- **MUST** issue Refresh Tokens with an "exp" equal to the sharing duration authorised by the Customer.
+
+**Until May 12th 2025**,
+
+- **SHOULD** issue Refresh Tokens with an "exp" equal to the sharing duration authorised by the Customer.
 
 ### Token Expiry
 The expiry time for issued access tokens and refresh tokens **MUST** be deterministic for the Data Recipient Software Product.
