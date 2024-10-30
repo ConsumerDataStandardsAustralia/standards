@@ -12,7 +12,7 @@ This end point is used by the Data Holder to provide the public keys they will u
 
 Data Holders MUST support a JWKS End Point.
 
-This endpoint does not require [CORS](https://consumerdatastandardsaustralia.github.io/standards/#cors).
+This endpoint does not require [CORS](#cors).
 
 
 #### JWKS URIs

@@ -17,7 +17,7 @@
           "Client Registration"
         ],
         "summary": "Register Data Recipient oAuth Client",
-        "description": "Register a client using a CDR Register issued Software Statement Assertion. \n\nThis endpoint does not require CORS.",
+        "description": "Register a client using a CDR Register issued Software Statement Assertion. \n\nThis endpoint does not require [CORS](#cors).",
         "operationId": "PostDataRecipientRegistration",
         "requestBody": {
           "description": "The registration request JWT to be used to register with a Data Holder.",

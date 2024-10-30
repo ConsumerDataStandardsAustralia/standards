@@ -13,7 +13,7 @@ includes:
   - data-recipients
 
 toc_footers:
-  - <a href='../../index.html'>Consumer Data Standards</a>
+  - <a href='../../'>Consumer Data Standards</a>
 
 search: false
 ---
