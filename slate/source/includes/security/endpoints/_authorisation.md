@@ -11,7 +11,7 @@ GET /authorise?
    scope=openid%20profile%20bank:accounts.basic:read%20bank:accounts.detail:read&
    request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey ...
 HTTP/1.1
-Host: www.holder.com.au
+Host: tls.dh.example.com
 
 ## Decoded request JWT
 {
@@ -22,10 +22,10 @@ Host: www.holder.com.au
 {
   "iss": "12345",
   "exp": 1516239322,
-  "aud": "https://www.recipient.com.au",
+  "aud": "https://adr.example.com",
   "response_type": "code id_token",
   "client_id": "12345",
-  "redirect_uri": "https://www.recipient.com.au/coolstuff",
+  "redirect_uri": "https://adr.example.com/redirects/redirect1",
   "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read",
   "state": "af0ifjsldkj",
   "nonce": "n-0S6_WzA2Mj",
@@ -54,11 +54,11 @@ Host: www.holder.com.au
 ```
 ## Request
 
-GET /authorize?client_id=12345&
+GET /authorise?client_id=12345&
      scope=openid&
      request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3A6esc_11ACC5bwc014ltc14eY22c
 HTTP/1.1
-Host: www.holder.com.au
+Host: tls.dh.example.com
 
 ```
 

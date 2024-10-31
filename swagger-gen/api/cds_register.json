@@ -6,8 +6,8 @@
   },
   "servers": [
     {
-      "url": "https://api.cdr.gov.au",
-      "description": "Production TLS"
+      "description": "Production TLS",
+      "url": "https://api.cdr.gov.au"
     }
   ],
   "tags": [],
@@ -60,8 +60,8 @@
       "get": {
         "servers": [
           {
-            "url": "https://secure.api.cdr.gov.au",
-            "description": "Production MTLS"
+            "description": "Production MTLS",
+            "url": "https://secure.api.cdr.gov.au"
           }
         ],
         "tags": [
@@ -330,8 +330,8 @@
       "get": {
         "servers": [
           {
-            "url": "https://secure.api.cdr.gov.au",
-            "description": "Production MTLS"
+            "description": "Production MTLS",
+            "url": "https://secure.api.cdr.gov.au"
           }
         ],
         "tags": [

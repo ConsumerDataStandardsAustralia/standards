@@ -63,8 +63,8 @@ A list of standard error codes to help categorise an error response. The applica
 # A request to a Data Holder extension API is made where an application-specific error is returned
 #
 # Request
-POST https://data.acme.com.au/cds-au/v1/banking/ACME-new-loan-application HTTP/1.1
-Host: data.holder.com.au
+POST https://mtls.dh.example.com/cds-au/v1/banking/ACME-new-loan-application HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-ACME-v : 7
 
@@ -100,8 +100,8 @@ Content-Type: application/json
 # the value of is-owned is not a Boolean value
 #
 # Request
-GET https://data.holder.com.au/cds-au/v1/banking/accounts?is-owned=2007-05-01 HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/accounts?is-owned=2007-05-01 HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 
 # Response
@@ -144,8 +144,8 @@ Content-Type: application/json
 # A request to a resource endpoint that does not exist
 #
 # Request
-GET https://data.holder.com.au/cds-au/v1/banking/payments/294819e6-7ae0-4e20-900a-6a733fd97854/location HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/payments/294819e6-7ae0-4e20-900a-6a733fd97854/location HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 
 # Response
@@ -164,8 +164,8 @@ Content-Type: application/json
 # but is not currently implemented
 #
 # Request
-POST https://data.holder.com.au/cds-au/v1/admin/register/metadata HTTP/1.1
-Host: data.holder.com.au
+POST https://mtls.dh.example.com/cds-au/v1/admin/register/metadata HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 
 # Response
@@ -184,8 +184,8 @@ Content-Type: application/json
 # A request to a resource that is temporarily unavailable
 #
 # Request
-GET https://data.holder.com.au/cds-au/v1/banking/accounts/b3f0c9d0/transactions/52e443ae13c5 HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/b3f0c9d0/transactions/52e443ae13c5 HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 
 # Response
@@ -205,8 +205,8 @@ Content-Type: application/json
 # A request to a get a banking account that is invalid
 #
 # Request
-GET https://data.holder.com.au/cds-au/v1/banking/accounts/invalid-id/ HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/invalid-id/ HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 
 # Response
@@ -254,8 +254,8 @@ Content-Type: application/json
 # A bulk request to a get a banking account that is unavailable
 #
 # Request
-POST https://data.holder.com.au/cds-au/v1/banking/accounts/balances HTTP/1.1
-Host: data.holder.com.au
+POST https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 
 {

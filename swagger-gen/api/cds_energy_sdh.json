@@ -5,6 +5,12 @@
 		"description": "Consumer Data Right endpoints and payloads for Secondary Data Holder for the Energy sector",
         "version": "1.33.0"
 	},
+  "servers": [
+    {
+      "description": "TLS",
+      "url": "https://tls.sdh.example.com/cds-au/v1"
+    }
+  ],
 	"components": {
 		"schemas": {
             "EnergyServicePointListResponse": {

@@ -7,7 +7,8 @@
   },
   "servers": [
     {
-      "url": "https://data.holder.com.au/"
+      "description": "MTLS",
+      "url": "https://mtls.dh.example.com/cds-au/v1"
     }
   ],
   "paths": {
@@ -314,7 +315,7 @@
           "client_uri": {
             "type": "string",
             "description": "URL string of a web page providing information about the client",
-            "example": "https://www.mockcompany.com.au",
+            "example": "https://adr.example.com",
             "x-cds-type": "URIString"
           },
           "legal_entity_id": {
@@ -341,8 +342,8 @@
             "type": "array",
             "description": "Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA",
             "example": [
-              "https://www.mockcompany.com.au/redirects/redirect1",
-              "https://www.mockcompany.com.au/redirects/redirect2"
+              "https://adr.example.com/redirects/redirect1",
+              "https://adr.example.com/redirects/redirect2"
             ],
             "items": {
               "type": "string",
@@ -352,43 +353,43 @@
           "sector_identifier_uri": {
             "type": "string",
             "description": "URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier",
-            "example": "https://www.mockcompany.com.au/sector_identifier.json",
+            "example": "https://adr.example.com/sector_identifier.json",
             "x-cds-type": "URIString"
           },
           "logo_uri": {
             "type": "string",
             "description": "URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval",
-            "example": "https://www.mockcompany.com.au/logos/logo1.png",
+            "example": "https://adr.example.com/logos/logo1.png",
             "x-cds-type": "URIString"
           },
           "tos_uri": {
             "type": "string",
             "description": "URL string that points to a human-readable terms of service document for the Software Product",
-            "example": "https://www.mockcompany.com.au/tos.html",
+            "example": "https://adr.example.com/tos.html",
             "x-cds-type": "URIString"
           },
           "policy_uri": {
             "type": "string",
             "description": "URL string that points to a human-readable policy document for the Software Product",
-            "example": "https://www.mockcompany.com.au/policy.html",
+            "example": "https://adr.example.com/policy.html",
             "x-cds-type": "URIString"
           },
           "jwks_uri": {
             "type": "string",
             "description": "URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client public keys",
-            "example": "https://www.mockcompany.com.au/jwks",
+            "example": "https://adr.example.com/jwks",
             "x-cds-type": "URIString"
           },
           "revocation_uri": {
             "type": "string",
             "description": "URI string that references the location of the Software Product consent revocation endpoint",
-            "example": "https://www.mockcompany.com.au/revocation",
+            "example": "https://adr.example.com/revocation",
             "x-cds-type": "URIString"
           },
           "recipient_base_uri": {
             "type": "string",
             "description": "Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints",
-            "example": "https://www.mockcompany.com.au",
+            "example": "https://adr.example.com",
             "x-cds-type": "URIString"
           },
           "token_endpoint_auth_method": {
@@ -568,7 +569,7 @@
               "aud": {
                 "type": "string",
                 "description": "Contains the Data Holder issuer value as described in the OIDC Discovery Document",
-                "example": "https://secure.api.dataholder.com/issuer",
+                "example": "https://mtls.dh.example.com/issuer",
                 "x-cds-type": "URIString"
               }
             }

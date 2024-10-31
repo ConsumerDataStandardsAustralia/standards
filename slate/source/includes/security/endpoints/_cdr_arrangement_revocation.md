@@ -5,9 +5,9 @@
 >Request
 
 ```
-POST https://data.holder.com.au/arrangements/revoke
+POST https://mtls.dh.example.com/arrangements/revoke
 HTTP/1.1
-Host: data.holder.com.au
+Host: mtls.dh.example.com
 Content-Type: application/x-www-form-urlencoded
 
   client_id=s6BhdRkqt3&
@@ -67,9 +67,9 @@ This end point will be implemented according to the following:
 >Request
 
 ```
-POST https://data.recipient.com.au/arrangements/revoke
+POST https://adr.example.com/arrangements/revoke
 HTTP/1.1
-Host: data.recipient.com.au
+Host: adr.example.com
 Content-Type: application/x-www-form-urlencoded
 Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
 
@@ -82,9 +82,9 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 >Request
 
 ```
-POST https://data.recipient.com.au/arrangements/revoke
+POST https://adr.example.com/arrangements/revoke
 HTTP/1.1
-Host: data.recipient.com.au
+Host: adr.example.com
 Content-Type: application/x-www-form-urlencoded
 Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
 
@@ -101,7 +101,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
   "cdr_arrangement_id": "5a1bf696-ee03-408b-b315-97955415d1f0",
   "iss":"dataholderbrand-123",
   "sub":"dataholderbrand-123",
-  "aud":"https://data.recipient.com.au/arrangements/revoke",
+  "aud":"https://adr.example.com/arrangements/revoke",
   "iat":1516239022,
   "exp":1516239322,
   "jti":"dba86502-7cf5-4719-9638-c5339a0ddb06"

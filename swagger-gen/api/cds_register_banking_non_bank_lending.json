@@ -6,13 +6,20 @@
   },
   "servers": [
     {
-      "url": "https://<register-base-url>/"
+      "description": "Production TLS",
+      "url": "https://api.cdr.gov.au"
     }
   ],
   "tags": [],
   "paths": {
     "/cdr-register/v1/{industry}/data-holders/brands": {
       "get": {
+        "servers": [
+          {
+            "description": "Production MTLS",
+            "url": "https://secure.api.cdr.gov.au"
+          }
+        ],
         "tags": [
           "Register"
         ],

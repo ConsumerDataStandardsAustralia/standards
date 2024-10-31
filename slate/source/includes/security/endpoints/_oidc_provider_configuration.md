@@ -6,7 +6,7 @@
 ## Request
 
 GET /.well-known/openid-configuration HTTP/1.1
-Host: www.dh.com.au
+Host: tls.dh.example.com
 
 ## Response - FAPI 1.0 Final Phase 3 Obligations
 
@@ -14,32 +14,32 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "acr_values_supported": ["urn:cds.au:cdr:2","urn:cds.au:cdr:3"],
-  "authorization_endpoint": "https://www.dh.com.au/authorise",
+  "authorization_endpoint": "https://tls.dh.example.com/authorise",
   "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub"],
   "grant_types_supported": ["authorization_code", "client_credentials", "urn:openid:params:modrna:grant-type:backchannel_request"],
   "id_token_encryption_alg_values_supported": [ "RSA-OAEP", "RSA-OAEP-256", "dir", "ECDH-ES", "ECDH-ES+A128KW", "ECDH-ES+A192KW", "ECDH-ES+A256KW", "A128KW", "A192KW", "A256KW", "A128GCMKW", "A192GCMKW", "A256GCMKW" ],
   "id_token_encryption_enc_values_supported": [ "A128CBC-HS256", "A192CBC-HS384", "A256CBC-HS512", "A128GCM", "A192GCM", "A256GCM" ],
   "id_token_signing_alg_values_supported": ["ES256", "PS256"],
-  "issuer": "https://www.dh.com.au",
-  "jwks_uri": "https://www.dh.com.au/jwks",
-  "registration_endpoint": "https://www.dh.com.au/register",
+  "issuer": "https://mtls.dh.example.com",
+  "jwks_uri": "https://tls.dh.example.com/jwks",
+  "registration_endpoint": "https://mtls.dh.example.com/register",
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "response_modes_supported": ["fragment", "jwt"],
   "response_types_supported": ["code id_token", "code"],
   "subject_types_supported": ["pairwise"],
   "scopes_supported": ["openid", "profile", "..."],
-  "token_endpoint": "https://www.dh.com.au/token",
+  "token_endpoint": "https://mtls.dh.example.com/token",
   "token_endpoint_auth_methods_supported": ["private_key_jwt"],
   "token_endpoint_auth_signing_alg_values_supported": ["ES256", "PS256"],
-  "userinfo_endpoint": "https://www.dh.com.au/userinfo",
+  "userinfo_endpoint": "https://mtls.dh.example.com/userinfo",
 
   "code_challenge_methods_supported": ["S256"],
-  "introspection_endpoint": "https://www.dh.com.au/introspect",
-  "revocation_endpoint": "https://www.dh.com.au/revoke",
+  "introspection_endpoint": "https://mtls.dh.example.com/introspect",
+  "revocation_endpoint": "https://mtls.dh.example.com/revoke",
 
   "tls_client_certificate_bound_access_tokens": true,
 
-  "pushed_authorization_request_endpoint": "https://data.holder.com.au/par",
+  "pushed_authorization_request_endpoint": "https://mtls.dh.example.com/par",
   "require_pushed_authorization_requests": true,
 
   "authorization_encryption_alg_values_supported": ["RSA-OAEP", "RSA-OAEP-256"],
@@ -47,7 +47,7 @@ Content-Type: application/json
   "authorization_encryption_enc_values_supported": ["A256GCM", "A128CBC-HS256"],
   "authorization_signing_alg_values_supported": ["ES256", "PS256"],
 
-  "cdr_arrangement_revocation_endpoint": "https://data.holder.com.au/arrangements/revoke"
+  "cdr_arrangement_revocation_endpoint": "https://mtls.dh.example.com/arrangements/revoke"
 }
 ```
 

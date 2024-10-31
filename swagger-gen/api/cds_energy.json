@@ -5,6 +5,12 @@
 		"description": "Consumer Data Right endpoints and payloads for the Energy sector",
         "version": "1.33.0"
 	},
+  "servers": [
+    {
+      "description": "MTLS",
+      "url": "https://mtls.dh.example.com/cds-au/v1"
+    }
+  ],
 	"components": {
 		"schemas": {
             "EnergyPlanListResponse": {
@@ -4731,6 +4737,12 @@
 	"paths": {
 		"/energy/plans": {
 			"get": {
+        "servers": [
+          {
+            "description": "TLS",
+            "url": "https://tls.dh.example.com/cds-au/v1"
+          }
+        ],
 				"summary": "Get Generic Plans",
 				"operationId": "listPlans",
 				"description": "Obtain a list of energy plans that are currently offered to the market.\n\nNote that the results returned by this endpoint are expected to be ordered in descending order according to `lastUpdated`.",
@@ -4843,6 +4855,12 @@
 		},
 		"/energy/plans/{planId}": {
 			"get": {
+        "servers": [
+          {
+            "description": "TLS",
+            "url": "https://tls.dh.example.com/cds-au/v1"
+          }
+        ],
 				"summary": "Get Generic Plan Detail",
 				"operationId": "getPlan",
 				"description": "Obtain detailed information on a single energy plan offered openly to the market.\n\nOther Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html) [v2](includes/obsolete/get-generic-plan-detail-v2.html)",

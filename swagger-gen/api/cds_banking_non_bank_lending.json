@@ -16,7 +16,8 @@
   },
   "servers": [
     {
-      "url": "https://data.holder.com.au/cds-au/v1"
+      "description": "MTLS",
+      "url": "https://mtls.dh.example.com/cds-au/v1"
     }
   ],
   "paths": {
@@ -2986,6 +2987,12 @@
     },
     "/banking/products": {
       "get": {
+        "servers": [
+          {
+            "description": "TLS",
+            "url": "https://tls.dh.example.com/cds-au/v1"
+          }
+        ],
         "tags": [
           "Banking",
           "Products"
@@ -3144,6 +3151,12 @@
     },
     "/banking/products/{productId}": {
       "get": {
+        "servers": [
+          {
+            "description": "TLS",
+            "url": "https://tls.dh.example.com/cds-au/v1"
+          }
+        ],
         "tags": [
           "Banking",
           "Products"
