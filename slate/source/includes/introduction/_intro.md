@@ -11,8 +11,9 @@ The standards are required to be published. The obligations on CDR participants 
 
 Some of these standards will be binding data standards under the Competition and Consumer (Consumer Data Right) Data Standards (No. 1) 2023. See that instrument [here](https://consumerdatastandards.gov.au/sites/consumerdatastandards.gov.au/files/2023-02/Competition%20and%20Consumer%20%28Consumer%20Data%20Right%29%20Data%20Standards%20%28No.%201%29%202023%20executed.pdf). In summary, provisions of these standards (as they exist from time to time) that impose obligations or prohibitions on CDR entities are binding data standards. Provisions included in these standards merely by way of guidance are not binding data standards.
 
-
-
+```diff
+Replaced 'must' with 'MUST' in x-v, x-min-v and x-fapi-interaction-id header descriptions
+```
 
 ## Version
 These standards represent version 1.33.0 of the high level standards.  See the [versioning section](#versioning) for more information on how versions are managed in the standard.
