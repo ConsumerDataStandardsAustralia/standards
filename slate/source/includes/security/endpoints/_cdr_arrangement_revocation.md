@@ -31,21 +31,23 @@ Data Holders and Data Recipient Software Products MUST implement a CDR Arrangeme
 
 <br/>
 
+```diff
+Clarified 'CDR Arrangement JWT method' details
+```
+
 **CDR Arrangement Form Parameter method**
 
-The request **MUST** include the following parameters using the ``application/x-www-form-urlencoded`` format in the HTTP request entity-body:
+The request **MUST** include the following parameter using the `application/x-www-form-urlencoded` format in the HTTP request entity-body:
 
-* ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
+* _cdr_arrangement_id_: The ID of the arrangement that the client wants to revoke.
 
 **CDR Arrangement JWT method**
 
-The request **MUST** include the following parameters using the application/x-www-form-urlencoded format in the HTTP request entity-body:
+The request **MUST** include the following parameter using the `application/x-www-form-urlencoded` format in the HTTP request entity-body:
 
-* ``cdr_arrangement_jwt``: A signed JWT that includes the ``cdr_arrangement_id``.
-* ``cdr_arrangement_jwt``: A newly signed JWT with the following parameters in accordance with **[[JWT]](#nref-JWT)**:
-  * ``cdr_arrangement_id``: The ID of the arrangement that the client wants to revoke.
-
-The ``cdr_arrangement_jwt`` **SHOULD** include all parameters in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](https://consumerdatastandardsaustralia.github.io/standards/#self-signed-jwt-client-authentication).
+* _cdr_arrangement_jwt_: A newly signed JWT with the following parameters in accordance with **[[JWT]](#nref-JWT)**:
+  * _cdr_arrangement_id_: The ID of the arrangement that the client wants to revoke.
+  * This JWT **SHOULD** also include all parameters in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](https://consumerdatastandardsaustralia.github.io/standards/#self-signed-jwt-client-authentication).
 
 **Data Holder hosted endpoint**
 
