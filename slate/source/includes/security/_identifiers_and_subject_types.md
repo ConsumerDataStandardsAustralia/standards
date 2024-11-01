@@ -19,7 +19,7 @@ Identifier (UUID) **[[RFC4122]](#nref-RFC4122)**.
 
 ```
 POST /token HTTP/1.1
-Host: https://mtls.dh.example.com
+Host: mtls.dh.example.com
 Content-Type: application/x-www-form-urlencoded
 
 client_id=s6BhdRkqt3
@@ -64,7 +64,7 @@ client_id=s6BhdRkqt3
 
 ```
 POST /token/introspect HTTP/1.1
-Host: https://mtls.dh.example.com
+Host: mtls.dh.example.com
 Content-Type: application/x-www-form-urlencoded
 
 client_id=s6BhdRkqt3
