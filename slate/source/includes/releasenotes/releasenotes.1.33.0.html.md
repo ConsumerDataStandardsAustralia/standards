@@ -33,7 +33,6 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Common Field Types styling | [**Standards Staging #442**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/442): Applied consistent styling in descriptions and Valid Examples | [Common Field Types](../../#common-field-types)
 | Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail | [Standards section](../../#section)
 | Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail | [Standards section](../../#section)
 
@@ -46,6 +45,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Common Field Types styling | [**Standards Staging #442**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/442): Applied consistent styling in descriptions and Valid Examples | [Common Field Types](../../#common-field-types)
 
 
 ## API Endpoints
