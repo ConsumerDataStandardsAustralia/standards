@@ -71,6 +71,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Non-Functional Requirements
 |Change|Description|Link|
 |------|-----------|----|
+| Updated Reporting Requirements section | [**Standards Maintenance #663**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/663#issuecomment-2359965763): Removed outdated reporting detail and updated link to Get Metrics endpoint | [Reporting Requirements](../../?diff#reporting-requirements)
 
 
 ## Additional Standards
