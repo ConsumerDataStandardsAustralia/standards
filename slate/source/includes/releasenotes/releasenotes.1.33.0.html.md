@@ -17,7 +17,7 @@ Release notes for version v1.33.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #429 - Refer to components in Banking API spec](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/429)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -51,6 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Refactor Banking API spec | [**Standards Staging #429**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/429): Refactored Banking API specification file to refer to common components | [Banking APIs](../../#banking-apis)
 
 
 ## Information Security Profile
