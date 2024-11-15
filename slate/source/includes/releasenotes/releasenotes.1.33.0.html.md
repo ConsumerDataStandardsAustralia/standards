@@ -55,6 +55,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Updated link | [**Standards Maintenance #663**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/663#issuecomment-2370626204): Resolved broken link referring to section 3 of MTLS | [Holder of Key Mechanism](../../#holder-of-key-mechanism)
 | Clarified 'CDR Arrangement JWT method' details | [**Standards Maintenance #663**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/663#issuecomment-2445941229): Removed duplicate line and clarified 'CDR Arrangement JWT method' details | [CDR Arrangement Revocation End Point](../../#cdr-arrangement-revocation-end-point)
 
 
