@@ -40,6 +40,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Introduction
 |Change|Description|Link|
 |------|-----------|----|
+| Clarified endpoint retirement dates | [**Standards Maintenance #663**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/663#issuecomment-2472253052): Updated 'MAY retire' statements from 'by (date)' to 'from (date)' | [Future Dated Obligations](../../#future-dated-obligations)
 
 
 ## High Level Standards
