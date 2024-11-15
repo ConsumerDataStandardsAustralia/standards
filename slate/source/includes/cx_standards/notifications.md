@@ -23,13 +23,13 @@ Alternative settings under 4A.14(3) only apply to the following notifications in
 1. The requester has given, amended, or withdrawn an authorisation
 2. Expiration of an authorisation
 3. A relevant account holder hasn't given approval within the relevant time frame
-4. A relevant account holder has withdrawn an approval
+4. A relevant account holder has withdrawn an approval.
 
 The standards in this section provide a non-exhaustive list of options that data holders may implement to support their compliance with these rules. The specific implementation of an alternative notification schedule and offering, which may or may not include options listed here, are at the data holder's discretion. It is the data holder's responsibility to ensure it is meeting its obligations under the CDR Rules. Compliance with the CDR Rules on alternative notification schedules would require, at a minimum, implementation of a combination of options (being a combination of options listed below, other measures, or both).
 
 |Area|CX Standard|
 |-------------------|------------------------------|
-|**Joint account notifications:**<br/>Reduced frequency  |<p>Data holders **MAY** offer consumers the ability to receive their joint account notifications less frequently and as a periodic summary.</p><p>This **MAY**, for example, outline all joint account activity at a frequency determined by the data holder and consumer, such as the previous quarter, month, fortnight, and so on.</p><p>This **MAY** also, for example, be provided with or in relation to other CDR notifications such as a CDR Receipt, which is optional for data holders.</p>|
+|**Joint account notifications:**<br/>Reduced frequency |<p>Data holders **MAY** offer consumers the ability to receive their joint account notifications less frequently and as a periodic summary.</p><p>This **MAY**, for example, outline all joint account activity at a frequency determined by the data holder and consumer, such as the previous quarter, month, fortnight, and so on.</p><p>This **MAY** also, for example, be provided with or in relation to other CDR notifications such as a CDR Receipt, which is optional for data holders.</p>|
 |**Joint account notifications:**<br/>Granular control |<p>Data holders **MAY** offer consumers the ability to specify which joint account notifications they do and do not want to receive.</p><p>This **MAY**, for example, allow a relevant joint account holder to only receive notifications when the requester gives or amends an authorisation.</p>|
 |**Joint account notifications:**<br/>Turn off notifications |<p>Data holders **MAY** allow consumers to elect to no longer receive any joint account notifications.</p>|
 |**Joint account notifications:**<br/>Consequences of amendment |<p>Data holders **MAY** inform the consumer of the consequences of amending their joint account notification schedule.</p><p>This notification **MAY** include instructions for how to amend this schedule or reverse the amendment.</p>|
