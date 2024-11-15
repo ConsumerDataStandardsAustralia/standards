@@ -1,6 +1,8 @@
 ## Future Dated Obligations
 
-
+```diff
+Added milestone dates for 2026 and 2027 to the Obligation Date Schedule
+```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 
 
