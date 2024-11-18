@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #655 - Get Metrics V5 error metrics documentation](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/655)
 
 
 ### Decision Proposals
@@ -34,7 +34,6 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 | Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail | [Standards section](../../#section)
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail | [Standards section](../../#section)
 | Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail | [Standards section](../../#section)
 
 
@@ -51,6 +50,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Updated field descriptions | [**Standards Maintenance #655**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/655): Updated the Description for the _additionalProperties_ and _500_ fields shown in the Get Metrics endpoint ErrorMetricsV2 structure. These clarifications are provided with an FDO of **Y25 #2: 2025-05-12** (12th May 2025). | [ErrorMetricsV2](../../#cdr-admin-api_schemas_tocSerrormetricsv2)
 
 
 ## Information Security Profile
