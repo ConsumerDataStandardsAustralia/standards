@@ -6,7 +6,13 @@ For more details of these endpoints see the [DCR APIs](#dcr-apis) section.
 
 For additional statements on the operation of these endpoint during client registration see the [Client Registration](#client-registration) section.
 
-| HTTP Verb | Auth Server Support | TLS-MA | HoK | Grant Type | Access Token Scope
+```diff
+Changed the third column name in the table to align to the Normative References title
+- TLS-MA
++ MTLS
+```
+
+| HTTP Verb | Auth Server Support | MTLS | HoK | Grant Type | Access Token Scope
 |--------------|-------|-------|-------|------|-----------------------------------------------------------------------------
 |**POST /register**|	Required | <i class="icon-check"></i> |  | N/A | None
 |**GET /register/{clientID}**|	Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | cdr:registration

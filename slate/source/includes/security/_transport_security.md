@@ -10,7 +10,12 @@ All back-channel communication between Data Recipient Software Product and Data 
 - The presented Client transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Server MUST NOT trust Client transport certificates issued by other authorities.
 - The presented Server transport certificate MUST be issued by the CDR Certificate Authority (CA).  The Client MUST NOT trust Server transport certificates issued by other authorities.
 
-End points for transferring CDR Data that are classified as not requiring authentication do not require the use of **[[MTLS]](#nref-MTLS)**.
+
+```diff
+Clarified that public endpoints MUST NOT use MTLS
+```
+
+Endpoints for transferring CDR Data that are classified as not requiring authentication (i.e. public endpoints) or those specified as TLS, **MUST NOT** use **[[MTLS]](#nref-MTLS)**.
 
 
 ### Holder of Key Mechanism

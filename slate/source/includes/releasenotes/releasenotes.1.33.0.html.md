@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #654 - Clarify Transaction Security requirements](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/654)
 
 
 ### Decision Proposals
@@ -34,7 +34,6 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 | Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail | [Standards section](../../#section)
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail | [Standards section](../../#section)
 | Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail | [Standards section](../../#section)
 
 
@@ -56,6 +55,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Clarified transaction security requirements | [**Standards Maintenance #654**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/654): Clarified sections referring to TLS and MTLS requirements. | [Transaction Security](../../#transaction-security)<br>[Certificate Management](../../#certificate-management)<br>[Dynamic Client Registration Endpoints](../../#dynamic-client-registration-endpoints)<br>[Participant Endpoints](../../#participant-endpoints)
 
 
 ## Register Standards
