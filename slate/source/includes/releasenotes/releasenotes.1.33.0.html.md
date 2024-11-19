@@ -27,7 +27,7 @@ This release addresses the following change requests raised on [Standards Mainte
 ### Decision Proposals
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Decision Proposal #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
+- [Decision Proposal #350 - August 2024 Rules - Standards Impacts](https://github.com/ConsumerDataStandardsAustralia/standards/issues/350)
 
 
 ## General Changes
@@ -35,7 +35,6 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail | [Standards section](../../#section)
 | Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail | [Standards section](../../#section)
-| Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail | [Standards section](../../#section)
 
 
 ## Introduction
@@ -66,6 +65,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Consumer Experience
 |Change|Description|Link|
 |------|-----------|----|
+| August 2024 Rules - Standards Impacts | [**Decision Proposal #350**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/350): Added detail for Amending Consent Standards, CDR Receipts and 90-day notifications. | [Amending Consent Standards](../../#consumer-experience_amending-consent-standards)<br>[CDR Receipts](../../#consumer-experience_notification-standards_cdr-receipts)<br>[90-day notifications](../../#consumer-experience_notification-standards_notifications-90-day-notifications)
 
 
 ## Non-Functional Requirements
