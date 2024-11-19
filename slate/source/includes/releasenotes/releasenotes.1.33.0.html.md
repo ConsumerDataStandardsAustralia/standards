@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #657 - Addition of LVR in the enumerated values list for constraintType](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/657)
 
 
 ### Decision Proposals
@@ -34,7 +34,6 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 | Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail | [Standards section](../../#section)
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail | [Standards section](../../#section)
 | Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail | [Standards section](../../#section)
 
 
@@ -51,6 +50,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Get Product Detail | [**Standards Maintenance #657**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/657): Incremented Get Product Detail to v5 to support new `LVR_MAX` and `LVR_MIN` constraint types | [Get Product Detail](../../#cdr-banking-api_get-product-detail)
 
 
 ## Information Security Profile
