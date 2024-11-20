@@ -50,7 +50,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
-| Get Product Detail | [**Standards Maintenance #657**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/657): Incremented Get Product Detail to v5 to support new `LVR_MAX` and `LVR_MIN` constraint types | [Get Product Detail](../../#cdr-banking-api_get-product-detail)
+| Get Product Detail | [**Standards Maintenance #657**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/657): Incremented Get Product Detail to v5 to support new `MAX_LVR` and `MIN_LVR` constraint types | [Get Product Detail](../../#cdr-banking-api_get-product-detail)
 
 
 ## Information Security Profile

@@ -48,12 +48,12 @@ Description of the usage of the _constraintType_ field as it applies to products
 
 | Value | Description | Use of _additionalValue_ Field |
 | ----- | ----------- | ---------------------------- |
-| LVR_MAX | A maximum LVR (Loan to Value Ratio) exists. | The maximum LVR in [RateString](#common-field-types) format. |
-| LVR_MIN | A minimum LVR (Loan to Value Ratio) exists. | The minimum LVR in [RateString](#common-field-types) format. |
 | MAX_BALANCE | A maximum balance is required for the product. | The maximum balance in [AmountString](#common-field-types) format. |
 | MAX_LIMIT | A maximum limit exists (such as a maximum loan balance denoting the borrowable amount or maximum allowable credit limit). | The maximum limit in [AmountString](#common-field-types) format. |
+| MAX_LVR | A maximum LVR (Loan to Value Ratio) exists. | The maximum LVR in [RateString](#common-field-types) format. |
 | MIN_BALANCE | A minimum balance is required for the product. | The minimum balance in [AmountString](#common-field-types) format. |
 | MIN_LIMIT | A minimum limit exists (such as a minimum loan balance denoting the borrowable amount or minimum credit limit). | The minimum limit in [AmountString](#common-field-types) format. |
+| MIN_LVR | A minimum LVR (Loan to Value Ratio) exists. | The minimum LVR in [RateString](#common-field-types) format. |
 | OPENING_BALANCE | An opening balance is required for the product. | The minimum opening balance in [AmountString](#common-field-types) format. |
 
 
