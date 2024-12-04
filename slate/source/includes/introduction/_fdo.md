@@ -8,6 +8,10 @@ Please also refer to the [Obligation Date Schedule](includes/endpoint-version-sc
 
 The table below highlights these areas of the standards.
 
+```diff
++ Added FDO for Get Transaction Detail API V2
+```
+
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
 |[Get Generic Plan Detail V2](#cdr-energy-api_get-generic-plan-detail)|<ul><li>Data Holders **MUST** implement v2 of this endpoint by **November 1st 2023**</li><li>Data Holders **MAY** retire v1 of this endpoint from **September 9th 2024**</li></ul> | November 1st 2023 |
