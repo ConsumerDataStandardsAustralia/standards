@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #664 - New Enums for Voluntary disclosure of additional service overlays](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/664)
 
 
 ### Decision Proposals
@@ -51,6 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Banking: Extended NPP Service Overlay support | [**Standards Maintenance #664**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/664): This change extends Get Transaction Detail to support additional NPP service overlays and all versions of each service overlay. | [Banking: Get Transaction Detail V2](../../#cdr-banking-api_get-transaction-detail)
 
 
 ## Information Security Profile
