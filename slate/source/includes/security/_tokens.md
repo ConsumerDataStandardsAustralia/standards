@@ -55,7 +55,7 @@ The process for refreshing an Access Token is described in [section 12.1](https:
 
 
 ```diff
-Updated the refresh token expiry time to be issued equal to the sharing duration authorised by the customer
+Updated the refresh token expiry time to be issued equal to the sharing duration authorised by the consumer
 ```
 
 ### Refresh Token
@@ -65,13 +65,13 @@ In addition Data Holders:
 
 - **MUST NOT** cycle refresh tokens (rotation).
 
-**From May 12th 2025**,
+**Until May 12th 2025**:
 
-- **MUST** issue Refresh Tokens with an "exp" equal to the sharing duration authorised by the Customer.
+- **SHOULD** issue Refresh Tokens with an _exp_ value equal to the sharing duration authorised by the consumer.
 
-**Until May 12th 2025**,
+**From May 12th 2025**:
 
-- **SHOULD** issue Refresh Tokens with an "exp" equal to the sharing duration authorised by the Customer.
+- **MUST** issue Refresh Tokens with an _exp_ value equal to the sharing duration authorised by the consumer.
 
 ### Token Expiry
 The expiry time for issued access tokens and refresh tokens **MUST** be deterministic for the Data Recipient Software Product.

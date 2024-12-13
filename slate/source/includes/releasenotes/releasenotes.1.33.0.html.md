@@ -21,7 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #667 - Clean up of Refresh Token requirements](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/667)
 
 
 ### Decision Proposals
@@ -56,7 +56,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-| Refresh Token expiry | [**Standards Maintenance #667**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/667): Refresh token expiry must be set to the sharing duration of the consent | [Security Profile -> Tokens -> Refresh Tokens](../../#tokens)
+| Refresh Token expiry | [**Standards Maintenance #667**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/667): Refresh token expiry must be set to the sharing duration authorised by the consumer. | [Security Profile -> Tokens -> Refresh Tokens](../../#tokens)
 
 
 ## Register Standards
