@@ -4721,7 +4721,7 @@
                   },
                   "extensionUType": {
                     "type": "string",
-                    "description": "Optional extended data specific for transactions. Currently extended data is supported for NPP service overlays.",
+                    "description": "Optional extended data specific to transactions. Currently extended data is supported for NPP service overlays.",
                     "enum": [
                       "nppPayload"
                     ]
@@ -6046,7 +6046,7 @@
       },
       "NppPaymentService": {
         "type": "string",
-        "description": "Identifier of the applicable overlay service. The service is used in conjunction with the _serviceVersion_. See [here](#npp-services) for more details.",
+        "description": "Identifier of the applicable overlay service. The _service_ is used in conjunction with the _serviceVersion_. See [here](#npp-services) for more details.",
         "enum": [
           "X2P1", "IFTI", "BSCT", "CATSCT"
         ],
