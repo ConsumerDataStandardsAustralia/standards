@@ -4735,7 +4735,7 @@
                     "properties": {
                       "extendedDescription": {
                         "type": "string",
-                        "description": "An extended string description. Required if the _extensionUType_ field is `nppPayload`."
+                        "description": "An extended string description. Required if the _extensionUType_ value is `nppPayload`."
                       },
                       "endToEndId": {
                         "type": "string",
@@ -4745,7 +4745,7 @@
                         "type": "string",
                         "x-cds-type": "ExternalRef",
                         "description": "Purpose of the payment. Format is defined by the NPP standards for the NPP overlay services including Osko (X2P1)."
-                      },                      
+                      },
                       "service": {
                         "$ref": "#/components/schemas/NppPaymentService"
                       },
@@ -6046,7 +6046,7 @@
       },
       "NppPaymentService": {
         "type": "string",
-        "description": "Identifier of the applicable overlay service. The service is used in conjunction with the `serviceVersion`. See [here](#npp-services) for more details.",
+        "description": "Identifier of the applicable overlay service. The service is used in conjunction with the _serviceVersion_. See [here](#npp-services) for more details.",
         "enum": [
           "X2P1", "IFTI", "BSCT", "CATSCT"
         ],
