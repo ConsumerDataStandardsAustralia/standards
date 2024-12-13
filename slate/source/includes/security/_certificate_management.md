@@ -16,7 +16,7 @@ Certificate | Function | Notes
 
 Certificate | Function | Notes
 -----------|------------------------------------------|------------------------------
-| **Client Certificate** | Secures the following:<ul><li>Consuming Register APIs.<li>Consuming Data Holder APIs.</ul>
+| **Client Certificate** | Secures the following:<ul><li>Consuming Register APIs.</li><li>Consuming Data Holder APIs.</li></ul>
 | <span style="white-space: nowrap;">**Server Certificate(s)**</span> | Certificate is issued to a FQDN. | Not currently required by Data Recipients.
 
 ### CDR Certificate Authority
