@@ -23,6 +23,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
+- [Standards Maintenance #661 - Obligation milestones for 2026 and 2027](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/661)
 - [Standards Maintenance #675 - PAR/RFC9126 in Normative references appears twice](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/675)
 
 
@@ -42,6 +43,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Introduction
 |Change|Description|Link|
 |------|-----------|----|
+| Updated Obligation Date Schedule | [**Standards Maintenance #661**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/661): Added milestone dates for 2026 and 2027 to the Obligation Date Schedule | [Obligation Dates Schedule](../../includes/endpoint-version-schedule/index.html#obligation-dates-schedule)
 | Updated Normative References | [**Standards Maintenance #675**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/675): Combined entries for [PAR] and [RFC9126] in Normative References | [Normative References](../../#normative-references)
 
 
