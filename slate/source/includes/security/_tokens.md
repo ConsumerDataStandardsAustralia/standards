@@ -28,9 +28,9 @@ ID Tokens **MUST** be signed by Data Holders as specified in [section 8.6](https
 
 #### OIDC Hybrid Flow requirements
 
-In accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, ID Tokens **MUST** be signed and encrypted when returned to a Data Recipient Software Product from both the Authorisation End Point and Token End Point.
+In accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, ID Tokens **MUST** be signed and encrypted when returned to a Data Recipient Software Product from both the Authorisation endpoint and Token endpoint.
 
-The ID Token returned from the Authorisation End Point **MUST NOT** contain any Personal Information (PI) claims.
+The ID Token returned from the Authorisation endpoint **MUST NOT** contain any Personal Information (PI) claims.
 
 ##### Hashing value for state and authorisation code
 
@@ -41,7 +41,7 @@ The following requirements apply to the OIDC Hybrid Flow:
 
 #### Authorization Code Flow requirements
 
-For `response_type` `code`, in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, ID Tokens **MUST** be signed when returned to a Data Recipient Software Product from the Token End Point.
+For `response_type` `code`, in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, ID Tokens **MUST** be signed when returned to a Data Recipient Software Product from the Token endpoint.
 
 ### Access Token
 Access Tokens **MUST** be used as specified in [section 10.3] (https://tools.ietf.org/html/rfc6749#section-10.3) of **[[OAUTH2]](#nref-OAUTH2)**.
@@ -51,7 +51,7 @@ An Access Token **MUST** expire between **2 minutes** to **10 minutes** after th
 The process for refreshing an Access Token is described in [section 12.1](https://openid.net/specs/openid-connect-core-1_0.html#RefreshingAccessToken) of **[[OIDC]](#nref-OIDC)**.
 
 
-* Data Holders **MUST** reject token request with an authorization code (Section 1.3.1 of **[[RFC6749]](#nref-RFC6749)**) if it has been previously used
+* Data Holders **MUST** reject token request with an authorization code (Section 1.3.1 of **[[RFC6749]](#nref-RFC6749)**) if it has been previously used.
 
 
 ### Refresh Token
@@ -70,4 +70,4 @@ The expiry time for issued access tokens and refresh tokens **MUST** be determin
 
 In order to achieve this:
 
-- The Data Holder **MUST** indicate the lifetime in seconds of the access token in the `expires_in` field of the JSON object returned by the token end-point (see [section 4.2.2] (https://tools.ietf.org/html/rfc6749#section-4.2.2) of **[[OAUTH2]](#nref-OAUTH2)**).
+- The Data Holder **MUST** indicate the lifetime in seconds of the access token in the _expires_in_ field of the JSON object returned by the token endpoint (see [section 4.2.2] (https://tools.ietf.org/html/rfc6749#section-4.2.2) of **[[OAUTH2]](#nref-OAUTH2)**).

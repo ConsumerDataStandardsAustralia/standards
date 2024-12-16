@@ -9,22 +9,21 @@ To accommodate these concerns the standards incorporate the following considerat
 
 The three types of extension that the standards address are:
 
-1. Data holder offering entirely new API categories that are not covered by the API Standards
-2. Data holder offering additional end points to an API category that is already covered by the standards
-3. Data holder offering additional fields to the response payloads for an end point defined in the
-standards
+1. Data holder offering entirely new API categories that are not covered by the API Standards.
+2. Data holder offering additional endpoints to an API category that is already covered by the standards.
+3. Data holder offering additional fields to the response payloads for an endpoint defined in the standards.
 
 ###Holder Identifier
 
 > For example, the prefixes for the four major Banks included in the first phases of implementation would be:
 <ul>
-<li>CBA – Commonwealth Bank</li>
-<li>WBC – Westpac Banking Corporation</li>
-<li>ANZ – ANZ Banking Group</li>
-<li>NAB – National Australia Bank</li>
+<li>`CBA` – Commonwealth Bank</li>
+<li>`WBC` – Westpac Banking Corporation</li>
+<li>`ANZ` – ANZ Banking Group</li>
+<li>`NAB` – National Australia Bank</li>
 </ul>
 
-Data holders seeking to extend the standards MUST nominate a prefix to identify all extensions.  Extended fields and end points and would use this prefix consistently. This prefix would be, by preference, the ASX symbol for the holder. Care should be taken not to use a prefix already adopted by another holder in the regime.
+Data holders seeking to extend the standards MUST nominate a prefix to identify all extensions. Extended fields and endpoints and would use this prefix consistently. This prefix would be, by preference, the ASX symbol for the holder. Care should be taken not to use a prefix already adopted by another holder in the regime.
 
 In these standards, where a Holder Identifier would be included, the term `<HID>` will be used.
 
@@ -38,32 +37,32 @@ For instance, the standard URI base path is structured as:
 For the extension API categories for a specific holder they would be structured as:  
 `https:// <holder-path> / cds-au / <version> / <HID> / <resource>`
 
-The end points defined under this structure, including the payloads of these end points do not need to be prefixed in any way. The fact that they are underneath the holder section implies that they are additional to the standard.
+The endpoints defined under this structure, including the payloads of these endpoints do not need to be prefixed in any way. The fact that they are underneath the holder section implies that they are additional to the standard.
 
 
 Note that:
 
-* This mechanism MUST NOT be used to create modified duplicates of the end points defined in the API Standards
-* The end points in this area MUST comply with the standard's conventions and principles including naming conventions and data types.
+* This mechanism MUST NOT be used to create modified duplicates of the endpoints defined in the API Standards
+* The endpoints in this area MUST comply with the standard's conventions and principles including naming conventions and data types.
 
-###New End Points In Existing API Categories
+###New endpoints In Existing API Categories
 
-When creating new end points that are in parallel to existing API categories in the standard the Holder Identifier MUST be used to prefix the highest URI element where divergence occurs.
+When creating new endpoints that are in parallel to existing API categories in the standard the Holder Identifier MUST be used to prefix the highest URI element where divergence occurs.
 
-For example, assume an existing balance end point is defined as follows:  
+For example, assume an existing balance endpoint is defined as follows:  
 `<base-path>/accounts/{account ID}/transactions`
 
-and the holder wishes to add an end point that summarises balance movement for a specific time period then they may define the end point as:  
+and the holder wishes to add an endpoint that summarises balance movement for a specific time period then they may define the endpoint as:  
 `<base-path>/account/{account ID}/<HID>-balance-movement`
 
 
 Note that:
 
 * The prefix is defined as the Holder Identifier followed by a hyphen.
-* As the entire end point is new, the request and payload fields do not need to be prefixed in any way.
-* Care should be taken to ensure there is no collision with an end point defined in the standards by specifying an extension at the same level as a variable URI element (such as at the same level of the {account ID} in the example above).
-* If an end point has multiple levels in the resource path only the highest point where divergence with the standard occurs needs to be prefixed.
-* The new end point MUST comply with standard's conventions and principles including naming conventions and data types.
+* As the entire endpoint is new, the request and payload fields do not need to be prefixed in any way.
+* Care should be taken to ensure there is no collision with an endpoint defined in the standards by specifying an extension at the same level as a variable URI element (such as at the same level of the {account ID} in the example above).
+* If an endpoint has multiple levels in the resource path only the highest point where divergence with the standard occurs needs to be prefixed.
+* The new endpoint MUST comply with standard's conventions and principles including naming conventions and data types.
 
 ###Additional Fields In An Existing Response Payload
 
@@ -76,17 +75,17 @@ Note that:
 
 * Existing fields MUST NOT be modified in any way. This includes adding new enumeration values to enum type fields.
 * A mandatory field MUST NOT be made optional as the result of an extension.
-* Request payloads can also be extended but the resulting end point should still execute successfully if the extension field is not present (by implication, extension fields in request payloads MUST be optional).
+* Request payloads can also be extended but the resulting endpoint should still execute successfully if the extension field is not present (by implication, extension fields in request payloads MUST be optional).
 * New query parameters MAY be added along the same lines as a new field in a request payload (i.e. prefixed, non-mandatory and no side effects if not present).
 * New headers MAY be added along the same lines as a new field in a request payload with the exception that the new header should be prefixed `x-<HID>-`.
 * New fields MUST comply with the naming conventions and data type standards used.
 
 ###Additional Query Parameters
 
-When adding support for a new query parameter to an existing end point that a data consumer is expected to supply, the new parameter should be prefixed by the string `<HID>-` to avoid potential collision with extension by another data holder.
+When adding support for a new query parameter to an existing endpoint that a data consumer is expected to supply, the new parameter should be prefixed by the string `<HID>-` to avoid potential collision with extension by another data holder.
 
 ###Extension Versioning
 
-As described previously in the [versioning section](#versioning) the standard provides for multiple versions of each API end point.  This implies the need for extensions to also be versioned.
+As described previously in the [versioning section](#versioning) the standard provides for multiple versions of each API endpoint. This implies the need for extensions to also be versioned.
 
-An optional header `x-<HID>-v` will be supported for all end points that can be used by the data consumer to request a specific version of extension fields to include in the response.  See the section on [HTTP Headers](#http-headers) for more information on the use of this header.
+An optional header <i>x-&lt;HID&gt;-v</i> will be supported for all endpoints that can be used by the data consumer to request a specific version of extension fields to include in the response. See the section on [HTTP Headers](#http-headers) for more information on the use of this header.

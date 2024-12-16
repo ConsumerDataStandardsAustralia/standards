@@ -18,7 +18,7 @@ toc_footers:
 search: false
 ---
 
-# Obligation Dates Schedule
+# Obligation Date Schedule
 The following schedule represents future obligation dates. This includes a set of bi-monthly obligation milestone windows and historically assigned obligation dates.
 
 The calendar of obligation milestones are published to provide predictability. This calendar does not mean that any obligations exist at these dates however when addressing the future dating of obligations for any breaking changes, this calendar will be used to pin those obligations to pre-determined obligation milestones.

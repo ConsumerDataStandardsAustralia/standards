@@ -46,11 +46,7 @@
 |   |  |
 |---|--|
 |Version|**{{? data.operation["x-version"]}}{{= data.operation["x-version"]}}{{??}}Versioning is not supported for this endpoint{{?}}**
-
-{{? data.operation["x-version-notes"]}}
-<h3 id="{{= data.cds_uniqueAnchorPrefix }}_version-notes">Version Notes</h3>
-{{= data.operation["x-version-notes"]}}
-{{?}}
+{{? data.operation["x-version-notes"]}}|Version&nbsp;Notes|{{= data.operation["x-version-notes"]}}{{?}}
 
 {{? data.parameters && data.parameters.length }}
 {{#def.parameters}}

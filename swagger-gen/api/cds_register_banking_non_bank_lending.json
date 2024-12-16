@@ -17,13 +17,13 @@
           "Register"
         ],
         "summary": "Get Data Holder Brands",
-        "description": "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.html), [v2](../../../../includes/obsolete/get-data-holder-brands-v2.html)",
+        "description": "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.html), [v2](../../../../includes/obsolete/get-data-holder-brands-v2.html).",
         "operationId": "GetDataHolderBrands",
         "parameters": [
           {
             "name": "industry",
             "in": "path",
-            "description": "The industry the participant is retrieving data for (Banking, etc)",
+            "description": "The industry the participant is retrieving data for (Banking, etc.)",
             "required": true,
             "schema": {
               "type": "string",
@@ -50,7 +50,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
+            "description": "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained.",
             "schema": {
               "type": "string",
               "default": 1
@@ -67,7 +67,7 @@
           {
             "name": "updated-since",
             "in": "query",
-            "description": "query filter returns results updated since the specified date-time",
+            "description": "Query filter returns results updated since the specified date-time.",
             "schema": {
               "type": "string",
               "x-cds-type": "DateTimeString"
@@ -76,7 +76,7 @@
           {
             "name": "page",
             "in": "query",
-            "description": "the page number to return",
+            "description": "The page number to return.",
             "schema": {
               "type": "integer",
               "default": 1
@@ -86,7 +86,7 @@
           {
             "name": "page-size",
             "in": "query",
-            "description": "the number of records to return per page",
+            "description": "The number of records to return per page.",
             "schema": {
               "type": "integer",
               "default": 25
@@ -96,7 +96,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successful response",
             "headers": {
               "x-v": {
                 "description": "The version of the API endpoint that the CDR Register has responded with.",
@@ -127,7 +127,7 @@
             "description": "Invalid Bearer Token",
             "headers": {
               "WWW-Authenticate": {
-                "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
+                "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
                 "schema": {
                   "type": "string",
                   "x-cds-type": "ExternalRef"
@@ -158,13 +158,13 @@
           "Register"
         ],
         "summary": "Get Data Holder Brands Summary",
-        "description": "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-summary-v1.html)",
+        "description": "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-summary-v1.html).",
         "operationId": "GetDataHolderBrandsSummary",
         "parameters": [
           {
             "name": "industry",
             "in": "path",
-            "description": "The industry the participant is retrieving data for (Banking, etc)",
+            "description": "The industry the participant is retrieving data for (Banking, etc.)",
             "required": true,
             "schema": {
               "type": "string",
@@ -207,7 +207,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successful response",
             "headers": {
               "x-v": {
                 "description": "The version of the API endpoint that the CDR Register has responded with.",
@@ -232,7 +232,7 @@
             }
           },
           "304": {
-            "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+            "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
             "headers": {
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
@@ -283,13 +283,13 @@
           "Register"
         ],
         "summary": "Get Data Holder Statuses",
-        "description": "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v1.html)",
+        "description": "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v1.html).",
         "operationId": "GetDataHolderStatuses",
         "parameters": [
           {
             "name": "industry",
             "in": "path",
-            "description": "The industry the participant is retrieving data for (Banking, etc)",
+            "description": "The industry the participant is retrieving data for (Banking, etc.)",
             "required": true,
             "schema": {
               "type": "string",
@@ -306,7 +306,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
+            "description": "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained.",
             "schema": {
               "type": "string",
               "default": "1"
@@ -332,7 +332,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successful response",
             "headers": {
               "x-v": {
                 "description": "The version of the API endpoint that the CDR Register has responded with.",
@@ -357,7 +357,7 @@
             }
           },
           "304": {
-            "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+            "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
             "headers": {
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
@@ -406,7 +406,7 @@
           "data": {
             "uniqueItems": true,
             "type": "array",
-            "description": "Response data for the query",
+            "description": "Response data for the query.",
             "items": {
               "$ref": "#/components/schemas/RegisterDataHolderBrand"
             }
@@ -418,7 +418,7 @@
             "$ref": "#/components/schemas/MetaPaginated"
           }
         },
-        "description": "Response containing a list of CDR Register Data Holder Brand objects"
+        "description": "Response containing a list of CDR Register Data Holder Brand objects."
       },
       "RegisterDataHolderBrand": {
         "required": [
@@ -437,17 +437,17 @@
           "dataHolderBrandId": {
             "maxLength": 36,
             "type": "string",
-            "description": "Unique id of the Data Holder Brand issued by the CDR Register"
+            "description": "Unique id of the Data Holder Brand issued by the CDR Register."
           },
           "brandName": {
             "maxLength": 200,
             "type": "string",
-            "description": "The name of Data Holder Brand"
+            "description": "The name of Data Holder Brand."
           },
           "industries": {
             "uniqueItems": true,
             "type": "array",
-            "description": "The industries the Data Holder Brand belongs to",
+            "description": "The industries the Data Holder Brand belongs to.",
             "items": {
               "type": "string",
               "x-cds-type": "Enum",
@@ -462,7 +462,7 @@
           "logoUri": {
             "maxLength": 1000,
             "type": "string",
-            "description": "Brand logo URI",
+            "description": "Brand logo URI.",
             "x-cds-type": "URIString"
           },
           "legalEntity": {
@@ -489,7 +489,7 @@
           },
           "lastUpdated": {
             "type": "string",
-            "description": "The date/time that the Data Holder Brand data was last updated in the Register",
+            "description": "The date/time that the Data Holder Brand data was last updated in the Register.",
             "x-cds-type": "DateTimeString"
           }
         }
@@ -505,7 +505,7 @@
           "data": {
             "uniqueItems": true,
             "type": "array",
-            "description": "Response data for the query",
+            "description": "Response data for the query.",
             "items": {
               "$ref": "#/components/schemas/DataHolderBrandSummary"
             }
@@ -532,35 +532,35 @@
             "maxLength": 36,
             "type": "string",
             "x-conditional": true,
-            "description": "Unique id of the Data Holder Brand issued by the CDR Register"
+            "description": "Unique id of the Data Holder Brand issued by the CDR Register."
           },
           "interimId": {
             "maxLength": 36,
             "type": "string",
             "x-conditional": true,
-            "description": "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused"
+            "description": "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused."
           },
           "brandName": {
             "maxLength": 200,
             "type": "string",
-            "description": "The name of Data Holder Brand"
+            "description": "The name of Data Holder Brand."
           },
           "publicBaseUri": {
             "maxLength": 1000,
             "type": "string",
-            "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints",
+            "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints.",
             "x-cds-type": "URIString"
           },
           "logoUri": {
             "maxLength": 1000,
             "type": "string",
-            "description": "Brand logo URI",
+            "description": "Brand logo URI.",
             "x-cds-type": "URIString"
           },
           "industries": {
             "uniqueItems": true,
             "type": "array",
-            "description": "The industries the Data Holder Brand belongs to",
+            "description": "The industries the Data Holder Brand belongs to.",
             "items": {
               "type": "string",
               "x-cds-type": "Enum",
@@ -574,23 +574,23 @@
           },
           "lastUpdated": {
             "type": "string",
-            "description": "The date/time that the Data Holder Brand data was last updated in the Register",
+            "description": "The date/time that the Data Holder Brand data was last updated in the Register.",
             "x-cds-type": "DateTimeString"
           },
           "abn": {
             "maxLength": 11,
             "type": "string",
-            "description": "Australian Business Number for the organisation"
+            "description": "Australian Business Number for the organisation."
           },
           "acn": {
             "maxLength": 9,
             "type": "string",
-            "description": "Australian Company Number for the organisation"
+            "description": "Australian Company Number for the organisation."
           },
           "arbn": {
             "maxLength": 9,
             "type": "string",
-            "description": "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies"
+            "description": "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies."
           }
         }
       },
@@ -605,7 +605,7 @@
           "data": {
             "uniqueItems": true,
             "type": "array",
-            "description": "Response data for the query",
+            "description": "Response data for the query.",
             "items": {
               "$ref": "#/components/schemas/DataHolderStatus"
             }
@@ -633,7 +633,7 @@
           "status": {
             "type": "string",
             "x-cds-type": "Enum",
-            "description": "Data Holder status in the CDR Register",
+            "description": "Data Holder status in the CDR Register.",
             "enum": [
               "ACTIVE",
               "REMOVED"
@@ -653,58 +653,58 @@
           "legalEntityId": {
             "maxLength": 36,
             "type": "string",
-            "description": "Unique id of the organisation issued by the CDR Register"
+            "description": "Unique id of the organisation issued by the CDR Register."
           },
           "legalEntityName": {
             "maxLength": 36,
             "type": "string",
-            "description": "Unique legal name of the organisation"
+            "description": "Unique legal name of the organisation."
           },
           "logoUri": {
             "maxLength": 1000,
             "type": "string",
-            "description": "Legal Entity logo URI",
+            "description": "Legal Entity logo URI.",
             "x-cds-type": "URIString"
           },
           "registrationNumber": {
             "type": "string",
-            "description": "Unique registration number (if the company is registered outside Australia)"
+            "description": "Unique registration number (if the company is registered outside Australia)."
           },
           "registrationDate": {
             "type": "string",
-            "description": "Date of registration (if the company is registered outside Australia)",
+            "description": "Date of registration (if the company is registered outside Australia).",
             "x-cds-type": "DateString"
           },
           "registeredCountry": {
             "maxLength": 100,
             "type": "string",
-            "description": "Country of registration (if the company is registered outside Australia)"
+            "description": "Country of registration (if the company is registered outside Australia)."
           },
           "abn": {
             "maxLength": 11,
             "type": "string",
-            "description": "Australian Business Number for the organisation"
+            "description": "Australian Business Number for the organisation."
           },
           "acn": {
             "maxLength": 9,
             "type": "string",
-            "description": "Australian Company Number for the organisation"
+            "description": "Australian Company Number for the organisation."
           },
           "arbn": {
             "maxLength": 9,
             "type": "string",
-            "description": "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies"
+            "description": "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies."
           },
           "anzsicDivision": {
             "maxLength": 100,
             "type": "string",
             "x-cds-type": "ExternalRef",
-            "description": "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**"
+            "description": "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**."
           },
           "organisationType": {
             "type": "string",
             "x-cds-type": "Enum",
-            "description": "Legal organisation type",
+            "description": "Legal organisation type.",
             "enum": [
               "SOLE_TRADER",
               "COMPANY",
@@ -723,7 +723,7 @@
             ]
           }
         },
-        "description": "The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)"
+        "description": "The data that is common to all organisations, regardless of the type (e.g., company, trust, partnership, government)."
       },
       "RegisterDataHolderBrandServiceEndpoint": {
         "required": [
@@ -737,40 +737,40 @@
         "properties": {
           "version": {
             "type": "string",
-            "description": "The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be \"v\" followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)"
+            "description": "The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be \"`v`\" followed by the major version of the standards as a positive integer (e.g., `v1`, `v12` or `v76`)."
           },
           "publicBaseUri": {
             "maxLength": 1000,
             "type": "string",
-            "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints",
+            "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints.",
             "x-cds-type": "URIString"
           },
           "resourceBaseUri": {
             "maxLength": 1000,
             "type": "string",
-            "description": "Base URI for the Data Holder's Consumer Data Standard resource endpoints",
+            "description": "Base URI for the Data Holder's Consumer Data Standard resource endpoints.",
             "x-cds-type": "URIString"
           },
           "infosecBaseUri": {
             "maxLength": 1000,
             "type": "string",
-            "description": "Base URI for the Data Holder's Consumer Data Standard information security endpoints",
+            "description": "Base URI for the Data Holder's Consumer Data Standard information security endpoints.",
             "x-cds-type": "URIString"
           },
           "extensionBaseUri": {
             "maxLength": 1000,
             "type": "string",
-            "description": "Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)",
+            "description": "Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional).",
             "x-cds-type": "URIString"
           },
           "websiteUri": {
             "maxLength": 1000,
             "type": "string",
-            "description": "Publicly available website or web resource URI",
+            "description": "Publicly available website or web resource URI.",
             "x-cds-type": "URIString"
           }
         },
-        "description": "Endpoints related to Data Holder Brand services"
+        "description": "Endpoints related to Data Holder Brand services."
       },
       "RegisterDataHolderAuth": {
         "required": [
@@ -782,7 +782,7 @@
           "registerUType": {
             "type": "string",
             "x-cds-type": "Enum",
-            "description": "The type of authentication and authorisation mechanism in use",
+            "description": "The type of authentication and authorisation mechanism in use.",
             "enum": [
               "SIGNED-JWT"
             ]
@@ -790,11 +790,11 @@
           "jwksEndpoint": {
             "maxLength": 1000,
             "type": "string",
-            "description": "JWKS endpoint used for authentication by the Data Holder with the Data Recipient",
+            "description": "JWKS endpoint used for authentication by the Data Holder with the Data Recipient.",
             "x-cds-type": "URIString"
           }
         },
-        "description": "Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication"
+        "description": "Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication."
       },
       "LinksPaginated": {
         "required": [
@@ -805,27 +805,27 @@
           "first": {
             "type": "string",
             "x-cds-type": "URIString",
-            "description": "URI to the first page of this set. Mandatory if this response is not the first page"
+            "description": "URI to the first page of this set. Mandatory if this response is not the first page."
           },
           "last": {
             "type": "string",
             "x-cds-type": "URIString",
-            "description": "URI to the last page of this set. Mandatory if this response is not the last page"
+            "description": "URI to the last page of this set. Mandatory if this response is not the last page."
           },
           "next": {
             "type": "string",
             "x-cds-type": "URIString",
-            "description": "URI to the next page of this set. Mandatory if this response is not the last page"
+            "description": "URI to the next page of this set. Mandatory if this response is not the last page."
           },
           "prev": {
             "type": "string",
             "x-cds-type": "URIString",
-            "description": "URI to the previous page of this set. Mandatory if this response is not the first page"
+            "description": "URI to the previous page of this set. Mandatory if this response is not the first page."
           },
           "self": {
             "type": "string",
             "x-cds-type": "URIString",
-            "description": "Fully qualified link to this API call"
+            "description": "Fully qualified link to this API call."
           }
         }
       },
@@ -838,12 +838,12 @@
         "properties": {
           "totalPages": {
             "type": "integer",
-            "description": "The total number of pages in the full set",
+            "description": "The total number of pages in the full set.",
             "x-cds-type": "NaturalNumber"
           },
           "totalRecords": {
             "type": "integer",
-            "description": "The total number of records in the full set",
+            "description": "The total number of records in the full set.",
             "x-cds-type": "NaturalNumber"
           }
         }
@@ -857,7 +857,7 @@
           "self": {
             "type": "string",
             "x-cds-type": "URIString",
-            "description": "Fully qualified link to this API call"
+            "description": "Fully qualified link to this API call."
           }
         }
       },
@@ -869,10 +869,10 @@
         "properties": {
           "urn": {
             "type": "string",
-            "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
+            "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code."
           }
         },
-        "description": "Additional data for customised error codes",
+        "description": "Additional data for customised error codes.",
         "x-conditional": [
           "urn"
         ]
@@ -905,7 +905,7 @@
         "properties": {
           "code": {
             "type": "string",
-            "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
+            "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the _meta_ object. Otherwise, the value is the error code URN."
           },
           "title": {
             "type": "string",
@@ -943,7 +943,7 @@
         }
       },
       "NotModified": {
-        "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+        "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
         "headers": {
           "Etag": {
             "description": "Entity tag that uniquely represents the requested resource.",
@@ -987,7 +987,7 @@
       "Industry": {
         "name": "industry",
         "in": "path",
-        "description": "The industry the participant is retrieving data for (Banking, etc)",
+        "description": "The industry the participant is retrieving data for (Banking, etc.)",
         "required": true,
         "schema": {
           "type": "string",
@@ -1021,7 +1021,7 @@
       "UpdatedSince": {
         "name": "updated-since",
         "in": "query",
-        "description": "query filter returns results updated since the specified date-time",
+        "description": "query filter returns results updated since the specified date-time.",
         "schema": {
           "type": "string",
           "x-cds-type": "DateTimeString"
@@ -1030,7 +1030,7 @@
       "Page": {
         "name": "page",
         "in": "query",
-        "description": "the page number to return",
+        "description": "The page number to return.",
         "schema": {
           "type": "integer",
           "default": 1
@@ -1040,7 +1040,7 @@
       "PageSize": {
         "name": "page-size",
         "in": "query",
-        "description": "the number of records to return per page",
+        "description": "The number of records to return per page.",
         "schema": {
           "type": "integer",
           "default": 25

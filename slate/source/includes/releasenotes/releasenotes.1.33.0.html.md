@@ -17,6 +17,7 @@ Release notes for version v1.33.0 of the [CDR Standards](../../).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
+- [Standards Staging #431 - Fix spelling, grammar and punctuation](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/431)
 - [Standards Staging #435 - Maintenance Iteration 21 - typos and formatting](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/435)
 - [Standards Staging #442 - Apply consistent styling to the Common Field Types table](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/442)
 - [Standards Staging #443 - Apply consistent styling in the Transaction Security section](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/443)
@@ -40,6 +41,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
+| Corrected typos, updated styling | [**Standards Staging #431**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/431): Corrected typos, punctuation and grammar and applied _field_ and `value` styling in all sections. | N/A
 | Make documentation links relative | [**Standards Staging #435**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/435#issuecomment-2446093677): Documentation update to make navigation links relative | N/A
 | Remove redundant file | [**Standards Staging #463**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/463): Remove redundant generated 'additional' file to improve Standards build process | N/A
 | Update DSB links | [**Standards Staging #468**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/468): Changed CDS links to DSB, updated width of left navigation section. | 
@@ -95,3 +97,9 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Known Issues
 |Change|Description|Link|
 |------|-----------|----|
+
+
+<br>
+<br>
+<br>
+<br>
