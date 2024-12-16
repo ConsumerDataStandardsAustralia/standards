@@ -18,7 +18,7 @@ The following authentication methods are supported:
 
 ```
 POST /token HTTP/1.1
-Host: www.holder.com.au
+Host: mtls.dh.example.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=client_credentials&
@@ -38,7 +38,7 @@ grant_type=client_credentials&
   "sub": "5ntwEOpMdPxxy49Gt28SXWY6j3aflCP2",
   "iat": 1516239022,
   "exp": 1516239322,
-  "aud": "https://www.holder.com.au/token",
+  "aud": "https://mtls.dh.example.com/token",
   "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
 }
 ```
@@ -68,8 +68,8 @@ Authorisation Servers supporting `private_key_jwt` Client Authentication of clie
 > Self-signed JWT Client Authentication Non-Normative Example - CDR Register calls the Data holder's Get Metrics endpoint using self-signed JWT Client Authentication (note that the "aud" claim represents the AdminBaseUri as defined in CDR Register Participant Endpoints).
 
 ```
-GET https://admin.data.holder.com.au/cds-au/v1/admin/metrics HTTP:/1.1
-Host: admin.data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/admin/metrics HTTP:/1.1
+Host: mtls.dh.example.com
 x-v: string
 x-min-v: string
 Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey...
@@ -83,7 +83,7 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 {
   "iss":"cdr-register",
   "sub":"cdr-register",
-  "aud":"https://admin.data.holder.com.au",
+  "aud":"https://mtls.dh.example.com",
   "iat":1516239022,
   "exp":1516239322,
   "jti":"32358102-a44f-43cc-ad7c-42443d01507a"
@@ -135,8 +135,8 @@ If the Data Holder supports the [Self-signed JWT Client Authentication](#self-si
 > Non-Normative Example - Data Holder calls the Data Recipient Software Product's CDR Arrangement Revocation endpoint (note that the "aud" claim is "resource path" to the revocation endpoint).
 
 ```
-POST https://data.recipient.com.au/arrangements/revoke HTTP/1.1
-Host: data.recipient.com.au
+POST https://adr.example.com/arrangements/revoke HTTP/1.1
+Host: adr.example.com
 Content-Type: application/x-www-form-urlencoded
 Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey …
 
@@ -151,7 +151,7 @@ cdr_arrangement_jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6IjEyNDU2In0.ey .
 {
   "iss":"dataholderbrand-123",
   "sub":"dataholderbrand-123",
-  "aud":"https://data.recipient.com.au/arrangements/revoke",
+  "aud":"https://adr.example.com/arrangements/revoke",
   "iat":1516239022,
   "exp":1516239322,
   "jti":"dba86502-7cf5-4719-9638-c5339a0ddb06"
@@ -164,12 +164,12 @@ This example uses PKCE to send the code_verifier which was previously encrypted 
 
 ```
 POST /token HTTP/1.1
-Host: www.holder.com.au
+Host: mtls.dh.example.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code&
   code=i1WsRn1uB1&
-  redirect_uri=https%3A%2F%2Fwww.recipient.com.au%2Fcoolstuff&
+  redirect_uri=https%3A%2F%2Fadr.example.com%2Fredirects%2Fredirect1&
   client_id=s6BhdRkqt3&
   code_verifier=4d9213fb-d68b-49d1-a2c9-486e5a0b4e14&
   client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
@@ -186,7 +186,7 @@ grant_type=authorization_code&
   "sub": "s6BhdRkqt3",
   "iat": 1516239022,
   "exp": 1516239322,
-  "aud": "https://www.holder.com.au/token",
+  "aud": "https://mtls.dh.example.com/token",
   "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
 }
 ```

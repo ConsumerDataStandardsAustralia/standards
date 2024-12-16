@@ -29,6 +29,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance #473 - Add RFC8174 to list of normative references and update the use of Requirements Levels](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/473)
 - [Standards Maintenance #654 - Clarify Transaction Security requirements](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/654)
 - [Standards Maintenance #661 - Obligation milestones for 2026 and 2027](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/661)
+- [Standards Maintenance #663 - Maintenance Iteration 21 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/663)
 - [Standards Maintenance #675 - PAR/RFC9126 in Normative references appears twice](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/675)
 
 
@@ -46,6 +47,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | Remove redundant file | [**Standards Staging #463**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/463): Remove redundant generated 'additional' file to improve Standards build process | N/A
 | Update DSB links | [**Standards Staging #468**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/468): Changed CDS links to DSB, updated width of left navigation section. | 
 | Replaced 'must' with '**MUST**' | [**Standards Maintenance #473**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/473#issuecomment-2139255321): Replaced 'must' with '**MUST**' in _x-v_, _x-min-v_ and _x-fapi-interaction-id_ header descriptions. | [Register APIs](../../#register-apis)<br>[Banking APIs](../../#banking-apis)<br>[Energy APIs](../../#energy-apis)<br>[Energy Secondary DH APIs](../../#energy-secondary-dh-apis)<br>[Common APIs](../../#common-apis)<br>[Additional Standards](../../#additional-standards)
+| Updated servers in specs | [**Standards Maintenance #663**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/663#issuecomment-2357351062): Added and updated servers in all specs and updated hosts in examples | [Examples throughout](../../?examples#introduction)
 
 
 ## Introduction

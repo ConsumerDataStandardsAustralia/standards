@@ -16,12 +16,19 @@
   },
   "servers": [
     {
-      "url": "https://data.holder.com.au/cds-au/v1"
+      "description": "MTLS",
+      "url": "https://mtls.dh.example.com/cds-au/v1"
     }
   ],
   "paths": {
     "/telco/products": {
       "get": {
+        "servers": [
+          {
+            "description": "TLS",
+            "url": "https://tls.dh.example.com/cds-au/v1"
+          }
+        ],
         "description": "Obtain a list of telco products that are currently offered to the market.\n\nNote that the results returned by this endpoint are expected to be ordered in descending order according to _lastUpdated_.",
         "operationId": "listProducts",
         "parameters": [
@@ -159,6 +166,12 @@
     },
     "/telco/products/{productId}": {
       "get": {
+        "servers": [
+          {
+            "description": "TLS",
+            "url": "https://tls.dh.example.com/cds-au/v1"
+          }
+        ],
         "description": "Obtain detailed information on a single telco product offered openly to the market.",
         "operationId": "getProduct",
         "parameters": [

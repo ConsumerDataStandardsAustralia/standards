@@ -18,7 +18,7 @@ It is RECOMMENDED that the _sub_ value is generated as a version 4 Universally U
 
 ```
 POST /token HTTP/1.1
-Host: https://data.holder.com.au
+Host: mtls.dh.example.com
 Content-Type: application/x-www-form-urlencoded
 
 client_id=s6BhdRkqt3
@@ -45,7 +45,7 @@ client_id=s6BhdRkqt3
 
 ```
 {
-  "iss": "https://data.holder.com.au",
+  "iss": "https://mtls.dh.example.com",
   "sub": "a9ebbef6-1f0b-44eb-96cf-0c5b51b37ab2",
   "aud": "12345",
   "nonce": "n-0S6_WzA2Mj",
@@ -63,7 +63,7 @@ client_id=s6BhdRkqt3
 
 ```
 POST /token/introspect HTTP/1.1
-Host: https://data.holder.com.au
+Host: mtls.dh.example.com
 Content-Type: application/x-www-form-urlencoded
 
 client_id=s6BhdRkqt3

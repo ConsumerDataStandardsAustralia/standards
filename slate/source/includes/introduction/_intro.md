@@ -15,6 +15,8 @@ Some of these standards will be binding data standards under the Competition and
 Replaced 'must' with 'MUST' in x-v, x-min-v and x-fapi-interaction-id header descriptions.
 
 Corrected typos, punctuation and grammar and applied field and value styling in all sections.
+
+Added and updated servers in all specs and updated host examples.
 ```
 
 ## Version

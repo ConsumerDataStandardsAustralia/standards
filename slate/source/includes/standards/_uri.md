@@ -3,41 +3,41 @@
 >Some example URIs that meet this standard are:  
 
 ```
-1. https://www.bank.com.au/api/cds-au/v1/banking/accounts
-2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products?page=2
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage
-5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply
+1. https://mtls.dh.example.com/api/cds-au/v1/banking/accounts
+2. https://mtls.dh.example.com/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar
+3. https://tls.dh.example.com/complex/uri/taxonomy/cds-au/v1/banking/products?page=2
+4. https://mtls.dh.example.com/api/cds-au/v1/energy/usage
+5. https://mtls.dh.example.com/api/cds-au/v1/ACME/apply
 ```
 
 >The holder path for each example is:  
 
 ```
-1. www.bank.com.au/api
-2. www.bank.com.au/api
-3. www.bank.com.au/complex/uri/taxonomy
-4. www.energyretailer.com.au/api
-5. www.energyretailer.com.au/api
+1. mtls.dh.example.com/api
+2. mtls.dh.example.com/api
+3. tls.dh.example.com/complex/uri/taxonomy
+4. mtls.dh.example.com/api
+5. mtls.dh.example.com/api
 ```
 
 >The Base Path for each example is:  
 
 ```
-1. https://www.bank.com.au/api/cds-au/v1/banking
-2. https://www.bank.com.au/api/cds-au/v1/banking
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy
-5. https://www.energyretailer.com.au/api/cds-au/v1/ACME
+1. https://mtls.dh.example.com/api/cds-au/v1/banking
+2. https://mtls.dh.example.com/api/cds-au/v1/banking
+3. https://tls.dh.example.com/complex/uri/taxonomy/cds-au/v1/banking
+4. https://mtls.dh.example.com/api/cds-au/v1/energy
+5. https://mtls.dh.example.com/api/cds-au/v1/ACME
 ```
 
 >The Resource Path for each example is:  
 
 ```
-1. https://www.bank.com.au/api/cds-au/v1/banking/accounts
-2. https://www.bank.com.au/api/cds-au/v1/banking/accounts/abc123/transactions
-3. https://www.bank.com.au/complex/uri/taxonomy/cds-au/v1/banking/products
-4. https://www.energyretailer.com.au/api/cds-au/v1/energy/usage
-5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply
+1. https://mtls.dh.example.com/api/cds-au/v1/banking/accounts
+2. https://mtls.dh.example.com/api/cds-au/v1/banking/accounts/abc123/transactions
+3. https://tls.dh.example.com/complex/uri/taxonomy/cds-au/v1/banking/products
+4. https://mtls.dh.example.com/api/cds-au/v1/energy/usage
+5. https://mtls.dh.example.com/api/cds-au/v1/ACME/apply
 ```
 
 The URI structure for API endpoints in the standards MUST be implemented as follows: 

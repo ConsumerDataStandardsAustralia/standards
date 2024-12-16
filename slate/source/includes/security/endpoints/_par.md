@@ -9,7 +9,7 @@
 
 ```
 POST /par HTTP/1.1
-     Host: data.holder.com.au
+     Host: mtls.dh.example.com
      Content-Type: application/x-www-form-urlencoded
 
   request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
@@ -22,10 +22,10 @@ This example shows an authorisation request using the OIDC Hybrid Flow
 {
   "iss": "s6BhdRkqt3",
   "exp": 1516239322,
-  "aud": "https://www.recipient.com.au",
+  "aud": "https://adr.example.com",
   "response_type": "code id_token",
   "client_id": "s6BhdRkqt3",
-  "redirect_uri": "https://www.recipient.com.au/coolstuff",
+  "redirect_uri": "https://adr.example.com/redirects/redirect1",
   "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read",
   "nonce": "n-0S6_WzA2Mj",
   "state": "af0ifjsldkj",
@@ -53,7 +53,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 Cache-Control: no-cache, no-store
 {
-  "request_uri": "urn:data.holder.com.au:bwc4JK-ESC0w8acc191e-Y1LTC2",
+  "request_uri": "urn:mtls.dh.example.com:bwc4JK-ESC0w8acc191e-Y1LTC2",
   "expires_in": 3600
 }
 ```
@@ -68,9 +68,9 @@ Cache-Control: no-cache, no-store
 GET /authorise?client_id=s6BhdRkqt3&
     response_type=code%20id_token&
     scope=openid%20profile%20bank:accounts.basic:read%20bank:accounts.detail:read&
-    request_uri=urn%3Adata.holder.com.au%3Abwc4JK-ESC0w8acc191e-Y1LTC2
+    request_uri=urn%3Amtls.dh.example.com%3Abwc4JK-ESC0w8acc191e-Y1LTC2
 HTTP/1.1
-Host: data.holder.com.au
+Host: tls.dh.example.com
 ```
 
 > Non-Normative Example - FAPI 1.0 Final Phase 3 Obligations  
@@ -80,7 +80,7 @@ Host: data.holder.com.au
 
 ```
 POST /par HTTP/1.1
-     Host: data.holder.com.au
+     Host: mtls.dh.example.com
      Content-Type: application/x-www-form-urlencoded
 
   request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
@@ -94,11 +94,11 @@ This example shows an authorisation request using the Authorisation Code Flow (F
   "iss": "s6BhdRkqt3",
   "exp": 1680832800,
   "nbf": 1680829200,
-  "aud": "https://www.recipient.com.au",
+  "aud": "https://adr.example.com",
   "response_type": "code",
   "response_mode": "jwt",
   "client_id": "s6BhdRkqt3",
-  "redirect_uri": "https://www.recipient.com.au/coolstuff",
+  "redirect_uri": "https://adr.example.com/redirects/redirect1",
   "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read",
   "nonce": "n-0S6_WzA2Mj",
   "state": "af0ifjsldkj",
@@ -128,7 +128,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 Cache-Control: no-cache, no-store
 {
-  "request_uri": "urn:data.holder.com.au:bwc4JK-ESC0w8acc191e-Y1LTC2",
+  "request_uri": "urn:mtls.dh.example.com:bwc4JK-ESC0w8acc191e-Y1LTC2",
   "expires_in": 3600
 }
 ```
@@ -139,15 +139,15 @@ Cache-Control: no-cache, no-store
 ## (this example uses PAR RFC 9126 and Authorization Code Flow):
 
 GET /authorise?client_id=s6BhdRkqt3&
-    request_uri=urn%3Adata.holder.com.au%3Abwc4JK-ESC0w8acc191e-Y1LTC2
+    request_uri=urn%3Amtls.dh.example.com%3Abwc4JK-ESC0w8acc191e-Y1LTC2
 HTTP/1.1
-Host: data.holder.com.au
+Host: tls.dh.example.com
 ```
 
 > Authorisation response using JARM response encryption - FAPI 1.0 Final Phase 3 Obligation  
 
 ```
-eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiIxMjM0NSIsImNvZGUiOiJpMVdzUm4xdUIxIiwiaXNzIjoiaHR0cHM6Ly9kYXRhLmhvbGRlci5jb20uYXUvIiwic3RhdGUiOiJhZjBpZmpzbGRraiIsImV4cCI6MTY2NzI2ODAwMH0.flBD3bTUHUFiNMbfgt-Uqt4wnEFHY79QYx0f9qrqPGPZLB-RBb-F20aPTyB9XaJ1JJ3ie1m0YxdMC7t6aiXSchZZQXBmYpIjvlbTceOVBYlr88llqeLAfQ5nCDD4p2axqyedpA83OgPF8i_Ngw0oRsCwBTueo6C40wYeI3ZT_n0hucQqGHcSoR1im7IY1rY0x99EZjJI3pxVtGwst6e-msomipnYedCdkNuPHE_Rnj0g897zi_NdK6m3dhxcpwaoMXcaYfMkkkzTlbz5_Ic9lWMx_z01C2wRNjRBArEJsNXW0Q8Vdhk_vtOAmO92Pr3cI8BpTr5KdY2O1iD-yRnkug
+eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiIxMjM0NSIsImNvZGUiOiJpMVdzUm4xdUIxIiwiaXNzIjoiaHR0cHM6Ly9tdGxzLmRoLmV4YW1wbGUuY29tLyIsInN0YXRlIjoiYWYwaWZqc2xka2oiLCJleHAiOjE2NjcyNjgwMDB9.flBD3bTUHUFiNMbfgt-Uqt4wnEFHY79QYx0f9qrqPGPZLB-RBb-F20aPTyB9XaJ1JJ3ie1m0YxdMC7t6aiXSchZZQXBmYpIjvlbTceOVBYlr88llqeLAfQ5nCDD4p2axqyedpA83OgPF8i_Ngw0oRsCwBTueo6C40wYeI3ZT_n0hucQqGHcSoR1im7IY1rY0x99EZjJI3pxVtGwst6e-msomipnYedCdkNuPHE_Rnj0g897zi_NdK6m3dhxcpwaoMXcaYfMkkkzTlbz5_Ic9lWMx_z01C2wRNjRBArEJsNXW0Q8Vdhk_vtOAmO92Pr3cI8BpTr5KdY2O1iD-yRnkug
 
 ## Decoded Response
 {
@@ -157,7 +157,7 @@ eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9
 {
   "aud": "12345",
   "code": "i1WsRn1uB1",
-  "iss": "https://data.holder.com.au/",
+  "iss": "https://mtls.dh.example.com/",
   "state": "af0ifjsldkj",
   "exp": 1667268000
 }
