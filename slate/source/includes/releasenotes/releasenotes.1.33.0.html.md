@@ -21,6 +21,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 - [Standards Staging #442 - Apply consistent styling to the Common Field Types table](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/442)
 - [Standards Staging #443 - Apply consistent styling in the Transaction Security section](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/443)
 - [Standards Staging #463 - Remove redundant generated 'additional' file](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/463)
+- [Standards Staging #468 - Update DSB Logo and links](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/468)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -41,6 +42,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Make documentation links relative | [**Standards Staging #435**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/435#issuecomment-2446093677): Documentation update to make navigation links relative | N/A
 | Remove redundant file | [**Standards Staging #463**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/463): Remove redundant generated 'additional' file to improve Standards build process | N/A
+| Update DSB links | [**Standards Staging #468**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/468): Changed CDS links to DSB, updated width of left navigation section. | 
 | Replaced 'must' with '**MUST**' | [**Standards Maintenance #473**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/473#issuecomment-2139255321): Replaced 'must' with '**MUST**' in _x-v_, _x-min-v_ and _x-fapi-interaction-id_ header descriptions. | [Register APIs](../../#register-apis)<br>[Banking APIs](../../#banking-apis)<br>[Energy APIs](../../#energy-apis)<br>[Energy Secondary DH APIs](../../#energy-secondary-dh-apis)<br>[Common APIs](../../#common-apis)<br>[Additional Standards](../../#additional-standards)
 
 

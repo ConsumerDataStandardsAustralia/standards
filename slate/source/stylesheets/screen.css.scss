@@ -236,8 +236,8 @@ html, body {
   .schema-list li.active-parent span.toggle,
   .schema-list li.active-parent,
   .schema-list li.active-parent:before {
-    background-color: #00A9CE;
-    color: #fff;
+    background-color: $nav-active-bg;
+    color: $nav-active-text;
   }
 
   .schema-list {
