@@ -18,6 +18,7 @@ Release notes for version v1.33.0 of the [CDR Standards](../../).
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
 - [Standards Staging #435 - Maintenance Iteration 21 - typos and formatting](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/435)
+- [Standards Staging #442 - Apply consistent styling to the Common Field Types table](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/442)
 - [Standards Staging #443 - Apply consistent styling in the Transaction Security section](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/443)
 - [Standards Staging #463 - Remove redundant generated 'additional' file](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/463)
 
@@ -50,6 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Common Field Types styling | [**Standards Staging #442**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/442): Applied consistent styling in descriptions and Valid Examples | [Common Field Types](../../#common-field-types)
 
 
 ## API Endpoints
