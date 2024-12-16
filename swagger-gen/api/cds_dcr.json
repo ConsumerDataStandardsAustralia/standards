@@ -457,13 +457,13 @@
           },
           "id_token_encrypted_response_alg": {
             "type": "string",
-            "description": "JWE `alg` algorithm with which an id_token is to be encrypted.<br/><br/>Required if OIDC Hybrid Flow (response type `code id_token`) is registered.",
+            "description": "JWE `alg` algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (response type `code id_token`) is registered.",
             "example": "RSA-OAEP",
             "x-cds-type": "ExternalRef"
           },
           "id_token_encrypted_response_enc": {
             "type": "string",
-            "description": "JWE `enc` algorithm with which an id_token is to be encrypted.<br/><br/>Required if OIDC Hybrid Flow (response type `code id_token`) is registered.",
+            "description": "JWE `enc` algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (response type `code id_token`) is registered.",
             "example": "A256GCM",
             "x-cds-type": "ExternalRef"
           },

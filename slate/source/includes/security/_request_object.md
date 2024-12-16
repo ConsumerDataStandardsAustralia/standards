@@ -1,39 +1,10 @@
 ## Request Object
 
-> Non-Normative Example - acr as an Essential Claim
-
-```
-#Decoded Request Object JWT
-
-{
-  "iss": "s6BhdRkqt3",
-  "exp": 1516239322,
-  "aud": "https://www.recipient.com.au",
-  "response_type": "code id_token",
-  "client_id": "s6BhdRkqt3",
-  "redirect_uri": "https://www.recipient.com.au/coolstuff",
-  "scope": "openid profile bank:accounts.basic:read
-            bank:accounts.detail:read",
-  "nonce": "n-0S6_WzA2Mj",
-  "state": "af0ifjsldkj",
-  "claims": {
-    "sharing_duration": 7776000,
-    "cdr_arrangement_id": "02e7c9d9-cfe7-4c3e-8f64-e91173c84ecb",
-    "id_token": {
-      "acr": {
-        "essential": true,
-        "values": ["urn:cds.au:cdr:3"]
-      }
-    },
-    "userinfo": {
-      "given_name": null,
-      "family_name": null
-    }
-  }
-}
+```diff
+- Removed OIDC Hybrid Flow non-normative examples.
 ```
 
-> Non-Normative Example - FAPI 1.0 Final Phase 3 Obligation  
+> Non-Normative Example  
 
 ```
 #Decoded Request Object JWT
@@ -70,7 +41,11 @@
 }
 ```
 
-The Request Object is a signed and encoded JWT specified in [section 6.1](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) of **[OIDC]**.  As per **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server), the `request` parameter **MUST** be present on requests to the **[OIDC]** Hybrid Authorisation End Point. The Request Object enables **[OIDC]** requests to be passed in a single and self-contained parameter.
+```diff
+- Removed `request` parameter requirement as RFC9126 is required
+- "As per [FAPI-1.0-Advanced] [section 5.2.2], the `request` parameter MUST be present on requests to the [OIDC]"
+```
+The Request Object is a signed and encoded JWT specified in [section 6.1](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) of **[OIDC]**. The Request Object enables **[OIDC]** requests to be passed in a single and self-contained parameter.
 
 Request Objects **MUST** be signed by Data Recipient Software Products as specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2-1_0.html#algorithm-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
 

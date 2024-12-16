@@ -29,6 +29,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance #654 - Clarify Transaction Security requirements](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/654)
 - [Standards Maintenance #661 - Obligation milestones for 2026 and 2027](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/661)
 - [Standards Maintenance #675 - PAR/RFC9126 in Normative references appears twice](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/675)
+- [Standards Maintenance #666 - Retirement of OIDC Hybrid Flow](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/666)
 
 
 ### Decision Proposals
@@ -69,7 +70,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Key word styling | [**Standards Staging #443**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/443): Applied consistent styling to key words | [Transaction Security](../../#transaction-security)
 | Clarified transaction security requirements | [**Standards Maintenance #654**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/654): Clarified sections referring to TLS and MTLS requirements. | [Transaction Security](../../#transaction-security)<br>[Certificate Management](../../#certificate-management)<br>[Dynamic Client Registration Endpoints](../../#dynamic-client-registration-endpoints)<br>[Participant Endpoints](../../#participant-endpoints)
-
+| Retirement of OIDC Hybrid Flow | [**Standards Maintenance #666**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/666): Removed OIDC Hybrid Flow as a supported `response_type` | [Security Profile](../../#security-profile)
 
 ## Register Standards
 |Change|Description|Link|
