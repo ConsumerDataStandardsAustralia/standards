@@ -3157,7 +3157,7 @@
           "Products"
         ],
         "summary": "Get Product Detail",
-        "description": "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](includes/obsolete/get-product-detail-v2.html), [v3](includes/obsolete/get-product-detail-v3.html).",
+        "description": "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](includes/obsolete/get-product-detail-v2.html), [v3](includes/obsolete/get-product-detail-v3.html), [v4](includes/obsolete/get-product-detail-v4.html).",
         "operationId": "getProductDetail",
         "parameters": [
           {
@@ -3203,7 +3203,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingProductByIdV4"
+                  "$ref": "#/components/schemas/ResponseBankingProductByIdV5"
                 }
               }
             }
@@ -3239,7 +3239,7 @@
             }
           }
         },
-        "x-version": "4"
+        "x-version": "5"
       }
     }
   },
@@ -3480,7 +3480,7 @@
           }
         }
       },
-      "ResponseBankingProductByIdV4": {
+      "ResponseBankingProductByIdV5": {
         "required": [
           "data",
           "links"
@@ -3488,7 +3488,7 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/BankingProductDetailV4"
+            "$ref": "#/components/schemas/BankingProductDetailV5"
           },
           "links": {
             "$ref": "#/components/schemas/Links"
@@ -3498,7 +3498,7 @@
           }
         }
       },
-      "BankingProductDetailV4": {
+      "BankingProductDetailV5": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BankingProductV4"
@@ -3524,7 +3524,7 @@
                 "type": "array",
                 "description": "Constraints on the application for or operation of the product such as minimum balances or limit thresholds.",
                 "items": {
-                  "$ref": "#/components/schemas/BankingProductConstraint"
+                  "$ref": "#/components/schemas/BankingProductConstraintV2"
                 }
               },
               "eligibility": {
@@ -3653,7 +3653,7 @@
           "additionalInfo"
         ]
       },
-      "BankingProductConstraint": {
+      "BankingProductConstraintV2": {
         "required": [
           "constraintType"
         ],
@@ -3665,8 +3665,10 @@
             "enum": [
               "MAX_BALANCE",
               "MAX_LIMIT",
+              "MAX_LVR",
               "MIN_BALANCE",
               "MIN_LIMIT",
+              "MIN_LVR",
               "OPENING_BALANCE"
             ]
           },
