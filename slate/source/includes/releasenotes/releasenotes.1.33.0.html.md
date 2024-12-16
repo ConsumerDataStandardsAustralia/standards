@@ -55,6 +55,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 | Updated Obligation Date Schedule | [**Standards Maintenance #661**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/661): Added milestone dates for 2026 and 2027 to the Obligation Date Schedule | [Obligation Dates Schedule](../../includes/endpoint-version-schedule/index.html#obligation-dates-schedule)
+| Clarified endpoint retirement dates | [**Standards Maintenance #663**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/663#issuecomment-2472253052): Updated 'MAY retire' statements from 'by (date)' to 'from (date)' | [Future Dated Obligations](../../#future-dated-obligations)
 | Updated Normative References | [**Standards Maintenance #675**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/675): Combined entries for [PAR] and [RFC9126] in Normative References | [Normative References](../../#normative-references)
 
 
@@ -75,6 +76,8 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Key word styling | [**Standards Staging #443**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/443): Applied consistent styling to key words | [Transaction Security](../../#transaction-security)
 | Clarified transaction security requirements | [**Standards Maintenance #654**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/654): Clarified sections referring to TLS and MTLS requirements. | [Transaction Security](../../#transaction-security)<br>[Certificate Management](../../#certificate-management)<br>[Dynamic Client Registration Endpoints](../../#dynamic-client-registration-endpoints)<br>[Participant Endpoints](../../#participant-endpoints)
+| Updated link | [**Standards Maintenance #663**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/663#issuecomment-2370626204): Resolved broken link referring to section 3 of MTLS | [Holder of Key Mechanism](../../#holder-of-key-mechanism)
+| Clarified 'CDR Arrangement JWT method' details | [**Standards Maintenance #663**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/663#issuecomment-2445941229): Removed duplicate line and clarified 'CDR Arrangement JWT method' details | [CDR Arrangement Revocation End Point](../../#cdr-arrangement-revocation-end-point)
 
 
 ## Register Standards
@@ -91,6 +94,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Non-Functional Requirements
 |Change|Description|Link|
 |------|-----------|----|
+| Updated Reporting Requirements section | [**Standards Maintenance #663**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/663#issuecomment-2359965763): Removed outdated reporting detail and updated link to Get Metrics endpoint | [Reporting Requirements](../../?diff#reporting-requirements)
 
 
 ## Additional Standards

@@ -31,13 +31,14 @@ Note that, by implication, resource requests **MUST** be validated to ensure the
 
 OAUTB **SHALL NOT** be supported due to a lack industry support.
 
-**[[MTLS]](#nref-MTLS)** HoK allows issued tokens to be bound to a client certificate as specified in [section 3](https://tools.ietf.org/id/draft-ietf-oauth-mtls-07.html#SenderConstrainedAccess) of **[[MTLS]](#nref-MTLS)**.
+```diff
+Resolved broken link referring to section 3 of MTLS
+```
+
+**[[MTLS]](#nref-MTLS)** HoK allows issued tokens to be bound to a client certificate as specified in [section 3](https://www.rfc-editor.org/rfc/rfc8705.html#name-mutual-tls-client-certifica) of **[[MTLS]](#nref-MTLS)**.
 
 
 ### Ciphers
-
-
-
 
 **Until March 17th 2025, the following SHALL requirements apply:**
 
