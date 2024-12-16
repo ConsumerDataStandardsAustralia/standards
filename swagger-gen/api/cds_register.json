@@ -18,7 +18,7 @@
           "Register"
         ],
         "summary": "Get OpenId Provider Config",
-        "description": "Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.\n\nThis endpoint does not require CORS.",
+        "description": "Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.\n\nThis endpoint does not require [CORS](#cors).",
         "operationId": "GetOpenIdProviderConfig",
         "responses": {
           "200": {
@@ -40,7 +40,7 @@
           "Register"
         ],
         "summary": "Get JWKS",
-        "description": "JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.\n\nThis endpoint does not require CORS.",
+        "description": "JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.\n\nThis endpoint does not require [CORS](#cors).",
         "operationId": "Get JWKS",
         "responses": {
           "200": {
@@ -529,7 +529,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
+            "description": "The [minimum version](#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }

@@ -60,7 +60,7 @@ Content-Type: application/json
 
 Data Holders MUST make their OpenID Provider Metadata available via a configuration end point as outlined in [Section 3 and 4 of the OpenID Connect Discovery standards](https://openid.net/specs/openid-connect-discovery-1_0.html) **[[OIDD]](#nref-OIDD)**.
 
-This endpoint does not require [CORS](https://consumerdatastandardsaustralia.github.io/standards/#cors).
+This endpoint does not require [CORS](#cors).
 
 At a minimum, the Data Holder metadata **MUST** include:
 
