@@ -18,6 +18,10 @@ Please also refer to the [Obligation Date Schedule](includes/endpoint-version-sc
 
 The table below highlights these areas of the standards.
 
+```diff
++ Added FDO for Maintenance Issue #667: Refresh Token expiry obligations
+```
+
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
 |[Get Generic Plan Detail V2](#cdr-energy-api_get-generic-plan-detail)|<ul><li>Data Holders **MUST** implement v2 of this endpoint by **November 1st 2023**</li><li>Data Holders **MAY** retire v1 of this endpoint from **September 9th 2024**</li></ul> | November 1st 2023 |
@@ -40,6 +44,7 @@ The table below highlights these areas of the standards.
 |[Get Energy Account Detail](#cdr-energy-api_get-energy-account-detail)|<ul><li>Data Holders **MUST** implement v4 of this endpoint by **November 11th 2024**</li><li>Data Holder **MAY** retire v3 of this endpoint from **March 3rd 2025**</li></ul>| <span style="white-space: nowrap;">November 11th 2024</span> |
 |[Transaction Security Ciphers](#transaction-security)|Data Holders and Data Recipients **MUST** only support BCP195 recommended ciphers by **March 17th 2025**| <span style="white-space: nowrap;">March 17th 2025</span> |
 |[Get Metrics v5](#cdr-admin-api_get-metrics)|Data Holders **MUST** report on all applicable error codes by **May 12th 2025** | May 12th 2025 |
+|[Tokens -> Refresh Tokens](#tokens)|Refresh Tokens **MUST** be issued with an _exp_ value equal to the time of the sharing duration authorised by the consumer from **May 12th 2025** | May 12th 2025 |
 |[Amending consent: Changing attributes](#consumer-experience_amending-consent-standards)| Binding consumer experience data standards for data recipients regarding the presentation of amending consent invitations on and after **14 July 2025** | July 14th 2025 |
 |[CDR Receipts](#consumer-experience_notification-standards_cdr-receipts)| Binding consumer experience data standards for data recipients regarding the content and delivery of CDR Receipts on and after **14 July 2025** | July 14th 2025 |
 |[90-day notifications](#consumer-experience_notification-standards_notifications-90-day-notifications)| Binding consumer experience data standards for data recipients regarding the content and delivery of 90-day notifications on and after **14 July 2025** | July 14th 2025 |

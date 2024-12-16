@@ -33,6 +33,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance #657 - Addition of LVR in the enumerated values list for constraintType](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/657)
 - [Standards Maintenance #661 - Obligation milestones for 2026 and 2027](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/661)
 - [Standards Maintenance #663 - Maintenance Iteration 21 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/663)
+- [Standards Maintenance #667 - Clean up of Refresh Token requirements](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/667)
 - [Standards Maintenance #675 - PAR/RFC9126 in Normative references appears twice](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/675)
 
 
@@ -82,6 +83,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | Clarified transaction security requirements | [**Standards Maintenance #654**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/654): Clarified sections referring to TLS and MTLS requirements. | [Transaction Security](../../#transaction-security)<br>[Certificate Management](../../#certificate-management)<br>[Dynamic Client Registration Endpoints](../../#dynamic-client-registration-endpoints)<br>[Participant Endpoints](../../#participant-endpoints)
 | Updated link | [**Standards Maintenance #663**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/663#issuecomment-2370626204): Resolved broken link referring to section 3 of MTLS | [Holder of Key Mechanism](../../#holder-of-key-mechanism)
 | Clarified 'CDR Arrangement JWT method' details | [**Standards Maintenance #663**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/663#issuecomment-2445941229): Removed duplicate line and clarified 'CDR Arrangement JWT method' details | [CDR Arrangement Revocation End Point](../../#cdr-arrangement-revocation-end-point)
+| Refresh Token expiry | [**Standards Maintenance #667**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/667): Refresh token expiry must be set to the sharing duration authorised by the consumer. | [Security Profile -> Tokens -> Refresh Tokens](../../#tokens)
 
 
 ## Register Standards
