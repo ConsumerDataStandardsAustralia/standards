@@ -17,6 +17,7 @@ Release notes for version v1.33.0 of the [CDR Standards](../../).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
+- [Standards Staging #429 - Refer to components in Banking API spec](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/429)
 - [Standards Staging #431 - Fix spelling, grammar and punctuation](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/431)
 - [Standards Staging #435 - Maintenance Iteration 21 - typos and formatting](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/435)
 - [Standards Staging #442 - Apply consistent styling to the Common Field Types table](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/442)
@@ -69,6 +70,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Refactor Banking API spec | [**Standards Staging #429**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/429): Refactored Banking API specification file to refer to common components | [Banking APIs](../../#banking-apis)
 | Updated field descriptions | [**Standards Maintenance #655**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/655): Updated the Description for the _additionalProperties_ and _500_ fields shown in the Get Metrics endpoint ErrorMetricsV2 structure. These clarifications are provided with an FDO of **Y25 #2: 2025-05-12** (12th May 2025). | [ErrorMetricsV2](../../#cdr-admin-api_schemas_tocSerrormetricsv2)
 | Get Product Detail | [**Standards Maintenance #657**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/657): Incremented Get Product Detail to v5 to support new `MAX_LVR` and `MIN_LVR` constraint types | [Get Product Detail](../../#cdr-banking-api_get-product-detail)
 
