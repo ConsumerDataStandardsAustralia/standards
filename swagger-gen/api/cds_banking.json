@@ -4728,6 +4728,7 @@
                   },
                   "nppPayload": {
                     "type": "object",
+                    "description": "Required if the _extensionUType_ value is `nppPayload`.",
                     "required": ["service","serviceVersion"],
                     "x-conditional": [
                       "extendedDescription"
