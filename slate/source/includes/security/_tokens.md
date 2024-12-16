@@ -36,7 +36,7 @@ ID Tokens **MUST** be signed by Data Holders as specified in [section 8.6](https
 ID Tokens **MUST NOT** contain any Personal Information (PI) claims.
 
 ```diff
-- Deprecated OIDC Hybrid Flow requirements. This authentication flow is no longer supported
+- OIDC Hybrid Flow is deprecated and shall be retired from May 12th 2025.
 ```
 
 #### OIDC Hybrid Flow requirements
