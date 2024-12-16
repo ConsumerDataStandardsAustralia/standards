@@ -1295,13 +1295,13 @@
                   "500": {
                     "type": "integer",
                     "x-cds-type": "NaturalNumber",
-                    "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema 'patternProperties' syntax. See the _additionalProperties_ field in this schema for the generic property structure for error code counts."
+                    "description": "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name."
                   }
                 },
                 "additionalProperties": {
                   "type": "integer",
                   "x-cds-type": "NaturalNumber",
-                  "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for."
+                  "description": "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 404, 405, 406, 415, 422, 429, 500, 503, 504_."
                 }
               },
               "previousDays": {
@@ -1313,13 +1313,13 @@
                     "500": {
                       "type": "integer",
                       "x-cds-type": "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema 'patternProperties' syntax. See the _additionalProperties_ field in this schema for the generic property structure for error code counts."
+                      "description": "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name."
                     }
                   },
                   "additionalProperties": {
                     "type": "integer",
                     "x-cds-type": "NaturalNumber",
-                    "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for."
+                    "description": "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 404, 405, 406, 415, 422, 429, 500, 503, 504_."
                   }
                 }
               }
@@ -1340,13 +1340,13 @@
                   "500": {
                     "type": "integer",
                     "x-cds-type": "NaturalNumber",
-                    "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema 'patternProperties' syntax. See the _additionalProperties_ field in this schema for the generic property structure for error code counts."
+                    "description": "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name."
                   }
                 },
                 "additionalProperties": {
                   "type": "integer",
                   "x-cds-type": "NaturalNumber",
-                  "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for."
+                  "description": "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 401, 403, 404, 405, 406, 415, 422, 429, 500, 503, 504_."
                 }
               },
               "previousDays": {
@@ -1358,13 +1358,13 @@
                     "500": {
                       "type": "integer",
                       "x-cds-type": "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema 'patternProperties' syntax. See the _additionalProperties_ field in this schema for the generic property structure for error code counts."
+                      "description": "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name."
                     }
                   },
                   "additionalProperties": {
                     "type": "integer",
                     "x-cds-type": "NaturalNumber",
-                    "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for."
+                    "description": "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 401, 403, 404, 405, 406, 415, 422, 429, 500, 503, 504_."
                   }
                 }
               }
