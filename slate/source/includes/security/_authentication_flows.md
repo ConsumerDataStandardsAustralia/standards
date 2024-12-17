@@ -1,9 +1,13 @@
 ## Authentication Flows
 This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)** as constrained further by **[[FAPI]](#iref-FAPI)**.
 
-Specifically the OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**.
+```diff
+- Deprecated OIDC Hybrid Flow requirements. This authentication flow is no longer supported
+```
 
-From July 4th 2022, Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[[OIDC]](#nref-OIDC)** is supported.
+Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[[OIDC]](#nref-OIDC)** is supported.
+
+**Until May 12th 2025**, Data Holders **MAY** support OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**.
 
 No other flows are currently supported.
 
@@ -13,8 +17,15 @@ No other flows are currently supported.
 #### Data Holders
 The _request_uri_ parameter is only supported if the Data Holder supports PAR.
 
-In addition, the following statements are applicable to both the OIDC Hybrid Flow and Authorization Code Flow:
+```diff 
+- Removed "to both the OIDC Hybrid Flow and Authorization Code Flow" from the applicable statements wording.
+```
 
+In addition, the following statements are applicable:
+
+
+- Data Holders **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
+- Data Holders **MUST** support Authorization Code Flow.
 - Data Holders **MUST** request a user identifier that can uniquely identify the customer and that is already known by the customer in the redirected page
 - Data Holders **MUST NOT** request that the customer enter an existing password in the redirected page
 - Data Holders **MUST** provide a one-time password (OTP) to the customer through an existing channel or mechanism that the customer can then enter into the redirected page
@@ -26,6 +37,10 @@ In addition, the following statements are applicable to both the OIDC Hybrid Flo
 - The algorithm for the creation of the OTP is at the discretion of the Data Holder but **SHOULD** incorporate a level of pseudorandomness appropriate for the use case
 - Data Holders **SHOULD** implement additional controls to minimise the risk of enumeration attacks via the redirect page.
 
+**From May 12th 2025**, 
+
+- Data Holders **SHALL** require the value of `response_type` described in [**[RFC6749]**](#nref-RFC6749) to be `code`
+
 In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authorise disclosure of CDR data, unwarranted friction for OTP delivery is considered to include:
 
 - the addition of any requirements beyond normal data holder practices for verification code delivery
@@ -33,30 +48,28 @@ In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authoris
 - offering additional or alternative services
 - reference or inclusion of other documents.
 
-- Data Holders **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
-- Data Holders **MUST** support Authorization Code Flow. 
-- Data Holders **MUST** support the OIDC Hybrid Flow.
-
-**From July 10th 2023 (FAPI 1.0 Migration Phase 4),** 
-
-* Data Holders **MAY** retire support for the OIDC Hybrid Flow.
-
 
 #### Data Recipient Software Products
 
-The following statements are applicable to both the OIDC Hybrid Flow and Authorization Code Flow:
+```diff
+- Deprecated OIDC Hybrid Flow requirements. This authentication flow is no longer supported
+```
+**Until 12th May 2025**, Data Recipient Software Products **SHOULD** use Authorization Code Flow. 
+**From 12th May 2025**, Data Recipient Software Products **SHALL** only use Authorization Code Flow. 
+
+In addition, the following statements are applicable:
 
 - Data Recipient Software Products **SHOULD** record the following information each time an authorisation flow is executed: username (consumer’s ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration.
 - Data Recipient Software Products **SHOULD NOT** reuse _authorization_code_ values, and if reused, it will be rejected.
 - Data Recipient Software Products **MAY** send requests with a _x-fapi-customer-ip-address_ header containing a valid IPv4 or IPv6 address.
 - Data Recipient Software Products **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
 - Data Recipient Software Products **MUST** use **[[RFC9126]](#nref-RFC9126)** (PAR) with **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and, if supported, **MUST** use `S256` as the code challenge method.
-- Data Recipient Software Products **SHOULD** use Authorization Code Flow.
 
 ### OIDC Hybrid Flow
-The **[[OIDC]](#nref-OIDC)** Hybrid Flow is a type of redirection flow where the consumer's user agent is redirected from a Data Recipient Software Product’s (Relying Party) web site to a Data Holder’s Authorisation endpoint in the context of an **[[OIDC]](#nref-OIDC)** authentication request. The OIDC Hybrid Flow incorporates aspects of the both the implicit flow and authorisation code flow detailed under **[[OIDC]](#nref-OIDC)**.
+The **[[OIDC]](#nref-OIDC)** Hybrid Flow is a type of redirection flow where the consumer's user agent is redirected from a Data Recipient Software Product’s (Relying Party) web site to a Data Holder’s Authorization endpoint in the context of an **[[OIDC]](#nref-OIDC)** authentication request. The OIDC Hybrid Flow incorporates aspects of the both the Implicit Flow and Authorization Code Flow detailed under **[[OIDC]](#nref-OIDC)**.
 
 Only a _response_type_ (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**) of `code id_token` **SHALL** be allowed.
+
 
 ### Authorization Code Flow
 
@@ -69,7 +82,7 @@ The following statements are applicable for this flow:
 Data Holders **MUST** support **[[JARM]](#nref-JARM)** in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm).
 
 > **JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)**  
-> Data Holders **MAY** support Authorisation Response encryption.
+> Data Holders **MAY** support Authorization Response encryption.
 >
 > However, at present, there is no confidential information in the authorization response, hence encryption of the authorization response is not required for the purposes of security or confidentiality. In addition, whilst response encryption **MAY** be used, to achieve greater interoperability, it is not recommended to use encryption in this case at this time.
 

@@ -60,6 +60,10 @@ Data Holders MUST make their OpenID Provider Metadata available via a configurat
 
 This endpoint does not require [CORS](#cors).
 
+```diff
+Separated OIDC Hybrid Flow requirements during transitionary period to retirement
+```
+
 At a minimum, the Data Holder metadata **MUST** include:
 
 **[[OIDD]](#nref-OIDD)**
@@ -68,8 +72,6 @@ At a minimum, the Data Holder metadata **MUST** include:
 - _authorization_endpoint_: URL of the Authorization endpoint.
 - _claims_supported_: The list of supported claims.
 - _grant_types_supported_: The list of the OAuth 2.0 Grant Type values supported.
-- _id_token_encryption_alg_values_supported_: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** and **[[OIDD]](#nref-OIDD)**. Required for Data Holders supporting OIDC Hybrid Flow.
-- _id_token_encryption_enc_values_supported_: The list of the supported JWE encryption methods for securing the issued ID tokens. Required for Data Holders supporting OIDC Hybrid Flow.
 - _id_token_signing_alg_values_supported_: The list of the JWS signing algorithms (_alg_ values) supported.
 - _issuer_: URL that the Data Holder asserts as its Issuer Identifier.
 - _jwks_uri_: The JSON Web Key Set for the data holder.
@@ -78,11 +80,16 @@ At a minimum, the Data Holder metadata **MUST** include:
 - _response_modes_supported_: The list of the OAuth 2.0 _response_mode_ values supported.
 - _response_types_supported_: The list of the OAuth 2.0 _response_type_ values supported.
 - _scopes_supported_: The list of supported scopes.
-- _subject_types_supported_: list of the Subject Identifier types supported.
+- _subject_types_supported_: The list of the Subject Identifier types supported.
 - _token_endpoint_: URL of the Token endpoint.
-- _token_endpoint_auth_methods_supported_: The list of Client Authentication methods supported by the Token Endpoint.
+- _token_endpoint_auth_methods_supported_: The list of Client Authentication methods supported by the Token endpoint.
 - _token_endpoint_auth_signing_alg_values_supported_: The list of the JWS signing algorithms (_alg_ values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the `private_key_jwt` authentication method.
 - _userinfo_endpoint_: URL of the UserInfo endpoint.
+
+**[[OIDD]](#nref-OIDD), only if OIDC Hybrid Flow is supported**
+
+- `id_token_encryption_alg_values_supported`: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** and **[[OIDD]](#nref-OIDD)**. Required only for Data Holders supporting OIDC Hybrid Flow
+- `id_token_encryption_enc_values_supported`: The list of the supported JWE encryption methods for securing the issued ID tokens. Required only for Data Holders supporting OIDC Hybrid Flow
 
 **[[RFC8414]](#nref-RFC8414)**
 
