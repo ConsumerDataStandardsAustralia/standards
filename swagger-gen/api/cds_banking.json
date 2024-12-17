@@ -743,7 +743,7 @@
           "Accounts"
         ],
         "summary": "Get Transaction Detail",
-        "description": "Obtain detailed information on a transaction for a specific account.",
+        "description": "Obtain detailed information on a transaction for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-transaction-detail-v1.html).",
         "operationId": "getTransactionDetail",
         "parameters": [
           {
@@ -801,7 +801,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingTransactionById"
+                  "$ref": "#/components/schemas/ResponseBankingTransactionByIdV2"
                 }
               }
             }
@@ -855,7 +855,7 @@
         "x-scopes": [
           "bank:transactions:read"
         ],
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/accounts/{accountId}/direct-debits": {
@@ -3482,7 +3482,7 @@
           "crn"
         ]
       },
-      "ResponseBankingTransactionById": {
+      "ResponseBankingTransactionByIdV2": {
         "required": [
           "data",
           "links"
@@ -3490,7 +3490,7 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/BankingTransactionDetail"
+            "$ref": "#/components/schemas/BankingTransactionDetailV2"
           },
           "links": {
             "$ref": "#/components/schemas/Links"
@@ -3500,7 +3500,7 @@
           }
         }
       },
-      "BankingTransactionDetail": {
+      "BankingTransactionDetailV2": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BankingTransaction"
@@ -3512,9 +3512,6 @@
             "type": "object",
             "properties": {
               "extendedData": {
-                "required": [
-                  "service"
-                ],
                 "type": "object",
                 "properties": {
                   "payer": {
@@ -3527,20 +3524,22 @@
                   },
                   "extensionUType": {
                     "type": "string",
-                    "description": "Optional extended data specific to transactions originated via NPP.",
+                    "description": "Optional extended data specific to transactions. Currently extended data is supported for NPP service overlays.",
                     "enum": [
-                      "x2p101Payload"
+                      "nppPayload"
                     ]
                   },
-                  "x2p101Payload": {
+                  "nppPayload": {
+                    "type": "object",
+                    "description": "Required if the _extensionUType_ value is `nppPayload`.",
+                    "required": ["service","serviceVersion"],
                     "x-conditional": [
                       "extendedDescription"
                     ],
-                    "type": "object",
                     "properties": {
                       "extendedDescription": {
                         "type": "string",
-                        "description": "An extended string description. Required if the _extensionUType_ field is `x2p101Payload`."
+                        "description": "An extended string description. Required if the _extensionUType_ value is `nppPayload`."
                       },
                       "endToEndId": {
                         "type": "string",
@@ -3548,22 +3547,25 @@
                       },
                       "purposeCode": {
                         "type": "string",
-                        "description": "Purpose of the payment. Format is defined by NPP standards for the x2p1.01 overlay service."
+                        "x-cds-type": "ExternalRef",
+                        "description": "Purpose of the payment. Format is defined by the NPP standards for the NPP overlay services including Osko (X2P1)."
+                      },
+                      "service": {
+                        "$ref": "#/components/schemas/NppPaymentService"
+                      },
+                      "serviceVersion": {
+                        "type": "string",
+                        "x-cds-type": "ExternalRef",
+                        "description": "Two-digit NPP service overlay version with leading zero.",
+                        "example": "03"
                       }
                     }
-                  },
-                  "service": {
-                    "type": "string",
-                    "description": "Identifier of the applicable overlay service. Valid values are: `X2P1.01`.",
-                    "enum": [
-                      "X2P1.01"
-                    ]
                   }
                 },
                 "x-conditional": [
                   "payer",
                   "payee",
-                  "x2p101Payload"
+                  "nppPayload"
                 ]
               }
             }
@@ -4846,6 +4848,14 @@
           "TRANS_AND_SAVINGS_ACCOUNTS",
           "TRAVEL_CARDS"
         ]
+      },
+      "NppPaymentService": {
+        "type": "string",
+        "description": "Identifier of the applicable overlay service. The _service_ is used in conjunction with the _serviceVersion_. See [here](#npp-services) for more details.",
+        "enum": [
+          "X2P1", "IFTI", "BSCT", "CATSCT"
+        ],
+        "example": "X2P1"
       }
     },
     "headers": {

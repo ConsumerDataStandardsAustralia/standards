@@ -33,6 +33,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance #657 - Addition of LVR in the enumerated values list for constraintType](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/657)
 - [Standards Maintenance #661 - Obligation milestones for 2026 and 2027](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/661)
 - [Standards Maintenance #663 - Maintenance Iteration 21 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/663)
+- [Standards Maintenance #664 - New Enums for Voluntary disclosure of additional service overlays](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/664)
 - [Standards Maintenance #667 - Clean up of Refresh Token requirements](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/667)
 - [Standards Maintenance #675 - PAR/RFC9126 in Normative references appears twice](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/675)
 
@@ -74,6 +75,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | Refactor Banking API spec | [**Standards Staging #429**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/429): Refactored Banking API specification file to refer to common components | [Banking APIs](../../#banking-apis)
 | Updated field descriptions | [**Standards Maintenance #655**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/655): Updated the Description for the _additionalProperties_ and _500_ fields shown in the Get Metrics endpoint ErrorMetricsV2 structure. These clarifications are provided with an FDO of **Y25 #2: 2025-05-12** (12th May 2025). | [ErrorMetricsV2](../../#cdr-admin-api_schemas_tocSerrormetricsv2)
 | Get Product Detail | [**Standards Maintenance #657**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/657): Incremented Get Product Detail to v5 to support new `MAX_LVR` and `MIN_LVR` constraint types | [Get Product Detail](../../#cdr-banking-api_get-product-detail)
+| Banking: Extended NPP Service Overlay support | [**Standards Maintenance #664**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/664): This change extends Get Transaction Detail to support additional NPP service overlays and all versions of each service overlay. | [Banking: Get Transaction Detail V2](../../#cdr-banking-api_get-transaction-detail)
 
 
 ## Information Security Profile

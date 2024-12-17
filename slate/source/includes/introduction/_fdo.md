@@ -19,7 +19,9 @@ Please also refer to the [Obligation Date Schedule](includes/endpoint-version-sc
 The table below highlights these areas of the standards.
 
 ```diff
-+ Added FDO for Maintenance Issue #667: Refresh Token expiry obligations
++ Added FDO for Maintenance Issue #667: Refresh Token expiry obligations.
+
++ Added FDO for Get Transaction Detail V2.
 ```
 
 |Section|Description|Applicable Date|
@@ -49,3 +51,4 @@ The table below highlights these areas of the standards.
 |[CDR Receipts](#consumer-experience_notification-standards_cdr-receipts)| Binding consumer experience data standards for data recipients regarding the content and delivery of CDR Receipts on and after **14 July 2025** | July 14th 2025 |
 |[90-day notifications](#consumer-experience_notification-standards_notifications-90-day-notifications)| Binding consumer experience data standards for data recipients regarding the content and delivery of 90-day notifications on and after **14 July 2025** | July 14th 2025 |
 |[Get Product Detail v5](#cdr-banking-api_get-product-detail)|<ul><li>Data Holders **MUST** implement v5 of this endpoint by **July 14th 2025**</li><li>Data Holders **MAY** retire v4 of this endpoint from **November 10th 2025**</li></ul> | July 14th 2025 |
+|[Get Transaction Detail V2](#cdr-banking-api_get-transaction-detail)|Get Transaction Detail V2 **MUST** be supported by **July 14th 2025** | July 14th 2025 |
