@@ -10,6 +10,10 @@ Added FDO for Get Metrics error reporting clarification.
 Updated 'MAY retire' statements from 'by (date)' to 'from (date)'.
 
 Added FDO for Get Product Detail v5.
+
+Added FDO for Maintenance Issue #667: Refresh Token expiry obligations.
+
+Added FDO for Get Transaction Detail V2.
 ```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 
@@ -17,12 +21,6 @@ The standards, as published from time to time, may include specific statements i
 Please also refer to the [Obligation Date Schedule](includes/endpoint-version-schedule/#obligation-date-schedule) which summarises obligation milestones.
 
 The table below highlights these areas of the standards.
-
-```diff
-+ Added FDO for Maintenance Issue #667: Refresh Token expiry obligations.
-
-+ Added FDO for Get Transaction Detail V2.
-```
 
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|

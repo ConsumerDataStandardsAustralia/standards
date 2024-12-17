@@ -10,7 +10,7 @@ search: false
 ---
 
 # V{version_number} Release Notes
-Release notes for version v{version_number} of the [CDR Standards](../../).
+Release notes for version **{version_number}** of the [CDR Standards](../../).
 
 ## Changes Made
 ### Change Requests

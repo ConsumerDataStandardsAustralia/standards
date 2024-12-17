@@ -10,7 +10,7 @@ search: false
 ---
 
 # V1.33.0 Release Notes
-Release notes for version v1.33.0 of the [CDR Standards](../../).
+Release notes for version **1.33.0** of the [CDR Standards](../../).
 
 ## Changes Made
 ### Change Requests
@@ -43,6 +43,7 @@ This release addresses the following change requests raised on [Standards Mainte
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
 - [Decision Proposal #350 - August 2024 Rules - Standards Impacts](https://github.com/ConsumerDataStandardsAustralia/standards/issues/350)
+- [Decision Proposal #356 - Maintenance Iteration 21](https://github.com/ConsumerDataStandardsAustralia/standards/issues/356)
 
 
 ## General Changes
@@ -90,8 +91,7 @@ This release addresses the following Decision Proposals published on [Standards]
 | Refresh Token expiry | [**Standards Maintenance #667**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/667): Refresh token expiry must be set to the sharing duration authorised by the consumer. | [Security Profile -> Tokens -> Refresh Tokens](../../#tokens)
 
 ## Register Standards
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Consumer Experience
@@ -107,14 +107,10 @@ This release addresses the following Decision Proposals published on [Standards]
 
 
 ## Additional Standards
-|Change|Description|Link|
-|------|-----------|----|
-
+None
 
 ## Known Issues
-|Change|Description|Link|
-|------|-----------|----|
-
+None
 
 <br>
 <br>
