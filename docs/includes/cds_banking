@@ -5,8 +5,8 @@
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -25,7 +25,7 @@
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -105,21 +105,21 @@
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -262,7 +262,7 @@
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingaccountlistv2">ResponseBankingAccountListV2</a></td>
 </tr>
 <tr>
@@ -329,7 +329,7 @@
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-bulk-balances">Get Bulk Balances</h2>
@@ -339,8 +339,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/balances</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -359,7 +359,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/balances'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -437,21 +437,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -596,7 +596,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</a></td>
 </tr>
 <tr>
@@ -663,7 +663,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-balances-for-specific-accounts">Get Balances For Specific Accounts</h2>
@@ -673,8 +673,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/balances</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
@@ -703,7 +703,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/balances'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
@@ -773,21 +773,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -869,7 +869,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</a></td>
 </tr>
 <tr>
@@ -936,7 +936,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-account-balance">Get Account Balance</h2>
@@ -946,8 +946,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/balance</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -966,7 +966,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/balance'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -1016,21 +1016,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -1094,7 +1094,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</a></td>
 </tr>
 <tr>
@@ -1161,7 +1161,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-account-detail">Get Account Detail</h2>
@@ -1171,8 +1171,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -1191,7 +1191,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -1243,21 +1243,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -1500,7 +1500,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingaccountbyidv3">ResponseBankingAccountByIdV3</a></td>
 </tr>
 <tr>
@@ -1567,7 +1567,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.detail:read</a>
+<a href="#authorisation-scopes">bank:accounts.detail:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-transactions-for-account">Get Transactions For Account</h2>
@@ -1577,8 +1577,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -1597,7 +1597,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -1610,20 +1610,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain transactions for a specific account.</p>
 
-<p>Some general notes that apply to all endpoints that retrieve transactions:</p>
-
-<ul>
-<li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order</li>
-<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the &quot;effective&quot; date/time which will be defined as:
-
-<ul>
-<li>Posted date/time if available, then</li>
-<li>Execution date/time if available, then</li>
-<li>A reasonable date/time nominated by the data holder using internal data structures</li>
-</ul></li>
-<li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account</li>
-<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</li>
-</ul>
+<p>Some general notes that apply to all endpoints that retrieve transactions:<ul><li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the &quot;effective&quot; date/time which will be defined as:<ul><li>Posted date/time if available, then<li>Execution date/time if available, then<li>A reasonable date/time nominated by the data holder using internal data structures</ul><li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</ul></p>
 
 <h3 id="cdr-banking-api_get-transactions-for-account_endpoint-version">Endpoint Version</h3>
 
@@ -1662,7 +1649,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td><a href="#common-field-types">DateTimeString</a></td>
 <td>optional</td>
-<td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days. Format is aligned to <a href="#common-field-types">DateTimeString</a> common type.</td>
+<td>Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to <em>newest-time</em> minus 90 days. Format is aligned to <a href="#common-field-types">DateTimeString</a> common type.</td>
 </tr>
 <tr>
 <td>newest-time</td>
@@ -1690,7 +1677,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>query</td>
 <td>string</td>
 <td>optional</td>
-<td>Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named <em>isQueryParamUnsupported</em> should be included in the meta object and set to <code>true</code> (whether the text parameter is supplied or not).</td>
+<td>Filter transactions to only transactions where this string value is found as a substring of either the <em>reference</em> or <em>description</em> fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named <em>isQueryParamUnsupported</em> should be included in the meta object and set to <code>true</code> (whether the text parameter is supplied or not).</td>
 </tr>
 <tr>
 <td>page</td>
@@ -1711,21 +1698,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -1807,7 +1794,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingtransactionlist">ResponseBankingTransactionList</a></td>
 </tr>
 <tr>
@@ -1886,7 +1873,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:transactions:read</a>
+<a href="#authorisation-scopes">bank:transactions:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-transaction-detail">Get Transaction Detail</h2>
@@ -1896,8 +1883,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -1916,7 +1903,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -1929,6 +1916,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain detailed information on a transaction for a specific account.</p>
 
+<p>Obsolete versions: <a href="includes/obsolete/get-transaction-detail-v1.html">v1</a>.</p>
+
 <h3 id="cdr-banking-api_get-transaction-detail_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -1939,7 +1928,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -1973,21 +1962,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -2040,13 +2029,14 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"extendedData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x2p101Payload"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"x2p101Payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nppPayload"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nppPayload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"endToEndId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
+        </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"serviceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2068,8 +2058,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingtransactionbyid">ResponseBankingTransactionById</a></td>
+<td>Successful response</td>
+<td><a href="#schemacdr-banking-apiresponsebankingtransactionbyidv2">ResponseBankingTransactionByIdV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -2135,7 +2125,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:transactions:read</a>
+<a href="#authorisation-scopes">bank:transactions:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-direct-debits-for-account">Get Direct Debits For Account</h2>
@@ -2145,8 +2135,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/direct-debits</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -2165,7 +2155,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -2229,21 +2219,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -2316,7 +2306,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 <tr>
@@ -2395,7 +2385,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-bulk-direct-debits">Get Bulk Direct Debits</h2>
@@ -2405,8 +2395,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -2425,7 +2415,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -2503,21 +2493,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -2660,7 +2650,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 <tr>
@@ -2727,7 +2717,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-direct-debits-for-specific-accounts">Get Direct Debits For Specific Accounts</h2>
@@ -2737,8 +2727,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
@@ -2767,7 +2757,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
@@ -2837,21 +2827,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -2931,7 +2921,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 <tr>
@@ -2998,7 +2988,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-scheduled-payments-for-account">Get Scheduled Payments for Account</h2>
@@ -3008,8 +2998,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/payments/scheduled</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -3028,7 +3018,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -3094,21 +3084,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -3269,7 +3259,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</a></td>
 </tr>
 <tr>
@@ -3348,7 +3338,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-scheduled-payments-bulk">Get Scheduled Payments Bulk</h2>
@@ -3358,8 +3348,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/payments/scheduled</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -3378,7 +3368,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -3458,21 +3448,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -3703,7 +3693,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</a></td>
 </tr>
 <tr>
@@ -3770,7 +3760,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-scheduled-payments-for-specific-accounts">Get Scheduled Payments For Specific Accounts</h2>
@@ -3780,8 +3770,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/payments/scheduled</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
@@ -3810,7 +3800,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
@@ -3882,21 +3872,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -4064,7 +4054,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</a></td>
 </tr>
 <tr>
@@ -4131,7 +4121,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-payees">Get Payees</h2>
@@ -4141,8 +4131,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/payees</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/payees</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -4161,7 +4151,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payees'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/payees'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -4227,21 +4217,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -4339,7 +4329,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingpayeelistv2">ResponseBankingPayeeListV2</a></td>
 </tr>
 <tr>
@@ -4406,7 +4396,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:payees:read</a>
+<a href="#authorisation-scopes">bank:payees:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-payee-detail">Get Payee Detail</h2>
@@ -4416,8 +4406,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/payees/{payeeId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -4436,7 +4426,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId}'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/payees/{payeeId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -4490,21 +4480,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -4610,7 +4600,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingpayeebyidv2">ResponseBankingPayeeByIdV2</a></td>
 </tr>
 <tr>
@@ -4689,7 +4679,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:payees:read</a>
+<a href="#authorisation-scopes">bank:payees:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-products">Get Products</h2>
@@ -4699,8 +4689,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/products</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://tls.dh.example.com/cds-au/v1/banking/products</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">tls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -4711,7 +4701,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/products'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://tls.dh.example.com/cds-au/v1/banking/products'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -4726,7 +4716,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Note that the results returned by this endpoint are expected to be ordered in descending order according to <em>lastUpdated</em>.</p>
 <h3 id='conventions'>Conventions</h3>
-<p>In the product reference payloads there are a number of recurring conventions that are explained here, in one place.</p>
+<p>In the product reference payloads there are a number of recurring conventions that are explained below.</p>
 <h4 id='arrays-of-features'>Arrays Of Features</h4>
 <p>In the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:</p>
 
@@ -4827,14 +4817,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 </tbody></table>
 
@@ -5000,7 +4990,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingproductlistv2">ResponseBankingProductListV2</a></td>
 </tr>
 <tr>
@@ -5042,7 +5032,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <p><aside class="success">
-This operation does not require authentication
+This operation does not require authentication.
 </aside></p>
 
 <h2 id="cdr-banking-api_get-product-detail">Get Product Detail</h2>
@@ -5052,8 +5042,8 @@ This operation does not require authentication
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/products/{productId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://tls.dh.example.com/cds-au/v1/banking/products/{productId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">tls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -5064,7 +5054,7 @@ This operation does not require authentication
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/products/{productId}'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://tls.dh.example.com/cds-au/v1/banking/products/{productId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -5077,7 +5067,7 @@ This operation does not require authentication
 
 <p>Obtain detailed information on a single product offered openly to the market.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-product-detail-v1.html">v1</a>, <a href="includes/obsolete/get-product-detail-v2.html">v2</a>, <a href="includes/obsolete/get-product-detail-v3.html">v3</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-product-detail-v1.html">v1</a>, <a href="includes/obsolete/get-product-detail-v2.html">v2</a>, <a href="includes/obsolete/get-product-detail-v3.html">v3</a>, <a href="includes/obsolete/get-product-detail-v4.html">v4</a>.</p>
 
 <h3 id="cdr-banking-api_get-product-detail_endpoint-version">Endpoint Version</h3>
 
@@ -5089,7 +5079,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>4</strong></td>
+<td><strong>5</strong></td>
 </tr>
 </tbody></table>
 
@@ -5116,14 +5106,14 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 </tbody></table>
 
@@ -5336,8 +5326,8 @@ This operation does not require authentication
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
-<td><a href="#schemacdr-banking-apiresponsebankingproductbyidv4">ResponseBankingProductByIdV4</a></td>
+<td>Successful response</td>
+<td><a href="#schemacdr-banking-apiresponsebankingproductbyidv5">ResponseBankingProductByIdV5</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -5378,7 +5368,7 @@ This operation does not require authentication
 </tbody></table>
 
 <p><aside class="success">
-This operation does not require authentication
+This operation does not require authentication.
 </aside></p>
 
 <h2 class="schema-heading" id="cdr-banking-api-schemas">Schemas</h2>
@@ -5872,13 +5862,13 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductbyidv4">ResponseBankingProductByIdV4</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductbyidv5">ResponseBankingProductByIdV5</h3>
 
-<p id="tocSresponsebankingproductbyidv4" class="orig-anchor"></p>
+<p id="tocSresponsebankingproductbyidv5" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingproductbyid"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductbyidv4"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductbyidv5"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6071,7 +6061,7 @@ This operation does not require authentication
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-banking-api_responsebankingproductbyidv4_properties">Properties</h3>
+<h3 id="cdr-banking-api_responsebankingproductbyidv5_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -6083,7 +6073,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-banking-apibankingproductdetailv4">BankingProductDetailV4</a></td>
+<td><a href="#schemacdr-banking-apibankingproductdetailv5">BankingProductDetailV5</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -6101,13 +6091,13 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdetailv4">BankingProductDetailV4</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdetailv5">BankingProductDetailV5</h3>
 
-<p id="tocSbankingproductdetailv4" class="orig-anchor"></p>
+<p id="tocSbankingproductdetailv5" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductdetail"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdetailv4"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdetailv5"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"productId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -6294,7 +6284,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-banking-api_bankingproductdetailv4_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductdetailv5_properties">Properties</h3>
 
 <p><em>allOf</em></p>
 
@@ -6344,7 +6334,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>» constraints</td>
-<td>[<a href="#schemacdr-banking-apibankingproductconstraint">BankingProductConstraint</a>]</td>
+<td>[<a href="#schemacdr-banking-apibankingproductconstraintv2">BankingProductConstraintV2</a>]</td>
 <td>optional</td>
 <td>Constraints on the application for or operation of the product such as minimum balances or limit thresholds.</td>
 </tr>
@@ -6611,13 +6601,13 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductconstraint">BankingProductConstraint</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductconstraintv2">BankingProductConstraintV2</h3>
 
-<p id="tocSbankingproductconstraint" class="orig-anchor"></p>
+<p id="tocSbankingproductconstraintv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductconstraint"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductconstraint"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductconstraintv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"constraintType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAX_BALANCE"</span><span class="p">,</span><span class="w">
@@ -6626,7 +6616,7 @@ This operation does not require authentication
   </span><span class="s2">"additionalInfoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-banking-api_bankingproductconstraint_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductconstraintv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -6662,7 +6652,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h4 id="cdr-banking-api_bankingproductconstraint_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingproductconstraintv2_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -6680,11 +6670,19 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>constraintType</td>
+<td>MAX_LVR</td>
+</tr>
+<tr>
+<td>constraintType</td>
 <td>MIN_BALANCE</td>
 </tr>
 <tr>
 <td>constraintType</td>
 <td>MIN_LIMIT</td>
+</tr>
+<tr>
+<td>constraintType</td>
+<td>MIN_LVR</td>
 </tr>
 <tr>
 <td>constraintType</td>
@@ -7843,7 +7841,7 @@ This operation does not require authentication
 <td>nickname</td>
 <td>string</td>
 <td>optional</td>
-<td>A customer supplied nick name for the account.</td>
+<td>A customer supplied nickname for the account.</td>
 </tr>
 <tr>
 <td>openStatus</td>
@@ -9120,13 +9118,13 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingtransactionbyid">ResponseBankingTransactionById</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingtransactionbyidv2">ResponseBankingTransactionByIdV2</h3>
 
-<p id="tocSresponsebankingtransactionbyid" class="orig-anchor"></p>
+<p id="tocSresponsebankingtransactionbyidv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingtransactionbyid"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingtransactionbyid"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingtransactionbyidv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9151,13 +9149,14 @@ This operation does not require authentication
     </span><span class="s2">"extendedData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x2p101Payload"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"x2p101Payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nppPayload"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nppPayload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"endToEndId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
+        </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"serviceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9166,7 +9165,7 @@ This operation does not require authentication
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-banking-api_responsebankingtransactionbyid_properties">Properties</h3>
+<h3 id="cdr-banking-api_responsebankingtransactionbyidv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -9178,7 +9177,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-banking-apibankingtransactiondetail">BankingTransactionDetail</a></td>
+<td><a href="#schemacdr-banking-apibankingtransactiondetailv2">BankingTransactionDetailV2</a></td>
 <td>mandatory</td>
 <td>none</td>
 </tr>
@@ -9196,13 +9195,13 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtransactiondetail">BankingTransactionDetail</h3>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtransactiondetailv2">BankingTransactionDetailV2</h3>
 
-<p id="tocSbankingtransactiondetail" class="orig-anchor"></p>
+<p id="tocSbankingtransactiondetailv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingtransactiondetail"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingtransactiondetail"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingtransactiondetailv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9226,17 +9225,18 @@ This operation does not require authentication
   </span><span class="s2">"extendedData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x2p101Payload"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"x2p101Payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"extensionUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nppPayload"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nppPayload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"extendedDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"endToEndId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1.01"</span><span class="w">
+      </span><span class="s2">"purposeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X2P1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-banking-api_bankingtransactiondetail_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingtransactiondetailv2_properties">Properties</h3>
 
 <p><em>allOf</em></p>
 
@@ -9294,19 +9294,19 @@ This operation does not require authentication
 <td>»» extensionUType</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
-<td>Optional extended data specific to transactions originated via NPP.</td>
+<td>Optional extended data specific to transactions. Currently extended data is supported for NPP service overlays.</td>
 </tr>
 <tr>
-<td>»» x2p101Payload</td>
+<td>»» nppPayload</td>
 <td>object</td>
 <td>conditional</td>
-<td>none</td>
+<td>Required if the <em>extensionUType</em> value is <code>nppPayload</code>.</td>
 </tr>
 <tr>
 <td>»»» extendedDescription</td>
 <td>string</td>
 <td>conditional</td>
-<td>An extended string description. Required if the <em>extensionUType</em> field is <code>x2p101Payload</code>.</td>
+<td>An extended string description. Required if the <em>extensionUType</em> value is <code>nppPayload</code>.</td>
 </tr>
 <tr>
 <td>»»» endToEndId</td>
@@ -9316,19 +9316,25 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>»»» purposeCode</td>
-<td>string</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
-<td>Purpose of the payment. Format is defined by NPP standards for the x2p1.01 overlay service.</td>
+<td>Purpose of the payment. Format is defined by the NPP standards for the NPP overlay services including Osko (X2P1).</td>
 </tr>
 <tr>
-<td>»» service</td>
-<td><a href="#common-field-types">Enum</a></td>
+<td>»»» service</td>
+<td><a href="#schemacdr-banking-apinpppaymentservice">NppPaymentService</a></td>
 <td>mandatory</td>
-<td>Identifier of the applicable overlay service. Valid values are: <code>X2P1.01</code>.</td>
+<td>Identifier of the applicable overlay service. The <em>service</em> is used in conjunction with the <em>serviceVersion</em>. See <a href="#npp-services">here</a> for more details.</td>
+</tr>
+<tr>
+<td>»»» serviceVersion</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
+<td>mandatory</td>
+<td>Two-digit NPP service overlay version with leading zero.</td>
 </tr>
 </tbody></table>
 
-<h4 id="cdr-banking-api_bankingtransactiondetail_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingtransactiondetailv2_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -9338,11 +9344,7 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>extensionUType</td>
-<td>x2p101Payload</td>
-</tr>
-<tr>
-<td>service</td>
-<td>X2P1.01</td>
+<td>nppPayload</td>
 </tr>
 </tbody></table>
 
@@ -11823,13 +11825,13 @@ This operation does not require authentication
 <td>simple</td>
 <td><a href="#schemacdr-banking-apicommonsimpleaddress">CommonSimpleAddress</a></td>
 <td>conditional</td>
-<td>none</td>
+<td>Required if <em>addressUType</em> is set to <code>simple</code>.</td>
 </tr>
 <tr>
 <td>paf</td>
 <td><a href="#schemacdr-banking-apicommonpafaddress">CommonPAFAddress</a></td>
 <td>conditional</td>
-<td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>.</td>
+<td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if <em>addressUType</em> is set to <code>paf</code>.</td>
 </tr>
 </tbody></table>
 
@@ -11870,6 +11872,8 @@ This operation does not require authentication
   </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p><em>Required if <em>addressUType</em> is set to <code>simple</code>.</em></p>
+
 <h3 id="cdr-banking-api_commonsimpleaddress_properties">Properties</h3>
 
 <table><thead>
@@ -11963,7 +11967,7 @@ This operation does not require authentication
   </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>.</em></p>
+<p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if <em>addressUType</em> is set to <code>paf</code>.</em></p>
 
 <h3 id="cdr-banking-api_commonpafaddress_properties">Properties</h3>
 
@@ -12486,5 +12490,61 @@ This operation does not require authentication
 <tr>
 <td><em>anonymous</em></td>
 <td>TRAVEL_CARDS</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSnpppaymentservice">NppPaymentService</h3>
+
+<p id="tocSnpppaymentservice" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-banking-api_schema-base_npppaymentservice"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apinpppaymentservice"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="s2">"X2P1"</span><span class="w">
+</span></code></pre>
+<p><em>Identifier of the applicable overlay service. The <em>service</em> is used in conjunction with the <em>serviceVersion</em>. See <a href="#npp-services">here</a> for more details.</em></p>
+
+<h3 id="cdr-banking-api_npppaymentservice_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td>Identifier of the applicable overlay service. The <em>service</em> is used in conjunction with the <em>serviceVersion</em>. See <a href="#npp-services">here</a> for more details.</td>
+</tr>
+</tbody></table>
+
+<h4 id="cdr-banking-api_npppaymentservice_enumerated-values-main">Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>X2P1</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>IFTI</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>BSCT</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>CATSCT</td>
 </tr>
 </tbody></table>

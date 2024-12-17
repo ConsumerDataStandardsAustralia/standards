@@ -6,8 +6,8 @@
 > Code samples
 
 ```http
-POST https://data.holder.com.au/register HTTP/1.1
-Host: data.holder.com.au
+POST https://mtls.dh.example.com/cds-au/v1/register HTTP/1.1
+Host: mtls.dh.example.com
 Content-Type: application/jwt
 Accept: application/json
 ```
@@ -20,7 +20,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('https://data.holder.com.au/register', {
+fetch('https://mtls.dh.example.com/cds-au/v1/register', {
   method: 'POST',
   body: inputBody,
   headers: headers
@@ -35,7 +35,7 @@ fetch('https://data.holder.com.au/register', {
 
 Register a client using a CDR Register issued Software Statement Assertion. 
 
-This endpoint does not require CORS.
+This endpoint does not require [CORS](#cors).
 
 > Body parameter
 
@@ -64,22 +64,22 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
   "client_id_issued_at": 1574398833,
   "client_name": "Mock Software",
   "client_description": "A mock software product",
-  "client_uri": "https://www.mockcompany.com.au",
+  "client_uri": "https://adr.example.com",
   "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
   "legal_entity_name": "Mock Company Pty Ltd.",
   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
   "org_name": "Mock Company Brand",
   "redirect_uris": [
-    "https://www.mockcompany.com.au/redirects/redirect1",
-    "https://www.mockcompany.com.au/redirects/redirect2"
+    "https://adr.example.com/redirects/redirect1",
+    "https://adr.example.com/redirects/redirect2"
   ],
-  "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier.json",
-  "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
-  "tos_uri": "https://www.mockcompany.com.au/tos.html",
-  "policy_uri": "https://www.mockcompany.com.au/policy.html",
-  "jwks_uri": "https://www.mockcompany.com.au/jwks",
-  "revocation_uri": "https://www.mockcompany.com.au/revocation",
-  "recipient_base_uri": "https://www.mockcompany.com.au",
+  "sector_identifier_uri": "https://adr.example.com/sector_identifier.json",
+  "logo_uri": "https://adr.example.com/logos/logo1.png",
+  "tos_uri": "https://adr.example.com/tos.html",
+  "policy_uri": "https://adr.example.com/policy.html",
+  "jwks_uri": "https://adr.example.com/jwks",
+  "revocation_uri": "https://adr.example.com/revocation",
+  "recipient_base_uri": "https://adr.example.com",
   "token_endpoint_auth_method": "private_key_jwt",
   "token_endpoint_auth_signing_alg": "PS256",
   "grant_types": [
@@ -114,7 +114,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
   
     <aside class="success">
-This operation does not require authentication
+This operation does not require authentication.
 </aside>
 
   
@@ -125,8 +125,8 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET https://data.holder.com.au/register/{ClientId} HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/register/{ClientId} HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 Authorization: string
 ```
@@ -138,7 +138,7 @@ const headers = {
   'Authorization':'string'
 };
 
-fetch('https://data.holder.com.au/register/{ClientId}', {
+fetch('https://mtls.dh.example.com/cds-au/v1/register/{ClientId}', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -161,8 +161,8 @@ Get a Client Registration for a given Client ID.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|ClientId|path|string|mandatory|The client ID issued by the target Data Holder|
-|Authorization|header|[ExternalRef](#common-field-types)|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**|
+|ClientId|path|string|mandatory|The client ID issued by the target Data Holder.|
+|Authorization|header|[ExternalRef](#common-field-types)|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
 
 > Example responses
 
@@ -174,22 +174,22 @@ Get a Client Registration for a given Client ID.
   "client_id_issued_at": 1574398833,
   "client_name": "Mock Software",
   "client_description": "A mock software product",
-  "client_uri": "https://www.mockcompany.com.au",
+  "client_uri": "https://adr.example.com",
   "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
   "legal_entity_name": "Mock Company Pty Ltd.",
   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
   "org_name": "Mock Company Brand",
   "redirect_uris": [
-    "https://www.mockcompany.com.au/redirects/redirect1",
-    "https://www.mockcompany.com.au/redirects/redirect2"
+    "https://adr.example.com/redirects/redirect1",
+    "https://adr.example.com/redirects/redirect2"
   ],
-  "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier.json",
-  "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
-  "tos_uri": "https://www.mockcompany.com.au/tos.html",
-  "policy_uri": "https://www.mockcompany.com.au/policy.html",
-  "jwks_uri": "https://www.mockcompany.com.au/jwks",
-  "revocation_uri": "https://www.mockcompany.com.au/revocation",
-  "recipient_base_uri": "https://www.mockcompany.com.au",
+  "sector_identifier_uri": "https://adr.example.com/sector_identifier.json",
+  "logo_uri": "https://adr.example.com/logos/logo1.png",
+  "tos_uri": "https://adr.example.com/tos.html",
+  "policy_uri": "https://adr.example.com/policy.html",
+  "jwks_uri": "https://adr.example.com/jwks",
+  "revocation_uri": "https://adr.example.com/revocation",
+  "recipient_base_uri": "https://adr.example.com",
   "token_endpoint_auth_method": "private_key_jwt",
   "token_endpoint_auth_signing_alg": "PS256",
   "grant_types": [
@@ -227,13 +227,13 @@ Get a Client Registration for a given Client ID.
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|401|WWW-Authenticate|[ExternalRef](#common-field-types)|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**|
+|401|WWW-Authenticate|[ExternalRef](#common-field-types)|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">cdr:registration</a>
+<a href="#authorisation-scopes">cdr:registration.</a>
 </aside>
 
     
@@ -245,8 +245,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-PUT https://data.holder.com.au/register/{ClientId} HTTP/1.1
-Host: data.holder.com.au
+PUT https://mtls.dh.example.com/cds-au/v1/register/{ClientId} HTTP/1.1
+Host: mtls.dh.example.com
 Content-Type: application/jwt
 Accept: application/json
 Authorization: string
@@ -261,7 +261,7 @@ const headers = {
   'Authorization':'string'
 };
 
-fetch('https://data.holder.com.au/register/{ClientId}', {
+fetch('https://mtls.dh.example.com/cds-au/v1/register/{ClientId}', {
   method: 'PUT',
   body: inputBody,
   headers: headers
@@ -291,8 +291,8 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|ClientId|path|string|mandatory|The client ID issued by the target Data Holder|
-|Authorization|header|[ExternalRef](#common-field-types)|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**|
+|ClientId|path|string|mandatory|The client ID issued by the target Data Holder.|
+|Authorization|header|[ExternalRef](#common-field-types)|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
 |body|body|[ClientRegistrationRequest](#schemacdr-dynamic-client-registration-apiclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
 
 > Example responses
@@ -305,22 +305,22 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
   "client_id_issued_at": 1574398833,
   "client_name": "Mock Software",
   "client_description": "A mock software product",
-  "client_uri": "https://www.mockcompany.com.au",
+  "client_uri": "https://adr.example.com",
   "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
   "legal_entity_name": "Mock Company Pty Ltd.",
   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
   "org_name": "Mock Company Brand",
   "redirect_uris": [
-    "https://www.mockcompany.com.au/redirects/redirect1",
-    "https://www.mockcompany.com.au/redirects/redirect2"
+    "https://adr.example.com/redirects/redirect1",
+    "https://adr.example.com/redirects/redirect2"
   ],
-  "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier.json",
-  "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
-  "tos_uri": "https://www.mockcompany.com.au/tos.html",
-  "policy_uri": "https://www.mockcompany.com.au/policy.html",
-  "jwks_uri": "https://www.mockcompany.com.au/jwks",
-  "revocation_uri": "https://www.mockcompany.com.au/revocation",
-  "recipient_base_uri": "https://www.mockcompany.com.au",
+  "sector_identifier_uri": "https://adr.example.com/sector_identifier.json",
+  "logo_uri": "https://adr.example.com/logos/logo1.png",
+  "tos_uri": "https://adr.example.com/tos.html",
+  "policy_uri": "https://adr.example.com/policy.html",
+  "jwks_uri": "https://adr.example.com/jwks",
+  "revocation_uri": "https://adr.example.com/revocation",
+  "recipient_base_uri": "https://adr.example.com",
   "token_endpoint_auth_method": "private_key_jwt",
   "token_endpoint_auth_signing_alg": "PS256",
   "grant_types": [
@@ -359,13 +359,13 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|401|WWW-Authenticate|[ExternalRef](#common-field-types)|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**|
+|401|WWW-Authenticate|[ExternalRef](#common-field-types)|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">cdr:registration</a>
+<a href="#authorisation-scopes">cdr:registration.</a>
 </aside>
 
     
@@ -377,8 +377,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-DELETE https://data.holder.com.au/register/{ClientId} HTTP/1.1
-Host: data.holder.com.au
+DELETE https://mtls.dh.example.com/cds-au/v1/register/{ClientId} HTTP/1.1
+Host: mtls.dh.example.com
 Authorization: string
 ```
 
@@ -388,7 +388,7 @@ const headers = {
   'Authorization':'string'
 };
 
-fetch('https://data.holder.com.au/register/{ClientId}', {
+fetch('https://mtls.dh.example.com/cds-au/v1/register/{ClientId}', {
   method: 'DELETE',
   headers: headers
 }).then(function(res) {
@@ -411,8 +411,8 @@ Delete a Client Registration for a given Client ID.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|ClientId|path|string|mandatory|The client ID issued by the target Data Holder|
-|Authorization|header|[ExternalRef](#common-field-types)|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**|
+|ClientId|path|string|mandatory|The client ID issued by the target Data Holder.|
+|Authorization|header|[ExternalRef](#common-field-types)|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
 
 <h3 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration_responses">Responses</h3>
 
@@ -427,13 +427,13 @@ Delete a Client Registration for a given Client ID.
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|401|WWW-Authenticate|[ExternalRef](#common-field-types)|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**|
+|401|WWW-Authenticate|[ExternalRef](#common-field-types)|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">cdr:registration</a>
+<a href="#authorisation-scopes">cdr:registration.</a>
 </aside>
 
     
@@ -475,22 +475,22 @@ To perform this operation, you must be authenticated and authorised with the fol
   "client_id_issued_at": 1574398833,
   "client_name": "Mock Software",
   "client_description": "A mock software product",
-  "client_uri": "https://www.mockcompany.com.au",
+  "client_uri": "https://adr.example.com",
   "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
   "legal_entity_name": "Mock Company Pty Ltd.",
   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
   "org_name": "Mock Company Brand",
   "redirect_uris": [
-    "https://www.mockcompany.com.au/redirects/redirect1",
-    "https://www.mockcompany.com.au/redirects/redirect2"
+    "https://adr.example.com/redirects/redirect1",
+    "https://adr.example.com/redirects/redirect2"
   ],
-  "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier.json",
-  "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
-  "tos_uri": "https://www.mockcompany.com.au/tos.html",
-  "policy_uri": "https://www.mockcompany.com.au/policy.html",
-  "jwks_uri": "https://www.mockcompany.com.au/jwks",
-  "revocation_uri": "https://www.mockcompany.com.au/revocation",
-  "recipient_base_uri": "https://www.mockcompany.com.au",
+  "sector_identifier_uri": "https://adr.example.com/sector_identifier.json",
+  "logo_uri": "https://adr.example.com/logos/logo1.png",
+  "tos_uri": "https://adr.example.com/tos.html",
+  "policy_uri": "https://adr.example.com/policy.html",
+  "jwks_uri": "https://adr.example.com/jwks",
+  "revocation_uri": "https://adr.example.com/revocation",
+  "recipient_base_uri": "https://adr.example.com",
   "token_endpoint_auth_method": "private_key_jwt",
   "token_endpoint_auth_signing_alg": "PS256",
   "grant_types": [
@@ -520,38 +520,38 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|client_id|string|mandatory|Data Holder issued client identifier string|
-|client_id_issued_at|[ExternalRef](#common-field-types)|optional|Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
-|client_name|string|mandatory|Human-readable string name of the software product to be presented to the end-user during authorization|
-|client_description|string|mandatory|Human-readable string name of the software product description to be presented to the end user during authorization|
-|client_uri|[URIString](#common-field-types)|mandatory|URL string of a web page providing information about the client|
-|legal_entity_id|string|optional|A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity|
-|legal_entity_name|string|optional|Human-readable string name of the Accredited Data Recipient Legal Entity|
-|org_id|string|mandatory|A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand|
-|org_name|string|mandatory|Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization|
-|redirect_uris|[[URIString]](#common-field-types)|mandatory|Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA|
-|sector_identifier_uri|[URIString](#common-field-types)|optional|URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier|
-|logo_uri|[URIString](#common-field-types)|mandatory|URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval|
-|tos_uri|[URIString](#common-field-types)|optional|URL string that points to a human-readable terms of service document for the Software Product|
-|policy_uri|[URIString](#common-field-types)|optional|URL string that points to a human-readable policy document for the Software Product|
-|jwks_uri|[URIString](#common-field-types)|mandatory|URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client public keys|
-|revocation_uri|[URIString](#common-field-types)|optional|URI string that references the location of the Software Product consent revocation endpoint|
-|recipient_base_uri|[URIString](#common-field-types)|optional|Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints|
-|token_endpoint_auth_method|[Enum](#common-field-types)|mandatory|The requested authentication method for the token endpoint|
-|token_endpoint_auth_signing_alg|[Enum](#common-field-types)|mandatory|The algorithm used for signing the JWT|
-|grant_types|[[Enum](#common-field-types)]|mandatory|Array of OAuth 2.0 grant type strings that the client can use at the token endpoint|
+|client_id|string|mandatory|Data Holder issued client identifier string.|
+|client_id_issued_at|[ExternalRef](#common-field-types)|optional|Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.|
+|client_name|string|mandatory|Human-readable string name of the software product to be presented to the end-user during authorization.|
+|client_description|string|mandatory|Human-readable string name of the software product description to be presented to the end user during authorization.|
+|client_uri|[URIString](#common-field-types)|mandatory|URL string of a web page providing information about the client.|
+|legal_entity_id|string|optional|A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity.|
+|legal_entity_name|string|optional|Human-readable string name of the Accredited Data Recipient Legal Entity.|
+|org_id|string|mandatory|A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand.|
+|org_name|string|mandatory|Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization.|
+|redirect_uris|[[URIString]](#common-field-types)|mandatory|Array of redirection URI strings for use in redirect-based flows. If used, _redirect_uris_ MUST match or be a subset of the _redirect_uris_ as defined in the SSA.|
+|sector_identifier_uri|[URIString](#common-field-types)|optional|URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier.|
+|logo_uri|[URIString](#common-field-types)|mandatory|URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval.|
+|tos_uri|[URIString](#common-field-types)|optional|URL string that points to a human-readable terms of service document for the Software Product.|
+|policy_uri|[URIString](#common-field-types)|optional|URL string that points to a human-readable policy document for the Software Product.|
+|jwks_uri|[URIString](#common-field-types)|mandatory|URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client public keys.|
+|revocation_uri|[URIString](#common-field-types)|optional|URI string that references the location of the Software Product consent revocation endpoint.|
+|recipient_base_uri|[URIString](#common-field-types)|optional|Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints.|
+|token_endpoint_auth_method|[Enum](#common-field-types)|mandatory|The requested authentication method for the token endpoint.|
+|token_endpoint_auth_signing_alg|[Enum](#common-field-types)|mandatory|The algorithm used for signing the JWT.|
+|grant_types|[[Enum](#common-field-types)]|mandatory|Array of OAuth 2.0 grant type strings that the client can use at the token endpoint.|
 |response_types|[[Enum](#common-field-types)]|mandatory|Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.<br><br>Response type value `code` is required for Authorization Code Flow. Response type value `code id_token` is required for OIDC Hybrid Flow.|
-|application_type|[Enum](#common-field-types)|optional|Kind of the application. The only supported application type will be `web`|
-|id_token_signed_response_alg|[Enum](#common-field-types)|mandatory|Algorithm with which an id_token is to be signed|
-|id_token_encrypted_response_alg|[ExternalRef](#common-field-types)|conditional|JWE `alg` algorithm with which an id_token is to be encrypted.<br/><br/>Required if OIDC Hybrid Flow (response type `code id_token`) is registered.|
-|id_token_encrypted_response_enc|[ExternalRef](#common-field-types)|conditional|JWE `enc` algorithm with which an id_token is to be encrypted.<br/><br/>Required if OIDC Hybrid Flow (response type `code id_token`) is registered.|
-|authorization_signed_response_alg|[Enum](#common-field-types)|conditional|The JWS `alg` algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm “none” is not allowed.<br><br>Required if response_type of “code” is registered by the client.|
-|authorization_encrypted_response_alg|[Enum](#common-field-types)|conditional|The JWE `alg` algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if “authorization_encrypted_response_enc” is included.|
-|authorization_encrypted_response_enc|[Enum](#common-field-types)|optional|The JWE `enc` algorithm required for encrypting authorization responses. If “authorization_encrypted_response_alg” is specified, the default for this value is “A128CBC-HS256”.|
-|request_object_signing_alg|[Enum](#common-field-types)|mandatory|Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder|
-|software_statement|string(JWT)|mandatory|The Software Statement Assertion, as defined in CDR standards|
-|software_id|string|mandatory|String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The "software_id" will remain the same for the lifetime of the product, across multiple updates and versions|
-|software_roles|[Enum](#common-field-types)|optional|String containing a role of the software in the CDR Regime. Initially the only value used will be `data-recipient-software-product`|
+|application_type|[Enum](#common-field-types)|optional|Kind of the application. The only supported application type will be `web`.|
+|id_token_signed_response_alg|[Enum](#common-field-types)|mandatory|Algorithm with which an id_token is to be signed.|
+|id_token_encrypted_response_alg|[ExternalRef](#common-field-types)|conditional|JWE _alg_ algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (response type `code id_token`) is registered.|
+|id_token_encrypted_response_enc|[ExternalRef](#common-field-types)|conditional|JWE `enc` algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (response type `code id_token`) is registered.|
+|authorization_signed_response_alg|[Enum](#common-field-types)|conditional|The JWS _alg_ algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm `none` is not allowed.<br><br>Required if _response_type_ of `code` is registered by the client.|
+|authorization_encrypted_response_alg|[Enum](#common-field-types)|conditional|The JWE _alg_ algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if _authorization_encrypted_response_enc_ is included.|
+|authorization_encrypted_response_enc|[Enum](#common-field-types)|optional|The JWE _enc_ algorithm required for encrypting authorization responses. If _authorization_encrypted_response_alg_ is specified, the default for this value is `A128CBC-HS256`.|
+|request_object_signing_alg|[Enum](#common-field-types)|mandatory|Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder.|
+|software_statement|string(JWT)|mandatory|The Software Statement Assertion, as defined in CDR standards.|
+|software_id|string|mandatory|String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. <br><br>The _software_id_ will remain the same for the lifetime of the product, across multiple updates and versions.|
+|software_roles|[Enum](#common-field-types)|optional|String containing a role of the software in the CDR Regime. Initially the only value used will be `data-recipient-software-product`.|
 |scope|string|mandatory|String containing a space-separated list of scope values that the client can use when requesting access tokens.|
 
 <h4 id="cdr-dynamic-client-registration-api_registrationproperties_enumerated-values-main">Enumerated Values</h4>
@@ -593,27 +593,27 @@ To perform this operation, you must be authenticated and authorised with the fol
   "iat": 1571808167,
   "exp": 2147483646,
   "jti": "37747cd1c10545699f754adf28b73e31",
-  "aud": "https://secure.api.dataholder.com/issuer",
+  "aud": "https://mtls.dh.example.com/issuer",
   "client_id": "2cfefa98-7d4a-4bcb-95da-47063b84d410",
   "client_id_issued_at": 1574398833,
   "client_name": "Mock Software",
   "client_description": "A mock software product",
-  "client_uri": "https://www.mockcompany.com.au",
+  "client_uri": "https://adr.example.com",
   "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
   "legal_entity_name": "Mock Company Pty Ltd.",
   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
   "org_name": "Mock Company Brand",
   "redirect_uris": [
-    "https://www.mockcompany.com.au/redirects/redirect1",
-    "https://www.mockcompany.com.au/redirects/redirect2"
+    "https://adr.example.com/redirects/redirect1",
+    "https://adr.example.com/redirects/redirect2"
   ],
-  "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier.json",
-  "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
-  "tos_uri": "https://www.mockcompany.com.au/tos.html",
-  "policy_uri": "https://www.mockcompany.com.au/policy.html",
-  "jwks_uri": "https://www.mockcompany.com.au/jwks",
-  "revocation_uri": "https://www.mockcompany.com.au/revocation",
-  "recipient_base_uri": "https://www.mockcompany.com.au",
+  "sector_identifier_uri": "https://adr.example.com/sector_identifier.json",
+  "logo_uri": "https://adr.example.com/logos/logo1.png",
+  "tos_uri": "https://adr.example.com/tos.html",
+  "policy_uri": "https://adr.example.com/policy.html",
+  "jwks_uri": "https://adr.example.com/jwks",
+  "revocation_uri": "https://adr.example.com/revocation",
+  "recipient_base_uri": "https://adr.example.com",
   "token_endpoint_auth_method": "private_key_jwt",
   "token_endpoint_auth_signing_alg": "PS256",
   "grant_types": [
@@ -646,11 +646,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» iss|string|mandatory|Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register|
-|» iat|[ExternalRef](#common-field-types)|mandatory|The time at which the request was issued by the Data Recipient expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
-|» exp|[ExternalRef](#common-field-types)|mandatory|The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC|
-|» jti|string|mandatory|Unique identifier for the JWT, used to prevent replay of the token|
-|» aud|[URIString](#common-field-types)|mandatory|Contains the Data Holder issuer value as described in the OIDC Discovery Document|
+|» iss|string|mandatory|Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register.|
+|» iat|[ExternalRef](#common-field-types)|mandatory|The time at which the request was issued by the Data Recipient expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.|
+|» exp|[ExternalRef](#common-field-types)|mandatory|The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.|
+|» jti|string|mandatory|Unique identifier for the JWT, used to prevent replay of the token.|
+|» aud|[URIString](#common-field-types)|mandatory|Contains the Data Holder issuer value as described in the OIDC Discovery Document.|
 
 *and*
 
@@ -677,7 +677,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|error|[Enum](#common-field-types)|mandatory|Predefined error code as described in [section 3.3 OIDC Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html)|
+|error|[Enum](#common-field-types)|mandatory|Predefined error code as described in [section 3.3 OIDC Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html).|
 |error_description|[ASCIIString](#common-field-types)|optional|Additional text description of the error for debugging.|
 
 <h4 id="cdr-dynamic-client-registration-api_registrationerror_enumerated-values-main">Enumerated Values</h4>

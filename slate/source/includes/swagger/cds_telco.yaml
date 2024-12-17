@@ -6,27 +6,28 @@ info:
     url: https://consumerdatastandards.gov.au
   description: Consumer Data Standards APIs created by the Data Standards Body (DSB),
     with the Data Standards Chair as the decision maker to meet the needs of the Consumer
-    Data Right
+    Data Right.
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Telco API
-  version: 1.32.0
+  version: 1.33.0
 servers:
-- url: https://data.holder.com.au/cds-au/v1
+- description: MTLS
+  url: https://mtls.dh.example.com/cds-au/v1
 paths:
   /telco/products:
     get:
       description: |-
         Obtain a list of telco products that are currently offered to the market.
 
-        Note that the results returned by this endpoint are expected to be ordered in descending order according to `lastUpdated`.
+        Note that the results returned by this endpoint are expected to be ordered in descending order according to _lastUpdated_.
       operationId: listProducts
       parameters:
       - description: Used to filter results on the type field. Any one of the valid
-          values for this field can be supplied. If absent, defaults to include ALL
-          products. Valid values are [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745)
-          service. BROADBAND fixed internet service or ALL
+          values for this field can be supplied. If absent, defaults to include `ALL`
+          products. Valid values are [`MOBILE`](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745)
+          service, `BROADBAND` fixed internet service, or `ALL`.
         explode: true
         in: query
         name: type
@@ -39,10 +40,10 @@ paths:
           - ALL
           type: string
         style: form
-      - description: Used to filter results on the billing-type field. Any one of
+      - description: Used to filter results on the _billing-type_ field. Any one of
           the valid values for this field can be supplied. If absent, defaults to
-          include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID',
-          'ALL'
+          include all billing types. Valid values are `PRE_PAID`, `POST_PAID`, `UPFRONT_PAID`,
+          `ALL`.
         explode: true
         in: query
         name: billing-type
@@ -55,10 +56,10 @@ paths:
           - ALL
           type: string
         style: form
-      - description: Allows for the filtering of productd based on whether the current
-          time is within the period of time defined as effective by the effectiveFrom
-          and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’.
-          If absent defaults to 'CURRENT'
+      - description: Allows for the filtering of products based on whether the current
+          time is within the period of time defined as effective by the _effectiveFrom_
+          and _effectiveTo_ fields. Valid values are `CURRENT`, `FUTURE` and `ALL`.
+          If absent defaults to `CURRENT`.
         explode: true
         in: query
         name: effective
@@ -72,7 +73,7 @@ paths:
           type: string
         style: form
       - description: Only include products that have been updated after the specified
-          date and time. If absent defaults to include all plans
+          date and time. If absent defaults to include all plans.
         explode: true
         in: query
         name: updated-since
@@ -83,7 +84,7 @@ paths:
         x-cds-type: DateTimeString
       - description: Used to filter results on the brand field. If absent, defaults
           to include all products. For service providers that operate a number of
-          mobile and internet brands
+          mobile and internet brands.
         explode: true
         in: query
         name: brand
@@ -91,7 +92,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -100,7 +101,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request. Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -111,11 +112,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -125,9 +127,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -168,6 +170,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
+      servers:
+      - description: TLS
+        url: https://tls.dh.example.com/cds-au/v1
       summary: Get Telco Products
       tags:
       - Telco
@@ -175,11 +180,11 @@ paths:
       x-version: "1"
   /telco/products/{productId}:
     get:
-      description: Obtain detailed information on a single telco prouct offered openly
-        to the market
+      description: Obtain detailed information on a single telco product offered openly
+        to the market.
       operationId: getProduct
       parameters:
-      - description: ID of the specific product requested
+      - description: ID of the specific product requested.
         explode: false
         in: path
         name: productId
@@ -189,11 +194,12 @@ paths:
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -203,9 +209,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -245,6 +251,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+      servers:
+      - description: TLS
+        url: https://tls.dh.example.com/cds-au/v1
       summary: Get Telco Product Detail
       tags:
       - Telco
@@ -252,14 +261,14 @@ paths:
       x-version: "1"
   /telco/accounts/{serviceId}/usage:
     get:
-      description: Obtain a usage data from a particular service Id
+      description: Obtain a usage data from a particular service Id.
       operationId: getUsageForService
       parameters:
-      - description: ID of the specific service requested. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+      - description: ID of the specific service requested. E.g., a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
           [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
           or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
           This is a tokenised ID returned from the account. In accordance with [CDR
-          ID permanence](#id-permanence) requirements
+          ID permanence](#id-permanence) requirements.
         explode: false
         in: path
         name: serviceId
@@ -268,8 +277,8 @@ paths:
           type: string
         style: simple
       - description: Constrain the request to records with effective date at or after
-          this date. If absent defaults to newest-date minus 24 months. Format is
-          aligned to DateString common type
+          this date. If absent defaults to _newest-date_ minus 24 months. Format is
+          aligned to DateString common type.
         explode: true
         in: query
         name: oldest-date
@@ -280,7 +289,7 @@ paths:
         x-cds-type: DateString
       - description: Constrain the request to records with effective date at or before
           this date. If absent defaults to current date. Format is aligned to DateString
-          common type
+          common type.
         explode: true
         in: query
         name: newest-date
@@ -291,11 +300,12 @@ paths:
         x-cds-type: DateString
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -305,9 +315,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -316,7 +326,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -427,12 +437,12 @@ paths:
       x-version: "1"
   /telco/accounts/usage:
     get:
-      description: Obtain usage data for all services associated with the customer
+      description: Obtain usage data for all services associated with the customer.
       operationId: listUsage
       parameters:
       - description: Constrain the request to records with effective date at or after
-          this date. If absent defaults to newest-date minus 24 months. Format is
-          aligned to DateString common type
+          this date. If absent defaults to _newest-date_ minus 24 months. Format is
+          aligned to DateString common type.
         explode: true
         in: query
         name: oldest-date
@@ -443,7 +453,7 @@ paths:
         x-cds-type: DateString
       - description: Constrain the request to records with effective date at or before
           this date. If absent defaults to current date. Format is aligned to DateString
-          common type
+          common type.
         explode: true
         in: query
         name: newest-date
@@ -452,7 +462,7 @@ paths:
           type: string
         style: form
         x-cds-type: DateString
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -461,7 +471,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request. Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -472,11 +482,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -486,9 +497,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -497,7 +508,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -596,10 +607,10 @@ paths:
       - telco:billing:read
       x-version: "1"
     post:
-      description: Obtain usage data for a specific service
+      description: Obtain usage data for a specific service.
       operationId: listUsageForService
       parameters:
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -608,7 +619,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request. Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -619,11 +630,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -633,9 +645,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -644,7 +656,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -748,11 +760,11 @@ paths:
   /telco/accounts:
     get:
       description: Obtain the list of telco accounts available under the authorised
-        consent
+        consent.
       operationId: listAccounts
       parameters:
       - description: Used to filter results according to open/closed status. Values
-          can be OPEN, CLOSED or ALL. If absent then ALL is assumed
+          can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.
         explode: true
         in: query
         name: open-status
@@ -766,7 +778,7 @@ paths:
           type: string
         style: form
       - description: Only include accounts that have been updated after the specified
-          date and time. If absent defaults to include all plans
+          date and time. If absent defaults to include all plans.
         explode: true
         in: query
         name: updated-since
@@ -775,7 +787,7 @@ paths:
           type: string
         style: form
         x-cds-type: DateString
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -784,7 +796,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request. Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -795,11 +807,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -809,9 +822,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -820,7 +833,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -919,12 +932,12 @@ paths:
       x-version: "1"
   /telco/accounts/{accountId}:
     get:
-      description: Obtain detailed information for a specific telco account
+      description: Obtain detailed information for a specific telco account.
       operationId: getAccount
       parameters:
       - description: ID of a specific account to obtain data for. This is a tokenised
           ID previously obtained from the Account List endpoint. In accordance with
-          [CDR ID permanence](#id-permanence) requirements
+          [CDR ID permanence](#id-permanence) requirements.
         explode: false
         in: path
         name: accountId
@@ -934,11 +947,12 @@ paths:
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -948,9 +962,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -959,7 +973,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -1058,24 +1072,17 @@ paths:
       x-version: "1"
   /telco/accounts/{accountId}/payment-schedule:
     get:
-      description: "Obtain the agreed payment schedule and details, if any, for a\
-        \ specific telco account. \n\nSome general notes about this endpoint:\n\n\
-        \ <ul><li>This API describes how the consumer has elected to pay for their\
-        \ account</li><li>Payments initiated by the consumer are classified as manual\
-        \ payments. The billing frequency is captured for manual payments. The consumer\
-        \ may choose to pay on a different schedule/frequency. The payment method\
-        \ and frequency is not captured for manual payments</li><li>Payments that\
-        \ can be initiated by the retailer, based on a consumer's preferences and\
-        \ permission, include payments based on a direct debit, card debit or digital\
-        \ wallet setup. Each of these requires a payment frequency to be provided\
-        \ along with other relevant fields</li><li>Information about payment plans\
-        \ related to debt repayments or arrangements due to hardship is not captured\
-        \ within this API</li></ul>"
+      description: |-
+        Obtain the agreed payment schedule and details, if any, for a specific telco account.
+
+        Some general notes about this endpoint:
+
+        <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API.</li></ul>
       operationId: getPaymentSchedule
       parameters:
       - description: ID of a specific account to obtain data for. This is a tokenised
           ID previously obtained from the Account List endpoint. In accordance with
-          [CDR ID permanence](#id-permanence) requirements
+          [CDR ID permanence](#id-permanence) requirements.
         explode: false
         in: path
         name: accountId
@@ -1085,11 +1092,12 @@ paths:
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -1099,9 +1107,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -1110,7 +1118,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -1210,12 +1218,12 @@ paths:
   /telco/accounts/{accountId}/concessions:
     get:
       description: Obtain the details of any concessions or arrangements applied to
-        a specific telco account
+        a specific telco account.
       operationId: getConcessions
       parameters:
       - description: ID of a specific account to obtain data for. This is a tokenised
           ID previously obtained from the Account List endpoint. In accordance with
-          [CDR ID permanence](#id-permanence) requirements
+          [CDR ID permanence](#id-permanence) requirements.
         explode: false
         in: path
         name: accountId
@@ -1225,11 +1233,12 @@ paths:
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -1239,9 +1248,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -1250,7 +1259,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -1349,12 +1358,12 @@ paths:
       x-version: "1"
   /telco/accounts/{accountId}/balance:
     get:
-      description: Obtain the current balance for a specific account
+      description: Obtain the current balance for a specific account.
       operationId: getBalanceForAccount
       parameters:
       - description: ID of a specific account to obtain data for. This is a tokenised
           ID previously obtained from the Account List endpoint. In accordance with
-          [CDR ID permanence](#id-permanence) requirements
+          [CDR ID permanence](#id-permanence) requirements.
         explode: false
         in: path
         name: accountId
@@ -1364,11 +1373,12 @@ paths:
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -1378,9 +1388,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -1389,7 +1399,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -1489,10 +1499,10 @@ paths:
       x-version: "1"
   /telco/accounts/balance:
     get:
-      description: Obtain the current balance for all accounts
+      description: Obtain the current balance for all accounts.
       operationId: listBalance
       parameters:
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -1501,7 +1511,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request. Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -1512,11 +1522,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -1526,9 +1537,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -1537,7 +1548,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -1636,10 +1647,10 @@ paths:
       - telco:billing:read
       x-version: "1"
     post:
-      description: Obtain the current balance for a specified set of accounts
+      description: Obtain the current balance for a specified set of accounts.
       operationId: listBalancesForAccounts
       parameters:
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -1648,7 +1659,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request. Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -1659,11 +1670,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -1673,9 +1685,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -1684,7 +1696,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -1788,12 +1800,12 @@ paths:
       x-version: "1"
   /telco/accounts/{accountId}/invoices:
     get:
-      description: Obtain the invoices for a specific account
+      description: Obtain the invoices for a specific account.
       operationId: getInvoicesForAccount
       parameters:
       - description: ID of a specific account to obtain data for. This is a tokenised
           ID previously obtained from the Account List endpoint. In accordance with
-          [CDR ID permanence](#id-permanence) requirements
+          [CDR ID permanence](#id-permanence) requirements.
         explode: false
         in: path
         name: accountId
@@ -1803,11 +1815,12 @@ paths:
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -1817,9 +1830,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -1828,7 +1841,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -1939,12 +1952,12 @@ paths:
       x-version: "1"
   /telco/accounts/invoices:
     get:
-      description: Obtain the invoices for all accounts
+      description: Obtain the invoices for all accounts.
       operationId: listInvoices
       parameters:
       - description: Constrain the request to records with effective date at or before
           this date. If absent defaults to current date. Format is aligned to DateString
-          common type
+          common type.
         explode: true
         in: query
         name: newest-date
@@ -1954,8 +1967,8 @@ paths:
         style: form
         x-cds-type: DateString
       - description: Constrain the request to records with effective date at or after
-          this date. If absent defaults to newest-date minus 24 months. Format is
-          aligned to DateString common type
+          this date. If absent defaults to _newest-date_ minus 24 months. Format is
+          aligned to DateString common type.
         explode: true
         in: query
         name: oldest-date
@@ -1964,7 +1977,7 @@ paths:
           type: string
         style: form
         x-cds-type: DateString
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -1973,7 +1986,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request. Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -1984,11 +1997,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -1998,9 +2012,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -2009,7 +2023,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -2108,12 +2122,12 @@ paths:
       - telco:billing:read
       x-version: "1"
     post:
-      description: Obtain invoices for a specified set of accounts
+      description: Obtain invoices for a specified set of accounts.
       operationId: listInvoicesForAccounts
       parameters:
       - description: Constrain the request to records with effective date at or before
           this date. If absent defaults to current date. Format is aligned to DateString
-          common type
+          common type.
         explode: true
         in: query
         name: newest-date
@@ -2123,8 +2137,8 @@ paths:
         style: form
         x-cds-type: DateString
       - description: Constrain the request to records with effective date at or after
-          this date. If absent defaults to newest-date minus 24 months. Format is
-          aligned to DateString common type
+          this date. If absent defaults to _newest-date_ minus 24 months. Format is
+          aligned to DateString common type.
         explode: true
         in: query
         name: oldest-date
@@ -2133,7 +2147,7 @@ paths:
           type: string
         style: form
         x-cds-type: DateString
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -2142,7 +2156,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request. Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -2153,11 +2167,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -2167,9 +2182,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -2178,7 +2193,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -2282,12 +2297,12 @@ paths:
       x-version: "1"
   /telco/accounts/{accountId}/transactions:
     get:
-      description: Obtain the billing transactions for a specific account
+      description: Obtain the billing transactions for a specific account.
       operationId: getTransactionsForAccount
       parameters:
       - description: ID of a specific account to obtain data for. This is a tokenised
           ID previously obtained from the Account List endpoint. In accordance with
-          [CDR ID permanence](#id-permanence) requirements
+          [CDR ID permanence](#id-permanence) requirements.
         explode: false
         in: path
         name: accountId
@@ -2297,7 +2312,7 @@ paths:
         style: simple
       - description: Constrain the request to records with effective time at or before
           this date/time. If absent defaults to current date/time. Format is aligned
-          to DateTimeString common type
+          to DateTimeString common type.
         explode: true
         in: query
         name: newest-time
@@ -2307,8 +2322,8 @@ paths:
         style: form
         x-cds-type: DateTimeString
       - description: Constrain the request to records with effective time at or after
-          this date/time. If absent defaults to newest-time minus 12 months. Format
-          is aligned to DateTimeString common type
+          this date/time. If absent defaults to _newest-time_ minus 12 months. Format
+          is aligned to DateTimeString common type.
         explode: true
         in: query
         name: oldest-time
@@ -2317,7 +2332,7 @@ paths:
           type: string
         style: form
         x-cds-type: DateTimeString
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -2326,7 +2341,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request. Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -2337,11 +2352,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -2351,9 +2367,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -2362,7 +2378,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -2473,12 +2489,12 @@ paths:
       x-version: "1"
   /telco/accounts/transactions:
     get:
-      description: Obtain billing transactions for all accounts
+      description: Obtain billing transactions for all accounts.
       operationId: listTransactions
       parameters:
       - description: Constrain the request to records with effective time at or before
           this date/time. If absent defaults to current date/time. Format is aligned
-          to DateTimeString common type
+          to DateTimeString common type.
         explode: true
         in: query
         name: newest-time
@@ -2488,8 +2504,8 @@ paths:
         style: form
         x-cds-type: DateTimeString
       - description: Constrain the request to records with effective time at or after
-          this date/time. If absent defaults to newest-time minus 12 months. Format
-          is aligned to DateTimeString common type
+          this date/time. If absent defaults to _newest-time_ minus 12 months. Format
+          is aligned to DateTimeString common type.
         explode: true
         in: query
         name: oldest-time
@@ -2498,7 +2514,7 @@ paths:
           type: string
         style: form
         x-cds-type: DateTimeString
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -2507,7 +2523,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request. Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -2518,11 +2534,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -2532,9 +2549,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -2543,7 +2560,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -2642,12 +2659,12 @@ paths:
       - telco:billing:read
       x-version: "1"
     post:
-      description: Obtain transactions for a specified set of accounts
+      description: Obtain transactions for a specified set of accounts.
       operationId: listBillingForAccounts
       parameters:
       - description: Constrain the request to records with effective time at or before
           this date/time. If absent defaults to current date/time. Format is aligned
-          to DateTimeString common type
+          to DateTimeString common type.
         explode: true
         in: query
         name: newest-time
@@ -2657,8 +2674,8 @@ paths:
         style: form
         x-cds-type: DateTimeString
       - description: Constrain the request to records with effective time at or after
-          this date/time. If absent defaults to newest-time minus 12 months. Format
-          is aligned to DateTimeString common type
+          this date/time. If absent defaults to _newest-time_ minus 12 months. Format
+          is aligned to DateTimeString common type.
         explode: true
         in: query
         name: oldest-time
@@ -2667,7 +2684,7 @@ paths:
           type: string
         style: form
         x-cds-type: DateTimeString
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -2676,7 +2693,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request. Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -2687,11 +2704,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -2701,9 +2719,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -2712,7 +2730,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -2817,15 +2835,15 @@ paths:
 components:
   headers:
     x-v:
-      description: The [version](#response-headers) of the API end point that the
-        data holder has responded with.
+      description: The [version](#response-headers) of the API endpoint that the data
+        holder has responded with.
       explode: false
       schema:
         type: string
       style: simple
     x-fapi-interaction-id:
       description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id.
-        If provided, the data holder must play back this value in the x-fapi-interaction-id
+        If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
         response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
         is required to be provided in the response header to track the interaction.
       explode: false
@@ -2834,11 +2852,11 @@ components:
       style: simple
   parameters:
     serviceId:
-      description: ID of the specific service requested. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+      description: ID of the specific service requested. E.g., a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
         [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
         or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
         This is a tokenised ID returned from the account. In accordance with [CDR
-        ID permanence](#id-permanence) requirements
+        ID permanence](#id-permanence) requirements.
       explode: false
       in: path
       name: serviceId
@@ -2849,7 +2867,7 @@ components:
     accountId:
       description: ID of a specific account to obtain data for. This is a tokenised
         ID previously obtained from the Account List endpoint. In accordance with
-        [CDR ID permanence](#id-permanence) requirements
+        [CDR ID permanence](#id-permanence) requirements.
       explode: false
       in: path
       name: accountId
@@ -2859,7 +2877,7 @@ components:
       style: simple
     open-status:
       description: Used to filter results according to open/closed status. Values
-        can be OPEN, CLOSED or ALL. If absent then ALL is assumed
+        can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.
       explode: true
       in: query
       name: open-status
@@ -2875,7 +2893,7 @@ components:
     newest-time:
       description: Constrain the request to records with effective time at or before
         this date/time. If absent defaults to current date/time. Format is aligned
-        to DateTimeString common type
+        to DateTimeString common type.
       explode: true
       in: query
       name: newest-time
@@ -2886,8 +2904,8 @@ components:
       x-cds-type: DateTimeString
     oldest-time:
       description: Constrain the request to records with effective time at or after
-        this date/time. If absent defaults to newest-time minus 12 months. Format
-        is aligned to DateTimeString common type
+        this date/time. If absent defaults to _newest-time_ minus 12 months. Format
+        is aligned to DateTimeString common type.
       explode: true
       in: query
       name: oldest-time
@@ -2899,7 +2917,7 @@ components:
     newest-date:
       description: Constrain the request to records with effective date at or before
         this date. If absent defaults to current date. Format is aligned to DateString
-        common type
+        common type.
       explode: true
       in: query
       name: newest-date
@@ -2910,8 +2928,8 @@ components:
       x-cds-type: DateString
     oldest-date:
       description: Constrain the request to records with effective date at or after
-        this date. If absent defaults to newest-date minus 24 months. Format is aligned
-        to DateString common type
+        this date. If absent defaults to _newest-date_ minus 24 months. Format is
+        aligned to DateString common type.
       explode: true
       in: query
       name: oldest-date
@@ -2921,7 +2939,7 @@ components:
       style: form
       x-cds-type: DateString
     page:
-      description: Page of results to request (standard pagination)
+      description: Page of results to request (standard pagination).
       explode: true
       in: query
       name: page
@@ -2931,7 +2949,7 @@ components:
       style: form
       x-cds-type: PositiveInteger
     page-size:
-      description: Page size to request. Default is 25 (standard pagination)
+      description: Page size to request. Default is 25 (standard pagination).
       explode: true
       in: query
       name: page-size
@@ -2943,11 +2961,12 @@ components:
     x-v:
       description: Version of the API endpoint requested by the client. Must be set
         to a positive integer. The data holder should respond with the highest supported
-        version between [x-min-v](#request-headers) and [x-v](#request-headers). If
-        the value of [x-min-v](#request-headers) is equal to or higher than the value
-        of [x-v](#request-headers) then the [x-min-v](#request-headers) header should
-        be treated as absent. If all versions requested are not supported then the
-        data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+        version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+        If the value of [_x-min-v_](#request-headers) is equal to or higher than the
+        value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+        header should be treated as absent. If all versions requested are not supported
+        then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+        Headers](#request-headers).
       explode: false
       in: header
       name: x-v
@@ -2958,9 +2977,9 @@ components:
     x-min-v:
       description: Minimum version of the API endpoint requested by the client. Must
         be set to a positive integer if provided. The data holder should respond with
-        the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-        If all versions requested are not supported then the data holder must respond
-        with a 406 Not Acceptable.
+        the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+        If all versions requested are not supported then the data holder **MUST**
+        respond with a `406 Not Acceptable`.
       explode: false
       in: header
       name: x-min-v
@@ -2970,7 +2989,7 @@ components:
       style: simple
     x-fapi-interaction-id:
       description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id.
-        If provided, the data holder must play back this value in the x-fapi-interaction-id
+        If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
         response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
         is required to be provided in the response header to track the interaction.
       explode: false
@@ -3028,11 +3047,11 @@ components:
               data:
                 properties:
                   serviceIds:
-                    description: Array of specific serviceIds to obtain data for.
-                      E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+                    description: Array of specific _serviceId_ values to obtain data
+                      for. E.g., a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
                       [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
                       or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
-                      In accordance with [CDR ID permanence](#id-permanence) requirements
+                      In accordance with [CDR ID permanence](#id-permanence) requirements.
                     items:
                       type: string
                     type: array
@@ -3045,8 +3064,8 @@ components:
             - data
             - meta
             type: object
-      description: Request payload containing list of specific Service Points to obtain
-        data for
+      description: Request payload containing list of specific _serviceId_ values
+        to obtain data for.
       required: true
     accountIdList:
       content:
@@ -3056,8 +3075,9 @@ components:
               data:
                 properties:
                   accountIds:
-                    description: Array of specific accountIds to obtain data for.
-                      In accordance with [CDR ID permanence](#id-permanence) requirements
+                    description: Array of specific _accountId_ values to obtain data
+                      for. In accordance with [CDR ID permanence](#id-permanence)
+                      requirements.
                     items:
                       type: string
                     type: array
@@ -3071,7 +3091,7 @@ components:
             - meta
             type: object
       description: Request payload containing list of specific Accounts to obtain
-        data for
+        data for.
       required: true
   responses:
     productList:
@@ -3709,11 +3729,11 @@ components:
       - meta
       type: object
     MetaError:
-      description: Additional data for customised error codes
+      description: Additional data for customised error codes.
       properties:
         urn:
           description: The CDR error code URN which the application-specific error
-            code extends. Mandatory if the error `code` is an application-specific
+            code extends. Mandatory if the error _code_ is an application-specific
             error rather than a standardised error code.
           type: string
       type: object
@@ -3769,35 +3789,35 @@ components:
           description: description
       properties:
         productId:
-          description: The ID of the specific product
+          description: The ID of the specific product.
           type: string
           x-cds-type: ASCIIString
         effectiveFrom:
-          description: The date and time from which this product is effective (ie.
+          description: The date and time from which this product is effective (i.e.
             is available for origination). Used to enable the articulation of products
-            to the regime before they are available for customers to originate
+            to the regime before they are available for customers to originate.
           type: string
           x-cds-type: DateTimeString
         effectiveTo:
           description: The date and time at which this product will be retired and
-            will no longer be offered. Used to enable the managed deprecation of plans
+            will no longer be offered. Used to enable the managed deprecation of plans.
           type: string
           x-cds-type: DateTimeString
         lastUpdated:
           description: The last date and time that the information for this plan was
-            changed (or the creation date for the plan if it has never been altered)
+            changed (or the creation date for the plan if it has never been altered).
           type: string
           x-cds-type: DateTimeString
         displayName:
-          description: The display name of the product
+          description: The display name of the product.
           type: string
         description:
-          description: A description of the product
+          description: A description of the product.
           type: string
         type:
           default: MOBILE
-          description: The type of product. [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745)
-            service or BROADBAND fixed internet service
+          description: The type of product. [`MOBILE`](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745)
+            service or `BROADBAND` fixed internet service.
           enum:
           - MOBILE
           - BROADBAND
@@ -3805,7 +3825,7 @@ components:
         purpose:
           default: PERSONAL
           description: The purpose type of the product. If absent, then the value
-            PERSONAL is assumed
+            `PERSONAL` is assumed.
           enum:
           - PERSONAL
           - BUSINESS
@@ -3813,7 +3833,7 @@ components:
           type: string
         billingType:
           default: PRE_PAID
-          description: The type of product
+          description: The type of product.
           enum:
           - PRE_PAID
           - POST_PAID
@@ -3823,30 +3843,30 @@ components:
         contract:
           $ref: '#/components/schemas/TelcoContract'
         bundle:
-          description: Required if part of a bundle. If not present FALSE is assumed
+          description: Required if part of a bundle. If not present `false` is assumed.
           type: boolean
         brand:
-          description: The ID of the brand under which this product is offered
+          description: The ID of the brand under which this product is offered.
           type: string
         brandName:
-          description: The display name of the brand under which this product is offered
+          description: The display name of the brand under which this product is offered.
           type: string
         pricing:
-          description: List of pricing details for the product plan
+          description: List of pricing details for the product plan.
           items:
             $ref: '#/components/schemas/TelcoProductPricing'
           type: array
         thirdPartyAgentId:
-          description: The ID of the Third Party through which this product may be
-            originated
+          description: The ID of the Third-Party through which this product may be
+            originated.
           type: string
         thirdPartyAgentName:
-          description: The display name of the Third Party through which this product
-            may be originated
+          description: The display name of the Third-Party through which this product
+            may be originated.
           type: string
         applicationUri:
           description: A link to an application web page where this plan can be applied
-            for
+            for.
           type: string
           x-cds-type: URIString
         additionalInformation:
@@ -3865,8 +3885,8 @@ components:
       - contract
     TelcoContract:
       description: Summary of the contract details. Mandatory if the billing type
-        is POST_PAID and a contract agreement is required with the service provider
-        for the plan
+        is `POST_PAID` and a contract agreement is required with the service provider
+        for the plan.
       example:
         duration: 0.8008281904610115
         contractUri: contractUri
@@ -3874,17 +3894,17 @@ components:
         description: description
       properties:
         name:
-          description: Name of the contract
+          description: Name of the contract.
           type: string
         description:
-          description: Description of the contract
+          description: Description of the contract.
           type: string
         duration:
-          description: Minimum contract duration in months
+          description: Minimum contract duration in months.
           type: number
           x-cds-type: Number
         contractUri:
-          description: URI of the contract conditions
+          description: URI of the contract conditions.
           type: string
           x-cds-type: URIString
       required:
@@ -3898,7 +3918,7 @@ components:
             APIs. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
             [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
             or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
-            Created according to the CDR rules for [CDR ID permanence](#id-permanence)
+            Created according to the CDR rules for [CDR ID permanence](#id-permanence).
           type: string
       required:
       - serviceId
@@ -3987,10 +4007,10 @@ components:
       properties:
         accountId:
           description: Tokenised ID of the account. In accordance with [CDR ID permanence](#id-permanence)
-            requirements
+            requirements.
           type: string
         services:
-          description: List of services that are part of the account
+          description: List of services that are part of the account.
           items:
             $ref: '#/components/schemas/TelcoAccountUsageServices'
           type: array
@@ -4043,20 +4063,20 @@ components:
           description: Tokenised ID of the service identifier. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
             [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
             or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
-            To be created in accordance with [CDR ID permanence](#id-permanence) requirements
+            To be created in accordance with [CDR ID permanence](#id-permanence) requirements.
           type: string
         displayName:
-          description: Optional description of the service used for display purposes
+          description: Optional description of the service used for display purposes.
           type: string
         phoneNumber:
-          description: Required if the service includes a phone number
+          description: Required if the service includes a phone number.
           type: string
         startDate:
-          description: Date when the usage period started
+          description: Date when the usage period started.
           type: string
           x-cds-type: DateTimeString
         endDate:
-          description: Date when the usage period ends
+          description: Date when the usage period ends.
           type: string
           x-cds-type: DateTimeString
         usage:
@@ -4071,34 +4091,34 @@ components:
       properties:
         accountId:
           description: The ID of the account. To be created in accordance with [CDR
-            ID permanence](#id-permanence) requirements
+            ID permanence](#id-permanence) requirements.
           type: string
         accountNumber:
           description: Masked identifier of the account as defined by the data holder.
             This must be the value presented on physical statements (required if it
-            exists) and must not be used for the value of the accountId
+            exists) and must not be used for the value of the _accountId_.
           type: string
         displayName:
           description: An optional display name for the account if one exists or can
             be derived. The content of this field is at the discretion of the data
-            holder
+            holder.
           type: string
         creationDate:
           description: The date that the account was created or opened. Mandatory
-            if openStatus is OPEN
+            if _openStatus_ is `OPEN`.
           type: string
           x-cds-type: DateString
         lastUpdated:
-          description: The date and time which the account was last updated
+          description: The date and time which the account was last updated.
           type: string
           x-cds-type: DateString
         brand:
-          description: The retail name of the brand
+          description: The retail name of the brand.
           type: string
         openStatus:
           default: OPEN
           description: Open or closed status for the account. If not present then
-            OPEN is assumed
+            `OPEN` is assumed.
           enum:
           - CLOSED
           - OPEN
@@ -4142,11 +4162,11 @@ components:
       properties:
         amount:
           description: Optional payment amount indicating that a constant payment
-            amount is scheduled to be paid (used in bill smoothing scenarios)
+            amount is scheduled to be paid (used in bill smoothing scenarios).
           type: string
           x-cds-type: AmountString
         paymentScheduleUType:
-          description: The type of object present in this response
+          description: The type of object present in this response.
           enum:
           - cardDebit
           - directDebit
@@ -4186,50 +4206,50 @@ components:
       properties:
         type:
           default: CONCESSION
-          description: The concession type
+          description: The concession type.
           enum:
           - CONCESSION
           - REBATE
           - GRANT
           type: string
         displayName:
-          description: The display name of the concession
+          description: The display name of the concession.
           type: string
         additionalInfo:
-          description: Display text providing more information on the concession
+          description: Display text providing more information on the concession.
           type: string
         additionalInfoUri:
-          description: Optional link to additional information regarding the concession
+          description: Optional link to additional information regarding the concession.
           type: string
           x-cds-type: URIString
         startDate:
-          description: Optional start date for the application of the concession
+          description: Optional start date for the application of the concession.
           type: string
           x-cds-type: DateString
         endDate:
-          description: Optional end date for the application of the concession
+          description: Optional end date for the application of the concession.
           type: string
           x-cds-type: DateString
         discountFrequency:
           description: Conditional attribute for frequency at which a concession is
-            applied. Required if type is FIXED_AMOUNT or FIXED_PERCENTAGE. Formatted
+            applied. Required if _type_ is `FIXED_AMOUNT` or `FIXED_PERCENTAGE`. Formatted
             according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-            (excludes recurrence syntax)
+            (excludes recurrence syntax).
           type: string
           x-cds-type: ExternalRef
         amount:
-          description: Conditional attribute for the amount of discount for the concession-
-            required if type is FIXED_AMOUNT
+          description: Conditional attribute for the amount of discount for the concession
+            - required if _type_ is `FIXED_AMOUNT`.
           type: string
           x-cds-type: AmountString
         percentage:
           description: Conditional attribute for the percentage of discount of concession
-            - required if type is FIXED_PERCENTAGE
+            - required if _type_ is `FIXED_PERCENTAGE`.
           type: string
           x-cds-type: RateString
         appliedTo:
           description: Array of ENUM's to specify what the concession applies to.
-            Multiple ENUM values can be provided. If absent, USAGE is assumed
+            Multiple ENUM values can be provided. If absent, `USAGE` is assumed.
           items:
             enum:
             - INVOICE
@@ -4309,42 +4329,42 @@ components:
         paymentStatus: NOT_PAID
       properties:
         accountId:
-          description: The ID of the account for which the invoice was issued. accountId
-            must comply in accordance with [CDR ID permanence](#id-permanence)
+          description: The ID of the account for which the invoice was issued. _accountId_
+            must comply in accordance with [CDR ID permanence](#id-permanence) requirements.
           type: string
         invoiceNumber:
-          description: The number assigned to this invoice by the telco Retailer
+          description: The number assigned to this invoice by the telco Retailer.
           type: string
         issueDate:
           description: The date that the invoice was actually issued (as opposed to
-            generated or calculated)
+            generated or calculated).
           type: string
           x-cds-type: DateString
         dueDate:
-          description: The date that the invoice is due to be paid
+          description: The date that the invoice is due to be paid.
           type: string
           x-cds-type: DateString
         period:
           $ref: '#/components/schemas/TelcoInvoicePeriod'
         invoiceAmount:
           description: The net amount due for this invoice regardless of previous
-            balance
+            balance.
           type: string
           x-cds-type: AmountString
         gstAmount:
           description: The total GST amount for this invoice. If absent then zero
-            is assumed
+            is assumed.
           type: string
           x-cds-type: AmountString
         payOnTimeDiscount:
           $ref: '#/components/schemas/TelcoInvoicePayOnTimeDiscount'
         balanceAtIssue:
-          description: The account balance at the time the invoice was issued
+          description: The account balance at the time the invoice was issued.
           type: string
           x-cds-type: AmountString
         services:
           description: An array of service IDs to which this invoice applies. May
-            be empty if the invoice contains no usage related charges
+            be empty if the invoice contains no usage related charges.
           items:
             type: string
           type: array
@@ -4354,7 +4374,7 @@ components:
           $ref: '#/components/schemas/TelcoUsage'
         paymentStatus:
           default: NOT_PAID
-          description: Indicator of the payment status for the invoice
+          description: Indicator of the payment status for the invoice.
           enum:
           - PAID
           - PARTIALLY_PAID
@@ -4371,7 +4391,7 @@ components:
       x-conditional:
       - period
     TelcoUsage:
-      description: Object containing usage summary
+      description: Object containing usage summary.
       example:
         voice:
           roaming:
@@ -4418,7 +4438,7 @@ components:
       - voice
       - messaging
     TelcoInvoiceAccountCharges:
-      description: Object contain charges and credits related to usage
+      description: Object contain charges and credits related to usage.
       example:
         totalGst: totalGst
         otherCharges:
@@ -4431,24 +4451,24 @@ components:
       properties:
         totalUsageCharges:
           description: The aggregate total of usage charges for the period covered
-            by the invoice (exclusive of GST)
+            by the invoice (exclusive of GST).
           type: string
           x-cds-type: AmountString
         totalOnceOffCharges:
           description: The aggregate total of any once off charges arising from usage
-            for the period covered by the invoice (exclusive of GST)
+            for the period covered by the invoice (exclusive of GST).
           type: string
           x-cds-type: AmountString
         totalDiscounts:
           description: The aggregate total of account level discounts or credits for
-            the period covered by the invoice
+            the period covered by the invoice.
           type: string
           x-cds-type: AmountString
         otherCharges:
           $ref: '#/components/schemas/TelcoInvoiceAccountChargesOtherCharges'
         totalGst:
           description: The total GST for all account level charges. If absent then
-            zero is assumed
+            zero is assumed.
           type: string
           x-cds-type: AmountString
       required:
@@ -4497,21 +4517,21 @@ components:
           startDate: startDate
       properties:
         accountId:
-          description: The ID of the account for which the transaction occurred. accountId
-            must comply in accordance with [CDR ID permanence](#id-permanence)
+          description: The ID of the account for which the transaction occurred. _accountId_
+            must comply in accordance with [CDR ID permanence](#id-permanence) requirements.
           type: string
         executionDateTime:
-          description: The date and time that the transaction occurred
+          description: The date and time that the transaction occurred.
           type: string
           x-cds-type: DateTimeString
         gst:
           description: The GST incurred in the transaction. Should not be included
-            for credits or payments. If absent zero is assumed
+            for credits or payments. If absent zero is assumed.
           type: string
           x-cds-type: AmountString
         transactionUType:
           description: Indicator of the type of transaction object present in this
-            record
+            record.
           enum:
           - account
           - onceOff
@@ -4550,35 +4570,35 @@ components:
         startDate: startDate
       properties:
         serviceIds:
-          description: Array list of services identifiers to which this transaction
-            applies if any. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
+          description: Array list of service identifiers to which this transaction
+            applies if any. E.g., a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
             [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
             or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
-            In accordance with [CDR ID permanence](#id-permanence) requirements
+            In accordance with [CDR ID permanence](#id-permanence) requirements.
           type: string
         invoiceNumber:
           description: The number of the invoice in which this transaction is included
-            if it has been issued
+            if it has been issued.
           type: string
         description:
           description: Optional description of the transaction that can be used for
-            display purposes
+            display purposes.
           type: string
         startDate:
-          description: Date and time when the usage period starts
+          description: Date and time when the usage period starts.
           type: string
           x-cds-type: DateTimeString
         endDate:
-          description: Date and time when the usage period ends
+          description: Date and time when the usage period ends.
           type: string
           x-cds-type: DateTimeString
         amount:
           description: The amount charged or credited for this transaction prior to
-            any adjustments being applied. A negative value indicates a credit
+            any adjustments being applied. A negative value indicates a credit.
           type: string
           x-cds-type: AmountString
         adjustments:
-          description: Optional array of adjustments arising for this transaction
+          description: Optional array of adjustments arising for this transaction.
           items:
             $ref: '#/components/schemas/TelcoBillingAccountTransactionAdjustments'
           type: array
@@ -4599,19 +4619,19 @@ components:
             applies if any. E.g a [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
             [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
             or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
-            In accordance with [CDR ID permanence](#id-permanence) requirements
+            In accordance with [CDR ID permanence](#id-permanence) requirements.
           type: string
         invoiceNumber:
           description: The number of the invoice in which this transaction is included
-            if it has been issued
+            if it has been issued.
           type: string
         amount:
           description: The amount of the charge or credit. A positive value indicates
-            a charge and a negative value indicates a credit
+            a charge and a negative value indicates a credit.
           type: string
           x-cds-type: AmountString
         description:
-          description: A free text description of the item
+          description: A free text description of the item.
           type: string
       required:
       - amount
@@ -4637,23 +4657,23 @@ components:
             any. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
             [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
             or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
-            In accordance with [CDR ID permanence](#id-permanence) requirements
+            In accordance with [CDR ID permanence](#id-permanence) requirements.
           type: string
         invoiceNumber:
           description: The number of the invoice in which this transaction is included
-            if it has been issued
+            if it has been issued.
           type: string
         startDate:
-          description: Optional start date for the application of the charge
+          description: Optional start date for the application of the charge.
           type: string
           x-cds-type: DateString
         endDate:
-          description: Optional end date for the application of the charge
+          description: Optional end date for the application of the charge.
           type: string
           x-cds-type: DateString
         type:
           default: OTHER
-          description: Type of charge. Assumed to be OTHER if absent
+          description: Type of charge. Assumed to be `OTHER` if absent.
           enum:
           - SERVICE
           - NETWORK
@@ -4662,14 +4682,14 @@ components:
           - OTHER
           type: string
         amount:
-          description: The amount of the charge
+          description: The amount of the charge.
           type: string
           x-cds-type: AmountString
         description:
-          description: A free text description of the item
+          description: A free text description of the item.
           type: string
         adjustments:
-          description: Optional array of adjustments arising for this transaction
+          description: Optional array of adjustments arising for this transaction.
           items:
             $ref: '#/components/schemas/TelcoBillingAccountTransactionAdjustments'
           type: array
@@ -4683,11 +4703,11 @@ components:
         method: DIRECT_DEBIT
       properties:
         amount:
-          description: The amount paid
+          description: The amount paid.
           type: string
           x-cds-type: AmountString
         method:
-          description: The method of payment
+          description: The method of payment.
           enum:
           - DIRECT_DEBIT
           - CARD
@@ -4703,14 +4723,14 @@ components:
       - method
       type: object
     TelcoBalance:
-      description: Object containing account service usage summary
+      description: Object containing account service usage summary.
       example:
         services:
         - ""
         - ""
       properties:
         services:
-          description: Summary of balances
+          description: Summary of balances.
           items:
             allOf:
             - $ref: '#/components/schemas/TelcoServiceBalance'
@@ -4719,27 +4739,27 @@ components:
       - services
       type: object
     TelcoServiceBalance:
-      description: Telco balances for a service
+      description: Telco balances for a service.
       properties:
         serviceId:
           description: The serviceId representing a unique service identifier such
             as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
             [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
             or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
-            In accordance with [CDR ID permanence](#id-permanence) requirements
+            In accordance with [CDR ID permanence](#id-permanence) requirements.
           type: string
         displayName:
-          description: Optional description of the service used for display purposes
+          description: Optional description of the service used for display purposes.
           type: string
         phoneNumber:
-          description: Required if the service includes a phone number
+          description: Required if the service includes a phone number.
           type: string
         startDate:
-          description: Date when the balance period started
+          description: Date when the balance period started.
           type: string
           x-cds-type: DateTimeString
         endDate:
-          description: Date when the balance period ends
+          description: Date when the balance period ends.
           type: string
           x-cds-type: DateTimeString
         balance:
@@ -4750,9 +4770,9 @@ components:
       x-conditional:
       - phoneNumber
     TelcoPlanType:
-      description: 'Plan type for this feature. METERED: A plan is charged by usage
-        for the feature. UNMETERED: A plan with no limits for a feature. LIMITED:
-        Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported'
+      description: 'Plan type for this feature.<ul><li>`METERED`: A plan is charged
+        by usage for the feature<li>`UNMETERED`: A plan with no limits for a feature<li>`LIMITED`:
+        Where plan limit inclusions apply<li>`UNSUPPORTED`: Feature is not supported.</ul>'
       enum:
       - METERED
       - UNMETERED
@@ -4762,7 +4782,7 @@ components:
     CommonPhysicalAddress:
       properties:
         addressUType:
-          description: The type of address object present
+          description: The type of address object present.
           enum:
           - paf
           - simple
@@ -4778,36 +4798,37 @@ components:
       - simple
       - paf
     CommonSimpleAddress:
-      description: Required if addressUType is set to simple
+      description: Required if _addressUType_ is set to `simple`.
       properties:
         mailingName:
           description: Name of the individual or business formatted for inclusion
-            in an address used for physical mail
+            in an address used for physical mail.
           type: string
         addressLine1:
-          description: First line of the standard address object
+          description: First line of the standard address object.
           type: string
         addressLine2:
-          description: Second line of the standard address object
+          description: Second line of the standard address object.
           type: string
         addressLine3:
-          description: Third line of the standard address object
+          description: Third line of the standard address object.
           type: string
         postcode:
-          description: Mandatory for Australian addresses
+          description: Mandatory for Australian addresses.
           type: string
         city:
-          description: Name of the city or locality
+          description: Name of the city or locality.
           type: string
         state:
           description: Free text if the country is not Australia. If country is Australia
             then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)
-            in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT
+            in the PAF file format. `NSW`, `QLD`, `VIC`, `NT`, `WA`, `SA`, `TAS`,
+            `ACT`, `AAT`.
           type: string
         country:
           default: AUS
           description: A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html)
-            country code. Australia (AUS) is assumed if country is not present.
+            country code. Australia (`AUS`) is assumed if country is not present.
           type: string
           x-cds-type: ExternalRef
       required:
@@ -4820,89 +4841,89 @@ components:
     CommonPAFAddress:
       description: Australian address formatted according to the file format defined
         by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).
-        Required if addressUType is set to paf
+        Required if _addressUType_ is set to `paf`.
       properties:
         dpid:
           description: Unique identifier for an address as defined by Australia Post.
-            Also known as Delivery Point Identifier
+            Also known as Delivery Point Identifier.
           type: string
         thoroughfareNumber1:
           description: Thoroughfare number for a property (first number in a property
-            ranged address)
+            ranged address).
           type: integer
           x-cds-type: PositiveInteger
         thoroughfareNumber1Suffix:
-          description: Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1
-            is populated
+          description: Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_
+            is populated.
           type: string
         thoroughfareNumber2:
           description: Second thoroughfare number (only used if the property has a
-            ranged address eg 23-25)
+            ranged address e.g., 23-25).
           type: integer
           x-cds-type: PositiveInteger
         thoroughfareNumber2Suffix:
           description: Suffix for the second thoroughfare number. Only relevant is
-            thoroughfareNumber2 is populated
+            _thoroughfareNumber2_ is populated.
           type: string
         flatUnitType:
-          description: Type of flat or unit for the address
+          description: Type of flat or unit for the address.
           type: string
         flatUnitNumber:
-          description: Unit number (including suffix, if applicable)
+          description: Unit number (including suffix, if applicable).
           type: string
         floorLevelType:
-          description: Type of floor or level for the address
+          description: Type of floor or level for the address.
           type: string
         floorLevelNumber:
-          description: Floor or level number (including alpha characters)
+          description: Floor or level number (including alpha characters).
           type: string
         lotNumber:
-          description: Allotment number for the address
+          description: Allotment number for the address.
           type: string
         buildingName1:
-          description: Building/Property name 1
+          description: Building/Property name 1.
           type: string
         buildingName2:
-          description: Building/Property name 2
+          description: Building/Property name 2.
           type: string
         streetName:
-          description: The name of the street
+          description: The name of the street.
           type: string
         streetType:
           description: The street type. Valid enumeration defined by Australia Post
-            PAF code file
+            PAF code file.
           type: string
         streetSuffix:
           description: The street type suffix. Valid enumeration defined by Australia
-            Post PAF code file
+            Post PAF code file.
           type: string
         postalDeliveryType:
-          description: Postal delivery type. (eg. PO BOX). Valid enumeration defined
-            by Australia Post PAF code file
+          description: Postal delivery type. (e.g., PO BOX). Valid enumeration defined
+            by Australia Post PAF code file.
           type: string
         postalDeliveryNumber:
           description: Postal delivery number if the address is a postal delivery
-            type
+            type.
           type: integer
           x-cds-type: PositiveInteger
         postalDeliveryNumberPrefix:
           description: Postal delivery number prefix related to the postal delivery
-            number
+            number.
           type: string
         postalDeliveryNumberSuffix:
           description: Postal delivery number suffix related to the postal delivery
-            number
+            number.
           type: string
         localityName:
-          description: Full name of locality
+          description: Full name of locality.
           type: string
         postcode:
-          description: Postcode for the locality
+          description: Postcode for the locality.
           type: string
         state:
           description: State in which the address belongs. Valid enumeration defined
             by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).
-            NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT
+            `NSW`, `QLD`, `VIC`, `NT`, `WA`, `SA`, `TAS`, `ACT`, `AAT`.
           type: string
       required:
       - localityName
@@ -4914,7 +4935,7 @@ components:
         self: self
       properties:
         self:
-          description: Fully qualified link that generated the current response document
+          description: Fully qualified link that generated the current response document.
           type: string
           x-cds-type: URIString
       required:
@@ -4931,27 +4952,27 @@ components:
         first: first
       properties:
         self:
-          description: Fully qualified link that generated the current response document
+          description: Fully qualified link that generated the current response document.
           type: string
           x-cds-type: URIString
         first:
           description: URI to the first page of this set. Mandatory if this response
-            is not the first page
+            is not the first page.
           type: string
           x-cds-type: URIString
         prev:
           description: URI to the previous page of this set. Mandatory if this response
-            is not the first page
+            is not the first page.
           type: string
           x-cds-type: URIString
         next:
           description: URI to the next page of this set. Mandatory if this response
-            is not the last page
+            is not the last page.
           type: string
           x-cds-type: URIString
         last:
           description: URI to the last page of this set. Mandatory if this response
-            is not the last page
+            is not the last page.
           type: string
           x-cds-type: URIString
       required:
@@ -5054,7 +5075,7 @@ components:
             description: description
       properties:
         plans:
-          description: Array of Products
+          description: Array of Products.
           items:
             $ref: '#/components/schemas/TelcoProduct'
           type: array
@@ -5405,7 +5426,7 @@ components:
               startDate: startDate
       properties:
         accounts:
-          description: Array of usage on accounts
+          description: Array of usage on accounts.
           items:
             $ref: '#/components/schemas/TelcoAccountUsage'
           type: array
@@ -5419,7 +5440,7 @@ components:
         - null
       properties:
         accounts:
-          description: Array of accounts
+          description: Array of accounts.
           items:
             $ref: '#/components/schemas/TelcoAccountResponseData'
           type: array
@@ -5473,7 +5494,7 @@ components:
           paymentScheduleUType: cardDebit
       properties:
         paymentSchedules:
-          description: Array may be empty if no payment schedule exist
+          description: Array may be empty if no payment schedule exist.
           items:
             $ref: '#/components/schemas/TelcoPaymentSchedule'
           type: array
@@ -5509,7 +5530,7 @@ components:
           startDate: startDate
       properties:
         concessions:
-          description: Array may be empty if no concessions exist
+          description: Array may be empty if no concessions exist.
           items:
             $ref: '#/components/schemas/TelcoConcession'
           type: array
@@ -5531,7 +5552,7 @@ components:
             - ""
       properties:
         balances:
-          description: Array of account balances
+          description: Array of account balances.
           items:
             $ref: '#/components/schemas/TelcoBalanceResponseData'
           type: array
@@ -5548,7 +5569,7 @@ components:
       properties:
         accountId:
           description: The ID of the account. In accordance with [CDR ID permanence](#id-permanence)
-            requirements
+            requirements.
           type: string
         balance:
           $ref: '#/components/schemas/TelcoBalance'
@@ -5964,7 +5985,7 @@ components:
           paymentStatus: NOT_PAID
       properties:
         invoices:
-          description: Array of invoices sorted by issue date in descending order
+          description: Array of invoices sorted by issue date in descending order.
           items:
             $ref: '#/components/schemas/TelcoInvoice'
           type: array
@@ -6051,7 +6072,7 @@ components:
       properties:
         transactions:
           description: Array of transactions sorted by date and time in descending
-            order
+            order.
           items:
             $ref: '#/components/schemas/TelcoBillingTransaction'
           type: array
@@ -6066,19 +6087,19 @@ components:
         description: description
       properties:
         name:
-          description: The display name of the pricing
+          description: The display name of the pricing.
           type: string
         description:
-          description: The description of the pricing
+          description: The description of the pricing.
           type: string
         period:
           description: The duration that occurs on a pricing schedule indicates the
             frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-            (excludes recurrence syntax)
+            (excludes recurrence syntax).
           type: string
           x-cds-type: ExternalRef
         amount:
-          description: The amount charged for the duration period
+          description: The amount charged for the duration period.
           type: string
           x-cds-type: AmountString
       required:
@@ -6088,7 +6109,7 @@ components:
       type: object
     TelcoAdditionalInformation:
       description: Object that contains links to additional information on specific
-        topics
+        topics.
       example:
         eligibilityUri: eligibilityUri
         bundleUri: bundleUri
@@ -6097,48 +6118,48 @@ components:
         overviewUri: overviewUri
       properties:
         overviewUri:
-          description: A link to a general overview of the plan
+          description: A link to a general overview of the plan.
           type: string
           x-cds-type: URIString
         termsUri:
-          description: A link to terms and conditions for the plan
+          description: A link to terms and conditions for the plan.
           type: string
           x-cds-type: URIString
         eligibilityUri:
-          description: A link to detail on eligibility criteria for the plan
+          description: A link to detail on eligibility criteria for the plan.
           type: string
           x-cds-type: URIString
         pricingUri:
-          description: A link to detail on pricing for the plan
+          description: A link to detail on pricing for the plan.
           type: string
           x-cds-type: URIString
         bundleUri:
-          description: A link to detail on bundles that this plan can be a part of
+          description: A link to detail on bundles that this plan can be a part of.
           type: string
           x-cds-type: URIString
       type: object
     TelcoProductDetailMeteringCharges:
       properties:
         displayName:
-          description: Display name of the charge
+          description: Display name of the charge.
           type: string
         description:
-          description: Description of the charge
+          description: Description of the charge.
           type: string
         minimumValue:
           description: Minimum value of the charge if the charge is a range or the
-            absolute value of the charge if no range is specified
+            absolute value of the charge if no range is specified.
           type: string
           x-cds-type: AmountString
         maximumValue:
           description: The upper limit of the charge if the charge could occur in
-            a range
+            a range.
           type: string
           x-cds-type: AmountString
         period:
           description: The charges that occur on a schedule indicates the frequency.
             Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-            (excludes recurrence syntax)
+            (excludes recurrence syntax).
           type: string
           x-cds-type: ExternalRef
       required:
@@ -6148,13 +6169,13 @@ components:
     TelcoProductDetailFeature:
       properties:
         displayName:
-          description: The display name of the feature
+          description: The display name of the feature.
           type: string
         description:
-          description: The description of the feature
+          description: The description of the feature.
           type: string
         category:
-          description: The type of the feature
+          description: The type of the feature.
           enum:
           - DATA
           - VOICE
@@ -6173,17 +6194,17 @@ components:
     TelcoProductDetailBundles:
       properties:
         displayName:
-          description: The display name of the product bundle
+          description: The display name of the product bundle.
           type: string
         description:
-          description: The description of the product bundle
+          description: The description of the product bundle.
           type: string
         bundleUri:
-          description: The URI of the product bundle
+          description: The URI of the product bundle.
           type: string
           x-cds-type: URIString
         features:
-          description: Optional list of features of the bundle
+          description: Optional list of features of the bundle.
           items:
             $ref: '#/components/schemas/TelcoProductDetailFeature'
           type: array
@@ -6193,17 +6214,17 @@ components:
     TelcoProductDetailPlan:
       properties:
         displayName:
-          description: The display name of the product plan
+          description: The display name of the product plan.
           type: string
         description:
-          description: The display name of the product plan
+          description: The display name of the product plan.
           type: string
         planUri:
-          description: The URI of the product plan
+          description: The URI of the product plan.
           type: string
           x-cds-type: URIString
         features:
-          description: Optional list of features of the plan
+          description: Optional list of features of the plan.
           items:
             $ref: '#/components/schemas/TelcoProductDetailPlanFeature'
           type: array
@@ -6213,10 +6234,10 @@ components:
     TelcoProductDetailPlanFeature:
       properties:
         displayName:
-          description: The display name of the feature
+          description: The display name of the feature.
           type: string
         description:
-          description: The description of the feature
+          description: The description of the feature.
           type: string
       required:
       - displayName
@@ -6224,10 +6245,10 @@ components:
     TelcoProductDetailDiscountFeature:
       properties:
         displayName:
-          description: The display name of the discount feature
+          description: The display name of the discount feature.
           type: string
         description:
-          description: The description of the discount feature
+          description: The description of the discount feature.
           type: string
       required:
       - displayName
@@ -6235,17 +6256,17 @@ components:
     TelcoProductDetailDiscounts:
       properties:
         displayName:
-          description: The display name of the product plan
+          description: The display name of the product plan.
           type: string
         description:
-          description: The description name of the product plan
+          description: The description name of the product plan.
           type: string
         discountUri:
-          description: The URI of the discount
+          description: The URI of the discount.
           type: string
           x-cds-type: URIString
         features:
-          description: Optional list of features of the discount
+          description: Optional list of features of the discount.
           items:
             $ref: '#/components/schemas/TelcoProductDetailDiscountFeature'
           type: array
@@ -6255,10 +6276,10 @@ components:
     TelcoProductDetailIncentiveFeature:
       properties:
         displayName:
-          description: The display name of the incentive feature
+          description: The display name of the incentive feature.
           type: string
         description:
-          description: The description of the incentive feature
+          description: The description of the incentive feature.
           type: string
       required:
       - displayName
@@ -6266,17 +6287,17 @@ components:
     TelcoProductDetailIncentives:
       properties:
         displayName:
-          description: The display name of the incentive
+          description: The display name of the incentive.
           type: string
         description:
-          description: The description of the incentive
+          description: The description of the incentive.
           type: string
         incentiveUri:
-          description: The URI of the incentive
+          description: The URI of the incentive.
           type: string
           x-cds-type: URIString
         features:
-          description: Optional list of features of the incentive
+          description: Optional list of features of the incentive.
           items:
             $ref: '#/components/schemas/TelcoProductDetailIncentiveFeature'
           type: array
@@ -6286,27 +6307,27 @@ components:
     TelcoProductDetail:
       properties:
         meteringCharges:
-          description: Charges for metering included in the plan
+          description: Charges for metering included in the plan.
           items:
             $ref: '#/components/schemas/TelcoProductDetailMeteringCharges'
           type: array
         bundles:
-          description: Bundles the product can be part of
+          description: Bundles the product can be part of.
           items:
             $ref: '#/components/schemas/TelcoProductDetailBundles'
           type: array
         plans:
-          description: Plans associated to the product
+          description: Plans associated to the product.
           items:
             $ref: '#/components/schemas/TelcoProductDetailPlan'
           type: array
         discounts:
-          description: Discounts associated to the product
+          description: Discounts associated to the product.
           items:
             $ref: '#/components/schemas/TelcoProductDetailDiscounts'
           type: array
         incentives:
-          description: Incentives associated to the product
+          description: Incentives associated to the product.
           items:
             $ref: '#/components/schemas/TelcoProductDetailIncentives'
           type: array
@@ -6359,17 +6380,17 @@ components:
       - service
       type: object
     TelcoAccountPlanOverview:
-      description: Mandatory if openStatus is OPEN
+      description: Mandatory if _openStatus_ is `OPEN`.
       properties:
         displayName:
-          description: The name of the plan if one exists
+          description: The name of the plan if one exists.
           type: string
         startDate:
-          description: The start date of the applicability of this plan
+          description: The start date of the applicability of this plan.
           type: string
           x-cds-type: DateString
         endDate:
-          description: The end date of the applicability of this plan
+          description: The end date of the applicability of this plan.
           type: string
           x-cds-type: DateString
       required:
@@ -6379,19 +6400,19 @@ components:
       properties:
         nickname:
           description: Optional display name for the plan provided by the customer
-            to help differentiate multiple plans
+            to help differentiate multiple plans.
           type: string
         type:
           default: MOBILE
-          description: The type of the plan. The type of plan. A [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745)
-            service or BROADBAND fixed internet service
+          description: The type of the plan. The type of plan. A [`MOBILE`](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745)
+            service or `BROADBAND` fixed internet service.
           enum:
           - MOBILE
           - BROADBAND
           type: string
         billingType:
           default: PRE_PAID
-          description: The billing type of then plan
+          description: The billing type of the plan.
           enum:
           - PRE_PAID
           - POST_PAID
@@ -6399,11 +6420,11 @@ components:
           - OTHER
           type: string
         serviceIds:
-          description: The serviceId representing a unique service identifier such
+          description: The _serviceId_ representing a unique service identifier such
             as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf),
             [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)
             or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).
-            In accordance with [CDR ID permanence](#id-permanence) requirement
+            In accordance with [CDR ID permanence](#id-permanence) requirements.
           items:
             type: string
           type: array
@@ -6416,10 +6437,10 @@ components:
       - type
       type: object
     TelcoAccount:
-      description: The array of plans containing services and associated plan details
+      description: The array of plans containing services and associated plan details.
       properties:
         plans:
-          description: The array of plans containing service and associated plan details
+          description: The array of plans containing service and associated plan details.
           items:
             $ref: '#/components/schemas/TelcoAccountPlan'
           type: array
@@ -6427,8 +6448,8 @@ components:
       - plans
       type: object
     TelcoAccountPlanDetail:
-      description: Detail on the plan applicable to this account. Mandatory if openStatus
-        is OPEN
+      description: Detail on the plan applicable to this account. Mandatory if _openStatus_
+        is `OPEN`.
       properties:
         planDetail:
           $ref: '#/components/schemas/TelcoAccountPlanDetail_planDetail'
@@ -6439,33 +6460,33 @@ components:
       properties:
         firstName:
           description: For people with single names this field need not be present.
-            The single name should be in the lastName field
+            The single name should be in the _lastName_ field.
           type: string
         lastName:
           description: For people with single names the single name should be in this
-            field
+            field.
           type: string
         middleNames:
-          description: Field is mandatory but array may be empty
+          description: Field is mandatory but array may be empty.
           items:
             type: string
           type: array
         prefix:
-          description: Also known as title or salutation. The prefix to the name (e.g.
-            Mr, Mrs, Ms, Miss, Sir, etc)
+          description: Also known as title or salutation. The prefix to the name (e.g.,
+            Mr, Mrs, Ms, Miss, Sir, etc.)
           type: string
         suffix:
-          description: Used for a trailing suffix to the name (e.g. Jr)
+          description: Used for a trailing suffix to the name (e.g., Jr.)
           type: string
       required:
       - lastName
       type: object
     TelcoAccountDetail:
-      description: The array of plans containing services and associated plan details
+      description: The array of plans containing services and associated plan details.
       properties:
         plans:
           description: The array of plans containing services and associated plan
-            details
+            details.
           items:
             allOf:
             - $ref: '#/components/schemas/TelcoAccountPlan'
@@ -6479,14 +6500,14 @@ components:
       type: object
     TelcoPaymentScheduleCardDebit:
       description: Represents a regular credit card payment schedule. Mandatory if
-        paymentScheduleUType is set to cardDebit
+        _paymentScheduleUType_ is set to `cardDebit`.
       example:
         calculationType: STATIC
         cardScheme: VISA
         paymentFrequency: paymentFrequency
       properties:
         cardScheme:
-          description: The type of credit card held on file
+          description: The type of credit card held on file.
           enum:
           - VISA
           - MASTERCARD
@@ -6498,16 +6519,16 @@ components:
         paymentFrequency:
           description: The frequency that payments will occur. Formatted according
             to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-            (excludes recurrence syntax)
+            (excludes recurrence syntax).
           type: string
           x-cds-type: ExternalRef
         calculationType:
-          description: The mechanism by which the payment amount is calculated. Explanation
-            of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent,
-            static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding
-            balance for the account is paid per period</li><li>**CALCULATED** - Indicates
+          description: 'The mechanism by which the payment amount is calculated. Explanation
+            of values are as follows:<br/><ul><li>`STATIC`: Indicates a consistent,
+            static amount, per payment</li><li>`BALANCE`: Indicates that the outstanding
+            balance for the account is paid per period</li><li>`CALCULATED`: Indicates
             that the payment amount is variable and calculated using a pre-defined
-            algorithm</li></ul>
+            algorithm.</li></ul>'
           enum:
           - STATIC
           - BALANCE
@@ -6520,7 +6541,7 @@ components:
       type: object
     TelcoPaymentScheduleDirectDebit:
       description: Represents a regular direct debit from a specified bank account.
-        Mandatory if paymentScheduleUType is set to directDebit
+        Mandatory if _paymentScheduleUType_ is set to `directDebit`.
       example:
         bsb: bsb
         calculationType: STATIC
@@ -6530,32 +6551,32 @@ components:
       properties:
         isTokenised:
           description: Flag indicating that the account details are tokenised and
-            cannot be shared. False if absent
+            cannot be shared. `false` if absent.
           type: boolean
         bsb:
           description: The unmasked BSB for the account to be debited. Is expected
             to be formatted as digits only with leading zeros included and no punctuation
-            or spaces. Is required if isTokenised is absent or false
+            or spaces. Is required if _isTokenised_ is absent or `false`.
           type: string
         accountNumber:
           description: The unmasked account number for the account to be debited.
             Is expected to be formatted as digits only with leading zeros included
-            and no punctuation or spaces. Is required if isTokenised is absent or
-            false
+            and no punctuation or spaces. Is required if _isTokenised_ is absent or
+            `false`.
           type: string
         paymentFrequency:
           description: The frequency that payments will occur. Formatted according
             to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-            (excludes recurrence syntax)
+            (excludes recurrence syntax).
           type: string
           x-cds-type: ExternalRef
         calculationType:
-          description: The mechanism by which the payment amount is calculated. Explanation
-            of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent,
-            static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding
-            balance for the account is paid per period</li><li>**CALCULATED** - Indicates
+          description: 'The mechanism by which the payment amount is calculated. Explanation
+            of values are as follows:<br/><ul><li>`STATIC`: Indicates a consistent,
+            static amount, per payment</li><li>`BALANCE`: Indicates that the outstanding
+            balance for the account is paid per period</li><li>`CALCULATED`: Indicates
             that the payment amount is variable and calculated using a pre-defined
-            algorithm</li></ul>
+            algorithm.</li></ul>'
           enum:
           - STATIC
           - BALANCE
@@ -6570,7 +6591,7 @@ components:
       - accountNumber
     TelcoPaymentScheduleDigitalWallet:
       description: Represents a regular payment from a digital wallet. Mandatory if
-        paymentScheduleUType is set to digitalWallet
+        _paymentScheduleUType_ is set to `digitalWallet`.
       example:
         calculationType: STATIC
         identifier: identifier
@@ -6581,20 +6602,20 @@ components:
       properties:
         name:
           description: The display name of the wallet as given by the customer, else
-            a default value defined by the data holder
+            a default value defined by the data holder.
           type: string
         identifier:
-          description: The identifier of the digital wallet (dependent on type)
+          description: The identifier of the digital wallet (dependent on type).
           type: string
         type:
-          description: The type of the digital wallet identifier
+          description: The type of the digital wallet identifier.
           enum:
           - EMAIL
           - CONTACT_NAME
           - TELEPHONE
           type: string
         provider:
-          description: The provider of the digital wallet
+          description: The provider of the digital wallet.
           enum:
           - PAYPAL_AU
           - OTHER
@@ -6602,16 +6623,16 @@ components:
         paymentFrequency:
           description: The frequency that payments will occur. Formatted according
             to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-            (excludes recurrence syntax)
+            (excludes recurrence syntax).
           type: string
           x-cds-type: ExternalRef
         calculationType:
-          description: The mechanism by which the payment amount is calculated. Explanation
-            of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent,
-            static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding
-            balance for the account is paid per period</li><li>**CALCULATED** - Indicates
+          description: 'The mechanism by which the payment amount is calculated. Explanation
+            of values are as follows:<br/><ul><li>`STATIC`: Indicates a consistent,
+            static amount, per payment</li><li>`BALANCE`: Indicates that the outstanding
+            balance for the account is paid per period</li><li>`CALCULATED`: Indicates
             that the payment amount is variable and calculated using a pre-defined
-            algorithm</li></ul>
+            algorithm.</li></ul>'
           enum:
           - STATIC
           - BALANCE
@@ -6627,15 +6648,15 @@ components:
       type: object
     TelcoPaymentScheduleManualPayment:
       description: Represents a manual payment schedule where the customer pays in
-        response to a delivered statement. Mandatory if paymentScheduleUType is set
-        to manualPayment
+        response to a delivered statement. Mandatory if _paymentScheduleUType_ is
+        set to `manualPayment`.
       example:
         billFrequency: billFrequency
       properties:
         billFrequency:
           description: The frequency with which a bill will be issued. Formatted according
             to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-            (excludes recurrence syntax)
+            (excludes recurrence syntax).
           type: string
           x-cds-type: ExternalRef
       required:
@@ -6643,17 +6664,17 @@ components:
       type: object
     TelcoInvoicePeriod:
       description: Object containing the start and end date for the period covered
-        by the invoice. Mandatory if any usage based charges are included in the invoice
+        by the invoice. Mandatory if any usage based charges are included in the invoice.
       example:
         endDate: endDate
         startDate: startDate
       properties:
         startDate:
-          description: The start date of the period covered by this invoice
+          description: The start date of the period covered by this invoice.
           type: string
           x-cds-type: DateString
         endDate:
-          description: The end date of the period covered by this invoice
+          description: The end date of the period covered by this invoice.
           type: string
           x-cds-type: DateString
       required:
@@ -6661,7 +6682,7 @@ components:
       - startDate
       type: object
     TelcoInvoicePayOnTimeDiscount:
-      description: A discount for on time payment
+      description: A discount for on time payment.
       example:
         date: date
         gstAmount: gstAmount
@@ -6669,17 +6690,17 @@ components:
       properties:
         discountAmount:
           description: The amount that will be discounted if the invoice is paid by
-            the date specified
+            the date specified.
           type: string
           x-cds-type: AmountString
         gstAmount:
           description: The GST amount that will be discounted if the invoice is paid
-            by the date specified. If absent then zero is assumed
+            by the date specified. If absent then zero is assumed.
           type: string
           x-cds-type: AmountString
         date:
           description: The date by which the invoice must be paid to receive the pay
-            on time discount
+            on time discount.
           type: string
           x-cds-type: DateString
       required:
@@ -6687,17 +6708,17 @@ components:
       - discountAmount
       type: object
     TelcoUsageDatRoaming:
-      description: Roaming Data Usage
+      description: Roaming Data Usage.
       example:
         download: 5.962133916683182
         amount: amount
       properties:
         download:
-          description: Amount of data used while roaming in megabytes (MB)
+          description: Amount of data used while roaming in megabytes (MB).
           type: number
           x-cds-type: Number
         amount:
-          description: Amount value of data roaming charges
+          description: Amount value of data roaming charges.
           type: string
           x-cds-type: AmountString
       type: object
@@ -6705,7 +6726,7 @@ components:
       - download
       - amount
     TelcoUsageData:
-      description: Summary of data usage
+      description: Summary of data usage.
       example:
         download: 6.027456183070403
         sessions: 1.4658129805029452
@@ -6716,19 +6737,19 @@ components:
         upload: 0.8008281904610115
       properties:
         upload:
-          description: Amount of data uploaded in megabytes (MB)
+          description: Amount of data uploaded in megabytes (MB).
           type: number
           x-cds-type: Number
         download:
-          description: Amount of data downloaded in megabytes (MB)
+          description: Amount of data downloaded in megabytes (MB).
           type: number
           x-cds-type: Number
         sessions:
-          description: Number of data sessions
+          description: Number of data sessions.
           type: number
           x-cds-type: Number
         amount:
-          description: Cost amount of data usage
+          description: Cost amount of data usage.
           type: string
           x-cds-type: AmountString
         roaming:
@@ -6740,7 +6761,7 @@ components:
       type: object
       x-condional: roaming
     TelcoUsageVoiceNational:
-      description: National voice calls
+      description: National voice calls.
       example:
         duration: duration
         number: 5.637376656633329
@@ -6748,15 +6769,15 @@ components:
       properties:
         duration:
           description: Total duration (hours, minutes, and seconds) of national voice
-            calls. Not limited to 24hrs
+            calls. Not limited to 24hrs.
           type: string
           x-cds-type: TimeString
         number:
-          description: Number of national voice calls
+          description: Number of national voice calls.
           type: number
           x-cds-type: Number
         amount:
-          description: Cost amount of national calls
+          description: Cost amount of national calls.
           type: string
           x-cds-type: AmountString
       required:
@@ -6766,7 +6787,7 @@ components:
       type: object
     TelcoUsageVoiceInternational:
       description: International voice calls. Requied if international calling is
-        supported
+        supported.
       example:
         duration: duration
         number: 2.3021358869347655
@@ -6774,15 +6795,15 @@ components:
       properties:
         duration:
           description: Total duration (hours, minutes, and seconds) of international
-            voice calls. Not limited to 24hrs
+            voice calls. Not limited to 24hrs.
           type: string
           x-cds-type: TimeString
         number:
-          description: Number of international voice calls
+          description: Number of international voice calls.
           type: number
           x-cds-type: Number
         amount:
-          description: Cost amount of international voice calls
+          description: Cost amount of international voice calls.
           type: string
           x-cds-type: AmountString
       required:
@@ -6791,7 +6812,7 @@ components:
       - number
       type: object
     TelcoUsageVoiceRoaming:
-      description: Roaming voice calls, Required if roaming is supported
+      description: Roaming voice calls, Required if roaming is supported.
       example:
         duration: duration
         number: 7.061401241503109
@@ -6799,15 +6820,15 @@ components:
       properties:
         duration:
           description: Total duration (hours, minutes, and seconds) of roaming voice
-            calls. Not limited to 24hrs
+            calls. Not limited to 24hrs.
           type: string
           x-cds-type: TimeString
         number:
-          description: Number of roaming voice calls
+          description: Number of roaming voice calls.
           type: number
           x-cds-type: Number
         amount:
-          description: Cost amount of roaming voice calls
+          description: Cost amount of roaming voice calls.
           type: string
           x-cds-type: AmountString
       required:
@@ -6817,7 +6838,7 @@ components:
       type: object
     TelcoUsageVoice:
       description: Summary of voice calls. Required if voice calls are included in
-        product plan
+        product plan.
       example:
         roaming:
           duration: duration
@@ -6848,7 +6869,7 @@ components:
       - international
       - roaming
     TelcoUsageMessagingSms:
-      description: Summary of SMS usage
+      description: Summary of SMS usage.
       example:
         amount: amount
         roaming: 2.027123023002322
@@ -6857,21 +6878,21 @@ components:
       properties:
         national:
           description: Number of national SMS messages sent. Including premium SMS
-            services
+            services.
           type: number
           x-cds-type: Number
         international:
           description: Number of international SMS messages sent. Including premium
-            SMS services
+            SMS services.
           type: number
           x-cds-type: Number
         roaming:
           description: Number of roaming SMS messages sent. Including premium SMS
-            services
+            services.
           type: number
           x-cds-type: Number
         amount:
-          description: Cost amount of SMS messages. Including premium SMS services
+          description: Cost amount of SMS messages. Including premium SMS services.
           type: string
           x-cds-type: AmountString
       required:
@@ -6882,7 +6903,7 @@ components:
       - international
       - roaming
     TelcoUsageMessagingMms:
-      description: Summary of MMS usage
+      description: Summary of MMS usage.
       example:
         amount: amount
         roaming: 1.2315135367772556
@@ -6890,20 +6911,20 @@ components:
         international: 7.386281948385884
       properties:
         national:
-          description: Number of national MMS messages sent
+          description: Number of national MMS messages sent.
           type: number
           x-cds-type: Number
         international:
-          description: ber of international MMS messages sent
+          description: Number of international MMS messages sent.
           type: number
           x-cds-type: Number
         roaming:
           description: Number of roaming SMS messages sent. Including premium SMS
-            services
+            services.
           type: number
           x-cds-type: Number
         amount:
-          description: Cost amount of MMS messages
+          description: Cost amount of MMS messages.
           type: string
           x-cds-type: AmountString
       required:
@@ -6915,7 +6936,7 @@ components:
       - roaming
     TelcoUsageMessaging:
       description: Summary of messaging. Required if messaging services is included
-        in the product plan
+        in the product plan.
       example:
         mms:
           amount: amount
@@ -6938,7 +6959,7 @@ components:
       type: object
     TelcoInvoiceAccountChargesOtherCharges:
       description: Optional array of charges that may be part of the invoice (for
-        example services fees) (exclusive of GST)
+        example services fees) (exclusive of GST).
       example:
         amount: amount
         description: description
@@ -6946,15 +6967,15 @@ components:
       properties:
         amount:
           description: The aggregate total of charges for this item (exclusive of
-            GST)
+            GST).
           type: string
           x-cds-type: AmountString
         description:
-          description: A free text description of the charge
+          description: A free text description of the charge.
           type: string
           x-cds-type: AmountString
         type:
-          description: A free text description of the charge
+          description: Type of charge.
           enum:
           - SERVICE
           - EQUIPMENT
@@ -6976,30 +6997,31 @@ components:
         description: description
       properties:
         amount:
-          description: The amount of the adjustment
+          description: The amount of the adjustment.
           type: string
           x-cds-type: AmountString
         description:
-          description: A free text description of the adjustment
+          description: A free text description of the adjustment.
           type: string
       required:
       - amount
       - description
       type: object
     TelcoServiceBalanceDataRoaming:
-      description: Balance of data roaming charges. Required unless planType is UNSUPPORTED
+      description: Balance of data roaming charges. Required unless _planType_ is
+        `UNSUPPORTED`.
       properties:
         description:
-          description: An overview of plan limits. Required unless planType is UNSUPPORTED
+          description: An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.
           type: string
         download:
           description: Amount of data used overseas in megabytes (MB). Required unless
-            planType is UNSUPPORTED
+            _planType_ is `UNSUPPORTED`.
           type: number
           x-cds-type: Number
         amount:
-          description: Amount value of data roaming charges. Required unless planType
-            is UNSUPPORTED
+          description: Amount value of data roaming charges. Required unless _planType_
+            is `UNSUPPORTED`.
           type: string
           x-cds-type: AmountString
       type: object
@@ -7007,26 +7029,26 @@ components:
       - download
       - amount
     TelcoServiceBalanceData:
-      description: Summary of data balances
+      description: Summary of data balances.
       properties:
         planType:
           $ref: '#/components/schemas/TelcoPlanType'
         description:
-          description: An overview of plan limits. Required unless planType is UNSUPPORTED
+          description: An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.
           type: string
         upload:
-          description: Remaining upload data in megabytes (MB). Required unless planType
-            is UNSUPPORTED or UNMETERED
+          description: Remaining upload data in megabytes (MB). Required unless _planType_
+            is `UNSUPPORTED` or `UNMETERED`.
           type: number
           x-cds-type: Number
         download:
           description: Remaining download data in megabytes (MB). Required unless
-            planType is UNSUPPORTED or UNMETERED
+            _planType_ is `UNSUPPORTED` or `UNMETERED`.
           type: number
           x-cds-type: Number
         amount:
-          description: Remaining value amount of data available. Required unless planType
-            is UNSUPPORTED or UNMETERED
+          description: Remaining value amount of data available. Required unless _planType_
+            is `UNSUPPORTED` or `UNMETERED`.
           type: string
           x-cds-type: AmountString
         roaming:
@@ -7039,25 +7061,25 @@ components:
       - download
       - amount
     TelcoServiceBalanceVoiceNational:
-      description: National voice calls
+      description: National voice calls.
       properties:
         description:
-          description: An overview of plan limits. Required unless planType is UNSUPPORTED
+          description: An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.
           type: string
         duration:
           description: Total duration (hours, minutes, and seconds) of national voice
-            calls. Not limited to 24hrs. Required unless planType is UNSUPPORTED or
-            UNMETERED
+            calls. Not limited to 24hrs. Required unless _planType_ is `UNSUPPORTED`
+            or `UNMETERED`.
           type: string
           x-cds-type: TimeString
         number:
-          description: Number of national voice calls. Required unless planType is
-            UNSUPPORTED or UNMETERED
+          description: Number of national voice calls. Required unless _planType_
+            is `UNSUPPORTED` or `UNMETERED`.
           type: number
           x-cds-type: Number
         amount:
-          description: Amount balance of national calls. Required unless planType
-            is UNSUPPORTED or UNMETERED
+          description: Amount balance of national calls. Required unless _planType_
+            is `UNSUPPORTED` or `UNMETERED`.
           type: string
           x-cds-type: AmountString
       type: object
@@ -7067,25 +7089,25 @@ components:
       - number
       - amount
     TelcoServiceBalanceVoiceInternational:
-      description: International voice calls
+      description: International voice calls.
       properties:
         description:
-          description: An overview of plan limits. Required unless planType is UNSUPPORTED
+          description: An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.
           type: string
         duration:
           description: Total duration (hours, minutes, and seconds) of international
-            voice calls available. Not limited to 24hrs. Required unless planType
-            is UNSUPPORTED or UNMETERED
+            voice calls available. Not limited to 24hrs. Required unless _planType_
+            is `UNSUPPORTED` or `UNMETERED`.
           type: string
           x-cds-type: TimeString
         number:
           description: Number of international voice calls available Required unless
-            planType is UNSUPPORTED or UNMETERED
+            _planType_ is `UNSUPPORTED` or `UNMETERED`.
           type: number
           x-cds-type: Number
         amount:
           description: Amount value of international calls available. Required unless
-            planType is UNSUPPORTED or UNMETERED
+            _planType_ is `UNSUPPORTED` or `UNMETERED`.
           type: string
           x-cds-type: AmountString
       type: object
@@ -7095,25 +7117,25 @@ components:
       - international
       - amount
     TelcoServiceBalanceVoiceRoaming:
-      description: Roaming voice calls
+      description: Roaming voice calls.
       properties:
         description:
-          description: An overview of plan limits. Required unless planType is UNSUPPORTED
+          description: An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.
           type: string
         duration:
           description: Total duration (hours, minutes, and seconds) of roaming voice
-            calls available. Not limited to 24hrs. Required unless planType is UNSUPPORTED
-            or UNMETERED
+            calls available. Not limited to 24hrs. Required unless _planType_ is `UNSUPPORTED`
+            or `UNMETERED`.
           type: string
           x-cds-type: TimeString
         number:
-          description: Number of roaming voice calls available Required unless planType
-            is UNSUPPORTED or UNMETERED
+          description: Number of roaming voice calls available Required unless _planType_
+            is `UNSUPPORTED` or `UNMETERED`.
           type: number
           x-cds-type: Number
         amount:
-          description: Amount value of roaming calls available. Required unless planType
-            is UNSUPPORTED or UNMETERED
+          description: Amount value of roaming calls available. Required unless _planType_
+            is `UNSUPPORTED` or `UNMETERED`.
           type: string
           x-cds-type: AmountString
       type: object
@@ -7124,7 +7146,7 @@ components:
       - amount
     TelcoServiceBalanceVoice:
       description: Summary of voice balances. Required if voice calls are included
-        in product plan
+        in product plan.
       properties:
         planType:
           $ref: '#/components/schemas/TelcoPlanType'
@@ -7143,29 +7165,29 @@ components:
       - roaming
     TelcoServiceBalanceMessagingSms:
       description: Summary of SMS Balance. Required if the service plan supports SMS
-        messaging
+        messaging.
       properties:
         description:
-          description: An overview of plan limits. Required unless planType is UNSUPPORTED
+          description: An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.
           type: string
         national:
           description: Number of national SMS messages remaining. Required unless
-            planType is UNSUPPORTED or UNMETERED
+            _planType_ is `UNSUPPORTED` or `UNMETERED`.
           type: number
           x-cds-type: Number
         international:
           description: Number of international SMS messages remaining. Required unless
-            planType is UNSUPPORTED or UNMETERED
+            _planType_ is `UNSUPPORTED` or `UNMETERED`.
           type: number
           x-cds-type: Number
         roaming:
-          description: Number of roaming SMS messages remaining. Required unless planType
-            is UNSUPPORTED or UNMETERED
+          description: Number of roaming SMS messages remaining. Required unless _planType_
+            is `UNSUPPORTED` or `UNMETERED`.
           type: number
           x-cds-type: Number
         amount:
-          description: Amount value of SMS messages remaining. Required unless planType
-            is UNSUPPORTED or UNMETERED
+          description: Amount value of SMS messages remaining. Required unless _planType_
+            is `UNSUPPORTED` or `UNMETERED`.
           type: string
           x-cds-type: AmountString
       type: object
@@ -7177,29 +7199,29 @@ components:
       - amount
     TelcoServiceBalanceMessagingMms:
       description: Summary of MMS Balance. Required if the service plan supports MMS
-        messaging
+        messaging.
       properties:
         description:
-          description: An overview of plan limits. Required unless planType is UNSUPPORTED
+          description: An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.
           type: string
         national:
           description: Number of national MMS messages remaining. Required unless
-            planType is UNSUPPORTED or UNMETERED
+            _planType_ is `UNSUPPORTED` or `UNMETERED`.
           type: number
           x-cds-type: Number
         international:
           description: Number of international MMS messages remaining. Required unless
-            planType is UNSUPPORTED or UNMETERED
+            _planType_ is `UNSUPPORTED` or `UNMETERED`.
           type: number
           x-cds-type: Number
         roaming:
-          description: Number of roaming MMS messages remaining. Required unless planType
-            is UNSUPPORTED or UNMETERED
+          description: Number of roaming MMS messages remaining. Required unless _planType_
+            is `UNSUPPORTED` or `UNMETERED`.
           type: number
           x-cds-type: Number
         amount:
-          description: Amount value of MMS messages remaining. Required unless planType
-            is UNSUPPORTED or UNMETERED
+          description: Amount value of MMS messages remaining. Required unless _planType_
+            is `UNSUPPORTED` or `UNMETERED`.
           type: string
           x-cds-type: AmountString
       type: object
@@ -7211,7 +7233,7 @@ components:
       - amount
     TelcoServiceBalanceMessaging:
       description: Summary of messaging. Required if messaging services is included
-        in the product plan
+        in the product plan.
       properties:
         planType:
           $ref: '#/components/schemas/TelcoPlanType'
@@ -7224,7 +7246,7 @@ components:
       - sms
       type: object
     TelcoServiceBalances:
-      description: A summary of Service balances
+      description: A summary of Service balances.
       properties:
         data:
           $ref: '#/components/schemas/TelcoServiceBalanceData'
@@ -7265,7 +7287,7 @@ components:
     TelcoAccountPlanDetail_planDetail:
       properties:
         charges:
-          description: Charges for metering included in the plan
+          description: Charges for metering included in the plan.
           items:
             $ref: '#/components/schemas/TelcoProductDetailMeteringCharges'
           type: array

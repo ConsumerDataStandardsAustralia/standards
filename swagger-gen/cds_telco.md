@@ -6,8 +6,8 @@
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/telco/products HTTP/1.1
-Host: data.holder.com.au
+GET https://tls.dh.example.com/cds-au/v1/telco/products HTTP/1.1
+Host: tls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -21,7 +21,7 @@ const headers = {
   'x-min-v':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/products', {
+fetch('https://tls.dh.example.com/cds-au/v1/telco/products', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -35,7 +35,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/products', {
 
 Obtain a list of telco products that are currently offered to the market.
 
-Note that the results returned by this endpoint are expected to be ordered in descending order according to `lastUpdated`.
+Note that the results returned by this endpoint are expected to be ordered in descending order according to _lastUpdated_.
 
 <h3 id="cdr-telco-api_get-telco-products_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -46,15 +46,15 @@ Note that the results returned by this endpoint are expected to be ordered in de
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|type|query|[Enum](#common-field-types)|optional|Used to filter results on the type field. Any one of the valid values for this field can be supplied. If absent, defaults to include ALL products. Valid values are [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service. BROADBAND fixed internet service or ALL|
-|billing-type|query|[Enum](#common-field-types)|optional|Used to filter results on the billing-type field. Any one of the valid values for this field can be supplied. If absent, defaults to include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID', 'ALL'|
-|effective|query|[Enum](#common-field-types)|optional|Allows for the filtering of productd based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'|
-|updated-since|query|[DateTimeString](#common-field-types)|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all plans|
-|brand|query|string|optional|Used to filter results on the brand field. If absent, defaults to include all products. For service providers that operate a number of mobile and internet brands|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|type|query|[Enum](#common-field-types)|optional|Used to filter results on the type field. Any one of the valid values for this field can be supplied. If absent, defaults to include `ALL` products. Valid values are [`MOBILE`](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service, `BROADBAND` fixed internet service, or `ALL`.|
+|billing-type|query|[Enum](#common-field-types)|optional|Used to filter results on the _billing-type_ field. Any one of the valid values for this field can be supplied. If absent, defaults to include all billing types. Valid values are `PRE_PAID`, `POST_PAID`, `UPFRONT_PAID`, `ALL`.|
+|effective|query|[Enum](#common-field-types)|optional|Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the _effectiveFrom_ and _effectiveTo_ fields. Valid values are `CURRENT`, `FUTURE` and `ALL`. If absent defaults to `CURRENT`.|
+|updated-since|query|[DateTimeString](#common-field-types)|optional|Only include products that have been updated after the specified date and time. If absent defaults to include all plans.|
+|brand|query|string|optional|Used to filter results on the brand field. If absent, defaults to include all products. For service providers that operate a number of mobile and internet brands.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
 
 <h4 id="cdr-telco-api_get-telco-products_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -146,11 +146,11 @@ Note that the results returned by this endpoint are expected to be ordered in de
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 
   
     <aside class="success">
-This operation does not require authentication
+This operation does not require authentication.
 </aside>
 
   
@@ -161,8 +161,8 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/telco/products/{productId} HTTP/1.1
-Host: data.holder.com.au
+GET https://tls.dh.example.com/cds-au/v1/telco/products/{productId} HTTP/1.1
+Host: tls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -176,7 +176,7 @@ const headers = {
   'x-min-v':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/products/{productId}', {
+fetch('https://tls.dh.example.com/cds-au/v1/telco/products/{productId}', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -188,7 +188,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/products/{productId}', {
 
 `GET /telco/products/{productId}`
 
-Obtain detailed information on a single telco prouct offered openly to the market
+Obtain detailed information on a single telco product offered openly to the market.
 
 <h3 id="cdr-telco-api_get-telco-product-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -199,9 +199,9 @@ Obtain detailed information on a single telco prouct offered openly to the marke
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|productId|path|string|mandatory|ID of the specific product requested|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|productId|path|string|mandatory|ID of the specific product requested.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
 
 > Example responses
 
@@ -329,11 +329,11 @@ Obtain detailed information on a single telco prouct offered openly to the marke
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
 
   
     <aside class="success">
-This operation does not require authentication
+This operation does not require authentication.
 </aside>
 
   
@@ -344,8 +344,8 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/telco/accounts/{serviceId}/usage HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/telco/accounts/{serviceId}/usage HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -367,7 +367,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{serviceId}/usage', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/{serviceId}/usage', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -379,7 +379,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{serviceId}/usage', {
 
 `GET /telco/accounts/{serviceId}/usage`
 
-Obtain a usage data from a particular service Id
+Obtain a usage data from a particular service Id.
 
 <h3 id="cdr-telco-api_get-usage-for-telco-service_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -390,12 +390,12 @@ Obtain a usage data from a particular service Id
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|serviceId|path|string|mandatory|ID of the specific service requested. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). This is a tokenised ID returned from the account. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|serviceId|path|string|mandatory|ID of the specific service requested. E.g., a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). This is a tokenised ID returned from the account. In accordance with [CDR ID permanence](#id-permanence) requirements.|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to _newest-date_ minus 24 months. Format is aligned to DateString common type.|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -477,18 +477,18 @@ Obtain a usage data from a particular service Id
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:billing:read</a>
+<a href="#authorisation-scopes">telco:billing:read.</a>
 </aside>
 
     
@@ -500,8 +500,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/telco/accounts/usage HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/telco/accounts/usage HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -523,7 +523,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/usage', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/usage', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -535,7 +535,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/usage', {
 
 `GET /telco/accounts/usage`
 
-Obtain usage data for all services associated with the customer
+Obtain usage data for all services associated with the customer.
 
 <h3 id="cdr-telco-api_get-usage_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -546,13 +546,13 @@ Obtain usage data for all services associated with the customer
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to _newest-date_ minus 24 months. Format is aligned to DateString common type.|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -644,17 +644,17 @@ Obtain usage data for all services associated with the customer
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:billing:read</a>
+<a href="#authorisation-scopes">telco:billing:read.</a>
 </aside>
 
     
@@ -666,8 +666,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST https://data.holder.com.au/cds-au/v1/telco/accounts/usage HTTP/1.1
-Host: data.holder.com.au
+POST https://mtls.dh.example.com/cds-au/v1/telco/accounts/usage HTTP/1.1
+Host: mtls.dh.example.com
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -699,7 +699,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/usage', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/usage', {
   method: 'POST',
   body: inputBody,
   headers: headers
@@ -712,7 +712,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/usage', {
 
 `POST /telco/accounts/usage`
 
-Obtain usage data for a specific service
+Obtain usage data for a specific service.
 
 > Body parameter
 
@@ -736,17 +736,17 @@ Obtain usage data for a specific service
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-|body|body|[serviceIdList](#schemacdr-telco-apiserviceidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
+|body|body|[serviceIdList](#schemacdr-telco-apiserviceidlist)|mandatory|Request payload containing list of specific _serviceId_ values to obtain data for.|
 |» data|body|object|mandatory|none|
-|»» serviceIds|body|[string]|mandatory|Array of specific serviceIds to obtain data for. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements|
+|»» serviceIds|body|[string]|mandatory|Array of specific _serviceId_ values to obtain data for. E.g., a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements.|
 |» meta|body|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
 > Example responses
@@ -836,17 +836,17 @@ Obtain usage data for a specific service
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:billing:read</a>
+<a href="#authorisation-scopes">telco:billing:read.</a>
 </aside>
 
     
@@ -858,8 +858,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/telco/accounts HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/telco/accounts HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -881,7 +881,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -893,7 +893,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts', {
 
 `GET /telco/accounts`
 
-Obtain the list of telco accounts available under the authorised consent
+Obtain the list of telco accounts available under the authorised consent.
 
 <h3 id="cdr-telco-api_get-telco-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -904,13 +904,13 @@ Obtain the list of telco accounts available under the authorised consent
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|updated-since|query|[DateString](#common-field-types)|optional|Only include accounts that have been updated after the specified date and time. If absent defaults to include all plans|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.|
+|updated-since|query|[DateString](#common-field-types)|optional|Only include accounts that have been updated after the specified date and time. If absent defaults to include all plans.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -984,17 +984,17 @@ Obtain the list of telco accounts available under the authorised consent
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:accounts.basic:read</a>
+<a href="#authorisation-scopes">telco:accounts.basic:read.</a>
 </aside>
 
     
@@ -1006,8 +1006,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId} HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/telco/accounts/{accountId} HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1029,7 +1029,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/{accountId}', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -1041,7 +1041,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}', {
 
 `GET /telco/accounts/{accountId}`
 
-Obtain detailed information for a specific telco account
+Obtain detailed information for a specific telco account.
 
 <h3 id="cdr-telco-api_get-telco-account-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1052,10 +1052,10 @@ Obtain detailed information for a specific telco account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -1121,17 +1121,17 @@ Obtain detailed information for a specific telco account
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:accounts.detail:read</a>
+<a href="#authorisation-scopes">telco:accounts.detail:read.</a>
 </aside>
 
     
@@ -1143,8 +1143,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/payment-schedule HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/telco/accounts/{accountId}/payment-schedule HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1166,7 +1166,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/payment-schedule', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/{accountId}/payment-schedule', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -1178,11 +1178,11 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/payment-s
 
 `GET /telco/accounts/{accountId}/payment-schedule`
 
-Obtain the agreed payment schedule and details, if any, for a specific telco account. 
+Obtain the agreed payment schedule and details, if any, for a specific telco account.
 
 Some general notes about this endpoint:
 
- <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>
+<ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API.</li></ul>
 
 <h3 id="cdr-telco-api_get-telco-agreed-payment-schedule_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1193,10 +1193,10 @@ Some general notes about this endpoint:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -1265,17 +1265,17 @@ Some general notes about this endpoint:
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:accounts.paymentschedule:read</a>
+<a href="#authorisation-scopes">telco:accounts.paymentschedule:read.</a>
 </aside>
 
     
@@ -1287,8 +1287,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/concessions HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/telco/accounts/{accountId}/concessions HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1310,7 +1310,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/concessions', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/{accountId}/concessions', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -1322,7 +1322,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/concessio
 
 `GET /telco/accounts/{accountId}/concessions`
 
-Obtain the details of any concessions or arrangements applied to a specific telco account
+Obtain the details of any concessions or arrangements applied to a specific telco account.
 
 <h3 id="cdr-telco-api_get-telco-concessions_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1333,10 +1333,10 @@ Obtain the details of any concessions or arrangements applied to a specific telc
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -1392,17 +1392,17 @@ Obtain the details of any concessions or arrangements applied to a specific telc
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:accounts.concessions:read</a>
+<a href="#authorisation-scopes">telco:accounts.concessions:read.</a>
 </aside>
 
     
@@ -1414,8 +1414,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/balance HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/telco/accounts/{accountId}/balance HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1437,7 +1437,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/balance', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/{accountId}/balance', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -1449,7 +1449,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/balance',
 
 `GET /telco/accounts/{accountId}/balance`
 
-Obtain the current balance for a specific account
+Obtain the current balance for a specific account.
 
 <h3 id="cdr-telco-api_get-balance-for-telco-account_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1460,10 +1460,10 @@ Obtain the current balance for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -1557,17 +1557,17 @@ Obtain the current balance for a specific account
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:billing:read</a>
+<a href="#authorisation-scopes">telco:billing:read.</a>
 </aside>
 
     
@@ -1579,8 +1579,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/telco/accounts/balance HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/telco/accounts/balance HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1602,7 +1602,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/balance', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/balance', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -1614,7 +1614,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/balance', {
 
 `GET /telco/accounts/balance`
 
-Obtain the current balance for all accounts
+Obtain the current balance for all accounts.
 
 <h3 id="cdr-telco-api_get-bulk-telco-balances_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1625,11 +1625,11 @@ Obtain the current balance for all accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -1737,17 +1737,17 @@ Obtain the current balance for all accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:billing:read</a>
+<a href="#authorisation-scopes">telco:billing:read.</a>
 </aside>
 
     
@@ -1759,8 +1759,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST https://data.holder.com.au/cds-au/v1/telco/accounts/balance HTTP/1.1
-Host: data.holder.com.au
+POST https://mtls.dh.example.com/cds-au/v1/telco/accounts/balance HTTP/1.1
+Host: mtls.dh.example.com
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -1792,7 +1792,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/balance', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/balance', {
   method: 'POST',
   body: inputBody,
   headers: headers
@@ -1805,7 +1805,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/balance', {
 
 `POST /telco/accounts/balance`
 
-Obtain the current balance for a specified set of accounts
+Obtain the current balance for a specified set of accounts.
 
 > Body parameter
 
@@ -1829,17 +1829,17 @@ Obtain the current balance for a specified set of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-|body|body|[accountIdList](#schemacdr-telco-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
+|body|body|[accountIdList](#schemacdr-telco-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for.|
 |» data|body|object|mandatory|none|
-|»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|»» accountIds|body|[string]|mandatory|Array of specific _accountId_ values to obtain data for. In accordance with [CDR ID permanence](#id-permanence) requirements.|
 |» meta|body|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
 > Example responses
@@ -1945,17 +1945,17 @@ Obtain the current balance for a specified set of accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:billing:read</a>
+<a href="#authorisation-scopes">telco:billing:read.</a>
 </aside>
 
     
@@ -1967,8 +1967,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/invoices HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/telco/accounts/{accountId}/invoices HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1990,7 +1990,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/invoices', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/{accountId}/invoices', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -2002,7 +2002,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/invoices'
 
 `GET /telco/accounts/{accountId}/invoices`
 
-Obtain the invoices for a specific account
+Obtain the invoices for a specific account.
 
 <h3 id="cdr-telco-api_get-invoices-for-telco-account_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -2013,10 +2013,10 @@ Obtain the invoices for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -2128,18 +2128,18 @@ Obtain the invoices for a specific account
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:billing:read</a>
+<a href="#authorisation-scopes">telco:billing:read.</a>
 </aside>
 
     
@@ -2151,8 +2151,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/telco/accounts/invoices HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/telco/accounts/invoices HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2174,7 +2174,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/invoices', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/invoices', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -2186,7 +2186,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/invoices', {
 
 `GET /telco/accounts/invoices`
 
-Obtain the invoices for all accounts
+Obtain the invoices for all accounts.
 
 <h3 id="cdr-telco-api_get-telco-invoices_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -2197,13 +2197,13 @@ Obtain the invoices for all accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type.|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to _newest-date_ minus 24 months. Format is aligned to DateString common type.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -2321,17 +2321,17 @@ Obtain the invoices for all accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:billing:read</a>
+<a href="#authorisation-scopes">telco:billing:read.</a>
 </aside>
 
     
@@ -2343,8 +2343,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST https://data.holder.com.au/cds-au/v1/telco/accounts/invoices HTTP/1.1
-Host: data.holder.com.au
+POST https://mtls.dh.example.com/cds-au/v1/telco/accounts/invoices HTTP/1.1
+Host: mtls.dh.example.com
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -2376,7 +2376,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/invoices', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/invoices', {
   method: 'POST',
   body: inputBody,
   headers: headers
@@ -2389,7 +2389,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/invoices', {
 
 `POST /telco/accounts/invoices`
 
-Obtain invoices for a specified set of accounts
+Obtain invoices for a specified set of accounts.
 
 > Body parameter
 
@@ -2413,19 +2413,19 @@ Obtain invoices for a specified set of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months. Format is aligned to DateString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type.|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to _newest-date_ minus 24 months. Format is aligned to DateString common type.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-|body|body|[accountIdList](#schemacdr-telco-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
+|body|body|[accountIdList](#schemacdr-telco-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for.|
 |» data|body|object|mandatory|none|
-|»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|»» accountIds|body|[string]|mandatory|Array of specific _accountId_ values to obtain data for. In accordance with [CDR ID permanence](#id-permanence) requirements.|
 |» meta|body|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
 > Example responses
@@ -2541,17 +2541,17 @@ Obtain invoices for a specified set of accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:billing:read</a>
+<a href="#authorisation-scopes">telco:billing:read.</a>
 </aside>
 
     
@@ -2563,8 +2563,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/transactions HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/telco/accounts/{accountId}/transactions HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2586,7 +2586,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/transactions', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/{accountId}/transactions', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -2598,7 +2598,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/{accountId}/transacti
 
 `GET /telco/accounts/{accountId}/transactions`
 
-Obtain the billing transactions for a specific account
+Obtain the billing transactions for a specific account.
 
 <h3 id="cdr-telco-api_get-transactions-for-telco-account_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -2609,14 +2609,14 @@ Obtain the billing transactions for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type|
-|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months. Format is aligned to DateTimeString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previously obtained from the Account List endpoint. In accordance with [CDR ID permanence](#id-permanence) requirements.|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type.|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to _newest-time_ minus 12 months. Format is aligned to DateTimeString common type.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -2704,18 +2704,18 @@ Obtain the billing transactions for a specific account
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:billing:read</a>
+<a href="#authorisation-scopes">telco:billing:read.</a>
 </aside>
 
     
@@ -2727,8 +2727,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/telco/accounts/transactions HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/telco/accounts/transactions HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2750,7 +2750,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/transactions', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/transactions', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -2762,7 +2762,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/transactions', {
 
 `GET /telco/accounts/transactions`
 
-Obtain billing transactions for all accounts
+Obtain billing transactions for all accounts.
 
 <h3 id="cdr-telco-api_get-telco-transactions_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -2773,13 +2773,13 @@ Obtain billing transactions for all accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type|
-|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months. Format is aligned to DateTimeString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type.|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to _newest-time_ minus 12 months. Format is aligned to DateTimeString common type.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -2866,17 +2866,17 @@ Obtain billing transactions for all accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:billing:read</a>
+<a href="#authorisation-scopes">telco:billing:read.</a>
 </aside>
 
     
@@ -2888,8 +2888,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST https://data.holder.com.au/cds-au/v1/telco/accounts/transactions HTTP/1.1
-Host: data.holder.com.au
+POST https://mtls.dh.example.com/cds-au/v1/telco/accounts/transactions HTTP/1.1
+Host: mtls.dh.example.com
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -2921,7 +2921,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/transactions', {
+fetch('https://mtls.dh.example.com/cds-au/v1/telco/accounts/transactions', {
   method: 'POST',
   body: inputBody,
   headers: headers
@@ -2934,7 +2934,7 @@ fetch('https://data.holder.com.au/cds-au/v1/telco/accounts/transactions', {
 
 `POST /telco/accounts/transactions`
 
-Obtain transactions for a specified set of accounts
+Obtain transactions for a specified set of accounts.
 
 > Body parameter
 
@@ -2958,19 +2958,19 @@ Obtain transactions for a specified set of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type|
-|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months. Format is aligned to DateTimeString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type.|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to _newest-time_ minus 12 months. Format is aligned to DateTimeString common type.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-|body|body|[accountIdList](#schemacdr-telco-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
+|body|body|[accountIdList](#schemacdr-telco-apiaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for.|
 |» data|body|object|mandatory|none|
-|»» accountIds|body|[string]|mandatory|Array of specific accountIds to obtain data for. In accordance with [CDR ID permanence](#id-permanence) requirements|
+|»» accountIds|body|[string]|mandatory|Array of specific _accountId_ values to obtain data for. In accordance with [CDR ID permanence](#id-permanence) requirements.|
 |» meta|body|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
 > Example responses
@@ -3055,17 +3055,17 @@ Obtain transactions for a specified set of accounts
 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
-|200|x-v|string|The [version](#response-headers) of the API end point that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">telco:billing:read</a>
+<a href="#authorisation-scopes">telco:billing:read.</a>
 </aside>
 
     
@@ -3949,7 +3949,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[TelcoBalance](#schemacdr-telco-apitelcobalance)|mandatory|Object containing account service usage summary|
+|data|[TelcoBalance](#schemacdr-telco-apitelcobalance)|mandatory|Object containing account service usage summary.|
 |links|[Links](#schemacdr-telco-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-telco-apimeta)|mandatory|none|
 
@@ -4048,13 +4048,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Additional data for customised error codes*
+*Additional data for customised error codes.*
 
 <h3 id="cdr-telco-api_metaerror_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
+|urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
@@ -4087,7 +4087,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
 |» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
 |» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
-|» meta|[MetaError](#schemacdr-telco-apimetaerror)|optional|Additional data for customised error codes|
+|» meta|[MetaError](#schemacdr-telco-apimetaerror)|optional|Additional data for customised error codes.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproduct">TelcoProduct</h3>
 <p id="tocStelcoproduct" class="orig-anchor"></p>
@@ -4142,24 +4142,24 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|productId|[ASCIIString](#common-field-types)|mandatory|The ID of the specific product|
-|effectiveFrom|[DateTimeString](#common-field-types)|optional|The date and time from which this product is effective (ie. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate|
-|effectiveTo|[DateTimeString](#common-field-types)|optional|The date and time at which this product will be retired and will no longer be offered. Used to enable the managed deprecation of plans|
-|lastUpdated|[DateTimeString](#common-field-types)|optional|The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered)|
-|displayName|string|optional|The display name of the product|
-|description|string|optional|A description of the product|
-|type|[Enum](#common-field-types)|mandatory|The type of product. [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or BROADBAND fixed internet service|
-|purpose|[Enum](#common-field-types)|optional|The purpose type of the product. If absent, then the value PERSONAL is assumed|
-|billingType|[Enum](#common-field-types)|mandatory|The type of product|
-|contract|[TelcoContract](#schemacdr-telco-apitelcocontract)|conditional|Summary of the contract details. Mandatory if the billing type is POST_PAID and a contract agreement is required with the service provider for the plan|
-|bundle|boolean|optional|Required if part of a bundle. If not present FALSE is assumed|
-|brand|string|mandatory|The ID of the brand under which this product is offered|
-|brandName|string|mandatory|The display name of the brand under which this product is offered|
-|pricing|[[TelcoProductPricing](#schemacdr-telco-apitelcoproductpricing)]|mandatory|List of pricing details for the product plan|
-|thirdPartyAgentId|string|optional|The ID of the Third Party through which this product may be originated|
-|thirdPartyAgentName|string|optional|The display name of the Third Party through which this product may be originated|
-|applicationUri|[URIString](#common-field-types)|optional|A link to an application web page where this plan can be applied for|
-|additionalInformation|[TelcoAdditionalInformation](#schemacdr-telco-apitelcoadditionalinformation)|optional|Object that contains links to additional information on specific topics|
+|productId|[ASCIIString](#common-field-types)|mandatory|The ID of the specific product.|
+|effectiveFrom|[DateTimeString](#common-field-types)|optional|The date and time from which this product is effective (i.e. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate.|
+|effectiveTo|[DateTimeString](#common-field-types)|optional|The date and time at which this product will be retired and will no longer be offered. Used to enable the managed deprecation of plans.|
+|lastUpdated|[DateTimeString](#common-field-types)|optional|The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered).|
+|displayName|string|optional|The display name of the product.|
+|description|string|optional|A description of the product.|
+|type|[Enum](#common-field-types)|mandatory|The type of product. [`MOBILE`](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or `BROADBAND` fixed internet service.|
+|purpose|[Enum](#common-field-types)|optional|The purpose type of the product. If absent, then the value `PERSONAL` is assumed.|
+|billingType|[Enum](#common-field-types)|mandatory|The type of product.|
+|contract|[TelcoContract](#schemacdr-telco-apitelcocontract)|conditional|Summary of the contract details. Mandatory if the billing type is `POST_PAID` and a contract agreement is required with the service provider for the plan.|
+|bundle|boolean|optional|Required if part of a bundle. If not present `false` is assumed.|
+|brand|string|mandatory|The ID of the brand under which this product is offered.|
+|brandName|string|mandatory|The display name of the brand under which this product is offered.|
+|pricing|[[TelcoProductPricing](#schemacdr-telco-apitelcoproductpricing)]|mandatory|List of pricing details for the product plan.|
+|thirdPartyAgentId|string|optional|The ID of the Third-Party through which this product may be originated.|
+|thirdPartyAgentName|string|optional|The display name of the Third-Party through which this product may be originated.|
+|applicationUri|[URIString](#common-field-types)|optional|A link to an application web page where this plan can be applied for.|
+|additionalInformation|[TelcoAdditionalInformation](#schemacdr-telco-apitelcoadditionalinformation)|optional|Object that contains links to additional information on specific topics.|
 
 <h4 id="cdr-telco-api_telcoproduct_enumerated-values-main">Enumerated Values</h4>
 
@@ -4192,16 +4192,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Summary of the contract details. Mandatory if the billing type is POST_PAID and a contract agreement is required with the service provider for the plan*
+*Summary of the contract details. Mandatory if the billing type is `POST_PAID` and a contract agreement is required with the service provider for the plan.*
 
 <h3 id="cdr-telco-api_telcocontract_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|name|string|mandatory|Name of the contract|
-|description|string|optional|Description of the contract|
-|duration|[Number](#common-field-types)|mandatory|Minimum contract duration in months|
-|contractUri|[URIString](#common-field-types)|optional|URI of the contract conditions|
+|name|string|mandatory|Name of the contract.|
+|description|string|optional|Description of the contract.|
+|duration|[Number](#common-field-types)|mandatory|Minimum contract duration in months.|
+|contractUri|[URIString](#common-field-types)|optional|URI of the contract conditions.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicedetail">TelcoServiceDetail</h3>
 <p id="tocStelcoservicedetail" class="orig-anchor"></p>
@@ -4221,7 +4221,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|serviceId|string|mandatory|The tokenised ID of the service identifier for use in the CDR APIs. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). Created according to the CDR rules for [CDR ID permanence](#id-permanence)|
+|serviceId|string|mandatory|The tokenised ID of the service identifier for use in the CDR APIs. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). Created according to the CDR rules for [CDR ID permanence](#id-permanence).|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountusage">TelcoAccountUsage</h3>
 <p id="tocStelcoaccountusage" class="orig-anchor"></p>
@@ -4295,8 +4295,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|string|mandatory|Tokenised ID of the account. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|services|[[TelcoAccountUsageServices](#schemacdr-telco-apitelcoaccountusageservices)]|mandatory|List of services that are part of the account|
+|accountId|string|mandatory|Tokenised ID of the account. In accordance with [CDR ID permanence](#id-permanence) requirements.|
+|services|[[TelcoAccountUsageServices](#schemacdr-telco-apitelcoaccountusageservices)]|mandatory|List of services that are part of the account.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoserviceusage">TelcoServiceUsage</h3>
 <p id="tocStelcoserviceusage" class="orig-anchor"></p>
@@ -4363,12 +4363,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|serviceId|string|mandatory|Tokenised ID of the service identifier. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). To be created in accordance with [CDR ID permanence](#id-permanence) requirements|
-|displayName|string|optional|Optional description of the service used for display purposes|
-|phoneNumber|string|conditional|Required if the service includes a phone number|
-|startDate|[DateTimeString](#common-field-types)|mandatory|Date when the usage period started|
-|endDate|[DateTimeString](#common-field-types)|optional|Date when the usage period ends|
-|usage|[TelcoUsage](#schemacdr-telco-apitelcousage)|optional|Object containing usage summary|
+|serviceId|string|mandatory|Tokenised ID of the service identifier. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). To be created in accordance with [CDR ID permanence](#id-permanence) requirements.|
+|displayName|string|optional|Optional description of the service used for display purposes.|
+|phoneNumber|string|conditional|Required if the service includes a phone number.|
+|startDate|[DateTimeString](#common-field-types)|mandatory|Date when the usage period started.|
+|endDate|[DateTimeString](#common-field-types)|optional|Date when the usage period ends.|
+|usage|[TelcoUsage](#schemacdr-telco-apitelcousage)|optional|Object containing usage summary.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountbase">TelcoAccountBase</h3>
 <p id="tocStelcoaccountbase" class="orig-anchor"></p>
@@ -4394,13 +4394,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|string|optional|The ID of the account. To be created in accordance with [CDR ID permanence](#id-permanence) requirements|
-|accountNumber|string|conditional|Masked identifier of the account as defined by the data holder. This must be the value presented on physical statements (required if it exists) and must not be used for the value of the accountId|
-|displayName|string|optional|An optional display name for the account if one exists or can be derived. The content of this field is at the discretion of the data holder|
-|creationDate|[DateString](#common-field-types)|optional|The date that the account was created or opened. Mandatory if openStatus is OPEN|
-|lastUpdated|[DateString](#common-field-types)|optional|The date and time which the account was last updated|
-|brand|string|optional|The retail name of the brand|
-|openStatus|[Enum](#common-field-types)|optional|Open or closed status for the account. If not present then OPEN is assumed|
+|accountId|string|optional|The ID of the account. To be created in accordance with [CDR ID permanence](#id-permanence) requirements.|
+|accountNumber|string|conditional|Masked identifier of the account as defined by the data holder. This must be the value presented on physical statements (required if it exists) and must not be used for the value of the _accountId_.|
+|displayName|string|optional|An optional display name for the account if one exists or can be derived. The content of this field is at the discretion of the data holder.|
+|creationDate|[DateString](#common-field-types)|optional|The date that the account was created or opened. Mandatory if _openStatus_ is `OPEN`.|
+|lastUpdated|[DateString](#common-field-types)|optional|The date and time which the account was last updated.|
+|brand|string|optional|The retail name of the brand.|
+|openStatus|[Enum](#common-field-types)|optional|Open or closed status for the account. If not present then `OPEN` is assumed.|
 
 <h4 id="cdr-telco-api_telcoaccountbase_enumerated-values-main">Enumerated Values</h4>
 
@@ -4456,7 +4456,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[TelcoAccount](#schemacdr-telco-apitelcoaccount)|mandatory|The array of plans containing services and associated plan details|
+|*anonymous*|[TelcoAccount](#schemacdr-telco-apitelcoaccount)|mandatory|The array of plans containing services and associated plan details.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountdetailresponsedata">TelcoAccountDetailResponseData</h3>
 <p id="tocStelcoaccountdetailresponsedata" class="orig-anchor"></p>
@@ -4516,7 +4516,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[TelcoAccountDetail](#schemacdr-telco-apitelcoaccountdetail)|mandatory|The array of plans containing services and associated plan details|
+|*anonymous*|[TelcoAccountDetail](#schemacdr-telco-apitelcoaccountdetail)|mandatory|The array of plans containing services and associated plan details.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentschedule">TelcoPaymentSchedule</h3>
 <p id="tocStelcopaymentschedule" class="orig-anchor"></p>
@@ -4560,12 +4560,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)|
-|paymentScheduleUType|[Enum](#common-field-types)|mandatory|The type of object present in this response|
-|cardDebit|[TelcoPaymentScheduleCardDebit](#schemacdr-telco-apitelcopaymentschedulecarddebit)|conditional|Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit|
-|directDebit|[TelcoPaymentScheduleDirectDebit](#schemacdr-telco-apitelcopaymentscheduledirectdebit)|conditional|Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit|
-|digitalWallet|[TelcoPaymentScheduleDigitalWallet](#schemacdr-telco-apitelcopaymentscheduledigitalwallet)|conditional|Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet|
-|manualPayment|[TelcoPaymentScheduleManualPayment](#schemacdr-telco-apitelcopaymentschedulemanualpayment)|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment|
+|amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios).|
+|paymentScheduleUType|[Enum](#common-field-types)|mandatory|The type of object present in this response.|
+|cardDebit|[TelcoPaymentScheduleCardDebit](#schemacdr-telco-apitelcopaymentschedulecarddebit)|conditional|Represents a regular credit card payment schedule. Mandatory if _paymentScheduleUType_ is set to `cardDebit`.|
+|directDebit|[TelcoPaymentScheduleDirectDebit](#schemacdr-telco-apitelcopaymentscheduledirectdebit)|conditional|Represents a regular direct debit from a specified bank account. Mandatory if _paymentScheduleUType_ is set to `directDebit`.|
+|digitalWallet|[TelcoPaymentScheduleDigitalWallet](#schemacdr-telco-apitelcopaymentscheduledigitalwallet)|conditional|Represents a regular payment from a digital wallet. Mandatory if _paymentScheduleUType_ is set to `digitalWallet`.|
+|manualPayment|[TelcoPaymentScheduleManualPayment](#schemacdr-telco-apitelcopaymentschedulemanualpayment)|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if _paymentScheduleUType_ is set to `manualPayment`.|
 
 <h4 id="cdr-telco-api_telcopaymentschedule_enumerated-values-main">Enumerated Values</h4>
 
@@ -4605,16 +4605,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|type|[Enum](#common-field-types)|mandatory|The concession type|
-|displayName|string|mandatory|The display name of the concession|
-|additionalInfo|string|optional|Display text providing more information on the concession|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the concession|
-|startDate|[DateString](#common-field-types)|mandatory|Optional start date for the application of the concession|
-|endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the concession|
-|discountFrequency|[ExternalRef](#common-field-types)|conditional|Conditional attribute for frequency at which a concession is applied. Required if type is FIXED_AMOUNT or FIXED_PERCENTAGE. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|amount|[AmountString](#common-field-types)|conditional|Conditional attribute for the amount of discount for the concession- required if type is FIXED_AMOUNT|
-|percentage|[RateString](#common-field-types)|conditional|Conditional attribute for the percentage of discount of concession - required if type is FIXED_PERCENTAGE|
-|appliedTo|[[Enum](#common-field-types)]|optional|Array of ENUM's to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed|
+|type|[Enum](#common-field-types)|mandatory|The concession type.|
+|displayName|string|mandatory|The display name of the concession.|
+|additionalInfo|string|optional|Display text providing more information on the concession.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the concession.|
+|startDate|[DateString](#common-field-types)|mandatory|Optional start date for the application of the concession.|
+|endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the concession.|
+|discountFrequency|[ExternalRef](#common-field-types)|conditional|Conditional attribute for frequency at which a concession is applied. Required if _type_ is `FIXED_AMOUNT` or `FIXED_PERCENTAGE`. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|amount|[AmountString](#common-field-types)|conditional|Conditional attribute for the amount of discount for the concession - required if _type_ is `FIXED_AMOUNT`.|
+|percentage|[RateString](#common-field-types)|conditional|Conditional attribute for the percentage of discount of concession - required if _type_ is `FIXED_PERCENTAGE`.|
+|appliedTo|[[Enum](#common-field-types)]|optional|Array of ENUM's to specify what the concession applies to. Multiple ENUM values can be provided. If absent, `USAGE` is assumed.|
 
 <h4 id="cdr-telco-api_telcoconcession_enumerated-values-main">Enumerated Values</h4>
 
@@ -4717,19 +4717,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|string|mandatory|The ID of the account for which the invoice was issued. accountId must comply in accordance with [CDR ID permanence](#id-permanence)|
-|invoiceNumber|string|mandatory|The number assigned to this invoice by the telco Retailer|
-|issueDate|[DateString](#common-field-types)|mandatory|The date that the invoice was actually issued (as opposed to generated or calculated)|
-|dueDate|[DateString](#common-field-types)|optional|The date that the invoice is due to be paid|
-|period|[TelcoInvoicePeriod](#schemacdr-telco-apitelcoinvoiceperiod)|conditional|Object containing the start and end date for the period covered by the invoice. Mandatory if any usage based charges are included in the invoice|
-|invoiceAmount|[AmountString](#common-field-types)|optional|The net amount due for this invoice regardless of previous balance|
-|gstAmount|[AmountString](#common-field-types)|optional|The total GST amount for this invoice. If absent then zero is assumed|
-|payOnTimeDiscount|[TelcoInvoicePayOnTimeDiscount](#schemacdr-telco-apitelcoinvoicepayontimediscount)|optional|A discount for on time payment|
-|balanceAtIssue|[AmountString](#common-field-types)|mandatory|The account balance at the time the invoice was issued|
-|services|[string]|mandatory|An array of service IDs to which this invoice applies. May be empty if the invoice contains no usage related charges|
-|accountCharges|[TelcoInvoiceAccountCharges](#schemacdr-telco-apitelcoinvoiceaccountcharges)|optional|Object contain charges and credits related to usage|
-|accountUsage|[TelcoUsage](#schemacdr-telco-apitelcousage)|optional|Object containing usage summary|
-|paymentStatus|[Enum](#common-field-types)|mandatory|Indicator of the payment status for the invoice|
+|accountId|string|mandatory|The ID of the account for which the invoice was issued. _accountId_ must comply in accordance with [CDR ID permanence](#id-permanence) requirements.|
+|invoiceNumber|string|mandatory|The number assigned to this invoice by the telco Retailer.|
+|issueDate|[DateString](#common-field-types)|mandatory|The date that the invoice was actually issued (as opposed to generated or calculated).|
+|dueDate|[DateString](#common-field-types)|optional|The date that the invoice is due to be paid.|
+|period|[TelcoInvoicePeriod](#schemacdr-telco-apitelcoinvoiceperiod)|conditional|Object containing the start and end date for the period covered by the invoice. Mandatory if any usage based charges are included in the invoice.|
+|invoiceAmount|[AmountString](#common-field-types)|optional|The net amount due for this invoice regardless of previous balance.|
+|gstAmount|[AmountString](#common-field-types)|optional|The total GST amount for this invoice. If absent then zero is assumed.|
+|payOnTimeDiscount|[TelcoInvoicePayOnTimeDiscount](#schemacdr-telco-apitelcoinvoicepayontimediscount)|optional|A discount for on time payment.|
+|balanceAtIssue|[AmountString](#common-field-types)|mandatory|The account balance at the time the invoice was issued.|
+|services|[string]|mandatory|An array of service IDs to which this invoice applies. May be empty if the invoice contains no usage related charges.|
+|accountCharges|[TelcoInvoiceAccountCharges](#schemacdr-telco-apitelcoinvoiceaccountcharges)|optional|Object contain charges and credits related to usage.|
+|accountUsage|[TelcoUsage](#schemacdr-telco-apitelcousage)|optional|Object containing usage summary.|
+|paymentStatus|[Enum](#common-field-types)|mandatory|Indicator of the payment status for the invoice.|
 
 <h4 id="cdr-telco-api_telcoinvoice_enumerated-values-main">Enumerated Values</h4>
 
@@ -4793,15 +4793,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Object containing usage summary*
+*Object containing usage summary.*
 
 <h3 id="cdr-telco-api_telcousage_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[TelcoUsageData](#schemacdr-telco-apitelcousagedata)|conditional|Summary of data usage|
-|voice|[TelcoUsageVoice](#schemacdr-telco-apitelcousagevoice)|conditional|Summary of voice calls. Required if voice calls are included in product plan|
-|messaging|[TelcoUsageMessaging](#schemacdr-telco-apitelcousagemessaging)|conditional|Summary of messaging. Required if messaging services is included in the product plan|
+|data|[TelcoUsageData](#schemacdr-telco-apitelcousagedata)|conditional|Summary of data usage.|
+|voice|[TelcoUsageVoice](#schemacdr-telco-apitelcousagevoice)|conditional|Summary of voice calls. Required if voice calls are included in product plan.|
+|messaging|[TelcoUsageMessaging](#schemacdr-telco-apitelcousagemessaging)|conditional|Summary of messaging. Required if messaging services is included in the product plan.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceaccountcharges">TelcoInvoiceAccountCharges</h3>
 <p id="tocStelcoinvoiceaccountcharges" class="orig-anchor"></p>
@@ -4825,17 +4825,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Object contain charges and credits related to usage*
+*Object contain charges and credits related to usage.*
 
 <h3 id="cdr-telco-api_telcoinvoiceaccountcharges_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)|
-|totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from usage for the period covered by the invoice (exclusive of GST)|
-|totalDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice|
-|otherCharges|[TelcoInvoiceAccountChargesOtherCharges](#schemacdr-telco-apitelcoinvoiceaccountchargesothercharges)|optional|Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST)|
-|totalGst|[AmountString](#common-field-types)|optional|The total GST for all account level charges. If absent then zero is assumed|
+|totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice (exclusive of GST).|
+|totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from usage for the period covered by the invoice (exclusive of GST).|
+|totalDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice.|
+|otherCharges|[TelcoInvoiceAccountChargesOtherCharges](#schemacdr-telco-apitelcoinvoiceaccountchargesothercharges)|optional|Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST).|
+|totalGst|[AmountString](#common-field-types)|optional|The total GST for all account level charges. If absent then zero is assumed.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingtransaction">TelcoBillingTransaction</h3>
 <p id="tocStelcobillingtransaction" class="orig-anchor"></p>
@@ -4897,10 +4897,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|string|mandatory|The ID of the account for which the transaction occurred. accountId must comply in accordance with [CDR ID permanence](#id-permanence)|
-|executionDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the transaction occurred|
-|gst|[AmountString](#common-field-types)|optional|The GST incurred in the transaction. Should not be included for credits or payments. If absent zero is assumed|
-|transactionUType|[Enum](#common-field-types)|mandatory|Indicator of the type of transaction object present in this record|
+|accountId|string|mandatory|The ID of the account for which the transaction occurred. _accountId_ must comply in accordance with [CDR ID permanence](#id-permanence) requirements.|
+|executionDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the transaction occurred.|
+|gst|[AmountString](#common-field-types)|optional|The GST incurred in the transaction. Should not be included for credits or payments. If absent zero is assumed.|
+|transactionUType|[Enum](#common-field-types)|mandatory|Indicator of the type of transaction object present in this record.|
 |account|[TelcoBillingAccountTransaction](#schemacdr-telco-apitelcobillingaccounttransaction)|optional|none|
 |onceOff|[TelcoBillingOnceOffTransaction](#schemacdr-telco-apitelcobillingonceofftransaction)|conditional|none|
 |otherCharges|[TelcoBillingOtherTransaction](#schemacdr-telco-apitelcobillingothertransaction)|optional|none|
@@ -4944,13 +4944,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|serviceIds|string|optional|Array list of services identifiers to which this transaction applies if any. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements|
-|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|description|string|optional|Optional description of the transaction that can be used for display purposes|
-|startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period starts|
-|endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period ends|
-|amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied. A negative value indicates a credit|
-|adjustments|[[TelcoBillingAccountTransactionAdjustments](#schemacdr-telco-apitelcobillingaccounttransactionadjustments)]|optional|Optional array of adjustments arising for this transaction|
+|serviceIds|string|optional|Array list of service identifiers to which this transaction applies if any. E.g., a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements.|
+|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued.|
+|description|string|optional|Optional description of the transaction that can be used for display purposes.|
+|startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period starts.|
+|endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period ends.|
+|amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied. A negative value indicates a credit.|
+|adjustments|[[TelcoBillingAccountTransactionAdjustments](#schemacdr-telco-apitelcobillingaccounttransactionadjustments)]|optional|Optional array of adjustments arising for this transaction.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingonceofftransaction">TelcoBillingOnceOffTransaction</h3>
 <p id="tocStelcobillingonceofftransaction" class="orig-anchor"></p>
@@ -4973,10 +4973,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|serviceId|string|optional|The ID of the service identifier to which this transaction applies if any. E.g a [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements|
-|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|amount|[AmountString](#common-field-types)|mandatory|The amount of the charge or credit. A positive value indicates a charge and a negative value indicates a credit|
-|description|string|mandatory|A free text description of the item|
+|serviceId|string|optional|The ID of the service identifier to which this transaction applies if any. E.g a [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements.|
+|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued.|
+|amount|[AmountString](#common-field-types)|mandatory|The amount of the charge or credit. A positive value indicates a charge and a negative value indicates a credit.|
+|description|string|mandatory|A free text description of the item.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingothertransaction">TelcoBillingOtherTransaction</h3>
 <p id="tocStelcobillingothertransaction" class="orig-anchor"></p>
@@ -5008,14 +5008,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|serviceId|string|optional|The service identifier to which this transaction applies if any. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements|
-|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|startDate|[DateString](#common-field-types)|optional|Optional start date for the application of the charge|
-|endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the charge|
-|type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be OTHER if absent|
-|amount|[AmountString](#common-field-types)|mandatory|The amount of the charge|
-|description|string|mandatory|A free text description of the item|
-|adjustments|[[TelcoBillingAccountTransactionAdjustments](#schemacdr-telco-apitelcobillingaccounttransactionadjustments)]|optional|Optional array of adjustments arising for this transaction|
+|serviceId|string|optional|The service identifier to which this transaction applies if any. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements.|
+|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued.|
+|startDate|[DateString](#common-field-types)|optional|Optional start date for the application of the charge.|
+|endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the charge.|
+|type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be `OTHER` if absent.|
+|amount|[AmountString](#common-field-types)|mandatory|The amount of the charge.|
+|description|string|mandatory|A free text description of the item.|
+|adjustments|[[TelcoBillingAccountTransactionAdjustments](#schemacdr-telco-apitelcobillingaccounttransactionadjustments)]|optional|Optional array of adjustments arising for this transaction.|
 
 <h4 id="cdr-telco-api_telcobillingothertransaction_enumerated-values-main">Enumerated Values</h4>
 
@@ -5046,8 +5046,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|amount|[AmountString](#common-field-types)|mandatory|The amount paid|
-|method|[Enum](#common-field-types)|mandatory|The method of payment|
+|amount|[AmountString](#common-field-types)|mandatory|The amount paid.|
+|method|[Enum](#common-field-types)|mandatory|The method of payment.|
 
 <h4 id="cdr-telco-api_telcobillingpaymenttransaction_enumerated-values-main">Enumerated Values</h4>
 
@@ -5136,13 +5136,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Object containing account service usage summary*
+*Object containing account service usage summary.*
 
 <h3 id="cdr-telco-api_telcobalance_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|services|[allOf]|mandatory|Summary of balances|
+|services|[allOf]|mandatory|Summary of balances.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalance">TelcoServiceBalance</h3>
 <p id="tocStelcoservicebalance" class="orig-anchor"></p>
@@ -5214,18 +5214,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Telco balances for a service*
+*Telco balances for a service.*
 
 <h3 id="cdr-telco-api_telcoservicebalance_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|serviceId|string|optional|The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements|
-|displayName|string|optional|Optional description of the service used for display purposes|
-|phoneNumber|string|conditional|Required if the service includes a phone number|
-|startDate|[DateTimeString](#common-field-types)|optional|Date when the balance period started|
-|endDate|[DateTimeString](#common-field-types)|optional|Date when the balance period ends|
-|balance|[TelcoServiceBalances](#schemacdr-telco-apitelcoservicebalances)|optional|A summary of Service balances|
+|serviceId|string|optional|The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements.|
+|displayName|string|optional|Optional description of the service used for display purposes.|
+|phoneNumber|string|conditional|Required if the service includes a phone number.|
+|startDate|[DateTimeString](#common-field-types)|optional|Date when the balance period started.|
+|endDate|[DateTimeString](#common-field-types)|optional|Date when the balance period ends.|
+|balance|[TelcoServiceBalances](#schemacdr-telco-apitelcoservicebalances)|optional|A summary of Service balances.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoplantype">TelcoPlanType</h3>
 <p id="tocStelcoplantype" class="orig-anchor"></p>
@@ -5239,13 +5239,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 "METERED"
 ```
 
-*Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported*
+*Plan type for this feature.<ul><li>`METERED`: A plan is charged by usage for the feature<li>`UNMETERED`: A plan with no limits for a feature<li>`LIMITED`: Where plan limit inclusions apply<li>`UNSUPPORTED`: Feature is not supported.</ul>*
 
 <h3 id="cdr-telco-api_telcoplantype_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|[Enum](#common-field-types)|mandatory|Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported|
+|*anonymous*|[Enum](#common-field-types)|mandatory|Plan type for this feature.<ul><li>`METERED`: A plan is charged by usage for the feature<li>`UNMETERED`: A plan with no limits for a feature<li>`LIMITED`: Where plan limit inclusions apply<li>`UNSUPPORTED`: Feature is not supported.</ul>|
 
 <h4 id="cdr-telco-api_telcoplantype_enumerated-values-main">Enumerated Values</h4>
 
@@ -5308,9 +5308,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|addressUType|[Enum](#common-field-types)|mandatory|The type of address object present|
-|simple|[CommonSimpleAddress](#schemacdr-telco-apicommonsimpleaddress)|conditional|Required if addressUType is set to simple|
-|paf|[CommonPAFAddress](#schemacdr-telco-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf|
+|addressUType|[Enum](#common-field-types)|mandatory|The type of address object present.|
+|simple|[CommonSimpleAddress](#schemacdr-telco-apicommonsimpleaddress)|conditional|Required if _addressUType_ is set to `simple`.|
+|paf|[CommonPAFAddress](#schemacdr-telco-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if _addressUType_ is set to `paf`.|
 
 <h4 id="cdr-telco-api_commonphysicaladdress_enumerated-values-main">Enumerated Values</h4>
 
@@ -5340,20 +5340,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Required if addressUType is set to simple*
+*Required if _addressUType_ is set to `simple`.*
 
 <h3 id="cdr-telco-api_commonsimpleaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|mailingName|string|optional|Name of the individual or business formatted for inclusion in an address used for physical mail|
-|addressLine1|string|mandatory|First line of the standard address object|
-|addressLine2|string|optional|Second line of the standard address object|
-|addressLine3|string|optional|Third line of the standard address object|
-|postcode|string|conditional|Mandatory for Australian addresses|
-|city|string|mandatory|Name of the city or locality|
-|state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
-|country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
+|mailingName|string|optional|Name of the individual or business formatted for inclusion in an address used for physical mail.|
+|addressLine1|string|mandatory|First line of the standard address object.|
+|addressLine2|string|optional|Second line of the standard address object.|
+|addressLine3|string|optional|Third line of the standard address object.|
+|postcode|string|conditional|Mandatory for Australian addresses.|
+|city|string|mandatory|Name of the city or locality.|
+|state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. `NSW`, `QLD`, `VIC`, `NT`, `WA`, `SA`, `TAS`, `ACT`, `AAT`.|
+|country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (`AUS`) is assumed if country is not present.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
 <p id="tocScommonpafaddress" class="orig-anchor"></p>
@@ -5390,34 +5390,34 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf*
+*Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if _addressUType_ is set to `paf`.*
 
 <h3 id="cdr-telco-api_commonpafaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|dpid|string|optional|Unique identifier for an address as defined by Australia Post. Also known as Delivery Point Identifier|
-|thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address)|
-|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated|
-|thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
-|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated|
-|flatUnitType|string|optional|Type of flat or unit for the address|
-|flatUnitNumber|string|optional|Unit number (including suffix, if applicable)|
-|floorLevelType|string|optional|Type of floor or level for the address|
-|floorLevelNumber|string|optional|Floor or level number (including alpha characters)|
-|lotNumber|string|optional|Allotment number for the address|
-|buildingName1|string|optional|Building/Property name 1|
-|buildingName2|string|optional|Building/Property name 2|
-|streetName|string|optional|The name of the street|
-|streetType|string|optional|The street type. Valid enumeration defined by Australia Post PAF code file|
-|streetSuffix|string|optional|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
-|postalDeliveryType|string|optional|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
-|postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|Postal delivery number if the address is a postal delivery type|
-|postalDeliveryNumberPrefix|string|optional|Postal delivery number prefix related to the postal delivery number|
-|postalDeliveryNumberSuffix|string|optional|Postal delivery number suffix related to the postal delivery number|
-|localityName|string|mandatory|Full name of locality|
-|postcode|string|mandatory|Postcode for the locality|
-|state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
+|dpid|string|optional|Unique identifier for an address as defined by Australia Post. Also known as Delivery Point Identifier.|
+|thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address).|
+|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_ is populated.|
+|thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address e.g., 23-25).|
+|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant is _thoroughfareNumber2_ is populated.|
+|flatUnitType|string|optional|Type of flat or unit for the address.|
+|flatUnitNumber|string|optional|Unit number (including suffix, if applicable).|
+|floorLevelType|string|optional|Type of floor or level for the address.|
+|floorLevelNumber|string|optional|Floor or level number (including alpha characters).|
+|lotNumber|string|optional|Allotment number for the address.|
+|buildingName1|string|optional|Building/Property name 1.|
+|buildingName2|string|optional|Building/Property name 2.|
+|streetName|string|optional|The name of the street.|
+|streetType|string|optional|The street type. Valid enumeration defined by Australia Post PAF code file.|
+|streetSuffix|string|optional|The street type suffix. Valid enumeration defined by Australia Post PAF code file.|
+|postalDeliveryType|string|optional|Postal delivery type. (e.g., PO BOX). Valid enumeration defined by Australia Post PAF code file.|
+|postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|Postal delivery number if the address is a postal delivery type.|
+|postalDeliveryNumberPrefix|string|optional|Postal delivery number prefix related to the postal delivery number.|
+|postalDeliveryNumberSuffix|string|optional|Postal delivery number suffix related to the postal delivery number.|
+|localityName|string|mandatory|Full name of locality.|
+|postcode|string|mandatory|Postcode for the locality.|
+|state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). `NSW`, `QLD`, `VIC`, `NT`, `WA`, `SA`, `TAS`, `ACT`, `AAT`.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSlinks">Links</h3>
 <p id="tocSlinks" class="orig-anchor"></p>
@@ -5437,7 +5437,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSmeta">Meta</h3>
 <p id="tocSmeta" class="orig-anchor"></p>
@@ -5477,11 +5477,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
-|prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
-|next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
-|last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document.|
+|first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page.|
+|prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page.|
+|next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page.|
+|last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSmetapaginated">MetaPaginated</h3>
 <p id="tocSmetapaginated" class="orig-anchor"></p>
@@ -5562,7 +5562,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|plans|[[TelcoProduct](#schemacdr-telco-apitelcoproduct)]|mandatory|Array of Products|
+|plans|[[TelcoProduct](#schemacdr-telco-apitelcoproduct)]|mandatory|Array of Products.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagelistresponse">TelcoUsageListResponse</h3>
 <p id="tocStelcousagelistresponse" class="orig-anchor"></p>
@@ -5726,7 +5726,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accounts|[[TelcoAccountUsage](#schemacdr-telco-apitelcoaccountusage)]|mandatory|Array of usage on accounts|
+|accounts|[[TelcoAccountUsage](#schemacdr-telco-apitelcoaccountusage)]|mandatory|Array of usage on accounts.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountlistresponsedata">TelcoAccountListResponseData</h3>
 <p id="tocStelcoaccountlistresponsedata" class="orig-anchor"></p>
@@ -5771,7 +5771,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accounts|[[TelcoAccountResponseData](#schemacdr-telco-apitelcoaccountresponsedata)]|mandatory|Array of accounts|
+|accounts|[[TelcoAccountResponseData](#schemacdr-telco-apitelcoaccountresponsedata)]|mandatory|Array of accounts.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentscheduleresponsedata">TelcoPaymentScheduleResponseData</h3>
 <p id="tocStelcopaymentscheduleresponsedata" class="orig-anchor"></p>
@@ -5819,7 +5819,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|paymentSchedules|[[TelcoPaymentSchedule](#schemacdr-telco-apitelcopaymentschedule)]|mandatory|Array may be empty if no payment schedule exist|
+|paymentSchedules|[[TelcoPaymentSchedule](#schemacdr-telco-apitelcopaymentschedule)]|mandatory|Array may be empty if no payment schedule exist.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoconcessionsresponsedata">TelcoConcessionsResponseData</h3>
 <p id="tocStelcoconcessionsresponsedata" class="orig-anchor"></p>
@@ -5854,7 +5854,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|concessions|[[TelcoConcession](#schemacdr-telco-apitelcoconcession)]|mandatory|Array may be empty if no concessions exist|
+|concessions|[[TelcoConcession](#schemacdr-telco-apitelcoconcession)]|mandatory|Array may be empty if no concessions exist.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalancelistresponsedata">TelcoBalanceListResponseData</h3>
 <p id="tocStelcobalancelistresponsedata" class="orig-anchor"></p>
@@ -5941,7 +5941,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|balances|[[TelcoBalanceResponseData](#schemacdr-telco-apitelcobalanceresponsedata)]|mandatory|Array of account balances|
+|balances|[[TelcoBalanceResponseData](#schemacdr-telco-apitelcobalanceresponsedata)]|mandatory|Array of account balances.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalanceresponsedata">TelcoBalanceResponseData</h3>
 <p id="tocStelcobalanceresponsedata" class="orig-anchor"></p>
@@ -6024,8 +6024,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|string|optional|The ID of the account. In accordance with [CDR ID permanence](#id-permanence) requirements|
-|balance|[TelcoBalance](#schemacdr-telco-apitelcobalance)|optional|Object containing account service usage summary|
+|accountId|string|optional|The ID of the account. In accordance with [CDR ID permanence](#id-permanence) requirements.|
+|balance|[TelcoBalance](#schemacdr-telco-apitelcobalance)|optional|Object containing account service usage summary.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceresponse">TelcoInvoiceResponse</h3>
 <p id="tocStelcoinvoiceresponse" class="orig-anchor"></p>
@@ -6339,7 +6339,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|invoices|[[TelcoInvoice](#schemacdr-telco-apitelcoinvoice)]|mandatory|Array of invoices sorted by issue date in descending order|
+|invoices|[[TelcoInvoice](#schemacdr-telco-apitelcoinvoice)]|mandatory|Array of invoices sorted by issue date in descending order.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcotransactionlistresponsedata">TelcoTransactionListResponseData</h3>
 <p id="tocStelcotransactionlistresponsedata" class="orig-anchor"></p>
@@ -6405,7 +6405,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|transactions|[[TelcoBillingTransaction](#schemacdr-telco-apitelcobillingtransaction)]|mandatory|Array of transactions sorted by date and time in descending order|
+|transactions|[[TelcoBillingTransaction](#schemacdr-telco-apitelcobillingtransaction)]|mandatory|Array of transactions sorted by date and time in descending order.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductpricing">TelcoProductPricing</h3>
 <p id="tocStelcoproductpricing" class="orig-anchor"></p>
@@ -6428,10 +6428,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|name|string|mandatory|The display name of the pricing|
-|description|string|mandatory|The description of the pricing|
-|period|[ExternalRef](#common-field-types)|optional|The duration that occurs on a pricing schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|amount|[AmountString](#common-field-types)|mandatory|The amount charged for the duration period|
+|name|string|mandatory|The display name of the pricing.|
+|description|string|mandatory|The description of the pricing.|
+|period|[ExternalRef](#common-field-types)|optional|The duration that occurs on a pricing schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|amount|[AmountString](#common-field-types)|mandatory|The amount charged for the duration period.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoadditionalinformation">TelcoAdditionalInformation</h3>
 <p id="tocStelcoadditionalinformation" class="orig-anchor"></p>
@@ -6451,17 +6451,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Object that contains links to additional information on specific topics*
+*Object that contains links to additional information on specific topics.*
 
 <h3 id="cdr-telco-api_telcoadditionalinformation_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|overviewUri|[URIString](#common-field-types)|optional|A link to a general overview of the plan|
-|termsUri|[URIString](#common-field-types)|optional|A link to terms and conditions for the plan|
-|eligibilityUri|[URIString](#common-field-types)|optional|A link to detail on eligibility criteria for the plan|
-|pricingUri|[URIString](#common-field-types)|optional|A link to detail on pricing for the plan|
-|bundleUri|[URIString](#common-field-types)|optional|A link to detail on bundles that this plan can be a part of|
+|overviewUri|[URIString](#common-field-types)|optional|A link to a general overview of the plan.|
+|termsUri|[URIString](#common-field-types)|optional|A link to terms and conditions for the plan.|
+|eligibilityUri|[URIString](#common-field-types)|optional|A link to detail on eligibility criteria for the plan.|
+|pricingUri|[URIString](#common-field-types)|optional|A link to detail on pricing for the plan.|
+|bundleUri|[URIString](#common-field-types)|optional|A link to detail on bundles that this plan can be a part of.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailmeteringcharges">TelcoProductDetailMeteringCharges</h3>
 <p id="tocStelcoproductdetailmeteringcharges" class="orig-anchor"></p>
@@ -6485,11 +6485,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|mandatory|Display name of the charge|
-|description|string|optional|Description of the charge|
-|minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
-|maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
-|period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|displayName|string|mandatory|Display name of the charge.|
+|description|string|optional|Description of the charge.|
+|minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified.|
+|maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range.|
+|period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailfeature">TelcoProductDetailFeature</h3>
 <p id="tocStelcoproductdetailfeature" class="orig-anchor"></p>
@@ -6511,9 +6511,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|mandatory|The display name of the feature|
-|description|string|optional|The description of the feature|
-|category|[Enum](#common-field-types)|optional|The type of the feature|
+|displayName|string|mandatory|The display name of the feature.|
+|description|string|optional|The description of the feature.|
+|category|[Enum](#common-field-types)|optional|The type of the feature.|
 
 <h4 id="cdr-telco-api_telcoproductdetailfeature_enumerated-values-main">Enumerated Values</h4>
 
@@ -6557,10 +6557,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|mandatory|The display name of the product bundle|
-|description|string|optional|The description of the product bundle|
-|bundleUri|[URIString](#common-field-types)|optional|The URI of the product bundle|
-|features|[[TelcoProductDetailFeature](#schemacdr-telco-apitelcoproductdetailfeature)]|optional|Optional list of features of the bundle|
+|displayName|string|mandatory|The display name of the product bundle.|
+|description|string|optional|The description of the product bundle.|
+|bundleUri|[URIString](#common-field-types)|optional|The URI of the product bundle.|
+|features|[[TelcoProductDetailFeature](#schemacdr-telco-apitelcoproductdetailfeature)]|optional|Optional list of features of the bundle.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailplan">TelcoProductDetailPlan</h3>
 <p id="tocStelcoproductdetailplan" class="orig-anchor"></p>
@@ -6588,10 +6588,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|mandatory|The display name of the product plan|
-|description|string|optional|The display name of the product plan|
-|planUri|[URIString](#common-field-types)|optional|The URI of the product plan|
-|features|[[TelcoProductDetailPlanFeature](#schemacdr-telco-apitelcoproductdetailplanfeature)]|optional|Optional list of features of the plan|
+|displayName|string|mandatory|The display name of the product plan.|
+|description|string|optional|The display name of the product plan.|
+|planUri|[URIString](#common-field-types)|optional|The URI of the product plan.|
+|features|[[TelcoProductDetailPlanFeature](#schemacdr-telco-apitelcoproductdetailplanfeature)]|optional|Optional list of features of the plan.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailplanfeature">TelcoProductDetailPlanFeature</h3>
 <p id="tocStelcoproductdetailplanfeature" class="orig-anchor"></p>
@@ -6612,8 +6612,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|mandatory|The display name of the feature|
-|description|string|optional|The description of the feature|
+|displayName|string|mandatory|The display name of the feature.|
+|description|string|optional|The description of the feature.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetaildiscountfeature">TelcoProductDetailDiscountFeature</h3>
 <p id="tocStelcoproductdetaildiscountfeature" class="orig-anchor"></p>
@@ -6634,8 +6634,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|mandatory|The display name of the discount feature|
-|description|string|optional|The description of the discount feature|
+|displayName|string|mandatory|The display name of the discount feature.|
+|description|string|optional|The description of the discount feature.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetaildiscounts">TelcoProductDetailDiscounts</h3>
 <p id="tocStelcoproductdetaildiscounts" class="orig-anchor"></p>
@@ -6663,10 +6663,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|mandatory|The display name of the product plan|
-|description|string|optional|The description name of the product plan|
-|discountUri|[URIString](#common-field-types)|optional|The URI of the discount|
-|features|[[TelcoProductDetailDiscountFeature](#schemacdr-telco-apitelcoproductdetaildiscountfeature)]|optional|Optional list of features of the discount|
+|displayName|string|mandatory|The display name of the product plan.|
+|description|string|optional|The description name of the product plan.|
+|discountUri|[URIString](#common-field-types)|optional|The URI of the discount.|
+|features|[[TelcoProductDetailDiscountFeature](#schemacdr-telco-apitelcoproductdetaildiscountfeature)]|optional|Optional list of features of the discount.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailincentivefeature">TelcoProductDetailIncentiveFeature</h3>
 <p id="tocStelcoproductdetailincentivefeature" class="orig-anchor"></p>
@@ -6687,8 +6687,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|mandatory|The display name of the incentive feature|
-|description|string|optional|The description of the incentive feature|
+|displayName|string|mandatory|The display name of the incentive feature.|
+|description|string|optional|The description of the incentive feature.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailincentives">TelcoProductDetailIncentives</h3>
 <p id="tocStelcoproductdetailincentives" class="orig-anchor"></p>
@@ -6716,10 +6716,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|mandatory|The display name of the incentive|
-|description|string|optional|The description of the incentive|
-|incentiveUri|[URIString](#common-field-types)|optional|The URI of the incentive|
-|features|[[TelcoProductDetailIncentiveFeature](#schemacdr-telco-apitelcoproductdetailincentivefeature)]|optional|Optional list of features of the incentive|
+|displayName|string|mandatory|The display name of the incentive.|
+|description|string|optional|The description of the incentive.|
+|incentiveUri|[URIString](#common-field-types)|optional|The URI of the incentive.|
+|features|[[TelcoProductDetailIncentiveFeature](#schemacdr-telco-apitelcoproductdetailincentivefeature)]|optional|Optional list of features of the incentive.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetail">TelcoProductDetail</h3>
 <p id="tocStelcoproductdetail" class="orig-anchor"></p>
@@ -6800,11 +6800,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|meteringCharges|[[TelcoProductDetailMeteringCharges](#schemacdr-telco-apitelcoproductdetailmeteringcharges)]|optional|Charges for metering included in the plan|
-|bundles|[[TelcoProductDetailBundles](#schemacdr-telco-apitelcoproductdetailbundles)]|optional|Bundles the product can be part of|
-|plans|[[TelcoProductDetailPlan](#schemacdr-telco-apitelcoproductdetailplan)]|optional|Plans associated to the product|
-|discounts|[[TelcoProductDetailDiscounts](#schemacdr-telco-apitelcoproductdetaildiscounts)]|optional|Discounts associated to the product|
-|incentives|[[TelcoProductDetailIncentives](#schemacdr-telco-apitelcoproductdetailincentives)]|optional|Incentives associated to the product|
+|meteringCharges|[[TelcoProductDetailMeteringCharges](#schemacdr-telco-apitelcoproductdetailmeteringcharges)]|optional|Charges for metering included in the plan.|
+|bundles|[[TelcoProductDetailBundles](#schemacdr-telco-apitelcoproductdetailbundles)]|optional|Bundles the product can be part of.|
+|plans|[[TelcoProductDetailPlan](#schemacdr-telco-apitelcoproductdetailplan)]|optional|Plans associated to the product.|
+|discounts|[[TelcoProductDetailDiscounts](#schemacdr-telco-apitelcoproductdetaildiscounts)]|optional|Discounts associated to the product.|
+|incentives|[[TelcoProductDetailIncentives](#schemacdr-telco-apitelcoproductdetailincentives)]|optional|Incentives associated to the product.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountusageservices">TelcoAccountUsageServices</h3>
 <p id="tocStelcoaccountusageservices" class="orig-anchor"></p>
@@ -6891,15 +6891,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Mandatory if openStatus is OPEN*
+*Mandatory if _openStatus_ is `OPEN`.*
 
 <h3 id="cdr-telco-api_telcoaccountplanoverview_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|optional|The name of the plan if one exists|
-|startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
-|endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
+|displayName|string|optional|The name of the plan if one exists.|
+|startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan.|
+|endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountplan">TelcoAccountPlan</h3>
 <p id="tocStelcoaccountplan" class="orig-anchor"></p>
@@ -6929,11 +6929,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
-|type|[Enum](#common-field-types)|mandatory|The type of the plan. The type of plan. A [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or BROADBAND fixed internet service|
-|billingType|[Enum](#common-field-types)|mandatory|The billing type of then plan|
-|serviceIds|[string]|mandatory|The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirement|
-|planOverview|[TelcoAccountPlanOverview](#schemacdr-telco-apitelcoaccountplanoverview)|mandatory|Mandatory if openStatus is OPEN|
+|nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans.|
+|type|[Enum](#common-field-types)|mandatory|The type of the plan. The type of plan. A [`MOBILE`](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or `BROADBAND` fixed internet service.|
+|billingType|[Enum](#common-field-types)|mandatory|The billing type of the plan.|
+|serviceIds|[string]|mandatory|The _serviceId_ representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements.|
+|planOverview|[TelcoAccountPlanOverview](#schemacdr-telco-apitelcoaccountplanoverview)|mandatory|Mandatory if _openStatus_ is `OPEN`.|
 
 <h4 id="cdr-telco-api_telcoaccountplan_enumerated-values-main">Enumerated Values</h4>
 
@@ -6974,13 +6974,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*The array of plans containing services and associated plan details*
+*The array of plans containing services and associated plan details.*
 
 <h3 id="cdr-telco-api_telcoaccount_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|plans|[[TelcoAccountPlan](#schemacdr-telco-apitelcoaccountplan)]|mandatory|The array of plans containing service and associated plan details|
+|plans|[[TelcoAccountPlan](#schemacdr-telco-apitelcoaccountplan)]|mandatory|The array of plans containing service and associated plan details.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountplandetail">TelcoAccountPlanDetail</h3>
 <p id="tocStelcoaccountplandetail" class="orig-anchor"></p>
@@ -7006,14 +7006,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Detail on the plan applicable to this account. Mandatory if openStatus is OPEN*
+*Detail on the plan applicable to this account. Mandatory if _openStatus_ is `OPEN`.*
 
 <h3 id="cdr-telco-api_telcoaccountplandetail_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
 |planDetail|object|mandatory|none|
-|» charges|[[TelcoProductDetailMeteringCharges](#schemacdr-telco-apitelcoproductdetailmeteringcharges)]|mandatory|Charges for metering included in the plan|
+|» charges|[[TelcoProductDetailMeteringCharges](#schemacdr-telco-apitelcoproductdetailmeteringcharges)]|mandatory|Charges for metering included in the plan.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountdetailauthorisedcontacts">TelcoAccountDetailAuthorisedContacts</h3>
 <p id="tocStelcoaccountdetailauthorisedcontacts" class="orig-anchor"></p>
@@ -7039,11 +7039,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field|
-|lastName|string|mandatory|For people with single names the single name should be in this field|
-|middleNames|[string]|optional|Field is mandatory but array may be empty|
-|prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
-|suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
+|firstName|string|optional|For people with single names this field need not be present. The single name should be in the _lastName_ field.|
+|lastName|string|mandatory|For people with single names the single name should be in this field.|
+|middleNames|[string]|optional|Field is mandatory but array may be empty.|
+|prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g., Mr, Mrs, Ms, Miss, Sir, etc.)|
+|suffix|string|optional|Used for a trailing suffix to the name (e.g., Jr.)|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountdetail">TelcoAccountDetail</h3>
 <p id="tocStelcoaccountdetail" class="orig-anchor"></p>
@@ -7084,13 +7084,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*The array of plans containing services and associated plan details*
+*The array of plans containing services and associated plan details.*
 
 <h3 id="cdr-telco-api_telcoaccountdetail_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|plans|[allOf]|mandatory|The array of plans containing services and associated plan details|
+|plans|[allOf]|mandatory|The array of plans containing services and associated plan details.|
 
 *allOf*
 
@@ -7102,7 +7102,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|» *anonymous*|[TelcoAccountPlanDetail](#schemacdr-telco-apitelcoaccountplandetail)|mandatory|Detail on the plan applicable to this account. Mandatory if openStatus is OPEN|
+|» *anonymous*|[TelcoAccountPlanDetail](#schemacdr-telco-apitelcoaccountplandetail)|mandatory|Detail on the plan applicable to this account. Mandatory if _openStatus_ is `OPEN`.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentschedulecarddebit">TelcoPaymentScheduleCardDebit</h3>
 <p id="tocStelcopaymentschedulecarddebit" class="orig-anchor"></p>
@@ -7120,15 +7120,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit*
+*Represents a regular credit card payment schedule. Mandatory if _paymentScheduleUType_ is set to `cardDebit`.*
 
 <h3 id="cdr-telco-api_telcopaymentschedulecarddebit_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|cardScheme|[Enum](#common-field-types)|mandatory|The type of credit card held on file|
-|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|cardScheme|[Enum](#common-field-types)|mandatory|The type of credit card held on file.|
+|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>`STATIC`: Indicates a consistent, static amount, per payment</li><li>`BALANCE`: Indicates that the outstanding balance for the account is paid per period</li><li>`CALCULATED`: Indicates that the payment amount is variable and calculated using a pre-defined algorithm.</li></ul>|
 
 <h4 id="cdr-telco-api_telcopaymentschedulecarddebit_enumerated-values-main">Enumerated Values</h4>
 
@@ -7162,17 +7162,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit*
+*Represents a regular direct debit from a specified bank account. Mandatory if _paymentScheduleUType_ is set to `directDebit`.*
 
 <h3 id="cdr-telco-api_telcopaymentscheduledirectdebit_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|isTokenised|boolean|optional|Flag indicating that the account details are tokenised and cannot be shared. False if absent|
-|bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces. Is required if isTokenised is absent or false|
-|accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces. Is required if isTokenised is absent or false|
-|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|isTokenised|boolean|optional|Flag indicating that the account details are tokenised and cannot be shared. `false` if absent.|
+|bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces. Is required if _isTokenised_ is absent or `false`.|
+|accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces. Is required if _isTokenised_ is absent or `false`.|
+|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>`STATIC`: Indicates a consistent, static amount, per payment</li><li>`BALANCE`: Indicates that the outstanding balance for the account is paid per period</li><li>`CALCULATED`: Indicates that the payment amount is variable and calculated using a pre-defined algorithm.</li></ul>|
 
 <h4 id="cdr-telco-api_telcopaymentscheduledirectdebit_enumerated-values-main">Enumerated Values</h4>
 
@@ -7201,18 +7201,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet*
+*Represents a regular payment from a digital wallet. Mandatory if _paymentScheduleUType_ is set to `digitalWallet`.*
 
 <h3 id="cdr-telco-api_telcopaymentscheduledigitalwallet_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|name|string|mandatory|The display name of the wallet as given by the customer, else a default value defined by the data holder|
-|identifier|string|mandatory|The identifier of the digital wallet (dependent on type)|
-|type|[Enum](#common-field-types)|mandatory|The type of the digital wallet identifier|
-|provider|[Enum](#common-field-types)|mandatory|The provider of the digital wallet|
-|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
+|name|string|mandatory|The display name of the wallet as given by the customer, else a default value defined by the data holder.|
+|identifier|string|mandatory|The identifier of the digital wallet (dependent on type).|
+|type|[Enum](#common-field-types)|mandatory|The type of the digital wallet identifier.|
+|provider|[Enum](#common-field-types)|mandatory|The provider of the digital wallet.|
+|paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>`STATIC`: Indicates a consistent, static amount, per payment</li><li>`BALANCE`: Indicates that the outstanding balance for the account is paid per period</li><li>`CALCULATED`: Indicates that the payment amount is variable and calculated using a pre-defined algorithm.</li></ul>|
 
 <h4 id="cdr-telco-api_telcopaymentscheduledigitalwallet_enumerated-values-main">Enumerated Values</h4>
 
@@ -7241,13 +7241,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment*
+*Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if _paymentScheduleUType_ is set to `manualPayment`.*
 
 <h3 id="cdr-telco-api_telcopaymentschedulemanualpayment_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceperiod">TelcoInvoicePeriod</h3>
 <p id="tocStelcoinvoiceperiod" class="orig-anchor"></p>
@@ -7264,14 +7264,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Object containing the start and end date for the period covered by the invoice. Mandatory if any usage based charges are included in the invoice*
+*Object containing the start and end date for the period covered by the invoice. Mandatory if any usage based charges are included in the invoice.*
 
 <h3 id="cdr-telco-api_telcoinvoiceperiod_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|startDate|[DateString](#common-field-types)|mandatory|The start date of the period covered by this invoice|
-|endDate|[DateString](#common-field-types)|mandatory|The end date of the period covered by this invoice|
+|startDate|[DateString](#common-field-types)|mandatory|The start date of the period covered by this invoice.|
+|endDate|[DateString](#common-field-types)|mandatory|The end date of the period covered by this invoice.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoicepayontimediscount">TelcoInvoicePayOnTimeDiscount</h3>
 <p id="tocStelcoinvoicepayontimediscount" class="orig-anchor"></p>
@@ -7289,15 +7289,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*A discount for on time payment*
+*A discount for on time payment.*
 
 <h3 id="cdr-telco-api_telcoinvoicepayontimediscount_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|discountAmount|[AmountString](#common-field-types)|mandatory|The amount that will be discounted if the invoice is paid by the date specified|
-|gstAmount|[AmountString](#common-field-types)|optional|The GST amount that will be discounted if the invoice is paid by the date specified. If absent then zero is assumed|
-|date|[DateString](#common-field-types)|mandatory|The date by which the invoice must be paid to receive the pay on time discount|
+|discountAmount|[AmountString](#common-field-types)|mandatory|The amount that will be discounted if the invoice is paid by the date specified.|
+|gstAmount|[AmountString](#common-field-types)|optional|The GST amount that will be discounted if the invoice is paid by the date specified. If absent then zero is assumed.|
+|date|[DateString](#common-field-types)|mandatory|The date by which the invoice must be paid to receive the pay on time discount.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagedatroaming">TelcoUsageDatRoaming</h3>
 <p id="tocStelcousagedatroaming" class="orig-anchor"></p>
@@ -7314,14 +7314,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Roaming Data Usage*
+*Roaming Data Usage.*
 
 <h3 id="cdr-telco-api_telcousagedatroaming_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|download|[Number](#common-field-types)|conditional|Amount of data used while roaming in megabytes (MB)|
-|amount|[AmountString](#common-field-types)|conditional|Amount value of data roaming charges|
+|download|[Number](#common-field-types)|conditional|Amount of data used while roaming in megabytes (MB).|
+|amount|[AmountString](#common-field-types)|conditional|Amount value of data roaming charges.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagedata">TelcoUsageData</h3>
 <p id="tocStelcousagedata" class="orig-anchor"></p>
@@ -7344,17 +7344,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Summary of data usage*
+*Summary of data usage.*
 
 <h3 id="cdr-telco-api_telcousagedata_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|upload|[Number](#common-field-types)|mandatory|Amount of data uploaded in megabytes (MB)|
-|download|[Number](#common-field-types)|mandatory|Amount of data downloaded in megabytes (MB)|
-|sessions|[Number](#common-field-types)|optional|Number of data sessions|
-|amount|[AmountString](#common-field-types)|mandatory|Cost amount of data usage|
-|roaming|[TelcoUsageDatRoaming](#schemacdr-telco-apitelcousagedatroaming)|optional|Required if roaming is suipported|
+|upload|[Number](#common-field-types)|mandatory|Amount of data uploaded in megabytes (MB).|
+|download|[Number](#common-field-types)|mandatory|Amount of data downloaded in megabytes (MB).|
+|sessions|[Number](#common-field-types)|optional|Number of data sessions.|
+|amount|[AmountString](#common-field-types)|mandatory|Cost amount of data usage.|
+|roaming|[TelcoUsageDatRoaming](#schemacdr-telco-apitelcousagedatroaming)|optional|Required if roaming is supported.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoicenational">TelcoUsageVoiceNational</h3>
 <p id="tocStelcousagevoicenational" class="orig-anchor"></p>
@@ -7372,15 +7372,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*National voice calls*
+*National voice calls.*
 
 <h3 id="cdr-telco-api_telcousagevoicenational_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|duration|[TimeString](#common-field-types)|mandatory|Total duration (hours, minutes, and seconds) of national voice calls. Not limited to 24hrs|
-|number|[Number](#common-field-types)|mandatory|Number of national voice calls|
-|amount|[AmountString](#common-field-types)|mandatory|Cost amount of national calls|
+|duration|[TimeString](#common-field-types)|mandatory|Total duration (hours, minutes, and seconds) of national voice calls. Not limited to 24hrs.|
+|number|[Number](#common-field-types)|mandatory|Number of national voice calls.|
+|amount|[AmountString](#common-field-types)|mandatory|Cost amount of national calls.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoiceinternational">TelcoUsageVoiceInternational</h3>
 <p id="tocStelcousagevoiceinternational" class="orig-anchor"></p>
@@ -7398,15 +7398,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*International voice calls. Requied if international calling is supported*
+*International voice calls. Requied if international calling is supported.*
 
 <h3 id="cdr-telco-api_telcousagevoiceinternational_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|duration|[TimeString](#common-field-types)|mandatory|Total duration (hours, minutes, and seconds) of international voice calls. Not limited to 24hrs|
-|number|[Number](#common-field-types)|mandatory|Number of international voice calls|
-|amount|[AmountString](#common-field-types)|mandatory|Cost amount of international voice calls|
+|duration|[TimeString](#common-field-types)|mandatory|Total duration (hours, minutes, and seconds) of international voice calls. Not limited to 24hrs.|
+|number|[Number](#common-field-types)|mandatory|Number of international voice calls.|
+|amount|[AmountString](#common-field-types)|mandatory|Cost amount of international voice calls.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoiceroaming">TelcoUsageVoiceRoaming</h3>
 <p id="tocStelcousagevoiceroaming" class="orig-anchor"></p>
@@ -7424,15 +7424,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Roaming voice calls, Required if roaming is supported*
+*Roaming voice calls, Required if roaming is supported.*
 
 <h3 id="cdr-telco-api_telcousagevoiceroaming_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|duration|[TimeString](#common-field-types)|mandatory|Total duration (hours, minutes, and seconds) of roaming voice calls. Not limited to 24hrs|
-|number|[Number](#common-field-types)|mandatory|Number of roaming voice calls|
-|amount|[AmountString](#common-field-types)|mandatory|Cost amount of roaming voice calls|
+|duration|[TimeString](#common-field-types)|mandatory|Total duration (hours, minutes, and seconds) of roaming voice calls. Not limited to 24hrs.|
+|number|[Number](#common-field-types)|mandatory|Number of roaming voice calls.|
+|amount|[AmountString](#common-field-types)|mandatory|Cost amount of roaming voice calls.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoice">TelcoUsageVoice</h3>
 <p id="tocStelcousagevoice" class="orig-anchor"></p>
@@ -7462,15 +7462,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Summary of voice calls. Required if voice calls are included in product plan*
+*Summary of voice calls. Required if voice calls are included in product plan.*
 
 <h3 id="cdr-telco-api_telcousagevoice_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|national|[TelcoUsageVoiceNational](#schemacdr-telco-apitelcousagevoicenational)|mandatory|National voice calls|
-|international|[TelcoUsageVoiceInternational](#schemacdr-telco-apitelcousagevoiceinternational)|mandatory|International voice calls. Requied if international calling is supported|
-|roaming|[TelcoUsageVoiceRoaming](#schemacdr-telco-apitelcousagevoiceroaming)|mandatory|Roaming voice calls, Required if roaming is supported|
+|national|[TelcoUsageVoiceNational](#schemacdr-telco-apitelcousagevoicenational)|mandatory|National voice calls.|
+|international|[TelcoUsageVoiceInternational](#schemacdr-telco-apitelcousagevoiceinternational)|mandatory|International voice calls. Requied if international calling is supported.|
+|roaming|[TelcoUsageVoiceRoaming](#schemacdr-telco-apitelcousagevoiceroaming)|mandatory|Roaming voice calls, Required if roaming is supported.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagemessagingsms">TelcoUsageMessagingSms</h3>
 <p id="tocStelcousagemessagingsms" class="orig-anchor"></p>
@@ -7489,16 +7489,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Summary of SMS usage*
+*Summary of SMS usage.*
 
 <h3 id="cdr-telco-api_telcousagemessagingsms_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|national|[Number](#common-field-types)|mandatory|Number of national SMS messages sent. Including premium SMS services|
-|international|[Number](#common-field-types)|conditional|Number of international SMS messages sent. Including premium SMS services|
-|roaming|[Number](#common-field-types)|conditional|Number of roaming SMS messages sent. Including premium SMS services|
-|amount|[AmountString](#common-field-types)|mandatory|Cost amount of SMS messages. Including premium SMS services|
+|national|[Number](#common-field-types)|mandatory|Number of national SMS messages sent. Including premium SMS services.|
+|international|[Number](#common-field-types)|conditional|Number of international SMS messages sent. Including premium SMS services.|
+|roaming|[Number](#common-field-types)|conditional|Number of roaming SMS messages sent. Including premium SMS services.|
+|amount|[AmountString](#common-field-types)|mandatory|Cost amount of SMS messages. Including premium SMS services.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagemessagingmms">TelcoUsageMessagingMms</h3>
 <p id="tocStelcousagemessagingmms" class="orig-anchor"></p>
@@ -7517,16 +7517,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Summary of MMS usage*
+*Summary of MMS usage.*
 
 <h3 id="cdr-telco-api_telcousagemessagingmms_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|national|[Number](#common-field-types)|mandatory|Number of national MMS messages sent|
-|international|[Number](#common-field-types)|conditional|ber of international MMS messages sent|
-|roaming|[Number](#common-field-types)|conditional|Number of roaming SMS messages sent. Including premium SMS services|
-|amount|[AmountString](#common-field-types)|mandatory|Cost amount of MMS messages|
+|national|[Number](#common-field-types)|mandatory|Number of national MMS messages sent.|
+|international|[Number](#common-field-types)|conditional|Number of international MMS messages sent.|
+|roaming|[Number](#common-field-types)|conditional|Number of roaming SMS messages sent. Including premium SMS services.|
+|amount|[AmountString](#common-field-types)|mandatory|Cost amount of MMS messages.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagemessaging">TelcoUsageMessaging</h3>
 <p id="tocStelcousagemessaging" class="orig-anchor"></p>
@@ -7553,14 +7553,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Summary of messaging. Required if messaging services is included in the product plan*
+*Summary of messaging. Required if messaging services is included in the product plan.*
 
 <h3 id="cdr-telco-api_telcousagemessaging_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|sms|[TelcoUsageMessagingSms](#schemacdr-telco-apitelcousagemessagingsms)|mandatory|Summary of SMS usage|
-|mms|[TelcoUsageMessagingMms](#schemacdr-telco-apitelcousagemessagingmms)|mandatory|Summary of MMS usage|
+|sms|[TelcoUsageMessagingSms](#schemacdr-telco-apitelcousagemessagingsms)|mandatory|Summary of SMS usage.|
+|mms|[TelcoUsageMessagingMms](#schemacdr-telco-apitelcousagemessagingmms)|mandatory|Summary of MMS usage.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceaccountchargesothercharges">TelcoInvoiceAccountChargesOtherCharges</h3>
 <p id="tocStelcoinvoiceaccountchargesothercharges" class="orig-anchor"></p>
@@ -7578,15 +7578,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST)*
+*Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST).*
 
 <h3 id="cdr-telco-api_telcoinvoiceaccountchargesothercharges_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
-|description|[AmountString](#common-field-types)|mandatory|A free text description of the charge|
-|type|[Enum](#common-field-types)|optional|A free text description of the charge|
+|amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST).|
+|description|[AmountString](#common-field-types)|mandatory|A free text description of the charge.|
+|type|[Enum](#common-field-types)|optional|Type of charge.|
 
 <h4 id="cdr-telco-api_telcoinvoiceaccountchargesothercharges_enumerated-values-main">Enumerated Values</h4>
 
@@ -7621,8 +7621,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
-|description|string|mandatory|A free text description of the adjustment|
+|amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment.|
+|description|string|mandatory|A free text description of the adjustment.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancedataroaming">TelcoServiceBalanceDataRoaming</h3>
 <p id="tocStelcoservicebalancedataroaming" class="orig-anchor"></p>
@@ -7640,15 +7640,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Balance of data roaming charges. Required unless planType is UNSUPPORTED*
+*Balance of data roaming charges. Required unless _planType_ is `UNSUPPORTED`.*
 
 <h3 id="cdr-telco-api_telcoservicebalancedataroaming_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|description|string|optional|An overview of plan limits. Required unless planType is UNSUPPORTED|
-|download|[Number](#common-field-types)|conditional|Amount of data used overseas in megabytes (MB). Required unless planType is UNSUPPORTED|
-|amount|[AmountString](#common-field-types)|conditional|Amount value of data roaming charges. Required unless planType is UNSUPPORTED|
+|description|string|optional|An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.|
+|download|[Number](#common-field-types)|conditional|Amount of data used overseas in megabytes (MB). Required unless _planType_ is `UNSUPPORTED`.|
+|amount|[AmountString](#common-field-types)|conditional|Amount value of data roaming charges. Required unless _planType_ is `UNSUPPORTED`.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancedata">TelcoServiceBalanceData</h3>
 <p id="tocStelcoservicebalancedata" class="orig-anchor"></p>
@@ -7673,18 +7673,18 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Summary of data balances*
+*Summary of data balances.*
 
 <h3 id="cdr-telco-api_telcoservicebalancedata_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|planType|[TelcoPlanType](#schemacdr-telco-apitelcoplantype)|mandatory|Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported|
-|description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
-|upload|[Number](#common-field-types)|optional|Remaining upload data in megabytes (MB). Required unless planType is UNSUPPORTED or UNMETERED|
-|download|[Number](#common-field-types)|conditional|Remaining download data in megabytes (MB). Required unless planType is UNSUPPORTED or UNMETERED|
-|amount|[AmountString](#common-field-types)|conditional|Remaining value amount of data available. Required unless planType is UNSUPPORTED or UNMETERED|
-|roaming|[TelcoServiceBalanceDataRoaming](#schemacdr-telco-apitelcoservicebalancedataroaming)|optional|Balance of data roaming charges. Required unless planType is UNSUPPORTED|
+|planType|[TelcoPlanType](#schemacdr-telco-apitelcoplantype)|mandatory|Plan type for this feature.<ul><li>`METERED`: A plan is charged by usage for the feature<li>`UNMETERED`: A plan with no limits for a feature<li>`LIMITED`: Where plan limit inclusions apply<li>`UNSUPPORTED`: Feature is not supported.</ul>|
+|description|string|conditional|An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.|
+|upload|[Number](#common-field-types)|optional|Remaining upload data in megabytes (MB). Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|download|[Number](#common-field-types)|conditional|Remaining download data in megabytes (MB). Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|amount|[AmountString](#common-field-types)|conditional|Remaining value amount of data available. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|roaming|[TelcoServiceBalanceDataRoaming](#schemacdr-telco-apitelcoservicebalancedataroaming)|optional|Balance of data roaming charges. Required unless _planType_ is `UNSUPPORTED`.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoicenational">TelcoServiceBalanceVoiceNational</h3>
 <p id="tocStelcoservicebalancevoicenational" class="orig-anchor"></p>
@@ -7703,16 +7703,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*National voice calls*
+*National voice calls.*
 
 <h3 id="cdr-telco-api_telcoservicebalancevoicenational_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
-|duration|[TimeString](#common-field-types)|conditional|Total duration (hours, minutes, and seconds) of national voice calls. Not limited to 24hrs. Required unless planType is UNSUPPORTED or UNMETERED|
-|number|[Number](#common-field-types)|conditional|Number of national voice calls. Required unless planType is UNSUPPORTED or UNMETERED|
-|amount|[AmountString](#common-field-types)|conditional|Amount balance of national calls. Required unless planType is UNSUPPORTED or UNMETERED|
+|description|string|conditional|An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.|
+|duration|[TimeString](#common-field-types)|conditional|Total duration (hours, minutes, and seconds) of national voice calls. Not limited to 24hrs. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|number|[Number](#common-field-types)|conditional|Number of national voice calls. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|amount|[AmountString](#common-field-types)|conditional|Amount balance of national calls. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoiceinternational">TelcoServiceBalanceVoiceInternational</h3>
 <p id="tocStelcoservicebalancevoiceinternational" class="orig-anchor"></p>
@@ -7731,16 +7731,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*International voice calls*
+*International voice calls.*
 
 <h3 id="cdr-telco-api_telcoservicebalancevoiceinternational_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
-|duration|[TimeString](#common-field-types)|optional|Total duration (hours, minutes, and seconds) of international voice calls available. Not limited to 24hrs. Required unless planType is UNSUPPORTED or UNMETERED|
-|number|[Number](#common-field-types)|optional|Number of international voice calls available Required unless planType is UNSUPPORTED or UNMETERED|
-|amount|[AmountString](#common-field-types)|conditional|Amount value of international calls available. Required unless planType is UNSUPPORTED or UNMETERED|
+|description|string|conditional|An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.|
+|duration|[TimeString](#common-field-types)|optional|Total duration (hours, minutes, and seconds) of international voice calls available. Not limited to 24hrs. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|number|[Number](#common-field-types)|optional|Number of international voice calls available Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|amount|[AmountString](#common-field-types)|conditional|Amount value of international calls available. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoiceroaming">TelcoServiceBalanceVoiceRoaming</h3>
 <p id="tocStelcoservicebalancevoiceroaming" class="orig-anchor"></p>
@@ -7759,16 +7759,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Roaming voice calls*
+*Roaming voice calls.*
 
 <h3 id="cdr-telco-api_telcoservicebalancevoiceroaming_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
-|duration|[TimeString](#common-field-types)|optional|Total duration (hours, minutes, and seconds) of roaming voice calls available. Not limited to 24hrs. Required unless planType is UNSUPPORTED or UNMETERED|
-|number|[Number](#common-field-types)|optional|Number of roaming voice calls available Required unless planType is UNSUPPORTED or UNMETERED|
-|amount|[AmountString](#common-field-types)|conditional|Amount value of roaming calls available. Required unless planType is UNSUPPORTED or UNMETERED|
+|description|string|conditional|An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.|
+|duration|[TimeString](#common-field-types)|optional|Total duration (hours, minutes, and seconds) of roaming voice calls available. Not limited to 24hrs. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|number|[Number](#common-field-types)|optional|Number of roaming voice calls available Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|amount|[AmountString](#common-field-types)|conditional|Amount value of roaming calls available. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoice">TelcoServiceBalanceVoice</h3>
 <p id="tocStelcoservicebalancevoice" class="orig-anchor"></p>
@@ -7802,16 +7802,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Summary of voice balances. Required if voice calls are included in product plan*
+*Summary of voice balances. Required if voice calls are included in product plan.*
 
 <h3 id="cdr-telco-api_telcoservicebalancevoice_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|planType|[TelcoPlanType](#schemacdr-telco-apitelcoplantype)|mandatory|Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported|
-|national|[TelcoServiceBalanceVoiceNational](#schemacdr-telco-apitelcoservicebalancevoicenational)|conditional|National voice calls|
-|international|[TelcoServiceBalanceVoiceInternational](#schemacdr-telco-apitelcoservicebalancevoiceinternational)|conditional|International voice calls|
-|roaming|[TelcoServiceBalanceVoiceRoaming](#schemacdr-telco-apitelcoservicebalancevoiceroaming)|conditional|Roaming voice calls|
+|planType|[TelcoPlanType](#schemacdr-telco-apitelcoplantype)|mandatory|Plan type for this feature.<ul><li>`METERED`: A plan is charged by usage for the feature<li>`UNMETERED`: A plan with no limits for a feature<li>`LIMITED`: Where plan limit inclusions apply<li>`UNSUPPORTED`: Feature is not supported.</ul>|
+|national|[TelcoServiceBalanceVoiceNational](#schemacdr-telco-apitelcoservicebalancevoicenational)|conditional|National voice calls.|
+|international|[TelcoServiceBalanceVoiceInternational](#schemacdr-telco-apitelcoservicebalancevoiceinternational)|conditional|International voice calls.|
+|roaming|[TelcoServiceBalanceVoiceRoaming](#schemacdr-telco-apitelcoservicebalancevoiceroaming)|conditional|Roaming voice calls.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancemessagingsms">TelcoServiceBalanceMessagingSms</h3>
 <p id="tocStelcoservicebalancemessagingsms" class="orig-anchor"></p>
@@ -7831,17 +7831,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Summary of SMS Balance. Required if the service plan supports SMS messaging*
+*Summary of SMS Balance. Required if the service plan supports SMS messaging.*
 
 <h3 id="cdr-telco-api_telcoservicebalancemessagingsms_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
-|national|[Number](#common-field-types)|conditional|Number of national SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
-|international|[Number](#common-field-types)|conditional|Number of international SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
-|roaming|[Number](#common-field-types)|conditional|Number of roaming SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
-|amount|[AmountString](#common-field-types)|conditional|Amount value of SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
+|description|string|conditional|An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.|
+|national|[Number](#common-field-types)|conditional|Number of national SMS messages remaining. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|international|[Number](#common-field-types)|conditional|Number of international SMS messages remaining. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|roaming|[Number](#common-field-types)|conditional|Number of roaming SMS messages remaining. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|amount|[AmountString](#common-field-types)|conditional|Amount value of SMS messages remaining. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancemessagingmms">TelcoServiceBalanceMessagingMms</h3>
 <p id="tocStelcoservicebalancemessagingmms" class="orig-anchor"></p>
@@ -7861,17 +7861,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Summary of MMS Balance. Required if the service plan supports MMS messaging*
+*Summary of MMS Balance. Required if the service plan supports MMS messaging.*
 
 <h3 id="cdr-telco-api_telcoservicebalancemessagingmms_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|description|string|conditional|An overview of plan limits. Required unless planType is UNSUPPORTED|
-|national|[Number](#common-field-types)|conditional|Number of national MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
-|international|[Number](#common-field-types)|conditional|Number of international MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
-|roaming|[Number](#common-field-types)|conditional|Number of roaming MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
-|amount|[AmountString](#common-field-types)|conditional|Amount value of MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED|
+|description|string|conditional|An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.|
+|national|[Number](#common-field-types)|conditional|Number of national MMS messages remaining. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|international|[Number](#common-field-types)|conditional|Number of international MMS messages remaining. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|roaming|[Number](#common-field-types)|conditional|Number of roaming MMS messages remaining. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
+|amount|[AmountString](#common-field-types)|conditional|Amount value of MMS messages remaining. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancemessaging">TelcoServiceBalanceMessaging</h3>
 <p id="tocStelcoservicebalancemessaging" class="orig-anchor"></p>
@@ -7901,15 +7901,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Summary of messaging. Required if messaging services is included in the product plan*
+*Summary of messaging. Required if messaging services is included in the product plan.*
 
 <h3 id="cdr-telco-api_telcoservicebalancemessaging_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|planType|[TelcoPlanType](#schemacdr-telco-apitelcoplantype)|optional|Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported|
-|sms|[TelcoServiceBalanceMessagingSms](#schemacdr-telco-apitelcoservicebalancemessagingsms)|mandatory|Summary of SMS Balance. Required if the service plan supports SMS messaging|
-|mms|[TelcoServiceBalanceMessagingMms](#schemacdr-telco-apitelcoservicebalancemessagingmms)|mandatory|Summary of MMS Balance. Required if the service plan supports MMS messaging|
+|planType|[TelcoPlanType](#schemacdr-telco-apitelcoplantype)|optional|Plan type for this feature.<ul><li>`METERED`: A plan is charged by usage for the feature<li>`UNMETERED`: A plan with no limits for a feature<li>`LIMITED`: Where plan limit inclusions apply<li>`UNSUPPORTED`: Feature is not supported.</ul>|
+|sms|[TelcoServiceBalanceMessagingSms](#schemacdr-telco-apitelcoservicebalancemessagingsms)|mandatory|Summary of SMS Balance. Required if the service plan supports SMS messaging.|
+|mms|[TelcoServiceBalanceMessagingMms](#schemacdr-telco-apitelcoservicebalancemessagingmms)|mandatory|Summary of MMS Balance. Required if the service plan supports MMS messaging.|
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalances">TelcoServiceBalances</h3>
 <p id="tocStelcoservicebalances" class="orig-anchor"></p>
@@ -7974,13 +7974,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*A summary of Service balances*
+*A summary of Service balances.*
 
 <h3 id="cdr-telco-api_telcoservicebalances_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[TelcoServiceBalanceData](#schemacdr-telco-apitelcoservicebalancedata)|conditional|Summary of data balances|
-|voice|[TelcoServiceBalanceVoice](#schemacdr-telco-apitelcoservicebalancevoice)|conditional|Summary of voice balances. Required if voice calls are included in product plan|
-|messaging|[TelcoServiceBalanceMessaging](#schemacdr-telco-apitelcoservicebalancemessaging)|conditional|Summary of messaging. Required if messaging services is included in the product plan|
+|data|[TelcoServiceBalanceData](#schemacdr-telco-apitelcoservicebalancedata)|conditional|Summary of data balances.|
+|voice|[TelcoServiceBalanceVoice](#schemacdr-telco-apitelcoservicebalancevoice)|conditional|Summary of voice balances. Required if voice calls are included in product plan.|
+|messaging|[TelcoServiceBalanceMessaging](#schemacdr-telco-apitelcoservicebalancemessaging)|conditional|Summary of messaging. Required if messaging services is included in the product plan.|
 

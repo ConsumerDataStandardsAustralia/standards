@@ -1,19 +1,20 @@
 openapi: 3.0.3
 info:
   description: Consumer Data Right endpoints and payloads for Secondary Data Holder
-    for the Energy sector
+    for the Energy sector.
   title: CDR Energy Secondary Data Holder API
-  version: 1.32.0
+  version: 1.33.0
 servers:
-- url: /
+- description: TLS
+  url: https://tls.sdh.example.com/cds-au/v1
 paths:
   /secondary/energy/electricity/servicepoints:
     post:
       description: Obtain a list of service points owned by the customer that has
-        authorised the current session
+        authorised the current session.
       operationId: listServicePoints
       parameters:
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -22,7 +23,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request.  Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -33,11 +34,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder must respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -47,9 +49,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder must respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -57,9 +59,9 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The x-fapi-interaction-id header value provided by the Data Recipient.
-          If not supplied by the Data Recipient, the primary Data Holder MUST create
-          a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id
+      - description: The _x-fapi-interaction-id_ header value provided by the Data
+          Recipient. If not supplied by the Data Recipient, the primary Data Holder
+          MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the _x-fapi-interaction-id_
           header.
         explode: false
         in: header
@@ -71,11 +73,11 @@ paths:
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
           identifier MUST be unique per customer according to the definition of customer
-          in the CDR Federation section of this profile. The x-cds-arrangement should
+          in the CDR Federation section of this profile. The _x-cds-arrangement_ should
           contain the arrangement ID for the consent that the request is being made
           under and will be used for tracing and audit purposes. This field MUST be
           populated but AEMO MUST NOT seek to validate the consent associated with
-          the arrangement
+          the arrangement.
         explode: false
         in: header
         name: x-cds-arrangement
@@ -89,7 +91,7 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestServicePointIdList'
         description: Request payload containing list of specific Service Points to
-          obtain data for
+          obtain data for.
         required: true
       responses:
         "200":
@@ -109,7 +111,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -129,7 +131,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -147,7 +149,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -165,7 +167,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -181,11 +183,11 @@ paths:
   /secondary/energy/electricity/servicepoints/{servicePointId}:
     get:
       description: Obtain detailed standing information for a specific service point
-        that is owned by the customer that has authorised the current session
+        that is owned by the customer that has authorised the current session.
       operationId: getServicePoint
       parameters:
       - description: The independent ID of the service point, known in the industry
-          as the NMI. The  servicePointId will be replaced with NMI for all interactions
+          as the NMI. The _servicePointId_ will be replaced with NMI for all interactions
           between Data Holder and AEMO.
         explode: false
         in: path
@@ -196,11 +198,12 @@ paths:
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder must respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -210,9 +213,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder must respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -220,9 +223,9 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The x-fapi-interaction-id header value provided by the Data Recipient.
-          If not supplied by the Data Recipient, the primary Data Holder MUST create
-          a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id
+      - description: The _x-fapi-interaction-id_ header value provided by the Data
+          Recipient. If not supplied by the Data Recipient, the primary Data Holder
+          MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the _x-fapi-interaction-id_
           header.
         explode: false
         in: header
@@ -234,11 +237,11 @@ paths:
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
           identifier MUST be unique per customer according to the definition of customer
-          in the CDR Federation section of this profile. The x-cds-arrangement should
+          in the CDR Federation section of this profile. The _x-cds-arrangement_ should
           contain the arrangement ID for the consent that the request is being made
           under and will be used for tracing and audit purposes. This field MUST be
           populated but AEMO MUST NOT seek to validate the consent associated with
-          the arrangement
+          the arrangement.
         explode: false
         in: header
         name: x-cds-arrangement
@@ -264,7 +267,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -283,7 +286,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -302,7 +305,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -320,7 +323,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -336,11 +339,11 @@ paths:
   /secondary/energy/electricity/servicepoints/{servicePointId}/usage:
     get:
       description: Obtain a list of electricity usage data from a particular service
-        point
+        point.
       operationId: getUsageForServicePoint
       parameters:
       - description: The independent ID of the service point, known in the industry
-          as the NMI. The  servicePointId will be replaced with NMI for all interactions
+          as the NMI. The _servicePointId_ will be replaced with NMI for all interactions
           between Data Holder and AEMO.
         explode: false
         in: path
@@ -350,8 +353,8 @@ paths:
           type: string
         style: simple
       - description: Constrain the request to records with effective date at or after
-          this date. If absent defaults to newest-date minus 24 months.  Format is
-          aligned to DateString common type
+          this date. If absent defaults to _newest-date_ minus 24 months. Format is
+          aligned to DateString common type.
         explode: true
         in: query
         name: oldest-date
@@ -361,8 +364,8 @@ paths:
         style: form
         x-cds-type: DateString
       - description: Constrain the request to records with effective date at or before
-          this date.  If absent defaults to current date.  Format is aligned to DateString
-          common type
+          this date. If absent defaults to current date. Format is aligned to DateString
+          common type.
         explode: true
         in: query
         name: newest-date
@@ -372,7 +375,7 @@ paths:
         style: form
         x-cds-type: DateString
       - description: Type of interval reads. Any one of the valid values for this
-          field can be supplied. If absent defaults to NONE
+          field can be supplied. If absent defaults to `NONE`.
         explode: true
         in: query
         name: interval-reads
@@ -385,7 +388,7 @@ paths:
           - FULL
           type: string
         style: form
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -394,7 +397,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request.  Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -405,11 +408,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder must respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -419,9 +423,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder must respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -429,9 +433,9 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The x-fapi-interaction-id header value provided by the Data Recipient.
-          If not supplied by the Data Recipient, the primary Data Holder MUST create
-          a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id
+      - description: The _x-fapi-interaction-id_ header value provided by the Data
+          Recipient. If not supplied by the Data Recipient, the primary Data Holder
+          MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the _x-fapi-interaction-id_
           header.
         explode: false
         in: header
@@ -443,11 +447,11 @@ paths:
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
           identifier MUST be unique per customer according to the definition of customer
-          in the CDR Federation section of this profile. The x-cds-arrangement should
+          in the CDR Federation section of this profile. The _x-cds-arrangement_ should
           contain the arrangement ID for the consent that the request is being made
           under and will be used for tracing and audit purposes. This field MUST be
           populated but AEMO MUST NOT seek to validate the consent associated with
-          the arrangement
+          the arrangement.
         explode: false
         in: header
         name: x-cds-arrangement
@@ -473,7 +477,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -494,7 +498,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -513,7 +517,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -531,7 +535,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -549,7 +553,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -565,12 +569,12 @@ paths:
   /secondary/energy/electricity/servicepoints/usage:
     post:
       description: Obtain the electricity usage data for a specific set of service
-        points
+        points.
       operationId: listUsageForServicePoints
       parameters:
       - description: Constrain the request to records with effective date at or after
-          this date. If absent defaults to newest-date minus 24 months.  Format is
-          aligned to DateString common type
+          this date. If absent defaults to _newest-date_ minus 24 months. Format is
+          aligned to DateString common type.
         explode: true
         in: query
         name: oldest-date
@@ -580,8 +584,8 @@ paths:
         style: form
         x-cds-type: DateString
       - description: Constrain the request to records with effective date at or before
-          this date.  If absent defaults to current date.  Format is aligned to DateString
-          common type
+          this date. If absent defaults to current date. Format is aligned to DateString
+          common type.
         explode: true
         in: query
         name: newest-date
@@ -591,7 +595,7 @@ paths:
         style: form
         x-cds-type: DateString
       - description: Type of interval reads. Any one of the valid values for this
-          field can be supplied. If absent defaults to NONE
+          field can be supplied. If absent defaults to `NONE`.
         explode: true
         in: query
         name: interval-reads
@@ -604,7 +608,7 @@ paths:
           - FULL
           type: string
         style: form
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -613,7 +617,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request.  Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -624,11 +628,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder must respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -638,9 +643,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder must respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -648,9 +653,9 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The x-fapi-interaction-id header value provided by the Data Recipient.
-          If not supplied by the Data Recipient, the primary Data Holder MUST create
-          a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id
+      - description: The _x-fapi-interaction-id_ header value provided by the Data
+          Recipient. If not supplied by the Data Recipient, the primary Data Holder
+          MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the _x-fapi-interaction-id_
           header.
         explode: false
         in: header
@@ -662,11 +667,11 @@ paths:
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
           identifier MUST be unique per customer according to the definition of customer
-          in the CDR Federation section of this profile. The x-cds-arrangement should
+          in the CDR Federation section of this profile. The _x-cds-arrangement_ should
           contain the arrangement ID for the consent that the request is being made
           under and will be used for tracing and audit purposes. This field MUST be
           populated but AEMO MUST NOT seek to validate the consent associated with
-          the arrangement
+          the arrangement.
         explode: false
         in: header
         name: x-cds-arrangement
@@ -680,7 +685,7 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestServicePointIdList'
         description: Request payload containing list of specific Service Points to
-          obtain data for
+          obtain data for.
         required: true
       responses:
         "200":
@@ -700,7 +705,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -721,7 +726,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -739,7 +744,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -759,7 +764,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -774,11 +779,11 @@ paths:
       x-version: "1"
   /secondary/energy/electricity/servicepoints/{servicePointId}/der:
     get:
-      description: Obtain a list of DER data from a particular service point
+      description: Obtain a list of DER data from a particular service point.
       operationId: getDERForServicePoint
       parameters:
       - description: The independent ID of the service point, known in the industry
-          as the NMI. The  servicePointId will be replaced with NMI for all interactions
+          as the NMI. The _servicePointId_ will be replaced with NMI for all interactions
           between Data Holder and AEMO.
         explode: false
         in: path
@@ -789,11 +794,12 @@ paths:
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder must respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -803,9 +809,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder must respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -813,9 +819,9 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The x-fapi-interaction-id header value provided by the Data Recipient.
-          If not supplied by the Data Recipient, the primary Data Holder MUST create
-          a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id
+      - description: The _x-fapi-interaction-id_ header value provided by the Data
+          Recipient. If not supplied by the Data Recipient, the primary Data Holder
+          MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the _x-fapi-interaction-id_
           header.
         explode: false
         in: header
@@ -827,11 +833,11 @@ paths:
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
           identifier MUST be unique per customer according to the definition of customer
-          in the CDR Federation section of this profile. The x-cds-arrangement should
+          in the CDR Federation section of this profile. The _x-cds-arrangement_ should
           contain the arrangement ID for the consent that the request is being made
           under and will be used for tracing and audit purposes. This field MUST be
           populated but AEMO MUST NOT seek to validate the consent associated with
-          the arrangement
+          the arrangement.
         explode: false
         in: header
         name: x-cds-arrangement
@@ -857,7 +863,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -876,7 +882,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -895,7 +901,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -913,7 +919,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -928,10 +934,10 @@ paths:
       x-version: "1"
   /secondary/energy/electricity/servicepoints/der:
     post:
-      description: Obtain DER data for a specific set of service points
+      description: Obtain DER data for a specific set of service points.
       operationId: listDERForServicePoints
       parameters:
-      - description: Page of results to request (standard pagination)
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -940,7 +946,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: Page size to request.  Default is 25 (standard pagination)
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -951,11 +957,12 @@ paths:
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder must respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -965,9 +972,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder must respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -975,9 +982,9 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The x-fapi-interaction-id header value provided by the Data Recipient.
-          If not supplied by the Data Recipient, the primary Data Holder MUST create
-          a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id
+      - description: The _x-fapi-interaction-id_ header value provided by the Data
+          Recipient. If not supplied by the Data Recipient, the primary Data Holder
+          MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the _x-fapi-interaction-id_
           header.
         explode: false
         in: header
@@ -989,11 +996,11 @@ paths:
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
           identifier MUST be unique per customer according to the definition of customer
-          in the CDR Federation section of this profile. The x-cds-arrangement should
+          in the CDR Federation section of this profile. The _x-cds-arrangement_ should
           contain the arrangement ID for the consent that the request is being made
           under and will be used for tracing and audit purposes. This field MUST be
           populated but AEMO MUST NOT seek to validate the consent associated with
-          the arrangement
+          the arrangement.
         explode: false
         in: header
         name: x-cds-arrangement
@@ -1007,7 +1014,7 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestServicePointIdList'
         description: Request payload containing list of specific Service Points to
-          obtain data for
+          obtain data for.
         required: true
       responses:
         "200":
@@ -1027,7 +1034,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1047,7 +1054,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1065,7 +1072,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1085,7 +1092,7 @@ paths:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
                 id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -1102,7 +1109,7 @@ components:
   parameters:
     servicePointId:
       description: The independent ID of the service point, known in the industry
-        as the NMI. The  servicePointId will be replaced with NMI for all interactions
+        as the NMI. The _servicePointId_ will be replaced with NMI for all interactions
         between Data Holder and AEMO.
       explode: false
       in: path
@@ -1113,7 +1120,7 @@ components:
       style: simple
     interval-reads:
       description: Type of interval reads. Any one of the valid values for this field
-        can be supplied. If absent defaults to NONE
+        can be supplied. If absent defaults to `NONE`.
       explode: true
       in: query
       name: interval-reads
@@ -1128,8 +1135,8 @@ components:
       style: form
     newest-time:
       description: Constrain the request to records with effective time at or before
-        this date/time.  If absent defaults to current date/time.  Format is aligned
-        to DateTimeString common type
+        this date/time. If absent defaults to current date/time. Format is aligned
+        to DateTimeString common type.
       explode: true
       in: query
       name: newest-time
@@ -1140,8 +1147,8 @@ components:
       x-cds-type: DateTimeString
     oldest-time:
       description: Constrain the request to records with effective time at or after
-        this date/time. If absent defaults to newest-time minus 12 months.  Format
-        is aligned to DateTimeString common type
+        this date/time. If absent defaults to _newest-time_ minus 12 months. Format
+        is aligned to DateTimeString common type.
       explode: true
       in: query
       name: oldest-time
@@ -1152,8 +1159,8 @@ components:
       x-cds-type: DateTimeString
     newest-date:
       description: Constrain the request to records with effective date at or before
-        this date.  If absent defaults to current date.  Format is aligned to DateString
-        common type
+        this date. If absent defaults to current date. Format is aligned to DateString
+        common type.
       explode: true
       in: query
       name: newest-date
@@ -1164,8 +1171,8 @@ components:
       x-cds-type: DateString
     oldest-date:
       description: Constrain the request to records with effective date at or after
-        this date. If absent defaults to newest-date minus 24 months.  Format is aligned
-        to DateString common type
+        this date. If absent defaults to _newest-date_ minus 24 months. Format is
+        aligned to DateString common type.
       explode: true
       in: query
       name: oldest-date
@@ -1175,7 +1182,7 @@ components:
       style: form
       x-cds-type: DateString
     page:
-      description: Page of results to request (standard pagination)
+      description: Page of results to request (standard pagination).
       explode: true
       in: query
       name: page
@@ -1185,7 +1192,7 @@ components:
       style: form
       x-cds-type: PositiveInteger
     page-size:
-      description: Page size to request.  Default is 25 (standard pagination)
+      description: Page size to request. Default is 25 (standard pagination).
       explode: true
       in: query
       name: page-size
@@ -1197,11 +1204,11 @@ components:
     x-v:
       description: Version of the API endpoint requested by the client. Must be set
         to a positive integer. The data holder should respond with the highest supported
-        version between [x-min-v](#request-headers) and [x-v](#request-headers). If
-        the value of [x-min-v](#request-headers) is equal to or higher than the value
-        of [x-v](#request-headers) then the [x-min-v](#request-headers) header should
-        be treated as absent. If all versions requested are not supported then the
-        data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+        version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+        If the value of [_x-min-v_](#request-headers) is equal to or higher than the
+        value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+        header should be treated as absent. If all versions requested are not supported
+        then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).
       explode: false
       in: header
       name: x-v
@@ -1212,9 +1219,9 @@ components:
     x-min-v:
       description: Minimum version of the API endpoint requested by the client. Must
         be set to a positive integer if provided. The data holder should respond with
-        the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
+        the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
         If all versions requested are not supported then the data holder must respond
-        with a 406 Not Acceptable.
+        with a `406 Not Acceptable`.
       explode: false
       in: header
       name: x-min-v
@@ -1223,9 +1230,9 @@ components:
         type: string
       style: simple
     x-fapi-interaction-id:
-      description: The x-fapi-interaction-id header value provided by the Data Recipient.
+      description: The _x-fapi-interaction-id_ header value provided by the Data Recipient.
         If not supplied by the Data Recipient, the primary Data Holder MUST create
-        a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id
+        a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the _x-fapi-interaction-id_
         header.
       explode: false
       in: header
@@ -1238,10 +1245,10 @@ components:
       description: A unique string representing a consent arrangement between a Data
         Recipient Software Product and Data Holder for a given consumer. The identifier
         MUST be unique per customer according to the definition of customer in the
-        CDR Federation section of this profile. The x-cds-arrangement should contain
+        CDR Federation section of this profile. The _x-cds-arrangement_ should contain
         the arrangement ID for the consent that the request is being made under and
         will be used for tracing and audit purposes. This field MUST be populated
-        but AEMO MUST NOT seek to validate the consent associated with the arrangement
+        but AEMO MUST NOT seek to validate the consent associated with the arrangement.
       explode: false
       in: header
       name: x-cds-arrangement
@@ -1266,7 +1273,7 @@ components:
           style: simple
         x-fapi-interaction-id:
           description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_
             response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
             value is required to be provided in the response header to track the interaction.
           explode: false
@@ -1289,7 +1296,7 @@ components:
           style: simple
         x-fapi-interaction-id:
           description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_
             response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
             value is required to be provided in the response header to track the interaction.
           explode: false
@@ -1312,7 +1319,7 @@ components:
           style: simple
         x-fapi-interaction-id:
           description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_
             response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
             value is required to be provided in the response header to track the interaction.
           explode: false
@@ -1335,7 +1342,7 @@ components:
           style: simple
         x-fapi-interaction-id:
           description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_
             response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
             value is required to be provided in the response header to track the interaction.
           explode: false
@@ -1358,7 +1365,7 @@ components:
           style: simple
         x-fapi-interaction-id:
           description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-            id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+            id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_
             response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
             value is required to be provided in the response header to track the interaction.
           explode: false
@@ -1559,11 +1566,11 @@ components:
               - 5.962133916683182
               - 5.962133916683182
               readQualities:
-              - startInterval: 5
-                endInterval: 2
+              - startInterval: 1
+                endInterval: 1
                 quality: SUBSTITUTE
-              - startInterval: 5
-                endInterval: 2
+              - startInterval: 1
+                endInterval: 1
                 quality: SUBSTITUTE
               aggregateValue: 1.4658129805029452
             servicePointId: servicePointId
@@ -1584,11 +1591,11 @@ components:
               - 5.962133916683182
               - 5.962133916683182
               readQualities:
-              - startInterval: 5
-                endInterval: 2
+              - startInterval: 1
+                endInterval: 1
                 quality: SUBSTITUTE
-              - startInterval: 5
-                endInterval: 2
+              - startInterval: 1
+                endInterval: 1
                 quality: SUBSTITUTE
               aggregateValue: 1.4658129805029452
             servicePointId: servicePointId
@@ -1924,16 +1931,17 @@ components:
       properties:
         servicePointId:
           description: The independent ID of the service point, known in the industry
-            as the National Meter Identifier (NMI). Note that the servicePointId will
-            be replaced with NMI for all interactions between Data Holder and AEMO.
+            as the National Meter Identifier (NMI). Note that the _servicePointId_
+            will be replaced with NMI for all interactions between Data Holder and
+            AEMO.
           type: string
         nationalMeteringId:
           description: The independent ID of the service point, known in the industry
-            as the NMI
+            as the NMI.
           type: string
         servicePointClassification:
           description: The classification of the service point as defined in MSATS
-            procedures
+            procedures.
           enum:
           - EXTERNAL_PROFILE
           - GENERATOR
@@ -1946,12 +1954,12 @@ components:
           type: string
         servicePointStatus:
           description: 'Code used to indicate the status of the service point. Note
-            the details for the enumeration values below:<ul><li>**ACTIVE** - An active,
-            energised, service point</li><li>**DE_ENERGISED** - The service point
-            exists but is deenergised</li><li>**EXTINCT** - The service point has
-            been permanently decommissioned</li><li>**GREENFIELD** - Applies to a
-            service point that has never been energised</li><li>**OFF_MARKET** - Applies
-            when the service point is no longer settled in the NEM</li></ul> '
+            the details for the enumeration values below: <ul><li>`ACTIVE`: An active,
+            energised, service point</li><li>`DE_ENERGISED`: The service point exists
+            but is deenergised</li><li>`EXTINCT`: The service point has been permanently
+            decommissioned</li><li>`GREENFIELD`: Applies to a service point that has
+            never been energised</li><li>`OFF_MARKET`: Applies when the service point
+            is no longer settled in the NEM.</li></ul>'
           enum:
           - ACTIVE
           - DE_ENERGISED
@@ -1960,12 +1968,12 @@ components:
           - OFF_MARKET
           type: string
         jurisdictionCode:
-          description: Jurisdiction code to which the service point belongs.This code
-            defines the jurisdictional rules which apply to the service point. Note
-            the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT**
-            - Australian Capital Territory</li><li>**NEM** - National Electricity
-            Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA**
-            - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>
+          description: 'Jurisdiction code to which the service point belongs. This
+            code defines the jurisdictional rules which apply to the service point.
+            Note the details of enumeration values below: <ul><li>`ALL`: All Jurisdictions</li><li>`ACT`:
+            Australian Capital Territory</li><li>`NEM`: National Electricity Market</li><li>`NSW`:
+            New South Wales</li><li>`QLD`: Queensland</li><li>`SA`: South Australia</li><li>`TAS`:
+            Tasmania</li><li>`VIC`: Victoria.</li></ul>'
           enum:
           - ALL
           - ACT
@@ -1978,19 +1986,19 @@ components:
           type: string
         isGenerator:
           description: This flag determines whether the energy at this connection
-            point is to be treated as consumer load or as a generating unit(this may
-            include generator auxiliary loads). If absent defaults to false. <br>**Note:**
-            Only applicable for scheduled or semischeduled generators, does not indicate
-            on site generation by consumer
+            point is to be treated as consumer load or as a generating unit (this
+            may include generator auxiliary loads). If absent defaults to `false`.
+            <br>**Note:** Only applicable for scheduled or semischeduled generators,
+            does not indicate on site generation by consumer.
           type: boolean
         validFromDate:
           description: The latest start date from which the constituent data sets
-            of this service point became valid
+            of this service point became valid.
           type: string
           x-cds-type: DateString
         lastUpdateDateTime:
           description: The date and time that the information for this service point
-            was modified
+            was modified.
           type: string
           x-cds-type: DateTimeString
         consumerProfile:
@@ -2122,16 +2130,17 @@ components:
       properties:
         servicePointId:
           description: The independent ID of the service point, known in the industry
-            as the National Meter Identifier (NMI). Note that the servicePointId will
-            be replaced with NMI for all interactions between Data Holder and AEMO.
+            as the National Meter Identifier (NMI). Note that the _servicePointId_
+            will be replaced with NMI for all interactions between Data Holder and
+            AEMO.
           type: string
         nationalMeteringId:
           description: The independent ID of the service point, known in the industry
-            as the NMI
+            as the NMI.
           type: string
         servicePointClassification:
           description: The classification of the service point as defined in MSATS
-            procedures
+            procedures.
           enum:
           - EXTERNAL_PROFILE
           - GENERATOR
@@ -2144,12 +2153,12 @@ components:
           type: string
         servicePointStatus:
           description: 'Code used to indicate the status of the service point. Note
-            the details for the enumeration values below:<ul><li>**ACTIVE** - An active,
-            energised, service point</li><li>**DE_ENERGISED** - The service point
-            exists but is deenergised</li><li>**EXTINCT** - The service point has
-            been permanently decommissioned</li><li>**GREENFIELD** - Applies to a
-            service point that has never been energised</li><li>**OFF_MARKET** - Applies
-            when the service point is no longer settled in the NEM</li></ul> '
+            the details for the enumeration values below: <ul><li>`ACTIVE`: An active,
+            energised, service point</li><li>`DE_ENERGISED`: The service point exists
+            but is deenergised</li><li>`EXTINCT`: The service point has been permanently
+            decommissioned</li><li>`GREENFIELD`: Applies to a service point that has
+            never been energised</li><li>`OFF_MARKET`: Applies when the service point
+            is no longer settled in the NEM.</li></ul>'
           enum:
           - ACTIVE
           - DE_ENERGISED
@@ -2158,12 +2167,12 @@ components:
           - OFF_MARKET
           type: string
         jurisdictionCode:
-          description: Jurisdiction code to which the service point belongs.This code
-            defines the jurisdictional rules which apply to the service point. Note
-            the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT**
-            - Australian Capital Territory</li><li>**NEM** - National Electricity
-            Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA**
-            - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>
+          description: 'Jurisdiction code to which the service point belongs. This
+            code defines the jurisdictional rules which apply to the service point.
+            Note the details of enumeration values below: <ul><li>`ALL`: All Jurisdictions</li><li>`ACT`:
+            Australian Capital Territory</li><li>`NEM`: National Electricity Market</li><li>`NSW`:
+            New South Wales</li><li>`QLD`: Queensland</li><li>`SA`: South Australia</li><li>`TAS`:
+            Tasmania</li><li>`VIC`: Victoria.</li></ul>'
           enum:
           - ALL
           - ACT
@@ -2176,19 +2185,19 @@ components:
           type: string
         isGenerator:
           description: This flag determines whether the energy at this connection
-            point is to be treated as consumer load or as a generating unit(this may
-            include generator auxiliary loads). If absent defaults to false. <br>**Note:**
-            Only applicable for scheduled or semischeduled generators, does not indicate
-            on site generation by consumer
+            point is to be treated as consumer load or as a generating unit (this
+            may include generator auxiliary loads). If absent defaults to `false`.
+            <br>**Note:** Only applicable for scheduled or semischeduled generators,
+            does not indicate on site generation by consumer.
           type: boolean
         validFromDate:
           description: The latest start date from which the constituent data sets
-            of this service point became valid
+            of this service point became valid.
           type: string
           x-cds-type: DateString
         lastUpdateDateTime:
           description: The date and time that the information for this service point
-            was modified
+            was modified.
           type: string
           x-cds-type: DateTimeString
         consumerProfile:
@@ -2203,7 +2212,7 @@ components:
           $ref: '#/components/schemas/CommonPhysicalAddress'
         meters:
           description: The meters associated with the service point. This may be empty
-            where there are no meters physically installed at the service point
+            where there are no meters physically installed at the service point.
           items:
             $ref: '#/components/schemas/EnergyServicePointDetail_meters'
           type: array
@@ -2232,11 +2241,11 @@ components:
           - 5.962133916683182
           - 5.962133916683182
           readQualities:
-          - startInterval: 5
-            endInterval: 2
+          - startInterval: 1
+            endInterval: 1
             quality: SUBSTITUTE
-          - startInterval: 5
-            endInterval: 2
+          - startInterval: 1
+            endInterval: 1
             quality: SUBSTITUTE
           aggregateValue: 1.4658129805029452
         servicePointId: servicePointId
@@ -2248,16 +2257,17 @@ components:
       properties:
         servicePointId:
           description: The independent ID of the service point, known in the industry
-            as the National Meter Identifier (NMI). Note that the servicePointId will
-            be replaced with NMI for all interactions between Data Holder and AEMO.
+            as the National Meter Identifier (NMI). Note that the _servicePointId_
+            will be replaced with NMI for all interactions between Data Holder and
+            AEMO.
           type: string
         registerId:
           description: Register ID of the meter register where the meter reads are
-            obtained
+            obtained.
           type: string
         registerSuffix:
           description: Register suffix of the meter register where the meter reads
-            are obtained
+            are obtained.
           type: string
         meterId:
           description: Meter id/serial number as it appears in customer’s bill. ID
@@ -2265,27 +2275,27 @@ components:
           type: string
         controlledLoad:
           description: Indicates whether the energy recorded by this register is created
-            under a Controlled Load regime
+            under a Controlled Load regime.
           type: boolean
         readStartDate:
           description: Date when the meter reads start in AEST and assumed to start
-            from 12:00 am AEST.
+            from 12:00am AEST.
           type: string
           x-cds-type: DateString
         readEndDate:
-          description: Date when the meter reads end in AEST.  If absent then assumed
-            to be equal to readStartDate.  In this case the entry represents data
-            for a single date specified by readStartDate.
+          description: Date when the meter reads end in AEST. If absent then assumed
+            to be equal to _readStartDate_. In this case the entry represents data
+            for a single date specified by _readStartDate_.
           type: string
           x-cds-type: DateString
         unitOfMeasure:
           description: Unit of measure of the meter reads. Refer to Appendix B of
             <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF
-            Specification NEM12 NEM13 v2.1</a> for a list of possible values
+            Specification NEM12 NEM13 v2.1</a> for a list of possible values.
           type: string
           x-cds-type: ExternalRef
         readUType:
-          description: Specify the type of the meter read data
+          description: Specify the type of the meter read data.
           enum:
           - basicRead
           - intervalRead
@@ -2387,40 +2397,41 @@ components:
       properties:
         servicePointId:
           description: The independent ID of the service point, known in the industry
-            as the National Meter Identifier (NMI). Note that the servicePointId will
-            be replaced with NMI for all interactions between Data Holder and AEMO.
+            as the National Meter Identifier (NMI). Note that the _servicePointId_
+            will be replaced with NMI for all interactions between Data Holder and
+            AEMO.
           type: string
         approvedCapacity:
           description: Approved small generating unit capacity as agreed with NSP
-            in the connection agreement, expressed in kVA. Value of 0 indicates no
-            DER record exists for the given servicePointId
+            in the connection agreement, expressed in kVA. Value of `0` indicates
+            no DER record exists for the given _servicePointId_.
           type: number
         availablePhasesCount:
           description: The number of phases available for the installation of DER.
-            Acceptable values are 0, 1, 2 or 3. Value of 0 indicates no DER record
-            exists for the given servicePointId
+            Acceptable values are `0`, `1`, `2` or `3`. Value of `0` indicates no
+            DER record exists for the given _servicePointId_.
           maximum: 3
           minimum: 0
           type: integer
           x-cds-type: NaturalNumber
         installedPhasesCount:
           description: The number of phases that DER is connected to. Acceptable values
-            are 0, 1, 2 or 3. Value of 0 indicates no DER record exists for the given
-            servicePointId
+            are `0`, `1`, `2` or `3`. Value of `0` indicates no DER record exists
+            for the given _servicePointId_.
           maximum: 3
           minimum: 0
           type: integer
           x-cds-type: NaturalNumber
         islandableInstallation:
           description: For identification of small generating units designed with
-            the ability to operate in an islanded mode
+            the ability to operate in an islanded mode.
           type: boolean
           x-cds-type: Boolean
         hasCentralProtectionControl:
           default: false
           description: For DER installations where NSPs specify the need for additional
-            forms of protection above those inbuilt in an inverter.  If absent then
-            assumed to be false
+            forms of protection above those inbuilt in an inverter. If absent then
+            assumed to be `false`.
           type: boolean
         protectionMode:
           $ref: '#/components/schemas/EnergyDerRecord_protectionMode'
@@ -2475,7 +2486,7 @@ components:
         addressUType: paf
       properties:
         addressUType:
-          description: The type of address object present
+          description: The type of address object present.
           enum:
           - paf
           - simple
@@ -2491,7 +2502,7 @@ components:
       - simple
       - paf
     CommonSimpleAddress:
-      description: Required if addressUType is set to simple
+      description: Required if _addressUType_ is set to `simple`.
       example:
         country: AUS
         city: city
@@ -2504,32 +2515,33 @@ components:
       properties:
         mailingName:
           description: Name of the individual or business formatted for inclusion
-            in an address used for physical mail
+            in an address used for physical mail.
           type: string
         addressLine1:
-          description: First line of the standard address object
+          description: First line of the standard address object.
           type: string
         addressLine2:
-          description: Second line of the standard address object
+          description: Second line of the standard address object.
           type: string
         addressLine3:
-          description: Third line of the standard address object
+          description: Third line of the standard address object.
           type: string
         postcode:
-          description: Mandatory for Australian addresses
+          description: Mandatory for Australian addresses.
           type: string
         city:
-          description: Name of the city or locality
+          description: Name of the city or locality.
           type: string
         state:
           description: Free text if the country is not Australia. If country is Australia
             then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)
-            in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT
+            in the PAF file format. `NSW`, `QLD`, `VIC`, `NT`, `WA`, `SA`, `TAS`,
+            `ACT`, `AAT`.
           type: string
         country:
           default: AUS
           description: A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html)
-            country code. Australia (AUS) is assumed if country is not present.
+            country code. Australia (`AUS`) is assumed if country is not present.
           type: string
           x-cds-type: ExternalRef
       required:
@@ -2542,7 +2554,7 @@ components:
     CommonPAFAddress:
       description: Australian address formatted according to the file format defined
         by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).
-        Required if addressUType is set to paf
+        Required if _addressUType_ is set to `paf`.
       example:
         streetType: streetType
         floorLevelNumber: floorLevelNumber
@@ -2568,86 +2580,86 @@ components:
         thoroughfareNumber2Suffix: thoroughfareNumber2Suffix
       properties:
         dpid:
-          description: Unique identifier for an address as defined by Australia Post.  Also
-            known as Delivery Point Identifier
+          description: Unique identifier for an address as defined by Australia Post.
+            Also known as Delivery Point Identifier.
           type: string
         thoroughfareNumber1:
           description: Thoroughfare number for a property (first number in a property
-            ranged address)
+            ranged address).
           type: integer
           x-cds-type: PositiveInteger
         thoroughfareNumber1Suffix:
           description: Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_
-            is populated
+            is populated.
           type: string
         thoroughfareNumber2:
           description: Second thoroughfare number (only used if the property has a
-            ranged address eg 23-25)
+            ranged address e.g., 23-25).
           type: integer
           x-cds-type: PositiveInteger
         thoroughfareNumber2Suffix:
           description: Suffix for the second thoroughfare number. Only relevant if
-            _thoroughfareNumber2_ is populated
+            _thoroughfareNumber2_ is populated.
           type: string
         flatUnitType:
-          description: Type of flat or unit for the address
+          description: Type of flat or unit for the address.
           type: string
         flatUnitNumber:
-          description: Unit number (including suffix, if applicable)
+          description: Unit number (including suffix, if applicable).
           type: string
         floorLevelType:
-          description: Type of floor or level for the address
+          description: Type of floor or level for the address.
           type: string
         floorLevelNumber:
-          description: Floor or level number (including alpha characters)
+          description: Floor or level number (including alpha characters).
           type: string
         lotNumber:
-          description: Allotment number for the address
+          description: Allotment number for the address.
           type: string
         buildingName1:
-          description: Building/Property name 1
+          description: Building/Property name 1.
           type: string
         buildingName2:
-          description: Building/Property name 2
+          description: Building/Property name 2.
           type: string
         streetName:
-          description: The name of the street
+          description: The name of the street.
           type: string
         streetType:
           description: The street type. Valid enumeration defined by Australia Post
-            PAF code file
+            PAF code file.
           type: string
         streetSuffix:
           description: The street type suffix. Valid enumeration defined by Australia
-            Post PAF code file
+            Post PAF code file.
           type: string
         postalDeliveryType:
-          description: Postal delivery type. (eg. PO BOX). Valid enumeration defined
-            by Australia Post PAF code file
+          description: Postal delivery type. (e.g., PO BOX). Valid enumeration defined
+            by Australia Post PAF code file.
           type: string
         postalDeliveryNumber:
           description: Postal delivery number if the address is a postal delivery
-            type
+            type.
           type: integer
           x-cds-type: PositiveInteger
         postalDeliveryNumberPrefix:
           description: Postal delivery number prefix related to the postal delivery
-            number
+            number.
           type: string
         postalDeliveryNumberSuffix:
           description: Postal delivery number suffix related to the postal delivery
-            number
+            number.
           type: string
         localityName:
-          description: Full name of locality
+          description: Full name of locality.
           type: string
         postcode:
-          description: Postcode for the locality
+          description: Postcode for the locality.
           type: string
         state:
           description: State in which the address belongs. Valid enumeration defined
             by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).
-            NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT
+            `NSW`, `QLD`, `VIC`, `NT`, `WA`, `SA`, `TAS`, `ACT`, `AAT`.
           type: string
       required:
       - localityName
@@ -2674,7 +2686,7 @@ components:
         self: self
       properties:
         self:
-          description: Fully qualified link that generated the current response document
+          description: Fully qualified link that generated the current response document.
           type: string
           x-cds-type: URIString
       required:
@@ -2691,27 +2703,27 @@ components:
         first: first
       properties:
         self:
-          description: Fully qualified link that generated the current response document
+          description: Fully qualified link that generated the current response document.
           type: string
           x-cds-type: URIString
         first:
           description: URI to the first page of this set. Mandatory if this response
-            is not the first page
+            is not the first page.
           type: string
           x-cds-type: URIString
         prev:
           description: URI to the previous page of this set. Mandatory if this response
-            is not the first page
+            is not the first page.
           type: string
           x-cds-type: URIString
         next:
           description: URI to the next page of this set. Mandatory if this response
-            is not the last page
+            is not the last page.
           type: string
           x-cds-type: URIString
         last:
           description: URI to the last page of this set. Mandatory if this response
-            is not the last page
+            is not the last page.
           type: string
           x-cds-type: URIString
       required:
@@ -2787,11 +2799,11 @@ components:
             - 5.962133916683182
             - 5.962133916683182
             readQualities:
-            - startInterval: 5
-              endInterval: 2
+            - startInterval: 1
+              endInterval: 1
               quality: SUBSTITUTE
-            - startInterval: 5
-              endInterval: 2
+            - startInterval: 1
+              endInterval: 1
               quality: SUBSTITUTE
             aggregateValue: 1.4658129805029452
           servicePointId: servicePointId
@@ -2812,11 +2824,11 @@ components:
             - 5.962133916683182
             - 5.962133916683182
             readQualities:
-            - startInterval: 5
-              endInterval: 2
+            - startInterval: 1
+              endInterval: 1
               quality: SUBSTITUTE
-            - startInterval: 5
-              endInterval: 2
+            - startInterval: 1
+              endInterval: 1
               quality: SUBSTITUTE
             aggregateValue: 1.4658129805029452
           servicePointId: servicePointId
@@ -2828,7 +2840,7 @@ components:
       properties:
         reads:
           description: Array of meter reads sorted by NMI in ascending order followed
-            by readStartDate in descending order
+            by _readStartDate_ in descending order.
           items:
             $ref: '#/components/schemas/EnergyUsageRead'
           type: array
@@ -2998,7 +3010,7 @@ components:
             status: ACTIVE
       properties:
         derRecords:
-          description: Array of meter reads
+          description: Array of meter reads.
           items:
             $ref: '#/components/schemas/EnergyDerRecord'
           type: array
@@ -3006,11 +3018,11 @@ components:
       - derRecords
       type: object
     ResponseErrorListV2_meta:
-      description: Additional data for customised error codes
+      description: Additional data for customised error codes.
       properties:
         urn:
           description: The CDR error code URN which the application-specific error
-            code extends. Mandatory if the error `code` is an application-specific
+            code extends. Mandatory if the error _code_ is an application-specific
             error rather than a standardised error code.
           type: string
       type: object
@@ -3048,7 +3060,7 @@ components:
       properties:
         classification:
           description: A code that defines the consumer class as defined in the National
-            Energy Retail Regulations, or in overriding Jurisdictional instruments
+            Energy Retail Regulations, or in overriding Jurisdictional instruments.
           enum:
           - BUSINESS
           - RESIDENTIAL
@@ -3056,14 +3068,14 @@ components:
         threshold:
           description: 'A code that defines the consumption threshold as defined in
             the National Energy Retail Regulations, or in overriding Jurisdictional
-            instruments. Note the details of enumeration values below: <ul><li>**LOW**
-            - Consumption is less than the ‘lower consumption threshold’ as defined
-            in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption
-            is equal to or greater than the ‘lower consumption threshold’, but less
-            than the ‘upper consumption threshold’, as defined in the National Energy
-            Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater
-            than the ‘upper consumption threshold’ as defined in the National Energy
-            Retail Regulations</li></ul>'
+            instruments. Note the details of enumeration values below: <ul><li>`LOW`:
+            Consumption is less than the ''lower consumption threshold'' as defined
+            in the National Energy Retail Regulations</li><li>`MEDIUM`: Consumption
+            is equal to or greater than the ''lower consumption threshold'', but less
+            than the ''upper consumption threshold'', as defined in the National Energy
+            Retail Regulations</li><li>`HIGH`: Consumption is equal to or greater
+            than the ''upper consumption threshold'' as defined in the National Energy
+            Retail Regulations.</li></ul>'
           enum:
           - LOW
           - MEDIUM
@@ -3078,14 +3090,14 @@ components:
       properties:
         code:
           description: A code used to identify data loss factor for the service point
-            values.  Refer to AEMO distribution loss factor documents for each financial
-            year to interpret
+            values. Refer to AEMO distribution loss factor documents for each financial
+            year to interpret.
           type: string
         description:
-          description: Description of the data loss factor code and value
+          description: Description of the data loss factor code and value.
           type: string
         lossValue:
-          description: The value associated with the loss factor code
+          description: The value associated with the loss factor code.
           type: string
       required:
       - code
@@ -3099,16 +3111,15 @@ components:
       properties:
         party:
           description: The name of the party/organisation related to this service
-            point
+            point.
           type: string
         role:
           description: 'The role performed by this participant in relation to the
-            service point. Note the details of enumeration values below: <ul><li>**FRMP**
-            - Financially Responsible Market Participant</li><li>**LNSP** - Local
-            Network Service Provider or Embedded Network Manager for child connection
-            points</li><li>**DRSP** - wholesale Demand Response and/or market ancillary
-            Service Provider and note that where it is not relevant for a NMI it will
-            not be included</li></ul>'
+            service point. Note the details of enumeration values below: <ul><li>`FRMP`:
+            Financially Responsible Market Participant</li><li>`LNSP`: Local Network
+            Service Provider or Embedded Network Manager for child connection points</li><li>`DRSP`:
+            wholesale Demand Response and/or market ancillary Service Provider and
+            note that where it is not relevant for a NMI it will not be included.</li></ul>'
           enum:
           - FRMP
           - LNSP
@@ -3119,7 +3130,7 @@ components:
       - role
       type: object
     EnergyServicePointDetail_specifications:
-      description: Technical characteristics of the meter
+      description: Technical characteristics of the meter.
       example:
         installationType: BASIC
         nextScheduledReadDate: nextScheduledReadDate
@@ -3130,9 +3141,9 @@ components:
       properties:
         status:
           description: 'A code to denote the status of the meter. Note the details
-            of enumeration values below: <ul><li>**CURRENT** -Applies when a meter
-            is current and not disconnected</li><li>**DISCONNECTED** - Applies when
-            a meter is present but has been remotely disconnected</li></ul>'
+            of enumeration values below: <ul><li>`CURRENT`: Applies when a meter is
+            current and not disconnected</li><li>`DISCONNECTED`: Applies when a meter
+            is present but has been remotely disconnected.</li></ul>'
           enum:
           - CURRENT
           - DISCONNECTED
@@ -3140,18 +3151,17 @@ components:
         installationType:
           description: 'The metering Installation type code indicates whether the
             metering installation has to be manually read. Note the details of enumeration
-            values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1**
-            - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval
-            Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter
-            with communications – Type 3</li><li>**COMMS4** - Interval Meter with
-            communications – Type 4</li><li>**COMMS4C** - CT connected metering installation
-            that meets the minimum services specifications</li><li>**COMMS4D** - Whole
-            current metering installation that meets the minimum services specifications</li><li>**MRAM**
-            - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually
-            Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type
-            7</li><li>**VICAMI** - A relevant metering installation as defined in
-            clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load
-            - Introduced as part of Global Settlement</li></ul>'
+            values below: <ul><li>`BASIC`: Accumulation Meter – Type 6</li><li>`COMMS1`:
+            Interval Meter with communications – Type 1</li><li>`COMMS2`: Interval
+            Meter with communications – Type 2</li><li>`COMMS3`: Interval Meter with
+            communications – Type 3</li><li>`COMMS4`: Interval Meter with communications
+            – Type 4</li><li>`COMMS4C`: CT connected metering installation that meets
+            the minimum services specifications</li><li>`COMMS4D`: Whole current metering
+            installation that meets the minimum services specifications</li><li>`MRAM`:
+            Small customer metering installation – Type 4A</li><li>`MRIM`: Manually
+            Read Interval Meter – Type 5</li><li>`UMCP`: Unmetered Supply – Type 7</li><li>`VICAMI`:
+            A relevant metering installation as defined in clause 9.9C of the NER</li><li>`NCONUML`:
+            Non-contestable unmeter load - Introduced as part of Global Settlement.</li></ul>'
           enum:
           - BASIC
           - COMMS1
@@ -3170,30 +3180,31 @@ components:
           type: string
         manufacturer:
           description: Free text field to identify the manufacturer of the installed
-            meter
+            meter.
           type: string
         model:
-          description: Free text field to identify the meter manufacturer’s designation
-            for the meter model
+          description: Free text field to identify the meter manufacturer's designation
+            for the meter model.
           type: string
         readType:
           description: 'Code to denote the method and frequency of Meter Reading.
-            The value is formatted as follows: <ul><li>First Character = Remote (R)
-            or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless
-            P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character
-            = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 =
-            Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional
-            Fourth Character = to identify what interval length the meter is capable
-            of reading. This includes five, 15 and 30 minute granularity as the following:
-            A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute
-            (i.e. due to metering installation de-energised) M - Manually Read Accumulation
-            Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li>
-            <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li>
-            <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>'
+            The value is formatted as follows: <ul><li>First Character = Remote (`R`)
+            or Manual (`M`)</li><li>Second Character = Mode: `T` = telephone, `W`
+            = wireless, `P` = powerline, `I` = infra-red, `G` = galvanic, `V` = visual</li><li>Third
+            Character = Frequency of Scheduled Meter Readings: `1` = Twelve times
+            per year, `2` = Six times per year, `3` = Four times per year, `D` = Daily
+            or weekly</li><li>Optional Fourth Character = to identify what interval
+            length the meter is capable of reading. This includes five, 15 and 30
+            minute granularity as the following: `A` = 5 minute, `B` = 15 minute,
+            `C` = 30 minute, `D` = Cannot convert to 5 minute (i.e. due to metering
+            installation de-energised), `M` = Manually Read Accumulation Meter.</li></ul>For
+            example, <ul><li>`MV3` = Manual, Visual, Quarterly</li><li>`MV3M` = Manual,
+            Visual, Quarterly, Manually Read Accumulation Meter</li><li>`RWDC` = Remote,
+            Wireless, Daily, 30 minutes interval.</li></ul>'
           type: string
         nextScheduledReadDate:
           description: This date is the next scheduled meter read date (NSRD) if a
-            manual Meter Reading is required
+            manual Meter Reading is required.
           type: string
           x-cds-type: DateString
       required:
@@ -3214,12 +3225,12 @@ components:
         timeOfDay: ALLDAY
       properties:
         registerId:
-          description: Unique identifier of the register within this service point.  Is
-            not globally unique
+          description: Unique identifier of the register within this service point.
+            Is not globally unique.
           type: string
         registerSuffix:
           description: Register suffix of the meter register where the meter reads
-            are obtained
+            are obtained.
           type: string
         averagedDailyLoad:
           description: The energy delivered through a connection point or metering
@@ -3227,7 +3238,7 @@ components:
             value is calculated annually.
           type: number
         registerConsumptionType:
-          description: Indicates the consumption type of register
+          description: Indicates the consumption type of register.
           enum:
           - INTERVAL
           - BASIC
@@ -3239,13 +3250,13 @@ components:
           type: string
         networkTariffCode:
           description: The Network Tariff Code is a free text field containing a code
-            supplied and published by the local network service provider
+            supplied and published by the local network service provider.
           type: string
         unitOfMeasure:
-          description: The unit of measure for data held in this register
+          description: The unit of measure for data held in this register.
           type: string
         timeOfDay:
-          description: Code to identify the time validity of register contents
+          description: Code to identify the time validity of register contents.
           enum:
           - ALLDAY
           - INTERVAL
@@ -3259,18 +3270,18 @@ components:
           type: string
         multiplier:
           description: Multiplier required to take a register value and turn it into
-            a value representing billable energy
+            a value representing billable energy.
           type: number
         controlledLoad:
           description: Indicates whether the energy recorded by this register is created
-            under a Controlled Load regime
+            under a Controlled Load regime.
           type: boolean
         consumptionType:
           description: 'Actual/Subtractive Indicator. Note the details of enumeration
-            values below: <ul><li>**ACTUAL** implies volume of energy actually metered
-            between two dates</li><li>**CUMULATIVE** indicates a meter reading for
+            values below: <ul><li>`ACTUAL`: implies volume of energy actually metered
+            between two dates</li><li>`CUMULATIVE`: indicates a meter reading for
             a specific date. A second Meter Reading is required to determine the consumption
-            between those two Meter Reading dates</li></ul>'
+            between those two Meter Reading dates.</li></ul>'
           enum:
           - ACTUAL
           - CUMULATIVE
@@ -3313,14 +3324,14 @@ components:
       properties:
         meterId:
           description: The meter ID uniquely identifies a meter for a given service
-            point.  It is unique in the context of the service point.  It is not globally
-            unique
+            point. It is unique in the context of the service point. It is not globally
+            unique.
           type: string
         specifications:
           $ref: '#/components/schemas/EnergyServicePointDetail_specifications'
         registers:
           description: Usage data registers available from the meter. This may be
-            empty where there are no meters physically installed at the service point
+            empty where there are no meters physically installed at the service point.
           items:
             $ref: '#/components/schemas/EnergyServicePointDetail_registers'
           type: array
@@ -3329,44 +3340,46 @@ components:
       - specifications
       type: object
     EnergyUsageRead_basicRead:
-      description: Mandatory if readUType is set to basicRead
+      description: Mandatory if _readUType_ is set to `basicRead`.
       example:
         value: 0.8008281904610115
         quality: ACTUAL
       properties:
         quality:
           default: ACTUAL
-          description: The quality of the read taken.  If absent then assumed to be
-            ACTUAL
+          description: The quality of the read taken. If absent then assumed to be
+            `ACTUAL`.
           enum:
           - ACTUAL
           - SUBSTITUTE
           - FINAL_SUBSTITUTE
           type: string
         value:
-          description: Meter read value.  If positive then it means consumption, if
-            negative it means export
+          description: Meter read value. If positive then it means consumption, if
+            negative it means export.
           type: number
       required:
       - value
       type: object
     EnergyUsageRead_intervalRead_readQualities:
       example:
-        startInterval: 5
-        endInterval: 2
+        startInterval: 1
+        endInterval: 1
         quality: SUBSTITUTE
       properties:
         startInterval:
           description: Start interval for read quality flag. First read begins at
-            1
+            `1`.
+          example: 1
           type: integer
           x-cds-type: PositiveInteger
         endInterval:
-          description: End interval for read quality flag
+          description: End interval for read quality flag.
+          example: 1
           type: integer
           x-cds-type: PositiveInteger
         quality:
-          description: The quality of the read taken
+          description: The quality of the read taken.
           enum:
           - SUBSTITUTE
           - FINAL_SUBSTITUTE
@@ -3377,45 +3390,45 @@ components:
       - startInterval
       type: object
     EnergyUsageRead_intervalRead:
-      description: Mandatory if readUType is set to intervalRead
+      description: Mandatory if _readUType_ is set to `intervalRead`.
       example:
         readIntervalLength: 6
         intervalReads:
         - 5.962133916683182
         - 5.962133916683182
         readQualities:
-        - startInterval: 5
-          endInterval: 2
+        - startInterval: 1
+          endInterval: 1
           quality: SUBSTITUTE
-        - startInterval: 5
-          endInterval: 2
+        - startInterval: 1
+          endInterval: 1
           quality: SUBSTITUTE
         aggregateValue: 1.4658129805029452
       properties:
         readIntervalLength:
-          description: Read interval length in minutes. Required when interval-reads
-            query parameter equals FULL or MIN_30
+          description: Read interval length in minutes. Required when _interval-reads_
+            query parameter equals `FULL` or `MIN_30`.
           type: integer
           x-cds-type: PositiveInteger
         aggregateValue:
           description: The aggregate sum of the interval read values. If positive
-            then it means net consumption, if negative it means net export
+            then it means net consumption, if negative it means net export.
           type: number
         intervalReads:
           description: Array of Interval read values. If positive then it means consumption,
-            if negative it means export. Required when interval-reads query parameter
-            equals FULL or  MIN_30.<br>Each read value indicates the read for the
-            interval specified by readIntervalLength beginning at midnight of readStartDate
+            if negative it means export. Required when _interval-reads_ query parameter
+            equals `FULL` or `MIN_30`.<br>Each read value indicates the read for the
+            interval specified by _readIntervalLength_ beginning at midnight of _readStartDate_
             (for example 00:00 to 00:30 would be the first reading in a 30 minute
-            Interval)
+            Interval).
           items:
             type: number
           type: array
         readQualities:
-          description: ' Specifies quality of reads that are not ACTUAL.  For read
-            indices that are not specified, quality is assumed to be ACTUAL. If not
-            present, all quality of all reads are assumed to be actual. Required when
-            interval-reads query parameter equals FULL or MIN_30'
+          description: Specifies quality of reads that are not `ACTUAL`. For read
+            indices that are not specified, quality is assumed to be `ACTUAL`. If
+            not present, all quality of all reads are assumed to be actual. Required
+            when _interval-reads_ query parameter equals `FULL` or `MIN_30`.
           items:
             $ref: '#/components/schemas/EnergyUsageRead_intervalRead_readQualities'
           type: array
@@ -3427,9 +3440,9 @@ components:
       - intervalReads
       - readQualities
     EnergyDerRecord_protectionMode:
-      description: Required only when the hasCentralProtectionAndControl flag is set
-        to true.  One or more of the object fields will be provided to describe the
-        protection modes in place
+      description: Required only when the _hasCentralProtectionAndControl_ flag is
+        set to `true`. One or more of the object fields will be provided to describe
+        the protection modes in place.
       example:
         interTripScheme: interTripScheme
         underFrequencyProtectionDelay: 2.3021358869347655
@@ -3449,8 +3462,8 @@ components:
       properties:
         exportLimitKva:
           description: Maximum amount of power (kVA) that may be exported from a connection
-            point to the grid, as monitored by a control / relay function. An absent
-            value indicates no limit
+            point to the grid, as monitored by a control/relay function. An absent
+            value indicates no limit.
           type: number
         underFrequencyProtection:
           description: Protective function limit in Hz.
@@ -3489,7 +3502,7 @@ components:
           description: Trip angle in degrees.
           type: number
         interTripScheme:
-          description: Description of the form of inter-trip (e.g. 'from local substation').
+          description: Description of the form of inter-trip (e.g., 'from local substation').
           type: string
         neutralVoltageDisplacement:
           description: Trip voltage.
@@ -3510,30 +3523,30 @@ components:
         deviceIdentifier:
           description: Unique identifier for a single DER device or a group of DER
             devices with the same attributes. Does not align with CDR ID permanence
-            standards
+            standards.
           type: number
         count:
-          description: Number of devices in the group of DER devices
+          description: Number of devices in the group of DER devices.
           type: integer
           x-cds-type: PositiveInteger
         manufacturer:
           description: The name of the device manufacturer. If absent then assumed
-            to be “unknown”
+            to be "unknown".
           type: string
         modelNumber:
           description: The model number of the device. If absent then assumed to be
-            “unknown”
+            "unknown".
           type: string
         status:
           description: Code used to indicate the status of the device. This will be
-            used to identify if an inverter is active or inactive or decommissioned
+            used to identify if an inverter is active or inactive or decommissioned.
           enum:
           - ACTIVE
           - INACTIVE
           - DECOMMISSIONED
           type: string
         type:
-          description: Used to indicate the primary technology used in the DER device
+          description: Used to indicate the primary technology used in the DER device.
           enum:
           - FOSSIL
           - HYDRO
@@ -3549,17 +3562,17 @@ components:
             This field is also used to record for example the battery chemistry, or
             the type of PV panel. It is also used to record if a battery is contained
             in an electric vehicle connected in a vehicle-to-grid arrangement. If
-            absent then assumed to be “other”
+            absent then assumed to be "other".
           type: string
         nominalRatedCapacity:
           description: Maximum output in kVA that is listed in the product specification
             by the manufacturer. This refers to the capacity of each unit within the
-            device group. Default is 0 if value not known
+            device group. Default is `0` if value not known.
           type: number
         nominalStorageCapacity:
           description: Maximum storage capacity in kVAh. This refers to the capacity
             of each storage module within the device group. Mandatory if type is equal
-            to “STORAGE”. Default is 0 if value not known
+            to `STORAGE`. Default is `0` if value not known.
           type: number
       required:
       - count
@@ -3601,40 +3614,41 @@ components:
         status: ACTIVE
       properties:
         connectionIdentifier:
-          description: AC Connection ID as defined in the DER register.  Does not
-            align with CDR ID permanence standards
+          description: AC Connection ID as defined in the DER register. Does not align
+            with CDR ID permanence standards.
           type: number
         count:
           description: Number of AC Connections in the group. For the suite of AC
             Connections to be considered as a group, all of the AC Connections included
-            must have the same attributes
+            must have the same attributes.
           type: integer
           x-cds-type: PositiveInteger
         equipmentType:
           description: Indicates whether the DER device is connected via an inverter
-            (and what category of inverter it is) or not (e.g. rotating machine).
-            If absent, assume equipment type to be “OTHER”.
+            (and what category of inverter it is) or not (e.g., rotating machine).
+            If absent, assume equipment type to be `OTHER`.
           enum:
           - INVERTER
           - OTHER
           type: string
         manufacturerName:
-          description: The name of the inverter manufacturer. Mandatory if equipmentType
-            is INVERTER
+          description: The name of the inverter manufacturer. Mandatory if _equipmentType_
+            is `INVERTER`.
           type: string
         inverterSeries:
-          description: The inverter series. Mandatory if equipmentType is INVERTER
+          description: The inverter series. Mandatory if _equipmentType_ is `INVERTER`.
           type: string
         inverterModelNumber:
-          description: The inverter model number. Mandatory if equipmentType is INVERTER
+          description: The inverter model number. Mandatory if _equipmentType_ is
+            `INVERTER`.
           type: string
         commissioningDate:
-          description: The date that the DER installation is commissioned
+          description: The date that the DER installation is commissioned.
           type: string
           x-cds-type: DateString
         status:
           description: Code used to indicate the status of the Inverter. This will
-            be used to identify if an inverter is active or inactive or decommissioned
+            be used to identify if an inverter is active or inactive or decommissioned.
           enum:
           - ACTIVE
           - INACTIVE
@@ -3642,8 +3656,8 @@ components:
           type: string
         inverterDeviceCapacity:
           description: The rated AC output power that is listed in the product specified
-            by the manufacturer. Mandatory if equipmentType is INVERTER. Default is
-            0 if value not known
+            by the manufacturer. Mandatory if _equipmentType_ is `INVERTER`. Default
+            is `0` if value not known.
           type: number
         derDevices:
           items:
@@ -3668,7 +3682,7 @@ components:
         - servicePointIds
       properties:
         servicePointIds:
-          description: Array of specific servicePointIds to obtain data for
+          description: Array of specific _servicePointIds_ to obtain data for.
           items:
             type: string
           type: array
