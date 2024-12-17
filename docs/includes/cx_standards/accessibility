@@ -10,23 +10,23 @@
 <td><p>At a minimum, all CDR participants <strong>MUST</strong> seek to comply with the following accessibility guidelines throughout the Consent Model.</p><p>These standards <strong>SHOULD</strong> be assessed, tested, and refined further by accessibility consultants directly involved in implementation.</p></td>
 </tr>
 <tr>
-<td><strong>Accessibility</strong> <br> Content distinction</td>
+<td><strong>Accessibility:</strong> <br> Content distinction</td>
 <td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast.html">WCAG 1.4</a>. This will make it easier to see and hear content, including separate foreground information from the background.</td>
 </tr>
 <tr>
-<td><strong>Accessibility</strong> <br> Keyboard functionality</td>
+<td><strong>Accessibility:</strong> <br> Keyboard functionality</td>
 <td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation.html">WCAG 2.1</a>. This will make all functionality available from a keyboard.</td>
 </tr>
 <tr>
-<td><strong>Accessibility</strong> <br> Pointer interactions</td>
-<td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/WAI/WCAG21/Understanding/input-modalities">WCAG 2.5</a>. This will make it easier to operate functionality using various input devices</td>
+<td><strong>Accessibility:</strong> <br> Pointer interactions</td>
+<td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/WAI/WCAG21/Understanding/input-modalities">WCAG 2.5</a>. This will make it easier to operate functionality using various input devices.</td>
 </tr>
 <tr>
-<td><strong>Accessibility</strong> <br> Reading experiences</td>
-<td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning.html">WCAG 3.1</a>. This will make text content readable and understandable</td>
+<td><strong>Accessibility:</strong> <br> Reading experiences</td>
+<td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning.html">WCAG 3.1</a>. This will make text content readable and understandable.</td>
 </tr>
 <tr>
-<td><strong>Accessibility</strong> <br> Input assistance</td>
+<td><strong>Accessibility:</strong> <br> Input assistance</td>
 <td>Data Recipients and Data Holders <strong>MUST</strong> seek to have all aspects of the Consent Model comply with <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error.html">WCAG 3.3</a>. This will help users avoid and correct mistakes.</td>
 </tr>
 </tbody></table>

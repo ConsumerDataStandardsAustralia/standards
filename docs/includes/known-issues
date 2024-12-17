@@ -1,7 +1,6 @@
 <h1 id='known-issues'>Known Issues</h1>
 <p>There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.</p>
-<pre class="highlight diff tab-diff"><code>Removed three known issues related to Register endpoint specfications that are resolved
-</code></pre>
+
 <table><thead>
 <tr>
 <th style="text-align: left">Issue</th>

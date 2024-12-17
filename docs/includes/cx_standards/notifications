@@ -1,8 +1,50 @@
 <h2 class="schema-heading" id="consumer-experience_notification-standards">Notification Standards</h2>
+<pre class="highlight diff tab-diff"><code>Added detail for CDR Receipts
+</code></pre>
+<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_notification-standards_cdr-receipts">CDR Receipts</h3>
 
-<p>The standards in this section apply where a relevant joint account holder is about to take an action that may or, where a data holder leverages rule 4A.15 and allows a vulnerable joint account holder to share joint account data as if it were from an individual account, may not result in the other joint account holder(s) being notified.</p>
+<p>Each of the below data standards are binding for the purposes of rule 8.11(1)(fa):</p>
+
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong><span style="white-space:nowrap">CDR Receipts:</span></strong><br>Content</td>
+<td>A CDR receipt provided by a data recipient <strong>MUST</strong> set out:<ul><li>The name of the person the CDR consumer gave consent to; and<li>The purpose of the consent(s); and<li>In the case of a collection consent, the name of each CDR participant the CDR consumer consented to the collection of CDR data from; and<li>In the case of a disclosure consent, the name of each person the CDR consumer consented to the disclosure of CDR data to; and<li>A description of the data for which the consent was given; and<li>In the case of an insight disclosure consent, a description of the CDR insight(s); and<li>The duration or expiry date(s) of the relevant consent; and<li>Instructions for how the consent can be reviewed and, for an active consent, withdrawn, including by using a simple alternative method of communication to be made available by the data recipient for the purposes of withdrawal.</ul></td>
+</tr>
+<tr>
+<td><strong>CDR Receipts:</strong><br>Delivery</td>
+<td>A CDR receipt provided by a data recipient <strong>MUST</strong> be given in writing otherwise than through the consumer dashboard.</td>
+</tr>
+</tbody></table>
+<pre class="highlight diff tab-diff"><code>Added detail for 90-day notifications
+</code></pre>
+<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_notification-standards_notifications-90-day-notifications">90-day notifications</h3>
+
+<p>Each of the below data standards are binding for the purposes of rule 8.11(1)(fb):</p>
+
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong><span style="white-space:nowrap">90-day notifications:</span></strong><br>Content</td>
+<td>A 90-day notification provided by a data recipient:<ul><li><strong>MUST</strong> include the following information:<ul><li>The name of the person the CDR consumer gave consent to; and<li>The purpose of the consent(s); and<li>Instructions for how the consent(s) can be reviewed, which <strong>MAY</strong> include details, links, or interactive components that direct the consumer to their consumer dashboard.</ul><li><strong>SHOULD</strong> include the following information:<ul><li>In the case of a collection consent, the name of each CDR participant, or number of participants, the CDR consumer consented to the collection of CDR data from; and<li>In the case of a disclosure consent, the name of each person, or number of persons, the CDR consumer consented to the disclosure of CDR data to; and<li>The expiry date(s) of the relevant consent.</ul></ul></td>
+</tr>
+<tr>
+<td><strong>90-day notifications:</strong><br>Delivery</td>
+<td>A 90-day notification provided by a data recipient <strong>MUST</strong> be given in writing otherwise than through the consumer dashboard.</td>
+</tr>
+</tbody></table>
 
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_notification-standards_notifications-joint-account-alerts">Notifications: Joint Account Alerts</h3>
+
+<p>The standards in this section apply where a relevant joint account holder is about to take an action that may or, where a data holder leverages rule 4A.15 and allows a vulnerable joint account holder to share joint account data as if it were from an individual account, may not result in the other joint account holder(s) being notified.</p>
 
 <table><thead>
 <tr>
@@ -36,7 +78,7 @@
 <li>The requester has given, amended, or withdrawn an authorisation</li>
 <li>Expiration of an authorisation</li>
 <li>A relevant account holder hasn&#39;t given approval within the relevant time frame</li>
-<li>A relevant account holder has withdrawn an approval</li>
+<li>A relevant account holder has withdrawn an approval.</li>
 </ol>
 
 <p>The standards in this section provide a non-exhaustive list of options that data holders may implement to support their compliance with these rules. The specific implementation of an alternative notification schedule and offering, which may or may not include options listed here, are at the data holder&#39;s discretion. It is the data holder&#39;s responsibility to ensure it is meeting its obligations under the CDR Rules. Compliance with the CDR Rules on alternative notification schedules would require, at a minimum, implementation of a combination of options (being a combination of options listed below, other measures, or both).</p>

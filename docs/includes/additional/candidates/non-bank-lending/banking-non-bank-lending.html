@@ -618,12 +618,12 @@ This means that:
   <li>The standard <i>is not</i> binding</li>
   <li>The standard can only become binding via a formal decision of the Data Standards Chair</li>
   <li>The standard is considered stable</li>
-  <li>Material changes to the standard require a formal decision of the Data Standards Chair</li>
+  <li>Material changes to the standard require a formal decision of the Data Standards Chair.</li>
 </ul>
 </aside>
 
 <p>Note that the statements in these Candidate Standards are considered amendments or
-additions to the current version of the Consumer Data Standards.  All parts of
+additions to the current version of the Consumer Data Standards. All parts of
 the Consumer Data Standards not referenced are considered normative.</p>
 
 <p><h2 id='sector-definitions'>Sector definitions</h2><h3 id='banking-and-non-bank-lending'>Banking and Non-Bank Lending</h3>
@@ -15421,7 +15421,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 <h2 id='product-categories'>Product Categories</h2>
-<p>The <a href="#tocSbankingproductcategory">Product Category enumeration</a> lists the available product categories for categorising products and accounts.  These are explained in the following tables:</p>
+<p>The <a href="#cdr-banking-api_schemas_tocSbankingproductcategory"><em>productCategory</em> enumeration</a> provides the values for categorising products and accounts. These are explained in the following tables:</p>
 
 <p><strong>Deposit Products</strong></p>
 
@@ -15441,7 +15441,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>TRANS_AND_SAVINGS_ACCOUNTS</td>
-<td>This grouping of products includes all accounts where cash is deposited in the account and is accessible to the customer when they choose. These are given many names on the market including Cash Accounts, Saving Accounts, Transaction Accounts, Current Accounts, Cheque Accounts, Passbook Accounts, etc...</td>
+<td>This grouping of products includes all accounts where cash is deposited in the account and is accessible to the customer when they choose. These are given many names on the market including Cash Accounts, Saving Accounts, Transaction Accounts, Current Accounts, Cheque Accounts, Passbook Accounts, etc.</td>
 </tr>
 <tr>
 <td>TRAVEL_CARDS</td>
@@ -15471,7 +15471,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>LEASES</td>
-<td>This grouping of products will include all types of leases including Financial Lease, Operating Lease, Sale and leaseback, etc...</td>
+<td>This grouping of products will include all types of leases including Financial Lease, Operating Lease, Sale and leaseback, etc.</td>
 </tr>
 <tr>
 <td>MARGIN_LOANS</td>
@@ -15498,508 +15498,508 @@ This operation does not require authentication
 <p><a id="productfeaturetypedoc"></a>
 <h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3></p>
 
-<p>Description of the usage of the <code>featureType</code> field as it applies to products.</p>
+<p>Description of the usage of the <em>featureType</em> field as it applies to products.</p>
 
 <table><thead>
 <tr>
 <th>Value</th>
 <th>Description</th>
-<th>Use of additionalValue Field</th>
+<th>Use of <em>additionalValue</em> Field</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>ADDITIONAL_CARDS</td>
-<td>Additional cards can be requested</td>
-<td>The maximum number of additional cards. If no maximum then should be set to null</td>
+<td>Additional cards can be requested.</td>
+<td>The maximum number of additional cards. If no maximum then should be set to <code>null</code>.</td>
 </tr>
 <tr>
 <td>BALANCE_TRANSFERS</td>
-<td>Balance transfers can be made to the account (eg. for credit cards)</td>
-<td>NA</td>
+<td>Balance transfers can be made to the account (e.g., for credit cards).</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>BILL_PAYMENT</td>
-<td>The product can be attached to an automatic budgeting and bill payment service</td>
-<td>Optional name of the service</td>
+<td>The product can be attached to an automatic budgeting and bill payment service.</td>
+<td>Optional name of the service.</td>
 </tr>
 <tr>
 <td>BONUS_REWARDS</td>
-<td>Bonus loyalty rewards points are available</td>
-<td>Number of points available</td>
+<td>Bonus loyalty rewards points are available.</td>
+<td>Number of points available.</td>
 </tr>
 <tr>
 <td>CARD_ACCESS</td>
-<td>A card is available for the product to access funds</td>
-<td>Text describing list of card types that this product can be linked to</td>
+<td>A card is available for the product to access funds.</td>
+<td>Text describing list of card types that this product can be linked to.</td>
 </tr>
 <tr>
 <td>CASHBACK_OFFER</td>
 <td>Subject to terms, conditions and eligibility criteria, the product has a cashback offer for opening an account or by spending at a certain retailer.</td>
-<td>The amount of the cashback offer (in AUD)</td>
+<td>The amount of the cashback offer (in AUD).</td>
 </tr>
 <tr>
 <td>COMPLEMENTARY_PRODUCT_DISCOUNTS</td>
-<td>Indicates that complementary, discounted offerings (such as gift cards, or discounted travel) is available</td>
-<td>Description of the complementary offering</td>
+<td>Indicates that complementary, discounted offerings (such as gift cards, or discounted travel) is available.</td>
+<td>Description of the complementary offering.</td>
 </tr>
 <tr>
 <td>EXTRA_DOWN_PAYMENT</td>
-<td>An ability to make a larger than usual down-payment to reduce a repayment amount outstanding. This may enable a purchase that would otherwise have been rejected due to exceeding a credit limit</td>
-<td>NA</td>
+<td>An ability to make a larger than usual down-payment to reduce a repayment amount outstanding. This may enable a purchase that would otherwise have been rejected due to exceeding a credit limit.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>DIGITAL_BANKING</td>
-<td>Access is available to online banking features for the product</td>
-<td>NA</td>
+<td>Access is available to online banking features for the product.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>DIGITAL_WALLET</td>
-<td>A Digital wallet can be attached to the product</td>
-<td>The name or brand of the wallet</td>
+<td>A Digital wallet can be attached to the product.</td>
+<td>The name or brand of the wallet.</td>
 </tr>
 <tr>
 <td>DONATE_INTEREST</td>
-<td>Indicates that interest generated from the product can be automatically donated to a charity or community group</td>
-<td>NA</td>
+<td>Indicates that interest generated from the product can be automatically donated to a charity or community group.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>EXTRA_REPAYMENTS</td>
 <td>Indicates that the product has the option to accept extra repayments without incurring additional charges (for example Buy Now, Pay Later (BNPL) or line of credit products may offer the facility to repay instalments on an adhoc basis).</td>
-<td>NA</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>FRAUD_PROTECTION</td>
 <td>The product includes fraud protection features.</td>
-<td>NA</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>FREE_TXNS</td>
-<td>A set number of free transactions available per month</td>
-<td>The number of free transactions</td>
+<td>A set number of free transactions available per month.</td>
+<td>The number of free transactions.</td>
 </tr>
 <tr>
 <td>FREE_TXNS_ALLOWANCE</td>
-<td>A set amount of transaction fee value that is discounted per month</td>
-<td>The amount of transaction fee discounted (in AUD)</td>
+<td>A set amount of transaction fee value that is discounted per month.</td>
+<td>The amount of transaction fee discounted (in AUD).</td>
 </tr>
 <tr>
 <td>GUARANTOR</td>
 <td>Subject to terms and conditions, the customer may be able to nominate a guarantor during the origination process.</td>
-<td>NA</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>INSTALMENT_PLAN</td>
 <td>The product has the option to pay for eligible purchases over time with a set number of payments.</td>
-<td>NA</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>INSURANCE</td>
-<td>Insurance is provided as an additional feature of the product</td>
-<td>Text description of the type of insurance (e.g. Travel Insurance)</td>
+<td>Insurance is provided as an additional feature of the product.</td>
+<td>Text description of the type of insurance (e.g., Travel Insurance).</td>
 </tr>
 <tr>
 <td>INTEREST_FREE</td>
-<td>Interest free period for purchases</td>
-<td>Interest free period. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>Interest free period for purchases.</td>
+<td>Interest free period. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a>.</td>
 </tr>
 <tr>
 <td>INTEREST_FREE_TRANSFERS</td>
-<td>Interest free period for balance transfers</td>
-<td>Interest free period. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>Interest free period for balance transfers.</td>
+<td>Interest free period. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a>.</td>
 </tr>
 <tr>
 <td>LOYALTY_PROGRAM</td>
-<td>A points based loyalty program is available</td>
-<td>Name of the loyalty program</td>
+<td>A points based loyalty program is available.</td>
+<td>Name of the loyalty program.</td>
 </tr>
 <tr>
 <td>NOTIFICATIONS</td>
-<td>Advanced notifications are available for the product</td>
-<td>Description of the notification capability</td>
+<td>Advanced notifications are available for the product.</td>
+<td>Description of the notification capability.</td>
 </tr>
 <tr>
 <td>NPP_ENABLED</td>
-<td>An account of this product type can be used to receive funds as a result of a BSB/Number based NPP payment</td>
-<td>NA</td>
+<td>An account of this product type can be used to receive funds as a result of a BSB/Number based NPP payment.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>NPP_PAYID</td>
-<td>An account of this product type can be used as the target of an NPP PayID</td>
-<td>NA</td>
+<td>An account of this product type can be used as the target of an NPP PayID.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>OFFSET</td>
-<td>An offset account can be connected to the product</td>
-<td>NA</td>
+<td>An offset account can be connected to the product.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>OTHER</td>
-<td>Another feature that can not be included in any of the other categories. The <code>additionalInfo</code> field is mandatory for this type</td>
-<td>NA</td>
+<td>Another feature that can not be included in any of the other categories. The <em>additionalInfo</em> field is mandatory for this type.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>OVERDRAFT</td>
-<td>An overdraft can be applied for</td>
-<td>NA</td>
+<td>An overdraft can be applied for.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>REDRAW</td>
-<td>Redraw of repaid principal above minimum required is available</td>
-<td>NA</td>
+<td>Redraw of repaid principal above minimum required is available.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>RELATIONSHIP_MANAGEMENT</td>
 <td>Relationship management is available for eligible customers.</td>
-<td>NA</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>UNLIMITED_TXNS</td>
-<td>Unlimited free transactions available</td>
-<td>NA</td>
+<td>Unlimited free transactions available.</td>
+<td>N/A</td>
 </tr>
 </tbody></table>
 
 <p><a id="productconstrainttypedoc"></a>
 <h3 id="tocSproductconstrainttypedoc">Product Constraint Types</h3></p>
 
-<p>Description of the usage of the <code>constraintType</code> field as it applies to products.</p>
+<p>Description of the usage of the <em>constraintType</em> field as it applies to products.</p>
 
 <table><thead>
 <tr>
 <th>Value</th>
 <th>Description</th>
-<th>Use of additionalValue Field</th>
+<th>Use of <em>additionalValue</em> Field</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>MAX_BALANCE</td>
-<td>A maximum balance is required for the product</td>
-<td>The maximum balance in AmountString format</td>
+<td>A maximum balance is required for the product.</td>
+<td>The maximum balance in <a href="#common-field-types">AmountString</a> format.</td>
 </tr>
 <tr>
 <td>MAX_LIMIT</td>
-<td>A maximum limit exists (such as a maximum loan balance denoting the borrowable amount or maximum allowable credit limit)</td>
-<td>The maximum limit in AmountString format</td>
+<td>A maximum limit exists (such as a maximum loan balance denoting the borrowable amount or maximum allowable credit limit).</td>
+<td>The maximum limit in <a href="#common-field-types">AmountString</a> format.</td>
 </tr>
 <tr>
 <td>MIN_BALANCE</td>
-<td>A minimum balance is required for the product</td>
-<td>The minimum balance in AmountString format</td>
+<td>A minimum balance is required for the product.</td>
+<td>The minimum balance in <a href="#common-field-types">AmountString</a> format.</td>
 </tr>
 <tr>
 <td>MIN_LIMIT</td>
-<td>A minimum limit exists (such as a minimum loan balance denoting the borrowable amount or minimum credit limit)</td>
-<td>The minimum limit in AmountString format</td>
+<td>A minimum limit exists (such as a minimum loan balance denoting the borrowable amount or minimum credit limit).</td>
+<td>The minimum limit in <a href="#common-field-types">AmountString</a> format.</td>
 </tr>
 <tr>
 <td>OPENING_BALANCE</td>
-<td>An opening balance is required for the product</td>
-<td>The minimum opening balance in AmountString format</td>
+<td>An opening balance is required for the product.</td>
+<td>The minimum opening balance in <a href="#common-field-types">AmountString</a> format.</td>
 </tr>
 </tbody></table>
 
 <p><a id="producteligibilitytypedoc"></a>
 <h3 id="tocSproducteligibilitytypedoc">Product Eligibility Types</h3></p>
 
-<p>Description of the usage of the <code>eligibilityType</code> field as it applies to products.</p>
+<p>Description of the usage of the <em>eligibilityType</em> field as it applies to products.</p>
 
 <table><thead>
 <tr>
 <th>Value</th>
 <th>Description</th>
-<th>Use of additionalValue Field</th>
+<th>Use of <em>additionalValue</em> Field</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>BUSINESS</td>
-<td>Only business may apply for the account</td>
-<td>NA</td>
+<td>Only business may apply for the account.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>EMPLOYMENT_STATUS</td>
-<td>An eligibility constraint based on employment status applies</td>
-<td>A description of the status required</td>
+<td>An eligibility constraint based on employment status applies.</td>
+<td>A description of the status required.</td>
 </tr>
 <tr>
 <td>MAX_AGE</td>
-<td>Only customers younger than a maximum age may apply</td>
-<td>The maximum age in years</td>
+<td>Only customers younger than a maximum age may apply.</td>
+<td>The maximum age in years.</td>
 </tr>
 <tr>
 <td>MIN_AGE</td>
-<td>Only customers older than a minimum age may apply</td>
-<td>The minimum age in years</td>
+<td>Only customers older than a minimum age may apply.</td>
+<td>The minimum age in years.</td>
 </tr>
 <tr>
 <td>MIN_INCOME</td>
-<td>The customer must have an income greater than a specified threshold to obtain the product</td>
-<td>Minimum income in AmountString format</td>
+<td>The customer must have an income greater than a specified threshold to obtain the product.</td>
+<td>Minimum income in <a href="#common-field-types">AmountString</a> format.</td>
 </tr>
 <tr>
 <td>MIN_TURNOVER</td>
-<td>Only a business with greater than a minimum turnover may apply</td>
-<td>Minimum turnover in AmountString format</td>
+<td>Only a business with greater than a minimum turnover may apply.</td>
+<td>Minimum turnover in <a href="#common-field-types">AmountString</a> format.</td>
 </tr>
 <tr>
 <td>NATURAL_PERSON</td>
-<td>The customer must be a natural person rather than another legal entity</td>
-<td>NA</td>
+<td>The customer must be a natural person rather than another legal entity.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>OTHER</td>
-<td>Another eligibility criteria exists as described in the <code>additionalInfo</code> field (if this option is specified then the additionalInfo field is mandatory)</td>
-<td>NA</td>
+<td>Another eligibility criteria exists as described in the <em>additionalInfo</em> field (if this option is specified then the <em>additionalInfo</em> field is mandatory).</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>PENSION_RECIPIENT</td>
-<td>Only a recipient of a government pension may apply for the product</td>
-<td>NA</td>
+<td>Only a recipient of a government pension may apply for the product.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>RESIDENCY_STATUS</td>
-<td>An eligibility constraint based on residency status applies</td>
-<td>A description of the status required</td>
+<td>An eligibility constraint based on residency status applies.</td>
+<td>A description of the status required.</td>
 </tr>
 <tr>
 <td>STAFF</td>
-<td>Only a staff member of the provider may apply</td>
-<td>NA</td>
+<td>Only a staff member of the provider may apply.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>STUDENT</td>
-<td>Only students may apply for the product</td>
-<td>NA</td>
+<td>Only students may apply for the product.</td>
+<td>N/A</td>
 </tr>
 </tbody></table>
 
 <p><a id="productfeetypedoc"></a>
 <h3 id="tocSproductfeetypedoc">Product Fee Types</h3></p>
 
-<p>Description of the usage of the <code>feeType</code> field as it applies to products.</p>
+<p>Description of the usage of the <em>feeType</em> field as it applies to products.</p>
 
 <table><thead>
 <tr>
 <th>Value</th>
 <th>Description</th>
-<th>Use of additionalValue Field</th>
+<th>Use of <em>additionalValue</em> Field</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>DEPOSIT</td>
-<td>A fee associated with making a deposit</td>
-<td>NA</td>
+<td>A fee associated with making a deposit.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>EVENT</td>
-<td>A fee in relation to a particular event (e.g. ordering a new card, viewing a balance or stopping a cheque)</td>
-<td>NA</td>
+<td>A fee in relation to a particular event (e.g., ordering a new card, viewing a balance or stopping a cheque).</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>EXIT</td>
-<td>A fee for closing the product</td>
-<td>NA</td>
+<td>A fee for closing the product.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>PAYMENT</td>
-<td>A fee associated with making a payment</td>
-<td>NA</td>
+<td>A fee associated with making a payment.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>PAYMENT_LATE</td>
-<td>A fee associated with making a payment after a due date</td>
-<td>Number of days late, after which the associated fee will be applied</td>
+<td>A fee associated with making a payment after a due date.</td>
+<td>Number of days late, after which the associated fee will be applied.</td>
 </tr>
 <tr>
 <td>PERIODIC</td>
-<td>A periodic fee such as a monthly account servicing fee</td>
-<td>The period of charge. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>A periodic fee such as a monthly account servicing fee.</td>
+<td>The period of charge. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a>.</td>
 </tr>
 <tr>
 <td>PURCHASE</td>
-<td>A fee associated with making a purchase at a merchant</td>
-<td>NA</td>
+<td>A fee associated with making a purchase at a merchant.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>TRANSACTION</td>
-<td>A fee associated with any transaction (incorporates <code>WITHDRAWAL</code>, <code>DEPOSIT</code>, <code>PAYMENT</code> and <code>PURCHASE</code>)</td>
-<td>NA</td>
+<td>A fee associated with any transaction (incorporates <code>WITHDRAWAL</code>, <code>DEPOSIT</code>, <code>PAYMENT</code> and <code>PURCHASE</code>).</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>UPFRONT</td>
-<td>A fee paid at the beginning of the product lifecycle, such as an establishment fee, loyalty program fee or application fee</td>
-<td>NA</td>
+<td>A fee paid at the beginning of the product lifecycle, such as an establishment fee, loyalty program fee or application fee.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>UPFRONT_PER_PLAN</td>
-<td>A fee paid at the creation of a new payment plan, such as an instalment plan</td>
-<td>NA</td>
+<td>A fee paid at the creation of a new payment plan, such as an instalment plan.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>VARIABLE</td>
-<td>An at-cost fee that is relevant to a customer&#39;s circumstances where the amount or rate may not be known until negotiated with the customer</td>
-<td>NA</td>
+<td>An at-cost fee that is relevant to a customer&#39;s circumstances where the amount or rate may not be known until negotiated with the customer.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>WITHDRAWAL</td>
-<td>A fee associated with making a withdrawal</td>
-<td>NA</td>
+<td>A fee associated with making a withdrawal.</td>
+<td>N/A</td>
 </tr>
 </tbody></table>
 
 <p><a id="productdiscounttypedoc"></a>
 <h3 id="tocSproductdiscounttypedoc">Product Discount Types</h3></p>
 
-<p>Description of the usage of the <code>discountType</code> field as it applies to products.</p>
+<p>Description of the usage of the <em>discountType</em> field as it applies to products.</p>
 
 <table><thead>
 <tr>
 <th>Value</th>
 <th>Description</th>
-<th>Use of additionalValue Field</th>
+<th>Use of <em>additionalValue</em> Field</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>BALANCE</td>
-<td>Discount on a fee for maintaining a set balance. As the discount applies to a fee the period is the same as for the fee</td>
-<td>The minimum balance in AmountString format</td>
+<td>Discount on a fee for maintaining a set balance. As the discount applies to a fee the period is the same as for the fee.</td>
+<td>The minimum balance in <a href="#common-field-types">AmountString</a> format.</td>
 </tr>
 <tr>
 <td>DEPOSITS</td>
-<td>Discount for depositing a certain amount of money in a period. As the discount applies to a fee the period is the same as for the fee</td>
-<td>The minimum deposit amount in AmountString format</td>
+<td>Discount for depositing a certain amount of money in a period. As the discount applies to a fee the period is the same as for the fee.</td>
+<td>The minimum deposit amount in <a href="#common-field-types">AmountString</a> format.</td>
 </tr>
 <tr>
 <td>ELIGIBILITY_ONLY</td>
-<td>Discount applies based on customer eligibility (eligibility array must be populated)</td>
+<td>Discount applies based on customer eligibility (<em>eligibility</em> array must be populated).</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>FEE_CAP</td>
-<td>The amount, balanceRate, transactionRate, accruedRate or feeRate fields of the discount represent the maximum amount charged in a time period</td>
-<td>The time period for which the fee cap applies. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>The <em>amount</em>, <em>balanceRate</em>, <em>transactionRate</em>, <em>accruedRate</em> or <em>feeRate</em> fields of the discount represent the maximum amount charged in a time period.</td>
+<td>The time period for which the fee cap applies. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a>.</td>
 </tr>
 <tr>
 <td>PAYMENTS</td>
-<td>Discount for outbound payments from the account under a certain amount of money in a period. As the discount applies to a fee the period is the same as for the fee</td>
-<td>The payment threshold amount in AmountString format</td>
+<td>Discount for outbound payments from the account under a certain amount of money in a period. As the discount applies to a fee the period is the same as for the fee.</td>
+<td>The payment threshold amount in <a href="#common-field-types">AmountString</a> format.</td>
 </tr>
 </tbody></table>
 
 <p><a id="productdiscounteligibilitydoc"></a>
 <h3 id="tocSproductdiscounteligibilitydoc">Product Discount Eligibility Types</h3></p>
 
-<p>Description of the usage of the discountEligibilityType field as it applies to products.</p>
+<p>Description of the usage of the <em>discountEligibilityType</em> field as it applies to products.</p>
 
 <table><thead>
 <tr>
 <th>Value</th>
 <th>Description</th>
-<th>Use of additionalValue Field</th>
+<th>Use of <em>additionalValue</em> Field</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>BUSINESS</td>
-<td>A business or other non-person legal entity</td>
-<td>NA</td>
+<td>A business or other non-person legal entity.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>EMPLOYMENT_STATUS</td>
-<td>An eligibility constraint based on employment status applies</td>
-<td>A description of the status required</td>
+<td>An eligibility constraint based on employment status applies.</td>
+<td>A description of the status required.</td>
 </tr>
 <tr>
 <td>INTRODUCTORY</td>
-<td>The discount is only available during an introductory period</td>
-<td>The period of time for the introductory discount.  Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>The discount is only available during an introductory period.</td>
+<td>The period of time for the introductory discount. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a>.</td>
 </tr>
 <tr>
 <td>MAX_AGE</td>
-<td>Only customers younger than a maximum age receive the discount</td>
-<td>The maximum age in years</td>
+<td>Only customers younger than a maximum age receive the discount.</td>
+<td>The maximum age in years.</td>
 </tr>
 <tr>
 <td>MIN_AGE</td>
-<td>Only customers older than a minimum age receive the discount</td>
-<td>The minimum age in years</td>
+<td>Only customers older than a minimum age receive the discount.</td>
+<td>The minimum age in years.</td>
 </tr>
 <tr>
 <td>MIN_INCOME</td>
-<td>The customer must have an income greater than a specified threshold to obtain the discount</td>
-<td>Minimum income in AmountString format</td>
+<td>The customer must have an income greater than a specified threshold to obtain the discount.</td>
+<td>Minimum income in <a href="#common-field-types">AmountString</a> format.</td>
 </tr>
 <tr>
 <td>MIN_TURNOVER</td>
-<td>Only a business with greater than a minimum turnover is eligible</td>
-<td>Minimum turnover in AmountString format</td>
+<td>Only a business with greater than a minimum turnover is eligible.</td>
+<td>Minimum turnover in <a href="#common-field-types">AmountString</a> format.</td>
 </tr>
 <tr>
 <td>NATURAL_PERSON</td>
-<td>The customer must be a natural person rather than another legal entity</td>
-<td>NA</td>
+<td>The customer must be a natural person rather than another legal entity.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>OTHER</td>
-<td>Another eligibility criteria exists as described in the <code>additionalInfo</code> field (if this option is specified then the <code>additionalInfo</code> field is mandatory)</td>
-<td>NA</td>
+<td>Another eligibility criteria exists as described in the <em>additionalInfo</em> field (if this option is specified then the <em>additionalInfo</em> field is mandatory).</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>PENSION_RECIPIENT</td>
-<td>Only a recipient of a government pension may receive the discount</td>
-<td>Optional. Should contain a description of which pensions qualify</td>
+<td>Only a recipient of a government pension may receive the discount.</td>
+<td>Optional. Should contain a description of which pensions qualify.</td>
 </tr>
 <tr>
 <td>RESIDENCY_STATUS</td>
-<td>An eligibility constraint based on residency status applies</td>
-<td>A description of the status required</td>
+<td>An eligibility constraint based on residency status applies.</td>
+<td>A description of the status required.</td>
 </tr>
 <tr>
 <td>STAFF</td>
-<td>Only a staff member of the provider may receive the discount</td>
-<td>NA</td>
+<td>Only a staff member of the provider may receive the discount.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>STUDENT</td>
-<td>Only students may receive the discount</td>
-<td>Optional. Should contain a description of who qualifies as a student, e.g. do apprentices qualify?</td>
+<td>Only students may receive the discount.</td>
+<td>Optional. Should contain a description of who qualifies as a student, e.g., do apprentices qualify?</td>
 </tr>
 </tbody></table>
 
 <p><a id="productdepositratetypedoc"></a>
 <h3 id="tocSproductdepositratetypedoc">Product Deposit Rate Types</h3></p>
 
-<p>Description of the usage of the <code>depositRateType</code> field as it applies to products.</p>
+<p>Description of the usage of the <em>depositRateType</em> field as it applies to products.</p>
 
 <p><a id="productdepositbaseratetypedoc"></a>
 <ul><li id="tocSproductdepositbaseratetypedoc"><b>Deposit Base Rate Types</b></li></ul></p>
 
-<p>A deposit product is expected to present a single Base rate corresponding to relevant selection criteria including the rate <code>tiers</code> and <code>additionalValue</code>, where applicable.</p>
+<p>A deposit product is expected to present a single Base rate corresponding to relevant selection criteria including the rate <em>tiers</em> and <em>additionalValue</em>, where applicable.</p>
 
 <table><thead>
 <tr>
 <th>Value</th>
 <th>Description</th>
-<th>Use of additionalValue Field</th>
+<th>Use of <em>additionalValue</em> Field</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>FIXED</td>
-<td>Fixed rate for a period of time</td>
-<td>The period of time fixed. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>Fixed rate for a period of time.</td>
+<td>The period of time fixed. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a>.</td>
 </tr>
 <tr>
 <td>FLOATING</td>
-<td>A floating rate is relatively fixed but still adjusts under specific circumstances</td>
-<td>Details of the float parameters</td>
+<td>A floating rate is relatively fixed but still adjusts under specific circumstances.</td>
+<td>Details of the float parameters.</td>
 </tr>
 <tr>
 <td>MARKET_LINKED</td>
-<td>A rate that is linked to a specific market, commodity or asset class</td>
-<td>Details of the market linkage</td>
+<td>A rate that is linked to a specific market, commodity or asset class.</td>
+<td>Details of the market linkage.</td>
 </tr>
 <tr>
 <td>VARIABLE</td>
-<td>A variable base rate for the product</td>
-<td>NA</td>
+<td>A variable base rate for the product.</td>
+<td>N/A</td>
 </tr>
 </tbody></table>
 
@@ -16012,74 +16012,74 @@ This operation does not require authentication
 <tr>
 <th>Value</th>
 <th>Description</th>
-<th>Use of additionalValue Field</th>
+<th>Use of <em>additionalValue</em> Field</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>BONUS</td>
-<td>A bonus rate available by meeting a specific criteria</td>
-<td>A description of the criteria to obtain the bonus</td>
+<td>A bonus rate available by meeting a specific criteria.</td>
+<td>A description of the criteria to obtain the bonus.</td>
 </tr>
 <tr>
 <td>BUNDLE_BONUS</td>
-<td>A bonus rate obtained by originating a bundle instead of a standalone product</td>
-<td>The name of the bundle</td>
+<td>A bonus rate obtained by originating a bundle instead of a standalone product.</td>
+<td>The name of the bundle.</td>
 </tr>
 <tr>
 <td>INTRODUCTORY</td>
-<td>An introductory bonus that will expire after a set period</td>
-<td>The period of time for the introductory rate. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>An introductory bonus that will expire after a set period.</td>
+<td>The period of time for the introductory rate. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a>.</td>
 </tr>
 </tbody></table>
 
 <p><a id="productlendingratetypedoc"></a>
 <h3 id="tocSproductlendingratetypedoc">Product Lending Rate Types</h3></p>
 
-<p>Description of the usage of the <code>lendingRateType</code> field as it applies to products.</p>
+<p>Description of the usage of the <em>lendingRateType</em> field as it applies to products.</p>
 
 <p><a id="productlendingbaseratetypedoc"></a>
 <ul><li id="tocSproductlendingbaseratetypedoc"><b>Lending Base Rate Types</b></li></ul></p>
 
-<p>A lending product is expected to present a single Base rate corresponding to relevant selection criteria including the rate <code>tiers</code> and <code>additionalValue</code>, where applicable.</p>
+<p>A lending product is expected to present a single Base rate corresponding to relevant selection criteria including the rate <em>tiers</em> and <em>additionalValue</em>, where applicable.</p>
 
-<p>Card products may have two or more base rates, including <code>CASH_ADVANCE</code> and <code>PURCHASE</code> as they may apply to different transaction types within an account. The <code>PURCHASE</code> lendingRateType is considered the rate commonly applicable to a card.</p>
+<p>Card products may have two or more base rates, including <code>CASH_ADVANCE</code> and <code>PURCHASE</code> as they may apply to different transaction types within an account. The <code>PURCHASE</code> <em>lendingRateType</em> is considered the rate commonly applicable to a card.</p>
 
 <table><thead>
 <tr>
 <th>Value</th>
 <th>Description</th>
-<th>Use of additionalValue Field</th>
+<th>Use of <em>additionalValue</em> Field</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>CASH_ADVANCE</td>
-<td>Specific rate applied to cash advances from the account. This is expected to apply to products in the <code>CRED_AND_CHRG_CARDS</code> category only</td>
-<td>NA</td>
+<td>Specific rate applied to cash advances from the account. This is expected to apply to products in the <code>CRED_AND_CHRG_CARDS</code> category only.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>FIXED</td>
-<td>Fixed rate for a period of time</td>
-<td>The period of time fixed. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>Fixed rate for a period of time.</td>
+<td>The period of time fixed. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a>.</td>
 </tr>
 <tr>
 <td>FLOATING</td>
-<td>A floating rate is relatively fixed but still adjusts under specific circumstances</td>
-<td>Details of the float parameters</td>
+<td>A floating rate is relatively fixed but still adjusts under specific circumstances.</td>
+<td>Details of the float parameters.</td>
 </tr>
 <tr>
 <td>MARKET_LINKED</td>
-<td>A rate that is linked to a specific market, commodity or asset class</td>
-<td>Details of the market linkage</td>
+<td>A rate that is linked to a specific market, commodity or asset class.</td>
+<td>Details of the market linkage.</td>
 </tr>
 <tr>
 <td>PURCHASE</td>
-<td>Specific rate applied to purchases from the account. This is expected to apply to products in the <code>CRED_AND_CHRG_CARDS</code> category only</td>
-<td>NA</td>
+<td>Specific rate applied to purchases from the account. This is expected to apply to products in the <code>CRED_AND_CHRG_CARDS</code> category only.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>VARIABLE</td>
-<td>A variable base rate for the product</td>
-<td>NA</td>
+<td>A variable base rate for the product.</td>
+<td>N/A</td>
 </tr>
 </tbody></table>
 
@@ -16092,62 +16092,62 @@ This operation does not require authentication
 <tr>
 <th>Value</th>
 <th>Description</th>
-<th>Use of additionalValue Field</th>
+<th>Use of <em>additionalValue</em> Field</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>BUNDLE_DISCOUNT_FIXED</td>
-<td>A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product</td>
-<td>The name of the bundle</td>
+<td>A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product.</td>
+<td>The name of the bundle.</td>
 </tr>
 <tr>
 <td>BUNDLE_DISCOUNT_VARIABLE</td>
-<td>A discount rate off the variable rate obtained by originating a bundle instead of a standalone product</td>
-<td>The name of the bundle</td>
+<td>A discount rate off the variable rate obtained by originating a bundle instead of a standalone product.</td>
+<td>The name of the bundle.</td>
 </tr>
 <tr>
 <td>DISCOUNT</td>
-<td>A specific discount rate that may be applied. A discount rate reduces the interest payable</td>
-<td>Description of the discount rate that is applicable</td>
+<td>A specific discount rate that may be applied. A discount rate reduces the interest payable.</td>
+<td>Description of the discount rate that is applicable.</td>
 </tr>
 <tr>
 <td>INTRODUCTORY</td>
-<td>An introductory discount that will expire after a set period</td>
-<td>The period of time for the introductory rate. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a></td>
+<td>An introductory discount that will expire after a set period.</td>
+<td>The period of time for the introductory rate. Formatted according to <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601 Durations</a>.</td>
 </tr>
 <tr>
 <td>PENALTY</td>
-<td>A specific penalty rate that may be applied. A penalty rate increases the interest payable</td>
-<td>Description of the penalty rate that is applicable</td>
+<td>A specific penalty rate that may be applied. A penalty rate increases the interest payable.</td>
+<td>Description of the penalty rate that is applicable.</td>
 </tr>
 </tbody></table>
 
 <p><a id="bankingtermdepositaccountedoc"></a>
 <h3 id="tocSbankingtermdepositaccountypedoc">Banking Term Deposit Account Types</h3></p>
 
-<p>Description of the usage of the <code>maturityInstructions</code> field as it applies to accounts.</p>
+<p>Description of the usage of the <em>maturityInstructions</em> field as it applies to accounts.</p>
 
 <table><thead>
 <tr>
 <th>Value</th>
 <th>Description</th>
-<th>Use of additionalValue Field</th>
+<th>Use of <em>additionalValue</em> Field</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>HOLD_ON_MATURITY</td>
-<td>Funds are held in a facility or similar mechanism managed by the data holder for a period of time until the customer provides instructions or the maximum period of the hold has elapsed. Funds may be renewed or withdrawn upon instructions by the customer</td>
-<td>NA</td>
+<td>Funds are held in a facility or similar mechanism managed by the data holder for a period of time until the customer provides instructions or the maximum period of the hold has elapsed. Funds may be renewed or withdrawn upon instructions by the customer.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>PAID_OUT_AT_MATURITY</td>
-<td>Funds are to be paid out at maturity</td>
-<td>NA</td>
+<td>Funds are to be paid out at maturity.</td>
+<td>N/A</td>
 </tr>
 <tr>
 <td>ROLLED_OVER</td>
-<td>Funds are to be rolled over at maturity</td>
-<td>NA</td>
+<td>Funds are to be rolled over at maturity.</td>
+<td>N/A</td>
 </tr>
 </tbody></table>
 
