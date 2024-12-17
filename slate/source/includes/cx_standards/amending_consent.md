@@ -4,7 +4,7 @@
 Added Amending Consent Standards section
 ```
 
-Each of the below data standards are binding for the purposes of rule 8.11(1)(a)(ii):
+Each of the below data standards are for the purposes of rule 8.11(1)(a)(ii):
 
 |Area|CX Standard|
 |-------------------|------------------------------|

@@ -6,7 +6,7 @@ Added detail for CDR Receipts
 
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_notification-standards_cdr-receipts">CDR Receipts</h3>
 
-Each of the below data standards are binding for the purposes of rule 8.11(1)(fa):
+Each of the below data standards are for the purposes of rule 8.11(1)(fa):
 
 |Area|CX Standard|
 |-------------------|------------------------------|
@@ -20,7 +20,7 @@ Added detail for 90-day notifications
 
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_notification-standards_notifications-90-day-notifications">90-day notifications</h3>
 
-Each of the below data standards are binding for the purposes of rule 8.11(1)(fb):
+Each of the below data standards are for the purposes of rule 8.11(1)(fb):
 
 |Area|CX Standard|
 |-------------------|------------------------------|

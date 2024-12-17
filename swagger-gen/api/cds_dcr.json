@@ -429,7 +429,7 @@
           },
           "response_types": {
             "type": "array",
-            "description": "Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.<br><br>Response type value `code` is required for Authorization Code Flow. Response type value `code id_token` is required for OIDC Hybrid Flow.",
+            "description": "Array of the OAuth 2.0 _response_type_ strings that the client can use at the authorization endpoint.<br><br>_response_type_ value `code` is required for Authorization Code Flow.<br>_response_type_ value `code id_token` is required for OIDC Hybrid Flow.",
             "items": {
               "type": "string",
               "x-cds-type": "Enum",
@@ -458,13 +458,13 @@
           },
           "id_token_encrypted_response_alg": {
             "type": "string",
-            "description": "JWE _alg_ algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (response type `code id_token`) is registered.",
+            "description": "JWE _alg_ algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered.",
             "example": "RSA-OAEP",
             "x-cds-type": "ExternalRef"
           },
           "id_token_encrypted_response_enc": {
             "type": "string",
-            "description": "JWE `enc` algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (response type `code id_token`) is registered.",
+            "description": "JWE `enc` algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered.",
             "example": "A256GCM",
             "x-cds-type": "ExternalRef"
           },

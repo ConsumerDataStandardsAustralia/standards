@@ -866,7 +866,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>response_types</td>
 <td>[<a href="#common-field-types">Enum</a>]</td>
 <td>mandatory</td>
-<td>Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.<br><br>Response type value <code>code</code> is required for Authorization Code Flow. Response type value <code>code id_token</code> is required for OIDC Hybrid Flow.</td>
+<td>Array of the OAuth 2.0 <em>response_type</em> strings that the client can use at the authorization endpoint.<br><br><em>response_type</em> value <code>code</code> is required for Authorization Code Flow.<br><em>response_type</em> value <code>code id_token</code> is required for OIDC Hybrid Flow.</td>
 </tr>
 <tr>
 <td>application_type</td>
@@ -884,13 +884,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>id_token_encrypted_response_alg</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>conditional</td>
-<td>JWE <em>alg</em> algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (response type <code>code id_token</code>) is registered.</td>
+<td>JWE <em>alg</em> algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (<em>response_type</em>: <code>code id_token</code>) is registered.</td>
 </tr>
 <tr>
 <td>id_token_encrypted_response_enc</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>conditional</td>
-<td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (response type <code>code id_token</code>) is registered.</td>
+<td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (<em>response_type</em>: <code>code id_token</code>) is registered.</td>
 </tr>
 <tr>
 <td>authorization_signed_response_alg</td>

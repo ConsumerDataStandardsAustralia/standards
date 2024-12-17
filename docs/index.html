@@ -1498,19 +1498,19 @@ Added and updated servers in all specs and updated host examples.
 <h2 id='interpretation'>Interpretation</h2>
 <p>Note that, in these standards, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <strong><a href="#nref-RFC2119">[RFC2119]</a></strong>.</p>
 
-<h2 id='future-dated-obligations'>Future Dated Obligations</h2><pre class="highlight diff tab-diff"><code>Added FDOs for Amending consent: Changing attributes, CDR Receipts and 90-day notifications.
-
+<h2 id='future-dated-obligations'>Future Dated Obligations</h2><pre class="highlight diff tab-diff"><code>Added FDOs for the following:
+<span class="gi">+ Get Metrics error reporting clarification
++ Maintenance Issue #667: Refresh Token expiry obligations
++ Retirement of OIDC Hybrid Flow
++ Amending consent: Changing attributes
++ CDR Receipts
++ 90-day notifications
++ Get Product Detail v5
++ Get Transaction Detail V2.
+</span>
 Added milestone dates for 2026 and 2027 to the Obligation Date Schedule.
 
-Added FDO for Get Metrics error reporting clarification.
-
 Updated 'MAY retire' statements from 'by (date)' to 'from (date)'.
-
-Added FDO for Get Product Detail v5.
-
-Added FDO for Maintenance Issue #667: Refresh Token expiry obligations.
-
-Added FDO for Get Transaction Detail V2.
 </code></pre>
 
 <p>The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. </p>
@@ -3980,7 +3980,7 @@ Example of data language standards presented in a consumer-facing interaction, w
 <pre class="highlight diff tab-diff"><code>Added Amending Consent Standards section
 </code></pre>
 
-<p>Each of the below data standards are binding for the purposes of rule 8.11(1)(a)(ii):</p>
+<p>Each of the below data standards are for the purposes of rule 8.11(1)(a)(ii):</p>
 
 <table><thead>
 <tr>
@@ -4099,7 +4099,7 @@ Example of data language standards presented in a consumer-facing interaction, w
 
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_notification-standards_cdr-receipts">CDR Receipts</h3>
 
-<p>Each of the below data standards are binding for the purposes of rule 8.11(1)(fa):</p>
+<p>Each of the below data standards are for the purposes of rule 8.11(1)(fa):</p>
 
 <table><thead>
 <tr>
@@ -4122,7 +4122,7 @@ Example of data language standards presented in a consumer-facing interaction, w
 
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_notification-standards_notifications-90-day-notifications">90-day notifications</h3>
 
-<p>Each of the below data standards are binding for the purposes of rule 8.11(1)(fb):</p>
+<p>Each of the below data standards are for the purposes of rule 8.11(1)(fb):</p>
 
 <table><thead>
 <tr>
@@ -5145,7 +5145,7 @@ Accept: application/json
 <tr>
 <td><strong>response_types</strong></td>
 <td>Required</td>
-<td>Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint. Supported values: <ul><li><code>code</code><li><code>code id_token</code></ul>Response type value <code>code</code> is required for Authorization Code Flow.<br>Response type value <code>code id_token</code> is required for OIDC Hybrid Flow. <strong>From May 12th 2025</strong> Data Recipients <strong>SHALL</strong> only use <em>response_type</em> value <code>code</code> for authorisation requests.</td>
+<td>Array of the OAuth 2.0 <em>response_type</em> strings that the client can use at the authorization endpoint. Supported values: <ul><li><code>code</code><li><code>code id_token</code>.</ul><em>response_type</em> value <code>code</code> is required for Authorization Code Flow.<br><em>response_type</em> value <code>code id_token</code> is required for OIDC Hybrid Flow.<br><strong>From May 12th 2025</strong> Data Recipients <strong>SHALL</strong> only use <em>response_type</em> value <code>code</code> for authorisation requests.</td>
 </tr>
 <tr>
 <td><strong>application_type</strong></td>
@@ -5155,17 +5155,17 @@ Accept: application/json
 <tr>
 <td><strong>id_token_signed_response_alg</strong></td>
 <td>Required</td>
-<td>Algorithm with which an id_token is to be signed<br><br>Supported values as constrained by <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>. Required for both Authorization Code Flow (<em>response_type</em>: <code>code</code>) and OIDC Hybrid Flow (<em>response_type</em>: <code>code id_token</code>).</td>
+<td>Algorithm with which an id_token is to be signed.<br><br>Supported values as constrained by <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>. Required for both Authorization Code Flow (<em>response_type</em>: <code>code</code>) and OIDC Hybrid Flow (<em>response_type</em>: <code>code id_token</code>).</td>
 </tr>
 <tr>
 <td><strong>id_token_encrypted_response_alg</strong></td>
 <td>Conditional</td>
-<td>JWE <em>alg</em> algorithm with which an id_token is to be encrypted.<br><br>Required only if OIDC Hybrid Flow (response type <code>code id_token</code>) is registered. <strong>SHALL NOT</strong> be used for Authorization Code Flow.</td>
+<td>JWE <em>alg</em> algorithm with which an id_token is to be encrypted.<br><br>Required only if OIDC Hybrid Flow (<em>response_type</em>: <code>code id_token</code>) is registered. <strong>SHALL NOT</strong> be used for Authorization Code Flow.</td>
 </tr>
 <tr>
 <td><strong>id_token_encrypted_response_enc</strong></td>
 <td>Conditional</td>
-<td>JWE <em>enc</em> algorithm with which an id_token is to be encrypted.<br><br>Required only if OIDC Hybrid Flow (response type <code>code id_token</code>) is registered. <strong>SHALL NOT</strong> be used for Authorization Code Flow.</td>
+<td>JWE <em>enc</em> algorithm with which an id_token is to be encrypted.<br><br>Required only if OIDC Hybrid Flow (<em>response_type</em>: <code>code id_token</code>) is registered. <strong>SHALL NOT</strong> be used for Authorization Code Flow.</td>
 </tr>
 <tr>
 <td><strong>authorization_signed_response_alg</strong></td>
@@ -7996,7 +7996,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>response_types</td>
 <td>[<a href="#common-field-types">Enum</a>]</td>
 <td>mandatory</td>
-<td>Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.<br><br>Response type value <code>code</code> is required for Authorization Code Flow. Response type value <code>code id_token</code> is required for OIDC Hybrid Flow.</td>
+<td>Array of the OAuth 2.0 <em>response_type</em> strings that the client can use at the authorization endpoint.<br><br><em>response_type</em> value <code>code</code> is required for Authorization Code Flow.<br><em>response_type</em> value <code>code id_token</code> is required for OIDC Hybrid Flow.</td>
 </tr>
 <tr>
 <td>application_type</td>
@@ -8014,13 +8014,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>id_token_encrypted_response_alg</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>conditional</td>
-<td>JWE <em>alg</em> algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (response type <code>code id_token</code>) is registered.</td>
+<td>JWE <em>alg</em> algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (<em>response_type</em>: <code>code id_token</code>) is registered.</td>
 </tr>
 <tr>
 <td>id_token_encrypted_response_enc</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>conditional</td>
-<td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (response type <code>code id_token</code>) is registered.</td>
+<td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (<em>response_type</em>: <code>code id_token</code>) is registered.</td>
 </tr>
 <tr>
 <td>authorization_signed_response_alg</td>
@@ -55330,7 +55330,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </thead><tbody>
 <tr>
-<td>17/12/2024</td>
+<td>18/12/2024</td>
 <td><a href="https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.33.0/">1.33.0</a></td>
 <td>Changes from Decision 356 (Maintenance Iteration 21) and Decision 350 (August 2024 Rules - Standards Impacts).</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.33.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/356">Decision 356</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/350">Decision 350</a> for details.</td>
