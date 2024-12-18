@@ -3,14 +3,10 @@
 <a id="productfeaturetypedoc"></a>
 <h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3>
 
-```diff
-Updated styling of text referring to field names and values and added links to common field types
-```
-
 Description of the usage of the _featureType_ field as it applies to products.
 
 | Value | Description | Use of _additionalValue_ Field |
-| ----- | ----------- | ---------------------------- |
+| ----- | ----------- | ------------------------------ |
 | ADDITIONAL_CARDS | Additional cards can be requested. | The maximum number of additional cards. If no maximum then should be set to `null`. |
 | BALANCE_TRANSFERS | Balance transfers can be made to the account (e.g., for credit cards). | N/A |
 | BILL_PAYMENT | The product can be attached to an automatic budgeting and bill payment service. | Optional name of the service. |
@@ -26,8 +22,8 @@ Description of the usage of the _featureType_ field as it applies to products.
 | FREE_TXNS | A set number of free transactions available per month. | The number of free transactions. |
 | FREE_TXNS_ALLOWANCE | A set amount of transaction fee value that is discounted per month. | The amount of transaction fee discounted (in AUD). |
 | GUARANTOR | Subject to terms and conditions, the customer may be able to nominate a guarantor during the origination process. | N/A |
-| INSURANCE | Insurance is provided as an additional feature of the product. | Text description of the type of insurance (e.g., Travel Insurance). |
 | INSTALMENT_PLAN | The product has the option to pay for eligible purchases over time with a set number of payments. | N/A |
+| INSURANCE | Insurance is provided as an additional feature of the product. | Text description of the type of insurance (e.g., Travel Insurance). |
 | INTEREST_FREE | Interest free period for purchases. | Interest free period. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
 | INTEREST_FREE_TRANSFERS | Interest free period for balance transfers. | Interest free period. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
 | LOYALTY_PROGRAM | A points based loyalty program is available. | Name of the loyalty program. |
@@ -49,11 +45,13 @@ Description of the usage of the _featureType_ field as it applies to products.
 Description of the usage of the _constraintType_ field as it applies to products.
 
 | Value | Description | Use of _additionalValue_ Field |
-| ----- | ----------- | ---------------------------- |
+| ----- | ----------- | ------------------------------ |
 | MAX_BALANCE | A maximum balance is required for the product. | The maximum balance in [AmountString](#common-field-types) format. |
 | MAX_LIMIT | A maximum limit exists (such as a maximum loan balance denoting the borrowable amount or maximum allowable credit limit). | The maximum limit in [AmountString](#common-field-types) format. |
+| MAX_LVR | A maximum LVR (Loan to Value Ratio) exists. | The maximum LVR in [RateString](#common-field-types) format. |
 | MIN_BALANCE | A minimum balance is required for the product. | The minimum balance in [AmountString](#common-field-types) format. |
 | MIN_LIMIT | A minimum limit exists (such as a minimum loan balance denoting the borrowable amount or minimum credit limit). | The minimum limit in [AmountString](#common-field-types) format. |
+| MIN_LVR | A minimum LVR (Loan to Value Ratio) exists. | The minimum LVR in [RateString](#common-field-types) format. |
 | OPENING_BALANCE | An opening balance is required for the product. | The minimum opening balance in [AmountString](#common-field-types) format. |
 
 
@@ -64,7 +62,7 @@ Description of the usage of the _constraintType_ field as it applies to products
 Description of the usage of the _eligibilityType_ field as it applies to products.
 
 | Value | Description | Use of _additionalValue_ Field |
-| ----- | ----------- | ---------------------------- |
+| ----- | ----------- | ------------------------------ |
 | BUSINESS | Only business may apply for the account. | N/A |
 | EMPLOYMENT_STATUS | An eligibility constraint based on employment status applies. | A description of the status required. |
 | MAX_AGE | Only customers younger than a maximum age may apply. | The maximum age in years. |
@@ -86,7 +84,7 @@ Description of the usage of the _eligibilityType_ field as it applies to product
 Description of the usage of the _feeType_ field as it applies to products.
 
 | Value | Description | Use of _additionalValue_ Field |
-| ----- | ----------- | ---------------------------- |
+| ----- | ----------- | ------------------------------ |
 | DEPOSIT | A fee associated with making a deposit. | N/A |
 | EVENT | A fee in relation to a particular event (e.g., ordering a new card, viewing a balance or stopping a cheque). | N/A |
 | EXIT | A fee for closing the product. | N/A |
@@ -106,7 +104,7 @@ Description of the usage of the _feeType_ field as it applies to products.
 Description of the usage of the _discountType_ field as it applies to products.
 
 | Value | Description | Use of _additionalValue_ Field |
-| ----- | ----------- | ---------------------------- |
+| ----- | ----------- | ------------------------------ |
 | BALANCE | Discount on a fee for maintaining a set balance. As the discount applies to a fee the period is the same as for the fee. | The minimum balance in [AmountString](#common-field-types) format. |
 | DEPOSITS | Discount for depositing a certain amount of money in a period. As the discount applies to a fee the period is the same as for the fee. | The minimum deposit amount in [AmountString](#common-field-types) format. |
 | ELIGIBILITY_ONLY | Discount applies based on customer eligibility (_eligibility_ array must be populated). | N/A |
@@ -121,7 +119,7 @@ Description of the usage of the _discountType_ field as it applies to products.
 Description of the usage of the _discountEligibilityType_ field as it applies to products.
 
 | Value | Description | Use of _additionalValue_ Field |
-| ----- | ----------- | ---------------------------- |
+| ----- | ----------- | ------------------------------ |
 | BUSINESS | A business or other non-person legal entity. | N/A |
 | EMPLOYMENT_STATUS | An eligibility constraint based on employment status applies. | A description of the status required. |
 | INTRODUCTORY | The discount is only available during an introductory period. | The period of time for the introductory discount. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
@@ -149,7 +147,7 @@ Description of the usage of the _depositRateType_ field as it applies to product
 A deposit product is expected to present a single Base rate corresponding to relevant selection criteria including the rate _tiers_ and _additionalValue_, where applicable.
 
 | Value | Description | Use of _additionalValue_ Field |
-| ----- | ----------- | ---------------------------- |
+| ----- | ----------- | ------------------------------ |
 | FIXED | Fixed rate for a period of time. | The period of time fixed. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
 | FLOATING | A floating rate is relatively fixed but still adjusts under specific circumstances. | Details of the float parameters. |
 | MARKET_LINKED | A rate that is linked to a specific market, commodity or asset class. | Details of the market linkage. |
@@ -160,17 +158,14 @@ A deposit product is expected to present a single Base rate corresponding to rel
 <a id="productdepositadjustmentratetypedoc"></a>
 <ul><li id="tocSproductdepositadjustmentratetypedoc"><b>Deposit Adjustment Rate Types</b></li></ul>
 
-```diff
-Clarified the format of deposit 'bonus' adjustment rate values
-```
-
 A product may have zero, one, or multiple adjustment rates that are taken to apply to a Base rate.
 
 | Value | Description | Use of _additionalValue_ Field |
--- | -- | --
-BONUS | A bonus rate available by meeting a specific criteria. A deposit 'bonus' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Bonus). | A description of the criteria to obtain the bonus.
-BUNDLE_BONUS | A bonus rate obtained by originating a bundle instead of a standalone product. A deposit 'bonus' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Bonus). | The name of the bundle.
-INTRODUCTORY | An introductory bonus that will expire after a set period. A deposit 'bonus' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Bonus). | The period of time for the introductory rate. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations).
+| ----- | ----------- | ------------------------------ |
+| BONUS | A bonus rate available by meeting a specific criteria. A deposit 'bonus' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Bonus). | A description of the criteria to obtain the bonus. |
+| BUNDLE_BONUS | A bonus rate obtained by originating a bundle instead of a standalone product. A deposit 'bonus' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Bonus). | The name of the bundle. |
+| INTRODUCTORY | An introductory bonus that will expire after a set period. A deposit 'bonus' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Bonus). | The period of time for the introductory rate. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+
 
 
 <a id="productlendingratetypedoc"></a>
@@ -186,7 +181,7 @@ A lending product is expected to present a single Base rate corresponding to rel
 Card products may have two or more base rates, including `CASH_ADVANCE` and `PURCHASE` as they may apply to different transaction types within an account. The `PURCHASE` _lendingRateType_ is considered the rate commonly applicable to a card.
 
 | Value | Description | Use of _additionalValue_ Field |
-| ----- | ----------- | ---------------------------- |
+| ----- | ----------- | ------------------------------ |
 | CASH_ADVANCE | Specific rate applied to cash advances from the account. This is expected to apply to products in the `CRED_AND_CHRG_CARDS` category only. | N/A |
 | FIXED | Fixed rate for a period of time. | The period of time fixed. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
 | FLOATING | A floating rate is relatively fixed but still adjusts under specific circumstances. | Details of the float parameters. |
@@ -199,19 +194,16 @@ Card products may have two or more base rates, including `CASH_ADVANCE` and `PUR
 <a id="productlendingadjustmentratetypedoc"></a>
 <ul><li id="tocSproductlendingadjustmentratetypedoc"><b>Lending Adjustment Rate Types</b></li></ul>
 
-```diff
-Clarified the format of lending 'discount' and 'penalty' adjustment rate values
-```
-
 A product may have zero, one, or multiple adjustment rates that are taken to apply to a Base rate.
 
 | Value | Description | Use of _additionalValue_ Field |
--- | -- | --
-BUNDLE_DISCOUNT_FIXED | A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | The name of the bundle.
-BUNDLE_DISCOUNT_VARIABLE | A discount rate off the variable rate obtained by originating a bundle instead of a standalone product. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | The name of the bundle.
-DISCOUNT | A specific discount rate that may be applied. A discount rate reduces the interest payable. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | Description of the discount rate that is applicable.
-INTRODUCTORY | An introductory discount that will expire after a set period. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | The period of time for the introductory rate. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations).
-PENALTY | A specific penalty rate that may be applied. A penalty rate increases the interest payable. A lending 'penalty' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Penalty). | Description of the penalty rate that is applicable.
+| ----- | ----------- | ------------------------------ |
+| BUNDLE_DISCOUNT_FIXED | A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | The name of the bundle. |
+| BUNDLE_DISCOUNT_VARIABLE | A discount rate off the variable rate obtained by originating a bundle instead of a standalone product. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | The name of the bundle. |
+| DISCOUNT | A specific discount rate that may be applied. A discount rate reduces the interest payable. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | Description of the discount rate that is applicable. |
+| INTRODUCTORY | An introductory discount that will expire after a set period. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | The period of time for the introductory rate. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| PENALTY | A specific penalty rate that may be applied. A penalty rate increases the interest payable. A lending 'penalty' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Penalty). | Description of the penalty rate that is applicable. |
+
 
 
 <a id="bankingtermdepositaccountedoc"></a>
@@ -220,7 +212,7 @@ PENALTY | A specific penalty rate that may be applied. A penalty rate increases 
 Description of the usage of the _maturityInstructions_ field as it applies to accounts.
 
 | Value | Description | Use of _additionalValue_ Field |
-| ----- | ----------- | ---------------------------- |
+| ----- | ----------- | ------------------------------ |
 | HOLD_ON_MATURITY | Funds are held in a facility or similar mechanism managed by the data holder for a period of time until the customer provides instructions or the maximum period of the hold has elapsed. Funds may be renewed or withdrawn upon instructions by the customer. | N/A |
 | PAID_OUT_AT_MATURITY | Funds are to be paid out at maturity. | N/A |
 | ROLLED_OVER | Funds are to be rolled over at maturity. | N/A |

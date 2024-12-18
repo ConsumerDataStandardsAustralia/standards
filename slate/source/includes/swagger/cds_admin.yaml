@@ -6,29 +6,30 @@ info:
     url: https://consumerdatastandards.gov.au
   description: Data Holder Consumer Data Standards Administration endpoints created
     by the Data Standards Body (DSB), with the Data Standards Chair as the decision
-    maker
+    maker.
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Admin API
-  version: 1.32.0
+  version: 1.33.0
 servers:
-- url: https://data.holder.com.au/cds-au/v1
+- description: MTLS
+  url: https://mtls.dh.example.com/cds-au/v1
 paths:
   /admin/register/metadata:
     post:
       description: Indicate that a critical update to the metadata for Accredited
-        Data Recipients has been made and should be obtained
+        Data Recipients has been made and should be obtained.
       operationId: metadataUpdate
       parameters:
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder should respond with a 406 Not Acceptable. See [HTTP
-          Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder should respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -38,9 +39,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder should respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder should respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -59,7 +60,7 @@ paths:
           content:
             application/json:
               schema: {}
-          description: Success
+          description: Successful response
           headers:
             x-v:
               description: The [version](#response-headers) of the API endpoint that
@@ -106,15 +107,15 @@ paths:
         Deprecated versions:
 
         - [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023. Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version
-        - [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**
+        - [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**.
 
-        If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.
+        If the Data Holder supports `private_key_jwt` client authentication they MUST validate the scope.
       operationId: getMetrics
       parameters:
-      - description: The period of metrics to be requested. Values can be CURRENT
-          (meaning metrics for current period, dependent on the metric type), HISTORIC
-          (meaning metrics for previous period, depending on the metric type) or ALL.
-          If absent the default is ALL.
+      - description: The period of metrics to be requested. Values can be `CURRENT`
+          (meaning metrics for current period, dependent on the metric type), `HISTORIC`
+          (meaning metrics for previous period, depending on the metric type) or `ALL`.
+          If absent the default is `ALL`.
         explode: true
         in: query
         name: period
@@ -129,12 +130,12 @@ paths:
         style: form
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder should respond with a 406 Not Acceptable. See [HTTP
-          Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder should respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -144,9 +145,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder should respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder should respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -160,7 +161,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseMetricsListV5'
-          description: Success
+          description: Successful response
           headers:
             x-v:
               description: The [version](#response-headers) of the API endpoint that
@@ -197,11 +198,12 @@ components:
     RequestHeader_x-v:
       description: Version of the API endpoint requested by the client. Must be set
         to a positive integer. The data holder should respond with the highest supported
-        version between [x-min-v](#request-headers) and [x-v](#request-headers). If
-        the value of [x-min-v](#request-headers) is equal to or higher than the value
-        of [x-v](#request-headers) then the [x-min-v](#request-headers) header should
-        be treated as absent. If all versions requested are not supported then the
-        data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+        version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+        If the value of [_x-min-v_](#request-headers) is equal to or higher than the
+        value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+        header should be treated as absent. If all versions requested are not supported
+        then the data holder should respond with a `406 Not Acceptable`. See [HTTP
+        Headers](#request-headers).
       explode: false
       in: header
       name: x-v
@@ -212,9 +214,9 @@ components:
     RequestHeader_x-min-v:
       description: Minimum version of the API endpoint requested by the client. Must
         be set to a positive integer if provided. The data holder should respond with
-        the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
+        the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
         If all versions requested are not supported then the data holder should respond
-        with a 406 Not Acceptable.
+        with a `406 Not Acceptable`.
       explode: false
       in: header
       name: x-min-v
@@ -593,7 +595,7 @@ components:
       - links
       type: object
     AvailabilityMetricsV2:
-      description: Availability metrics
+      description: Availability metrics.
       example:
         authenticated:
           previousMonths:
@@ -624,7 +626,7 @@ components:
       type: object
     PerformanceMetricsV3:
       description: Percentage of calls within the performance thresholds in each performance
-        tier over time
+        tier, over time.
       example:
         unattended:
           previousDays:
@@ -726,17 +728,17 @@ components:
     PerformancePreviousDays:
       description: Array of contiguous hourly metrics for the specified day. Each
         element represents a 1 hour period starting from 12am-1am. Timezone for determining
-        12am must be consistent but is at the discretion of the Data Holder
+        12am must be consistent but is at the discretion of the Data Holder.
       items:
         $ref: '#/components/schemas/PerformanceHours'
       type: array
     PerformanceHours:
       description: Percentage of calls within the performance threshold for the specified
-        hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero
+        hour. `0.0` means 0%. `1.0` means 100%. Must be a positive value or zero.
       type: string
       x-cds-type: RateString
     InvocationMetricsV3:
-      description: Number of API calls in each performance tier over time
+      description: Number of API calls in each performance tier, over time.
       example:
         unattended:
           previousDays:
@@ -800,7 +802,7 @@ components:
       - largeSecondary
     AverageResponseMetricsV2:
       description: Average response time in seconds, at millisecond resolution, within
-        each performance tier
+        each performance tier.
       example:
         unattended:
           previousDays:
@@ -875,7 +877,7 @@ components:
       - secondary
       - largeSecondary
     SessionCountMetricsV2:
-      description: Session counts over time. Note that a session is defined as the
+      description: Session counts, over time. Note that a session is defined as the
         provisioning of an Access Token.
       example:
         previousDays:
@@ -884,12 +886,12 @@ components:
         currentDay: 1
       properties:
         currentDay:
-          description: Session count for current day
+          description: Session count for current day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: Session count for previous days. The first element indicates
-            yesterday and so on. A maximum of seven entries is required if available
+            yesterday and so on. A maximum of seven entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -899,7 +901,7 @@ components:
       - currentDay
       - previousDays
     AverageTPSMetricsV2:
-      description: Average transactions per second over time
+      description: Average transactions per second, over time.
       example:
         authenticated:
           previousDays:
@@ -929,7 +931,7 @@ components:
       - unauthenticated
       type: object
     PeakTPSMetricsV2:
-      description: Peak transactions per second over time
+      description: Peak transactions per second, over time.
       example:
         authenticated:
           previousDays:
@@ -959,7 +961,7 @@ components:
       - unauthenticated
       type: object
     ErrorMetricsV2:
-      description: Number of calls resulting in error, over time
+      description: Number of calls resulting in error, over time.
       example:
         authenticated:
           previousDays:
@@ -991,7 +993,7 @@ components:
       - unauthenticated
       type: object
     RejectionMetricsV3:
-      description: Number of calls rejected due to traffic thresholds over time
+      description: Number of calls rejected due to traffic thresholds, over time.
       example:
         authenticated:
           previousDays:
@@ -1015,7 +1017,7 @@ components:
     SecondaryHolderMetricsV2:
       description: Errors and rejections received by the primary data holder from
         the secondary data holder. Mandatory for data holders designated for a Shared
-        Responsibility Data Request data cluster
+        Responsibility Data Request data cluster.
       example:
         rejections:
           previousDays:
@@ -1037,7 +1039,7 @@ components:
       - rejections
       type: object
     AuthorisationMetricsV2:
-      description: Authorisation counts for the data holder
+      description: Authorisation counts for the data holder.
       example:
         abandonedConsentFlowCount:
           previousDays:
@@ -1155,7 +1157,7 @@ components:
         self: self
       properties:
         self:
-          description: Fully qualified link to this API call
+          description: Fully qualified link to this API call.
           type: string
           x-cds-type: URIString
       required:
@@ -1164,11 +1166,11 @@ components:
     Meta:
       type: object
     MetaError:
-      description: Additional data for customised error codes
+      description: Additional data for customised error codes.
       properties:
         urn:
           description: The CDR error code URN which the application-specific error
-            code extends. Mandatory if the error `code` is an application-specific
+            code extends. Mandatory if the error _code_ is an application-specific
             error rather than a standardised error code.
           type: string
       type: object
@@ -1192,8 +1194,8 @@ components:
         action:
           default: REFRESH
           description: The action to take for the meta data. At the moment the only
-            option is REFRESH which requires the data holder to call the ACCC to refresh
-            meta data as soon as practicable
+            option is `REFRESH` which requires the data holder to call the ACCC to
+            refresh meta data as soon as practicable.
           enum:
           - REFRESH
           type: string
@@ -1566,12 +1568,12 @@ components:
           $ref: '#/components/schemas/RejectionMetricsV3'
         customerCount:
           description: Number of customers with active authorisations at the time
-            of the call
+            of the call.
           type: integer
           x-cds-type: NaturalNumber
         recipientCount:
           description: Number of Data Recipient Software Products with active authorisations
-            at the time of the call
+            at the time of the call.
           type: integer
           x-cds-type: NaturalNumber
         secondaryHolder:
@@ -1596,7 +1598,7 @@ components:
       x-conditional:
       - secondaryHolder
     AvailabilityMetricsV2_aggregate:
-      description: Aggregated availability metrics
+      description: Aggregated availability metrics.
       example:
         previousMonths:
         - previousMonths
@@ -1605,15 +1607,15 @@ components:
       properties:
         currentMonth:
           description: Percentage availability of the CDR platform so far for the
-            current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive
-            value or zero
+            current calendar month. `0.0` means 0%. `1.0` means 100%. Must be a positive
+            value or zero.
           type: string
           x-cds-type: RateString
         previousMonths:
           description: Percentage availability of the CDR platform for previous calendar
             months. The first element indicates the last month and so on. A maximum
-            of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.
-            Values must be a positive or zero
+            of twelve entries is required if available. `0.0` means 0%. `1.0` means
+            100%. Values must be a positive or zero.
           items:
             type: string
             x-cds-type: RateString
@@ -1624,7 +1626,7 @@ components:
       - previousMonths
     AvailabilityMetricsV2_unauthenticated:
       description: Availability metrics for the unauthenticated aspects of the CDR
-        regime
+        regime.
       example:
         previousMonths:
         - previousMonths
@@ -1633,15 +1635,15 @@ components:
       properties:
         currentMonth:
           description: Percentage availability of the CDR platform so far for the
-            current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive
-            value or zero
+            current calendar month. `0.0` means 0%. `1.0` means 100%. Must be a positive
+            value or zero.
           type: string
           x-cds-type: RateString
         previousMonths:
           description: Percentage availability of the CDR platform for previous calendar
             months. The first element indicates the last month and so on. A maximum
-            of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.
-            Values must be a positive or zero
+            of twelve entries is required if available. `0.0` means 0%. `1.0` means
+            100%. Values must be a positive or zero.
           items:
             type: string
             x-cds-type: RateString
@@ -1651,7 +1653,7 @@ components:
       - currentMonth
       - previousMonths
     AvailabilityMetricsV2_authenticated:
-      description: Availability metrics for the authenticated aspects of the CDR regime
+      description: Availability metrics for the authenticated aspects of the CDR regime.
       example:
         previousMonths:
         - previousMonths
@@ -1660,15 +1662,15 @@ components:
       properties:
         currentMonth:
           description: Percentage availability of the CDR platform so far for the
-            current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive
-            value or zero
+            current calendar month. `0.0` means 0%. `1.0` means 100%. Must be a positive
+            value or zero.
           type: string
           x-cds-type: RateString
         previousMonths:
           description: Percentage availability of the CDR platform for previous calendar
             months. The first element indicates the last month and so on. A maximum
-            of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.
-            Values must be a positive or zero
+            of twelve entries is required if available. `0.0` means 0%. `1.0` means
+            100%. Values must be a positive or zero.
           items:
             type: string
             x-cds-type: RateString
@@ -1679,7 +1681,7 @@ components:
       - previousMonths
     PerformanceMetricsV3_aggregate:
       description: Percentage of calls within Primary Data Holder performance thresholds.
-        Note that Secondary Data Holder performance <b>MUST</b> be excluded from this
+        Note that Secondary Data Holder performance **MUST** be excluded from this
         metric.
       example:
         previousDays:
@@ -1689,15 +1691,15 @@ components:
       properties:
         currentDay:
           description: Percentage of calls within the performance threshold for the
-            current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or
-            zero
+            current day. `0.0` means 0%. `1.0` means 100%. Must be a positive value
+            or zero.
           type: string
           x-cds-type: RateString
         previousDays:
           description: Percentage of calls within the performance threshold for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
-            must be a positive or zero
+            entries is required if available. `0.0` means 0%. `1.0` means 100%. Values
+            must be a positive or zero.
           items:
             type: string
             x-cds-type: RateString
@@ -1707,7 +1709,7 @@ components:
       - currentDay
       - previousDays
     PerformanceMetricsV3_highPriority:
-      description: Percentage of high priority calls within the performance thresholds
+      description: Percentage of high priority calls within the performance thresholds.
       example:
         previousDays:
         - null
@@ -1720,15 +1722,15 @@ components:
           description: Array of contiguous hourly metrics for the current day. Each
             element represents a 1 hour period starting from 12am-1am. Timezone for
             determining 12am must be consistent but is at the discretion of the Data
-            Holder
+            Holder.
           items:
             $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
-            must be a positive or zero
+            entries is required if available. `0.0` means 0%. `1.0` means 100%. Values
+            must be a positive or zero.
           items:
             $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
@@ -1737,7 +1739,7 @@ components:
       - currentDay
       - previousDays
     PerformanceMetricsV3_largePayload:
-      description: Percentage of large payload calls within the performance thresholds
+      description: Percentage of large payload calls within the performance thresholds.
       example:
         previousDays:
         - null
@@ -1750,15 +1752,15 @@ components:
           description: Array of contiguous hourly metrics for the current day. Each
             element represents a 1 hour period starting from 12am-1am. Timezone for
             determining 12am must be consistent but is at the discretion of the Data
-            Holder
+            Holder.
           items:
             $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
-            must be a positive or zero
+            entries is required if available. `0.0` means 0%. `1.0` means 100%. Values
+            must be a positive or zero.
           items:
             $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
@@ -1767,7 +1769,7 @@ components:
       - currentDay
       - previousDays
     PerformanceMetricsV3_lowPriority:
-      description: Percentage of low priority calls within the performance thresholds
+      description: Percentage of low priority calls within the performance thresholds.
       example:
         previousDays:
         - null
@@ -1780,15 +1782,15 @@ components:
           description: Array of contiguous hourly metrics for the current day. Each
             element represents a 1 hour period starting from 12am-1am. Timezone for
             determining 12am must be consistent but is at the discretion of the Data
-            Holder
+            Holder.
           items:
             $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
-            must be a positive or zero
+            entries is required if available. `0.0` means 0%. `1.0` means 100%. Values
+            must be a positive or zero.
           items:
             $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
@@ -1797,7 +1799,7 @@ components:
       - currentDay
       - previousDays
     PerformanceMetricsV3_unattended:
-      description: Percentage of unattended calls within the performance thresholds
+      description: Percentage of unattended calls within the performance thresholds.
       example:
         previousDays:
         - null
@@ -1810,15 +1812,15 @@ components:
           description: Array of contiguous hourly metrics for the current day. Each
             element represents a 1 hour period starting from 12am-1am. Timezone for
             determining 12am must be consistent but is at the discretion of the Data
-            Holder
+            Holder.
           items:
             $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
-            must be a positive or zero
+            entries is required if available. `0.0` means 0%. `1.0` means 100%. Values
+            must be a positive or zero.
           items:
             $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
@@ -1827,7 +1829,7 @@ components:
       - currentDay
       - previousDays
     PerformanceMetricsV3_unauthenticated:
-      description: Percentage of unauthenticated calls within the performance thresholds
+      description: Percentage of unauthenticated calls within the performance thresholds.
       example:
         previousDays:
         - null
@@ -1840,15 +1842,15 @@ components:
           description: Array of contiguous hourly metrics for the current day. Each
             element represents a 1 hour period starting from 12am-1am. Timezone for
             determining 12am must be consistent but is at the discretion of the Data
-            Holder
+            Holder.
           items:
             $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
-            must be a positive or zero
+            entries is required if available. `0.0` means 0%. `1.0` means 100%. Values
+            must be a positive or zero.
           items:
             $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
@@ -1858,7 +1860,7 @@ components:
       - previousDays
     PerformanceMetricsV3_secondary_primary:
       description: Percentage of Shared Responsibility calls within the performance
-        thresholds for the primary data holder
+        thresholds for the primary data holder.
       example:
         previousDays:
         - null
@@ -1871,15 +1873,15 @@ components:
           description: Array of contiguous hourly metrics for the current day. Each
             element represents a 1 hour period starting from 12am-1am. Timezone for
             determining 12am must be consistent but is at the discretion of the Data
-            Holder
+            Holder.
           items:
             $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
-            must be a positive or zero
+            entries is required if available. `0.0` means 0%. `1.0` means 100%. Values
+            must be a positive or zero.
           items:
             $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
@@ -1889,7 +1891,7 @@ components:
       - previousDays
     PerformanceMetricsV3_secondary_secondary:
       description: Percentage of Shared Responsibility calls within the performance
-        thresholds for the secondary data holder
+        thresholds for the secondary data holder.
       example:
         previousDays:
         - null
@@ -1902,15 +1904,15 @@ components:
           description: Array of contiguous hourly metrics for the current day. Each
             element represents a 1 hour period starting from 12am-1am. Timezone for
             determining 12am must be consistent but is at the discretion of the Data
-            Holder
+            Holder.
           items:
             $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
-            must be a positive or zero
+            entries is required if available. `0.0` means 0%. `1.0` means 100%. Values
+            must be a positive or zero.
           items:
             $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
@@ -1921,7 +1923,7 @@ components:
     PerformanceMetricsV3_secondary:
       description: Percentage of Shared Responsibility calls within the performance
         thresholds. Mandatory for data holders designated for a Shared Responsibility
-        Data Request data cluster
+        Data Request data cluster.
       example:
         secondary:
           previousDays:
@@ -1948,7 +1950,7 @@ components:
       type: object
     PerformanceMetricsV3_largeSecondary_primary:
       description: Percentage of large Shared Responsibility calls within the performance
-        thresholds for the secondary data holder
+        thresholds for the secondary data holder.
       example:
         previousDays:
         - null
@@ -1961,15 +1963,15 @@ components:
           description: Array of contiguous hourly metrics for the current day. Each
             element represents a 1 hour period starting from 12am-1am. Timezone for
             determining 12am must be consistent but is at the discretion of the Data
-            Holder
+            Holder.
           items:
             $ref: '#/components/schemas/PerformanceHours'
           type: array
         previousDays:
           description: Percentage of calls within the performance threshold for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available. 0.0 means 0%. 1.0 means 100%. Values
-            must be a positive or zero
+            entries is required if available. `0.0` means 0%. `1.0` means 100%. Values
+            must be a positive or zero.
           items:
             $ref: '#/components/schemas/PerformancePreviousDays'
           type: array
@@ -1980,7 +1982,7 @@ components:
     PerformanceMetricsV3_largeSecondary:
       description: Percentage of large Shared Responsibility calls within the performance
         thresholds. Mandatory for data holders designated for a Shared Responsibility
-        Data Request data cluster
+        Data Request data cluster.
       example:
         secondary:
           previousDays:
@@ -2006,7 +2008,7 @@ components:
       - secondary
       type: object
     InvocationMetricsV3_unauthenticated:
-      description: API call counts for the unauthenticated tier
+      description: API call counts for the unauthenticated tier.
       example:
         previousDays:
         - 6
@@ -2014,12 +2016,12 @@ components:
         currentDay: 0
       properties:
         currentDay:
-          description: API call counts for current day
+          description: API call counts for current day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: API call counts for previous days. The first element indicates
-            yesterday and so on. A maximum of seven entries is required if available
+            yesterday and so on. A maximum of seven entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -2029,7 +2031,7 @@ components:
       - currentDay
       - previousDays
     InvocationMetricsV3_highPriority:
-      description: API call counts for the high priority tier
+      description: API call counts for the high priority tier.
       example:
         previousDays:
         - 5
@@ -2037,12 +2039,12 @@ components:
         currentDay: 1
       properties:
         currentDay:
-          description: API call counts for current day
+          description: API call counts for current day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: API call counts for previous days. The first element indicates
-            yesterday and so on. A maximum of seven entries is required if available
+            yesterday and so on. A maximum of seven entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -2052,7 +2054,7 @@ components:
       - currentDay
       - previousDays
     InvocationMetricsV3_lowPriority:
-      description: API call counts for the low priority tier
+      description: API call counts for the low priority tier.
       example:
         previousDays:
         - 2
@@ -2060,12 +2062,12 @@ components:
         currentDay: 5
       properties:
         currentDay:
-          description: API call counts for current day
+          description: API call counts for current day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: API call counts for previous days. The first element indicates
-            yesterday and so on. A maximum of seven entries is required if available
+            yesterday and so on. A maximum of seven entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -2075,7 +2077,7 @@ components:
       - currentDay
       - previousDays
     InvocationMetricsV3_unattended:
-      description: API call counts for the unattended tier
+      description: API call counts for the unattended tier.
       example:
         previousDays:
         - 9
@@ -2083,12 +2085,12 @@ components:
         currentDay: 7
       properties:
         currentDay:
-          description: API call counts for current day
+          description: API call counts for current day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: API call counts for previous days. The first element indicates
-            yesterday and so on. A maximum of seven entries is required if available
+            yesterday and so on. A maximum of seven entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -2098,7 +2100,7 @@ components:
       - currentDay
       - previousDays
     InvocationMetricsV3_largePayload:
-      description: API call counts for the large payload tier
+      description: API call counts for the large payload tier.
       example:
         previousDays:
         - 2
@@ -2106,12 +2108,12 @@ components:
         currentDay: 3
       properties:
         currentDay:
-          description: API call counts for current day
+          description: API call counts for current day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: API call counts for previous days. The first element indicates
-            yesterday and so on. A maximum of seven entries is required if available
+            yesterday and so on. A maximum of seven entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -2123,7 +2125,7 @@ components:
     InvocationMetricsV3_secondary:
       description: API call counts for the Shared Responsibility Data Requests tier.
         Mandatory for data holders designated for a Shared Responsibility Data Request
-        data cluster
+        data cluster.
       example:
         previousDays:
         - 7
@@ -2131,12 +2133,12 @@ components:
         currentDay: 4
       properties:
         currentDay:
-          description: API call counts for current day
+          description: API call counts for current day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: API call counts for previous days. The first element indicates
-            yesterday and so on. A maximum of seven entries is required if available
+            yesterday and so on. A maximum of seven entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -2148,7 +2150,7 @@ components:
     InvocationMetricsV3_largeSecondary:
       description: API call counts for the large Shared Responsibility Data Requests
         tier. Mandatory for data holders designated for a Shared Responsibility Data
-        Request data cluster
+        Request data cluster.
       example:
         previousDays:
         - 1
@@ -2156,12 +2158,12 @@ components:
         currentDay: 1
       properties:
         currentDay:
-          description: API call counts for current day
+          description: API call counts for current day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: API call counts for previous days. The first element indicates
-            yesterday and so on. A maximum of seven entries is required if available
+            yesterday and so on. A maximum of seven entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -2171,7 +2173,7 @@ components:
       - currentDay
       - previousDays
     AverageResponseMetricsV2_unauthenticated:
-      description: Average response time for the unauthenticated tier
+      description: Average response time for the unauthenticated tier.
       example:
         previousDays:
         - 6.84685269835264
@@ -2179,7 +2181,7 @@ components:
         currentDay: 1.4894159098541704
       properties:
         currentDay:
-          description: Average response time for current day
+          description: Average response time for current day.
           type: number
         previousDays:
           description: Average response time for previous days. The first element
@@ -2193,7 +2195,7 @@ components:
       - currentDay
       - previousDays
     AverageResponseMetricsV2_highPriority:
-      description: Average response time for the high priority tier
+      description: Average response time for the high priority tier.
       example:
         previousDays:
         - 1.1730742509559433
@@ -2201,7 +2203,7 @@ components:
         currentDay: 7.457744773683766
       properties:
         currentDay:
-          description: Average response time for current day
+          description: Average response time for current day.
           type: number
         previousDays:
           description: Average response time for previous days. The first element
@@ -2215,7 +2217,7 @@ components:
       - currentDay
       - previousDays
     AverageResponseMetricsV2_lowPriority:
-      description: Average response time for the low priority tier
+      description: Average response time for the low priority tier.
       example:
         previousDays:
         - 5.025004791520295
@@ -2223,7 +2225,7 @@ components:
         currentDay: 4.965218492984954
       properties:
         currentDay:
-          description: Average response time for current day
+          description: Average response time for current day.
           type: number
         previousDays:
           description: Average response time for previous days. The first element
@@ -2237,7 +2239,7 @@ components:
       - currentDay
       - previousDays
     AverageResponseMetricsV2_unattended:
-      description: Average response time for the unattended tier
+      description: Average response time for the unattended tier.
       example:
         previousDays:
         - 9.369310271410669
@@ -2245,7 +2247,7 @@ components:
         currentDay: 9.965781217890562
       properties:
         currentDay:
-          description: Average response time for current day
+          description: Average response time for current day.
           type: number
         previousDays:
           description: Average response time for previous days. The first element
@@ -2259,7 +2261,7 @@ components:
       - currentDay
       - previousDays
     AverageResponseMetricsV2_largePayload:
-      description: Average response time for the large payload tier
+      description: Average response time for the large payload tier.
       example:
         previousDays:
         - 8.762042012749001
@@ -2267,7 +2269,7 @@ components:
         currentDay: 6.683562403749608
       properties:
         currentDay:
-          description: Average response time for current day
+          description: Average response time for current day.
           type: number
         previousDays:
           description: Average response time for previous days. The first element
@@ -2281,7 +2283,7 @@ components:
       - currentDay
       - previousDays
     AverageResponseMetricsV2_secondary_primary:
-      description: Average response time as measured for the primary data holder
+      description: Average response time as measured for the primary data holder.
       example:
         previousDays:
         - 6.438423552598547
@@ -2289,7 +2291,7 @@ components:
         currentDay: 9.018348186070783
       properties:
         currentDay:
-          description: Average response time for current day
+          description: Average response time for current day.
           type: number
         previousDays:
           description: Average response time for previous days. The first element
@@ -2303,7 +2305,7 @@ components:
       - currentDay
       - previousDays
     AverageResponseMetricsV2_secondary_secondary:
-      description: Average response time as measured for the secondary data holder
+      description: Average response time as measured for the secondary data holder.
       example:
         previousDays:
         - 6.965117697638846
@@ -2311,7 +2313,7 @@ components:
         currentDay: 3.5571952270680973
       properties:
         currentDay:
-          description: Average response time for current day
+          description: Average response time for current day.
           type: number
         previousDays:
           description: Average response time for previous days. The first element
@@ -2326,7 +2328,7 @@ components:
       - previousDays
     AverageResponseMetricsV2_secondary:
       description: Average response time for the secondary tier. Mandatory for data
-        holders designated for a Shared Responsibility Data Request data cluster
+        holders designated for a Shared Responsibility Data Request data cluster.
       example:
         secondary:
           previousDays:
@@ -2349,7 +2351,7 @@ components:
       type: object
     AverageResponseMetricsV2_largeSecondary:
       description: Average response time for the large payload tier. Mandatory for
-        data holders designated for a Shared Responsibility Data Request data cluster
+        data holders designated for a Shared Responsibility Data Request data cluster.
       example:
         secondary:
           previousDays:
@@ -2371,7 +2373,7 @@ components:
       - secondary
       type: object
     AverageTPSMetricsV2_aggregate:
-      description: Aggregate average transactions per second over time for all endpoints
+      description: Aggregate average transactions per second, over time, for all endpoints.
       example:
         previousDays:
         - 6.878052220127876
@@ -2379,12 +2381,12 @@ components:
         currentDay: 6.778324963048013
       properties:
         currentDay:
-          description: Average TPS for current day. Must be a positive value or zero
+          description: Average TPS for current day. Must be a positive value or zero.
           type: number
         previousDays:
           description: Average TPS for previous days. The first element indicates
             yesterday and so on. A maximum of seven entries is required if available.
-            Values must be a positive or zero
+            Values must be a positive or zero.
           items:
             type: number
           type: array
@@ -2393,7 +2395,8 @@ components:
       - currentDay
       - previousDays
     AverageTPSMetricsV2_unauthenticated:
-      description: Average transactions per second over time for unauthenticated endpoints
+      description: Average transactions per second, over time, for unauthenticated
+        endpoints.
       example:
         previousDays:
         - 6.704019297950036
@@ -2401,12 +2404,12 @@ components:
         currentDay: 5.944895607614016
       properties:
         currentDay:
-          description: Average TPS for current day. Must be a positive value or zero
+          description: Average TPS for current day. Must be a positive value or zero.
           type: number
         previousDays:
           description: Average TPS for previous days. The first element indicates
             yesterday and so on. A maximum of seven entries is required if available.
-            Values must be a positive or zero
+            Values must be a positive or zero.
           items:
             type: number
           type: array
@@ -2415,7 +2418,7 @@ components:
       - currentDay
       - previousDays
     AverageTPSMetricsV2_authenticated:
-      description: Average transactions per second over time for authenticated endpoints
+      description: Average transactions per second, over time, for authenticated endpoints.
       example:
         previousDays:
         - 3.0937452626664474
@@ -2423,12 +2426,12 @@ components:
         currentDay: 3.353193347011243
       properties:
         currentDay:
-          description: Average TPS for current day. Must be a positive value or zero
+          description: Average TPS for current day. Must be a positive value or zero.
           type: number
         previousDays:
           description: Average TPS for previous days. The first element indicates
             yesterday and so on. A maximum of seven entries is required if available.
-            Values must be a positive or zero
+            Values must be a positive or zero.
           items:
             type: number
           type: array
@@ -2437,7 +2440,7 @@ components:
       - currentDay
       - previousDays
     PeakTPSMetricsV2_aggregate:
-      description: Aggregate peak transactions per second over time for all endpoints
+      description: Aggregate peak transactions per second, over time, for all endpoints.
       example:
         previousDays:
         - 0.8851374739011653
@@ -2445,12 +2448,12 @@ components:
         currentDay: 7.143538047012306
       properties:
         currentDay:
-          description: Peak TPS for current day. Must be a positive value or zero
+          description: Peak TPS for current day. Must be a positive value or zero.
           type: number
         previousDays:
           description: Peak TPS for previous days. The first element indicates yesterday
             and so on. A maximum of seven entries is required if available. Values
-            must be a positive or zero
+            must be a positive or zero.
           items:
             type: number
           type: array
@@ -2459,7 +2462,7 @@ components:
       - currentDay
       - previousDays
     PeakTPSMetricsV2_unauthenticated:
-      description: Peak transactions per second over time for unauthenticated endpoints
+      description: Peak transactions per second, over time, for unauthenticated endpoints.
       example:
         previousDays:
         - 6.519180951018382
@@ -2467,12 +2470,12 @@ components:
         currentDay: 7.058770351582356
       properties:
         currentDay:
-          description: Peak TPS for current day. Must be a positive value or zero
+          description: Peak TPS for current day. Must be a positive value or zero.
           type: number
         previousDays:
           description: Peak TPS for previous days. The first element indicates yesterday
             and so on. A maximum of seven entries is required if available. Values
-            must be a positive or zero
+            must be a positive or zero.
           items:
             type: number
           type: array
@@ -2481,7 +2484,7 @@ components:
       - currentDay
       - previousDays
     PeakTPSMetricsV2_authenticated:
-      description: Peak transactions per second over time for authenticated endpoints
+      description: Peak transactions per second, over time, for authenticated endpoints.
       example:
         previousDays:
         - 4.652396432933246
@@ -2489,12 +2492,12 @@ components:
         currentDay: 0.10263654006109402
       properties:
         currentDay:
-          description: Peak TPS for current day. Must be a positive value or zero
+          description: Peak TPS for current day. Must be a positive value or zero.
           type: number
         previousDays:
           description: Peak TPS for previous days. The first element indicates yesterday
             and so on. A maximum of seven entries is required if available. Values
-            must be a positive or zero
+            must be a positive or zero.
           items:
             type: number
           type: array
@@ -2503,8 +2506,8 @@ components:
       - currentDay
       - previousDays
     ErrorMetricsV2_aggregate:
-      description: Aggregate number of calls resulting in error due to server execution
-        over time for all endpoints
+      description: Aggregate number of calls resulting in error due to server execution,
+        over time, for all endpoints.
       example:
         previousDays:
         - 7
@@ -2512,12 +2515,12 @@ components:
         currentDay: 8
       properties:
         currentDay:
-          description: Error counts for current day
+          description: Error counts for current day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: Error counts for previous days. The first element indicates
-            yesterday and so on. A maximum of seven entries is required if available
+            yesterday and so on. A maximum of seven entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -2527,7 +2530,7 @@ components:
       - currentDay
       - previousDays
     ErrorMetricsV2_unauthenticated:
-      description: Number of calls resulting in error for unauthenticated endpoints
+      description: Number of calls resulting in error for unauthenticated endpoints.
       example:
         previousDays:
         - key: 3
@@ -2537,40 +2540,51 @@ components:
       properties:
         currentDay:
           additionalProperties:
-            description: Number of errors for a specific HTTP error code. Note that
-              the property name must be 3 digits represent the HTTP error code the
-              error is for
+            description: 'This is a placeholder field to be substituted with each
+              respective HTTP error code in the 4xx and 5xx range recorded by the
+              Data Holder. It is represented by _property1_ and _property2_ in the
+              _Non-normative Examples_ section. Note that the property name **MUST**
+              be the three-digit HTTP error code as per the adjacent _500_ example.
+              All possible property names have not been defined as the range is expected
+              to vary across participants. Examples would include, but are not limited
+              to: _400, 404, 405, 406, 415, 422, 429, 500, 503, 504_.'
             type: integer
             x-cds-type: NaturalNumber
-          description: Error counts, by HTTP error code, for current day
+          description: Error counts, by HTTP error code, for current day.
           properties:
             "500":
-              description: Number of errors for HTTP error code 500. Note that this
-                field is an example of a single entry due to the lack of OAS support
-                for the JSON Schema `patternProperties` syntax. See the `additionalProperties`
-                field in this schema for the generic property structure for error
-                code counts
+              description: Reflecting the description provided in the adjacent _additionalProperties_
+                field, this is an example demonstrating the structure for reporting
+                the number of calls resulting in HTTP error code `500`. Each error
+                code recorded by the Data Holder in the 4xx and 5xx range **MUST**
+                be provided in this format against the respective property name.
               type: integer
               x-cds-type: NaturalNumber
           type: object
         previousDays:
           description: Error counts, by HTTP error code, for previous days. The first
             element indicates yesterday and so on. A maximum of seven entries is required
-            if available
+            if available.
           items:
             additionalProperties:
-              description: Number of errors for a specific HTTP error code. Note that
-                the property name must be 3 digits represent the HTTP error code the
-                error is for
+              description: 'This is a placeholder field to be substituted with each
+                respective HTTP error code in the 4xx and 5xx range recorded by the
+                Data Holder. It is represented by _property1_ and _property2_ in the
+                _Non-normative Examples_ section. Note that the property name **MUST**
+                be the three-digit HTTP error code as per the adjacent _500_ example.
+                All possible property names have not been defined as the range is
+                expected to vary across participants. Examples would include, but
+                are not limited to: _400, 404, 405, 406, 415, 422, 429, 500, 503,
+                504_.'
               type: integer
               x-cds-type: NaturalNumber
             properties:
               "500":
-                description: Number of errors for HTTP error code 500. Note that this
-                  field is an example of a single entry due to the lack of OAS support
-                  JSON Schema `patternProperties` syntax. See the `additionalProperties`
-                  field in this schema for the generic property structure for error
-                  code counts
+                description: Reflecting the description provided in the adjacent _additionalProperties_
+                  field, this is an example demonstrating the structure for reporting
+                  the number of calls resulting in HTTP error code `500`. Each error
+                  code recorded by the Data Holder in the 4xx and 5xx range **MUST**
+                  be provided in this format against the respective property name.
                 type: integer
                 x-cds-type: NaturalNumber
             type: object
@@ -2580,7 +2594,7 @@ components:
       - currentDay
       - previousDays
     ErrorMetricsV2_authenticated:
-      description: Number of calls resulting in error for authenticated endpoints
+      description: Number of calls resulting in error for authenticated endpoints.
       example:
         previousDays:
         - key: 5
@@ -2590,40 +2604,51 @@ components:
       properties:
         currentDay:
           additionalProperties:
-            description: Number of errors for a specific HTTP error code. Note that
-              the property name must be 3 digits represent the HTTP error code the
-              error is for
+            description: 'This is a placeholder field to be substituted with each
+              respective HTTP error code in the 4xx and 5xx range recorded by the
+              Data Holder. It is represented by _property1_ and _property2_ in the
+              _Non-normative Examples_ section. Note that the property name **MUST**
+              be the three-digit HTTP error code as per the adjacent _500_ example.
+              All possible property names have not been defined as the range is expected
+              to vary across participants. Examples would include, but are not limited
+              to: _400, 401, 403, 404, 405, 406, 415, 422, 429, 500, 503, 504_.'
             type: integer
             x-cds-type: NaturalNumber
-          description: Error counts, by HTTP error code, for current day
+          description: Error counts, by HTTP error code, for current day.
           properties:
             "500":
-              description: Number of errors for HTTP error code 500. Note that this
-                field is an example of a single entry due to the lack of OAS support
-                for the JSON Schema `patternProperties` syntax. See the `additionalProperties`
-                field in this schema for the generic property structure for error
-                code counts
+              description: Reflecting the description provided in the adjacent _additionalProperties_
+                field, this is an example demonstrating the structure for reporting
+                the number of calls resulting in HTTP error code `500`. Each error
+                code recorded by the Data Holder in the 4xx and 5xx range **MUST**
+                be provided in this format against the respective property name.
               type: integer
               x-cds-type: NaturalNumber
           type: object
         previousDays:
           description: Error counts, by HTTP error code, for previous days. The first
             element indicates yesterday and so on. A maximum of seven entries is required
-            if available
+            if available.
           items:
             additionalProperties:
-              description: Number of errors for a specific HTTP error code. Note that
-                the property name must be 3 digits represent the HTTP error code the
-                error is for
+              description: 'This is a placeholder field to be substituted with each
+                respective HTTP error code in the 4xx and 5xx range recorded by the
+                Data Holder. It is represented by _property1_ and _property2_ in the
+                _Non-normative Examples_ section. Note that the property name **MUST**
+                be the three-digit HTTP error code as per the adjacent _500_ example.
+                All possible property names have not been defined as the range is
+                expected to vary across participants. Examples would include, but
+                are not limited to: _400, 401, 403, 404, 405, 406, 415, 422, 429,
+                500, 503, 504_.'
               type: integer
               x-cds-type: NaturalNumber
             properties:
               "500":
-                description: Number of errors for HTTP error code 500. Note that this
-                  field is an example of a single entry due to the lack of OAS support
-                  JSON Schema `patternProperties` syntax. See the `additionalProperties`
-                  field in this schema for the generic property structure for error
-                  code counts
+                description: Reflecting the description provided in the adjacent _additionalProperties_
+                  field, this is an example demonstrating the structure for reporting
+                  the number of calls resulting in HTTP error code `500`. Each error
+                  code recorded by the Data Holder in the 4xx and 5xx range **MUST**
+                  be provided in this format against the respective property name.
                 type: integer
                 x-cds-type: NaturalNumber
             type: object
@@ -2633,7 +2658,7 @@ components:
       - currentDay
       - previousDays
     RejectionMetricsV3_authenticated:
-      description: Rejection counts for all authenticated endpoints
+      description: Rejection counts for all authenticated endpoints.
       example:
         previousDays:
         - 4
@@ -2641,7 +2666,7 @@ components:
         currentDay: 3
       properties:
         currentDay:
-          description: Number of calls rejected for current day
+          description: Number of calls rejected for current day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
@@ -2657,7 +2682,7 @@ components:
       - currentDay
       - previousDays
     RejectionMetricsV3_unauthenticated:
-      description: Rejection counts for all unauthenticated endpoints
+      description: Rejection counts for all unauthenticated endpoints.
       example:
         previousDays:
         - 6
@@ -2665,7 +2690,7 @@ components:
         currentDay: 0
       properties:
         currentDay:
-          description: Number of calls rejected for current day
+          description: Number of calls rejected for current day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
@@ -2681,8 +2706,8 @@ components:
       - currentDay
       - previousDays
     SecondaryHolderMetricsV2_errors:
-      description: Number of calls resulting in error due to server execution over
-        time
+      description: Number of calls resulting in error due to server execution, over
+        time.
       example:
         previousDays:
         - 7
@@ -2690,12 +2715,12 @@ components:
         currentDay: 4
       properties:
         currentDay:
-          description: Number of errors for current day
+          description: Number of errors for current day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: Number of errors for previous days. The first element indicates
-            yesterday and so on. A maximum of seven entries is required if available
+            yesterday and so on. A maximum of seven entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -2705,7 +2730,7 @@ components:
       - currentDay
       - previousDays
     SecondaryHolderMetricsV2_rejections:
-      description: Number of calls rejected due to traffic thresholds over time
+      description: Number of calls rejected due to traffic thresholds, over time.
       example:
         previousDays:
         - 0
@@ -2713,12 +2738,12 @@ components:
         currentDay: 9
       properties:
         currentDay:
-          description: Number of rejections for current day
+          description: Number of rejections for current day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: Number of rejections for previous days. The first element indicates
-            yesterday and so on. A maximum of seven entries is required if available
+            yesterday and so on. A maximum of seven entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -2728,17 +2753,17 @@ components:
       - currentDay
       - previousDays
     AuthorisationMetricsV2_activeAuthorisationCount:
-      description: The number of active ongoing authorisations
+      description: The number of active ongoing authorisations.
       example:
         nonIndividual: 0
         individual: 9
       properties:
         individual:
-          description: Active ongoing authorisation count for individual customers
+          description: Active ongoing authorisation count for individual customers.
           type: integer
           x-cds-type: NaturalNumber
         nonIndividual:
-          description: Active ongoing authorisation count for non-individual customers
+          description: Active ongoing authorisation count for non-individual customers.
           type: integer
           x-cds-type: NaturalNumber
       required:
@@ -2746,17 +2771,17 @@ components:
       - nonIndividual
       type: object
     AuthorisationMetricsV2_newAuthorisationCount_currentDay_onceOff:
-      description: New authorisation count for once-off authorisations
+      description: New authorisation count for once-off authorisations.
       example:
         nonIndividual: 5
         individual: 7
       properties:
         individual:
-          description: New authorisation count for individual customers
+          description: New authorisation count for individual customers.
           type: integer
           x-cds-type: NaturalNumber
         nonIndividual:
-          description: New authorisation count for non-individual customers
+          description: New authorisation count for non-individual customers.
           type: integer
           x-cds-type: NaturalNumber
       required:
@@ -2764,17 +2789,17 @@ components:
       - nonIndividual
       type: object
     AuthorisationMetricsV2_newAuthorisationCount_currentDay_ongoing:
-      description: New authorisation count for ongoing authorisations
+      description: New authorisation count for ongoing authorisations.
       example:
         nonIndividual: 6
         individual: 4
       properties:
         individual:
-          description: New authorisation count for individual customers
+          description: New authorisation count for individual customers.
           type: integer
           x-cds-type: NaturalNumber
         nonIndividual:
-          description: New authorisation count for non-individual customers
+          description: New authorisation count for non-individual customers.
           type: integer
           x-cds-type: NaturalNumber
       required:
@@ -2782,7 +2807,7 @@ components:
       - nonIndividual
       type: object
     AuthorisationMetricsV2_newAuthorisationCount_currentDay:
-      description: Number of new authorisations for the current day
+      description: Number of new authorisations for the current day.
       example:
         ongoing:
           nonIndividual: 6
@@ -2817,7 +2842,7 @@ components:
       - ongoing
       type: object
     AuthorisationMetricsV2_newAuthorisationCount:
-      description: The number of new authorisations
+      description: The number of new authorisations.
       example:
         previousDays:
         - ongoing:
@@ -2845,7 +2870,7 @@ components:
         previousDays:
           description: Number of new authorisations for previous days. The first element
             indicates yesterday and so on. A maximum of seven entries is required
-            if available
+            if available.
           items:
             $ref: '#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount_previousDays'
           type: array
@@ -2854,17 +2879,17 @@ components:
       - currentDay
       - previousDays
     AuthorisationMetricsV2_revokedAuthorisationCount_currentDay:
-      description: Number of revoked authorisations for the current day
+      description: Number of revoked authorisations for the current day.
       example:
         nonIndividual: 4
         individual: 8
       properties:
         individual:
-          description: Revoked authorisation count for individual customers
+          description: Revoked authorisation count for individual customers.
           type: integer
           x-cds-type: NaturalNumber
         nonIndividual:
-          description: Revoked authorisation count for non-individual customers
+          description: Revoked authorisation count for non-individual customers.
           type: integer
           x-cds-type: NaturalNumber
       required:
@@ -2877,11 +2902,11 @@ components:
         individual: 3
       properties:
         individual:
-          description: Revoked authorisation count for individual customers
+          description: Revoked authorisation count for individual customers.
           type: integer
           x-cds-type: NaturalNumber
         nonIndividual:
-          description: Revoked authorisation count for non-individual customers
+          description: Revoked authorisation count for non-individual customers.
           type: integer
           x-cds-type: NaturalNumber
       required:
@@ -2889,7 +2914,7 @@ components:
       - nonIndividual
       type: object
     AuthorisationMetricsV2_revokedAuthorisationCount:
-      description: The number of revoked authorisations
+      description: The number of revoked authorisations.
       example:
         previousDays:
         - nonIndividual: 0
@@ -2905,7 +2930,7 @@ components:
         previousDays:
           description: Number of revoked authorisations for previous days. The first
             element indicates yesterday and so on. A maximum of seven entries is required
-            if available
+            if available.
           items:
             $ref: '#/components/schemas/AuthorisationMetricsV2_revokedAuthorisationCount_previousDays'
           type: array
@@ -2914,17 +2939,17 @@ components:
       - currentDay
       - previousDays
     AuthorisationMetricsV2_amendedAuthorisationCount_currentDay:
-      description: Number of amended authorisations for the current day
+      description: Number of amended authorisations for the current day.
       example:
         nonIndividual: 1
         individual: 2
       properties:
         individual:
-          description: Amended authorisation count for individual customers
+          description: Amended authorisation count for individual customers.
           type: integer
           x-cds-type: NaturalNumber
         nonIndividual:
-          description: Amended authorisation count for non-individual customers
+          description: Amended authorisation count for non-individual customers.
           type: integer
           x-cds-type: NaturalNumber
       required:
@@ -2937,11 +2962,11 @@ components:
         individual: 8
       properties:
         individual:
-          description: Amended authorisation count for individual customers
+          description: Amended authorisation count for individual customers.
           type: integer
           x-cds-type: NaturalNumber
         nonIndividual:
-          description: Amended authorisation count for non-individual customers
+          description: Amended authorisation count for non-individual customers.
           type: integer
           x-cds-type: NaturalNumber
       required:
@@ -2949,7 +2974,7 @@ components:
       - nonIndividual
       type: object
     AuthorisationMetricsV2_amendedAuthorisationCount:
-      description: The number of amended ongoing authorisations
+      description: The number of amended ongoing authorisations.
       example:
         previousDays:
         - nonIndividual: 6
@@ -2965,7 +2990,7 @@ components:
         previousDays:
           description: Number of amended authorisations for previous days. The first
             element indicates yesterday and so on. A maximum of seven entries is required
-            if available
+            if available.
           items:
             $ref: '#/components/schemas/AuthorisationMetricsV2_amendedAuthorisationCount_previousDays'
           type: array
@@ -2974,17 +2999,17 @@ components:
       - currentDay
       - previousDays
     AuthorisationMetricsV2_expiredAuthorisationCount_currentDay:
-      description: Number of expired authorisations for the current day
+      description: Number of expired authorisations for the current day.
       example:
         nonIndividual: 8
         individual: 4
       properties:
         individual:
-          description: Expired authorisation count for individual customers
+          description: Expired authorisation count for individual customers.
           type: integer
           x-cds-type: NaturalNumber
         nonIndividual:
-          description: Expired authorisation count for non-individual customers
+          description: Expired authorisation count for non-individual customers.
           type: integer
           x-cds-type: NaturalNumber
       required:
@@ -2997,11 +3022,11 @@ components:
         individual: 9
       properties:
         individual:
-          description: Expired authorisation count for individual customers
+          description: Expired authorisation count for individual customers.
           type: integer
           x-cds-type: NaturalNumber
         nonIndividual:
-          description: Expired authorisation count for non-individual customers
+          description: Expired authorisation count for non-individual customers.
           type: integer
           x-cds-type: NaturalNumber
       required:
@@ -3009,7 +3034,7 @@ components:
       - nonIndividual
       type: object
     AuthorisationMetricsV2_expiredAuthorisationCount:
-      description: The number of expired ongoing authorisations
+      description: The number of expired ongoing authorisations.
       example:
         previousDays:
         - nonIndividual: 1
@@ -3025,7 +3050,7 @@ components:
         previousDays:
           description: Number of expired authorisations for previous days. The first
             element indicates yesterday and so on. A maximum of seven entries is required
-            if available
+            if available.
           items:
             $ref: '#/components/schemas/AuthorisationMetricsV2_expiredAuthorisationCount_previousDays'
           type: array
@@ -3034,7 +3059,7 @@ components:
       - currentDay
       - previousDays
     AuthorisationMetricsV2_abandonedConsentFlowCount:
-      description: The number of consents flows that were not successfully authorised
+      description: The number of consents flows that were not successfully authorised.
       example:
         previousDays:
         - 9
@@ -3043,13 +3068,13 @@ components:
       properties:
         currentDay:
           description: Number of consents flows that were not successfully authorised
-            for the current day
+            for the current day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: Number of consents flows that were not successfully authorised
             for previous days. The first element indicates yesterday and so on. A
-            maximum of seven entries is required if available
+            maximum of seven entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -3060,7 +3085,7 @@ components:
       - previousDays
     AuthorisationMetricsV2_abandonmentsByStage_preIdentification:
       description: The number of authorisations that commenced with the data holder
-        but the customer did not successfully identify their profile or user ID
+        but the customer did not successfully identify their profile or user ID.
       example:
         previousDays:
         - 0
@@ -3069,13 +3094,13 @@ components:
       properties:
         currentDay:
           description: Number of abandoned consent flows for this stage for the current
-            day
+            day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: Number of abandoned consent flows for this stage for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available
+            entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -3086,8 +3111,8 @@ components:
       - previousDays
     AuthorisationMetricsV2_abandonmentsByStage_preAuthentication:
       description: The number of authorisations where the customer identified themselves
-        (ie. they successfully identify the customer profile to use for the authorisation)
-        but failed to provide a valid OTP or equivalent
+        (i.e. they successfully identify the customer profile to use for the authorisation)
+        but failed to provide a valid OTP or equivalent.
       example:
         previousDays:
         - 5
@@ -3096,13 +3121,13 @@ components:
       properties:
         currentDay:
           description: Number of abandoned consent flows for this stage for the current
-            day
+            day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: Number of abandoned consent flows for this stage for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available
+            entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -3114,7 +3139,7 @@ components:
     AuthorisationMetricsV2_abandonmentsByStage_preAccountSelection:
       description: The number of authorisations where the customer successfully authenticated
         with a valid OTP or equivalent but abandoned the process before selecting
-        accounts
+        accounts.
       example:
         previousDays:
         - 7
@@ -3123,13 +3148,13 @@ components:
       properties:
         currentDay:
           description: Number of abandoned consent flows for this stage for the current
-            day
+            day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: Number of abandoned consent flows for this stage for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available
+            entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -3141,7 +3166,7 @@ components:
     AuthorisationMetricsV2_abandonmentsByStage_preAuthorisation:
       description: The number of authorisations where the customer has passed the
         account selection step but abandoned the process before approving or rejecting
-        the consent being requested
+        the consent being requested.
       example:
         previousDays:
         - 3
@@ -3150,13 +3175,13 @@ components:
       properties:
         currentDay:
           description: Number of abandoned consent flows for this stage for the current
-            day
+            day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: Number of abandoned consent flows for this stage for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available
+            entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -3167,7 +3192,7 @@ components:
       - previousDays
     AuthorisationMetricsV2_abandonmentsByStage_rejected:
       description: The number of authorisations where the customer actively rejected
-        the authorisation rather than abandoning the process
+        the authorisation rather than abandoning the process.
       example:
         previousDays:
         - 5
@@ -3176,13 +3201,13 @@ components:
       properties:
         currentDay:
           description: Number of abandoned consent flows for this stage for the current
-            day
+            day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: Number of abandoned consent flows for this stage for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available
+            entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -3194,7 +3219,7 @@ components:
     AuthorisationMetricsV2_abandonmentsByStage_failedTokenExchange:
       description: The number of authorisations that completed the interactive flow
         with the consumer authorising the consent, but the ADR failed to - or was
-        unable to - obtain a refresh or access token using the authorisation code
+        unable to - obtain a refresh or access token using the authorisation code.
       example:
         previousDays:
         - 0
@@ -3203,13 +3228,13 @@ components:
       properties:
         currentDay:
           description: Number of abandoned consent flows for this stage for the current
-            day
+            day.
           type: integer
           x-cds-type: NaturalNumber
         previousDays:
           description: Number of abandoned consent flows for this stage for previous
             days. The first element indicates yesterday and so on. A maximum of seven
-            entries is required if available
+            entries is required if available.
           items:
             type: integer
             x-cds-type: NaturalNumber
@@ -3221,8 +3246,8 @@ components:
     AuthorisationMetricsV2_abandonmentsByStage:
       description: Customer abandonment count per stage of the consent flow. Note
         that the aggregated abandonment count for all stages for a period should equal
-        the count in `abandonedConsentFlowCount` for the same period (ie. each abandoned
-        consent should assigned to one, and only one, stage)
+        the count in _abandonedConsentFlowCount_ for the same period (i.e. each abandoned
+        consent should assigned to one, and only one, stage).
       example:
         preAuthorisation:
           previousDays:

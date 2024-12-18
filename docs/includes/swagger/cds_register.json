@@ -2,7 +2,7 @@
   "openapi" : "3.0.3",
   "info" : {
     "title" : "CDR Participant Discovery API",
-    "version" : "1.32.0"
+    "version" : "1.33.0"
   },
   "servers" : [ {
     "description" : "Production TLS",
@@ -11,7 +11,7 @@
   "paths" : {
     "/idp/.well-known/openid-configuration" : {
       "get" : {
-        "description" : "Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.\n\nThis endpoint does not require CORS.",
+        "description" : "Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.\n\nThis endpoint does not require [CORS](#cors).",
         "operationId" : "GetOpenIdProviderConfig",
         "responses" : {
           "200" : {
@@ -31,7 +31,7 @@
     },
     "/cdr-register/v1/jwks" : {
       "get" : {
-        "description" : "JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.\n\nThis endpoint does not require CORS.",
+        "description" : "JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.\n\nThis endpoint does not require [CORS](#cors).",
         "operationId" : "Get JWKS",
         "responses" : {
           "200" : {
@@ -51,10 +51,10 @@
     },
     "/cdr-register/v1/{industry}/data-holders/brands" : {
       "get" : {
-        "description" : "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html)",
+        "description" : "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html).",
         "operationId" : "GetDataHolderBrands",
         "parameters" : [ {
-          "description" : "The industry the participant is retrieving data for (Banking, etc)",
+          "description" : "The industry the participant is retrieving data for (Banking, etc.)",
           "explode" : false,
           "in" : "path",
           "name" : "industry",
@@ -77,7 +77,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -87,7 +87,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the Register **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -97,7 +97,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "query filter returns results updated since the specified date-time",
+          "description" : "Query filter returns results updated since the specified date-time.",
           "explode" : true,
           "in" : "query",
           "name" : "updated-since",
@@ -108,7 +108,7 @@
           },
           "style" : "form"
         }, {
-          "description" : "the page number to return",
+          "description" : "The page number to return.",
           "explode" : true,
           "in" : "query",
           "name" : "page",
@@ -120,7 +120,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "the number of records to return per page",
+          "description" : "The number of records to return per page.",
           "explode" : true,
           "in" : "query",
           "name" : "page-size",
@@ -141,7 +141,7 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
                 "description" : "The version of the API endpoint that the CDR Register has responded with.",
@@ -167,7 +167,7 @@
             "description" : "Invalid Bearer Token",
             "headers" : {
               "WWW-Authenticate" : {
-                "description" : "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
+                "description" : "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string",
@@ -200,10 +200,10 @@
     },
     "/cdr-register/v1/{industry}/data-holders/brands/summary" : {
       "get" : {
-        "description" : "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register",
+        "description" : "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register.",
         "operationId" : "GetDataHolderBrandsSummary",
         "parameters" : [ {
-          "description" : "The industry the participant is retrieving data for (Banking, etc)",
+          "description" : "The industry the participant is retrieving data for (Banking, etc.)",
           "explode" : false,
           "in" : "path",
           "name" : "industry",
@@ -215,7 +215,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -225,7 +225,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the Register **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -255,7 +255,7 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
                 "description" : "The version of the API endpoint that the CDR Register has responded with.",
@@ -277,7 +277,7 @@
             }
           },
           "304" : {
-            "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+            "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
             "headers" : {
               "Etag" : {
                 "description" : "Entity tag that uniquely represents the requested resource.",
@@ -328,10 +328,10 @@
     },
     "/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa" : {
       "get" : {
-        "description" : "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.html), [v2](includes/obsolete/get-software-statement-assertion-v2.html)",
+        "description" : "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.html), [v2](includes/obsolete/get-software-statement-assertion-v2.html).",
         "operationId" : "GetSoftwareStatementAssertion",
         "parameters" : [ {
-          "description" : "The industry the participant is retrieving data for (Banking, etc)",
+          "description" : "The industry the participant is retrieving data for (Banking, etc.)",
           "explode" : false,
           "in" : "path",
           "name" : "industry",
@@ -343,7 +343,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -353,7 +353,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the Register **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -363,7 +363,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register",
+          "description" : "Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register.",
           "explode" : false,
           "in" : "path",
           "name" : "dataRecipientBrandId",
@@ -373,7 +373,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Unique id for the Accredited Data Recipient Software Product in the CDR Register",
+          "description" : "Unique id for the Accredited Data Recipient Software Product in the CDR Register.",
           "explode" : false,
           "in" : "path",
           "name" : "softwareProductId",
@@ -403,7 +403,7 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
                 "description" : "The version of the API endpoint that the CDR Register has responded with.",
@@ -430,7 +430,7 @@
             "description" : "Invalid Bearer Token",
             "headers" : {
               "WWW-Authenticate" : {
-                "description" : "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**",
+                "description" : "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
                 "explode" : false,
                 "schema" : {
                   "type" : "string",
@@ -493,10 +493,10 @@
     },
     "/cdr-register/v1/{industry}/data-holders/status" : {
       "get" : {
-        "description" : "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register",
+        "description" : "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register.",
         "operationId" : "GetDataHolderStatuses",
         "parameters" : [ {
-          "description" : "The industry the participant is retrieving data for (Banking, etc)",
+          "description" : "The industry the participant is retrieving data for (Banking, etc.)",
           "explode" : false,
           "in" : "path",
           "name" : "industry",
@@ -508,7 +508,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
+          "description" : "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to `1` if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained.",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -519,7 +519,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
+          "description" : "The [minimum version](#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -549,7 +549,7 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
                 "description" : "The version of the API endpoint that the CDR Register has responded with.",
@@ -571,7 +571,7 @@
             }
           },
           "304" : {
-            "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+            "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
             "headers" : {
               "Etag" : {
                 "description" : "Entity tag that uniquely represents the requested resource.",
@@ -612,10 +612,10 @@
     },
     "/cdr-register/v1/{industry}/data-recipients/brands/software-products/status" : {
       "get" : {
-        "description" : "Endpoint used by participants to discover the statuses for software products from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html)",
+        "description" : "Endpoint used by participants to discover the statuses for software products from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html).",
         "operationId" : "GetSoftwareProductsStatuses",
         "parameters" : [ {
-          "description" : "The industry the participant is retrieving data for (Banking, etc)",
+          "description" : "The industry the participant is retrieving data for (Banking, etc.)",
           "explode" : false,
           "in" : "path",
           "name" : "industry",
@@ -627,7 +627,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -637,7 +637,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the Register **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -667,7 +667,7 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
                 "description" : "The version of the API endpoint that the CDR Register has responded with.",
@@ -689,7 +689,7 @@
             }
           },
           "304" : {
-            "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+            "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
             "headers" : {
               "Etag" : {
                 "description" : "Entity tag that uniquely represents the requested resource.",
@@ -730,10 +730,10 @@
     },
     "/cdr-register/v1/{industry}/data-recipients/status" : {
       "get" : {
-        "description" : "Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html)",
+        "description" : "Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html).",
         "operationId" : "GetDataRecipientsStatuses",
         "parameters" : [ {
-          "description" : "The industry the participant is retrieving data for (Banking, etc)",
+          "description" : "The industry the participant is retrieving data for (Banking, etc.)",
           "explode" : false,
           "in" : "path",
           "name" : "industry",
@@ -745,7 +745,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -755,7 +755,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the Register **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -785,7 +785,7 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
                 "description" : "The version of the API endpoint that the CDR Register has responded with.",
@@ -807,7 +807,7 @@
             }
           },
           "304" : {
-            "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+            "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
             "headers" : {
               "Etag" : {
                 "description" : "Entity tag that uniquely represents the requested resource.",
@@ -848,10 +848,10 @@
     },
     "/cdr-register/v1/{industry}/data-recipients" : {
       "get" : {
-        "description" : "Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.\n\nObsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html)",
+        "description" : "Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.\n\nObsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html).",
         "operationId" : "GetDataRecipients",
         "parameters" : [ {
-          "description" : "The industry the participant is retrieving data for (Banking, etc)",
+          "description" : "The industry the participant is retrieving data for (Banking, etc.)",
           "explode" : false,
           "in" : "path",
           "name" : "industry",
@@ -863,7 +863,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -873,7 +873,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the Register **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -903,7 +903,7 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
                 "description" : "The version of the API endpoint that the CDR Register has responded with.",
@@ -925,7 +925,7 @@
             }
           },
           "304" : {
-            "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+            "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
             "headers" : {
               "Etag" : {
                 "description" : "Entity tag that uniquely represents the requested resource.",
@@ -980,7 +980,7 @@
         "style" : "simple"
       },
       "XV" : {
-        "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+        "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The Register should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the Register **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
         "explode" : false,
         "in" : "header",
         "name" : "x-v",
@@ -991,7 +991,7 @@
         "style" : "simple"
       },
       "Industry" : {
-        "description" : "The industry the participant is retrieving data for (Banking, etc)",
+        "description" : "The industry the participant is retrieving data for (Banking, etc.)",
         "explode" : false,
         "in" : "path",
         "name" : "industry",
@@ -1004,7 +1004,7 @@
         "style" : "simple"
       },
       "XMinV" : {
-        "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the Register must respond with a 406 Not Acceptable.",
+        "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The Register should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the Register **MUST** respond with a `406 Not Acceptable`.",
         "explode" : false,
         "in" : "header",
         "name" : "x-min-v",
@@ -1027,7 +1027,7 @@
         "style" : "simple"
       },
       "UpdatedSince" : {
-        "description" : "query filter returns results updated since the specified date-time",
+        "description" : "query filter returns results updated since the specified date-time.",
         "explode" : true,
         "in" : "query",
         "name" : "updated-since",
@@ -1039,7 +1039,7 @@
         "style" : "form"
       },
       "Page" : {
-        "description" : "the page number to return",
+        "description" : "The page number to return.",
         "explode" : true,
         "in" : "query",
         "name" : "page",
@@ -1052,7 +1052,7 @@
         "x-cds-type" : "PositiveInteger"
       },
       "PageSize" : {
-        "description" : "the number of records to return per page",
+        "description" : "The number of records to return per page.",
         "explode" : true,
         "in" : "query",
         "name" : "page-size",
@@ -1087,7 +1087,7 @@
         "description" : "Invalid Bearer Token"
       },
       "NotModified" : {
-        "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the If-None-Match request header",
+        "description" : "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
         "headers" : {
           "Etag" : {
             "description" : "Entity tag that uniquely represents the requested resource.",
@@ -1113,53 +1113,53 @@
     },
     "schemas" : {
       "ResponseOpenIDProviderConfigMetadata" : {
-        "description" : "Response containing the Open ID Provider Configuration Metadata",
+        "description" : "Response containing the Open ID Provider Configuration Metadata.",
         "properties" : {
           "issuer" : {
-            "description" : "URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier",
+            "description" : "URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier.",
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "jwks_uri" : {
-            "description" : "URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)** document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication",
+            "description" : "URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)** document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication.",
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "token_endpoint" : {
-            "description" : "URL of the CDR Register's OAuth 2.0 Token Endpoint",
+            "description" : "URL of the CDR Register's OAuth 2.0 Token Endpoint.",
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "claims_supported" : {
-            "description" : "JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for",
+            "description" : "JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for.",
             "items" : {
               "type" : "string"
             },
             "type" : "array"
           },
           "id_token_signing_alg_values_supported" : {
-            "description" : "JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored",
+            "description" : "JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored.",
             "items" : {
               "type" : "string"
             },
             "type" : "array"
           },
           "subject_types_supported" : {
-            "description" : "JSON array containing a list of the Subject Identifier types that the CDR Register supports. Given the CDR Register does not issue ID tokens, this field can be safely ignored",
+            "description" : "JSON array containing a list of the Subject Identifier types that the CDR Register supports. Given the CDR Register does not issue ID tokens, this field can be safely ignored.",
             "items" : {
               "type" : "string"
             },
             "type" : "array"
           },
           "code_challenge_methods_supported" : {
-            "description" : "JSON array containing a list of Proof Key for Code Exchange (PKCE) **[[RFC7636]](#nref-RFC7636)** code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored",
+            "description" : "JSON array containing a list of Proof Key for Code Exchange (PKCE) **[[RFC7636]](#nref-RFC7636)** code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored.",
             "items" : {
               "type" : "string"
             },
             "type" : "array"
           },
           "scopes_supported" : {
-            "description" : "JSON array containing a list of the OAuth 2.0 **[[RFC6749]](#nref-RFC6749)** scope values that the CDR Register supports",
+            "description" : "JSON array containing a list of the OAuth 2.0 **[[RFC6749]](#nref-RFC6749)** scope values that the CDR Register supports.",
             "items" : {
               "type" : "string"
             },
@@ -1173,26 +1173,26 @@
             "type" : "array"
           },
           "grant_types_supported" : {
-            "description" : "JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports",
+            "description" : "JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports.",
             "items" : {
               "type" : "string"
             },
             "type" : "array"
           },
           "token_endpoint_auth_methods_supported" : {
-            "description" : "JSON array containing a list of Client Authentication methods supported by this Token Endpoint",
+            "description" : "JSON array containing a list of Client Authentication methods supported by this Token Endpoint.",
             "items" : {
               "type" : "string"
             },
             "type" : "array"
           },
           "tls_client_certificate_bound_access_tokens" : {
-            "description" : "Boolean value indicating server support for mutual TLS client certificate bound access tokens",
+            "description" : "Boolean value indicating server support for mutual TLS client certificate bound access tokens.",
             "type" : "boolean",
             "x-cds-type" : "Boolean"
           },
           "token_endpoint_auth_signing_alg_values_supported" : {
-            "description" : "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method",
+            "description" : "JSON array containing a list of the JWS signing algorithms (_alg_ values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the `private_key_jwt` authentication method.",
             "items" : {
               "type" : "string"
             },
@@ -1203,10 +1203,10 @@
         "type" : "object"
       },
       "ResponseJWKS" : {
-        "description" : "Response containing the JSON Web Key Set",
+        "description" : "Response containing the JSON Web Key Set.",
         "properties" : {
           "keys" : {
-            "description" : "The value of the \"keys\" parameter is an array of JWK values",
+            "description" : "The value of the _keys_ parameter is an array of JWK values.",
             "items" : {
               "$ref" : "#/components/schemas/JWK"
             },
@@ -1217,20 +1217,20 @@
         "type" : "object"
       },
       "JWK" : {
-        "description" : "Object representing a JSON Web Key",
+        "description" : "Object representing a JSON Web Key.",
         "properties" : {
           "alg" : {
-            "description" : "The \"alg\" (algorithm) parameter identifies the algorithm intended for use with the key",
+            "description" : "The _alg_ (algorithm) parameter identifies the algorithm intended for use with the key.",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           },
           "e" : {
-            "description" : "The \"e\" RSA public exponent parameter",
+            "description" : "The _e_ RSA public exponent parameter.",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           },
           "key_ops" : {
-            "description" : "The \"key_ops\" (key operations) parameter identifies the operation(s) for which the key is intended to be used",
+            "description" : "The _key_ops_ (key operations) parameter identifies the operation(s) for which the key is intended to be used.",
             "items" : {
               "type" : "string",
               "x-cds-type" : "ExternalRef"
@@ -1238,17 +1238,17 @@
             "type" : "array"
           },
           "kid" : {
-            "description" : "The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed to be unique and additional parameters should be used to progressively identify a key within a set",
+            "description" : "The _kid_ (key ID) parameter is partially used to match a specific key. Note the _kid_ parameter is not guaranteed to be unique and additional parameters should be used to progressively identify a key within a set.",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           },
           "kty" : {
-            "description" : "The \"kty\" (key type) parameter identifies the cryptographic algorithm family used with the key",
+            "description" : "The _kty_ (key type) parameter identifies the cryptographic algorithm family used with the key.",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           },
           "n" : {
-            "description" : "The \"n\" RSA public modulus parameter",
+            "description" : "The _n_ RSA public modulus parameter.",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           }
@@ -1257,10 +1257,10 @@
         "type" : "object"
       },
       "ResponseRegisterDataHolderBrandList" : {
-        "description" : "Response containing a list of CDR Register Data Holder Brand objects",
+        "description" : "Response containing a list of CDR Register Data Holder Brand objects.",
         "properties" : {
           "data" : {
-            "description" : "Response data for the query",
+            "description" : "Response data for the query.",
             "items" : {
               "$ref" : "#/components/schemas/RegisterDataHolderBrand"
             },
@@ -1280,17 +1280,17 @@
       "RegisterDataHolderBrand" : {
         "properties" : {
           "dataHolderBrandId" : {
-            "description" : "Unique id of the Data Holder Brand issued by the CDR Register",
+            "description" : "Unique id of the Data Holder Brand issued by the CDR Register.",
             "maxLength" : 36,
             "type" : "string"
           },
           "brandName" : {
-            "description" : "The name of Data Holder Brand",
+            "description" : "The name of Data Holder Brand.",
             "maxLength" : 200,
             "type" : "string"
           },
           "industries" : {
-            "description" : "The industries the Data Holder Brand belongs to",
+            "description" : "The industries the Data Holder Brand belongs to.",
             "items" : {
               "enum" : [ "banking", "energy", "telco" ],
               "type" : "string",
@@ -1300,7 +1300,7 @@
             "uniqueItems" : true
           },
           "logoUri" : {
-            "description" : "Brand logo URI",
+            "description" : "Brand logo URI.",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"
@@ -1324,7 +1324,7 @@
             "uniqueItems" : true
           },
           "lastUpdated" : {
-            "description" : "The date/time that the Data Holder Brand data was last updated in the Register",
+            "description" : "The date/time that the Data Holder Brand data was last updated in the Register.",
             "type" : "string",
             "x-cds-type" : "DateTimeString"
           }
@@ -1335,7 +1335,7 @@
       "ResponseDataHoldersBrandSummaryList" : {
         "properties" : {
           "data" : {
-            "description" : "Response data for the query",
+            "description" : "Response data for the query.",
             "items" : {
               "$ref" : "#/components/schemas/DataHolderBrandSummary"
             },
@@ -1355,36 +1355,36 @@
       "DataHolderBrandSummary" : {
         "properties" : {
           "dataHolderBrandId" : {
-            "description" : "Unique id of the Data Holder Brand issued by the CDR Register",
+            "description" : "Unique id of the Data Holder Brand issued by the CDR Register.",
             "maxLength" : 36,
             "type" : "string",
             "x-conditional" : true
           },
           "interimId" : {
-            "description" : "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused",
+            "description" : "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused.",
             "maxLength" : 36,
             "type" : "string",
             "x-conditional" : true
           },
           "brandName" : {
-            "description" : "The name of Data Holder Brand",
+            "description" : "The name of Data Holder Brand.",
             "maxLength" : 200,
             "type" : "string"
           },
           "publicBaseUri" : {
-            "description" : "Base URI for the Data Holder's Consumer Data Standard public endpoints",
+            "description" : "Base URI for the Data Holder's Consumer Data Standard public endpoints.",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "logoUri" : {
-            "description" : "Brand logo URI",
+            "description" : "Brand logo URI.",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "industries" : {
-            "description" : "The industries the Data Holder Brand belongs to",
+            "description" : "The industries the Data Holder Brand belongs to.",
             "items" : {
               "enum" : [ "banking", "energy", "telco" ],
               "type" : "string",
@@ -1394,22 +1394,22 @@
             "uniqueItems" : true
           },
           "lastUpdated" : {
-            "description" : "The date/time that the Data Holder Brand data was last updated in the Register",
+            "description" : "The date/time that the Data Holder Brand data was last updated in the Register.",
             "type" : "string",
             "x-cds-type" : "DateTimeString"
           },
           "abn" : {
-            "description" : "Australian Business Number for the organisation",
+            "description" : "Australian Business Number for the organisation.",
             "maxLength" : 11,
             "type" : "string"
           },
           "acn" : {
-            "description" : "Australian Company Number for the organisation",
+            "description" : "Australian Company Number for the organisation.",
             "maxLength" : 9,
             "type" : "string"
           },
           "arbn" : {
-            "description" : "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies",
+            "description" : "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies.",
             "maxLength" : 9,
             "type" : "string"
           }
@@ -1420,7 +1420,7 @@
       "DataHoldersStatusList" : {
         "properties" : {
           "data" : {
-            "description" : "Response data for the query",
+            "description" : "Response data for the query.",
             "items" : {
               "$ref" : "#/components/schemas/DataHolderStatus"
             },
@@ -1445,7 +1445,7 @@
             "type" : "string"
           },
           "status" : {
-            "description" : "Data Holder status in the CDR Register",
+            "description" : "Data Holder status in the CDR Register.",
             "enum" : [ "ACTIVE", "REMOVED" ],
             "type" : "string",
             "x-cds-type" : "Enum"
@@ -1457,7 +1457,7 @@
       "SoftwareProductsStatusList" : {
         "properties" : {
           "data" : {
-            "description" : "Response data for the query",
+            "description" : "Response data for the query.",
             "items" : {
               "$ref" : "#/components/schemas/SoftwareProductStatus"
             },
@@ -1477,12 +1477,12 @@
       "SoftwareProductStatus" : {
         "properties" : {
           "softwareProductId" : {
-            "description" : "Unique id of the software product issued by the CDR Register",
+            "description" : "Unique id of the software product issued by the CDR Register.",
             "maxLength" : 36,
             "type" : "string"
           },
           "status" : {
-            "description" : "Software product status in the CDR Register",
+            "description" : "Software product status in the CDR Register.",
             "enum" : [ "ACTIVE", "INACTIVE", "REMOVED" ],
             "type" : "string",
             "x-cds-type" : "Enum"
@@ -1494,7 +1494,7 @@
       "DataRecipientsStatusList" : {
         "properties" : {
           "data" : {
-            "description" : "Response data for the query",
+            "description" : "Response data for the query.",
             "items" : {
               "$ref" : "#/components/schemas/DataRecipientStatus"
             },
@@ -1514,12 +1514,12 @@
       "DataRecipientStatus" : {
         "properties" : {
           "legalEntityId" : {
-            "description" : "Unique id of the Data Recipient Legal Entity issued by the CDR Register",
+            "description" : "Unique id of the Data Recipient Legal Entity issued by the CDR Register.",
             "maxLength" : 36,
             "type" : "string"
           },
           "status" : {
-            "description" : "Data Recipient status in the CDR Register",
+            "description" : "Data Recipient status in the CDR Register.",
             "enum" : [ "ACTIVE", "SUSPENDED", "REVOKED", "SURRENDERED" ],
             "type" : "string",
             "x-cds-type" : "Enum"
@@ -1529,10 +1529,10 @@
         "type" : "object"
       },
       "ResponseRegisterDataRecipientList" : {
-        "description" : "Response containing a list of Data Recipients in the CDR Register",
+        "description" : "Response containing a list of Data Recipients in the CDR Register.",
         "properties" : {
           "data" : {
-            "description" : "Response data for the query",
+            "description" : "Response data for the query.",
             "items" : {
               "$ref" : "#/components/schemas/RegisterDataRecipient"
             },
@@ -1557,23 +1557,23 @@
             "type" : "string"
           },
           "legalEntityName" : {
-            "description" : "Legal name of the Data Recipient",
+            "description" : "Legal name of the Data Recipient.",
             "maxLength" : 200,
             "type" : "string"
           },
           "accreditationNumber" : {
-            "description" : "CDR Register issued human readable unique number given to Data Recipients upon accreditation",
+            "description" : "CDR Register issued human readable unique number given to Data Recipients upon accreditation.",
             "maxLength" : 100,
             "type" : "string"
           },
           "accreditationLevel" : {
-            "description" : "Accreditation level of the Data Recipient in the CDR Register",
+            "description" : "Accreditation level of the Data Recipient in the CDR Register.",
             "enum" : [ "UNRESTRICTED", "SPONSORED" ],
             "type" : "string",
             "x-cds-type" : "Enum"
           },
           "logoUri" : {
-            "description" : "Legal Entity logo URI",
+            "description" : "Legal Entity logo URI.",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"
@@ -1586,13 +1586,13 @@
             "uniqueItems" : true
           },
           "status" : {
-            "description" : "Data Recipient status in the CDR Register",
+            "description" : "Data Recipient status in the CDR Register.",
             "enum" : [ "ACTIVE", "SUSPENDED", "REVOKED", "SURRENDERED" ],
             "type" : "string",
             "x-cds-type" : "Enum"
           },
           "lastUpdated" : {
-            "description" : "The date/time that the Legal Entity was last updated in the CDR Register",
+            "description" : "The date/time that the Legal Entity was last updated in the CDR Register.",
             "type" : "string",
             "x-cds-type" : "DateTimeString"
           }
@@ -1601,20 +1601,20 @@
         "type" : "object"
       },
       "DataRecipientBrandMetaData" : {
-        "description" : "Metadata related to Data Recipient Brand",
+        "description" : "Metadata related to Data Recipient Brand.",
         "properties" : {
           "dataRecipientBrandId" : {
-            "description" : "Unique id of the Data Recipient brand issued by the CDR Register",
+            "description" : "Unique id of the Data Recipient brand issued by the CDR Register.",
             "maxLength" : 36,
             "type" : "string"
           },
           "brandName" : {
-            "description" : "Data Recipient Brand name",
+            "description" : "Data Recipient Brand name.",
             "maxLength" : 200,
             "type" : "string"
           },
           "logoUri" : {
-            "description" : "Data Recipient Brand logo URI",
+            "description" : "Data Recipient Brand logo URI.",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"
@@ -1627,7 +1627,7 @@
             "uniqueItems" : true
           },
           "status" : {
-            "description" : "Data Recipient Brand status in the CDR Register",
+            "description" : "Data Recipient Brand status in the CDR Register.",
             "enum" : [ "ACTIVE", "INACTIVE", "REMOVED" ],
             "type" : "string",
             "x-cds-type" : "Enum"
@@ -1637,31 +1637,31 @@
         "type" : "object"
       },
       "SoftwareProductMetaData" : {
-        "description" : "Data Recipient Brand Software Products",
+        "description" : "Data Recipient Brand Software Products.",
         "properties" : {
           "softwareProductId" : {
-            "description" : "Unique id of the Data Recipient software product issued by the CDR Register",
+            "description" : "Unique id of the Data Recipient software product issued by the CDR Register.",
             "maxLength" : 36,
             "type" : "string"
           },
           "softwareProductName" : {
-            "description" : "Name of the software product",
+            "description" : "Name of the software product.",
             "maxLength" : 200,
             "type" : "string"
           },
           "softwareProductDescription" : {
-            "description" : "Description of the software product",
+            "description" : "Description of the software product.",
             "maxLength" : 4000,
             "type" : "string"
           },
           "logoUri" : {
-            "description" : "Software product logo URI",
+            "description" : "Software product logo URI.",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "status" : {
-            "description" : "Software Product status in the CDR Register",
+            "description" : "Software Product status in the CDR Register.",
             "enum" : [ "ACTIVE", "INACTIVE", "REMOVED" ],
             "type" : "string",
             "x-cds-type" : "Enum"
@@ -1671,61 +1671,61 @@
         "type" : "object"
       },
       "LegalEntityDetail" : {
-        "description" : "The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)",
+        "description" : "The data that is common to all organisations, regardless of the type (e.g., company, trust, partnership, government).",
         "properties" : {
           "legalEntityId" : {
-            "description" : "Unique id of the organisation issued by the CDR Register",
+            "description" : "Unique id of the organisation issued by the CDR Register.",
             "maxLength" : 36,
             "type" : "string"
           },
           "legalEntityName" : {
-            "description" : "Unique legal name of the organisation",
+            "description" : "Unique legal name of the organisation.",
             "maxLength" : 36,
             "type" : "string"
           },
           "logoUri" : {
-            "description" : "Legal Entity logo URI",
+            "description" : "Legal Entity logo URI.",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "registrationNumber" : {
-            "description" : "Unique registration number (if the company is registered outside Australia)",
+            "description" : "Unique registration number (if the company is registered outside Australia).",
             "type" : "string"
           },
           "registrationDate" : {
-            "description" : "Date of registration (if the company is registered outside Australia)",
+            "description" : "Date of registration (if the company is registered outside Australia).",
             "type" : "string",
             "x-cds-type" : "DateString"
           },
           "registeredCountry" : {
-            "description" : "Country of registration (if the company is registered outside Australia)",
+            "description" : "Country of registration (if the company is registered outside Australia).",
             "maxLength" : 100,
             "type" : "string"
           },
           "abn" : {
-            "description" : "Australian Business Number for the organisation",
+            "description" : "Australian Business Number for the organisation.",
             "maxLength" : 11,
             "type" : "string"
           },
           "acn" : {
-            "description" : "Australian Company Number for the organisation",
+            "description" : "Australian Company Number for the organisation.",
             "maxLength" : 9,
             "type" : "string"
           },
           "arbn" : {
-            "description" : "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies",
+            "description" : "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies.",
             "maxLength" : 9,
             "type" : "string"
           },
           "anzsicDivision" : {
-            "description" : "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**",
+            "description" : "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**.",
             "maxLength" : 100,
             "type" : "string",
             "x-cds-type" : "ExternalRef"
           },
           "organisationType" : {
-            "description" : "Legal organisation type",
+            "description" : "Legal organisation type.",
             "enum" : [ "SOLE_TRADER", "COMPANY", "PARTNERSHIP", "TRUST", "GOVERNMENT_ENTITY", "OTHER" ],
             "type" : "string",
             "x-cds-type" : "Enum"
@@ -1740,38 +1740,38 @@
         "type" : "object"
       },
       "RegisterDataHolderBrandServiceEndpoint" : {
-        "description" : "Endpoints related to Data Holder Brand services",
+        "description" : "Endpoints related to Data Holder Brand services.",
         "properties" : {
           "version" : {
-            "description" : "The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be \"v\" followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)",
+            "description" : "The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be \"`v`\" followed by the major version of the standards as a positive integer (e.g., `v1`, `v12` or `v76`).",
             "type" : "string"
           },
           "publicBaseUri" : {
-            "description" : "Base URI for the Data Holder's Consumer Data Standard public endpoints",
+            "description" : "Base URI for the Data Holder's Consumer Data Standard public endpoints.",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "resourceBaseUri" : {
-            "description" : "Base URI for the Data Holder's Consumer Data Standard resource endpoints",
+            "description" : "Base URI for the Data Holder's Consumer Data Standard resource endpoints.",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "infosecBaseUri" : {
-            "description" : "Base URI for the Data Holder's Consumer Data Standard information security endpoints",
+            "description" : "Base URI for the Data Holder's Consumer Data Standard information security endpoints.",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "extensionBaseUri" : {
-            "description" : "Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)",
+            "description" : "Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional).",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "websiteUri" : {
-            "description" : "Publicly available website or web resource URI",
+            "description" : "Publicly available website or web resource URI.",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"
@@ -1781,16 +1781,16 @@
         "type" : "object"
       },
       "RegisterDataHolderAuth" : {
-        "description" : "Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication",
+        "description" : "Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication.",
         "properties" : {
           "registerUType" : {
-            "description" : "The type of authentication and authorisation mechanism in use",
+            "description" : "The type of authentication and authorisation mechanism in use.",
             "enum" : [ "SIGNED-JWT" ],
             "type" : "string",
             "x-cds-type" : "Enum"
           },
           "jwksEndpoint" : {
-            "description" : "JWKS endpoint used for authentication by the Data Holder with the Data Recipient",
+            "description" : "JWKS endpoint used for authentication by the Data Holder with the Data Recipient.",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"
@@ -1802,27 +1802,27 @@
       "LinksPaginated" : {
         "properties" : {
           "first" : {
-            "description" : "URI to the first page of this set. Mandatory if this response is not the first page",
+            "description" : "URI to the first page of this set. Mandatory if this response is not the first page.",
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "last" : {
-            "description" : "URI to the last page of this set. Mandatory if this response is not the last page",
+            "description" : "URI to the last page of this set. Mandatory if this response is not the last page.",
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "next" : {
-            "description" : "URI to the next page of this set. Mandatory if this response is not the last page",
+            "description" : "URI to the next page of this set. Mandatory if this response is not the last page.",
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "prev" : {
-            "description" : "URI to the previous page of this set. Mandatory if this response is not the first page",
+            "description" : "URI to the previous page of this set. Mandatory if this response is not the first page.",
             "type" : "string",
             "x-cds-type" : "URIString"
           },
           "self" : {
-            "description" : "Fully qualified link to this API call",
+            "description" : "Fully qualified link to this API call.",
             "type" : "string",
             "x-cds-type" : "URIString"
           }
@@ -1833,12 +1833,12 @@
       "MetaPaginated" : {
         "properties" : {
           "totalPages" : {
-            "description" : "The total number of pages in the full set",
+            "description" : "The total number of pages in the full set.",
             "type" : "integer",
             "x-cds-type" : "NaturalNumber"
           },
           "totalRecords" : {
-            "description" : "The total number of records in the full set",
+            "description" : "The total number of records in the full set.",
             "type" : "integer",
             "x-cds-type" : "NaturalNumber"
           }
@@ -1849,7 +1849,7 @@
       "Links" : {
         "properties" : {
           "self" : {
-            "description" : "Fully qualified link to this API call",
+            "description" : "Fully qualified link to this API call.",
             "type" : "string",
             "x-cds-type" : "URIString"
           }
@@ -1861,10 +1861,10 @@
         "type" : "object"
       },
       "MetaError" : {
-        "description" : "Additional data for customised error codes",
+        "description" : "Additional data for customised error codes.",
         "properties" : {
           "urn" : {
-            "description" : "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.",
+            "description" : "The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code.",
             "type" : "string"
           }
         },
@@ -1887,7 +1887,7 @@
       "ResponseErrorListV2_errors" : {
         "properties" : {
           "code" : {
-            "description" : "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.",
+            "description" : "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the _meta_ object. Otherwise, the value is the error code URN.",
             "type" : "string"
           },
           "title" : {

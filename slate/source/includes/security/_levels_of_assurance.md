@@ -3,14 +3,12 @@ Levels Of Assurance (LoAs), returned after a successful authentication **MUST** 
 
 <a id="ordinal-loa"></a>
 ### Single Ordinal
-A Single LoA value is carried in the `acr` claim which is described in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of **[[OIDC]](#nref-OIDC)**.
+A Single LoA value is carried in the _acr_ claim which is described in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of **[[OIDC]](#nref-OIDC)**.
 
-  - An LoA of 2 is represented by the URI: `urn:cds.au:cdr:2`
-    - The authenticator used to attain this level **MUST** conform with the Credential Level `CL1` rules specified under the [Trusted Digital Identity Framework](https://www.digitalidentity.gov.au/tdif) **[[TDIF]](#nref-TDIF)** Authentication Credential Requirements specification.
-
-
-  - An LoA of 3 is represented by the URI: `urn:cds.au:cdr:3`
-    - The authenticators used to attain this level **MUST** conform with the Credential Level `CL2` rules specified under the [Trusted Digital Identity Framework](https://www.digitalidentity.gov.au/tdif) **[[TDIF]](#nref-TDIF)** Authentication Credential Requirements specification.
+- An LoA of 2 is represented by the URI: `urn:cds.au:cdr:2`
+  - The authenticator used to attain this level **MUST** conform with the Credential Level 'CL1' rules specified under the [Trusted Digital Identity Framework](https://www.digitalidentity.gov.au/tdif) **[[TDIF]](#nref-TDIF)** Authentication Credential Requirements specification.
+- An LoA of 3 is represented by the URI: `urn:cds.au:cdr:3`
+  - The authenticators used to attain this level **MUST** conform with the Credential Level 'CL2' rules specified under the [Trusted Digital Identity Framework](https://www.digitalidentity.gov.au/tdif) **[[TDIF]](#nref-TDIF)** Authentication Credential Requirements specification.
 
 *READ* operations **SHALL** only be allowed where __at least__ an LoA of 2 has been achieved during the establishment of consent.
 

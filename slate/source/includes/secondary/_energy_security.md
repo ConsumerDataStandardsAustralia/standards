@@ -5,7 +5,7 @@ For the energy sector requests for the following data clusters are Shared Respon
 
 * NMI Standard Data
 * Energy Usage
-* Distributed Energy Resources
+* Distributed Energy Resources.
 
 CDR requests for these data clusters to a Data Holder MUST be fulfilled by a request to AEMO.
 
@@ -24,6 +24,6 @@ The e-Hub platform and associated mechanisms (**[[EHUB]](#nref-EHUB)**) will be 
 
 <h4 id="shared-responsibility_energy_normative-references">Normative References</h4>
 
-| **Reference**  | **Description**  | **Version** |
+| **Reference** | **Description** | **Version** |
 | --- | --- | --- |
 | <a id="nref-EHUB"></a>**[EHUB]** | AEMO e-Hub [business to business procedures](https://aemo.com.au/en/energy-systems/market-it-systems/electricity-system-guides/participant-it-interfaces)| Standards dated 9/4/2021

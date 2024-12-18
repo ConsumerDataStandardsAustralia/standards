@@ -1,9 +1,5 @@
 # DCR APIs
 
-```diff
-Fixed typos and formatting in multiple specification files (documentation)
-```
-
 This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.
 
 <table>
@@ -11,4 +7,7 @@ This specification defines the APIs for Data Holders exposing Dynamic Client Reg
 <tr><td><a href='./includes/swagger/cds_dcr.yaml'>DCR OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
+```diff
++ Added an additional qualification 'only' when describing where id_token_encrypted_response_alg and id_token_encrypted_response_enc are to be used for OIDC Hybrid Flow. After transition to retirement, these values shall not be supported.
+```
 <%= partial "includes/cds_dcr.md" %>

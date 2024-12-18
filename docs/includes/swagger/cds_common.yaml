@@ -6,41 +6,43 @@ info:
     url: https://consumerdatastandards.gov.au
   description: Consumer Data Standards APIs created by the Data Standards Body (DSB),
     with the Data Standards Chair as the decision maker to meet the needs of the Consumer
-    Data Right
+    Data Right.
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Common API
-  version: 1.32.0
+  version: 1.33.0
 servers:
-- url: https://data.holder.com.au/cds-au/v1
+- description: MTLS
+  url: https://mtls.dh.example.com/cds-au/v1
 paths:
   /common/customer:
     get:
       description: |-
-        Obtain basic information on the customer that has authorised the current session
+        Obtain basic information on the customer that has authorised the current session.
 
         <h3 id='cdr-common-api_get-customer_conventions'>Conventions</h3>
-        In the customer payloads relevant conventions are explained here, in one place.
+        In the customer payloads there are conventions that are explained below.
 
         #### Given Names
 
-        `firstName` represents the first of a person's given names.
+        _firstName_ represents the first of a person's given names.
 
-        `middleNames` represents a collection of given names if the person has more than one given name.
+        _middleNames_ represents a collection of given names if the person has more than one given name.
 
-        Where a data holder holds a person's given names as a single string in source systems, it may not possible in some situations to reliably split these given names into their component first and middle names. In these situations, data holders MAY use the `firstName` field to return the single string of given names and an empty `middleNames` array.
+        Where a data holder holds a person's given names as a single string in source systems, it may not possible in some situations to reliably split these given names into their component first and middle names. In these situations, data holders MAY use the _firstName_ field to return the single string of given names and an empty _middleNames_ array.
 
-        For example, a person whose given names are "John Paul Winston" but the data holder cannot determine what is the first name, can return `"firstName": "John Paul Winston"`.
+        For example, if a person's given names are "John Paul Winston" and the Data Holder is unable to determine which is the first name, they can return `"firstName": "John Paul Winston"`.
       operationId: getCustomer
       parameters:
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -50,9 +52,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -61,7 +63,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -116,7 +118,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseCommonCustomer'
-          description: Success
+          description: Successful response
           headers:
             x-v:
               description: The [version](#response-headers) of the API endpoint that
@@ -127,8 +129,8 @@ paths:
               style: simple
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                id. If provided, the data holder **MUST** play back this value in
+                the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -146,8 +148,8 @@ paths:
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                id. If provided, the data holder **MUST** play back this value in
+                the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -164,8 +166,8 @@ paths:
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                id. If provided, the data holder **MUST** play back this value in
+                the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -184,16 +186,17 @@ paths:
       description: |-
         Obtain detailed information on the authorised customer within the current session.
 
-        Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html)
+        Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html).
       operationId: getCustomerDetail
       parameters:
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -203,9 +206,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -214,7 +217,7 @@ paths:
           type: string
         style: simple
       - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-          id. If provided, the data holder must play back this value in the x-fapi-interaction-id
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
           response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
           is required to be provided in the response header to track the interaction.
         explode: false
@@ -269,7 +272,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseCommonCustomerDetailV2'
-          description: Success
+          description: Successful response
           headers:
             x-v:
               description: The [version](#response-headers) of the API endpoint that
@@ -280,8 +283,8 @@ paths:
               style: simple
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                id. If provided, the data holder **MUST** play back this value in
+                the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -299,8 +302,8 @@ paths:
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                id. If provided, the data holder **MUST** play back this value in
+                the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -317,8 +320,8 @@ paths:
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                id. If provided, the data holder **MUST** play back this value in
+                the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -334,16 +337,17 @@ paths:
       x-version: "2"
   /discovery/status:
     get:
-      description: Obtain a health check status for the implementation
+      description: Obtain a health check status for the implementation.
       operationId: getStatus
       parameters:
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -353,9 +357,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -369,7 +373,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseCommonDiscoveryStatus'
-          description: Success
+          description: Successful response
           headers:
             x-v:
               description: The [version](#response-headers) of the API endpoint that
@@ -393,6 +397,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+      servers:
+      - description: TLS
+        url: https://tls.dh.example.com/cds-au/v1
       summary: Get Status
       tags:
       - Common
@@ -400,16 +407,17 @@ paths:
       x-version: "1"
   /discovery/outages:
     get:
-      description: Obtain a list of scheduled outages for the implementation
+      description: Obtain a list of scheduled outages for the implementation.
       operationId: getOutages
       parameters:
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The data holder should respond with the highest
-          supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-          If the value of [x-min-v](#request-headers) is equal to or higher than the
-          value of [x-v](#request-headers) then the [x-min-v](#request-headers) header
-          should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -419,9 +427,9 @@ paths:
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
           Must be set to a positive integer if provided. The data holder should respond
-          with the highest supported version between [x-min-v](#request-headers) and
-          [x-v](#request-headers). If all versions requested are not supported then
-          the data holder must respond with a 406 Not Acceptable.
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the data holder **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -435,7 +443,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseDiscoveryOutagesList'
-          description: Success
+          description: Successful response
           headers:
             x-v:
               description: The [version](#response-headers) of the API endpoint that
@@ -459,6 +467,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+      servers:
+      - description: TLS
+        url: https://tls.dh.example.com/cds-au/v1
       summary: Get Outages
       tags:
       - Common
@@ -469,11 +480,12 @@ components:
     RequestHeader_x-v:
       description: Version of the API endpoint requested by the client. Must be set
         to a positive integer. The data holder should respond with the highest supported
-        version between [x-min-v](#request-headers) and [x-v](#request-headers). If
-        the value of [x-min-v](#request-headers) is equal to or higher than the value
-        of [x-v](#request-headers) then the [x-min-v](#request-headers) header should
-        be treated as absent. If all versions requested are not supported then the
-        data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)
+        version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+        If the value of [_x-min-v_](#request-headers) is equal to or higher than the
+        value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+        header should be treated as absent. If all versions requested are not supported
+        then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP
+        Headers](#request-headers).
       explode: false
       in: header
       name: x-v
@@ -484,9 +496,9 @@ components:
     RequestHeader_x-min-v:
       description: Minimum version of the API endpoint requested by the client. Must
         be set to a positive integer if provided. The data holder should respond with
-        the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers).
-        If all versions requested are not supported then the data holder must respond
-        with a 406 Not Acceptable.
+        the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+        If all versions requested are not supported then the data holder **MUST**
+        respond with a `406 Not Acceptable`.
       explode: false
       in: header
       name: x-min-v
@@ -496,7 +508,7 @@ components:
       style: simple
     RequestHeader_x-fapi-interaction-id:
       description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id.
-        If provided, the data holder must play back this value in the x-fapi-interaction-id
+        If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
         response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
         is required to be provided in the response header to track the interaction.
       explode: false
@@ -605,24 +617,24 @@ components:
         explanation: explanation
       properties:
         outageTime:
-          description: Date and time that the outage is scheduled to begin
+          description: Date and time that the outage is scheduled to begin.
           type: string
           x-cds-type: DateTimeString
         duration:
           description: Planned duration of the outage. Formatted according to [ISO
             8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes
-            recurrence syntax)
+            recurrence syntax).
           type: string
           x-cds-type: ExternalRef
         isPartial:
-          description: Flag that indicates, if present and set to true, that the outage
-            is only partial meaning that only a subset of normally available endpoints
-            will be affected by the outage
+          description: Flag that indicates, if present and set to `true`, that the
+            outage is only partial meaning that only a subset of normally available
+            endpoints will be affected by the outage.
           type: boolean
           x-cds-type: Boolean
         explanation:
           description: Provides an explanation of the current outage that can be displayed
-            to an end customer
+            to an end customer.
           type: string
       required:
       - duration
@@ -708,30 +720,30 @@ components:
         lastUpdateTime:
           description: The date and time that this record was last updated by the
             customer. If no update has occurred then this date should reflect the
-            initial creation date for the data
+            initial creation date for the data.
           type: string
           x-cds-type: DateTimeString
         firstName:
           description: For people with single names this field need not be present.
-            The single name should be in the lastName field. Where a data holder cannot
-            determine first and middle names from a collection of given names, a single
-            string representing all given names MAY be provided.
+            The single name should be in the _lastName_ field. Where a data holder
+            cannot determine first and middle names from a collection of given names,
+            a single string representing all given names MAY be provided.
           type: string
         lastName:
-          description: For people with single names the single name should be in this
-            field
+          description: For people with single names, the single name should be in
+            this field.
           type: string
         middleNames:
-          description: Field is mandatory but array may be empty
+          description: Field is mandatory but array may be empty.
           items:
             type: string
           type: array
         prefix:
-          description: Also known as title or salutation. The prefix to the name (e.g.
-            Mr, Mrs, Ms, Miss, Sir, etc)
+          description: Also known as title or salutation. The prefix to the name (e.g.,
+            Mr, Mrs, Ms, Miss, Sir, etc.)
           type: string
         suffix:
-          description: Used for a trailing suffix to the name (e.g. Jr)
+          description: Used for a trailing suffix to the name (e.g., Jr.)
           type: string
         occupationCode:
           description: Value is a valid **[[ANZSCO]](#iref-ANZSCO)** Standard Occupation
@@ -743,9 +755,9 @@ components:
         occupationCodeVersion:
           default: ANZSCO_1220.0_2013_V1.2
           description: The applicable **[[ANZSCO]](#iref-ANZSCO)** release version
-            of the occupation code provided. Mandatory if an ``occupationCode`` is
-            supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion``
-            is absent, default is ``ANZSCO_1220.0_2013_V1.2``
+            of the occupation code provided. Mandatory if an _occupationCode_ is supplied.
+            If _occupationCode_ is supplied but _occupationCodeVersion_ is absent,
+            default is `ANZSCO_1220.0_2013_V1.2`.
           enum:
           - ANZSCO_1220.0_2006_V1.0
           - ANZSCO_1220.0_2006_V1.1
@@ -783,44 +795,44 @@ components:
         lastUpdateTime:
           description: The date and time that this record was last updated by the
             customer. If no update has occurred then this date should reflect the
-            initial creation date for the data
+            initial creation date for the data.
           type: string
           x-cds-type: DateTimeString
         agentFirstName:
           description: The first name of the individual providing access on behalf
             of the organisation. For people with single names this field need not
-            be present. The single name should be in the lastName field
+            be present. The single name should be in the _lastName_ field.
           type: string
         agentLastName:
           description: The last name of the individual providing access on behalf
-            of the organisation. For people with single names the single name should
-            be in this field
+            of the organisation. For people with single names, the single name should
+            be in this field.
           type: string
         agentRole:
           description: The role of the individual identified as the agent who is providing
-            authorisation. Expected to be used for display. Default to Unspecified
-            if the role is not known
+            authorisation. Expected to be used for display. Default to "Unspecified"
+            if the role is not known.
           type: string
         businessName:
-          description: Name of the organisation
+          description: Name of the organisation.
           type: string
         legalName:
-          description: Legal name, if different to the business name
+          description: Legal name, if different to the business name.
           type: string
         shortName:
           description: Short name used for communication, if different to the business
-            name
+            name.
           type: string
         abn:
-          description: Australian Business Number for the organisation
+          description: Australian Business Number for the organisation.
           type: string
         acn:
           description: Australian Company Number for the organisation. Required only
-            if an ACN is applicable for the organisation type
+            if an ACN is applicable for the organisation type.
           type: string
         isACNCRegistered:
-          description: True if registered with the ACNC. False if not. Absent or null
-            if not confirmed.
+          description: '`true` if registered with the ACNC. `false` if not. Absent
+            or `null` if not confirmed.'
           type: boolean
           x-cds-type: Boolean
         industryCode:
@@ -833,15 +845,15 @@ components:
         industryCodeVersion:
           default: ANZSIC_1292.0_2006_V2.0
           description: The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release
-            version of the industry code provided. Should only be supplied if ``industryCode``
-            is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion``
-            is absent, default is ``ANZSIC_1292.0_2006_V2.0``
+            version of the industry code provided. Should only be supplied if _industryCode_
+            is also supplied. If _industryCode_ is supplied but _industryCodeVersion_
+            is absent, default is `ANZSIC_1292.0_2006_V2.0`.
           enum:
           - ANZSIC_1292.0_2006_V1.0
           - ANZSIC_1292.0_2006_V2.0
           type: string
         organisationType:
-          description: Legal organisation type
+          description: Legal organisation type.
           enum:
           - COMPANY
           - GOVERNMENT_ENTITY
@@ -852,11 +864,11 @@ components:
           type: string
         registeredCountry:
           description: Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html)
-            country codes. Assumed to be AUS if absent
+            country codes. Assumed to be `AUS` if absent.
           type: string
           x-cds-type: ExternalRef
         establishmentDate:
-          description: The date the organisation described was established
+          description: The date the organisation described was established.
           type: string
           x-cds-type: DateString
       required:
@@ -874,12 +886,12 @@ components:
     CommonPhoneNumber:
       properties:
         isPreferred:
-          description: May be true for one and only one entry to indicate the preferred
-            phone number. Assumed to be 'false' if not present
+          description: May be `true` for one and only one entry to indicate the preferred
+            phone number. Assumed to be `false` if not present.
           type: boolean
           x-cds-type: Boolean
         purpose:
-          description: The purpose of the number as specified by the customer
+          description: The purpose of the number as specified by the customer.
           enum:
           - HOME
           - INTERNATIONAL
@@ -889,22 +901,23 @@ components:
           - WORK
           type: string
         countryCode:
-          description: If absent, assumed to be Australia (+61). The + should be included
+          description: If absent, assumed to be Australia (`+61`). The `+` should
+            be included.
           type: string
         areaCode:
           description: Required for non Mobile Phones, if field is present and refers
-            to Australian code - the leading 0 should be omitted.
+            to Australian code - the leading `0` should be omitted.
           type: string
         number:
-          description: The actual phone number, with leading zeros as appropriate
+          description: The actual phone number, with leading zeros as appropriate.
           type: string
         extension:
-          description: An extension number (if applicable)
+          description: An extension number (if applicable).
           type: string
         fullNumber:
           description: Fully formatted phone number with country code, area code,
             number and extension incorporated. Formatted according to section 5.1.4.
-            of **[[RFC3966]](#iref-RFC3966)**
+            of **[[RFC3966]](#iref-RFC3966)**.
           type: string
           x-cds-type: ExternalRef
       required:
@@ -917,12 +930,12 @@ components:
     CommonEmailAddress:
       properties:
         isPreferred:
-          description: May be true for one and only one email record in the collection.
-            Denotes the default email address
+          description: May be `true` for one and only one email record in the collection.
+            Denotes the default email address.
           type: boolean
           x-cds-type: Boolean
         purpose:
-          description: The purpose for the email, as specified by the customer (Enumeration)
+          description: The purpose for the email, as specified by the customer.
           enum:
           - HOME
           - OTHER
@@ -931,7 +944,7 @@ components:
           type: string
         address:
           description: A correctly formatted email address, as defined by the addr-spec
-            format in **[[RFC5322]](#nref-RFC5322)**
+            format in **[[RFC5322]](#nref-RFC5322)**.
           type: string
           x-cds-type: ExternalRef
       required:
@@ -945,7 +958,7 @@ components:
     CommonPhysicalAddress:
       properties:
         addressUType:
-          description: The type of address object present
+          description: The type of address object present.
           enum:
           - paf
           - simple
@@ -961,35 +974,37 @@ components:
       - simple
       - paf
     CommonSimpleAddress:
+      description: Required if _addressUType_ is set to `simple`.
       properties:
         mailingName:
           description: Name of the individual or business formatted for inclusion
-            in an address used for physical mail
+            in an address used for physical mail.
           type: string
         addressLine1:
-          description: First line of the standard address object
+          description: First line of the standard address object.
           type: string
         addressLine2:
-          description: Second line of the standard address object
+          description: Second line of the standard address object.
           type: string
         addressLine3:
-          description: Third line of the standard address object
+          description: Third line of the standard address object.
           type: string
         postcode:
-          description: Mandatory for Australian addresses
+          description: Mandatory for Australian addresses.
           type: string
         city:
-          description: Name of the city or locality
+          description: Name of the city or locality.
           type: string
         state:
           description: Free text if the country is not Australia. If country is Australia
             then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)
-            in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT
+            in the PAF file format. `NSW`, `QLD`, `VIC`, `NT`, `WA`, `SA`, `TAS`,
+            `ACT`, `AAT`.
           type: string
         country:
           default: AUS
           description: A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html)
-            country code. Australia (AUS) is assumed if country is not present.
+            country code. Australia (`AUS`) is assumed if country is not present.
           type: string
           x-cds-type: ExternalRef
       required:
@@ -1001,89 +1016,90 @@ components:
       - postcode
     CommonPAFAddress:
       description: Australian address formatted according to the file format defined
-        by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)
+        by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).
+        Required if _addressUType_ is set to `paf`.
       properties:
         dpid:
           description: Unique identifier for an address as defined by Australia Post.
-            Also known as Delivery Point Identifier
+            Also known as Delivery Point Identifier.
           type: string
         thoroughfareNumber1:
           description: Thoroughfare number for a property (first number in a property
-            ranged address)
+            ranged address).
           type: integer
           x-cds-type: PositiveInteger
         thoroughfareNumber1Suffix:
           description: Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_
-            is populated
+            is populated.
           type: string
         thoroughfareNumber2:
           description: Second thoroughfare number (only used if the property has a
-            ranged address eg 23-25)
+            ranged address e.g., 23-25).
           type: integer
           x-cds-type: PositiveInteger
         thoroughfareNumber2Suffix:
           description: Suffix for the second thoroughfare number. Only relevant if
-            _thoroughfareNumber2_ is populated
+            _thoroughfareNumber2_ is populated.
           type: string
         flatUnitType:
-          description: Type of flat or unit for the address
+          description: Type of flat or unit for the address.
           type: string
         flatUnitNumber:
-          description: Unit number (including suffix, if applicable)
+          description: Unit number (including suffix, if applicable).
           type: string
         floorLevelType:
-          description: Type of floor or level for the address
+          description: Type of floor or level for the address.
           type: string
         floorLevelNumber:
-          description: Floor or level number (including alpha characters)
+          description: Floor or level number (including alpha characters).
           type: string
         lotNumber:
-          description: Allotment number for the address
+          description: Allotment number for the address.
           type: string
         buildingName1:
-          description: Building/Property name 1
+          description: Building/Property name 1.
           type: string
         buildingName2:
-          description: Building/Property name 2
+          description: Building/Property name 2.
           type: string
         streetName:
-          description: The name of the street
+          description: The name of the street.
           type: string
         streetType:
           description: The street type. Valid enumeration defined by Australia Post
-            PAF code file
+            PAF code file.
           type: string
         streetSuffix:
           description: The street type suffix. Valid enumeration defined by Australia
-            Post PAF code file
+            Post PAF code file.
           type: string
         postalDeliveryType:
-          description: Postal delivery type. (eg. PO BOX). Valid enumeration defined
-            by Australia Post PAF code file
+          description: Postal delivery type. (e.g., PO BOX). Valid enumeration defined
+            by Australia Post PAF code file.
           type: string
         postalDeliveryNumber:
           description: Postal delivery number if the address is a postal delivery
-            type
+            type.
           type: integer
           x-cds-type: PositiveInteger
         postalDeliveryNumberPrefix:
           description: Postal delivery number prefix related to the postal delivery
-            number
+            number.
           type: string
         postalDeliveryNumberSuffix:
           description: Postal delivery number suffix related to the postal delivery
-            number
+            number.
           type: string
         localityName:
-          description: Full name of locality
+          description: Full name of locality.
           type: string
         postcode:
-          description: Postcode for the locality
+          description: Postcode for the locality.
           type: string
         state:
           description: State in which the address belongs. Valid enumeration defined
             by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).
-            NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT
+            `NSW`, `QLD`, `VIC`, `NT`, `WA`, `SA`, `TAS`, `ACT`, `AAT`.
           type: string
       required:
       - localityName
@@ -1095,7 +1111,7 @@ components:
         self: self
       properties:
         self:
-          description: Fully qualified link that generated the current response document
+          description: Fully qualified link that generated the current response document.
           type: string
           x-cds-type: URIString
       required:
@@ -1104,11 +1120,11 @@ components:
     Meta:
       type: object
     MetaError:
-      description: Additional data for customised error codes
+      description: Additional data for customised error codes.
       properties:
         urn:
           description: The CDR error code URN which the application-specific error
-            code extends. Mandatory if the error `code` is an application-specific
+            code extends. Mandatory if the error _code_ is an application-specific
             error rather than a standardised error code.
           type: string
       type: object
@@ -1134,10 +1150,10 @@ components:
         status: OK
       properties:
         status:
-          description: Enumeration with values. OK (implementation is fully functional).
-            PARTIAL_FAILURE (one or more endpoints are unexpectedly unavailable).
-            UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE
-            (an advertised outage is in effect)
+          description: 'Enumeration with values: <ul><li>`OK`: (implementation is
+            fully functional).<li>`PARTIAL_FAILURE`: (one or more endpoints are unexpectedly
+            unavailable).<li>`UNAVAILABLE`: (the full implementation is unexpectedly
+            unavailable).<li>`SCHEDULED_OUTAGE`: (an advertised outage is in effect).</ul>'
           enum:
           - OK
           - PARTIAL_FAILURE
@@ -1147,16 +1163,16 @@ components:
         explanation:
           description: Provides an explanation of the current outage that can be displayed
             to an end customer. Mandatory if the status property is any value other
-            than OK
+            than `OK`.
           type: string
         detectionTime:
           description: The date and time that the current outage was detected. Should
-            only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE
+            only be present if the status property is `PARTIAL_FAILURE` or `UNAVAILABLE`.
           type: string
           x-cds-type: DateTimeString
         expectedResolutionTime:
           description: The date and time that full service is expected to resume (if
-            known). Should not be present if the status property has a value of OK.
+            known). Should not be present if the status property has a value of `OK`.
           type: string
           x-cds-type: DateTimeString
         updateTime:
@@ -1184,7 +1200,7 @@ components:
       properties:
         outages:
           description: List of scheduled outages. Property is mandatory but may contain
-            and empty list if no outages are scheduled
+            an empty list if no outages are scheduled.
           items:
             $ref: '#/components/schemas/DiscoveryOutage'
           type: array
@@ -1223,7 +1239,7 @@ components:
         customerUType: organisation
       properties:
         customerUType:
-          description: The type of customer object that is present
+          description: The type of customer object that is present.
           enum:
           - organisation
           - person
@@ -1243,7 +1259,7 @@ components:
         customerUType: organisation
       properties:
         customerUType:
-          description: The type of customer object that is present
+          description: The type of customer object that is present.
           enum:
           - organisation
           - person
@@ -1262,20 +1278,20 @@ components:
       properties:
         phoneNumbers:
           description: Array is mandatory but may be empty if no phone numbers are
-            held
+            held.
           items:
             $ref: '#/components/schemas/CommonPhoneNumber'
           type: array
         emailAddresses:
-          description: May be empty
+          description: May be empty.
           items:
             $ref: '#/components/schemas/CommonEmailAddress'
           type: array
         physicalAddresses:
           description: Array is mandatory but may be empty if no valid addresses are
-            held. One and only one address may have the purpose of REGISTERED. Zero
-            or one, and no more than one, record may have the purpose of MAIL. If
-            zero then the REGISTERED address is to be used for mail
+            held. One and only one address may have the purpose of `REGISTERED`. Zero
+            or one, and no more than one, record may have the purpose of `MAIL`. If
+            zero then the `REGISTERED` address is to be used for mail.
           items:
             $ref: '#/components/schemas/CommonPhysicalAddressWithPurpose'
           type: array
@@ -1288,9 +1304,9 @@ components:
       properties:
         physicalAddresses:
           description: Array is mandatory but may be empty if no valid addresses are
-            held. One and only one address may have the purpose of REGISTERED. Zero
-            or one, and no more than one, record may have the purpose of MAIL. If
-            zero then the REGISTERED address is to be used for mail
+            held. One and only one address may have the purpose of `REGISTERED`. Zero
+            or one, and no more than one, record may have the purpose of `MAIL`. If
+            zero then the `REGISTERED` address is to be used for mail.
           items:
             $ref: '#/components/schemas/CommonPhysicalAddressWithPurpose'
           type: array
@@ -1301,7 +1317,7 @@ components:
       properties:
         purpose:
           description: Enumeration of values indicating the purpose of the physical
-            address
+            address.
           enum:
           - MAIL
           - OTHER

@@ -1,10 +1,24 @@
 ## Future Dated Obligations
 
+```diff
+Added FDOs for the following:
++ Get Metrics error reporting clarification
++ Maintenance Issue #667: Refresh Token expiry obligations
++ Retirement of OIDC Hybrid Flow
++ Amending consent: Changing attributes
++ CDR Receipts
++ 90-day notifications
++ Get Product Detail v5
++ Get Transaction Detail V2.
 
+Added milestone dates for 2026 and 2027 to the Obligation Date Schedule.
+
+Updated 'MAY retire' statements from 'by (date)' to 'from (date)'.
+```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 
 
-Please also refer to the [Obligation Date Schedule](includes/endpoint-version-schedule/#obligation-dates-schedule) which summarises obligation milestones.
+Please also refer to the [Obligation Date Schedule](includes/endpoint-version-schedule/#obligation-date-schedule) which summarises obligation milestones.
 
 The table below highlights these areas of the standards.
 
@@ -15,17 +29,25 @@ The table below highlights these areas of the standards.
 |[Get Billing For Account V2](#cdr-energy-api_get-billing-for-account)|<ul><li>Data Holders **MUST** implement v2 of this endpoint by **November 1st 2023**</li><li>Data Holders **MAY** retire v1 of this endpoint from **September 9th 2024**</li></ul>| November 1st 2023 |
 |[Get Bulk Billing V2](#cdr-energy-api_get-bulk-billing)|<ul><li>Data Holders **MUST** implement v2 of this endpoint by **November 1st 2023**</li><li>Data Holders **MAY** retire v1 of this endpoint from **September 9th 2024**</li></ul>| November 1st 2023 |
 |[Get Billing For Specific Accounts V2](#cdr-energy-api_get-billing-for-specific-accounts)|<ul><li>Data Holders **MUST** implement v2 of this endpoint by **November 1st 2023**</li><li>Data Holders **MAY** retire v1 of this endpoint from **September 9th 2024**</li></ul>| November 1st 2023 |
-|[Get Accounts V1](#cdr-banking-api_get-accounts)|Data Holders **MAY** decommission v1 of this end point from March 11th 2024| March 11th 2024 |
-|[Get Account Detail V2](#cdr-banking-api_get-account-detail)|Data Holders **MAY** decommission v2 of this end point from March 11th 2024| March 11th 2024 |
+|[Get Accounts V1](#cdr-banking-api_get-accounts)|Data Holders **MAY** decommission v1 of this endpoint from March 11th 2024| March 11th 2024 |
+|[Get Account Detail V2](#cdr-banking-api_get-account-detail)|Data Holders **MAY** decommission v2 of this endpoint from March 11th 2024| March 11th 2024 |
 |[Get Scheduled Payments for Account V2](#cdr-banking-api_get-scheduled-payments-for-account)|<ul><li>Data Holders **MUST** implement v2 of this endpoint by **March 11th 2024**</li><li>Data Holders **MAY** retire v1 of this endpoint from **September 9th 2024**</li></ul> | March 11th 2024 |
 |[Get Scheduled Payments Bulk V2](#cdr-banking-api_get-scheduled-payments-bulk)|<ul><li>Data Holders **MUST** implement v2 of this endpoint by **March 11th 2024**</li><li>Data Holders **MAY** retire v1 of this endpoint from **September 9th 2024**</li></ul> | March 11th 2024 |
 |[Get Scheduled Payments For Specific Accounts V2](#cdr-banking-api_get-scheduled-payments-for-specific-accounts)|<ul><li>Data Holders **MUST** implement v2 of this endpoint by **March 11th 2024**</li><li>Data Holders **MAY** retire v1 of this endpoint from **September 9th 2024**</li></ul> | March 11th 2024 |
-|[Get Metrics V3](#cdr-admin-api_get-metrics)|<ul><li>Data Holders **MAY** retire v3 of this endpoint by the earlier of **13th May 2024** or when the ACCC announce that this version is no longer being called</li><li>Data Holders going live on, or after, 1st November 2023 are not required to support this version</li></ul>| May 13th 2024 |
+|[Get Metrics V3](#cdr-admin-api_get-metrics)|<ul><li>Data Holders **MAY** retire v3 of this endpoint from the earlier of **13th May 2024** or when the ACCC announce that this version is no longer being called</li><li>Data Holders going live on, or after, 1st November 2023 are not required to support this version</li></ul>| May 13th 2024 |
 |[Get Metrics v5](#cdr-admin-api_get-metrics)|<ul><li>Data Holders **MUST** implement v5 of this endpoint by **May 13th 2024**</li><li>Data Holders **MAY** deprecate v4 of this endpoint once v5 is implemented</li></ul>| May 13th 2024 |
 |[Data Holder Dashboards](#consumer-experience_dashboard-standards_data-holder-dashboards)|Data Holders **MUST** implement the following CX Standards by **July 1st 2024**<ul><li>Data Holder Dashboard: Amending authorisation details<li>Data Holder Dashboard: Data recipient handling details</ul>| July 1st 2024 |
-|[Get Billing For Account](#cdr-energy-api_get-billing-for-account)|Data Holders **MAY** retire v2 of this endpoint by **September 9th 2024** if they implement v3| September 9th 2024 |
-|[Get Bulk Billing](#cdr-energy-api_get-bulk-billing)|Data Holders **MAY** retire v2 of this endpoint by **September 9th 2024** if they implement v3| September 9th 2024 |
-|[Get Billing For Specific Accounts](#cdr-energy-api_get-billing-for-specific-accounts)|Data Holders **MAY** retire v2 of this endpoint by **September 9th 2024** if they implement v3| September 9th 2024 |
-|[Get Generic Plan Detail](#cdr-energy-api_get-generic-plan-detail)|<ul><li>Data Holders **MUST** implement v3 of this endpoint by **November 11th 2024**</li><li>Data Holder **MAY** retire v2 of this endpoint by **March 3rd 2025**</li></ul>| November 11th 2024 |
-|[Get Energy Account Detail](#cdr-energy-api_get-energy-account-detail)|<ul><li>Data Holders **MUST** implement v4 of this endpoint by **November 11th 2024**</li><li>Data Holder **MAY** retire v3 of this endpoint by **March 3rd 2025**</li></ul>| November 11th 2024 |
-|[Transaction Security Ciphers](#transaction-security)|Data Holders and Data Recipients **MUST** only support BCP195 recommended ciphers by **March 17th 2025**| March 17th 2025 |
+|[Get Billing For Account](#cdr-energy-api_get-billing-for-account)|Data Holders **MAY** retire v2 of this endpoint from **September 9th 2024** if they implement v3| September 9th 2024 |
+|[Get Bulk Billing](#cdr-energy-api_get-bulk-billing)|Data Holders **MAY** retire v2 of this endpoint from **September 9th 2024** if they implement v3| September 9th 2024 |
+|[Get Billing For Specific Accounts](#cdr-energy-api_get-billing-for-specific-accounts)|Data Holders **MAY** retire v2 of this endpoint from **September 9th 2024** if they implement v3| <span style="white-space: nowrap;">September 9th 2024</span> |
+|[Get Generic Plan Detail](#cdr-energy-api_get-generic-plan-detail)|<ul><li>Data Holders **MUST** implement v3 of this endpoint by **November 11th 2024**</li><li>Data Holder **MAY** retire v2 of this endpoint from **March 3rd 2025**</li></ul>| <span style="white-space: nowrap;">November 11th 2024</span> |
+|[Get Energy Account Detail](#cdr-energy-api_get-energy-account-detail)|<ul><li>Data Holders **MUST** implement v4 of this endpoint by **November 11th 2024**</li><li>Data Holder **MAY** retire v3 of this endpoint from **March 3rd 2025**</li></ul>| <span style="white-space: nowrap;">November 11th 2024</span> |
+|[Transaction Security Ciphers](#transaction-security)|Data Holders and Data Recipients **MUST** only support BCP195 recommended ciphers by **March 17th 2025**| <span style="white-space: nowrap;">March 17th 2025</span> |
+|[Get Metrics v5](#cdr-admin-api_get-metrics)|Data Holders **MUST** report on all applicable error codes by **May 12th 2025** | May 12th 2025 |
+|[Tokens -> Refresh Tokens](#tokens)|Refresh Tokens **MUST** be issued with an _exp_ value equal to the time of the sharing duration authorised by the consumer from **May 12th 2025** | May 12th 2025 |
+|[Authentication Flows](#authentication-flows)|Data Holders **SHALL** only support Authorization Code Flow from **May 12th 2025**. Data Recipients **SHALL** only send authorisation requests using Authorization Code Flow from this date. | May 12th 2025 |
+|[Amending consent: Changing attributes](#consumer-experience_amending-consent-standards)| Binding consumer experience data standards for data recipients regarding the presentation of amending consent invitations on and after **14 July 2025** | July 14th 2025 |
+|[CDR Receipts](#consumer-experience_notification-standards_cdr-receipts)| Binding consumer experience data standards for data recipients regarding the content and delivery of CDR Receipts on and after **14 July 2025** | July 14th 2025 |
+|[90-day notifications](#consumer-experience_notification-standards_notifications-90-day-notifications)| Binding consumer experience data standards for data recipients regarding the content and delivery of 90-day notifications on and after **14 July 2025** | July 14th 2025 |
+|[Get Product Detail v5](#cdr-banking-api_get-product-detail)|<ul><li>Data Holders **MUST** implement v5 of this endpoint by **July 14th 2025**</li><li>Data Holders **MAY** retire v4 of this endpoint from **November 10th 2025**</li></ul> | July 14th 2025 |
+|[Get Transaction Detail V2](#cdr-banking-api_get-transaction-detail)|Get Transaction Detail V2 **MUST** be supported by **July 14th 2025** | July 14th 2025 |

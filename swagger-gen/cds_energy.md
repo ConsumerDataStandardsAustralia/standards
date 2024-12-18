@@ -6,7 +6,8 @@
 > Code samples
 
 ```http
-GET /energy/plans HTTP/1.1
+GET https://tls.dh.example.com/cds-au/v1/energy/plans HTTP/1.1
+Host: tls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -20,7 +21,7 @@ const headers = {
   'x-min-v':'string'
 };
 
-fetch('/energy/plans', {
+fetch('https://tls.dh.example.com/cds-au/v1/energy/plans', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -45,15 +46,15 @@ Note that the results returned by this endpoint are expected to be ordered in de
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|type|query|[Enum](#common-field-types)|optional|Used to filter results on the type field.  Any one of the valid values for this field can be supplied plus 'ALL'.  If absent defaults to 'ALL'|
-|fuelType|query|[Enum](#common-field-types)|optional|Used to filter results on the fuelType field.  Any one of the valid values for this field can be supplied plus 'ALL'.  If absent defaults to 'ALL'|
-|effective|query|[Enum](#common-field-types)|optional|Allows for the filtering of plans based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'|
-|updated-since|query|[DateTimeString](#common-field-types)|optional|Only include plans that have been updated after the specified date and time.  If absent defaults to include all plans|
-|brand|query|string|optional|Used to filter results on the brand field.  If absent defaults to include all plans|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|type|query|[Enum](#common-field-types)|optional|Used to filter results on the _type_ field. Any one of the valid values for this field can be supplied plus `ALL`. If absent defaults to `ALL`.|
+|fuelType|query|[Enum](#common-field-types)|optional|Used to filter results on the _fuelType_ field. Any one of the valid values for this field can be supplied plus `ALL`. If absent defaults to `ALL`.|
+|effective|query|[Enum](#common-field-types)|optional|Allows for the filtering of plans based on whether the current time is within the period of time defined as effective by the _effectiveFrom_ and _effectiveTo_ fields. Valid values are `CURRENT`, `FUTURE` and `ALL`. If absent defaults to `CURRENT`.|
+|updated-since|query|[DateTimeString](#common-field-types)|optional|Only include plans that have been updated after the specified date and time. If absent defaults to include all plans.|
+|brand|query|string|optional|Used to filter results on the _brand_ field. If absent defaults to include all plans.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
 
 <h4 id="cdr-energy-api_get-generic-plans_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -144,7 +145,7 @@ Note that the results returned by this endpoint are expected to be ordered in de
 
   
     <aside class="success">
-This operation does not require authentication
+This operation does not require authentication.
 </aside>
 
   
@@ -155,7 +156,8 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET /energy/plans/{planId} HTTP/1.1
+GET https://tls.dh.example.com/cds-au/v1/energy/plans/{planId} HTTP/1.1
+Host: tls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -169,7 +171,7 @@ const headers = {
   'x-min-v':'string'
 };
 
-fetch('/energy/plans/{planId}', {
+fetch('https://tls.dh.example.com/cds-au/v1/energy/plans/{planId}', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -183,23 +185,21 @@ fetch('/energy/plans/{planId}', {
 
 Obtain detailed information on a single energy plan offered openly to the market.
 
-Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html) [v2](includes/obsolete/get-generic-plan-detail-v2.html)
+Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html), [v2](includes/obsolete/get-generic-plan-detail-v2.html).
 
 <h3 id="cdr-energy-api_get-generic-plan-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**3**
-
-<h3 id="cdr-energy-api_get-generic-plan-detail_version-notes">Version Notes</h3>
-- The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.
+|Version&nbsp;Notes|The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.
 
 <h3 id="cdr-energy-api_get-generic-plan-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|planId|path|string|mandatory|ID of the specific plan requested|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
+|planId|path|string|mandatory|ID of the specific plan requested.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
 
 > Example responses
 
@@ -774,7 +774,7 @@ Other Versions: [v1](includes/obsolete/get-generic-plan-detail-v1.html) [v2](inc
 
   
     <aside class="success">
-This operation does not require authentication
+This operation does not require authentication.
 </aside>
 
   
@@ -785,7 +785,8 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET /energy/electricity/servicepoints HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -807,7 +808,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/electricity/servicepoints', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -819,7 +820,7 @@ fetch('/energy/electricity/servicepoints', {
 
 `GET /energy/electricity/servicepoints`
 
-Obtain a list of service points owned by the customer that has authorised the current session
+Obtain a list of service points owned by the customer that has authorised the current session.
 
 <h3 id="cdr-energy-api_get-service-points_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -830,14 +831,14 @@ Obtain a list of service points owned by the customer that has authorised the cu
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -891,16 +892,16 @@ Obtain a list of service points owned by the customer that has authorised the cu
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.servicepoints.basic:read</a>
+<a href="#authorisation-scopes">energy:electricity.servicepoints.basic:read.</a>
 </aside>
 
     
@@ -912,7 +913,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/electricity/servicepoints/{servicePointId} HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/{servicePointId} HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -934,7 +936,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/electricity/servicepoints/{servicePointId}', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/{servicePointId}', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -946,7 +948,7 @@ fetch('/energy/electricity/servicepoints/{servicePointId}', {
 
 `GET /energy/electricity/servicepoints/{servicePointId}`
 
-Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session
+Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.
 
 <h3 id="cdr-energy-api_get-service-point-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -957,13 +959,13 @@ Obtain detailed standing information for a specific service point that is owned 
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|servicePointId|path|string|mandatory|ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data endpoint.  Note that it is not a nationalMeteringId.|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|servicePointId|path|string|mandatory|ID of the specific service point requested. This is a tokenised ID previous obtained from the Service Point List Data endpoint. Note that it is not a _nationalMeteringId_.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1081,16 +1083,16 @@ Obtain detailed standing information for a specific service point that is owned 
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.servicepoints.detail:read</a>
+<a href="#authorisation-scopes">energy:electricity.servicepoints.detail:read.</a>
 </aside>
 
     
@@ -1102,7 +1104,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/electricity/servicepoints/{servicePointId}/usage HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/{servicePointId}/usage HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1124,7 +1127,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/electricity/servicepoints/{servicePointId}/usage', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/{servicePointId}/usage', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -1136,7 +1139,7 @@ fetch('/energy/electricity/servicepoints/{servicePointId}/usage', {
 
 `GET /energy/electricity/servicepoints/{servicePointId}/usage`
 
-Obtain a list of electricity usage data from a particular service point
+Obtain a list of electricity usage data from a particular service point.
 
 <h3 id="cdr-energy-api_get-usage-for-service-point_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1147,18 +1150,18 @@ Obtain a list of electricity usage data from a particular service point
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|servicePointId|path|string|mandatory|ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data endpoint.  Note that it is not a nationalMeteringId.|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|interval-reads|query|[Enum](#common-field-types)|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|servicePointId|path|string|mandatory|ID of the specific service point requested. This is a tokenised ID previous obtained from the Service Point List Data endpoint. Note that it is not a _nationalMeteringId_.|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to _newest-date_ minus 24 months. Format is aligned to DateString common type.|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type.|
+|interval-reads|query|[Enum](#common-field-types)|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to `NONE`.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-energy-api_get-usage-for-service-point_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -1198,8 +1201,8 @@ Obtain a list of electricity usage data from a particular service point
           ],
           "readQualities": [
             {
-              "startInterval": 0,
-              "endInterval": 0,
+              "startInterval": 1,
+              "endInterval": 1,
               "quality": "SUBSTITUTE"
             }
           ]
@@ -1236,17 +1239,17 @@ Obtain a list of electricity usage data from a particular service point
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.usage:read</a>
+<a href="#authorisation-scopes">energy:electricity.usage:read.</a>
 </aside>
 
     
@@ -1258,7 +1261,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/electricity/servicepoints/usage HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/usage HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1280,7 +1284,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/electricity/servicepoints/usage', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/usage', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -1292,7 +1296,7 @@ fetch('/energy/electricity/servicepoints/usage', {
 
 `GET /energy/electricity/servicepoints/usage`
 
-Obtain usage data for all service points associated with the customer
+Obtain usage data for all service points associated with the customer.
 
 <h3 id="cdr-energy-api_get-bulk-usage_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1303,17 +1307,17 @@ Obtain usage data for all service points associated with the customer
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|interval-reads|query|[Enum](#common-field-types)|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|interval-reads|query|[Enum](#common-field-types)|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to `NONE`.|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to _newest-date_ minus 24 months. Format is aligned to DateString common type.|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-energy-api_get-bulk-usage_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -1353,8 +1357,8 @@ Obtain usage data for all service points associated with the customer
           ],
           "readQualities": [
             {
-              "startInterval": 0,
-              "endInterval": 0,
+              "startInterval": 1,
+              "endInterval": 1,
               "quality": "SUBSTITUTE"
             }
           ]
@@ -1390,16 +1394,16 @@ Obtain usage data for all service points associated with the customer
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.usage:read</a>
+<a href="#authorisation-scopes">energy:electricity.usage:read.</a>
 </aside>
 
     
@@ -1411,7 +1415,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST /energy/electricity/servicepoints/usage HTTP/1.1
+POST https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/usage HTTP/1.1
+Host: mtls.dh.example.com
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -1443,7 +1448,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/electricity/servicepoints/usage', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/usage', {
   method: 'POST',
   body: inputBody,
   headers: headers
@@ -1456,7 +1461,7 @@ fetch('/energy/electricity/servicepoints/usage', {
 
 `POST /energy/electricity/servicepoints/usage`
 
-Obtain the electricity usage data for a specific set of service points
+Obtain the electricity usage data for a specific set of service points.
 
 > Body parameter
 
@@ -1480,18 +1485,18 @@ Obtain the electricity usage data for a specific set of service points
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|interval-reads|query|[Enum](#common-field-types)|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to NONE|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or after this date. If absent defaults to _newest-date_ minus 24 months. Format is aligned to DateString common type.|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with effective date at or before this date. If absent defaults to current date. Format is aligned to DateString common type.|
+|interval-reads|query|[Enum](#common-field-types)|optional|Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to `NONE`.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[RequestServicePointIdList](#schemacdr-energy-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|body|body|[RequestServicePointIdList](#schemacdr-energy-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for.|
 
 <h4 id="cdr-energy-api_get-usage-for-specific-service-points_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -1531,8 +1536,8 @@ Obtain the electricity usage data for a specific set of service points
           ],
           "readQualities": [
             {
-              "startInterval": 0,
-              "endInterval": 0,
+              "startInterval": 1,
+              "endInterval": 1,
               "quality": "SUBSTITUTE"
             }
           ]
@@ -1568,16 +1573,16 @@ Obtain the electricity usage data for a specific set of service points
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.usage:read</a>
+<a href="#authorisation-scopes">energy:electricity.usage:read.</a>
 </aside>
 
     
@@ -1589,7 +1594,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/electricity/servicepoints/{servicePointId}/der HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/{servicePointId}/der HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1611,7 +1617,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/electricity/servicepoints/{servicePointId}/der', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/{servicePointId}/der', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -1623,7 +1629,7 @@ fetch('/energy/electricity/servicepoints/{servicePointId}/der', {
 
 `GET /energy/electricity/servicepoints/{servicePointId}/der`
 
-Obtain a list of DER data from a particular service point
+Obtain a list of DER data from a particular service point.
 
 <h3 id="cdr-energy-api_get-der-for-service-point_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1634,13 +1640,13 @@ Obtain a list of DER data from a particular service point
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|servicePointId|path|string|mandatory|ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data endpoint.  Note that it is not a nationalMeteringId.|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|servicePointId|path|string|mandatory|ID of the specific service point requested. This is a tokenised ID previous obtained from the Service Point List Data endpoint. Note that it is not a _nationalMeteringId_.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1720,16 +1726,16 @@ Obtain a list of DER data from a particular service point
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.der:read</a>
+<a href="#authorisation-scopes">energy:electricity.der:read.</a>
 </aside>
 
     
@@ -1741,7 +1747,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/electricity/servicepoints/der HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/der HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1763,7 +1770,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/electricity/servicepoints/der', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/der', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -1775,7 +1782,7 @@ fetch('/energy/electricity/servicepoints/der', {
 
 `GET /energy/electricity/servicepoints/der`
 
-Obtain DER data for all service points associated with the customer
+Obtain DER data for all service points associated with the customer.
 
 <h3 id="cdr-energy-api_get-bulk-der_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1786,14 +1793,14 @@ Obtain DER data for all service points associated with the customer
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -1884,16 +1891,16 @@ Obtain DER data for all service points associated with the customer
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.der:read</a>
+<a href="#authorisation-scopes">energy:electricity.der:read.</a>
 </aside>
 
     
@@ -1905,7 +1912,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST /energy/electricity/servicepoints/der HTTP/1.1
+POST https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/der HTTP/1.1
+Host: mtls.dh.example.com
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -1937,7 +1945,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/electricity/servicepoints/der', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/der', {
   method: 'POST',
   body: inputBody,
   headers: headers
@@ -1950,7 +1958,7 @@ fetch('/energy/electricity/servicepoints/der', {
 
 `POST /energy/electricity/servicepoints/der`
 
-Obtain DER data for a specific set of service points
+Obtain DER data for a specific set of service points.
 
 > Body parameter
 
@@ -1974,15 +1982,15 @@ Obtain DER data for a specific set of service points
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[RequestServicePointIdList](#schemacdr-energy-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|body|body|[RequestServicePointIdList](#schemacdr-energy-apirequestservicepointidlist)|mandatory|Request payload containing list of specific Service Points to obtain data for.|
 
 > Example responses
 
@@ -2073,16 +2081,16 @@ Obtain DER data for a specific set of service points
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:electricity.der:read</a>
+<a href="#authorisation-scopes">energy:electricity.der:read.</a>
 </aside>
 
     
@@ -2094,7 +2102,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/accounts HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/accounts HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2116,7 +2125,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/accounts', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/accounts', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -2128,9 +2137,9 @@ fetch('/energy/accounts', {
 
 `GET /energy/accounts`
 
-Obtain the list of energy accounts available under the authorised consent
+Obtain the list of energy accounts available under the authorised consent.
 
-Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)
+Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html).
 
 <h3 id="cdr-energy-api_get-energy-accounts_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -2141,15 +2150,15 @@ Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|open-status|query|[Enum](#common-field-types)|optional|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 <h4 id="cdr-energy-api_get-energy-accounts_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -2217,16 +2226,16 @@ Other Versions: [v1](includes/obsolete/get-energy-accounts-v1.html)
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:accounts.basic:read</a>
+<a href="#authorisation-scopes">energy:accounts.basic:read.</a>
 </aside>
 
     
@@ -2238,7 +2247,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/accounts/{accountId} HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/accounts/{accountId} HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2260,7 +2270,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/accounts/{accountId}', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/accounts/{accountId}', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -2272,29 +2282,27 @@ fetch('/energy/accounts/{accountId}', {
 
 `GET /energy/accounts/{accountId}`
 
-Obtain detailed information for a specific energy account
+Obtain detailed information for a specific energy account.
 
-Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](includes/obsolete/get-energy-account-detail-v2.html) [v3](includes/obsolete/get-energy-account-detail-v3.html)
+Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html), [v2](includes/obsolete/get-energy-account-detail-v2.html), [v3](includes/obsolete/get-energy-account-detail-v3.html).
 
 <h3 id="cdr-energy-api_get-energy-account-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
 |Version|**4**
-
-<h3 id="cdr-energy-api_get-energy-account-detail_version-notes">Version Notes</h3>
-- The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.
+|Version&nbsp;Notes|The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.
 
 <h3 id="cdr-energy-api_get-energy-account-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List endpoint.|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previous obtained from the Account List endpoint.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2733,16 +2741,16 @@ Other Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html) [v2](i
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:accounts.detail:read</a>
+<a href="#authorisation-scopes">energy:accounts.detail:read.</a>
 </aside>
 
     
@@ -2754,7 +2762,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/accounts/{accountId}/payment-schedule HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/accounts/{accountId}/payment-schedule HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2776,7 +2785,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/accounts/{accountId}/payment-schedule', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/accounts/{accountId}/payment-schedule', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -2788,11 +2797,11 @@ fetch('/energy/accounts/{accountId}/payment-schedule', {
 
 `GET /energy/accounts/{accountId}/payment-schedule`
 
-Obtain the agreed payment schedule and details, if any, for a specific energy account. 
+Obtain the agreed payment schedule and details, if any, for a specific energy account.
 
 Some general notes about this endpoint:
 
- <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>
+ <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API.</li></ul>
 
 <h3 id="cdr-energy-api_get-agreed-payment-schedule_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -2803,13 +2812,13 @@ Some general notes about this endpoint:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List endpoint.|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previous obtained from the Account List endpoint.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2869,16 +2878,16 @@ Some general notes about this endpoint:
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:accounts.paymentschedule:read</a>
+<a href="#authorisation-scopes">energy:accounts.paymentschedule:read.</a>
 </aside>
 
     
@@ -2890,7 +2899,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/accounts/{accountId}/concessions HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/accounts/{accountId}/concessions HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2912,7 +2922,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/accounts/{accountId}/concessions', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/accounts/{accountId}/concessions', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -2924,7 +2934,7 @@ fetch('/energy/accounts/{accountId}/concessions', {
 
 `GET /energy/accounts/{accountId}/concessions`
 
-Obtain the details of any concessions or arrangements applied to a specific energy account
+Obtain the details of any concessions or arrangements applied to a specific energy account.
 
 <h3 id="cdr-energy-api_get-concessions_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -2935,13 +2945,13 @@ Obtain the details of any concessions or arrangements applied to a specific ener
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List endpoint.|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previous obtained from the Account List endpoint.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -2988,16 +2998,16 @@ Obtain the details of any concessions or arrangements applied to a specific ener
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:accounts.concessions:read</a>
+<a href="#authorisation-scopes">energy:accounts.concessions:read.</a>
 </aside>
 
     
@@ -3009,7 +3019,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/accounts/{accountId}/balance HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/accounts/{accountId}/balance HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -3031,7 +3042,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/accounts/{accountId}/balance', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/accounts/{accountId}/balance', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -3043,7 +3054,7 @@ fetch('/energy/accounts/{accountId}/balance', {
 
 `GET /energy/accounts/{accountId}/balance`
 
-Obtain the current balance for a specific account
+Obtain the current balance for a specific account.
 
 <h3 id="cdr-energy-api_get-balance-for-energy-account_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -3054,13 +3065,13 @@ Obtain the current balance for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List endpoint.|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previous obtained from the Account List endpoint.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -3092,16 +3103,16 @@ Obtain the current balance for a specific account
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:billing:read</a>
+<a href="#authorisation-scopes">energy:billing:read.</a>
 </aside>
 
     
@@ -3113,7 +3124,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/accounts/balances HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/accounts/balances HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -3135,7 +3147,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/accounts/balances', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/accounts/balances', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -3147,7 +3159,7 @@ fetch('/energy/accounts/balances', {
 
 `GET /energy/accounts/balances`
 
-Obtain the current balance for all accounts
+Obtain the current balance for all accounts.
 
 <h3 id="cdr-energy-api_get-bulk-balances-for-energy_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -3158,14 +3170,14 @@ Obtain the current balance for all accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -3209,16 +3221,16 @@ Obtain the current balance for all accounts
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:billing:read</a>
+<a href="#authorisation-scopes">energy:billing:read.</a>
 </aside>
 
     
@@ -3230,7 +3242,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST /energy/accounts/balances HTTP/1.1
+POST https://mtls.dh.example.com/cds-au/v1/energy/accounts/balances HTTP/1.1
+Host: mtls.dh.example.com
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -3262,7 +3275,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/accounts/balances', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/accounts/balances', {
   method: 'POST',
   body: inputBody,
   headers: headers
@@ -3275,7 +3288,7 @@ fetch('/energy/accounts/balances', {
 
 `POST /energy/accounts/balances`
 
-Obtain the current balance for a specified set of accounts
+Obtain the current balance for a specified set of accounts.
 
 > Body parameter
 
@@ -3299,15 +3312,15 @@ Obtain the current balance for a specified set of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for.|
 
 > Example responses
 
@@ -3351,16 +3364,16 @@ Obtain the current balance for a specified set of accounts
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:billing:read</a>
+<a href="#authorisation-scopes">energy:billing:read.</a>
 </aside>
 
     
@@ -3372,7 +3385,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/accounts/{accountId}/invoices HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/accounts/{accountId}/invoices HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -3394,7 +3408,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/accounts/{accountId}/invoices', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/accounts/{accountId}/invoices', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -3406,7 +3420,7 @@ fetch('/energy/accounts/{accountId}/invoices', {
 
 `GET /energy/accounts/{accountId}/invoices`
 
-Obtain the invoices for a specific account
+Obtain the invoices for a specific account.
 
 <h3 id="cdr-energy-api_get-invoices-for-account_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -3417,17 +3431,17 @@ Obtain the invoices for a specific account
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List endpoint.|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previous obtained from the Account List endpoint.|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or before this date. If absent defaults to current date. Format is aligned to DateString common type.|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or after this date. If absent defaults to _newest-date_ minus 24 months. Format is aligned to DateString common type.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -3523,17 +3537,17 @@ Obtain the invoices for a specific account
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:billing:read</a>
+<a href="#authorisation-scopes">energy:billing:read.</a>
 </aside>
 
     
@@ -3545,7 +3559,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/accounts/invoices HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/accounts/invoices HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -3567,7 +3582,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/accounts/invoices', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/accounts/invoices', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -3579,7 +3594,7 @@ fetch('/energy/accounts/invoices', {
 
 `GET /energy/accounts/invoices`
 
-Obtain the invoices for all accounts
+Obtain the invoices for all accounts.
 
 <h3 id="cdr-energy-api_get-bulk-invoices_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -3590,16 +3605,16 @@ Obtain the invoices for all accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or before this date. If absent defaults to current date. Format is aligned to DateString common type.|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or after this date. If absent defaults to _newest-date_ minus 24 months. Format is aligned to DateString common type.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -3694,16 +3709,16 @@ Obtain the invoices for all accounts
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:billing:read</a>
+<a href="#authorisation-scopes">energy:billing:read.</a>
 </aside>
 
     
@@ -3715,7 +3730,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST /energy/accounts/invoices HTTP/1.1
+POST https://mtls.dh.example.com/cds-au/v1/energy/accounts/invoices HTTP/1.1
+Host: mtls.dh.example.com
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -3747,7 +3763,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/accounts/invoices', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/accounts/invoices', {
   method: 'POST',
   body: inputBody,
   headers: headers
@@ -3760,7 +3776,7 @@ fetch('/energy/accounts/invoices', {
 
 `POST /energy/accounts/invoices`
 
-Obtain invoices for a specified set of accounts
+Obtain invoices for a specified set of accounts.
 
 > Body parameter
 
@@ -3784,17 +3800,17 @@ Obtain invoices for a specified set of accounts
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or before this date.  If absent defaults to current date.  Format is aligned to DateString common type|
-|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or after this date. If absent defaults to newest-date minus 24 months.  Format is aligned to DateString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|newest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or before this date. If absent defaults to current date. Format is aligned to DateString common type.|
+|oldest-date|query|[DateString](#common-field-types)|optional|Constrain the request to records with issue date at or after this date. If absent defaults to _newest-date_ minus 24 months. Format is aligned to DateString common type.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for.|
 
 > Example responses
 
@@ -3889,16 +3905,16 @@ Obtain invoices for a specified set of accounts
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:billing:read</a>
+<a href="#authorisation-scopes">energy:billing:read.</a>
 </aside>
 
     
@@ -3910,7 +3926,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/accounts/{accountId}/billing HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/accounts/{accountId}/billing HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -3932,7 +3949,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/accounts/{accountId}/billing', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/accounts/{accountId}/billing', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -3944,7 +3961,7 @@ fetch('/energy/accounts/{accountId}/billing', {
 
 `GET /energy/accounts/{accountId}/billing`
 
-Obtain the billing transactions for a specific account
+Obtain the billing transactions for a specific account.
 
 Deprecated Versions: 
 
@@ -3960,17 +3977,17 @@ Deprecated Versions:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|accountId|path|string|mandatory|ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List endpoint.|
-|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type|
-|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|accountId|path|string|mandatory|ID of a specific account to obtain data for. This is a tokenised ID previous obtained from the Account List endpoint.|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type.|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to _newest-time_ minus 12 months. Format is aligned to DateTimeString common type.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -4096,17 +4113,17 @@ Deprecated Versions:
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:billing:read</a>
+<a href="#authorisation-scopes">energy:billing:read.</a>
 </aside>
 
     
@@ -4118,7 +4135,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET /energy/accounts/billing HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/energy/accounts/billing HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -4140,7 +4158,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/accounts/billing', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/accounts/billing', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -4152,7 +4170,7 @@ fetch('/energy/accounts/billing', {
 
 `GET /energy/accounts/billing`
 
-Obtain billing transactions for all accounts
+Obtain billing transactions for all accounts.
 
 Deprecated Versions: 
 
@@ -4168,16 +4186,16 @@ Deprecated Versions:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type|
-|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type.|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to _newest-time_ minus 12 months. Format is aligned to DateTimeString common type.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
 
 > Example responses
 
@@ -4302,16 +4320,16 @@ Deprecated Versions:
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:billing:read</a>
+<a href="#authorisation-scopes">energy:billing:read.</a>
 </aside>
 
     
@@ -4323,7 +4341,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST /energy/accounts/billing HTTP/1.1
+POST https://mtls.dh.example.com/cds-au/v1/energy/accounts/billing HTTP/1.1
+Host: mtls.dh.example.com
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -4355,7 +4374,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('/energy/accounts/billing', {
+fetch('https://mtls.dh.example.com/cds-au/v1/energy/accounts/billing', {
   method: 'POST',
   body: inputBody,
   headers: headers
@@ -4368,7 +4387,7 @@ fetch('/energy/accounts/billing', {
 
 `POST /energy/accounts/billing`
 
-Obtain billing for a specified set of accounts
+Obtain billing for a specified set of accounts.
 
 Deprecated Versions: 
 
@@ -4397,17 +4416,17 @@ Deprecated Versions:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type|
-|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type|
-|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination)|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request.  Default is 25 (standard pagination)|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.  Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
+|newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type.|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the request to records with effective time at or after this date/time. If absent defaults to _newest-time_ minus 12 months. Format is aligned to DateTimeString common type.|
+|page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
+|page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.|
-|body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for|
+|x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
+|body|body|[RequestAccountIdList](#schemacdr-energy-apirequestaccountidlist)|mandatory|Request payload containing list of specific Accounts to obtain data for.|
 
 > Example responses
 
@@ -4532,16 +4551,16 @@ Deprecated Versions:
 |Status|Header|Type|Description|
 |---|---|---|---|---|
 |200|x-v|string|The [version](#response-headers) of the API endpoint that the data holder has responded with.|
-|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|200|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|400|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|406|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|422|x-fapi-interaction-id|string|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">energy:billing:read</a>
+<a href="#authorisation-scopes">energy:billing:read.</a>
 </aside>
 
     
@@ -4614,7 +4633,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» plans|[[EnergyPlan](#schemacdr-energy-apienergyplan)]|mandatory|Array of plans|
+|» plans|[[EnergyPlan](#schemacdr-energy-apienergyplan)]|mandatory|Array of plans.|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
@@ -5385,8 +5404,8 @@ To perform this operation, you must be authenticated and authorised with the fol
           ],
           "readQualities": [
             {
-              "startInterval": 0,
-              "endInterval": 0,
+              "startInterval": 1,
+              "endInterval": 1,
               "quality": "SUBSTITUTE"
             }
           ]
@@ -5413,7 +5432,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» reads|[[EnergyUsageRead](#schemacdr-energy-apienergyusageread)]|mandatory|Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order|
+|» reads|[[EnergyUsageRead](#schemacdr-energy-apienergyusageread)]|mandatory|Array of meter reads sorted by NMI in ascending order followed by _readStartDate_ in descending order.|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
@@ -5501,7 +5520,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» derRecords|[[EnergyDerRecord](#schemacdr-energy-apienergyderrecord)]|mandatory|Array of meter reads|
+|» derRecords|[[EnergyDerRecord](#schemacdr-energy-apienergyderrecord)]|mandatory|Array of meter reads.|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
@@ -5634,7 +5653,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» accounts|[[EnergyAccountV2](#schemacdr-energy-apienergyaccountv2)]|mandatory|Array of accounts|
+|» accounts|[[EnergyAccountV2](#schemacdr-energy-apienergyaccountv2)]|mandatory|Array of accounts.|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
@@ -6126,7 +6145,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» paymentSchedules|[[EnergyPaymentSchedule](#schemacdr-energy-apienergypaymentschedule)]|mandatory|Array may be empty if no payment schedule exist|
+|» paymentSchedules|[[EnergyPaymentSchedule](#schemacdr-energy-apienergypaymentschedule)]|mandatory|Array may be empty if no payment schedules exist.|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
@@ -6170,7 +6189,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» concessions|[[EnergyConcession](#schemacdr-energy-apienergyconcession)]|mandatory|Array may be empty if no concessions exist|
+|» concessions|[[EnergyConcession](#schemacdr-energy-apienergyconcession)]|mandatory|Array may be empty if no concessions exist.|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
@@ -6211,9 +6230,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» balances|[object]|mandatory|Array of account balances|
-|»» accountId|string|mandatory|The ID of the account|
-|»» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
+|» balances|[object]|mandatory|Array of account balances.|
+|»» accountId|string|mandatory|The ID of the account.|
+|»» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account. A positive value indicates that amount is owing to be paid. A negative value indicates that the account is in credit.|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
@@ -6242,7 +6261,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit|
+|» balance|[AmountString](#common-field-types)|mandatory|The current balance of the account. A positive value indicates that amount is owing to be paid. A negative value indicates that the account is in credit.|
 |links|[Links](#schemacdr-energy-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
@@ -6334,7 +6353,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» invoices|[[EnergyInvoice](#schemacdr-energy-apienergyinvoice)]|mandatory|Array of invoices sorted by issue date in descending order|
+|» invoices|[[EnergyInvoice](#schemacdr-energy-apienergyinvoice)]|mandatory|Array of invoices sorted by issue date in descending order.|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
@@ -6456,7 +6475,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» transactions|[[EnergyBillingTransactionV3](#schemacdr-energy-apienergybillingtransactionv3)]|mandatory|Array of transactions sorted by date and time in descending order|
+|» transactions|[[EnergyBillingTransactionV3](#schemacdr-energy-apienergybillingtransactionv3)]|mandatory|Array of transactions sorted by date and time in descending order.|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory|none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory|none|
 
@@ -6491,8 +6510,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» code|string|mandatory|The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.|
 |» title|string|mandatory|A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.|
 |» detail|string|mandatory|A human-readable explanation specific to this occurrence of the problem.|
-|» meta|object|optional|Additional data for customised error codes|
-|»» urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.|
+|» meta|object|optional|Additional data for customised error codes.|
+|»» urn|string|conditional|The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code.|
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplan">EnergyPlan</h3>
 <p id="tocSenergyplan" class="orig-anchor"></p>
@@ -6541,28 +6560,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|planId|[ASCIIString](#common-field-types)|mandatory|The ID of the specific plan|
-|effectiveFrom|[DateTimeString](#common-field-types)|optional|The date and time from which this plan is effective (ie. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate|
-|effectiveTo|[DateTimeString](#common-field-types)|optional|The date and time at which this plan will be retired and will no longer be offered. Used to enable the managed deprecation of plans|
-|lastUpdated|[DateTimeString](#common-field-types)|mandatory|The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered)|
-|displayName|string|optional|The display name of the plan|
-|description|string|optional|A description of the plan|
-|type|[Enum](#common-field-types)|mandatory|The type of the plan|
-|fuelType|[Enum](#common-field-types)|mandatory|The fuel types covered by the plan|
-|brand|[ASCIIString](#common-field-types)|mandatory|The ID of the brand under which this plan is offered|
-|brandName|string|mandatory|The display name of the brand under which this plan is offered|
-|applicationUri|[URIString](#common-field-types)|optional|A link to an application web page where this plan can be applied for|
-|additionalInformation|object|optional|Object that contains links to additional information on specific topics|
-|» overviewUri|[URIString](#common-field-types)|optional|A link to a general overview of the plan|
-|» termsUri|[URIString](#common-field-types)|optional|A link to terms and conditions for the plan|
-|» eligibilityUri|[URIString](#common-field-types)|optional|A link to detail on eligibility criteria for the plan|
-|» pricingUri|[URIString](#common-field-types)|optional|A link to detail on pricing for the plan|
-|» bundleUri|[URIString](#common-field-types)|optional|A link to detail on bundles that this plan can be a part of|
-|customerType|[Enum](#common-field-types)|optional|The type of customer that the plan is offered to.  If absent then the plan is available to all customers|
-|geography|object|optional|Describes the geographical area that the plan is available for.  If absent then it is assumed the plan is not geographically limited|
-|» excludedPostcodes|[string]|optional|Array of valid Australian postcodes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
-|» includedPostcodes|[string]|optional|Array of valid Australian postcodes that are included from the plan.  If absent defaults to all non-excluded postcodes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)|
-|» distributors|[string]|mandatory|Array of distributors for the plan. Must have at least one entry|
+|planId|[ASCIIString](#common-field-types)|mandatory|The ID of the specific plan.|
+|effectiveFrom|[DateTimeString](#common-field-types)|optional|The date and time from which this plan is effective (i.e. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate.|
+|effectiveTo|[DateTimeString](#common-field-types)|optional|The date and time at which this plan will be retired and will no longer be offered. Used to enable the managed deprecation of plans.|
+|lastUpdated|[DateTimeString](#common-field-types)|mandatory|The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered).|
+|displayName|string|optional|The display name of the plan.|
+|description|string|optional|A description of the plan.|
+|type|[Enum](#common-field-types)|mandatory|The type of the plan.|
+|fuelType|[Enum](#common-field-types)|mandatory|The fuel types covered by the plan.|
+|brand|[ASCIIString](#common-field-types)|mandatory|The ID of the brand under which this plan is offered.|
+|brandName|string|mandatory|The display name of the brand under which this plan is offered.|
+|applicationUri|[URIString](#common-field-types)|optional|A link to an application web page where this plan can be applied for.|
+|additionalInformation|object|optional|Object that contains links to additional information on specific topics.|
+|» overviewUri|[URIString](#common-field-types)|optional|A link to a general overview of the plan.|
+|» termsUri|[URIString](#common-field-types)|optional|A link to terms and conditions for the plan.|
+|» eligibilityUri|[URIString](#common-field-types)|optional|A link to detail on eligibility criteria for the plan.|
+|» pricingUri|[URIString](#common-field-types)|optional|A link to detail on pricing for the plan.|
+|» bundleUri|[URIString](#common-field-types)|optional|A link to detail on bundles that this plan can be a part of.|
+|customerType|[Enum](#common-field-types)|optional|The type of customer that the plan is offered to. If absent then the plan is available to all customers.|
+|geography|object|optional|Describes the geographical area that the plan is available for. If absent then it is assumed the plan is not geographically limited.|
+|» excludedPostcodes|[string]|optional|Array of valid Australian postcodes that are specifically excluded from the plan. Each element is a single four digit postcode (e.g., 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g., 3000-3999).|
+|» includedPostcodes|[string]|optional|Array of valid Australian postcodes that are included from the plan. If absent defaults to all non-excluded postcodes. Each element is a single four digit postcode (e.g., 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g., 3000-3999).|
+|» distributors|[string]|mandatory|Array of distributors for the plan. Must have at least one entry.|
 
 <h4 id="cdr-energy-api_energyplan_enumerated-values-main">Enumerated Values</h4>
 
@@ -7144,14 +7163,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» meteringCharges|[object]|optional|Charges for metering included in the plan|
-|»» displayName|string|mandatory|Display name of the charge|
-|»» description|string|optional|Description of the charge|
-|»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
-|»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
-|»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» gasContract|[EnergyPlanContractFullV3](#schemacdr-energy-apienergyplancontractfullv3)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
-|» electricityContract|[EnergyPlanContractFullV3](#schemacdr-energy-apienergyplancontractfullv3)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
+|» meteringCharges|[object]|optional|Charges for metering included in the plan.|
+|»» displayName|string|mandatory|Display name of the charge.|
+|»» description|string|optional|Description of the charge.|
+|»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified.|
+|»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range.|
+|»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|» gasContract|[EnergyPlanContractFullV3](#schemacdr-energy-apienergyplancontractfullv3)|conditional|The details of the terms for the supply of electricity under this plan. Is mandatory if _fuelType_ is set to `GAS` or `DUAL`.|
+|» electricityContract|[EnergyPlanContractFullV3](#schemacdr-energy-apienergyplancontractfullv3)|conditional|The details of the terms for the supply of electricity under this plan. Is mandatory if _fuelType_ is set to `ELECTRICITY` or `DUAL`.|
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontractv3">EnergyPlanContractV3</h3>
 <p id="tocSenergyplancontractv3" class="orig-anchor"></p>
@@ -7409,23 +7428,23 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|additionalFeeInformation|string|optional|Free text field containing additional information of the fees for this contract|
-|pricingModel|[Enum](#common-field-types)|mandatory|The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>|
-|timeZone|[Enum](#common-field-types)|conditional|Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent|
-|isFixed|boolean|mandatory|Flag indicating whether prices are fixed or variable|
-|variation|string|conditional|Free text description of price variation policy and conditions for the contract.  Mandatory if `isFixed` is false|
-|onExpiryDescription|string|optional|Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period|
-|paymentOption|[[Enum](#common-field-types)]|mandatory|Payment options for this contract|
-|intrinsicGreenPower|object|optional|Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts|
-|» greenPercentage|[RateString](#common-field-types)|mandatory|Percentage of green power intrinsically included in the plan|
-|controlledLoad|[EnergyPlanControlledLoadV2](#schemacdr-energy-apienergyplancontrolledloadv2)|conditional|Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD|
-|incentives|[EnergyPlanIncentives](#schemacdr-energy-apienergyplanincentives)|optional|Optional list of incentives available for the contract|
-|discounts|[EnergyPlanDiscounts](#schemacdr-energy-apienergyplandiscounts)|optional|Optional list of discounts available for the contract|
-|greenPowerCharges|[EnergyPlanGreenPowerCharges](#schemacdr-energy-apienergyplangreenpowercharges)|optional|Optional list of charges applicable to green power|
-|eligibility|[EnergyPlanEligibility](#schemacdr-energy-apienergyplaneligibility)|optional|Eligibility restrictions or requirements|
-|fees|[EnergyPlanFees](#schemacdr-energy-apienergyplanfees)|optional|An array of fees applicable to the plan|
-|solarFeedInTariff|[EnergyPlanSolarFeedInTariffV3](#schemacdr-energy-apienergyplansolarfeedintariffv3)|optional|Array of feed in tariffs for solar power|
-|tariffPeriod|[EnergyPlanTariffPeriodV2](#schemacdr-energy-apienergyplantariffperiodv2)|mandatory|Array of tariff periods|
+|additionalFeeInformation|string|optional|Free text field containing additional information of the fees for this contract.|
+|pricingModel|[Enum](#common-field-types)|mandatory|The pricing model for the contract. Contracts for gas must use `SINGLE_RATE`. Note that the detail for the enumeration values are:<ul><li>`SINGLE_RATE`: all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a 'block' or 'step' tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.)</li><li>`SINGLE_RATE_CONT_LOAD`: as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>`TIME_OF_USE`: energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>`TIME_OF_USE_CONT_LOAD`: as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>`FLEXIBLE`: energy usage is charged at unit rates that vary based on external factors</li><li>`FLEXIBLE_CONT_LOAD`: as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>`QUOTA`: all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate. i.e. $50/month for up to 150kWh included usage.</li></ul>|
+|timeZone|[Enum](#common-field-types)|conditional|Required if _pricingModel_ is set to `TIME_OF_USE`. Defines the time zone to use for calculation of the time of use thresholds. Defaults to `AEST` if absent.|
+|isFixed|boolean|mandatory|Flag indicating whether prices are fixed or variable.|
+|variation|string|conditional|Free text description of price variation policy and conditions for the contract. Mandatory if _isFixed_ is `false`.|
+|onExpiryDescription|string|optional|Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period.|
+|paymentOption|[[Enum](#common-field-types)]|mandatory|Payment options for this contract.|
+|intrinsicGreenPower|object|optional|Describes intrinsic green power for the plan. If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts.|
+|» greenPercentage|[RateString](#common-field-types)|mandatory|Percentage of green power intrinsically included in the plan.|
+|controlledLoad|[EnergyPlanControlledLoadV2](#schemacdr-energy-apienergyplancontrolledloadv2)|conditional|Required if pricing model is `SINGLE_RATE_CONT_LOAD` or `TIME_OF_USE_CONT_LOAD` or `FLEXIBLE_CONT_LOAD`.|
+|incentives|[EnergyPlanIncentives](#schemacdr-energy-apienergyplanincentives)|optional|Optional list of incentives available for the contract.|
+|discounts|[EnergyPlanDiscounts](#schemacdr-energy-apienergyplandiscounts)|optional|Optional list of discounts available for the contract.|
+|greenPowerCharges|[EnergyPlanGreenPowerCharges](#schemacdr-energy-apienergyplangreenpowercharges)|optional|Optional list of charges applicable to green power.|
+|eligibility|[EnergyPlanEligibility](#schemacdr-energy-apienergyplaneligibility)|optional|Eligibility restrictions or requirements.|
+|fees|[EnergyPlanFees](#schemacdr-energy-apienergyplanfees)|optional|An array of fees applicable to the plan.|
+|solarFeedInTariff|[EnergyPlanSolarFeedInTariffV3](#schemacdr-energy-apienergyplansolarfeedintariffv3)|optional|Array of feed in tariffs for solar power.|
+|tariffPeriod|[EnergyPlanTariffPeriodV2](#schemacdr-energy-apienergyplantariffperiodv2)|mandatory|Array of tariff periods.|
 
 <h4 id="cdr-energy-api_energyplancontractv3_enumerated-values-main">Enumerated Values</h4>
 
@@ -7721,12 +7740,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |*anonymous*|object|mandatory|none|
-|» termType|[Enum](#common-field-types)|optional|The term for the contract.  If absent assumes no specified term|
-|» benefitPeriod|string|conditional|Description of the benefit period.  Should only be present if termType has the value ONGOING|
-|» terms|string|optional|Free text description of the terms for the contract|
-|» meterTypes|[string]|optional|An array of the meter types that this contract is available for|
-|» coolingOffDays|[PositiveInteger](#common-field-types)|conditional|Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET|
-|» billFrequency|[string]|mandatory|An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|» termType|[Enum](#common-field-types)|optional|The term for the contract. If absent assumes no specified term.|
+|» benefitPeriod|string|conditional|Description of the benefit period. Should only be present if termType has the value `ONGOING`.|
+|» terms|string|optional|Free text description of the terms for the contract.|
+|» meterTypes|[string]|optional|An array of the meter types that this contract is available for.|
+|» coolingOffDays|[PositiveInteger](#common-field-types)|conditional|Number of days in the cooling off period for the contract. Mandatory for plans with type of `MARKET`.|
+|» billFrequency|[string]|mandatory|An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
 
 <h4 id="cdr-energy-api_energyplancontractfullv3_enumerated-values-main">Enumerated Values</h4>
 
@@ -7799,41 +7818,41 @@ To perform this operation, you must be authenticated and authorised with the fol
 ]
 ```
 
-*Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD*
+*Required if pricing model is `SINGLE_RATE_CONT_LOAD` or `TIME_OF_USE_CONT_LOAD` or `FLEXIBLE_CONT_LOAD`.*
 
 <h3 id="cdr-energy-api_energyplancontrolledloadv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|mandatory|A display name for the controlled load|
-|rateBlockUType|[Enum](#common-field-types)|mandatory|Specifies the type of controlloed load rate|
-|startDate|[DateString](#common-field-types)|optional|Optional start date of the application of the controlled load rate|
-|endDate|[DateString](#common-field-types)|optional|Optional end date of the application of the controlled load rate|
-|singleRate|object|conditional|Object representing a single controlled load rate.  Required if rateBlockUType is singleRate|
-|» displayName|string|mandatory|Display name of the controlled load rate|
-|» description|string|optional|Description of the controlled load rate|
-|» dailySupplyCharge|[AmountString](#common-field-types)|optional|The daily supply charge (exclusive of GST) for this controlled load tier|
-|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
-|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
-|»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent|
-|timeOfUseRates|[object]|conditional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
-|» displayName|string|mandatory|Display name of the controlled load rate|
-|» description|string|optional|Description of the controlled load rate|
-|» dailySupplyCharge|[AmountString](#common-field-types)|optional|The daily supply charge (exclusive of GST) for this controlled load tier|
-|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
-|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
-|»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent|
+|displayName|string|mandatory|A display name for the controlled load.|
+|rateBlockUType|[Enum](#common-field-types)|mandatory|Specifies the type of controlloed load rate.|
+|startDate|[DateString](#common-field-types)|optional|Optional start date of the application of the controlled load rate.|
+|endDate|[DateString](#common-field-types)|optional|Optional end date of the application of the controlled load rate.|
+|singleRate|object|conditional|Object representing a single controlled load rate. Required if _rateBlockUType_ is `singleRate`.|
+|» displayName|string|mandatory|Display name of the controlled load rate.|
+|» description|string|optional|Description of the controlled load rate.|
+|» dailySupplyCharge|[AmountString](#common-field-types)|optional|The daily supply charge (exclusive of GST) for this controlled load tier.|
+|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume.|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST).|
+|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be `KWH` if absent.|
+|»» volume|number|optional|Volume in kWh that this rate applies to. Only applicable for 'stepped' rates where different rates apply for different volumes of usage in a period.|
+|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to `P1Y` if absent.|
+|timeOfUseRates|[object]|conditional|Array of objects representing time of use rates. Required if _rateBlockUType_ is `timeOfUseRates`.|
+|» displayName|string|mandatory|Display name of the controlled load rate.|
+|» description|string|optional|Description of the controlled load rate.|
+|» dailySupplyCharge|[AmountString](#common-field-types)|optional|The daily supply charge (exclusive of GST) for this controlled load tier.|
+|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume.|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST).|
+|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be `KWH` if absent.|
+|»» volume|number|optional|Volume in kWh that this rate applies to. Only applicable for 'stepped' rates where different rates apply for different volumes of usage in a period.|
+|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to `P1Y` if absent.|
 |» timeOfUse|[object]|mandatory|Array of times of use.|
-|»» days|[[Enum](#common-field-types)]|optional|The days that the rate applies to|
-|»» startTime|[ExternalRef](#common-field-types)|conditional|The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
-|»» endTime|[ExternalRef](#common-field-types)|conditional|The end of the time period per day for which the controlled load rate applies. Required if startTime provided.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
-|»» additionalInfo|string|conditional|Display text providing more information on the contrlled load, for e.g. controlled load availability if specific day/time is not known. Required if startTime and endTime absent or if additionalInfoUri provided|
-|»» additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the controlled load|
-|» type|[Enum](#common-field-types)|mandatory|The type of usage that the rate applies to|
+|»» days|[[Enum](#common-field-types)]|optional|The days that the rate applies to.|
+|»» startTime|[ExternalRef](#common-field-types)|conditional|The beginning of the time period per day for which the controlled load rate applies. Required if _endTime_ provided.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|»» endTime|[ExternalRef](#common-field-types)|conditional|The end of the time period per day for which the controlled load rate applies. Required if _startTime_ provided.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|»» additionalInfo|string|conditional|Display text providing more information on the controlled load, for e.g., controlled load availability if specific day/time is not known. Required if _startTime_ and _endTime_ absent or if _additionalInfoUri_ provided.|
+|»» additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the controlled load.|
+|» type|[Enum](#common-field-types)|mandatory|The type of usage that the rate applies to.|
 
 <h4 id="cdr-energy-api_energyplancontrolledloadv2_enumerated-values-main">Enumerated Values</h4>
 
@@ -7889,16 +7908,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 ]
 ```
 
-*Optional list of incentives available for the contract*
+*Optional list of incentives available for the contract.*
 
 <h3 id="cdr-energy-api_energyplanincentives_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|mandatory|The display name of the incentive|
-|description|string|mandatory|The description of the incentive|
-|category|[Enum](#common-field-types)|mandatory|The type of the incentive|
-|eligibility|string|optional|A display message outlining an eligibility criteria that may apply|
+|displayName|string|mandatory|The display name of the incentive.|
+|description|string|mandatory|The description of the incentive.|
+|category|[Enum](#common-field-types)|mandatory|The type of the incentive.|
+|eligibility|string|optional|A display message outlining an eligibility criteria that may apply.|
 
 <h4 id="cdr-energy-api_energyplanincentives_enumerated-values-main">Enumerated Values</h4>
 
@@ -7942,27 +7961,27 @@ To perform this operation, you must be authenticated and authorised with the fol
 ]
 ```
 
-*Optional list of discounts available for the contract*
+*Optional list of discounts available for the contract.*
 
 <h3 id="cdr-energy-api_energyplandiscounts_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|mandatory|The display name of the discount|
-|description|string|optional|The description of the discount|
-|type|[Enum](#common-field-types)|mandatory|The type of the discount|
-|category|[Enum](#common-field-types)|optional|The type of the discount.  Mandatory if the discount type is CONDITIONAL|
-|endDate|[DateString](#common-field-types)|optional|Optional end date for the discount after which the discount is no longer available|
-|methodUType|[Enum](#common-field-types)|mandatory|The method of calculation of the discount|
-|percentOfBill|object|conditional|Required if methodUType is percentOfBill|
-|» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the bill amount|
-|percentOfUse|object|conditional|Required if methodUType is percentOfUse|
-|» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the usageamount|
-|fixedAmount|object|conditional|Required if methodUType is fixedAmount|
-|» amount|[AmountString](#common-field-types)|mandatory|The amount of the discount|
-|percentOverThreshold|object|conditional|Required if methodUType is percentOverThreshold|
-|» rate|[RateString](#common-field-types)|mandatory|The rate of the discount over the usage amount|
-|» usageAmount|[AmountString](#common-field-types)|mandatory|The usage amount threshold above which the discount applies|
+|displayName|string|mandatory|The display name of the discount.|
+|description|string|optional|The description of the discount.|
+|type|[Enum](#common-field-types)|mandatory|The type of the discount.|
+|category|[Enum](#common-field-types)|optional|The type of the discount. Mandatory if the discount _type_ is `CONDITIONAL`.|
+|endDate|[DateString](#common-field-types)|optional|Optional end date for the discount after which the discount is no longer available.|
+|methodUType|[Enum](#common-field-types)|mandatory|The method of calculation of the discount.|
+|percentOfBill|object|conditional|Required if _methodUType_ is `percentOfBill`.|
+|» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the bill amount.|
+|percentOfUse|object|conditional|Required if _methodUType_ is `percentOfUse`.|
+|» rate|[RateString](#common-field-types)|mandatory|The rate of the discount applied to the _usageamount_.|
+|fixedAmount|object|conditional|Required if _methodUType_ is `fixedAmount`.|
+|» amount|[AmountString](#common-field-types)|mandatory|The amount of the discount.|
+|percentOverThreshold|object|conditional|Required if _methodUType_ is `percentOverThreshold`.|
+|» rate|[RateString](#common-field-types)|mandatory|The rate of the discount over the usage amount.|
+|» usageAmount|[AmountString](#common-field-types)|mandatory|The usage amount threshold above which the discount applies.|
 
 <h4 id="cdr-energy-api_energyplandiscounts_enumerated-values-main">Enumerated Values</h4>
 
@@ -8006,20 +8025,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 ]
 ```
 
-*Optional list of charges applicable to green power*
+*Optional list of charges applicable to green power.*
 
 <h3 id="cdr-energy-api_energyplangreenpowercharges_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|mandatory|The display name of the charge|
-|description|string|optional|The description of the charge|
-|scheme|[Enum](#common-field-types)|mandatory|The applicable green power scheme|
-|type|[Enum](#common-field-types)|mandatory|The type of charge|
-|tiers|[object]|mandatory|Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power|
-|» percentGreen|[RateString](#common-field-types)|mandatory|The upper percentage of green power used applicable for this tier|
-|» rate|[RateString](#common-field-types)|conditional|The rate of the charge if the type implies the application of a rate|
-|» amount|[AmountString](#common-field-types)|conditional|The amount of the charge if the type implies the application of a fixed amount|
+|displayName|string|mandatory|The display name of the charge.|
+|description|string|optional|The description of the charge.|
+|scheme|[Enum](#common-field-types)|mandatory|The applicable green power scheme.|
+|type|[Enum](#common-field-types)|mandatory|The type of charge.|
+|tiers|[object]|mandatory|Array of charge tiers based on the percentage of green power used for the period implied by the type. Array is in order of increasing percentage of green power.|
+|» percentGreen|[RateString](#common-field-types)|mandatory|The upper percentage of green power used applicable for this tier.|
+|» rate|[RateString](#common-field-types)|conditional|The rate of the charge if the type implies the application of a rate.|
+|» amount|[AmountString](#common-field-types)|conditional|The amount of the charge if the type implies the application of a fixed amount.|
 
 <h4 id="cdr-energy-api_energyplangreenpowercharges_enumerated-values-main">Enumerated Values</h4>
 
@@ -8052,15 +8071,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 ]
 ```
 
-*Eligibility restrictions or requirements*
+*Eligibility restrictions or requirements.*
 
 <h3 id="cdr-energy-api_energyplaneligibility_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|type|[Enum](#common-field-types)|mandatory|The type of the eligibility restriction.<br/>The CONTINGENT_PLAN value indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up)|
-|information|string|mandatory|Information of the eligibility restriction specific to the type of the restriction|
-|description|string|optional|A description of the eligibility restriction|
+|type|[Enum](#common-field-types)|mandatory|The type of the eligibility restriction.<br/>The `CONTINGENT_PLAN` value indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the _fuelType_ is `ELECTRICITY` then a `GAS` plan from the same retailer must be taken up).|
+|information|string|mandatory|Information of the eligibility restriction specific to the type of the restriction.|
+|description|string|optional|A description of the eligibility restriction.|
 
 <h4 id="cdr-energy-api_energyplaneligibility_enumerated-values-main">Enumerated Values</h4>
 
@@ -8108,17 +8127,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 ]
 ```
 
-*An array of fees applicable to the plan*
+*An array of fees applicable to the plan.*
 
 <h3 id="cdr-energy-api_energyplanfees_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|type|[Enum](#common-field-types)|mandatory|The type of the fee|
-|term|[Enum](#common-field-types)|mandatory|The term of the fee|
-|amount|[AmountString](#common-field-types)|conditional|The fee amount. Required if term is not PERCENT_OF_BILL|
-|rate|[RateString](#common-field-types)|conditional|The fee rate. Required if term is PERCENT_OF_BILL|
-|description|string|optional|A description of the fee|
+|type|[Enum](#common-field-types)|mandatory|The type of the fee.|
+|term|[Enum](#common-field-types)|mandatory|The term of the fee.|
+|amount|[AmountString](#common-field-types)|conditional|The fee amount. Required if _term_ is not `PERCENT_OF_BILL`.|
+|rate|[RateString](#common-field-types)|conditional|The fee rate. Required if _term_ is `PERCENT_OF_BILL`.|
+|description|string|optional|A description of the fee.|
 
 <h4 id="cdr-energy-api_energyplanfees_enumerated-values-main">Enumerated Values</h4>
 
@@ -8209,37 +8228,37 @@ To perform this operation, you must be authenticated and authorised with the fol
 ]
 ```
 
-*Array of feed in tariffs for solar power*
+*Array of feed in tariffs for solar power.*
 
 <h3 id="cdr-energy-api_energyplansolarfeedintariffv3_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|displayName|string|mandatory|The name of the tariff|
-|description|string|optional|A description of the tariff|
-|startDate|[DateString](#common-field-types)|optional|The start date of the application of the feed in tariff|
-|endDate|[DateString](#common-field-types)|optional|The end date of the application of the feed in tariff|
-|scheme|[Enum](#common-field-types)|mandatory|The applicable scheme|
-|payerType|[Enum](#common-field-types)|mandatory|The type of the payer|
-|tariffUType|[Enum](#common-field-types)|mandatory|Reference to the applicable tariff structure|
-|singleTariff|object|conditional|Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff|
-|» rates|[object]|mandatory|Array of feed in rates|
-|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
-|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
-|»» volume|number|optional|Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent|
-|timeVaryingTariffs|[object]|conditional|Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs|
-|» type|[Enum](#common-field-types)|optional|The type of the charging time period. If absent applies to all periods|
-|» displayName|string|mandatory|Display name of the tariff|
-|» rates|[object]|optional|Array of feed in rates|
-|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
-|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
-|»» volume|number|optional|Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent|
-|» timeVariations|[object]|mandatory|Array of time periods for which this tariff is applicable|
-|»» days|[[Enum](#common-field-types)]|mandatory|The days that the tariff applies to. At least one entry required|
-|»» startTime|[ExternalRef](#common-field-types)|optional|The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
-|»» endTime|[ExternalRef](#common-field-types)|optional|The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|displayName|string|mandatory|The name of the tariff.|
+|description|string|optional|A description of the tariff.|
+|startDate|[DateString](#common-field-types)|optional|The start date of the application of the feed in tariff.|
+|endDate|[DateString](#common-field-types)|optional|The end date of the application of the feed in tariff.|
+|scheme|[Enum](#common-field-types)|mandatory|The applicable scheme.|
+|payerType|[Enum](#common-field-types)|mandatory|The type of the payer.|
+|tariffUType|[Enum](#common-field-types)|mandatory|Reference to the applicable tariff structure.|
+|singleTariff|object|conditional|Represents a constant tariff. Mandatory if _tariffUType_ is set to `singleTariff`.|
+|» rates|[object]|mandatory|Array of feed in rates.|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST).|
+|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be `KWH` if absent.|
+|»» volume|number|optional|Volume that this rate applies to. Only applicable for 'stepped' rates where different rates apply for different volumes of usage in a period.|
+|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to `P1Y` if absent.|
+|timeVaryingTariffs|[object]|conditional|Represents a tariff based on time. Mandatory if _tariffUType_ is set to `timeVaryingTariffs`.|
+|» type|[Enum](#common-field-types)|optional|The type of the charging time period. If absent applies to all periods.|
+|» displayName|string|mandatory|Display name of the tariff.|
+|» rates|[object]|optional|Array of feed in rates.|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST).|
+|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be `KWH` if absent.|
+|»» volume|number|optional|Volume that this rate applies to. Only applicable for 'stepped' rates where different rates apply for different volumes of usage in a period.|
+|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to `P1Y` if absent.|
+|» timeVariations|[object]|mandatory|Array of time periods for which this tariff is applicable.|
+|»» days|[[Enum](#common-field-types)]|mandatory|The days that the tariff applies to. At least one entry required.|
+|»» startTime|[ExternalRef](#common-field-types)|optional|The beginning of the time period per day for which the tariff applies. If absent assumes start of day (i.e. midnight).  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|»» endTime|[ExternalRef](#common-field-types)|optional|The end of the time period per day for which the tariff applies. If absent assumes end of day (i.e. one second before midnight).  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
 
 <h4 id="cdr-energy-api_energyplansolarfeedintariffv3_enumerated-values-main">Enumerated Values</h4>
 
@@ -8365,58 +8384,58 @@ To perform this operation, you must be authenticated and authorised with the fol
 ]
 ```
 
-*Array of tariff periods*
+*Array of tariff periods.*
 
 <h3 id="cdr-energy-api_energyplantariffperiodv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be other if absent|
-|displayName|string|mandatory|The name of the tariff period|
-|startDate|string|mandatory|The start date of the tariff period in a calendar year.  Formatted in mm-dd format|
-|endDate|string|mandatory|The end date of the tariff period in a calendar year.  Formatted in mm-dd format|
+|type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be other if absent.|
+|displayName|string|mandatory|The name of the tariff period.|
+|startDate|string|mandatory|The start date of the tariff period in a calendar year. Formatted in mm-dd format.|
+|endDate|string|mandatory|The end date of the tariff period in a calendar year. Formatted in mm-dd format.|
 |dailySupplyChargeType|[Enum](#common-field-types)|optional|Specifies if daily supply charge is single or banded.|
-|dailySupplyCharge|[AmountString](#common-field-types)|conditional|The amount of access charge for the tariff period, in dollars per day exclusive of GST. Mandatory if dailySupplyChargeType is SINGLE|
-|bandedDailySupplyCharges|[object]|conditional|Array representing banded daily supply charge rates.  Mandatory if dailySupplyChargeType is BAND|
-|» unitPrice|[AmountString](#common-field-types)|mandatory|The amount of daily supply charge for the band, in dollars per day exclusive of GST|
-|» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be DAYS if absent|
-|» volume|number|optional|Volume the charge applies to|
+|dailySupplyCharge|[AmountString](#common-field-types)|conditional|The amount of access charge for the tariff period, in dollars per day exclusive of GST. Mandatory if _dailySupplyChargeType_ is `SINGLE`.|
+|bandedDailySupplyCharges|[object]|conditional|Array representing banded daily supply charge rates. Mandatory if _dailySupplyChargeType_ is `BAND`.|
+|» unitPrice|[AmountString](#common-field-types)|mandatory|The amount of daily supply charge for the band, in dollars per day exclusive of GST.|
+|» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be `DAYS` if absent.|
+|» volume|number|optional|Volume the charge applies to.|
 |timeZone|[Enum](#common-field-types)|optional|Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.|
-|rateBlockUType|[Enum](#common-field-types)|mandatory|Specifies the type of rate applicable to this tariff period|
-|singleRate|object|conditional|Object representing a single rate.  Required if rateBlockUType is singleRate|
-|» displayName|string|mandatory|Display name of the rate|
-|» description|string|optional|Description of the rate|
-|» generalUnitPrice|[AmountString](#common-field-types)|conditional|The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’|
-|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST)|
-|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
-|»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|timeOfUseRates|[object]|conditional|Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates|
-|» displayName|string|mandatory|Display name of the rate|
-|» description|string|optional|Description of the rate|
-|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume|
-|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per  measure unit (exclusive of GST)|
-|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
-|»» volume|number|optional|Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period|
-|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent|
-|» timeOfUse|[object]|mandatory|Array of times of use|
-|»» days|[[Enum](#common-field-types)]|mandatory|The days that the rate applies to|
+|rateBlockUType|[Enum](#common-field-types)|mandatory|Specifies the type of rate applicable to this tariff period.|
+|singleRate|object|conditional|Object representing a single rate. Required if _rateBlockUType_ is `singleRate`.|
+|» displayName|string|mandatory|Display name of the rate.|
+|» description|string|optional|Description of the rate.|
+|» generalUnitPrice|[AmountString](#common-field-types)|conditional|The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST. Only required if _pricingModel_ field is `QUOTA`.|
+|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume.|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST).|
+|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be `KWH` if absent.|
+|»» volume|number|optional|Volume in kWh that this rate applies to. Only applicable for 'stepped' rates where different rates apply for different volumes of usage in a period.|
+|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|timeOfUseRates|[object]|conditional|Array of objects representing time of use rates. Required if _rateBlockUType_ is `timeOfUseRates`.|
+|» displayName|string|mandatory|Display name of the rate.|
+|» description|string|optional|Description of the rate.|
+|» rates|[object]|mandatory|Array of controlled load rates in order of usage volume.|
+|»» unitPrice|[AmountString](#common-field-types)|mandatory|Unit price of usage per measure unit (exclusive of GST).|
+|»» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be `KWH` if absent.|
+|»» volume|number|optional|Volume in kWh that this rate applies to. Only applicable for 'stepped' rates where different rates apply for different volumes of usage in a period.|
+|» period|[ExternalRef](#common-field-types)|optional|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to `P1Y` if absent.|
+|» timeOfUse|[object]|mandatory|Array of times of use.|
+|»» days|[[Enum](#common-field-types)]|mandatory|The days that the rate applies to.|
 |»» startTime|[ExternalRef](#common-field-types)|mandatory|Start of the period.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
 |»» endTime|[ExternalRef](#common-field-types)|mandatory|End of the period.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
-|» type|[Enum](#common-field-types)|mandatory|The type of usage that the rate applies to|
-|demandCharges|[object]|conditional|Array of demand charges.  Required if rateBlockUType is demandCharges|
-|» displayName|string|mandatory|Display name of the charge|
-|» description|string|optional|Description of the charge|
-|» amount|[AmountString](#common-field-types)|mandatory|The charge amount per  measure unit exclusive of GST|
-|» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of charge amount. Assumed to be KWH if absent|
+|» type|[Enum](#common-field-types)|mandatory|The type of usage that the rate applies to.|
+|demandCharges|[object]|conditional|Array of demand charges. Required if _rateBlockUType_ is `demandCharges`.|
+|» displayName|string|mandatory|Display name of the charge.|
+|» description|string|optional|Description of the charge.|
+|» amount|[AmountString](#common-field-types)|mandatory|The charge amount per measure unit exclusive of GST.|
+|» measureUnit|[Enum](#common-field-types)|optional|The measurement unit of charge amount. Assumed to be `KWH` if absent.|
 |» startTime|[ExternalRef](#common-field-types)|mandatory|Start of the period.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
 |» endTime|[ExternalRef](#common-field-types)|mandatory|End of the period.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
-|» days|[[Enum](#common-field-types)]|optional|The days that the demand tariff applies to|
-|» minDemand|[AmountString](#common-field-types)|optional|Minimum demand for this demand tariff in kW.  If absent then 0 is assumed|
-|» maxDemand|[AmountString](#common-field-types)|optional|Maximum demand for this demand tariff in kW.  If present, must be higher than the value of the minDemand field|
-|» measurementPeriod|[Enum](#common-field-types)|mandatory|Application period for the demand tariff|
-|» chargePeriod|[Enum](#common-field-types)|mandatory|Charge period for the demand tariff|
+|» days|[[Enum](#common-field-types)]|optional|The days that the demand tariff applies to.|
+|» minDemand|[AmountString](#common-field-types)|optional|Minimum demand for this demand tariff in kW. If absent then `0` is assumed.|
+|» maxDemand|[AmountString](#common-field-types)|optional|Maximum demand for this demand tariff in kW. If present, must be higher than the value of the _minDemand_ field.|
+|» measurementPeriod|[Enum](#common-field-types)|mandatory|Application period for the demand tariff.|
+|» chargePeriod|[Enum](#common-field-types)|mandatory|Charge period for the demand tariff.|
 
 <h4 id="cdr-energy-api_energyplantariffperiodv2_enumerated-values-main">Enumerated Values</h4>
 
@@ -8525,17 +8544,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite. To be created in accordance with CDR ID permanence requirements|
-|nationalMeteringId|string|mandatory|The independent ID of the service point, known in the industry as the NMI|
-|servicePointClassification|[Enum](#common-field-types)|mandatory|The classification of the service point as defined in MSATS procedures|
-|servicePointStatus|[Enum](#common-field-types)|mandatory|Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>|
-|jurisdictionCode|[Enum](#common-field-types)|mandatory|Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>|
-|isGenerator|boolean|optional|This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer|
-|validFromDate|[DateString](#common-field-types)|mandatory|The latest start date from which the constituent data sets of this service point became valid|
-|lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the information for this service point was modified|
+|servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite. To be created in accordance with CDR ID permanence requirements.|
+|nationalMeteringId|string|mandatory|The independent ID of the service point, known in the industry as the NMI.|
+|servicePointClassification|[Enum](#common-field-types)|mandatory|The classification of the service point as defined in MSATS procedures.|
+|servicePointStatus|[Enum](#common-field-types)|mandatory|Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>`ACTIVE`: An active, energised, service point</li><li>`DE_ENERGISED`: The service point exists but is deenergised</li><li>`EXTINCT`: The service point has been permanently decommissioned</li><li>`GREENFIELD`: Applies to a service point that has never been energised</li><li>`OFF_MARKET`: Applies when the service point is no longer settled in the NEM.</li></ul>|
+|jurisdictionCode|[Enum](#common-field-types)|mandatory|Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>`ALL`: All Jurisdictions</li><li>`ACT`: Australian Capital Territory</li><li>`NEM`: National Electricity Market</li><li>`NSW`: New South Wales</li><li>`QLD`: Queensland</li><li>`SA`: South Australia</li><li>`TAS`: Tasmania</li><li>`VIC`: Victoria.</li></ul>|
+|isGenerator|boolean|optional|This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit (this may include generator auxiliary loads). If absent defaults to `false`. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer.|
+|validFromDate|[DateString](#common-field-types)|mandatory|The latest start date from which the constituent data sets of this service point became valid.|
+|lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the information for this service point was modified.|
 |consumerProfile|object|optional|none|
-|» classification|[Enum](#common-field-types)|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
-|» threshold|[Enum](#common-field-types)|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
+|» classification|[Enum](#common-field-types)|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments.|
+|» threshold|[Enum](#common-field-types)|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>`LOW`: Consumption is less than the 'lower consumption threshold' as defined in the National Energy Retail Regulations</li><li>`MEDIUM`: Consumption is equal to or greater than the 'lower consumption threshold', but less than the 'upper consumption threshold', as defined in the National Energy Retail Regulations</li><li>`HIGH`: Consumption is equal to or greater than the 'upper consumption threshold' as defined in the National Energy Retail Regulations.</li></ul>|
 
 <h4 id="cdr-energy-api_energyservicepoint_enumerated-values-main">Enumerated Values</h4>
 
@@ -8672,45 +8691,45 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|servicePointId|string|mandatory|The tokenised ID of the service point for use in the CDR APIs.  Created according to the CDR rules for ID permanence|
-|nationalMeteringId|string|mandatory|The independent ID of the service point, known in the industry as the NMI|
-|servicePointClassification|[Enum](#common-field-types)|mandatory|The classification of the service point as defined in MSATS procedures|
-|servicePointStatus|[Enum](#common-field-types)|mandatory|Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>|
-|jurisdictionCode|[Enum](#common-field-types)|mandatory|Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>|
-|isGenerator|boolean|optional|This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer|
-|validFromDate|[DateString](#common-field-types)|mandatory|The latest start date from which the constituent data sets of this service point became valid|
-|lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the information for this service point was modified|
+|servicePointId|string|mandatory|The tokenised ID of the service point for use in the CDR APIs. Created according to the CDR rules for ID permanence.|
+|nationalMeteringId|string|mandatory|The independent ID of the service point, known in the industry as the NMI.|
+|servicePointClassification|[Enum](#common-field-types)|mandatory|The classification of the service point as defined in MSATS procedures.|
+|servicePointStatus|[Enum](#common-field-types)|mandatory|Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>`ACTIVE`: An active, energised, service point</li><li>`DE_ENERGISED`: The service point exists but is deenergised</li><li>`EXTINCT`: The service point has been permanently decommissioned</li><li>`GREENFIELD`: Applies to a service point that has never been energised</li><li>`OFF_MARKET`: Applies when the service point is no longer settled in the NEM.</li></ul>|
+|jurisdictionCode|[Enum](#common-field-types)|mandatory|Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>`ALL`: All Jurisdictions</li><li>`ACT`: Australian Capital Territory</li><li>`NEM`: National Electricity Market</li><li>`NSW`: New South Wales</li><li>`QLD`: Queensland</li><li>`SA`: South Australia</li><li>`TAS`: Tasmania</li><li>`VIC`: Victoria.</li></ul>|
+|isGenerator|boolean|optional|This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to `false`. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer.|
+|validFromDate|[DateString](#common-field-types)|mandatory|The latest start date from which the constituent data sets of this service point became valid.|
+|lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the information for this service point was modified.|
 |consumerProfile|object|optional|none|
-|» classification|[Enum](#common-field-types)|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments|
-|» threshold|[Enum](#common-field-types)|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>|
+|» classification|[Enum](#common-field-types)|optional|A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments.|
+|» threshold|[Enum](#common-field-types)|optional|A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>`LOW`: Consumption is less than the 'lower consumption threshold' as defined in the National Energy Retail Regulations</li><li>`MEDIUM`: Consumption is equal to or greater than the 'lower consumption threshold', but less than the 'upper consumption threshold', as defined in the National Energy Retail Regulations</li><li>`HIGH`: Consumption is equal to or greater than the 'upper consumption threshold' as defined in the National Energy Retail Regulations.</li></ul>|
 |distributionLossFactor|object|mandatory|none|
-|» code|string|mandatory|A code used to identify data loss factor for the service point values.  Refer to AEMO distribution loss factor documents for each financial year to interpret|
-|» description|string|mandatory|Description of the data loss factor code and value|
-|» lossValue|string|mandatory|The value associated with the loss factor code|
+|» code|string|mandatory|A code used to identify data loss factor for the service point values. Refer to AEMO distribution loss factor documents for each financial year to interpret.|
+|» description|string|mandatory|Description of the data loss factor code and value.|
+|» lossValue|string|mandatory|The value associated with the loss factor code.|
 |relatedParticipants|[object]|mandatory|none|
-|» party|string|mandatory|The name of the party/organisation related to this service point|
-|» role|[Enum](#common-field-types)|mandatory|The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li>**FRMP** - Financially Responsible Market Participant</li><li>**LNSP** - Local Network Service Provider or Embedded Network Manager for child connection points</li><li>**DRSP** - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul>|
-|location|[CommonPhysicalAddress](#schemacdr-energy-apicommonphysicaladdress)|mandatory|Location of the servicepoint|
-|meters|[object]|optional|The meters associated with the service point. This may be empty where there are no meters physically installed at the service point|
-|» meterId|string|mandatory|The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique|
-|» specifications|object|mandatory|Technical characteristics of the meter|
-|»» status|[Enum](#common-field-types)|mandatory|A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>|
-|»» installationType|[Enum](#common-field-types)|mandatory|The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>|
-|»» manufacturer|string|optional|Free text field to identify the manufacturer of the installed meter|
-|»» model|string|optional|Free text field to identify the meter manufacturer’s designation for the meter model|
-|»» readType|string|optional|Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>|
-|»» nextScheduledReadDate|[DateString](#common-field-types)|optional|This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required|
-|» registers|[object]|optional|Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point|
-|»» registerId|string|mandatory|Unique identifier of the register within this service point.  Is not globally unique|
-|»» registerSuffix|string|optional|Register suffix of the meter register where the meter reads are obtained|
+|» party|string|mandatory|The name of the party/organisation related to this service point.|
+|» role|[Enum](#common-field-types)|mandatory|The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li>`FRMP`: Financially Responsible Market Participant</li><li>`LNSP`: Local Network Service Provider or Embedded Network Manager for child connection points</li><li>`DRSP`: wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included.</li></ul>|
+|location|[CommonPhysicalAddress](#schemacdr-energy-apicommonphysicaladdress)|mandatory|Location of the servicepoint.|
+|meters|[object]|optional|The meters associated with the service point. This may be empty where there are no meters physically installed at the service point.|
+|» meterId|string|mandatory|The meter ID uniquely identifies a meter for a given service point. It is unique in the context of the service point. It is not globally unique.|
+|» specifications|object|mandatory|Technical characteristics of the meter.|
+|»» status|[Enum](#common-field-types)|mandatory|A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>`CURRENT`: Applies when a meter is current and not disconnected</li><li>`DISCONNECTED`: Applies when a meter is present but has been remotely disconnected.</li></ul>|
+|»» installationType|[Enum](#common-field-types)|mandatory|The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>`BASIC`: Accumulation Meter – Type 6</li><li>`COMMS1`: Interval Meter with communications – Type 1</li><li>`COMMS2`: Interval Meter with communications – Type 2</li><li>`COMMS3`: Interval Meter with communications – Type 3</li><li>`COMMS4`: Interval Meter with communications – Type 4</li><li>`COMMS4C`: CT connected metering installation that meets the minimum services specifications</li><li>`COMMS4D`: Whole current metering installation that meets the minimum services specifications</li><li>`MRAM`: Small customer metering installation – Type 4A</li><li>`MRIM`: Manually Read Interval Meter – Type 5</li><li>`UMCP`: Unmetered Supply – Type 7</li><li>`VICAMI`: A relevant metering installation as defined in clause 9.9C of the NER</li><li>`NCONUML`: Non-contestable unmeter load - Introduced as part of Global Settlement.</li></ul>|
+|»» manufacturer|string|optional|Free text field to identify the manufacturer of the installed meter.|
+|»» model|string|optional|Free text field to identify the meter manufacturer's designation for the meter model.|
+|»» readType|string|optional|Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (`R`) or Manual (`M`)</li><li>Second Character = Mode: `T` = telephone, `W` = wireless, `P` = powerline, `I` = infra-red, `G` = galvanic, `V` = visual</li><li>Third Character = Frequency of Scheduled Meter Readings: `1` = Twelve times per year, `2` = Six times per year, `3` = Four times per year, `D` = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: `A` = 5 minute, `B` = 15 minute, `C` = 30 minute, `D` = Cannot convert to 5 minute (i.e. due to metering installation de-energised), `M` - Manually Read Accumulation Meter.</li></ul>For example, <ul><li>`MV3` = Manual, Visual, Quarterly</li><li>`MV3M` = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li><li>`RWDC` = Remote, Wireless, Daily, 30 minutes interval.</li></ul>|
+|»» nextScheduledReadDate|[DateString](#common-field-types)|optional|This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required.|
+|» registers|[object]|optional|Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point.|
+|»» registerId|string|mandatory|Unique identifier of the register within this service point. Is not globally unique.|
+|»» registerSuffix|string|optional|Register suffix of the meter register where the meter reads are obtained.|
 |»» averagedDailyLoad|number|optional|The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.|
-|»» registerConsumptionType|[Enum](#common-field-types)|mandatory|Indicates the consumption type of register|
-|»» networkTariffCode|string|optional|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider|
-|»» unitOfMeasure|string|optional|The unit of measure for data held in this register|
-|»» timeOfDay|[Enum](#common-field-types)|optional|Code to identify the time validity of register contents|
-|»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy|
-|»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
-|»» consumptionType|[Enum](#common-field-types)|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>|
+|»» registerConsumptionType|[Enum](#common-field-types)|mandatory|Indicates the consumption type of register.|
+|»» networkTariffCode|string|optional|The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider.|
+|»» unitOfMeasure|string|optional|The unit of measure for data held in this register.|
+|»» timeOfDay|[Enum](#common-field-types)|optional|Code to identify the time validity of register contents.|
+|»» multiplier|number|optional|Multiplier required to take a register value and turn it into a value representing billable energy.|
+|»» controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime.|
+|»» consumptionType|[Enum](#common-field-types)|optional|Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>`ACTUAL`: implies volume of energy actually metered between two dates</li><li>`CUMULATIVE`: indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates.</li></ul>|
 
 <h4 id="cdr-energy-api_energyservicepointdetail_enumerated-values-main">Enumerated Values</h4>
 
@@ -8811,8 +8830,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     ],
     "readQualities": [
       {
-        "startInterval": 0,
-        "endInterval": 0,
+        "startInterval": 1,
+        "endInterval": 1,
         "quality": "SUBSTITUTE"
       }
     ]
@@ -8824,26 +8843,26 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements|
-|registerId|string|optional|Register ID of the meter register where the meter reads are obtained|
-|registerSuffix|string|mandatory|Register suffix of the meter register where the meter reads are obtained|
-|meterId|string|optional|Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.|
-|controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime|
-|readStartDate|[DateString](#common-field-types)|mandatory|Date when the meter reads start in AEST and assumed to start from 12:00 am AEST.|
-|readEndDate|[DateString](#common-field-types)|optional|Date when the meter reads end in AEST.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate.|
+|servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite. To be created in accordance with CDR ID permanence requirements.|
+|registerId|string|optional|Register ID of the meter register where the meter reads are obtained.|
+|registerSuffix|string|mandatory|Register suffix of the meter register where the meter reads are obtained.|
+|meterId|string|optional|Meter id/serial number as it appears in customer's bill. ID permanence rules do not apply.|
+|controlledLoad|boolean|optional|Indicates whether the energy recorded by this register is created under a Controlled Load regime.|
+|readStartDate|[DateString](#common-field-types)|mandatory|Date when the meter reads start in AEST and assumed to start from 12:00am AEST.|
+|readEndDate|[DateString](#common-field-types)|optional|Date when the meter reads end in AEST. If absent then assumed to be equal to _readStartDate_. In this case the entry represents data for a single date specified by _readStartDate_.|
 |unitOfMeasure|[ExternalRef](#common-field-types)|optional|Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values.|
-|readUType|[Enum](#common-field-types)|mandatory|Specify the type of the meter read data|
-|basicRead|object|conditional|Mandatory if readUType is set to basicRead|
-|» quality|[Enum](#common-field-types)|optional|The quality of the read taken.  If absent then assumed to be ACTUAL|
-|» value|number|mandatory|Meter read value.  If positive then it means consumption, if negative it means export|
-|intervalRead|object|conditional|Mandatory if readUType is set to intervalRead|
-|» readIntervalLength|[PositiveInteger](#common-field-types)|conditional|Read interval length in minutes. Required when interval-reads query parameter equals FULL or MIN_30|
-|» aggregateValue|number|mandatory|The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export|
-|» intervalReads|[number]|conditional|Array of Interval read values. If positive then it means consumption, if negative it means export. Required when interval-reads query parameter equals FULL or  MIN_30.<br>Each read value indicates the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)|
-|» readQualities|[object]|conditional|Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30|
-|»» startInterval|[PositiveInteger](#common-field-types)|mandatory|Start interval for read quality flag. First read begins at 1|
-|»» endInterval|[PositiveInteger](#common-field-types)|mandatory|End interval for read quality flag|
-|»» quality|[Enum](#common-field-types)|mandatory|The quality of the read taken|
+|readUType|[Enum](#common-field-types)|mandatory|Specify the type of the meter read data.|
+|basicRead|object|conditional|Mandatory if _readUType_ is set to `basicRead`.|
+|» quality|[Enum](#common-field-types)|optional|The quality of the read taken. If absent then assumed to be `ACTUAL`.|
+|» value|number|mandatory|Meter read value. If positive then it means consumption, if negative it means export.|
+|intervalRead|object|conditional|Mandatory if _readUType_ is set to `intervalRead`.|
+|» readIntervalLength|[PositiveInteger](#common-field-types)|conditional|Read interval length in minutes. Required when _interval-reads_ query parameter equals `FULL` or `MIN_30`.|
+|» aggregateValue|number|mandatory|The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export.|
+|» intervalReads|[number]|conditional|Array of Interval read values. If positive then it means consumption, if negative it means export. Required when _interval-reads_ query parameter equals `FULL` or `MIN_30`.<br>Each read value indicates the read for the interval specified by _readIntervalLength_ beginning at midnight of _readStartDate_ (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval).|
+|» readQualities|[object]|conditional|Specifies quality of reads that are not `ACTUAL`. For read indices that are not specified, quality is assumed to be `ACTUAL`. If not present, all quality of all reads are assumed to be actual. Required when _interval-reads_ query parameter equals `FULL` or `MIN_30`.|
+|»» startInterval|[PositiveInteger](#common-field-types)|mandatory|Start interval for read quality flag. First read begins at `1`.|
+|»» endInterval|[PositiveInteger](#common-field-types)|mandatory|End interval for read quality flag.|
+|»» quality|[Enum](#common-field-types)|mandatory|The quality of the read taken.|
 
 <h4 id="cdr-energy-api_energyusageread_enumerated-values-main">Enumerated Values</h4>
 
@@ -8923,14 +8942,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements|
-|approvedCapacity|number|mandatory|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA. Value of 0 indicates no DER record exists for the given servicePointId|
-|availablePhasesCount|[NaturalNumber](#common-field-types)|mandatory|The number of phases available for the installation of DER. Acceptable values are 0, 1, 2 or 3. Value of 0 indicates no DER record exists for the given servicePointId|
-|installedPhasesCount|[NaturalNumber](#common-field-types)|mandatory|The number of phases that DER is connected to. Acceptable values are 0, 1, 2 or 3. Value of 0 indicates no DER record exists for the given servicePointId|
-|islandableInstallation|[Boolean](#common-field-types)|mandatory|For identification of small generating units designed with the ability to operate in an islanded mode|
-|hasCentralProtectionControl|boolean|optional|For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false|
-|protectionMode|object|conditional|Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place|
-|» exportLimitKva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit|
+|servicePointId|string|mandatory|Tokenised ID of the service point to be used for referring to the service point in the CDR API suite. To be created in accordance with CDR ID permanence requirements.|
+|approvedCapacity|number|mandatory|Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA. Value of `0` indicates no DER record exists for the given _servicePointId_.|
+|availablePhasesCount|[NaturalNumber](#common-field-types)|mandatory|The number of phases available for the installation of DER. Acceptable values are `0`, `1`, `2` or `3`. Value of `0` indicates no DER record exists for the given _servicePointId_.|
+|installedPhasesCount|[NaturalNumber](#common-field-types)|mandatory|The number of phases that DER is connected to. Acceptable values are `0`, `1`, `2` or `3`. Value of `0` indicates no DER record exists for the given _servicePointId_.|
+|islandableInstallation|[Boolean](#common-field-types)|mandatory|For identification of small generating units designed with the ability to operate in an islanded mode.|
+|hasCentralProtectionControl|boolean|optional|For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter. If absent then assumed to be `false`.|
+|protectionMode|object|conditional|Required only when the _hasCentralProtectionControl_ flag is set to `true`. One or more of the object fields will be provided to describe the protection modes in place.|
+|» exportLimitKva|number|optional|Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control/relay function. An absent value indicates no limit.|
 |» underFrequencyProtection|number|optional|Protective function limit in Hz.|
 |» underFrequencyProtectionDelay|number|optional|Trip delay time in seconds.|
 |» overFrequencyProtection|number|optional|Protective function limit in Hz.|
@@ -8943,28 +8962,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» sustainedOverVoltageDelay|number|optional|Sustained Over voltage protection delay in seconds.|
 |» frequencyRateOfChange|number|optional|Rate of change of frequency trip point (Hz/s).|
 |» voltageVectorShift|number|optional|Trip angle in degrees.|
-|» interTripScheme|string|optional|Description of the form of inter-trip (e.g. 'from local substation').|
+|» interTripScheme|string|optional|Description of the form of inter-trip (e.g., 'from local substation').|
 |» neutralVoltageDisplacement|number|optional|Trip voltage.|
 |acConnections|[object]|mandatory|none|
-|» connectionIdentifier|number|mandatory|AC Connection ID as defined in the DER register.  Does not align with CDR ID permanence standards|
-|» count|[PositiveInteger](#common-field-types)|mandatory|Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes|
-|» equipmentType|[Enum](#common-field-types)|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.|
-|» manufacturerName|string|conditional|The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER|
-|» inverterSeries|string|conditional|The inverter series. Mandatory if equipmentType is INVERTER|
-|» inverterModelNumber|string|conditional|The inverter model number. Mandatory if equipmentType is INVERTER|
-|» commissioningDate|[DateString](#common-field-types)|mandatory|The date that the DER installation is commissioned|
-|» status|[Enum](#common-field-types)|mandatory|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned|
-|» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER. Default is 0 if value not known|
+|» connectionIdentifier|number|mandatory|AC Connection ID as defined in the DER register. Does not align with CDR ID permanence standards.|
+|» count|[PositiveInteger](#common-field-types)|mandatory|Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes.|
+|» equipmentType|[Enum](#common-field-types)|optional|Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g., rotating machine). If absent, assume equipment type to be `OTHER`.|
+|» manufacturerName|string|conditional|The name of the inverter manufacturer. Mandatory if _equipmentType_ is `INVERTER`.|
+|» inverterSeries|string|conditional|The inverter series. Mandatory if _equipmentType_ is `INVERTER`.|
+|» inverterModelNumber|string|conditional|The inverter model number. Mandatory if _equipmentType_ is `INVERTER`.|
+|» commissioningDate|[DateString](#common-field-types)|mandatory|The date that the DER installation is commissioned.|
+|» status|[Enum](#common-field-types)|mandatory|Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned.|
+|» inverterDeviceCapacity|number|conditional|The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if _equipmentType_ is `INVERTER`. Default is `0` if value not known.|
 |» derDevices|[object]|mandatory|none|
-|»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards|
-|»» count|[PositiveInteger](#common-field-types)|mandatory|Number of devices in the group of DER devices|
-|»» manufacturer|string|optional|The name of the device manufacturer. If absent then assumed to be “unknown”|
-|»» modelNumber|string|optional|The model number of the device. If absent then assumed to be “unknown”|
-|»» status|[Enum](#common-field-types)|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned|
-|»» type|[Enum](#common-field-types)|mandatory|Used to indicate the primary technology used in the DER device|
-|»» subtype|string|optional|Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”|
-|»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group. Default is 0 if value not known|
-|»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”. Default is 0 if value not known|
+|»» deviceIdentifier|number|mandatory|Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards.|
+|»» count|[PositiveInteger](#common-field-types)|mandatory|Number of devices in the group of DER devices.|
+|»» manufacturer|string|optional|The name of the device manufacturer. If absent then assumed to be "unknown".|
+|»» modelNumber|string|optional|The model number of the device. If absent then assumed to be "unknown".|
+|»» status|[Enum](#common-field-types)|optional|Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned.|
+|»» type|[Enum](#common-field-types)|mandatory|Used to indicate the primary technology used in the DER device.|
+|»» subtype|string|optional|Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be "other".|
+|»» nominalRatedCapacity|number|mandatory|Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group. Default is `0` if value not known.|
+|»» nominalStorageCapacity|number|conditional|Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to `STORAGE`. Default is `0` if value not known.|
 
 <h4 id="cdr-energy-api_energyderrecord_enumerated-values-main">Enumerated Values</h4>
 
@@ -9009,11 +9028,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|string|mandatory|The ID of the account.  To be created in accordance with CDR ID permanence requirements|
-|accountNumber|string|optional|Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId|
-|displayName|string|optional|An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder|
-|openStatus|[Enum](#common-field-types)|optional|Open or closed status for the account. If not present then OPEN is assumed|
-|creationDate|[DateString](#common-field-types)|conditional|The date that the account was created or opened. Mandatory if openStatus is OPEN|
+|accountId|string|mandatory|The ID of the account. To be created in accordance with CDR ID permanence requirements.|
+|accountNumber|string|optional|Optional identifier of the account as defined by the data holder. This must be the value presented on physical statements (if it exists) and must not be used for the value of _accountId_.|
+|displayName|string|optional|An optional display name for the account if one exists or can be derived. The content of this field is at the discretion of the data holder.|
+|openStatus|[Enum](#common-field-types)|optional|Open or closed status for the account. If not present then `OPEN` is assumed.|
+|creationDate|[DateString](#common-field-types)|conditional|The date that the account was created or opened. Mandatory if _openStatus_ is `OPEN`.|
 
 <h4 id="cdr-energy-api_energyaccountbasev2_enumerated-values-main">Enumerated Values</h4>
 
@@ -9065,14 +9084,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|object|mandatory|The array of plans containing service points and associated plan details|
-|» plans|[object]|mandatory|The array of plans containing service points and associated plan details|
-|»» nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
-|»» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this plan is linked to.  If there are no service points allocated to this plan then an empty array would be expected|
-|»» planOverview|object|conditional|Mandatory if openStatus is OPEN|
-|»»» displayName|string|optional|The name of the plan if one exists|
-|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
-|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
+|*anonymous*|object|mandatory|The array of plans containing service points and associated plan details.|
+|» plans|[object]|mandatory|The array of plans containing service points and associated plan details.|
+|»» nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans.|
+|»» servicePointIds|[string]|mandatory|An array of _servicePointId_ values, representing NMIs, that this plan is linked to. If there are no service points allocated to this plan then an empty array would be expected.|
+|»» planOverview|object|conditional|Mandatory if _openStatus_ is `OPEN`.|
+|»»» displayName|string|optional|The name of the plan if one exists.|
+|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan.|
+|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan.|
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountdetailv4">EnergyAccountDetailV4</h3>
 <p id="tocSenergyaccountdetailv4" class="orig-anchor"></p>
@@ -9559,31 +9578,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|*anonymous*|object|mandatory|The array of plans containing service points and associated plan details|
-|» plans|[object]|mandatory|The array of plans containing service points and associated plan details|
-|»» nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans|
-|»» servicePointIds|[string]|mandatory|An array of servicePointIds, representing NMIs, that this account is linked to|
-|»» planOverview|object|conditional|Mandatory if openStatus is OPEN|
-|»»» displayName|string|optional|The name of the plan if one exists|
-|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan|
-|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan|
-|»» planDetail|object|conditional|Detail on the plan applicable to this account. Mandatory if openStatus is OPEN|
-|»»» fuelType|[Enum](#common-field-types)|mandatory|The fuel types covered by the plan|
-|»»» isContingentPlan|boolean|optional|Flag that indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up). Has no meaning if the plan has a fuelType of DUAL. If absent the value is assumed to be false|
-|»»» meteringCharges|[object]|optional|Charges for metering included in the plan|
-|»»»» displayName|string|mandatory|Display name of the charge|
-|»»»» description|string|optional|Description of the charge|
-|»»»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified|
-|»»»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range|
-|»»»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|»»» gasContract|[EnergyPlanContractV3](#schemacdr-energy-apienergyplancontractv3)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL|
-|»»» electricityContract|[EnergyPlanContractV3](#schemacdr-energy-apienergyplancontractv3)|conditional|The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL|
-|»» authorisedContacts|[object]|optional|An array of additional contacts that are authorised to act on this account|
-|»»» firstName|string|optional|For people with single names this field need not be present. The single name should be in the lastName field|
-|»»» lastName|string|mandatory|For people with single names the single name should be in this field|
-|»»» middleNames|[string]|optional|Field is mandatory but array may be empty|
-|»»» prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)|
-|»»» suffix|string|optional|Used for a trailing suffix to the name (e.g. Jr)|
+|*anonymous*|object|mandatory|The array of plans containing service points and associated plan details.|
+|» plans|[object]|mandatory|The array of plans containing service points and associated plan details.|
+|»» nickname|string|optional|Optional display name for the plan provided by the customer to help differentiate multiple plans.|
+|»» servicePointIds|[string]|mandatory|An array of _servicePointId_ values, representing NMIs, that this account is linked to.|
+|»» planOverview|object|conditional|Mandatory if _openStatus_ is `OPEN`.|
+|»»» displayName|string|optional|The name of the plan if one exists.|
+|»»» startDate|[DateString](#common-field-types)|mandatory|The start date of the applicability of this plan.|
+|»»» endDate|[DateString](#common-field-types)|optional|The end date of the applicability of this plan.|
+|»» planDetail|object|conditional|Detail on the plan applicable to this account. Mandatory if _openStatus_ is `OPEN`.|
+|»»» fuelType|[Enum](#common-field-types)|mandatory|The fuel types covered by the plan.|
+|»»» isContingentPlan|boolean|optional|Flag that indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the _fuelType_ is `ELECTRICITY` then a `GAS` plan from the same retailer must be taken up). Has no meaning if the plan has a _fuelType_ of `DUAL`. If absent the value is assumed to be `false`.|
+|»»» meteringCharges|[object]|optional|Charges for metering included in the plan.|
+|»»»» displayName|string|mandatory|Display name of the charge.|
+|»»»» description|string|optional|Description of the charge.|
+|»»»» minimumValue|[AmountString](#common-field-types)|mandatory|Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified.|
+|»»»» maximumValue|[AmountString](#common-field-types)|optional|The upper limit of the charge if the charge could occur in a range.|
+|»»»» period|[ExternalRef](#common-field-types)|optional|The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|»»» gasContract|[EnergyPlanContractV3](#schemacdr-energy-apienergyplancontractv3)|conditional|The details of the terms for the supply of electricity under this plan. Is mandatory if _fuelType_ is set to `GAS` or `DUAL`.|
+|»»» electricityContract|[EnergyPlanContractV3](#schemacdr-energy-apienergyplancontractv3)|conditional|The details of the terms for the supply of electricity under this plan. Is mandatory if _fuelType_ is set to `ELECTRICITY` or `DUAL`.|
+|»» authorisedContacts|[object]|optional|An array of additional contacts that are authorised to act on this account.|
+|»»» firstName|string|optional|For people with single names this field need not be present. The single name should be in the _lastName_ field.|
+|»»» lastName|string|mandatory|For people with single names the single name should be in this field.|
+|»»» middleNames|[string]|optional|Field is mandatory but array may be empty.|
+|»»» prefix|string|optional|Also known as title or salutation. The prefix to the name (e.g., Mr, Mrs, Ms, Miss, Sir, etc).|
+|»»» suffix|string|optional|Used for a trailing suffix to the name (e.g., Jr).|
 
 <h4 id="cdr-energy-api_energyaccountdetailv4_enumerated-values-main">Enumerated Values</h4>
 
@@ -9635,27 +9654,27 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)|
-|paymentScheduleUType|[Enum](#common-field-types)|mandatory|The type of object present in this response|
-|cardDebit|object|conditional|Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit|
-|» cardScheme|[Enum](#common-field-types)|mandatory|The type of credit card held on file|
-|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
-|directDebit|object|conditional|Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit|
-|» isTokenised|boolean|optional|Flag indicating that the account details are tokenised, or held in a closed system, and is not accessible through any other channels. False if absent|
-|» bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
-|» accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false|
-|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
-|digitalWallet|object|conditional|Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet|
-|» name|string|mandatory|The display name of the wallet as given by the customer, else a default value defined by the data holder|
-|» identifier|string|mandatory|The identifier of the digital wallet (dependent on type)|
-|» type|[Enum](#common-field-types)|mandatory|The type of the digital wallet identifier|
-|» provider|[Enum](#common-field-types)|mandatory|The provider of the digital wallet|
-|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|» calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>|
-|manualPayment|object|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment|
-|» billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
+|amount|[AmountString](#common-field-types)|optional|Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios).|
+|paymentScheduleUType|[Enum](#common-field-types)|mandatory|The type of object present in this response.|
+|cardDebit|object|conditional|Represents a regular credit card payment schedule. Mandatory if _paymentScheduleUType_ is set to `cardDebit`.|
+|» cardScheme|[Enum](#common-field-types)|mandatory|The type of credit card held on file.|
+|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|» calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>`STATIC`: Indicates a consistent, static amount, per payment</li><li>`BALANCE`: Indicates that the outstanding balance for the account is paid per period</li><li>`CALCULATED`: Indicates that the payment amount is variable and calculated using a pre-defined algorithm.</li></ul>|
+|directDebit|object|conditional|Represents a regular direct debit from a specified bank account. Mandatory if _paymentScheduleUType_ is set to `directDebit`.|
+|» isTokenised|boolean|optional|Flag indicating that the account details are tokenised, or held in a closed system, and is not accessible through any other channels. `false` if absent.|
+|» bsb|string|conditional|The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces. Is required if _isTokenised_ is absent or `false`.|
+|» accountNumber|string|conditional|The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces. Is required if _isTokenised_ is absent or `false`.|
+|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|» calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>`STATIC`: Indicates a consistent, static amount, per payment</li><li>`BALANCE`: Indicates that the outstanding balance for the account is paid per period</li><li>`CALCULATED`: Indicates that the payment amount is variable and calculated using a pre-defined algorithm.</li></ul>|
+|digitalWallet|object|conditional|Represents a regular payment from a digital wallet. Mandatory if _paymentScheduleUType_ is set to `digitalWallet`.|
+|» name|string|mandatory|The display name of the wallet as given by the customer, else a default value defined by the data holder.|
+|» identifier|string|mandatory|The identifier of the digital wallet (dependent on type).|
+|» type|[Enum](#common-field-types)|mandatory|The type of the digital wallet identifier.|
+|» provider|[Enum](#common-field-types)|mandatory|The provider of the digital wallet.|
+|» paymentFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|» calculationType|[Enum](#common-field-types)|mandatory|The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>`STATIC`: Indicates a consistent, static amount, per payment</li><li>`BALANCE`: Indicates that the outstanding balance for the account is paid per period</li><li>`CALCULATED`: Indicates that the payment amount is variable and calculated using a pre-defined algorithm.</li></ul>|
+|manualPayment|object|conditional|Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if _paymentScheduleUType_ is set to `manualPayment`.|
+|» billFrequency|[ExternalRef](#common-field-types)|mandatory|The frequency with which a bill will be issued. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
 
 <h4 id="cdr-energy-api_energypaymentschedule_enumerated-values-main">Enumerated Values</h4>
 
@@ -9715,16 +9734,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|type|[Enum](#common-field-types)|mandatory|Indicator of the method of concession calculation|
-|displayName|string|mandatory|The display name of the concession|
-|additionalInfo|string|conditional|Display text providing more information on the concession. Mandatory if type is VARIABLE|
-|additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the concession|
-|startDate|[DateString](#common-field-types)|optional|Optional start date for the application of the concession|
-|endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the concession|
-|discountFrequency|[ExternalRef](#common-field-types)|conditional|Conditional attribute for frequency at which a concession is applied. Required if type is FIXED_AMOUNT or FIXED_PERCENTAGE. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)|
-|amount|[AmountString](#common-field-types)|conditional|Conditional attribute for the amount of discount for the concession- required if type is FIXED_AMOUNT|
-|percentage|[RateString](#common-field-types)|conditional|Conditional attribute for the percentage of discount of concession - required if type is FIXED_PERCENTAGE|
-|appliedTo|[[Enum](#common-field-types)]|optional|Array of ENUM's to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed|
+|type|[Enum](#common-field-types)|mandatory|Indicator of the method of concession calculation.|
+|displayName|string|mandatory|The display name of the concession.|
+|additionalInfo|string|conditional|Display text providing more information on the concession. Mandatory if _type_ is `VARIABLE`.|
+|additionalInfoUri|[URIString](#common-field-types)|optional|Optional link to additional information regarding the concession.|
+|startDate|[DateString](#common-field-types)|optional|Optional start date for the application of the concession.|
+|endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the concession.|
+|discountFrequency|[ExternalRef](#common-field-types)|conditional|Conditional attribute for frequency at which a concession is applied. Required if type is `FIXED_AMOUNT` or `FIXED_PERCENTAGE`. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|amount|[AmountString](#common-field-types)|conditional|Conditional attribute for the amount of discount for the concession- required if type is `FIXED_AMOUNT`.|
+|percentage|[RateString](#common-field-types)|conditional|Conditional attribute for the percentage of discount of concession - required if type is `FIXED_PERCENTAGE`.|
+|appliedTo|[[Enum](#common-field-types)]|optional|Array of ENUMs to specify what the concession applies to. Multiple ENUM values can be provided. If absent, `USAGE` is assumed.|
 
 <h4 id="cdr-energy-api_energyconcession_enumerated-values-main">Enumerated Values</h4>
 
@@ -9808,25 +9827,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|string|mandatory|The ID of the account for which the invoice was issued|
-|invoiceNumber|string|mandatory|The number assigned to this invoice by the energy Retailer|
-|issueDate|[DateString](#common-field-types)|mandatory|The date that the invoice was actually issued (as opposed to generated or calculated)|
-|dueDate|[DateString](#common-field-types)|optional|The date that the invoice is due to be paid|
-|period|object|conditional|Object containing the start and end date for the period covered by the invoice.  Mandatory if any usage or demand based charges are included in the invoice|
-|» startDate|[DateString](#common-field-types)|mandatory|The start date of the period covered by this invoice|
-|» endDate|[DateString](#common-field-types)|mandatory|The end date of the period covered by this invoice|
-|invoiceAmount|[AmountString](#common-field-types)|optional|The net amount due for this invoice regardless of previous balance|
-|gstAmount|[AmountString](#common-field-types)|optional|The total GST amount for this invoice.  If absent then zero is assumed|
-|payOnTimeDiscount|object|optional|A discount for on time payment|
-|» discountAmount|[AmountString](#common-field-types)|mandatory|The amount that will be discounted if the invoice is paid by the date specified|
-|» gstAmount|[AmountString](#common-field-types)|optional|The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed|
-|» date|[DateString](#common-field-types)|mandatory|The date by which the invoice must be paid to receive the pay on time discount|
-|balanceAtIssue|[AmountString](#common-field-types)|mandatory|The account balance at the time the invoice was issued|
-|servicePoints|[string]|mandatory|Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges|
-|gas|[EnergyInvoiceGasUsageCharges](#schemacdr-energy-apienergyinvoicegasusagecharges)|optional|Object containing charges and credits related to gas usage|
-|electricity|[EnergyInvoiceElectricityUsageCharges](#schemacdr-energy-apienergyinvoiceelectricityusagecharges)|optional|Object containing charges and credits related to electricity usage|
-|accountCharges|[EnergyInvoiceAccountCharges](#schemacdr-energy-apienergyinvoiceaccountcharges)|optional|Object contains account level charges and credits related to electricity usage|
-|paymentStatus|[Enum](#common-field-types)|mandatory|Indicator of the payment status for the invoice|
+|accountId|string|mandatory|The ID of the account for which the invoice was issued.|
+|invoiceNumber|string|mandatory|The number assigned to this invoice by the energy Retailer.|
+|issueDate|[DateString](#common-field-types)|mandatory|The date that the invoice was actually issued (as opposed to generated or calculated).|
+|dueDate|[DateString](#common-field-types)|optional|The date that the invoice is due to be paid.|
+|period|object|conditional|Object containing the start and end date for the period covered by the invoice. Mandatory if any usage or demand based charges are included in the invoice.|
+|» startDate|[DateString](#common-field-types)|mandatory|The start date of the period covered by this invoice.|
+|» endDate|[DateString](#common-field-types)|mandatory|The end date of the period covered by this invoice.|
+|invoiceAmount|[AmountString](#common-field-types)|optional|The net amount due for this invoice regardless of previous balance.|
+|gstAmount|[AmountString](#common-field-types)|optional|The total GST amount for this invoice. If absent then zero is assumed.|
+|payOnTimeDiscount|object|optional|A discount for on time payment.|
+|» discountAmount|[AmountString](#common-field-types)|mandatory|The amount that will be discounted if the invoice is paid by the date specified.|
+|» gstAmount|[AmountString](#common-field-types)|optional|The GST amount that will be discounted if the invoice is paid by the date specified. If absent then zero is assumed.|
+|» date|[DateString](#common-field-types)|mandatory|The date by which the invoice must be paid to receive the pay on time discount.|
+|balanceAtIssue|[AmountString](#common-field-types)|mandatory|The account balance at the time the invoice was issued.|
+|servicePoints|[string]|mandatory|Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges.|
+|gas|[EnergyInvoiceGasUsageCharges](#schemacdr-energy-apienergyinvoicegasusagecharges)|optional|Object containing charges and credits related to gas usage.|
+|electricity|[EnergyInvoiceElectricityUsageCharges](#schemacdr-energy-apienergyinvoiceelectricityusagecharges)|optional|Object containing charges and credits related to electricity usage.|
+|accountCharges|[EnergyInvoiceAccountCharges](#schemacdr-energy-apienergyinvoiceaccountcharges)|optional|Object contains account level charges and credits related to electricity usage.|
+|paymentStatus|[Enum](#common-field-types)|mandatory|Indicator of the payment status for the invoice.|
 
 <h4 id="cdr-energy-api_energyinvoice_enumerated-values-main">Enumerated Values</h4>
 
@@ -9865,15 +9884,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)|
-|totalGenerationCredits|[AmountString](#common-field-types)|mandatory|The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)|
-|totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from gas usage for the period covered by the invoice (exclusive of GST)|
-|totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from gas usage for the period covered by the invoice (exclusive of GST)|
-|otherCharges|[object]|optional|Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)|
-|» type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be other if absent|
-|» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
-|» description|string|mandatory|A free text description of the type of charge|
-|totalGst|[AmountString](#common-field-types)|optional|The total GST for all gas usage charges.  If absent then zero is assumed|
+|totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice (exclusive of GST).|
+|totalGenerationCredits|[AmountString](#common-field-types)|mandatory|The aggregate total of generation credits for the period covered by the invoice (exclusive of GST).|
+|totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from gas usage for the period covered by the invoice (exclusive of GST).|
+|totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from gas usage for the period covered by the invoice (exclusive of GST).|
+|otherCharges|[object]|optional|Optional array of charges that may be part of the invoice (for e.g., environmental charges for C&I consumers) (exclusive of GST).|
+|» type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be other if absent.|
+|» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST).|
+|» description|string|mandatory|A free text description of the type of charge.|
+|totalGst|[AmountString](#common-field-types)|optional|The total GST for all gas usage charges. If absent then zero is assumed.|
 
 <h4 id="cdr-energy-api_energyinvoicegasusagecharges_enumerated-values-main">Enumerated Values</h4>
 
@@ -9916,15 +9935,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)|
-|totalGenerationCredits|[AmountString](#common-field-types)|mandatory|The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)|
-|totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)|
-|totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)|
-|otherCharges|[object]|optional|Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)|
-|» type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be other if absent|
-|» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST)|
-|» description|string|mandatory|A free text description of the type of charge|
-|totalGst|[AmountString](#common-field-types)|optional|The total GST for all electricity usage charges.  If absent then zero is assumed|
+|totalUsageCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of usage charges for the period covered by the invoice (exclusive of GST).|
+|totalGenerationCredits|[AmountString](#common-field-types)|mandatory|The aggregate total of generation credits for the period covered by the invoice (exclusive of GST).|
+|totalOnceOffCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST).|
+|totalOnceOffDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST).|
+|otherCharges|[object]|optional|Optional array of charges that may be part of the invoice (for e.g., environmental charges for C&I consumers) (exclusive of GST).|
+|» type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be other if absent.|
+|» amount|[AmountString](#common-field-types)|mandatory|The aggregate total of charges for this item (exclusive of GST).|
+|» description|string|mandatory|A free text description of the type of charge.|
+|totalGst|[AmountString](#common-field-types)|optional|The total GST for all electricity usage charges. If absent then zero is assumed.|
 
 <h4 id="cdr-energy-api_energyinvoiceelectricityusagecharges_enumerated-values-main">Enumerated Values</h4>
 
@@ -9954,15 +9973,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Object contains account level charges and credits related to electricity usage*
+*Object contains account level charges and credits related to electricity usage.*
 
 <h3 id="cdr-energy-api_energyinvoiceaccountcharges_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|totalCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of account level charges for the period covered by the invoice|
-|totalDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice|
-|totalGst|[AmountString](#common-field-types)|optional|The total GST for all account level charges.  If absent then zero is assumed|
+|totalCharges|[AmountString](#common-field-types)|mandatory|The aggregate total of account level charges for the period covered by the invoice.|
+|totalDiscounts|[AmountString](#common-field-types)|mandatory|The aggregate total of account level discounts or credits for the period covered by the invoice.|
+|totalGst|[AmountString](#common-field-types)|optional|The total GST for all account level charges. If absent then zero is assumed.|
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingtransactionv3">EnergyBillingTransactionV3</h3>
 <p id="tocSenergybillingtransactionv3" class="orig-anchor"></p>
@@ -10064,15 +10083,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|accountId|string|mandatory|The ID of the account for which transaction applies|
-|executionDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the transaction occurred|
-|gst|[AmountString](#common-field-types)|optional|The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed|
-|transactionUType|[Enum](#common-field-types)|mandatory|Indicator of the type of transaction object present in this record|
-|usage|[EnergyBillingUsageTransactionV2](#schemacdr-energy-apienergybillingusagetransactionv2)|conditional|Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage|
-|demand|[EnergyBillingDemandTransactionV3](#schemacdr-energy-apienergybillingdemandtransactionv3)|optional|Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand|
-|onceOff|[EnergyBillingOnceOffTransaction](#schemacdr-energy-apienergybillingonceofftransaction)|conditional|Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff|
-|otherCharges|[EnergyBillingOtherTransaction](#schemacdr-energy-apienergybillingothertransaction)|optional|Represents charge other than usage and once off.  Mandatory if transactionUType is equal to otherCharge|
-|payment|[EnergyBillingPaymentTransaction](#schemacdr-energy-apienergybillingpaymenttransaction)|conditional|Represents a payment to the account.  Mandatory if transactionUType is equal to payment|
+|accountId|string|mandatory|The ID of the account for which transaction applies.|
+|executionDateTime|[DateTimeString](#common-field-types)|mandatory|The date and time that the transaction occurred.|
+|gst|[AmountString](#common-field-types)|optional|The GST incurred in the transaction. Should not be included for credits or payments. If absent zero is assumed.|
+|transactionUType|[Enum](#common-field-types)|mandatory|Indicator of the type of transaction object present in this record.|
+|usage|[EnergyBillingUsageTransactionV2](#schemacdr-energy-apienergybillingusagetransactionv2)|conditional|Represents a usage charge or generation credit. Mandatory if _transactionUType_ is equal to `usage`.|
+|demand|[EnergyBillingDemandTransactionV3](#schemacdr-energy-apienergybillingdemandtransactionv3)|optional|Represents a demand charge or generation credit. Mandatory if _transactionUType_ is equal to `demand`.|
+|onceOff|[EnergyBillingOnceOffTransaction](#schemacdr-energy-apienergybillingonceofftransaction)|conditional|Represents a once off charge or credit. Mandatory if _transactionUType_ is equal to `onceOff`.|
+|otherCharges|[EnergyBillingOtherTransaction](#schemacdr-energy-apienergybillingothertransaction)|optional|Represents charge other than usage and once off. Mandatory if _transactionUType_ is equal to `otherCharges`.|
+|payment|[EnergyBillingPaymentTransaction](#schemacdr-energy-apienergybillingpaymenttransaction)|conditional|Represents a payment to the account. Mandatory if _transactionUType_ is equal to `payment`.|
 
 <h4 id="cdr-energy-api_energybillingtransactionv3_enumerated-values-main">Enumerated Values</h4>
 
@@ -10123,22 +10142,22 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
-|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|timeOfUseType|[Enum](#common-field-types)|mandatory|The time of use type that the transaction applies to|
-|description|string|optional|Optional description of the transaction that can be used for display purposes|
-|isEstimate|boolean|optional|Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual|
-|startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period starts|
-|endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period ends|
-|measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KWH if absent|
-|usage|number|mandatory|The usage for the period in measure unit.  A negative value indicates power generated|
-|amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
-|calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
-|» value|number|mandatory|The value of the calculation factor|
-|» type|[Enum](#common-field-types)|mandatory|The type of the calculation factor|
-|adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
-|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
-|» description|string|mandatory|A free text description of the adjustment|
+|servicePointId|string|optional|The ID of the service point to which this transaction applies if any.|
+|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued.|
+|timeOfUseType|[Enum](#common-field-types)|mandatory|The time of use type that the transaction applies to.|
+|description|string|optional|Optional description of the transaction that can be used for display purposes.|
+|isEstimate|boolean|optional|Flag indicating if the usage is estimated or actual. `true` indicates estimate. `false` or absent indicates actual.|
+|startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period starts.|
+|endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the usage period ends.|
+|measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be `KWH` if absent.|
+|usage|number|mandatory|The usage for the period in measure unit. A negative value indicates power generated.|
+|amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied. A negative value indicates a credit.|
+|calculationFactors|[object]|optional|Additional calculation factors that inform the transaction.|
+|» value|number|mandatory|The value of the calculation factor.|
+|» type|[Enum](#common-field-types)|mandatory|The type of the calculation factor.|
+|adjustments|[object]|optional|Optional array of adjustments arising for this transaction.|
+|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment.|
+|» description|string|mandatory|A free text description of the adjustment.|
 
 <h4 id="cdr-energy-api_energybillingusagetransactionv2_enumerated-values-main">Enumerated Values</h4>
 
@@ -10204,22 +10223,22 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
-|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|timeOfUseType|[Enum](#common-field-types)|mandatory|The time of use type that the transaction applies to|
-|description|string|optional|Optional description of the transaction that can be used for display purposes|
-|isEstimate|boolean|optional|Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual|
-|startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the demand period starts|
-|endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the demand period ends|
-|measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be KVA if absent|
-|rate|number|mandatory|The rate for the demand charge in measureUnit. Assumed to be KVA if measureUnit not provided. A negative value indicates power generated|
-|amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit|
-|calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
-|» value|number|mandatory|The value of the calculation factor|
-|» type|[Enum](#common-field-types)|mandatory|The type of the calculation factor|
-|adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
-|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
-|» description|string|mandatory|A free text description of the adjustment|
+|servicePointId|string|optional|The ID of the service point to which this transaction applies if any.|
+|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued.|
+|timeOfUseType|[Enum](#common-field-types)|mandatory|The time of use type that the transaction applies to.|
+|description|string|optional|Optional description of the transaction that can be used for display purposes.|
+|isEstimate|boolean|optional|Flag indicating if the usage is estimated or actual. `true` indicates estimate. `false` or absent indicates actual.|
+|startDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the demand period starts.|
+|endDate|[DateTimeString](#common-field-types)|mandatory|Date and time when the demand period ends.|
+|measureUnit|[Enum](#common-field-types)|optional|The measurement unit of rate. Assumed to be `KVA` if absent.|
+|rate|number|mandatory|The rate for the demand charge in _measureUnit_. Assumed to be `KVA` if _measureUnit_ not provided. A negative value indicates power generated.|
+|amount|[AmountString](#common-field-types)|mandatory|The amount charged or credited for this transaction prior to any adjustments being applied. A negative value indicates a credit.|
+|calculationFactors|[object]|optional|Additional calculation factors that inform the transaction.|
+|» value|number|mandatory|The value of the calculation factor.|
+|» type|[Enum](#common-field-types)|mandatory|The type of the calculation factor.|
+|adjustments|[object]|optional|Optional array of adjustments arising for this transaction.|
+|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment.|
+|» description|string|mandatory|A free text description of the adjustment.|
 
 <h4 id="cdr-energy-api_energybillingdemandtransactionv3_enumerated-values-main">Enumerated Values</h4>
 
@@ -10268,10 +10287,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
-|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|amount|[AmountString](#common-field-types)|mandatory|The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit|
-|description|string|mandatory|A free text description of the item|
+|servicePointId|string|optional|The ID of the service point to which this transaction applies if any.|
+|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued.|
+|amount|[AmountString](#common-field-types)|mandatory|The amount of the charge or credit. A positive value indicates a charge and a negative value indicates a credit.|
+|description|string|mandatory|A free text description of the item.|
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h3>
 <p id="tocSenergybillingothertransaction" class="orig-anchor"></p>
@@ -10309,19 +10328,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|servicePointId|string|optional|The ID of the service point to which this transaction applies if any|
-|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued|
-|startDate|[DateString](#common-field-types)|optional|Optional start date for the application of the charge|
-|endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the charge|
-|type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be other if absent|
-|amount|[AmountString](#common-field-types)|mandatory|The amount of the charge|
-|description|string|mandatory|A free text description of the item|
-|calculationFactors|[object]|optional|Additional calculation factors that inform the transaction|
-|» value|number|mandatory|The value of the calculation factor|
-|» type|[Enum](#common-field-types)|mandatory|The type of the calculation factor|
-|adjustments|[object]|optional|Optional array of adjustments arising for this transaction|
-|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment|
-|» description|string|mandatory|A free text description of the adjustment|
+|servicePointId|string|optional|The ID of the service point to which this transaction applies if any.|
+|invoiceNumber|string|optional|The number of the invoice in which this transaction is included if it has been issued.|
+|startDate|[DateString](#common-field-types)|optional|Optional start date for the application of the charge.|
+|endDate|[DateString](#common-field-types)|optional|Optional end date for the application of the charge.|
+|type|[Enum](#common-field-types)|optional|Type of charge. Assumed to be other if absent.|
+|amount|[AmountString](#common-field-types)|mandatory|The amount of the charge.|
+|description|string|mandatory|A free text description of the item.|
+|calculationFactors|[object]|optional|Additional calculation factors that inform the transaction.|
+|» value|number|mandatory|The value of the calculation factor.|
+|» type|[Enum](#common-field-types)|mandatory|The type of the calculation factor.|
+|adjustments|[object]|optional|Optional array of adjustments arising for this transaction.|
+|» amount|[AmountString](#common-field-types)|mandatory|The amount of the adjustment.|
+|» description|string|mandatory|A free text description of the adjustment.|
 
 <h4 id="cdr-energy-api_energybillingothertransaction_enumerated-values-main">Enumerated Values</h4>
 
@@ -10356,8 +10375,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|amount|[AmountString](#common-field-types)|mandatory|The amount paid|
-|method|[Enum](#common-field-types)|mandatory|The method of payment|
+|amount|[AmountString](#common-field-types)|mandatory|The amount paid.|
+|method|[Enum](#common-field-types)|mandatory|The method of payment.|
 
 <h4 id="cdr-energy-api_energybillingpaymenttransaction_enumerated-values-main">Enumerated Values</h4>
 
@@ -10423,9 +10442,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|addressUType|[Enum](#common-field-types)|mandatory|The type of address object present|
-|simple|[CommonSimpleAddress](#schemacdr-energy-apicommonsimpleaddress)|conditional|Required if addressUType is set to simple|
-|paf|[CommonPAFAddress](#schemacdr-energy-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf|
+|addressUType|[Enum](#common-field-types)|mandatory|The type of address object present.|
+|simple|[CommonSimpleAddress](#schemacdr-energy-apicommonsimpleaddress)|conditional|Required if _addressUType_ is set to `simple`.|
+|paf|[CommonPAFAddress](#schemacdr-energy-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if _addressUType_ is set to `paf`.|
 
 <h4 id="cdr-energy-api_commonphysicaladdress_enumerated-values-main">Enumerated Values</h4>
 
@@ -10455,20 +10474,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Required if addressUType is set to simple*
+*Required if _addressUType_ is set to `simple`.*
 
 <h3 id="cdr-energy-api_commonsimpleaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|mailingName|string|optional|Name of the individual or business formatted for inclusion in an address used for physical mail|
-|addressLine1|string|mandatory|First line of the standard address object|
-|addressLine2|string|optional|Second line of the standard address object|
-|addressLine3|string|optional|Third line of the standard address object|
-|postcode|string|conditional|Mandatory for Australian addresses|
-|city|string|mandatory|Name of the city or locality|
-|state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
-|country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.|
+|mailingName|string|optional|Name of the individual or business formatted for inclusion in an address used for physical mail.|
+|addressLine1|string|mandatory|First line of the standard address object.|
+|addressLine2|string|optional|Second line of the standard address object.|
+|addressLine3|string|optional|Third line of the standard address object.|
+|postcode|string|conditional|Mandatory for Australian addresses.|
+|city|string|mandatory|Name of the city or locality.|
+|state|string|mandatory|Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. `NSW`, `QLD`, `VIC`, `NT`, `WA`, `SA`, `TAS`, `ACT`, `AAT`.|
+|country|[ExternalRef](#common-field-types)|optional|A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (`AUS`) is assumed if country is not present.|
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
 <p id="tocScommonpafaddress" class="orig-anchor"></p>
@@ -10505,34 +10524,34 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-*Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf*
+*Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if _addressUType_ is set to `paf`.*
 
 <h3 id="cdr-energy-api_commonpafaddress_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|dpid|string|optional|Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier|
-|thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address)|
-|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_ is populated|
-|thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address eg 23-25)|
-|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant if _thoroughfareNumber2_ is populated|
-|flatUnitType|string|optional|Type of flat or unit for the address|
-|flatUnitNumber|string|optional|Unit number (including suffix, if applicable)|
-|floorLevelType|string|optional|Type of floor or level for the address|
-|floorLevelNumber|string|optional|Floor or level number (including alpha characters)|
-|lotNumber|string|optional|Allotment number for the address|
-|buildingName1|string|optional|Building/Property name 1|
-|buildingName2|string|optional|Building/Property name 2|
-|streetName|string|optional|The name of the street|
-|streetType|string|optional|The street type. Valid enumeration defined by Australia Post PAF code file|
-|streetSuffix|string|optional|The street type suffix. Valid enumeration defined by Australia Post PAF code file|
-|postalDeliveryType|string|optional|Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file|
-|postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|Postal delivery number if the address is a postal delivery type|
-|postalDeliveryNumberPrefix|string|optional|Postal delivery number prefix related to the postal delivery number|
-|postalDeliveryNumberSuffix|string|optional|Postal delivery number suffix related to the postal delivery number|
-|localityName|string|mandatory|Full name of locality|
-|postcode|string|mandatory|Postcode for the locality|
-|state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT|
+|dpid|string|optional|Unique identifier for an address as defined by Australia Post. Also known as Delivery Point Identifier.|
+|thoroughfareNumber1|[PositiveInteger](#common-field-types)|optional|Thoroughfare number for a property (first number in a property ranged address).|
+|thoroughfareNumber1Suffix|string|optional|Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_ is populated.|
+|thoroughfareNumber2|[PositiveInteger](#common-field-types)|optional|Second thoroughfare number (only used if the property has a ranged address e.g., 23-25).|
+|thoroughfareNumber2Suffix|string|optional|Suffix for the second thoroughfare number. Only relevant if _thoroughfareNumber2_ is populated.|
+|flatUnitType|string|optional|Type of flat or unit for the address.|
+|flatUnitNumber|string|optional|Unit number (including suffix, if applicable).|
+|floorLevelType|string|optional|Type of floor or level for the address.|
+|floorLevelNumber|string|optional|Floor or level number (including alpha characters).|
+|lotNumber|string|optional|Allotment number for the address.|
+|buildingName1|string|optional|Building/Property name 1.|
+|buildingName2|string|optional|Building/Property name 2.|
+|streetName|string|optional|The name of the street.|
+|streetType|string|optional|The street type. Valid enumeration defined by Australia Post PAF code file.|
+|streetSuffix|string|optional|The street type suffix. Valid enumeration defined by Australia Post PAF code file.|
+|postalDeliveryType|string|optional|Postal delivery type. (e.g., PO BOX). Valid enumeration defined by Australia Post PAF code file.|
+|postalDeliveryNumber|[PositiveInteger](#common-field-types)|optional|Postal delivery number if the address is a postal delivery type.|
+|postalDeliveryNumberPrefix|string|optional|Postal delivery number prefix related to the postal delivery number.|
+|postalDeliveryNumberSuffix|string|optional|Postal delivery number suffix related to the postal delivery number.|
+|localityName|string|mandatory|Full name of locality.|
+|postcode|string|mandatory|Postcode for the locality.|
+|state|string|mandatory|State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). `NSW`, `QLD`, `VIC`, `NT`, `WA`, `SA`, `TAS`, `ACT`, `AAT`.|
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSrequestservicepointidlist">RequestServicePointIdList</h3>
 <p id="tocSrequestservicepointidlist" class="orig-anchor"></p>
@@ -10558,7 +10577,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» servicePointIds|[string]|mandatory|Array of specific servicePointIds to obtain data for|
+|» servicePointIds|[string]|mandatory|Array of specific _servicePointId_ values to obtain data for.|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSrequestaccountidlist">RequestAccountIdList</h3>
@@ -10585,7 +10604,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Description|
 |---|---|---|---|
 |data|object|mandatory|none|
-|» accountIds|[string]|mandatory|Array of specific accountIds to obtain data for|
+|» accountIds|[string]|mandatory|Array of specific _accountId_ values to obtain data for.|
 |meta|[Meta](#schemacdr-energy-apimeta)|optional|none|
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSlinks">Links</h3>
@@ -10606,7 +10625,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
+|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document.|
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSmeta">Meta</h3>
 <p id="tocSmeta" class="orig-anchor"></p>
@@ -10646,11 +10665,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document|
-|first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page|
-|prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page|
-|next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page|
-|last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page|
+|self|[URIString](#common-field-types)|mandatory|Fully qualified link that generated the current response document.|
+|first|[URIString](#common-field-types)|conditional|URI to the first page of this set. Mandatory if this response is not the first page.|
+|prev|[URIString](#common-field-types)|conditional|URI to the previous page of this set. Mandatory if this response is not the first page.|
+|next|[URIString](#common-field-types)|conditional|URI to the next page of this set. Mandatory if this response is not the last page.|
+|last|[URIString](#common-field-types)|conditional|URI to the last page of this set. Mandatory if this response is not the last page.|
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSmetapaginated">MetaPaginated</h3>
 <p id="tocSmetapaginated" class="orig-anchor"></p>

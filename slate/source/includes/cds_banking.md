@@ -6,8 +6,8 @@
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/accounts HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/accounts HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -29,7 +29,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -59,9 +59,9 @@ Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html).
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -126,7 +126,7 @@ Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html).
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountListV2](#schemacdr-banking-apiresponsebankingaccountlistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingAccountListV2](#schemacdr-banking-apiresponsebankingaccountlistv2)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -145,7 +145,7 @@ Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html).
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
 </aside>
 
     
@@ -157,8 +157,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/accounts/balances HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -180,7 +180,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/balances', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -208,9 +208,9 @@ Obtain balances for multiple, filtered accounts.
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -277,7 +277,7 @@ Obtain balances for multiple, filtered accounts.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceList](#schemacdr-banking-apiresponsebankingaccountsbalancelist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingAccountsBalanceList](#schemacdr-banking-apiresponsebankingaccountsbalancelist)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -296,7 +296,7 @@ Obtain balances for multiple, filtered accounts.
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
 </aside>
 
     
@@ -308,8 +308,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST https://data.holder.com.au/cds-au/v1/banking/accounts/balances HTTP/1.1
-Host: data.holder.com.au
+POST https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances HTTP/1.1
+Host: mtls.dh.example.com
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -341,7 +341,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/balances', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances', {
   method: 'POST',
   body: inputBody,
   headers: headers
@@ -380,9 +380,9 @@ Obtain balances for a specified list of accounts.
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -430,7 +430,7 @@ Obtain balances for a specified list of accounts.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceList](#schemacdr-banking-apiresponsebankingaccountsbalancelist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingAccountsBalanceList](#schemacdr-banking-apiresponsebankingaccountsbalancelist)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -449,7 +449,7 @@ Obtain balances for a specified list of accounts.
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
 </aside>
 
     
@@ -461,8 +461,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/balance HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -484,7 +484,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/balance', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -508,9 +508,9 @@ Obtain the balance for a single specified account.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific account requested.|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -546,7 +546,7 @@ Obtain the balance for a single specified account.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountsBalanceById](#schemacdr-banking-apiresponsebankingaccountsbalancebyid)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingAccountsBalanceById](#schemacdr-banking-apiresponsebankingaccountsbalancebyid)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -565,7 +565,7 @@ Obtain the balance for a single specified account.
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
 </aside>
 
     
@@ -577,8 +577,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId} HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId} HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -600,7 +600,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -626,9 +626,9 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](incl
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|A tokenised identifier for the account which is unique but not shareable.|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -843,7 +843,7 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](incl
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingAccountByIdV3](#schemacdr-banking-apiresponsebankingaccountbyidv3)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingAccountByIdV3](#schemacdr-banking-apiresponsebankingaccountbyidv3)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -862,7 +862,7 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](incl
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.detail:read</a>
+<a href="#authorisation-scopes">bank:accounts.detail:read.</a>
 </aside>
 
     
@@ -874,8 +874,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -897,7 +897,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -911,15 +911,7 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transac
 
 Obtain transactions for a specific account.
 
-Some general notes that apply to all endpoints that retrieve transactions:
-
-- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order
-- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the "effective" date/time which will be defined as:
-  - Posted date/time if available, then
-  - Execution date/time if available, then
-  - A reasonable date/time nominated by the data holder using internal data structures
-- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account
-- For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.
+Some general notes that apply to all endpoints that retrieve transactions:<ul><li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the "effective" date/time which will be defined as:<ul><li>Posted date/time if available, then<li>Execution date/time if available, then<li>A reasonable date/time nominated by the data holder using internal data structures</ul><li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</ul>
 
 <h3 id="cdr-banking-api_get-transactions-for-account_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -931,16 +923,16 @@ Some general notes that apply to all endpoints that retrieve transactions:
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for. Must have previously been returned by one of the account list endpoints.|
-|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days. Format is aligned to [DateTimeString](#common-field-types) common type.|
+|oldest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to _newest-time_ minus 90 days. Format is aligned to [DateTimeString](#common-field-types) common type.|
 |newest-time|query|[DateTimeString](#common-field-types)|optional|Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to today. Format is aligned to [DateTimeString](#common-field-types) common type.|
 |min-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts higher than or equal to this amount.|
 |max-amount|query|[AmountString](#common-field-types)|optional|Filter transactions to only transactions with amounts less than or equal to this amount.|
-|text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named _isQueryParamUnsupported_ should be included in the meta object and set to `true` (whether the text parameter is supplied or not).|
+|text|query|string|optional|Filter transactions to only transactions where this string value is found as a substring of either the _reference_ or _description_ fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named _isQueryParamUnsupported_ should be included in the meta object and set to `true` (whether the text parameter is supplied or not).|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -994,7 +986,7 @@ Some general notes that apply to all endpoints that retrieve transactions:
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionList](#schemacdr-banking-apiresponsebankingtransactionlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingTransactionList](#schemacdr-banking-apiresponsebankingtransactionlist)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -1015,7 +1007,7 @@ Some general notes that apply to all endpoints that retrieve transactions:
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:transactions:read</a>
+<a href="#authorisation-scopes">bank:transactions:read.</a>
 </aside>
 
     
@@ -1027,8 +1019,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId} HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId} HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1050,7 +1042,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -1064,10 +1056,12 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transac
 
 Obtain detailed information on a transaction for a specific account.
 
+Obsolete versions: [v1](includes/obsolete/get-transaction-detail-v1.html).
+
 <h3 id="cdr-banking-api_get-transaction-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="cdr-banking-api_get-transaction-detail_parameters">Parameters</h3>
 
@@ -1075,9 +1069,9 @@ Obtain detailed information on a transaction for a specific account.
 |---|---|---|---|---|
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get transactions for. Must have previously been returned by one of the account list endpoints.|
 |transactionId|path|[ASCIIString](#common-field-types)|mandatory|ID of the transaction obtained from a previous call to one of the other transaction endpoints.|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -1110,13 +1104,14 @@ Obtain detailed information on a transaction for a specific account.
     "extendedData": {
       "payer": "string",
       "payee": "string",
-      "extensionUType": "x2p101Payload",
-      "x2p101Payload": {
+      "extensionUType": "nppPayload",
+      "nppPayload": {
         "extendedDescription": "string",
         "endToEndId": "string",
-        "purposeCode": "string"
-      },
-      "service": "X2P1.01"
+        "purposeCode": "string",
+        "service": "X2P1",
+        "serviceVersion": "03"
+      }
     }
   },
   "links": {
@@ -1130,7 +1125,7 @@ Obtain detailed information on a transaction for a specific account.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingTransactionById](#schemacdr-banking-apiresponsebankingtransactionbyid)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingTransactionByIdV2](#schemacdr-banking-apiresponsebankingtransactionbyidv2)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -1149,7 +1144,7 @@ Obtain detailed information on a transaction for a specific account.
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:transactions:read</a>
+<a href="#authorisation-scopes">bank:transactions:read.</a>
 </aside>
 
     
@@ -1161,8 +1156,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/direct-debits HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1184,7 +1179,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/direct-debits', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -1210,9 +1205,9 @@ Obtain direct debit authorisations for a specific account.
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get direct debit authorisations for. Must have previously been returned by one of the account list endpoints.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -1257,7 +1252,7 @@ Obtain direct debit authorisations for a specific account.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -1278,7 +1273,7 @@ Obtain direct debit authorisations for a specific account.
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside>
 
     
@@ -1290,8 +1285,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1313,7 +1308,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -1341,9 +1336,9 @@ Obtain direct debit authorisations for multiple, filtered accounts.
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -1408,7 +1403,7 @@ Obtain direct debit authorisations for multiple, filtered accounts.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -1427,7 +1422,7 @@ Obtain direct debit authorisations for multiple, filtered accounts.
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside>
 
     
@@ -1439,8 +1434,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
-Host: data.holder.com.au
+POST https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
+Host: mtls.dh.example.com
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -1472,7 +1467,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits', {
   method: 'POST',
   body: inputBody,
   headers: headers
@@ -1511,9 +1506,9 @@ Obtain direct debit authorisations for a specified list of accounts.
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -1559,7 +1554,7 @@ Obtain direct debit authorisations for a specified list of accounts.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -1578,7 +1573,7 @@ Obtain direct debit authorisations for a specified list of accounts.
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside>
 
     
@@ -1590,8 +1585,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/payments/scheduled HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1613,7 +1608,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/payments/scheduled', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -1641,9 +1636,9 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.
 |accountId|path|[ASCIIString](#common-field-types)|mandatory|ID of the account to get scheduled payments for. Must have previously been returned by one of the account list endpoints. The account specified is the source account for the payment.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -1776,7 +1771,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -1797,7 +1792,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside>
 
     
@@ -1809,8 +1804,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -1832,7 +1827,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/payments/scheduled', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -1862,9 +1857,9 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html).
 |is-owned|query|[Boolean](#common-field-types)|optional|Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -2017,7 +2012,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html).
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -2036,7 +2031,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html).
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside>
 
     
@@ -2048,8 +2043,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-POST https://data.holder.com.au/cds-au/v1/banking/payments/scheduled HTTP/1.1
-Host: data.holder.com.au
+POST https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled HTTP/1.1
+Host: mtls.dh.example.com
 Content-Type: application/json
 Accept: application/json
 x-v: string
@@ -2081,7 +2076,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/payments/scheduled', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled', {
   method: 'POST',
   body: inputBody,
   headers: headers
@@ -2122,9 +2117,9 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-ac
 |---|---|---|---|---|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -2258,7 +2253,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-ac
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -2277,7 +2272,7 @@ Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-ac
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside>
 
     
@@ -2289,8 +2284,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/payees HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/payees HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2312,7 +2307,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/payees', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/payees', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -2340,9 +2335,9 @@ Obsolete versions: [v1](includes/obsolete/get-payees-v1.html).
 |type|query|[Enum](#common-field-types)|optional|Filter on the payee _type_ field. In addition to normal _type_ field values, `ALL` can be specified to retrieve all payees. If absent the assumed value is `ALL`.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -2392,7 +2387,7 @@ Obsolete versions: [v1](includes/obsolete/get-payees-v1.html).
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeListV2](#schemacdr-banking-apiresponsebankingpayeelistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingPayeeListV2](#schemacdr-banking-apiresponsebankingpayeelistv2)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -2411,7 +2406,7 @@ Obsolete versions: [v1](includes/obsolete/get-payees-v1.html).
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:payees:read</a>
+<a href="#authorisation-scopes">bank:payees:read.</a>
 </aside>
 
     
@@ -2423,8 +2418,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId} HTTP/1.1
-Host: data.holder.com.au
+GET https://mtls.dh.example.com/cds-au/v1/banking/payees/{payeeId} HTTP/1.1
+Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2446,7 +2441,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId}', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/payees/{payeeId}', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -2474,9 +2469,9 @@ Obsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html).
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |payeeId|path|[ASCIIString](#common-field-types)|mandatory|The ID used to locate the details of a particular payee.|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
+|x-fapi-interaction-id|header|string|optional|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional|The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional|The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional|The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
@@ -2554,7 +2549,7 @@ Obsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html).
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingPayeeByIdV2](#schemacdr-banking-apiresponsebankingpayeebyidv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingPayeeByIdV2](#schemacdr-banking-apiresponsebankingpayeebyidv2)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -2575,7 +2570,7 @@ Obsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html).
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:payees:read</a>
+<a href="#authorisation-scopes">bank:payees:read.</a>
 </aside>
 
     
@@ -2587,8 +2582,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/products HTTP/1.1
-Host: data.holder.com.au
+GET https://tls.dh.example.com/cds-au/v1/banking/products HTTP/1.1
+Host: tls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2602,7 +2597,7 @@ const headers = {
   'x-min-v':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/products', {
+fetch('https://tls.dh.example.com/cds-au/v1/banking/products', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -2619,7 +2614,7 @@ Obtain a list of products that are currently openly offered to the market.
 Note that the results returned by this endpoint are expected to be ordered in descending order according to _lastUpdated_.
 
 ### Conventions
-In the product reference payloads there are a number of recurring conventions that are explained here, in one place.
+In the product reference payloads there are a number of recurring conventions that are explained below.
 
 #### Arrays Of Features
 
@@ -2667,8 +2662,8 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/o
 |product-category|query|[Enum](#common-field-types)|optional|Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |page|query|[PositiveInteger](#common-field-types)|optional|Page of results to request (standard pagination).|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
 
 <h4 id="cdr-banking-api_get-products_enumerated-values-parameters">Enumerated Values</h4>
 
@@ -2774,7 +2769,7 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/o
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductListV2](#schemacdr-banking-apiresponsebankingproductlistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingProductListV2](#schemacdr-banking-apiresponsebankingproductlistv2)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -2787,7 +2782,7 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/o
 
   
     <aside class="success">
-This operation does not require authentication
+This operation does not require authentication.
 </aside>
 
   
@@ -2798,8 +2793,8 @@ This operation does not require authentication
 > Code samples
 
 ```http
-GET https://data.holder.com.au/cds-au/v1/banking/products/{productId} HTTP/1.1
-Host: data.holder.com.au
+GET https://tls.dh.example.com/cds-au/v1/banking/products/{productId} HTTP/1.1
+Host: tls.dh.example.com
 Accept: application/json
 x-v: string
 x-min-v: string
@@ -2813,7 +2808,7 @@ const headers = {
   'x-min-v':'string'
 };
 
-fetch('https://data.holder.com.au/cds-au/v1/banking/products/{productId}', {
+fetch('https://tls.dh.example.com/cds-au/v1/banking/products/{productId}', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -2827,20 +2822,20 @@ fetch('https://data.holder.com.au/cds-au/v1/banking/products/{productId}', {
 
 Obtain detailed information on a single product offered openly to the market.
 
-Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](includes/obsolete/get-product-detail-v2.html), [v3](includes/obsolete/get-product-detail-v3.html).
+Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](includes/obsolete/get-product-detail-v2.html), [v3](includes/obsolete/get-product-detail-v3.html), [v4](includes/obsolete/get-product-detail-v4.html).
 
 <h3 id="cdr-banking-api_get-product-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**4**
+|Version|**5**
 
 <h3 id="cdr-banking-api_get-product-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |productId|path|[ASCIIString](#common-field-types)|mandatory|ID of the specific product requested.|
-|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.|
+|x-v|header|string|mandatory|Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional|Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.|
 
 > Example responses
 
@@ -3043,7 +3038,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](incl
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[ResponseBankingProductByIdV4](#schemacdr-banking-apiresponsebankingproductbyidv4)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingProductByIdV5](#schemacdr-banking-apiresponsebankingproductbyidv5)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -3056,7 +3051,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](incl
 
   
     <aside class="success">
-This operation does not require authentication
+This operation does not require authentication.
 </aside>
 
   
@@ -3357,12 +3352,12 @@ This operation does not require authentication
 |description|string|optional|Display text providing more information about the document URI.|
 |additionalInfoUri|[URIString](#common-field-types)|mandatory|The URI describing the additional information.|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductbyidv4">ResponseBankingProductByIdV4</h3>
-<p id="tocSresponsebankingproductbyidv4" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductbyidv5">ResponseBankingProductByIdV5</h3>
+<p id="tocSresponsebankingproductbyidv5" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingproductbyid"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductbyidv4"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductbyidv5"></a>
 </p>
 
 ```json
@@ -3558,20 +3553,20 @@ This operation does not require authentication
 }
 ```
 
-<h3 id="cdr-banking-api_responsebankingproductbyidv4_properties">Properties</h3>
+<h3 id="cdr-banking-api_responsebankingproductbyidv5_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[BankingProductDetailV4](#schemacdr-banking-apibankingproductdetailv4)|mandatory|none|
+|data|[BankingProductDetailV5](#schemacdr-banking-apibankingproductdetailv5)|mandatory|none|
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdetailv4">BankingProductDetailV4</h3>
-<p id="tocSbankingproductdetailv4" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdetailv5">BankingProductDetailV5</h3>
+<p id="tocSbankingproductdetailv5" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductdetail"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdetailv4"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdetailv5"></a>
 </p>
 
 ```json
@@ -3761,7 +3756,7 @@ This operation does not require authentication
 }
 ```
 
-<h3 id="cdr-banking-api_bankingproductdetailv4_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductdetailv5_properties">Properties</h3>
 
 *allOf*
 
@@ -3776,7 +3771,7 @@ This operation does not require authentication
 |*anonymous*|object|mandatory|none|
 |» bundles|[[BankingProductBundle](#schemacdr-banking-apibankingproductbundle)]|optional|An array of bundles that this product participates in. Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle. It is assumed that the current product is included in the bundle also.|
 |» features|[[BankingProductFeatureV2](#schemacdr-banking-apibankingproductfeaturev2)]|optional|Array of features available for the product.|
-|» constraints|[[BankingProductConstraint](#schemacdr-banking-apibankingproductconstraint)]|optional|Constraints on the application for or operation of the product such as minimum balances or limit thresholds.|
+|» constraints|[[BankingProductConstraintV2](#schemacdr-banking-apibankingproductconstraintv2)]|optional|Constraints on the application for or operation of the product such as minimum balances or limit thresholds.|
 |» eligibility|[[BankingProductEligibility](#schemacdr-banking-apibankingproducteligibility)]|optional|Eligibility criteria for the product.|
 |» fees|[[BankingProductFee](#schemacdr-banking-apibankingproductfee)]|optional|Fees applicable to the product.|
 |» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional|Interest rates available for deposits.|
@@ -3872,12 +3867,12 @@ This operation does not require authentication
 |featureType|RELATIONSHIP_MANAGEMENT|
 |featureType|UNLIMITED_TXNS|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductconstraint">BankingProductConstraint</h3>
-<p id="tocSbankingproductconstraint" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductconstraintv2">BankingProductConstraintV2</h3>
+<p id="tocSbankingproductconstraintv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductconstraint"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductconstraint"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductconstraintv2"></a>
 </p>
 
 ```json
@@ -3889,7 +3884,7 @@ This operation does not require authentication
 }
 ```
 
-<h3 id="cdr-banking-api_bankingproductconstraint_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductconstraintv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
@@ -3898,14 +3893,16 @@ This operation does not require authentication
 |additionalInfo|string|optional|Display text providing more information on the constraint.|
 |additionalInfoUri|[URIString](#common-field-types)|optional|Link to a web page with more information on the constraint.|
 
-<h4 id="cdr-banking-api_bankingproductconstraint_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingproductconstraintv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |constraintType|MAX_BALANCE|
 |constraintType|MAX_LIMIT|
+|constraintType|MAX_LVR|
 |constraintType|MIN_BALANCE|
 |constraintType|MIN_LIMIT|
+|constraintType|MIN_LVR|
 |constraintType|OPENING_BALANCE|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproducteligibility">BankingProductEligibility</h3>
@@ -4421,7 +4418,7 @@ This operation does not require authentication
 |accountId|[ASCIIString](#common-field-types)|mandatory|A unique ID of the account adhering to the standards for ID permanence.|
 |creationDate|[DateString](#common-field-types)|optional|Date that the account was created (if known).|
 |displayName|string|mandatory|The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the [MaskedAccountString](#common-field-types) common type.|
-|nickname|string|optional|A customer supplied nick name for the account.|
+|nickname|string|optional|A customer supplied nickname for the account.|
 |openStatus|[Enum](#common-field-types)|optional|Open or closed status for the account. If not present then `OPEN` is assumed.|
 |isOwned|[Boolean](#common-field-types)|optional|Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then `true` is assumed.|
 |accountOwnership|[Enum](#common-field-types)|mandatory|Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers.|
@@ -5163,12 +5160,12 @@ This operation does not require authentication
 |status|PENDING|
 |status|POSTED|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingtransactionbyid">ResponseBankingTransactionById</h3>
-<p id="tocSresponsebankingtransactionbyid" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingtransactionbyidv2">ResponseBankingTransactionByIdV2</h3>
+<p id="tocSresponsebankingtransactionbyidv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingtransactionbyid"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingtransactionbyid"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingtransactionbyidv2"></a>
 </p>
 
 ```json
@@ -5195,13 +5192,14 @@ This operation does not require authentication
     "extendedData": {
       "payer": "string",
       "payee": "string",
-      "extensionUType": "x2p101Payload",
-      "x2p101Payload": {
+      "extensionUType": "nppPayload",
+      "nppPayload": {
         "extendedDescription": "string",
         "endToEndId": "string",
-        "purposeCode": "string"
-      },
-      "service": "X2P1.01"
+        "purposeCode": "string",
+        "service": "X2P1",
+        "serviceVersion": "03"
+      }
     }
   },
   "links": {
@@ -5211,20 +5209,20 @@ This operation does not require authentication
 }
 ```
 
-<h3 id="cdr-banking-api_responsebankingtransactionbyid_properties">Properties</h3>
+<h3 id="cdr-banking-api_responsebankingtransactionbyidv2_properties">Properties</h3>
 
 |Name|Type|Required|Description|
 |---|---|---|---|
-|data|[BankingTransactionDetail](#schemacdr-banking-apibankingtransactiondetail)|mandatory|none|
+|data|[BankingTransactionDetailV2](#schemacdr-banking-apibankingtransactiondetailv2)|mandatory|none|
 |links|[Links](#schemacdr-banking-apilinks)|mandatory|none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional|none|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtransactiondetail">BankingTransactionDetail</h3>
-<p id="tocSbankingtransactiondetail" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtransactiondetailv2">BankingTransactionDetailV2</h3>
+<p id="tocSbankingtransactiondetailv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingtransactiondetail"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingtransactiondetail"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingtransactiondetailv2"></a>
 </p>
 
 ```json
@@ -5250,18 +5248,19 @@ This operation does not require authentication
   "extendedData": {
     "payer": "string",
     "payee": "string",
-    "extensionUType": "x2p101Payload",
-    "x2p101Payload": {
+    "extensionUType": "nppPayload",
+    "nppPayload": {
       "extendedDescription": "string",
       "endToEndId": "string",
-      "purposeCode": "string"
-    },
-    "service": "X2P1.01"
+      "purposeCode": "string",
+      "service": "X2P1",
+      "serviceVersion": "03"
+    }
   }
 }
 ```
 
-<h3 id="cdr-banking-api_bankingtransactiondetail_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingtransactiondetailv2_properties">Properties</h3>
 
 *allOf*
 
@@ -5277,19 +5276,19 @@ This operation does not require authentication
 |» extendedData|object|mandatory|none|
 |»» payer|string|conditional|Label of the originating payer. Mandatory for inbound payment.|
 |»» payee|string|conditional|Label of the target PayID. Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID).|
-|»» extensionUType|[Enum](#common-field-types)|optional|Optional extended data specific to transactions originated via NPP.|
-|»» x2p101Payload|object|conditional|none|
-|»»» extendedDescription|string|conditional|An extended string description. Required if the _extensionUType_ field is `x2p101Payload`.|
+|»» extensionUType|[Enum](#common-field-types)|optional|Optional extended data specific to transactions. Currently extended data is supported for NPP service overlays.|
+|»» nppPayload|object|conditional|Required if the _extensionUType_ value is `nppPayload`.|
+|»»» extendedDescription|string|conditional|An extended string description. Required if the _extensionUType_ value is `nppPayload`.|
 |»»» endToEndId|string|optional|An end to end ID for the payment created at initiation.|
-|»»» purposeCode|string|optional|Purpose of the payment. Format is defined by NPP standards for the x2p1.01 overlay service.|
-|»» service|[Enum](#common-field-types)|mandatory|Identifier of the applicable overlay service. Valid values are: `X2P1.01`.|
+|»»» purposeCode|[ExternalRef](#common-field-types)|optional|Purpose of the payment. Format is defined by the NPP standards for the NPP overlay services including Osko (X2P1).|
+|»»» service|[NppPaymentService](#schemacdr-banking-apinpppaymentservice)|mandatory|Identifier of the applicable overlay service. The _service_ is used in conjunction with the _serviceVersion_. See [here](#npp-services) for more details.|
+|»»» serviceVersion|[ExternalRef](#common-field-types)|mandatory|Two-digit NPP service overlay version with leading zero.|
 
-<h4 id="cdr-banking-api_bankingtransactiondetail_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingtransactiondetailv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
-|extensionUType|x2p101Payload|
-|service|X2P1.01|
+|extensionUType|nppPayload|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</h3>
 <p id="tocSresponsebankingaccountsbalancelist" class="orig-anchor"></p>
@@ -6774,8 +6773,8 @@ This operation does not require authentication
 |Name|Type|Required|Description|
 |---|---|---|---|
 |addressUType|[Enum](#common-field-types)|mandatory|The type of address object present.|
-|simple|[CommonSimpleAddress](#schemacdr-banking-apicommonsimpleaddress)|conditional|none|
-|paf|[CommonPAFAddress](#schemacdr-banking-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).|
+|simple|[CommonSimpleAddress](#schemacdr-banking-apicommonsimpleaddress)|conditional|Required if _addressUType_ is set to `simple`.|
+|paf|[CommonPAFAddress](#schemacdr-banking-apicommonpafaddress)|conditional|Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if _addressUType_ is set to `paf`.|
 
 <h4 id="cdr-banking-api_commonphysicaladdress_enumerated-values-main">Enumerated Values</h4>
 
@@ -6804,6 +6803,8 @@ This operation does not require authentication
   "country": "AUS"
 }
 ```
+
+*Required if _addressUType_ is set to `simple`.*
 
 <h3 id="cdr-banking-api_commonsimpleaddress_properties">Properties</h3>
 
@@ -6853,7 +6854,7 @@ This operation does not require authentication
 }
 ```
 
-*Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).*
+*Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if _addressUType_ is set to `paf`.*
 
 <h3 id="cdr-banking-api_commonpafaddress_properties">Properties</h3>
 
@@ -7090,4 +7091,33 @@ This operation does not require authentication
 |*anonymous*|TRADE_FINANCE|
 |*anonymous*|TRANS_AND_SAVINGS_ACCOUNTS|
 |*anonymous*|TRAVEL_CARDS|
+
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSnpppaymentservice">NppPaymentService</h3>
+<p id="tocSnpppaymentservice" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-banking-api_schema-base_npppaymentservice"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apinpppaymentservice"></a>
+</p>
+
+```json
+"X2P1"
+```
+
+*Identifier of the applicable overlay service. The _service_ is used in conjunction with the _serviceVersion_. See [here](#npp-services) for more details.*
+
+<h3 id="cdr-banking-api_npppaymentservice_properties">Properties</h3>
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*anonymous*|[Enum](#common-field-types)|mandatory|Identifier of the applicable overlay service. The _service_ is used in conjunction with the _serviceVersion_. See [here](#npp-services) for more details.|
+
+<h4 id="cdr-banking-api_npppaymentservice_enumerated-values-main">Enumerated Values</h4>
+
+|Property|Value|
+|---|---|
+|*anonymous*|X2P1|
+|*anonymous*|IFTI|
+|*anonymous*|BSCT|
+|*anonymous*|CATSCT|
 

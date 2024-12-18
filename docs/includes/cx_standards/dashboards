@@ -12,7 +12,7 @@
 </thead><tbody>
 <tr>
 <td><strong>Data Holder Dashboard:</strong><br>Amending authorisation details</td>
-<td><strong>Effective from July 1st 2024:</strong><br><br>When a consumer amends an authorisation in accordance with rule 4.22A, which is linked to a <em>cdr_arrangement_id</em> supplied by the data recipient as per the <a href="#amending-authorisation-standards">amending authorisation standards</a>, data holders <strong>MUST</strong> display the details of each authorisation’s amendment on the consumer’s dashboard.<br><br><strong>Note:</strong> this requirement gives effect to rule 1.15(3)(h)</td>
+<td><strong>Effective from July 1st 2024:</strong><br><br>When a consumer amends an authorisation in accordance with rule 4.22A, which is linked to a <em>cdr_arrangement_id</em> supplied by the data recipient as per the <a href="#amending-authorisation-standards">amending authorisation standards</a>, data holders <strong>MUST</strong> display the details of each authorisation’s amendment on the consumer’s dashboard.<br><br><strong>Note:</strong> this requirement gives effect to rule 1.15(3)(h).</td>
 </tr>
 <tr>
 <td><strong>Data Holder Dashboard:</strong><br>Data recipient handling details</td>

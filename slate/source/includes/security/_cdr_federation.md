@@ -2,16 +2,16 @@
 The CDR Federation will facilitate the secure exchange of consumer data and federation metadata between
 multiple system entities which will assume one or more of the following roles:
 
--   **Data Holder**:
-    -   Multiple Data Holders will be supported.
--   **Data Recipient**:
-    -   Multiple Data Recipients will be supported.
--   **Software Product**:
-    -   Multiple Software Products will be supported for each Data Recipient.
-- 	**Register**:
-    -   A register will be supported and will be maintained by the Australian Competition and Consumer Commission (ACCC) acting in its capacity as the _Registrar_ for the CDR.
-- 	**Customer**:
-    -   The authorising customer that is authenticated by a Data Holder.
+- **Data Holder**:
+  - Multiple Data Holders will be supported.
+- **Data Recipient**:
+  - Multiple Data Recipients will be supported.
+- **Software Product**:
+  - Multiple Software Products will be supported for each Data Recipient.
+- **Register**:
+  - A register will be supported and will be maintained by the Australian Competition and Consumer Commission (ACCC) acting in its capacity as the _Registrar_ for the CDR.
+- **Customer**:
+  - The authorising customer that is authenticated by a Data Holder.
 
 ### Data Holder
 The Data Holder (DH) is a system entity that authenticates a Customer
@@ -30,10 +30,10 @@ For the purposes of this standard a single designated organisation **MAY** be re
 * Where a Data Holder has multiple brands, each brand **MUST** have a separate issuer.
 
 ### Secondary Data Holder
-A Secondary Data Holder (SDH) is a system entity that is designated to provide CDR data but does so via a standard Data Holder acting as a gateway.  A Secondary Data Holder does not interact directly with Data Recipients and is not registered with the Register.
+A Secondary Data Holder (SDH) is a system entity that is designated to provide CDR data but does so via a standard Data Holder acting as a gateway. A Secondary Data Holder does not interact directly with Data Recipients and is not registered with the Register.
 
 
-A request for data from a Secondary Data Holder by a standard Data Holder is known as a *Shared Responsibility Data Request*.
+A request for data from a Secondary Data Holder by a standard Data Holder is known as a 'Shared Responsibility Data Request'.
 
 
 See the [Shared Responsibility](#shared-responsibility) section contains standards related to Secondary Data Holders and Shared Responsibility Data Requests.
@@ -50,14 +50,14 @@ A Data Recipient Software Product (DRSP) is a system entity that is authorised b
 
 A Software Product **MUST** be registered with the Registrar and approved for use in order to participate in the CDR Federation.
 
-A Software Product **MAY** be registered for use across one or more sectors (e.g. banking and energy).
+A Software Product **MAY** be registered for use across one or more sectors (e.g., Banking and Energy).
 
 A Software Product assumes the role of an **[[OIDC]](#nref-OIDC)** [Relying Party (Client)](https://openid.net/specs/openid-connect-core-1_0.html#Overview).
 
 ### Register
 
 The Register is a central point of discovery for both Data Holders and Data
-Recipients. Data Holders and Data Recipients **MUST** be created as entities in the Register in order for them to participate as members of the CDR Federation.  The functionality of the Register will include but will not be limited to:
+Recipients. Data Holders and Data Recipients **MUST** be created as entities in the Register in order for them to participate as members of the CDR Federation. The functionality of the Register will include but will not be limited to:
 
 - **Management of Identities and Access**: The Register will allow registered persons, on behalf of Data Holders and Data Recipients, to manage the metadata of their associated organisations and systems.
 - **Management of Certificates**: The Register will facilitate the issuing, management and revocation of digital certificates.

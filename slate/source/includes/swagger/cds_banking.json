@@ -12,10 +12,11 @@
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Banking API",
-    "version" : "1.32.0"
+    "version" : "1.33.0"
   },
   "servers" : [ {
-    "url" : "https://data.holder.com.au/cds-au/v1"
+    "description" : "MTLS",
+    "url" : "https://mtls.dh.example.com/cds-au/v1"
   } ],
   "paths" : {
     "/banking/accounts" : {
@@ -84,7 +85,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -94,7 +95,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -104,7 +105,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -159,23 +160,13 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -190,12 +181,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -210,12 +196,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -230,12 +211,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -312,7 +288,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -322,7 +298,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -332,7 +308,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -387,23 +363,13 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -418,12 +384,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -438,12 +399,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -458,12 +414,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -503,7 +454,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -513,7 +464,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -523,7 +474,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -589,23 +540,13 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -620,12 +561,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -640,12 +576,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -660,12 +591,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -694,7 +620,7 @@
           "style" : "simple",
           "x-cds-type" : "ASCIIString"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -704,7 +630,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -714,7 +640,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -769,23 +695,13 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -800,12 +716,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -820,12 +731,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -840,12 +746,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -873,7 +774,7 @@
           "style" : "simple",
           "x-cds-type" : "ASCIIString"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -883,7 +784,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -893,7 +794,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -948,23 +849,13 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -979,12 +870,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -999,12 +885,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1019,12 +900,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -1037,7 +913,7 @@
     },
     "/banking/accounts/{accountId}/transactions" : {
       "get" : {
-        "description" : "Obtain transactions for a specific account.\n\nSome general notes that apply to all endpoints that retrieve transactions:\n\n- Where multiple transactions are returned, transactions should be ordered according to effective date in descending order\n- As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the \"effective\" date/time which will be defined as:\n  - Posted date/time if available, then\n  - Execution date/time if available, then\n  - A reasonable date/time nominated by the data holder using internal data structures\n- For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account\n- For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.",
+        "description" : "Obtain transactions for a specific account.\n\nSome general notes that apply to all endpoints that retrieve transactions:<ul><li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the \"effective\" date/time which will be defined as:<ul><li>Posted date/time if available, then<li>Execution date/time if available, then<li>A reasonable date/time nominated by the data holder using internal data structures</ul><li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</ul>",
         "operationId" : "getTransactions",
         "parameters" : [ {
           "description" : "ID of the account to get transactions for. Must have previously been returned by one of the account list endpoints.",
@@ -1052,7 +928,7 @@
           "style" : "simple",
           "x-cds-type" : "ASCIIString"
         }, {
-          "description" : "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days. Format is aligned to [DateTimeString](#common-field-types) common type.",
+          "description" : "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to _newest-time_ minus 90 days. Format is aligned to [DateTimeString](#common-field-types) common type.",
           "explode" : true,
           "in" : "query",
           "name" : "oldest-time",
@@ -1100,7 +976,7 @@
           "style" : "form",
           "x-cds-type" : "AmountString"
         }, {
-          "description" : "Filter transactions to only transactions where this string value is found as a substring of either the reference or description fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named _isQueryParamUnsupported_ should be included in the meta object and set to `true` (whether the text parameter is supplied or not).",
+          "description" : "Filter transactions to only transactions where this string value is found as a substring of either the _reference_ or _description_ fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named _isQueryParamUnsupported_ should be included in the meta object and set to `true` (whether the text parameter is supplied or not).",
           "explode" : true,
           "in" : "query",
           "name" : "text",
@@ -1136,7 +1012,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1146,7 +1022,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1156,7 +1032,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -1211,23 +1087,13 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1242,12 +1108,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1262,12 +1123,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1282,12 +1138,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1302,12 +1153,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -1320,7 +1166,7 @@
     },
     "/banking/accounts/{accountId}/transactions/{transactionId}" : {
       "get" : {
-        "description" : "Obtain detailed information on a transaction for a specific account.",
+        "description" : "Obtain detailed information on a transaction for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-transaction-detail-v1.html).",
         "operationId" : "getTransactionDetail",
         "parameters" : [ {
           "description" : "ID of the account to get transactions for. Must have previously been returned by one of the account list endpoints.",
@@ -1347,7 +1193,7 @@
           "style" : "simple",
           "x-cds-type" : "ASCIIString"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1357,7 +1203,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1367,7 +1213,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -1418,27 +1264,17 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseBankingTransactionById"
+                  "$ref" : "#/components/schemas/ResponseBankingTransactionByIdV2"
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1453,12 +1289,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1473,12 +1304,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1493,12 +1319,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -1506,7 +1327,7 @@
         "summary" : "Get Transaction Detail",
         "tags" : [ "Banking", "Accounts" ],
         "x-scopes" : [ "bank:transactions:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/banking/accounts/{accountId}/direct-debits" : {
@@ -1552,7 +1373,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1562,7 +1383,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1572,7 +1393,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -1627,23 +1448,13 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1658,12 +1469,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1678,12 +1484,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1698,12 +1499,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1718,12 +1514,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -1800,7 +1591,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -1810,7 +1601,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -1820,7 +1611,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -1875,23 +1666,13 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1906,12 +1687,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1926,12 +1702,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -1946,12 +1717,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -1991,7 +1757,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2001,7 +1767,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2011,7 +1777,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -2077,23 +1843,13 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2108,12 +1864,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2128,12 +1879,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2148,12 +1894,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -2208,7 +1949,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2218,7 +1959,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2228,7 +1969,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -2283,23 +2024,13 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2314,12 +2045,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2334,12 +2060,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2354,12 +2075,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2374,12 +2090,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -2456,7 +2167,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2466,7 +2177,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2476,7 +2187,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -2531,23 +2242,13 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2562,12 +2263,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2582,12 +2278,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2602,12 +2293,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -2647,7 +2333,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2657,7 +2343,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2667,7 +2353,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -2733,23 +2419,13 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2764,12 +2440,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2784,12 +2455,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2804,12 +2470,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -2864,7 +2525,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -2874,7 +2535,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -2884,7 +2545,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -2939,23 +2600,13 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2970,12 +2621,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -2990,12 +2636,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -3010,12 +2651,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -3043,7 +2679,7 @@
           "style" : "simple",
           "x-cds-type" : "ASCIIString"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -3053,7 +2689,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -3063,7 +2699,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+          "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
           "explode" : false,
           "in" : "header",
           "name" : "x-fapi-interaction-id",
@@ -3118,23 +2754,13 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -3149,12 +2775,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -3169,12 +2790,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -3189,12 +2805,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           },
@@ -3209,12 +2820,7 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-fapi-interaction-id"
               }
             }
           }
@@ -3227,7 +2833,7 @@
     },
     "/banking/products" : {
       "get" : {
-        "description" : "Obtain a list of products that are currently openly offered to the market.\n\nNote that the results returned by this endpoint are expected to be ordered in descending order according to _lastUpdated_.\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained here, in one place.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field named [_additionalValue_](#productfeaturetypedoc). This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the `ADDITIONAL_CARDS` feature is the number of cards allowed while the contents of this field for the `MAX_LIMIT` constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an _additionalInfo_ and _additionalInfoUri_ field. The _additionalInfo_ field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The _additionalInfoUri_ provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use different HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge. Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while _productCategory_ is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actually has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank. To minimise the volume and frequency of these calls the ability to set a _lastUpdated_ field with the date and time of the last update to this product is included. A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the _updated-since_ query parameter.\n\nIn addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no longer offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.\n\nObsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/obsolete/get-products-v2.html).",
+        "description" : "Obtain a list of products that are currently openly offered to the market.\n\nNote that the results returned by this endpoint are expected to be ordered in descending order according to _lastUpdated_.\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained below.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field named [_additionalValue_](#productfeaturetypedoc). This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the `ADDITIONAL_CARDS` feature is the number of cards allowed while the contents of this field for the `MAX_LIMIT` constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an _additionalInfo_ and _additionalInfoUri_ field. The _additionalInfo_ field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The _additionalInfoUri_ provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use different HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge. Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while _productCategory_ is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actually has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank. To minimise the volume and frequency of these calls the ability to set a _lastUpdated_ field with the date and time of the last update to this product is included. A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the _updated-since_ query parameter.\n\nIn addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no longer offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.\n\nObsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/obsolete/get-products-v2.html).",
         "operationId" : "listProducts",
         "parameters" : [ {
           "description" : "Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the _effectiveFrom_ and _effectiveTo_ fields. Valid values are `CURRENT`, `FUTURE` and `ALL`. If absent defaults to `CURRENT`.",
@@ -3301,7 +2907,7 @@
           "style" : "form",
           "x-cds-type" : "PositiveInteger"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -3311,7 +2917,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -3330,15 +2936,10 @@
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               }
             }
           },
@@ -3373,6 +2974,10 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>"
           }
         },
+        "servers" : [ {
+          "description" : "TLS",
+          "url" : "https://tls.dh.example.com/cds-au/v1"
+        } ],
         "summary" : "Get Products",
         "tags" : [ "Banking", "Products" ],
         "x-version" : "3"
@@ -3380,7 +2985,7 @@
     },
     "/banking/products/{productId}" : {
       "get" : {
-        "description" : "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](includes/obsolete/get-product-detail-v2.html), [v3](includes/obsolete/get-product-detail-v3.html).",
+        "description" : "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](includes/obsolete/get-product-detail-v2.html), [v3](includes/obsolete/get-product-detail-v3.html), [v4](includes/obsolete/get-product-detail-v4.html).",
         "operationId" : "getProductDetail",
         "parameters" : [ {
           "description" : "ID of the specific product requested.",
@@ -3395,7 +3000,7 @@
           "style" : "simple",
           "x-cds-type" : "ASCIIString"
         }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -3405,7 +3010,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -3420,19 +3025,14 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseBankingProductByIdV4"
+                  "$ref" : "#/components/schemas/ResponseBankingProductByIdV5"
                 }
               }
             },
-            "description" : "Success",
+            "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/ResponseHeader_x-v"
               }
             }
           },
@@ -3467,16 +3067,38 @@
             "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
           }
         },
+        "servers" : [ {
+          "description" : "TLS",
+          "url" : "https://tls.dh.example.com/cds-au/v1"
+        } ],
         "summary" : "Get Product Detail",
         "tags" : [ "Banking", "Products" ],
-        "x-version" : "4"
+        "x-version" : "5"
       }
     }
   },
   "components" : {
+    "headers" : {
+      "ResponseHeader_x-v" : {
+        "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
+        "explode" : false,
+        "schema" : {
+          "type" : "string"
+        },
+        "style" : "simple"
+      },
+      "ResponseHeader_x-fapi-interaction-id" : {
+        "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+        "explode" : false,
+        "schema" : {
+          "type" : "string"
+        },
+        "style" : "simple"
+      }
+    },
     "parameters" : {
       "RequestHeader_x-v" : {
-        "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+        "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
         "explode" : false,
         "in" : "header",
         "name" : "x-v",
@@ -3487,7 +3109,7 @@
         "style" : "simple"
       },
       "RequestHeader_x-min-v" : {
-        "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder must respond with a `406 Not Acceptable`.",
+        "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
         "explode" : false,
         "in" : "header",
         "name" : "x-min-v",
@@ -3498,7 +3120,7 @@
         "style" : "simple"
       },
       "RequestHeader_x-fapi-interaction-id" : {
-        "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+        "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
         "explode" : false,
         "in" : "header",
         "name" : "x-fapi-interaction-id",
@@ -3547,7 +3169,7 @@
         "x-conditional" : true,
         "x-cds-type" : "Base64"
       },
-      "ParamAccountOpenStatus" : {
+      "Param_account_open-status" : {
         "description" : "Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.",
         "explode" : true,
         "in" : "query",
@@ -3560,7 +3182,7 @@
         },
         "style" : "form"
       },
-      "ParamProductCategory" : {
+      "Param_product-category" : {
         "description" : "Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
         "explode" : true,
         "in" : "query",
@@ -3572,7 +3194,7 @@
         },
         "style" : "form"
       },
-      "ParamAccountIsOwned" : {
+      "Param_account_is-owned" : {
         "description" : "Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.",
         "explode" : true,
         "in" : "query",
@@ -3585,7 +3207,7 @@
         "style" : "form",
         "x-cds-type" : "Boolean"
       },
-      "ParamPage" : {
+      "Param_page" : {
         "description" : "Page of results to request (standard pagination).",
         "explode" : true,
         "in" : "query",
@@ -3599,7 +3221,7 @@
         "style" : "form",
         "x-cds-type" : "PositiveInteger"
       },
-      "ParamPageSize" : {
+      "Param_page-size" : {
         "description" : "Page size to request. Default is 25 (standard pagination).",
         "explode" : true,
         "in" : "query",
@@ -3613,7 +3235,7 @@
         "style" : "form",
         "x-cds-type" : "PositiveInteger"
       },
-      "ParamTransactionNewestTime" : {
+      "Param_transaction_newest-time" : {
         "description" : "Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to today. Format is aligned to [DateTimeString](#common-field-types) common type.",
         "explode" : true,
         "in" : "query",
@@ -3626,8 +3248,8 @@
         "style" : "form",
         "x-cds-type" : "DateTimeString"
       },
-      "ParamTransactionOldestTime" : {
-        "description" : "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days. Format is aligned to [DateTimeString](#common-field-types) common type.",
+      "Param_transaction_oldest-time" : {
+        "description" : "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to _newest-time_ minus 90 days. Format is aligned to [DateTimeString](#common-field-types) common type.",
         "explode" : true,
         "in" : "query",
         "name" : "oldest-time",
@@ -3639,7 +3261,7 @@
         "style" : "form",
         "x-cds-type" : "DateTimeString"
       },
-      "ParamTransactionMinAmount" : {
+      "Param_transaction_min-amount" : {
         "description" : "Filter transactions to only transactions with amounts higher than or equal to this amount.",
         "explode" : true,
         "in" : "query",
@@ -3652,7 +3274,7 @@
         "style" : "form",
         "x-cds-type" : "AmountString"
       },
-      "ParamTransactionMaxAmount" : {
+      "Param_transaction_max-amount" : {
         "description" : "Filter transactions to only transactions with amounts less than or equal to this amount.",
         "explode" : true,
         "in" : "query",
@@ -3665,7 +3287,7 @@
         "style" : "form",
         "x-cds-type" : "AmountString"
       },
-      "ParamTransactionText" : {
+      "Param_transaction_text" : {
         "description" : "Filter transactions to only transactions where this string value is found as a substring of either the _reference_ or _description_ fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named _isQueryParamUnsupported_ should be included in the meta object and set to `true` (whether the text parameter is supplied or not).",
         "explode" : true,
         "in" : "query",
@@ -3852,10 +3474,10 @@
         "required" : [ "additionalInfoUri" ],
         "type" : "object"
       },
-      "ResponseBankingProductByIdV4" : {
+      "ResponseBankingProductByIdV5" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/BankingProductDetailV4"
+            "$ref" : "#/components/schemas/BankingProductDetailV5"
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -3867,11 +3489,11 @@
         "required" : [ "data", "links" ],
         "type" : "object"
       },
-      "BankingProductDetailV4" : {
+      "BankingProductDetailV5" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/BankingProductV4"
         }, {
-          "$ref" : "#/components/schemas/BankingProductDetailV4_allOf"
+          "$ref" : "#/components/schemas/BankingProductDetailV5_allOf"
         } ]
       },
       "BankingProductBundle" : {
@@ -3930,11 +3552,11 @@
         "type" : "object",
         "x-conditional" : [ "additionalValue", "additionalInfo" ]
       },
-      "BankingProductConstraint" : {
+      "BankingProductConstraintV2" : {
         "properties" : {
           "constraintType" : {
             "description" : "The type of constraint described. For further details, refer to [Product Constraint Types](#tocSproductconstrainttypedoc).",
-            "enum" : [ "MAX_BALANCE", "MAX_LIMIT", "MIN_BALANCE", "MIN_LIMIT", "OPENING_BALANCE" ],
+            "enum" : [ "MAX_BALANCE", "MAX_LIMIT", "MAX_LVR", "MIN_BALANCE", "MIN_LIMIT", "MIN_LVR", "OPENING_BALANCE" ],
             "type" : "string"
           },
           "additionalValue" : {
@@ -4338,7 +3960,7 @@
             "type" : "string"
           },
           "nickname" : {
-            "description" : "A customer supplied nick name for the account.",
+            "description" : "A customer supplied nickname for the account.",
             "type" : "string"
           },
           "openStatus" : {
@@ -4641,10 +4263,10 @@
         "type" : "object",
         "x-conditional" : [ "transactionId", "postingDateTime", "crn" ]
       },
-      "ResponseBankingTransactionById" : {
+      "ResponseBankingTransactionByIdV2" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/BankingTransactionDetail"
+            "$ref" : "#/components/schemas/BankingTransactionDetailV2"
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -4656,11 +4278,11 @@
         "required" : [ "data", "links" ],
         "type" : "object"
       },
-      "BankingTransactionDetail" : {
+      "BankingTransactionDetailV2" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/BankingTransaction"
         }, {
-          "$ref" : "#/components/schemas/BankingTransactionDetail_allOf"
+          "$ref" : "#/components/schemas/BankingTransactionDetailV2_allOf"
         } ]
       },
       "ResponseBankingAccountsBalanceList" : {
@@ -5297,6 +4919,7 @@
         "x-conditional" : [ "simple", "paf" ]
       },
       "CommonSimpleAddress" : {
+        "description" : "Required if _addressUType_ is set to `simple`.",
         "properties" : {
           "mailingName" : {
             "description" : "Name of the individual or business formatted for inclusion in an address used for physical mail.",
@@ -5338,7 +4961,7 @@
         "x-conditional" : [ "postcode" ]
       },
       "CommonPAFAddress" : {
-        "description" : "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).",
+        "description" : "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if _addressUType_ is set to `paf`.",
         "properties" : {
           "dpid" : {
             "description" : "Unique identifier for an address as defined by Australia Post. Also known as Delivery Point Identifier.",
@@ -5533,6 +5156,12 @@
         "enum" : [ "BUSINESS_LOANS", "CRED_AND_CHRG_CARDS", "LEASES", "MARGIN_LOANS", "OVERDRAFTS", "PERS_LOANS", "REGULATED_TRUST_ACCOUNTS", "RESIDENTIAL_MORTGAGES", "TERM_DEPOSITS", "TRADE_FINANCE", "TRANS_AND_SAVINGS_ACCOUNTS", "TRAVEL_CARDS" ],
         "type" : "string"
       },
+      "NppPaymentService" : {
+        "description" : "Identifier of the applicable overlay service. The _service_ is used in conjunction with the _serviceVersion_. See [here](#npp-services) for more details.",
+        "enum" : [ "X2P1", "IFTI", "BSCT", "CATSCT" ],
+        "example" : "X2P1",
+        "type" : "string"
+      },
       "RequestAccountIds_data" : {
         "properties" : {
           "accountIds" : {
@@ -5575,7 +5204,7 @@
         "required" : [ "imageUri" ],
         "type" : "object"
       },
-      "BankingProductDetailV4_allOf" : {
+      "BankingProductDetailV5_allOf" : {
         "properties" : {
           "bundles" : {
             "description" : "An array of bundles that this product participates in. Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle. It is assumed that the current product is included in the bundle also.",
@@ -5594,7 +5223,7 @@
           "constraints" : {
             "description" : "Constraints on the application for or operation of the product such as minimum balances or limit thresholds.",
             "items" : {
-              "$ref" : "#/components/schemas/BankingProductConstraint"
+              "$ref" : "#/components/schemas/BankingProductConstraintV2"
             },
             "type" : "array"
           },
@@ -5747,10 +5376,11 @@
         "required" : [ "transactions" ],
         "type" : "object"
       },
-      "BankingTransactionDetail_allOf_extendedData_x2p101Payload" : {
+      "BankingTransactionDetailV2_allOf_extendedData_nppPayload" : {
+        "description" : "Required if the _extensionUType_ value is `nppPayload`.",
         "properties" : {
           "extendedDescription" : {
-            "description" : "An extended string description. Required if the _extensionUType_ field is `x2p101Payload`.",
+            "description" : "An extended string description. Required if the _extensionUType_ value is `nppPayload`.",
             "type" : "string"
           },
           "endToEndId" : {
@@ -5758,14 +5388,25 @@
             "type" : "string"
           },
           "purposeCode" : {
-            "description" : "Purpose of the payment. Format is defined by NPP standards for the x2p1.01 overlay service.",
-            "type" : "string"
+            "description" : "Purpose of the payment. Format is defined by the NPP standards for the NPP overlay services including Osko (X2P1).",
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
+          },
+          "service" : {
+            "$ref" : "#/components/schemas/NppPaymentService"
+          },
+          "serviceVersion" : {
+            "description" : "Two-digit NPP service overlay version with leading zero.",
+            "example" : "03",
+            "type" : "string",
+            "x-cds-type" : "ExternalRef"
           }
         },
+        "required" : [ "service", "serviceVersion" ],
         "type" : "object",
         "x-conditional" : [ "extendedDescription" ]
       },
-      "BankingTransactionDetail_allOf_extendedData" : {
+      "BankingTransactionDetailV2_allOf_extendedData" : {
         "properties" : {
           "payer" : {
             "description" : "Label of the originating payer. Mandatory for inbound payment.",
@@ -5776,27 +5417,21 @@
             "type" : "string"
           },
           "extensionUType" : {
-            "description" : "Optional extended data specific to transactions originated via NPP.",
-            "enum" : [ "x2p101Payload" ],
+            "description" : "Optional extended data specific to transactions. Currently extended data is supported for NPP service overlays.",
+            "enum" : [ "nppPayload" ],
             "type" : "string"
           },
-          "x2p101Payload" : {
-            "$ref" : "#/components/schemas/BankingTransactionDetail_allOf_extendedData_x2p101Payload"
-          },
-          "service" : {
-            "description" : "Identifier of the applicable overlay service. Valid values are: `X2P1.01`.",
-            "enum" : [ "X2P1.01" ],
-            "type" : "string"
+          "nppPayload" : {
+            "$ref" : "#/components/schemas/BankingTransactionDetailV2_allOf_extendedData_nppPayload"
           }
         },
-        "required" : [ "service" ],
         "type" : "object",
-        "x-conditional" : [ "payer", "payee", "x2p101Payload" ]
+        "x-conditional" : [ "payer", "payee", "nppPayload" ]
       },
-      "BankingTransactionDetail_allOf" : {
+      "BankingTransactionDetailV2_allOf" : {
         "properties" : {
           "extendedData" : {
-            "$ref" : "#/components/schemas/BankingTransactionDetail_allOf_extendedData"
+            "$ref" : "#/components/schemas/BankingTransactionDetailV2_allOf_extendedData"
           }
         },
         "required" : [ "extendedData" ],

@@ -5,8 +5,8 @@
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -25,7 +25,7 @@
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -105,21 +105,21 @@
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -266,7 +266,7 @@
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingaccountlistv3">ResponseBankingAccountListV3</a></td>
 </tr>
 <tr>
@@ -309,31 +309,31 @@
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-bulk-balances">Get Bulk Balances</h2>
@@ -343,8 +343,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/balances</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -363,7 +363,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/balances'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -443,21 +443,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -606,7 +606,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</a></td>
 </tr>
 <tr>
@@ -649,31 +649,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-balances-for-specific-accounts">Get Balances For Specific Accounts</h2>
@@ -683,8 +683,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/balances</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
@@ -713,7 +713,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/balances'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
@@ -783,21 +783,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -879,7 +879,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</a></td>
 </tr>
 <tr>
@@ -922,31 +922,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-account-balance">Get Account Balance</h2>
@@ -956,8 +956,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/balance</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -976,7 +976,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/balance'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/balance'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -1026,21 +1026,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -1104,7 +1104,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</a></td>
 </tr>
 <tr>
@@ -1147,31 +1147,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read</a>
+<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-account-detail">Get Account Detail</h2>
@@ -1181,8 +1181,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -1201,7 +1201,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -1253,21 +1253,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -1533,7 +1533,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingaccountbyidv4">ResponseBankingAccountByIdV4</a></td>
 </tr>
 <tr>
@@ -1576,31 +1576,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.detail:read</a>
+<a href="#authorisation-scopes">bank:accounts.detail:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-transactions-for-account">Get Transactions For Account</h2>
@@ -1610,8 +1610,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -1630,7 +1630,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -1643,20 +1643,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain transactions for a specific account.</p>
 
-<p>Some general notes that apply to all endpoints that retrieve transactions:</p>
-
-<ul>
-<li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order</li>
-<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the &quot;effective&quot; date/time which will be defined as:
-
-<ul>
-<li>Posted date/time if available, then</li>
-<li>Execution date/time if available, then</li>
-<li>A reasonable date/time nominated by the data holder using internal data structures</li>
-</ul></li>
-<li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account</li>
-<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</li>
-</ul>
+<p>Some general notes that apply to all endpoints that retrieve transactions:<ul><li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the &quot;effective&quot; date/time which will be defined as:<ul><li>Posted date/time if available, then<li>Execution date/time if available, then<li>A reasonable date/time nominated by the data holder using internal data structures</ul><li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</ul></p>
 
 <h3 id="cdr-banking-api_get-transactions-for-account_endpoint-version">Endpoint Version</h3>
 
@@ -1744,21 +1731,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -1840,7 +1827,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingtransactionlist">ResponseBankingTransactionList</a></td>
 </tr>
 <tr>
@@ -1889,37 +1876,37 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:transactions:read</a>
+<a href="#authorisation-scopes">bank:transactions:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-transaction-detail">Get Transaction Detail</h2>
@@ -1929,8 +1916,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -1949,7 +1936,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -2006,21 +1993,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -2101,7 +2088,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingtransactionbyid">ResponseBankingTransactionById</a></td>
 </tr>
 <tr>
@@ -2144,31 +2131,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:transactions:read</a>
+<a href="#authorisation-scopes">bank:transactions:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-direct-debits-for-account">Get Direct Debits For Account</h2>
@@ -2178,8 +2165,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/direct-debits</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -2198,7 +2185,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -2262,21 +2249,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -2349,7 +2336,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 <tr>
@@ -2398,37 +2385,37 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-bulk-direct-debits">Get Bulk Direct Debits</h2>
@@ -2438,8 +2425,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -2458,7 +2445,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -2538,21 +2525,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -2699,7 +2686,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 <tr>
@@ -2742,31 +2729,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-direct-debits-for-specific-accounts">Get Direct Debits For Specific Accounts</h2>
@@ -2776,8 +2763,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
@@ -2806,7 +2793,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
@@ -2876,21 +2863,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -2970,7 +2957,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</a></td>
 </tr>
 <tr>
@@ -3013,31 +3000,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-scheduled-payments-for-account">Get Scheduled Payments for Account</h2>
@@ -3047,8 +3034,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/payments/scheduled</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -3067,7 +3054,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/accounts/{accountId}/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -3133,21 +3120,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -3308,7 +3295,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</a></td>
 </tr>
 <tr>
@@ -3357,37 +3344,37 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-scheduled-payments-bulk">Get Scheduled Payments Bulk</h2>
@@ -3397,8 +3384,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/payments/scheduled</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -3417,7 +3404,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -3497,21 +3484,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -3746,7 +3733,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</a></td>
 </tr>
 <tr>
@@ -3789,31 +3776,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-scheduled-payments-for-specific-accounts">Get Scheduled Payments For Specific Accounts</h2>
@@ -3823,8 +3810,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/payments/scheduled</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
@@ -3853,7 +3840,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'POST'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
@@ -3925,21 +3912,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -4107,7 +4094,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</a></td>
 </tr>
 <tr>
@@ -4150,31 +4137,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read</a>
+<a href="#authorisation-scopes">bank:regular_payments:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-payees">Get Payees</h2>
@@ -4184,8 +4171,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/payees</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/payees</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -4204,7 +4191,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payees'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/payees'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -4270,21 +4257,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -4382,7 +4369,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingpayeelistv2">ResponseBankingPayeeListV2</a></td>
 </tr>
 <tr>
@@ -4425,31 +4412,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:payees:read</a>
+<a href="#authorisation-scopes">bank:payees:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-payee-detail">Get Payee Detail</h2>
@@ -4459,8 +4446,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/banking/payees/{payeeId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -4479,7 +4466,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/payees/{payeeId}'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/banking/payees/{payeeId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -4533,21 +4520,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>x-fapi-interaction-id</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>x-fapi-auth-date</td>
@@ -4653,7 +4640,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingpayeebyidv2">ResponseBankingPayeeByIdV2</a></td>
 </tr>
 <tr>
@@ -4702,37 +4689,37 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>400</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>406</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
 <td>422</td>
 <td>x-fapi-interaction-id</td>
 <td>string</td>
-<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder must play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 </tbody></table>
 
 <p><aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:payees:read</a>
+<a href="#authorisation-scopes">bank:payees:read.</a>
 </aside></p>
 
 <h2 id="cdr-banking-api_get-products">Get Products</h2>
@@ -4742,8 +4729,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/products</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://tls.dh.example.com/cds-au/v1/banking/products</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">tls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -4754,7 +4741,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/products'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://tls.dh.example.com/cds-au/v1/banking/products'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -4769,7 +4756,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Note that the results returned by this endpoint are expected to be ordered in descending order according to <em>lastUpdated</em>.</p>
 <h3 id='conventions'>Conventions</h3>
-<p>In the product reference payloads there are a number of recurring conventions that are explained here, in one place.</p>
+<p>In the product reference payloads there are a number of recurring conventions that are explained below.</p>
 <h4 id='arrays-of-features'>Arrays Of Features</h4>
 <p>In the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:</p>
 
@@ -4870,14 +4857,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 </tbody></table>
 
@@ -5047,7 +5034,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingproductlistv3">ResponseBankingProductListV3</a></td>
 </tr>
 <tr>
@@ -5089,7 +5076,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <p><aside class="success">
-This operation does not require authentication
+This operation does not require authentication.
 </aside></p>
 
 <h2 id="cdr-banking-api_get-product-detail">Get Product Detail</h2>
@@ -5099,8 +5086,8 @@ This operation does not require authentication
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://data.holder.com.au/cds-au/v1/banking/products/{productId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">data.holder.com.au</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://tls.dh.example.com/cds-au/v1/banking/products/{productId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">tls.dh.example.com</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
@@ -5111,7 +5098,7 @@ This operation does not require authentication
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://data.holder.com.au/cds-au/v1/banking/products/{productId}'</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://tls.dh.example.com/cds-au/v1/banking/products/{productId}'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -5163,14 +5150,14 @@ This operation does not require authentication
 <td>header</td>
 <td>string</td>
 <td>mandatory</td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
 <td>header</td>
 <td>string</td>
 <td>optional</td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder must respond with a <code>406 Not Acceptable</code>.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the data holder <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 </tbody></table>
 
@@ -5391,7 +5378,7 @@ This operation does not require authentication
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Success</td>
+<td>Successful response</td>
 <td><a href="#schemacdr-banking-apiresponsebankingproductbyidv5">ResponseBankingProductByIdV5</a></td>
 </tr>
 <tr>
@@ -5433,7 +5420,7 @@ This operation does not require authentication
 </tbody></table>
 
 <p><aside class="success">
-This operation does not require authentication
+This operation does not require authentication.
 </aside></p>
 
 <h2 class="schema-heading" id="cdr-banking-api-schemas">Schemas</h2>
@@ -12214,13 +12201,13 @@ This operation does not require authentication
 <td>simple</td>
 <td><a href="#schemacdr-banking-apicommonsimpleaddress">CommonSimpleAddress</a></td>
 <td>conditional</td>
-<td>none</td>
+<td>Required if <em>addressUType</em> is set to <code>simple</code>.</td>
 </tr>
 <tr>
 <td>paf</td>
 <td><a href="#schemacdr-banking-apicommonpafaddress">CommonPAFAddress</a></td>
 <td>conditional</td>
-<td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>.</td>
+<td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if <em>addressUType</em> is set to <code>paf</code>.</td>
 </tr>
 </tbody></table>
 
@@ -12261,6 +12248,8 @@ This operation does not require authentication
   </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p><em>Required if <em>addressUType</em> is set to <code>simple</code>.</em></p>
+
 <h3 id="cdr-banking-api_commonsimpleaddress_properties">Properties</h3>
 
 <table><thead>
@@ -12354,7 +12343,7 @@ This operation does not require authentication
   </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>.</em></p>
+<p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if <em>addressUType</em> is set to <code>paf</code>.</em></p>
 
 <h3 id="cdr-banking-api_commonpafaddress_properties">Properties</h3>
 

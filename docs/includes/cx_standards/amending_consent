@@ -1,0 +1,16 @@
+<h2 id="consumer-experience_amending-consent-standards">Amending Consent Standards</h2>
+<pre class="highlight diff tab-diff"><code>Added Amending Consent Standards section
+</code></pre>
+<p>Each of the below data standards are for the purposes of rule 8.11(1)(a)(ii):</p>
+
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong><span style="white-space: nowrap;">Amending consent:</span></strong><br>Changing attributes</td>
+<td><p>A data recipient inviting a consumer to amend a consent <strong>MUST</strong> indicate where datasets, uses, and durations are being amended.</p><p>A data recipient <strong>MAY</strong> apply this standard to other changing attributes where the attribute in the amending consent request differs to that of the previous consent. How a changed attribute is signified is at the data recipient&#39;s discretion.</p></td>
+</tr>
+</tbody></table>

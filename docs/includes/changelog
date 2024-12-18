@@ -3,8 +3,7 @@
   <a id="change-log"></a>
   <a id="archives"></a>
 </p>
-<pre class="highlight diff tab-diff"><code>Merged the Change Log and Archives sections. Archived versions are available through the links in the Version column.
-</code></pre>
+
 <p>The following table lists the changes made to these standards in reverse date order (most recent change and current version is at the top). Archived versions are prior versions of the standards that are available for reference only and not considered binding.</p>
 
 <table><thead>
@@ -15,6 +14,12 @@
 <th>Detail of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>18/12/2024</td>
+<td><a href="https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.33.0/">1.33.0</a></td>
+<td>Changes from Decision 356 (Maintenance Iteration 21) and Decision 350 (August 2024 Rules - Standards Impacts).</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.33.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/356">Decision 356</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/350">Decision 350</a> for details.</td>
+</tr>
 <tr>
 <td>21/10/2024</td>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.32.0/'>1.32.0</a></td>
@@ -42,7 +47,7 @@
 <tr>
 <td>21/12/2023</td>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.29.0/'>1.29.0</a></td>
-<td>Changes from maintenance iteration 17.  Also includes CX Standards changes to uplift Data Holder Dashboards and accommodate Business Consumers</td>
+<td>Changes from maintenance iteration 17. Also includes CX Standards changes to uplift Data Holder Dashboards and accommodate Business Consumers</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.29.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/318">Decision 318</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/328">Decision 328</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/333">Decision 333</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/334">Decision 334</a> for details.</td>
 </tr>
 <tr>
@@ -103,7 +108,7 @@
 <td>03/11/2022</td>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.20.0/'>1.20.0</a></td>
 <td>Changes arising from Decision 259 (Maintenance iteration 12)</td>
-<td>See <a href="includes/releasenotes/releasenotes.1.20.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/259">Decision 259</a> for details.  Also includes first draft of Telco standards</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.20.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/259">Decision 259</a> for details. Also includes first draft of Telco standards</td>
 </tr>
 <tr>
 <td>13/09/2022</td>
@@ -126,7 +131,7 @@
 <tr>
 <td>22/03/2022</td>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.16.1/'>1.16.1</a></td>
-<td>Minor errata and documentation fixes.  Update of swagger files to OAS3</td>
+<td>Minor errata and documentation fixes. Update of swagger files to OAS3</td>
 <td>See <a href="includes/releasenotes/releasenotes.1.16.1.html">release notes</a> for details</td>
 </tr>
 <tr>
@@ -288,8 +293,8 @@
 <tr>
 <td>28/05/2019</td>
 <td>0.9.2</td>
-<td>Admin End Points</td>
-<td>Added separate swagger/yaml as well as documentation for admin end points</td>
+<td>Admin endpoints</td>
+<td>Added separate swagger/yaml as well as documentation for admin endpoints</td>
 </tr>
 <tr>
 <td>28/05/2019</td>
@@ -331,7 +336,7 @@
 <td>03/04/2019</td>
 <td>0.8.0</td>
 <td>Accounts and Balances v1 final</td>
-<td>Applied changes to prepare for v1 version of Accounts and Balances end points and payloads documentation</td>
+<td>Applied changes to prepare for v1 version of Accounts and Balances endpoints and payloads documentation</td>
 </tr>
 <tr>
 <td>27/04/2019</td>
@@ -343,19 +348,19 @@
 <td>23/04/2019</td>
 <td>0.6.0</td>
 <td>Payees &amp; Customer v1 draft</td>
-<td>Applied changes to prepare for v1 version of Payees &amp; Customer end points and payloads documentation</td>
+<td>Applied changes to prepare for v1 version of Payees &amp; Customer endpoints and payloads documentation</td>
 </tr>
 <tr>
 <td>16/04/2019</td>
 <td>0.5.0</td>
 <td>Transaction v1 draft</td>
-<td>Applied changes to prepare for v1 version of Transaction end points and payloads documentation</td>
+<td>Applied changes to prepare for v1 version of Transaction endpoints and payloads documentation</td>
 </tr>
 <tr>
 <td>16/04/2019</td>
 <td>0.4.0</td>
 <td>Direct Debit Auth v1 draft</td>
-<td>Applied changes to prepare for v1 version of Direct Debit Authorisations end points and payloads documentation</td>
+<td>Applied changes to prepare for v1 version of Direct Debit Authorisations endpoints and payloads documentation</td>
 </tr>
 <tr>
 <td>09/04/2019</td>
@@ -367,7 +372,7 @@
 <td>11/03/2019</td>
 <td>0.2.0</td>
 <td>Product Reference v1 draft</td>
-<td>Applied changes to prepare for v1 version of Product Reference end points and payloads</td>
+<td>Applied changes to prepare for v1 version of Product Reference endpoints and payloads</td>
 </tr>
 <tr>
 <td>22/02/2019</td>
@@ -397,7 +402,7 @@
 <td>11/02/2019</td>
 <td>0.2.0</td>
 <td>Consistency Fixes</td>
-<td>Fixes to end points for consistency across the standard.  Changes as follows:<ul><li>Made the use of the data object consistent (all objects with mixin for properties)</li><li>Modifed the ErrorList object to ResponseErrorList as it really is a response object</li><li>Fixed required status for links and meta properties</li><li>Added query paging params for POST queries that return lists</li></ul></td>
+<td>Fixes to endpoints for consistency across the standard. Changes as follows:<ul><li>Made the use of the data object consistent (all objects with mixin for properties)</li><li>Modifed the ErrorList object to ResponseErrorList as it really is a response object</li><li>Fixed required status for links and meta properties</li><li>Added query paging params for POST queries that return lists</li></ul></td>
 </tr>
 <tr>
 <td>04/02/2019</td>
@@ -456,8 +461,8 @@
 <tr>
 <td>20/12/2018</td>
 <td>0.1.0</td>
-<td>Unauthenticated end points</td>
-<td>Modified URI structure commentary to allow for a different provider path for unauthenticated end points</td>
+<td>Unauthenticated endpoints</td>
+<td>Modified URI structure commentary to allow for a different provider path for unauthenticated endpoints</td>
 </tr>
 <tr>
 <td>20/12/2018</td>
@@ -493,7 +498,7 @@
 <td>19/12/2018</td>
 <td>0.1.0</td>
 <td>Updated swagger files</td>
-<td>Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes unless stated.  Changes are as follows:<ul><li>Fixed up numerous field descriptions based on feedback</li><li>Fixed all country fields to use ISO 3166 Alpha-3</li><li>Fixed all documentation errors raised in <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850">published feedback summary</a> except addition of PAFAddress</li><li>Added all minor amendments raised in <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850">published feedback summary</a></li><li>Modifications according to responses in technical feedback section documented in <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850">published feedback summary</a></li><li>organisationType for Organisation model is now required due to addition of OTHER value</li></ul></td>
+<td>Swagger files were updated to address feedback. Documentation has not been changed to reflect these changes unless stated. Changes are as follows:<ul><li>Fixed up numerous field descriptions based on feedback</li><li>Fixed all country fields to use ISO 3166 Alpha-3</li><li>Fixed all documentation errors raised in <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850">published feedback summary</a> except addition of PAFAddress</li><li>Added all minor amendments raised in <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850">published feedback summary</a></li><li>Modifications according to responses in technical feedback section documented in <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/39#issuecomment-444021850">published feedback summary</a></li><li>organisationType for Organisation model is now required due to addition of OTHER value</li></ul></td>
 </tr>
 <tr>
 <td>19/12/2018</td>
@@ -505,7 +510,7 @@
 <td>18/12/2018</td>
 <td>0.1.0</td>
 <td>Updated swagger files</td>
-<td>Swagger files were updated to address feedback.  Documentation has not been changed to reflect these changes unless stated.  Changes are as follows:<ul><li>Extracted common query parameters</li><li>Extracted enums with repeated use</li><li>Used schema composition to facilitate model inheritance</li><li>Removed erroneous default values</li><li>Corrected for JSON syntax errors</li><li>Standardised Operation IDs and Model names</li><li>Change $type fields to PType (also fixed in doco)</li></ul></td>
+<td>Swagger files were updated to address feedback. Documentation has not been changed to reflect these changes unless stated. Changes are as follows:<ul><li>Extracted common query parameters</li><li>Extracted enums with repeated use</li><li>Used schema composition to facilitate model inheritance</li><li>Removed erroneous default values</li><li>Corrected for JSON syntax errors</li><li>Standardised Operation IDs and Model names</li><li>Change $type fields to PType (also fixed in doco)</li></ul></td>
 </tr>
 <tr>
 <td>18/12/2018</td>
@@ -517,6 +522,11 @@
 <td>02/11/2018</td>
 <td><a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-0.1/'>0.1.0</a></td>
 <td>(November 2018 Working Draft)</td>
-<td>November 2018 Working Draft</td>
+<td>November 2018 Working Draft.</td>
 </tr>
 </tbody></table>
+
+<p><br>
+<br>
+<br>
+<br></p>

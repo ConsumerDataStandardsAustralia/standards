@@ -5,19 +5,19 @@ Data Recipients register with Data Holders according to **[[DCR]](#nref-DCR)** t
 
 #### Software Statement Assertion (SSA)
 
-As per **[[DCR]](#nref-DCR)**, a Software Statement is defined in as: _A digitally signed JSON Web Token (JWT) created in accordance with **[[JWT]](#nref-JWT)** that asserts metadata values about the client software_
+As per **[[DCR]](#nref-DCR)**, a Software Statement is defined as: "A digitally signed JSON Web Token (JWT) created in accordance with **[[JWT]](#nref-JWT)** that asserts metadata values about the client software".
 > An SSA is a digitally signed JSON Web Token (JWT) created in accordance with **[[JWT]](#nref-JWT)** that asserts metadata values about the client software.
 
 Such that:
 
-* The CDR Register **MUST** issue Software Statements to **active** Data Recipients for **active** Software Products
-* The CDR Register **MUST** issue distinct Software Statements for each `Software Product ID`
-* Software Statements are issued with a **10 minute** expiry time
-* As per **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, SSAs are signed by the CDR Register using **PS256**
-* CDR Register public keys are exposed on a dedicated JWKS URI endpoint
-* The CDR Register [JWKS endpoint](#cdr-participant-discovery-api_get-jwks) is an unauthenticated endpoint, using TLS
-* Data Recipients **MUST** present a valid SSA when undertaking dynamic client registration
-* Data Holders **MUST NOT** register Data Recipient software products unless they present a verified [Registration Request](#registration-request-using-jwt) with a verified [SSA](#ssa-definition)
+* The CDR Register **MUST** issue Software Statements to **active** Data Recipients for **active** Software Products.
+* The CDR Register **MUST** issue distinct Software Statements for each "Software Product ID".
+* Software Statements are issued with a **10 minute** expiry time.
+* As per **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, SSAs are signed by the CDR Register using **PS256**.
+* CDR Register public keys are exposed on a dedicated JWKS URI endpoint.
+* The CDR Register [JWKS endpoint](#cdr-participant-discovery-api_get-jwks) is an unauthenticated endpoint, using TLS.
+* Data Recipients **MUST** present a valid SSA when undertaking dynamic client registration.
+* Data Holders **MUST NOT** register Data Recipient software products unless they present a verified [Registration Request](#registration-request-using-jwt) with a verified [SSA](#ssa-definition).
 
 Refer to the [Register APIs](#register-apis) section for the endpoint definitions that will be used to retrieve and validate SSAs.
 
@@ -29,7 +29,7 @@ Example SSA:
 
 
 ```
-eyJhbGciOiJQUzI1NiIsImtpZCI6ImI4ZmFjZjJmZjM5NDQ0Zjc4MWUwYmU1ZGI0YjE0ZjE2IiwidHlwIjoiSldUIn0.eyJpc3MiOiJjZHItcmVnaXN0ZXIiLCJpYXQiOjE1NzE4MDgxMTEsImV4cCI6MjE0NzQ4MzY0NiwianRpIjoiM2JjMjA1YTFlYmM5NDNmYmI2MjRiMTRmY2IyNDExOTYiLCJjbGllbnRfbmFtZSI6Ik1vY2sgU29mdHdhcmUiLCJjbGllbnRfZGVzY3JpcHRpb24iOiJBIG1vY2sgc29mdHdhcmUgcHJvZHVjdCIsImNsaWVudF91cmkiOiJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUiLCJsZWdhbF9lbnRpdHlfaWQiOiIzQjBCMEE3Qi0zRTdCLTRBMkMtOTQ5Ny1FMzU3QTcxRDA3QzciLCJsZWdhbF9lbnRpdHlfbmFtZSI6Ik1vY2sgQ29tcGFueSBQdHkgTHRkLiIsIm9yZ19pZCI6IjNCMEIwQTdCLTNFN0ItNEEyQy05NDk3LUUzNTdBNzFEMDdDOCIsIm9yZ19uYW1lIjoiTW9jayBDb21wYW55IEJyYW5kIiwicmVkaXJlY3RfdXJpcyI6WyJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvcmVkaXJlY3RzL3JlZGlyZWN0MSIsImh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS9yZWRpcmVjdHMvcmVkaXJlY3QyIl0sInNlY3Rvcl9pZGVudGlmaWVyX3VyaSI6Imh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS9zZWN0b3JfaWRlbnRpZmllci5qc29uIiwibG9nb191cmkiOiJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvbG9nb3MvbG9nbzEucG5nIiwidG9zX3VyaSI6Imh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS90b3MuaHRtbCIsInBvbGljeV91cmkiOiJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvcG9saWN5Lmh0bWwiLCJqd2tzX3VyaSI6Imh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdS9qd2tzIiwicmV2b2NhdGlvbl91cmkiOiJodHRwczovL3d3dy5tb2NrY29tcGFueS5jb20uYXUvcmV2b2NhdGlvbiIsInJlY2lwaWVudF9iYXNlX3VyaSI6Imh0dHBzOi8vd3d3Lm1vY2tjb21wYW55LmNvbS5hdSIsInNvZnR3YXJlX2lkIjoiNzQwQzM2OEYtRUNGOS00RDI5LUEyRUEtMDUxNEE2NkIwQ0RFIiwic29mdHdhcmVfcm9sZXMiOiJkYXRhLXJlY2lwaWVudC1zb2Z0d2FyZS1wcm9kdWN0Iiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBiYW5rOmFjY291bnRzLmJhc2ljOnJlYWQgYmFuazphY2NvdW50cy5kZXRhaWw6cmVhZCBiYW5rOnRyYW5zYWN0aW9uczpyZWFkIGJhbms6cGF5ZWVzOnJlYWQgYmFuazpyZWd1bGFyX3BheW1lbnRzOnJlYWQgZW5lcmd5OmVsZWN0cmljaXR5LnNlcnZpY2Vwb2ludHMuYmFzaWM6cmVhZCBlbmVyZ3k6ZWxlY3RyaWNpdHkuc2VydmljZXBvaW50cy5kZXRhaWw6cmVhZCBlbmVyZ3k6ZWxlY3RyaWNpdHkudXNhZ2U6cmVhZCBlbmVyZ3k6ZWxlY3RyaWNpdHkuZGVyOnJlYWQgZW5lcmd5OmFjY291bnRzLmJhc2ljOnJlYWQgZW5lcmd5OmFjY291bnRzLmRldGFpbDpyZWFkIGVuZXJneTphY2NvdW50cy5wYXltZW50c2NoZWR1bGU6cmVhZCBlbmVyZ3k6YWNjb3VudHMuY29uY2Vzc2lvbnM6cmVhZCBlbmVyZ3k6YmlsbGluZzpyZWFkIGNvbW1vbjpjdXN0b21lci5iYXNpYzpyZWFkIGNvbW1vbjpjdXN0b21lci5kZXRhaWw6cmVhZCBjZHI6cmVnaXN0cmF0aW9uIn0.XTSst96xOifAnaMaBj0I5nO5vbtNwvz304hJ9I_jPOcdD6vitmLiyWdkdW5GKA4JAa62_DmRIU_3zXQL0gSSJxoWhCSbuIlfwDtXFpFZzQAnTv-hOul-5clYmXvQqqEqWvbZZ4g7IKdWdROp4fzWFXB0VKf-_qzue_Kksy3A9CwdZRmNMDFtIApkSULqxK3S8D2nFa3lvGzegl76Ji7p0Zjkyu8YexFyKCahTEGzQrRQeVILpaN107XHNlSWlhsv4hr1PXwG2Pn1z54SCG9tVOZ10WaqZ5SMjRqsQN-lVYSVe5BCTpQ-N_GnYuUeWh0rOJ9CrA8CUN_twCJXyW3I5w
+eyJhbGciOiJQUzI1NiIsImtpZCI6ImI4ZmFjZjJmZjM5NDQ0Zjc4MWUwYmU1ZGI0YjE0ZjE2IiwidHlwIjoiSldUIn0.eyJpc3MiOiJjZHItcmVnaXN0ZXIiLCJpYXQiOjE1NzE4MDgxMTEsImV4cCI6MjE0NzQ4MzY0NiwianRpIjoiM2JjMjA1YTFlYmM5NDNmYmI2MjRiMTRmY2IyNDExOTYiLCJjbGllbnRfbmFtZSI6Ik1vY2sgU29mdHdhcmUiLCJjbGllbnRfZGVzY3JpcHRpb24iOiJBIG1vY2sgc29mdHdhcmUgcHJvZHVjdCIsImNsaWVudF91cmkiOiJodHRwczovL2Fkci5leGFtcGxlLmNvbSIsImxlZ2FsX2VudGl0eV9pZCI6IjNCMEIwQTdCLTNFN0ItNEEyQy05NDk3LUUzNTdBNzFEMDdDNyIsImxlZ2FsX2VudGl0eV9uYW1lIjoiTW9jayBDb21wYW55IFB0eSBMdGQuIiwib3JnX2lkIjoiM0IwQjBBN0ItM0U3Qi00QTJDLTk0OTctRTM1N0E3MUQwN0M4Iiwib3JnX25hbWUiOiJNb2NrIENvbXBhbnkgQnJhbmQiLCJyZWRpcmVjdF91cmlzIjpbImh0dHBzOi8vYWRyLmV4YW1wbGUuY29tL3JlZGlyZWN0cy9yZWRpcmVjdDEiLCJodHRwczovL2Fkci5leGFtcGxlLmNvbS9yZWRpcmVjdHMvcmVkaXJlY3QyIl0sInNlY3Rvcl9pZGVudGlmaWVyX3VyaSI6Imh0dHBzOi8vYWRyLmV4YW1wbGUuY29tL3NlY3Rvcl9pZGVudGlmaWVyLmpzb24iLCJsb2dvX3VyaSI6Imh0dHBzOi8vYWRyLmV4YW1wbGUuY29tL2xvZ29zL2xvZ28xLnBuZyIsInRvc191cmkiOiJodHRwczovL2Fkci5leGFtcGxlLmNvbS90b3MuaHRtbCIsInBvbGljeV91cmkiOiJodHRwczovL2Fkci5leGFtcGxlLmNvbS9wb2xpY3kuaHRtbCIsImp3a3NfdXJpIjoiaHR0cHM6Ly9hZHIuZXhhbXBsZS5jb20vandrcyIsInJldm9jYXRpb25fdXJpIjoiaHR0cHM6Ly9hZHIuZXhhbXBsZS5jb20vcmV2b2NhdGlvbiIsInJlY2lwaWVudF9iYXNlX3VyaSI6Imh0dHBzOi8vYWRyLmV4YW1wbGUuY29tIiwic29mdHdhcmVfaWQiOiI3NDBDMzY4Ri1FQ0Y5LTREMjktQTJFQS0wNTE0QTY2QjBDREUiLCJzb2Z0d2FyZV9yb2xlcyI6ImRhdGEtcmVjaXBpZW50LXNvZnR3YXJlLXByb2R1Y3QiLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGJhbms6YWNjb3VudHMuYmFzaWM6cmVhZCBiYW5rOmFjY291bnRzLmRldGFpbDpyZWFkIGJhbms6dHJhbnNhY3Rpb25zOnJlYWQgYmFuazpwYXllZXM6cmVhZCBiYW5rOnJlZ3VsYXJfcGF5bWVudHM6cmVhZCBlbmVyZ3k6ZWxlY3RyaWNpdHkuc2VydmljZXBvaW50cy5iYXNpYzpyZWFkIGVuZXJneTplbGVjdHJpY2l0eS5zZXJ2aWNlcG9pbnRzLmRldGFpbDpyZWFkIGVuZXJneTplbGVjdHJpY2l0eS51c2FnZTpyZWFkIGVuZXJneTplbGVjdHJpY2l0eS5kZXI6cmVhZCBlbmVyZ3k6YWNjb3VudHMuYmFzaWM6cmVhZCBlbmVyZ3k6YWNjb3VudHMuZGV0YWlsOnJlYWQgZW5lcmd5OmFjY291bnRzLnBheW1lbnRzY2hlZHVsZTpyZWFkIGVuZXJneTphY2NvdW50cy5jb25jZXNzaW9uczpyZWFkIGVuZXJneTpiaWxsaW5nOnJlYWQgY29tbW9uOmN1c3RvbWVyLmJhc2ljOnJlYWQgY29tbW9uOmN1c3RvbWVyLmRldGFpbDpyZWFkIGNkcjpyZWdpc3RyYXRpb24ifQ.XTSst96xOifAnaMaBj0I5nO5vbtNwvz304hJ9I_jPOcdD6vitmLiyWdkdW5GKA4JAa62_DmRIU_3zXQL0gSSJxoWhCSbuIlfwDtXFpFZzQAnTv-hOul-5clYmXvQqqEqWvbZZ4g7IKdWdROp4fzWFXB0VKf-_qzue_Kksy3A9CwdZRmNMDFtIApkSULqxK3S8D2nFa3lvGzegl76Ji7p0Zjkyu8YexFyKCahTEGzQrRQeVILpaN107XHNlSWlhsv4hr1PXwG2Pn1z54SCG9tVOZ10WaqZ5SMjRqsQN-lVYSVe5BCTpQ-N_GnYuUeWh0rOJ9CrA8CUN_twCJXyW3I5w
 ```
 
 
@@ -62,7 +62,6 @@ Decoded SSA
   "kid": "b8facf2ff39444f781e0be5db4b14f16",
   "typ": "JWT"
 }
-
 {
   "iss": "cdr-register",
   "iat": 1571808111,
@@ -70,22 +69,22 @@ Decoded SSA
   "jti": "3bc205a1ebc943fbb624b14fcb241196",
   "client_name": "Mock Software",
   "client_description": "A mock software product",
-  "client_uri": "https://www.mockcompany.com.au",
+  "client_uri": "https://adr.example.com",
   "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
   "legal_entity_name": "Mock Company Pty Ltd.",
   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
   "org_name": "Mock Company Brand",
   "redirect_uris": [
-    "https://www.mockcompany.com.au/redirects/redirect1",
-    "https://www.mockcompany.com.au/redirects/redirect2"
+    "https://adr.example.com/redirects/redirect1",
+    "https://adr.example.com/redirects/redirect2"
   ],
-  "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier.json",
-  "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
-  "tos_uri": "https://www.mockcompany.com.au/tos.html",
-  "policy_uri": "https://www.mockcompany.com.au/policy.html",
-  "jwks_uri": "https://www.mockcompany.com.au/jwks",
-  "revocation_uri": "https://www.mockcompany.com.au/revocation",
-  "recipient_base_uri": "https://www.mockcompany.com.au",
+  "sector_identifier_uri": "https://adr.example.com/sector_identifier.json",
+  "logo_uri": "https://adr.example.com/logos/logo1.png",
+  "tos_uri": "https://adr.example.com/tos.html",
+  "policy_uri": "https://adr.example.com/policy.html",
+  "jwks_uri": "https://adr.example.com/jwks",
+  "revocation_uri": "https://adr.example.com/revocation",
+  "recipient_base_uri": "https://adr.example.com",
   "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
   "software_roles": "data-recipient-software-product",
   "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read energy:electricity.servicepoints.basic:read energy:electricity.servicepoints.detail:read energy:electricity.usage:read energy:electricity.der:read energy:accounts.basic:read energy:accounts.detail:read energy:accounts.paymentschedule:read energy:accounts.concessions:read energy:billing:read common:customer.basic:read common:customer.detail:read cdr:registration"
@@ -98,105 +97,59 @@ Decoded SSA
 The SSA will conform to the requirements of **[[DCR]](#nref-DCR)** with the following clarifications:
 
 | Client Metadata | Required | Modifiable | Description
-|--------------|-------|-------|----------------------------------------------------------------------------------------
-|**iss**|	Required | | Contains the `iss` (issuer) claim denoting the party attesting to the claims in the software statement</br>**value: "cdr-register"**
-|**iat**|	Required | | The time at which the request was issued by the CDR Register, expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC
-|**exp**|	Required | | The time at which the SSA expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC
-|**jti**|	Required | | Unique identifier for the JWT, used to prevent reuse of the SSA.
-|**legal_entity_id**|	Optional | | A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity
-|**legal_entity_name**|	Optional | | Human-readable string name of the Accredited Data Recipient Legal Entity
-|**org_id**|	Required | | A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand
-|**org_name**|	Required | <i class="icon-check"></i> | Human-readable string name of the Accredited Data Recipient Brand to be presented to the end user during authorization
-|**client_name**|	Required | <i class="icon-check"></i> | Human-readable string name of the software product to be presented to the end-user during authorization
-|**client_description**|	Required | <i class="icon-check"></i> | Human-readable string name of the software product description to be presented to the end user during authorization
-|**client_uri**|	Required | <i class="icon-check"></i> | URL string of a web page providing information about the client
-|**redirect_uris**|	Required | <i class="icon-check"></i> | Array of redirection URI strings for use in redirect-based flows
-|**sector_identifier_uri**| Optional | <i class="icon-check"></i>  | URL string referencing the client's sector identifier URI, used as an optional input to the Pairwise Identifier as described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[[OIDC]](#nref-OIDC)**
-|**logo_uri**|	Required | <i class="icon-check"></i> | URL string that references a logo for the client software product. The server **SHOULD** display this image to the end-user during approval
-|**tos_uri**|	Optional | <i class="icon-check"></i> | URL string that points to a human-readable terms of service document for the Software Product
-|**policy_uri**|	Optional | <i class="icon-check"></i> | URL string that points to a human-readable policy document for the Software Product
-|**jwks_uri**|	Required | <i class="icon-check"></i> | URL string referencing the client's JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client's public keys
-|**revocation_uri**| Required | <i class="icon-check"></i>  | URI string that references the location of the Software Product consent revocation endpoint as per Consumer Data Standards [Endpoints](#security-endpoints)
-|**recipient_base_uri**| Required | <i class="icon-check"></i>  | Base URI for the Consumer Data Standard Data Recipient endpoints. This **SHOULD** be the base to provide reference to all other [Data Recipient Endpoints](#security-endpoints)
-|**software_id**|	Required | | String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The `software_id` will remain the same across multiple updates or versions of the same piece of software.</br>The `software_id` **SHOULD** be used as the primary external identifier for the client to prevent duplicate client registrations
-|**software_roles**| Required | | String containing a role of the software in the CDR Regime. Initially the only value used will be **“data-recipient-software-product”**
-|**scope**|	Required | <i class="icon-check"></i> | String containing a space-separated list of scope values that the client can use when requesting access tokens. </br>These CDS scope values are defined at: [Authorisation Scopes](#authorisation-scopes)</br>The DCR scope value is defined at: [Client Registration Management](#registration-management)</br></br>As per the [CDS Scopes and Claims](#scopes-and-claims), **openid** and **profile** are included in the SSA
+|--------------|:-------:|:-------:|----------------------------------------------------------------------------------------
+|**iss**| Required | | Contains the _iss_ (issuer) claim denoting the party attesting to the claims in the software statement. Value: `cdr-register`.
+|**iat**| Required | | The time at which the request was issued by the CDR Register, expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.
+|**exp**| Required | | The time at which the SSA expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.
+|**jti**| Required | | Unique identifier for the JWT, used to prevent reuse of the SSA.
+|**legal_entity_id**| Optional | | A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity.
+|**legal_entity_name**| Optional | | Human-readable string name of the Accredited Data Recipient Legal Entity.
+|**org_id**| Required | | A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand.
+|**org_name**| Required | <i class="icon-check"></i> | Human-readable string name of the Accredited Data Recipient Brand to be presented to the end user during authorization.
+|**client_name**| Required | <i class="icon-check"></i> | Human-readable string name of the software product to be presented to the end-user during authorization.
+|**client_description**| Required | <i class="icon-check"></i> | Human-readable string name of the software product description to be presented to the end user during authorization.
+|**client_uri**| Required | <i class="icon-check"></i> | URL string of a web page providing information about the client.
+|**redirect_uris**| Required | <i class="icon-check"></i> | Array of redirection URI strings for use in redirect-based flows.
+|**sector_identifier_uri**| Optional | <i class="icon-check"></i> | URL string referencing the client's sector identifier URI, used as an optional input to the Pairwise Identifier as described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[[OIDC]](#nref-OIDC)**.
+|**logo_uri**| Required | <i class="icon-check"></i> | URL string that references a logo for the client software product. The server **SHOULD** display this image to the end-user during approval.
+|**tos_uri**| Optional | <i class="icon-check"></i> | URL string that points to a human-readable terms of service document for the Software Product.
+|**policy_uri**| Optional | <i class="icon-check"></i> | URL string that points to a human-readable policy document for the Software Product.
+|**jwks_uri**| Required | <i class="icon-check"></i> | URL string referencing the client's JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client's public keys.
+|**revocation_uri**| Required | <i class="icon-check"></i> | URI string that references the location of the Software Product consent revocation endpoint as per Consumer Data Standards [Endpoints](#security-endpoints).
+|**recipient_base_uri**| Required | <i class="icon-check"></i> | Base URI for the Consumer Data Standard Data Recipient endpoints. This **SHOULD** be the base to provide reference to all other [Data Recipient Endpoints](#security-endpoints)
+|**software_id**| Required | | String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. <br><br>The _software_id_ will remain the same across multiple updates or versions of the same piece of software.<br>The _software_id_ **SHOULD** be used as the primary external identifier for the client to prevent duplicate client registrations.
+|**software_roles**| Required | | String containing a role of the software in the CDR Regime. Initially the only value used will be `data-recipient-software-product`.
+|**scope**| Required | <i class="icon-check"></i> | String containing a space-separated list of scope values that the client can use when requesting access tokens. <br>These CDS scope values are defined at: [Authorisation Scopes](#authorisation-scopes).<br>The DCR scope value is defined at: [Client Registration Management](#registration-management).<br><br>As per the [CDS Scopes and Claims](#scopes-and-claims), `openid` and `profile` are included in the SSA.
 
-Get Software Statement Assertion API [v1](includes/obsolete/get-software-statement-assertion-v1.html) & [v2](includes/obsolete/get-software-statement-assertion-v2.html) has the scope claim explicitly defined.
-
-
+Get Software Statement Assertion API [v1](includes/obsolete/get-software-statement-assertion-v1.html) & [v2](includes/obsolete/get-software-statement-assertion-v2.html) has the `scope` claim explicitly defined.
 
 
 ### Registration Request using JWT
 
-> Example Request
-> Client registration with OpenID Hybrid Flow
+> Example Request  
+> This example creates a FAPI 1.0 client registration that uses Authorization Code Flow with JARM encryption
 
 ```
 HTTP/1.1 POST /register
+Host: mtls.dh.example.com
 Content-Type: application/jwt
 Accept: application/json
 
-### Non-normative Decoded JWT
+## Non-normative Decoded JWT
 {
-   "alg":"PS256",
-   "typ":"JWT",
-   "kid":"12456"
+  "alg":"PS256",
+  "typ":"JWT",
+  "kid":"12456"
 }
 {
   "iss": "CDR Software Product ID",
   "iat": 1571908322,
   "exp": 2148483456,
   "jti": "37747cd1c10545699f754adf28b73e31",
-  "aud": "https://secure.api.dataholder.com/issuer",
+  "aud": "https://mtls.dh.example.com/issuer",
   "redirect_uris": [
-    "https://www.mockcompany.com.au/redirects/redirect1",
-    "https://www.mockcompany.com.au/redirects/redirect2"
-  ],
-  "token_endpoint_auth_method": "private_key_jwt",
-  "token_endpoint_auth_signing_alg": "PS256",
-  "grant_types": [
-    "client_credentials",
-    "authorization_code",
-    "refresh_token"
-  ],
-  "response_types": [
-    "code id_token"
-  ],
-  "application_type": "web",
-  "id_token_signed_response_alg": "PS256",
-  "id_token_encrypted_response_alg": "RSA-OAEP",
-  "id_token_encrypted_response_enc": "A256GCM",
-  "request_object_signing_alg": "PS256",
-  "software_statement": "string"
-}
-{
-  "signature":...
-}
-```
-> Example Request
-> This example creates a FAPI 1.0 Phase 3 client registration that uses Authorization Code Flow with JARM encryption
-
-```
-HTTP/1.1 POST /register
-Content-Type: application/jwt
-Accept: application/json
-
-### Non-normative Decoded JWT
-{
-   "alg":"PS256",
-   "typ":"JWT",
-   "kid":"12456"
-}
-{
-  "iss": "CDR Software Product ID",
-  "iat": 1571908322,
-  "exp": 2148483456,
-  "jti": "37747cd1c10545699f754adf28b73e31",
-  "aud": "https://secure.api.dataholder.com/issuer",
-  "redirect_uris": [
-    "https://www.mockcompany.com.au/redirects/redirect1",
-    "https://www.mockcompany.com.au/redirects/redirect2"
+    "https://adr.example.com/redirects/redirect1",
+    "https://adr.example.com/redirects/redirect2"
   ],
   "token_endpoint_auth_method": "private_key_jwt",
   "token_endpoint_auth_signing_alg": "PS256",
@@ -215,7 +168,8 @@ Accept: application/json
   "authorization_encrypted_response_enc": "A128CBC-HS256",
   "request_object_signing_alg": "PS256",
   "software_statement": "string"
-}{
+}
+{
   "signature":...
 }
 ```
@@ -228,28 +182,32 @@ To register with a Data Holder, the Data Recipient sends an HTTP POST to the Dat
 
 The client registration request **MUST** contain the following claims in the JWT payload unless designated as Optional:
 
+```diff
++ Qualified that ID token encryption shall not be used for Authorization Code Flow
++ Incorporated retirement date for OIDC Hybrid Flow
+```
 
 | Claim | Required | Description
 |--------------|-------|-----------------------------------------------------------------------------------------------
-|**iss**|	Required | Contains the identifier for the Data Recipient Software Product (SoftwareProductId) as defined in the CDR Register
-|**iat**|	Required | The time at which the request was issued by the Data Recipient  expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC
-|**exp**|	Required | The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC
-|**jti**|	Required | Unique identifier for the JWT, used to prevent reuse of the token.
-|**aud**|	Required | Contains the DH issuer value as described in the [OIDC Discovery Document](#security-endpoints)
-|**redirect_uris**|	Optional | Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris **MUST** match or be a subset of the redirect_uris as defined in the SSA
-|**token_endpoint_auth_method**| Required | The requested authentication method for the token endpoint. The only supported method will be **private_key_jwt**
-|**token_endpoint_auth_signing_alg**| Required | The algorithm used for signing the JWT
-|**grant_types**|	Required | Array of OAuth 2.0 grant type strings that the client can use at the token endpoint. Supported values: **[client_credentials, authorization_code, refresh_token]**
-|**response_types**|	Required | Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint. **values: ["code", "code id_token"]**<br><br>Response type value “code” is required for Authorization Code Flow. Response type value “code id_token” is required for OIDC Hybrid Flow.
-|**application_type**|	Optional | Kind of the application. The only supported application type will be **web**
-|**id_token_signed_response_alg**| Required | Algorithm with which an id_token is to be signed</br></br>Supported values as constrained by **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**. Required for both Authorization Code Flow (`response_type` “code”) and OIDC Hybrid Flow (`response_type` “code id_token”).
-|**id_token_encrypted_response_alg**| Conditional | JWE `alg` algorithm with which an id_token is to be encrypted.<br><br>Required if OIDC Hybrid Flow (response type `code id_token`) is registered.
-|**id_token_encrypted_response_enc**| Conditional | JWE `enc` algorithm with which an id_token is to be encrypted.<br><br>Required if OIDC Hybrid Flow (response type `code id_token`) is registered.
-|**authorization_signed_response_alg**| Conditional | The JWS alg algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm “none” is not allowed.<br><br>Required if response_type of “code” is registered by the client.
-|**authorization_encrypted_response_alg**|Conditional|The JWE alg algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if “authorization_encrypted_response_enc” is included.
-|**authorization_encrypted_response_enc**|Optional|The JWE enc algorithm required for encrypting authorization responses. If “authorization_encrypted_response_alg” is specified, the default for this value is “A128CBC-HS256”.
-|**request_object_signing_alg**| Optional | Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder</br></br>If field not present in the request, data holders are expected to respond with an appropriate default value</br></br>Supported values as constrained by **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**
-|**software_statement**|	Required | Software statement assertion issued by the CDR Register
+|**iss**| Required | Contains the identifier for the Data Recipient Software Product (SoftwareProductId) as defined in the CDR Register.
+|**iat**| Required | The time at which the request was issued by the Data Recipient expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.
+|**exp**| Required | The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.
+|**jti**| Required | Unique identifier for the JWT, used to prevent reuse of the token.
+|**aud**| Required | Contains the DH issuer value as described in the [OIDC Discovery Document](#security-endpoints).
+|**redirect_uris**| Optional | Array of redirection URI strings for use in redirect-based flows. If used, _redirect_uris_ **MUST** match or be a subset of the _redirect_uris_ as defined in the SSA.
+|**token_endpoint_auth_method**| Required | The requested authentication method for the token endpoint. The only supported method will be `private_key_jwt`.
+|**token_endpoint_auth_signing_alg**| Required | The algorithm used for signing the JWT.
+|**grant_types**| Required | Array of OAuth 2.0 grant type strings that the client can use at the token endpoint. Supported values: <ul><li>`client_credentials`<li>`authorization_code`<li>`refresh_token`.</ul>
+|**response_types**| Required | Array of the OAuth 2.0 _response_type_ strings that the client can use at the authorization endpoint. Supported values: <ul><li>`code`<li>`code id_token`.</ul>_response_type_ value `code` is required for Authorization Code Flow.<br>_response_type_ value `code id_token` is required for OIDC Hybrid Flow.<br>**From May 12th 2025** Data Recipients **SHALL** only use _response_type_ value `code` for authorisation requests.
+|**application_type**| Optional | Kind of the application. The only supported application type will be `web`.
+|**id_token_signed_response_alg**| Required | Algorithm with which an id_token is to be signed.<br><br>Supported values as constrained by **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**. Required for both Authorization Code Flow (_response_type_: `code`) and OIDC Hybrid Flow (_response_type_: `code id_token`).
+|**id_token_encrypted_response_alg**| Conditional | JWE _alg_ algorithm with which an id_token is to be encrypted.<br><br>Required only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered. **SHALL NOT** be used for Authorization Code Flow.
+|**id_token_encrypted_response_enc**| Conditional | JWE _enc_ algorithm with which an id_token is to be encrypted.<br><br>Required only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered. **SHALL NOT** be used for Authorization Code Flow.
+|**authorization_signed_response_alg**| Conditional | The JWS _alg_ algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm `none` is not allowed.<br><br>Required if _response_type_ of `code` is registered by the client.
+|**authorization_encrypted_response_alg**| Conditional | The JWE _alg_ algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if `authorization_encrypted_response_enc` is included.
+|**authorization_encrypted_response_enc**| Optional | The JWE _enc_ algorithm required for encrypting authorization responses. If _authorization_encrypted_response_alg_ is specified, the default for this value is `A128CBC-HS256`.
+|**request_object_signing_alg**| Optional | Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder.<br>If field not present in the request, data holders are expected to respond with an appropriate default value.<br>Supported values as constrained by **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
+|**software_statement**| Required | Software statement assertion issued by the CDR Register.
 
 #### ID Token Algorithm Selection Considerations
 
@@ -259,8 +217,8 @@ Participants **MUST** support, at a minimum, the following ID Token algorithms:
 
 | Claim | Values |
 |--------------|---------
-|**id_token_encrypted_response_alg**|	RSA-OAEP</br>RSA-OAEP-256
-|**id_token_encrypted_response_enc**|	A256GCM</br>A128CBC-HS256
+|**id_token_encrypted_response_alg**| `RSA-OAEP`<br>`RSA-OAEP-256`
+|**id_token_encrypted_response_enc**| `A256GCM`<br>`A128CBC-HS256`
 
 Data Holders **MUST** support at a minimum, 1 algorithm for each claim.
 
@@ -270,12 +228,12 @@ ID Token algorithm considerations remain relevant where the OIDC Hybrid Flow is 
 
 #### JARM Response Encryption Considerations
 
-If Data Holders support authorisation response encryption, they **MUST** support, at a minimum, one of each of the following `alg` and `enc` algorithms:
+If Data Holders support authorisation response encryption, they **MUST** support, at a minimum, one of each of the following _alg_ and _enc_ algorithms:
 
 | Claim | Values
 |-- | --
-| **authorization_encryption_alg_values_supported** | RSA-OAEP<br/>RSA-OAEP-256
-| **authorization_encryption_enc_values_supported** | A256GCM <br/>A128CBC-HS256
+| **authorization_encryption_alg_values_supported** | `RSA-OAEP`<br>`RSA-OAEP-256`
+| **authorization_encryption_enc_values_supported** | `A256GCM`<br>`A128CBC-HS256`
 
 Data Recipients **MUST** support the minimum required algorithms.
 
@@ -286,7 +244,7 @@ Validation and use of the JWT and the claims described above **MUST** be perform
 
 SSA JWT signatures **MUST** be verified against the associated JWK published at the CDR Register [JWKS endpoint](#cdr-participant-discovery-api_get-jwks).
 
-The registration request JWT **MUST** be verified against the associated JWK published by the Data Recipient. Data Holders are required to verify the request JWT signature against an associated JWK from the `jwks_uri` extracted from the SSA.
+The registration request JWT **MUST** be verified against the associated JWK published by the Data Recipient. Data Holders are required to verify the request JWT signature against an associated JWK from the _jwks_uri_ extracted from the SSA.
 
 Data Holders **MUST NOT** allow multiple active registrations for the same `software_id`.
 
@@ -296,9 +254,14 @@ Data Holders **MUST** adhere to the [NFR performance requirements](#performance-
 
 ### Registration Response
 
+```diff
+- Removed OIDC Hybrid Flow non-normative examples.
+```
+
 >
-Example Created Response
-OIDC Hybrid Flow
+Example Created Response  
+Authorization Code Flow  
+This example creates a FAPI 1.0 compliant registration that uses Authorization Code Flow with JARM encryption
 
 ```
 HTTP/1.1 201 Created
@@ -309,74 +272,22 @@ Content-Type: application/json
   "client_id_issued_at": 1574398833,
   "client_name": "Mock Software",
   "client_description": "A mock software product",
-  "client_uri": "https://www.mockcompany.com.au",
+  "client_uri": "https://adr.example.com",
   "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
   "legal_entity_name": "Mock Company Pty Ltd.",
   "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
   "org_name": "Mock Company Brand",
   "redirect_uris": [
-    "https://www.mockcompany.com.au/redirects/redirect1",
-    "https://www.mockcompany.com.au/redirects/redirect2"
+    "https://adr.example.com/redirects/redirect1",
+    "https://adr.example.com/redirects/redirect2"
   ],
-  "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier.json",
-  "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
-  "tos_uri": "https://www.mockcompany.com.au/tos.html",
-  "policy_uri": "https://www.mockcompany.com.au/policy.html",
-  "jwks_uri": "https://www.mockcompany.com.au/jwks",
-  "revocation_uri": "https://www.mockcompany.com.au/revocation",
-  "recipient_base_uri": "https://www.mockcompany.com.au",
-  "token_endpoint_auth_method": "private_key_jwt",
-  "token_endpoint_auth_signing_alg": "PS256",
-  "grant_types": [
-    "client_credentials",
-    "authorization_code",
-    "refresh_token"
-  ],
-  "response_types": [
-    "code id_token"
-  ],
-  "application_type": "web",
-  "id_token_signed_response_alg": "PS256",
-  "id_token_encrypted_response_alg": "RSA-OAEP",
-  "id_token_encrypted_response_enc": "A256GCM",
-  "request_object_signing_alg": "PS256",
-  "software_statement": "string",
-  "software_id": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
-  "software_roles": "data-recipient-software-product",
-  "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"
-}
-```
-
->
-Example Created Response
-Authorization Code Flow
-This example creates a FAPI 1.0 Phase 3 client registration that uses Authorization Code Flow with JARM encryption
-
-```
-HTTP/1.1 201 Created
-Content-Type: application/json
-
-{
-  "client_id": "2cfefa98-7d4a-4bcb-95da-47063b84d410",
-  "client_id_issued_at": 1574398833,
-  "client_name": "Mock Software",
-  "client_description": "A mock software product",
-  "client_uri": "https://www.mockcompany.com.au",
-  "legal_entity_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7",
-  "legal_entity_name": "Mock Company Pty Ltd.",
-  "org_id": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
-  "org_name": "Mock Company Brand",
-  "redirect_uris": [
-    "https://www.mockcompany.com.au/redirects/redirect1",
-    "https://www.mockcompany.com.au/redirects/redirect2"
-  ],
-  "sector_identifier_uri": "https://www.mockcompany.com.au/sector_identifier.json",
-  "logo_uri": "https://www.mockcompany.com.au/logos/logo1.png",
-  "tos_uri": "https://www.mockcompany.com.au/tos.html",
-  "policy_uri": "https://www.mockcompany.com.au/policy.html",
-  "jwks_uri": "https://www.mockcompany.com.au/jwks",
-  "revocation_uri": "https://www.mockcompany.com.au/revocation",
-  "recipient_base_uri": "https://www.mockcompany.com.au",
+  "sector_identifier_uri": "https://adr.example.com/sector_identifier.json",
+  "logo_uri": "https://adr.example.com/logos/logo1.png",
+  "tos_uri": "https://adr.example.com/tos.html",
+  "policy_uri": "https://adr.example.com/policy.html",
+  "jwks_uri": "https://adr.example.com/jwks",
+  "revocation_uri": "https://adr.example.com/revocation",
+  "recipient_base_uri": "https://adr.example.com",
   "token_endpoint_auth_method": "private_key_jwt",
   "token_endpoint_auth_signing_alg": "PS256",
   "grant_types": [
@@ -400,12 +311,12 @@ Content-Type: application/json
 }
 ```
 
-On successful registration, the response **MUST** be returned to the  Data Recipient conforming to [Section 3.2.1](https://tools.ietf.org/html/rfc7591#section-3.2.1) of **[[DCR]](#nref-DCR)**.
+On successful registration, the response **MUST** be returned to the Data Recipient conforming to [Section 3.2.1](https://tools.ietf.org/html/rfc7591#section-3.2.1) of **[[DCR]](#nref-DCR)**.
 
 | Claim | Required | Description
 |--------------|-------|-----------------------------------------------------------------------------------------------
-|**client_id**|	Required | Contains the dynamically generated identifier for the Software Product issued by the Data Holder
-|**client_id_issued_at**|	Optional | Time at which the client identifier was issued
+|**client_id**| Required | Contains the dynamically generated identifier for the Software Product issued by the Data Holder.
+|**client_id_issued_at**| Optional | Time at which the client identifier was issued.
 
 As per [Section 3.2.1](https://tools.ietf.org/html/rfc7591#section-3.2.1) of **[[DCR]](#nref-DCR)**, additionally, the authorisation server **MUST** return all registered metadata about this client, including any fields provisioned by the authorisation server itself.
 
@@ -422,11 +333,10 @@ Example Error Response
 ```HTTP
 HTTP/1.1 400 Bad Request
 Content-Type: application/json
-```
-```json
+
 {
- "error": "invalid_software_statement",
- "error_description": "Duplicate registrations for a given software_id are not valid"
+  "error": "invalid_software_statement",
+  "error_description": "Duplicate registrations for a given software_id are not valid"
 }
 ```
 
@@ -446,14 +356,15 @@ For those Registration errors which do not map to [Section 3.2.2](https://tools.
 
 ```
 HTTP/1.1 POST /token
+Host: mtls.dh.example.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=client_credentials&
   scope=cdr%3Aregistration&
   client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
-  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
+  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey...
 
-### Decoded client assertion JWT
+## Decoded client assertion JWT
 {
   "alg": "PS256",
   "typ": "JWT",
@@ -464,7 +375,7 @@ grant_type=client_credentials&
   "sub": "12345",
   "iat": 1516239022,
   "exp": 1516239322,
-  "aud": "https://www.holder.com.au/token",
+  "aud": "https://mtls.dh.example.com/token",
   "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
 }
 
@@ -473,23 +384,23 @@ grant_type=client_credentials&
 
 Data Holders **MUST** expose Client Registration Management endpoints as defined in the [DCR APIs](#dcr-apis)
 
-| HTTP Verb |  | MTLS | HoK | Client Authentication
-|--------------|-------|-------|-------|------|-----------------------------------------------------------------------------
-|**POST /register**|	Required | <i class="icon-check"></i> |  | N/A
-|**GET /register/{clientID}**|	Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials with cdr:registration scope
-|**PUT /register/{clientID}**|	Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials with cdr:registration scope
-|**DELETE /register/{clientID}**|	Optional | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials with cdr:registration scope
+| HTTP Verb | | MTLS | HoK | Client Authentication
+|--------------|:-------:|:-------:|:-------:|------|
+|**POST /register**| Required | <i class="icon-check"></i> | | N/A
+|**GET /register/{clientID}**| Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials with `cdr:registration` scope.
+|**PUT /register/{clientID}**| Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials with `cdr:registration` scope.
+|**DELETE /register/{clientID}**| Optional | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials with `cdr:registration` scope.
 
 * Registration endpoints will be exposed in the OIDC Discovery Configuration Endpoint
 * POST and PUT operations **MUST** accept the SSA payload.
 * Fields data holders do not support are not persisted.
-* Access tokens issued for consuming CDR Data **SHOULD NOT** be used for client registration maintenance and vice-versa
+* Access tokens issued for consuming CDR Data **SHOULD NOT** be used for client registration maintenance and vice-versa.
 
 
 ### PUT Operations
-Registrations **MUST** only be updated via Registration PUT operations
+Registrations **MUST** only be updated via Registration PUT operations.
 
 PUT operations are to be used for one of two scenarios:
 
-1. The client has updated their registration details on the CDR Register and updates this information to the data holder
-2. A new version of the SSA has been released and the client updates this information to the data holder
+1. The client has updated their registration details on the CDR Register and updates this information to the data holder.
+2. A new version of the SSA has been released and the client updates this information to the data holder.

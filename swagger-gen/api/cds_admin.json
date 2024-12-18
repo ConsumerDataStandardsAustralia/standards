@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Admin API",
-    "description": "Data Holder Consumer Data Standards Administration endpoints created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker",
+    "description": "Data Holder Consumer Data Standards Administration endpoints created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker.",
     "contact": {
       "name": "Consumer Data Standards Administration endpoints",
       "url": "https://consumerdatastandards.gov.au",
@@ -12,11 +12,12 @@
       "name": "MIT License",
       "url": "https://opensource.org/licenses/MIT"
     },
-    "version": "1.32.0"
+    "version": "1.33.0"
   },
   "servers": [
     {
-      "url": "https://data.holder.com.au/cds-au/v1"
+      "description": "MTLS",
+      "url": "https://mtls.dh.example.com/cds-au/v1"
     }
   ],
   "paths": {
@@ -27,13 +28,13 @@
           "Register"
         ],
         "summary": "Metadata Update",
-        "description": "Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained",
+        "description": "Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained.",
         "operationId": "metadataUpdate",
         "parameters": [
           {
             "name": "x-v",
             "in": "header",
-            "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+            "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
             "required": true,
             "schema": {
               "type": "string"
@@ -42,7 +43,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+            "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder should respond with a `406 Not Acceptable`.",
             "schema": {
               "type": "string"
             }
@@ -60,7 +61,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successful response",
             "headers": {
               "x-v": {
                 "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
@@ -111,13 +112,13 @@
           "Metrics"
         ],
         "summary": "Get Metrics",
-        "description": "This endpoint allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this endpoint are determined by the non-functional requirements for the CDR regime.\n\nThis endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version **MUST** be implemented by **May 13th 2024**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nDeprecated versions:\n\n- [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023. Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version\n- [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**\n\nIf the Data Holder supports private_key_jwt client authentication they MUST validate the scope.",
+        "description": "This endpoint allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this endpoint are determined by the non-functional requirements for the CDR regime.\n\nThis endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version **MUST** be implemented by **May 13th 2024**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nDeprecated versions:\n\n- [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023. Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version\n- [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**.\n\nIf the Data Holder supports `private_key_jwt` client authentication they MUST validate the scope.",
         "operationId": "getMetrics",
         "parameters": [
           {
             "name": "period",
             "in": "query",
-            "description": "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL. If absent the default is ALL.",
+            "description": "The period of metrics to be requested. Values can be `CURRENT` (meaning metrics for current period, dependent on the metric type), `HISTORIC` (meaning metrics for previous period, depending on the metric type) or `ALL`. If absent the default is `ALL`.",
             "schema": {
               "type": "string",
               "default": "ALL",
@@ -131,7 +132,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+            "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
             "required": true,
             "schema": {
               "type": "string"
@@ -140,7 +141,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+            "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder should respond with a `406 Not Acceptable`.",
             "schema": {
               "type": "string"
             }
@@ -148,7 +149,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successful response",
             "headers": {
               "x-v": {
                 "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
@@ -210,7 +211,7 @@
             "properties": {
               "action": {
                 "type": "string",
-                "description": "The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable",
+                "description": "The action to take for the meta data. At the moment the only option is `REFRESH` which requires the data holder to call the ACCC to refresh meta data as soon as practicable.",
                 "default": "REFRESH",
                 "enum": [
                   "REFRESH"
@@ -282,13 +283,13 @@
               },
               "customerCount": {
                 "type": "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "Number of customers with active authorisations at the time of the call"
+                "x-cds-type": "NaturalNumber",
+                "description": "Number of customers with active authorisations at the time of the call."
               },
               "recipientCount": {
                 "type": "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "Number of Data Recipient Software Products with active authorisations at the time of the call"
+                "x-cds-type": "NaturalNumber",
+                "description": "Number of Data Recipient Software Products with active authorisations at the time of the call."
               },
               "secondaryHolder": {
                 "$ref": "#/components/schemas/SecondaryHolderMetricsV2"
@@ -315,27 +316,27 @@
           "unauthenticated",
           "authenticated"
         ],
-        "description": "Availability metrics",
+        "description": "Availability metrics.",
         "type": "object",
         "properties": {
           "aggregate": {
             "type": "object",
             "properties": {
               "currentMonth": {
-                "type" : "string",
-                "x-cds-type" : "RateString",
-                "description": "Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                "type": "string",
+                "x-cds-type": "RateString",
+                "description": "Percentage availability of the CDR platform so far for the current calendar month. `0.0` means 0%. `1.0` means 100%. Must be a positive value or zero."
               },
               "previousMonths": {
                 "type": "array",
-                "description": "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "description": "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. `0.0` means 0%. `1.0` means 100%. Values must be a positive or zero.",
                 "items": {
-                  "type" : "string",
-                  "x-cds-type" : "RateString"
+                  "type": "string",
+                  "x-cds-type": "RateString"
                 }
               }
             },
-            "description": "Aggregated availability metrics",
+            "description": "Aggregated availability metrics.",
             "x-conditional": [
               "currentMonth",
               "previousMonths"
@@ -345,20 +346,20 @@
             "type": "object",
             "properties": {
               "currentMonth": {
-                "type" : "string",
-                "x-cds-type" : "RateString",
-                "description": "Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                "type": "string",
+                "x-cds-type": "RateString",
+                "description": "Percentage availability of the CDR platform so far for the current calendar month. `0.0` means 0%. `1.0` means 100%. Must be a positive value or zero."
               },
               "previousMonths": {
                 "type": "array",
-                "description": "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "description": "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. `0.0` means 0%. `1.0` means 100%. Values must be a positive or zero.",
                 "items": {
-                  "type" : "string",
-                  "x-cds-type" : "RateString"
+                  "type": "string",
+                  "x-cds-type": "RateString"
                 }
               }
             },
-            "description": "Availability metrics for the unauthenticated aspects of the CDR regime",
+            "description": "Availability metrics for the unauthenticated aspects of the CDR regime.",
             "x-conditional": [
               "currentMonth",
               "previousMonths"
@@ -368,20 +369,20 @@
             "type": "object",
             "properties": {
               "currentMonth": {
-                "type" : "string",
-                "x-cds-type" : "RateString",
-                "description": "Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                "type": "string",
+                "x-cds-type": "RateString",
+                "description": "Percentage availability of the CDR platform so far for the current calendar month. `0.0` means 0%. `1.0` means 100%. Must be a positive value or zero."
               },
               "previousMonths": {
                 "type": "array",
-                "description": "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "description": "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. `0.0` means 0%. `1.0` means 100%. Values must be a positive or zero.",
                 "items": {
-                  "type" : "string",
-                  "x-cds-type" : "RateString"
+                  "type": "string",
+                  "x-cds-type": "RateString"
                 }
               }
             },
-            "description": "Availability metrics for the authenticated aspects of the CDR regime",
+            "description": "Availability metrics for the authenticated aspects of the CDR regime.",
             "x-conditional": [
               "currentMonth",
               "previousMonths"
@@ -403,20 +404,20 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "string",
-                "x-cds-type" : "RateString",
-                "description": "Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+                "type": "string",
+                "x-cds-type": "RateString",
+                "description": "Percentage of calls within the performance threshold for the current day. `0.0` means 0%. `1.0` means 100%. Must be a positive value or zero."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. `0.0` means 0%. `1.0` means 100%. Values must be a positive or zero.",
                 "items": {
-                  "type" : "string",
-                  "x-cds-type" : "RateString"
+                  "type": "string",
+                  "x-cds-type": "RateString"
                 }
               }
             },
-            "description": "Percentage of calls within Primary Data Holder performance thresholds. Note that Secondary Data Holder performance <b>MUST</b> be excluded from this metric.",
+            "description": "Percentage of calls within Primary Data Holder performance thresholds. Note that Secondary Data Holder performance **MUST** be excluded from this metric.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -427,20 +428,20 @@
             "properties": {
               "currentDay": {
                 "type": "array",
-                "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder.",
                 "items": {
                   "$ref": "#/components/schemas/PerformanceHours"
                 }
               },
               "previousDays": {
                 "type": "array",
-                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. `0.0` means 0%. `1.0` means 100%. Values must be a positive or zero.",
                 "items": {
                   "$ref": "#/components/schemas/PerformancePreviousDays"
                 }
               }
             },
-            "description": "Percentage of high priority calls within the performance thresholds",
+            "description": "Percentage of high priority calls within the performance thresholds.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -451,20 +452,20 @@
             "properties": {
               "currentDay": {
                 "type": "array",
-                "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder.",
                 "items": {
                   "$ref": "#/components/schemas/PerformanceHours"
                 }
               },
               "previousDays": {
                 "type": "array",
-                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. `0.0` means 0%. `1.0` means 100%. Values must be a positive or zero.",
                 "items": {
                   "$ref": "#/components/schemas/PerformancePreviousDays"
                 }
               }
             },
-            "description": "Percentage of large payload calls within the performance thresholds",
+            "description": "Percentage of large payload calls within the performance thresholds.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -475,20 +476,20 @@
             "properties": {
               "currentDay": {
                 "type": "array",
-                "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder.",
                 "items": {
                   "$ref": "#/components/schemas/PerformanceHours"
                 }
               },
               "previousDays": {
                 "type": "array",
-                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. `0.0` means 0%. `1.0` means 100%. Values must be a positive or zero.",
                 "items": {
                   "$ref": "#/components/schemas/PerformancePreviousDays"
                 }
               }
             },
-            "description": "Percentage of low priority calls within the performance thresholds",
+            "description": "Percentage of low priority calls within the performance thresholds.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -499,20 +500,20 @@
             "properties": {
               "currentDay": {
                 "type": "array",
-                "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder.",
                 "items": {
                   "$ref": "#/components/schemas/PerformanceHours"
                 }
               },
               "previousDays": {
                 "type": "array",
-                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. `0.0` means 0%. `1.0` means 100%. Values must be a positive or zero.",
                 "items": {
                   "$ref": "#/components/schemas/PerformancePreviousDays"
                 }
               }
             },
-            "description": "Percentage of unattended calls within the performance thresholds",
+            "description": "Percentage of unattended calls within the performance thresholds.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -523,20 +524,20 @@
             "properties": {
               "currentDay": {
                 "type": "array",
-                "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder.",
                 "items": {
                   "$ref": "#/components/schemas/PerformanceHours"
                 }
               },
               "previousDays": {
                 "type": "array",
-                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. `0.0` means 0%. `1.0` means 100%. Values must be a positive or zero.",
                 "items": {
                   "$ref": "#/components/schemas/PerformancePreviousDays"
                 }
               }
             },
-            "description": "Percentage of unauthenticated calls within the performance thresholds",
+            "description": "Percentage of unauthenticated calls within the performance thresholds.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -549,56 +550,56 @@
             ],
             "type": "object",
             "properties": {
-              "primary":{
+              "primary": {
                 "type": "object",
                 "properties": {
                   "currentDay": {
                     "type": "array",
-                    "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                    "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder.",
                     "items": {
                       "$ref": "#/components/schemas/PerformanceHours"
                     }
                   },
                   "previousDays": {
                     "type": "array",
-                    "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                    "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. `0.0` means 0%. `1.0` means 100%. Values must be a positive or zero.",
                     "items": {
                       "$ref": "#/components/schemas/PerformancePreviousDays"
                     }
                   }
                 },
-                "description": "Percentage of Shared Responsibility calls within the performance thresholds for the primary data holder",
+                "description": "Percentage of Shared Responsibility calls within the performance thresholds for the primary data holder.",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
                 ]
               },
-              "secondary":{
+              "secondary": {
                 "type": "object",
                 "properties": {
                   "currentDay": {
                     "type": "array",
-                    "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                    "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder.",
                     "items": {
                       "$ref": "#/components/schemas/PerformanceHours"
                     }
                   },
                   "previousDays": {
                     "type": "array",
-                    "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                    "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. `0.0` means 0%. `1.0` means 100%. Values must be a positive or zero.",
                     "items": {
                       "$ref": "#/components/schemas/PerformancePreviousDays"
                     }
                   }
                 },
-                "description": "Percentage of Shared Responsibility calls within the performance thresholds for the secondary data holder",
+                "description": "Percentage of Shared Responsibility calls within the performance thresholds for the secondary data holder.",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
                 ]
               }
             },
-            "description": "Percentage of Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
+            "description": "Percentage of Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster."
           },
           "largeSecondary": {
             "required": [
@@ -607,59 +608,59 @@
             ],
             "type": "object",
             "properties": {
-              "primary":{
+              "primary": {
                 "type": "object",
                 "properties": {
                   "currentDay": {
                     "type": "array",
-                    "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                    "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder.",
                     "items": {
                       "$ref": "#/components/schemas/PerformanceHours"
                     }
                   },
                   "previousDays": {
                     "type": "array",
-                    "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                    "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. `0.0` means 0%. `1.0` means 100%. Values must be a positive or zero.",
                     "items": {
                       "$ref": "#/components/schemas/PerformancePreviousDays"
                     }
                   }
                 },
-                "description": "Percentage of large Shared Responsibility calls within the performance thresholds for the secondary data holder",
+                "description": "Percentage of large Shared Responsibility calls within the performance thresholds for the secondary data holder.",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
                 ]
               },
-              "secondary":{
+              "secondary": {
                 "type": "object",
                 "properties": {
                   "currentDay": {
                     "type": "array",
-                    "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+                    "description": "Array of contiguous hourly metrics for the current day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder.",
                     "items": {
                       "$ref": "#/components/schemas/PerformanceHours"
                     }
                   },
                   "previousDays": {
                     "type": "array",
-                    "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
+                    "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. `0.0` means 0%. `1.0` means 100%. Values must be a positive or zero.",
                     "items": {
                       "$ref": "#/components/schemas/PerformancePreviousDays"
                     }
                   }
                 },
-                "description": "Percentage of large Shared Responsibility calls within the performance thresholds for the secondary data holder",
+                "description": "Percentage of large Shared Responsibility calls within the performance thresholds for the secondary data holder.",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
                 ]
               }
             },
-            "description": "Percentage of large Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
+            "description": "Percentage of large Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster."
           }
         },
-        "description": "Percentage of calls within the performance thresholds in each performance tier over time",
+        "description": "Percentage of calls within the performance thresholds in each performance tier, over time.",
         "x-conditional": [
           "secondary",
           "largeSecondary"
@@ -667,15 +668,15 @@
       },
       "PerformancePreviousDays": {
         "type": "array",
-        "description": "Array of contiguous hourly metrics for the specified day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder",
+        "description": "Array of contiguous hourly metrics for the specified day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder.",
         "items": {
           "$ref": "#/components/schemas/PerformanceHours"
         }
       },
       "PerformanceHours": {
-        "type" : "string",
-        "x-cds-type" : "RateString",
-        "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
+        "type": "string",
+        "x-cds-type": "RateString",
+        "description": "Percentage of calls within the performance threshold for the specified hour. `0.0` means 0%. `1.0` means 100%. Must be a positive value or zero."
       },
       "InvocationMetricsV3": {
         "required": [
@@ -691,20 +692,20 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "API call counts for current day"
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
+                "description": "API call counts for current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
-            "description": "API call counts for the unauthenticated tier",
+            "description": "API call counts for the unauthenticated tier.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -714,20 +715,20 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "API call counts for current day"
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
+                "description": "API call counts for current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
-            "description": "API call counts for the high priority tier",
+            "description": "API call counts for the high priority tier.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -737,20 +738,20 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "API call counts for current day"
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
+                "description": "API call counts for current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
-            "description": "API call counts for the low priority tier",
+            "description": "API call counts for the low priority tier.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -760,20 +761,20 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "API call counts for current day"
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
+                "description": "API call counts for current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
-            "description": "API call counts for the unattended tier",
+            "description": "API call counts for the unattended tier.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -783,20 +784,20 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "API call counts for current day"
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
+                "description": "API call counts for current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
-            "description": "API call counts for the large payload tier",
+            "description": "API call counts for the large payload tier.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -806,20 +807,20 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "API call counts for current day"
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
+                "description": "API call counts for current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
-            "description": "API call counts for the Shared Responsibility Data Requests tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+            "description": "API call counts for the Shared Responsibility Data Requests tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -829,27 +830,27 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "API call counts for current day"
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
+                "description": "API call counts for current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
-            "description": "API call counts for the large Shared Responsibility Data Requests tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+            "description": "API call counts for the large Shared Responsibility Data Requests tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster.",
             "x-conditional": [
               "currentDay",
               "previousDays"
             ]
           }
         },
-        "description": "Number of API calls in each performance tier over time",
+        "description": "Number of API calls in each performance tier, over time.",
         "x-conditional": [
           "secondary",
           "largeSecondary"
@@ -870,7 +871,7 @@
             "properties": {
               "currentDay": {
                 "type": "number",
-                "description": "Average response time for current day"
+                "description": "Average response time for current day."
               },
               "previousDays": {
                 "type": "array",
@@ -880,7 +881,7 @@
                 }
               }
             },
-            "description": "Average response time for the unauthenticated tier",
+            "description": "Average response time for the unauthenticated tier.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -891,7 +892,7 @@
             "properties": {
               "currentDay": {
                 "type": "number",
-                "description": "Average response time for current day"
+                "description": "Average response time for current day."
               },
               "previousDays": {
                 "type": "array",
@@ -901,7 +902,7 @@
                 }
               }
             },
-            "description": "Average response time for the high priority tier",
+            "description": "Average response time for the high priority tier.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -912,7 +913,7 @@
             "properties": {
               "currentDay": {
                 "type": "number",
-                "description": "Average response time for current day"
+                "description": "Average response time for current day."
               },
               "previousDays": {
                 "type": "array",
@@ -922,7 +923,7 @@
                 }
               }
             },
-            "description": "Average response time for the low priority tier",
+            "description": "Average response time for the low priority tier.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -933,7 +934,7 @@
             "properties": {
               "currentDay": {
                 "type": "number",
-                "description": "Average response time for current day"
+                "description": "Average response time for current day."
               },
               "previousDays": {
                 "type": "array",
@@ -943,7 +944,7 @@
                 }
               }
             },
-            "description": "Average response time for the unattended tier",
+            "description": "Average response time for the unattended tier.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -954,7 +955,7 @@
             "properties": {
               "currentDay": {
                 "type": "number",
-                "description": "Average response time for current day"
+                "description": "Average response time for current day."
               },
               "previousDays": {
                 "type": "array",
@@ -964,7 +965,7 @@
                 }
               }
             },
-            "description": "Average response time for the large payload tier",
+            "description": "Average response time for the large payload tier.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -972,7 +973,7 @@
           },
           "secondary": {
             "type": "object",
-            "description": "Average response time for the secondary tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+            "description": "Average response time for the secondary tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster.",
             "required": [
               "primary",
               "secondary"
@@ -983,7 +984,7 @@
                 "properties": {
                   "currentDay": {
                     "type": "number",
-                    "description": "Average response time for current day"
+                    "description": "Average response time for current day."
                   },
                   "previousDays": {
                     "type": "array",
@@ -993,7 +994,7 @@
                     }
                   }
                 },
-                "description": "Average response time as measured for the primary data holder",
+                "description": "Average response time as measured for the primary data holder.",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
@@ -1001,11 +1002,11 @@
               },
               "secondary": {
                 "type": "object",
-                "description": "Average response time as measured for the secondary data holder",
+                "description": "Average response time as measured for the secondary data holder.",
                 "properties": {
                   "currentDay": {
                     "type": "number",
-                    "description": "Average response time for current day"
+                    "description": "Average response time for current day."
                   },
                   "previousDays": {
                     "type": "array",
@@ -1034,7 +1035,7 @@
                 "properties": {
                   "currentDay": {
                     "type": "number",
-                    "description": "Average response time for current day"
+                    "description": "Average response time for current day."
                   },
                   "previousDays": {
                     "type": "array",
@@ -1044,7 +1045,7 @@
                     }
                   }
                 },
-                "description": "Average response time as measured for the primary data holder",
+                "description": "Average response time as measured for the primary data holder.",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
@@ -1055,7 +1056,7 @@
                 "properties": {
                   "currentDay": {
                     "type": "number",
-                    "description": "Average response time for current day"
+                    "description": "Average response time for current day."
                   },
                   "previousDays": {
                     "type": "array",
@@ -1065,17 +1066,17 @@
                     }
                   }
                 },
-                "description": "Average response time as measured for the secondary data holder",
+                "description": "Average response time as measured for the secondary data holder.",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
                 ]
               }
             },
-            "description": "Average response time for the large payload tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
+            "description": "Average response time for the large payload tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster."
           }
         },
-        "description": "Average response time in seconds, at millisecond resolution, within each performance tier",
+        "description": "Average response time in seconds, at millisecond resolution, within each performance tier.",
         "x-conditional": [
           "secondary",
           "largeSecondary"
@@ -1085,20 +1086,20 @@
         "type": "object",
         "properties": {
           "currentDay": {
-            "type" : "integer",
-            "x-cds-type" : "NaturalNumber",
-            "description": "Session count for current day"
+            "type": "integer",
+            "x-cds-type": "NaturalNumber",
+            "description": "Session count for current day."
           },
           "previousDays": {
             "type": "array",
-            "description": "Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "description": "Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
             "items": {
-              "type" : "integer",
-              "x-cds-type" : "NaturalNumber"
+              "type": "integer",
+              "x-cds-type": "NaturalNumber"
             }
           }
         },
-        "description": "Session counts over time. Note that a session is defined as the provisioning of an Access Token.",
+        "description": "Session counts, over time. Note that a session is defined as the provisioning of an Access Token.",
         "x-conditional": [
           "currentDay",
           "previousDays"
@@ -1110,7 +1111,7 @@
           "unauthenticated",
           "authenticated"
         ],
-        "description": "Average transactions per second over time",
+        "description": "Average transactions per second, over time.",
         "type": "object",
         "properties": {
           "aggregate": {
@@ -1118,17 +1119,17 @@
             "properties": {
               "currentDay": {
                 "type": "number",
-                "description": "Average TPS for current day. Must be a positive value or zero"
+                "description": "Average TPS for current day. Must be a positive value or zero."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+                "description": "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero.",
                 "items": {
                   "type": "number"
                 }
               }
             },
-            "description": "Aggregate average transactions per second over time for all endpoints",
+            "description": "Aggregate average transactions per second, over time, for all endpoints.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1139,17 +1140,17 @@
             "properties": {
               "currentDay": {
                 "type": "number",
-                "description": "Average TPS for current day. Must be a positive value or zero"
+                "description": "Average TPS for current day. Must be a positive value or zero."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+                "description": "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero.",
                 "items": {
                   "type": "number"
                 }
               }
             },
-            "description": "Average transactions per second over time for unauthenticated endpoints",
+            "description": "Average transactions per second, over time, for unauthenticated endpoints.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1160,17 +1161,17 @@
             "properties": {
               "currentDay": {
                 "type": "number",
-                "description": "Average TPS for current day. Must be a positive value or zero"
+                "description": "Average TPS for current day. Must be a positive value or zero."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+                "description": "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero.",
                 "items": {
                   "type": "number"
                 }
               }
             },
-            "description": "Average transactions per second over time for authenticated endpoints",
+            "description": "Average transactions per second, over time, for authenticated endpoints.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1184,7 +1185,7 @@
           "unauthenticated",
           "authenticated"
         ],
-        "description": "Peak transactions per second over time",
+        "description": "Peak transactions per second, over time.",
         "type": "object",
         "properties": {
           "aggregate": {
@@ -1192,17 +1193,17 @@
             "properties": {
               "currentDay": {
                 "type": "number",
-                "description": "Peak TPS for current day. Must be a positive value or zero"
+                "description": "Peak TPS for current day. Must be a positive value or zero."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+                "description": "Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero.",
                 "items": {
                   "type": "number"
                 }
               }
             },
-            "description": "Aggregate peak transactions per second over time for all endpoints",
+            "description": "Aggregate peak transactions per second, over time, for all endpoints.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1213,17 +1214,17 @@
             "properties": {
               "currentDay": {
                 "type": "number",
-                "description": "Peak TPS for current day. Must be a positive value or zero"
+                "description": "Peak TPS for current day. Must be a positive value or zero."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+                "description": "Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero.",
                 "items": {
                   "type": "number"
                 }
               }
             },
-            "description": "Peak transactions per second over time for unauthenticated endpoints",
+            "description": "Peak transactions per second, over time, for unauthenticated endpoints.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1234,17 +1235,17 @@
             "properties": {
               "currentDay": {
                 "type": "number",
-                "description": "Peak TPS for current day. Must be a positive value or zero"
+                "description": "Peak TPS for current day. Must be a positive value or zero."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+                "description": "Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero.",
                 "items": {
                   "type": "number"
                 }
               }
             },
-            "description": "Peak transactions per second over time for authenticated endpoints",
+            "description": "Peak transactions per second, over time, for authenticated endpoints.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1258,27 +1259,27 @@
           "unauthenticated",
           "authenticated"
         ],
-        "description": "Number of calls resulting in error, over time",
+        "description": "Number of calls resulting in error, over time.",
         "type": "object",
         "properties": {
           "aggregate": {
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "Error counts for current day"
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
+                "description": "Error counts for current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Error counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "Error counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
-            "description": "Aggregate number of calls resulting in error due to server execution over time for all endpoints",
+            "description": "Aggregate number of calls resulting in error due to server execution, over time, for all endpoints.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1288,42 +1289,42 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "description": "Error counts, by HTTP error code, for current day",
+                "description": "Error counts, by HTTP error code, for current day.",
                 "type": "object",
                 "properties": {
                   "500": {
-                    "type" : "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts"
+                    "type": "integer",
+                    "x-cds-type": "NaturalNumber",
+                    "description": "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name."
                   }
                 },
                 "additionalProperties": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber",
-                  "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber",
+                  "description": "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 404, 405, 406, 415, 422, 429, 500, 503, 504_."
                 }
               },
               "previousDays": {
                 "type": "array",
-                "description": "Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
                   "type": "object",
                   "properties": {
                     "500": {
-                      "type" : "integer",
-                      "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts"
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
+                      "description": "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name."
                     }
                   },
                   "additionalProperties": {
-                    "type" : "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for"
+                    "type": "integer",
+                    "x-cds-type": "NaturalNumber",
+                    "description": "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 404, 405, 406, 415, 422, 429, 500, 503, 504_."
                   }
                 }
               }
             },
-            "description": "Number of calls resulting in error for unauthenticated endpoints",
+            "description": "Number of calls resulting in error for unauthenticated endpoints.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1333,42 +1334,42 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "description": "Error counts, by HTTP error code, for current day",
+                "description": "Error counts, by HTTP error code, for current day.",
                 "type": "object",
                 "properties": {
                   "500": {
-                    "type" : "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts"
+                    "type": "integer",
+                    "x-cds-type": "NaturalNumber",
+                    "description": "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name."
                   }
                 },
                 "additionalProperties": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber",
-                  "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber",
+                  "description": "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 401, 403, 404, 405, 406, 415, 422, 429, 500, 503, 504_."
                 }
               },
               "previousDays": {
                 "type": "array",
-                "description": "Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
                   "type": "object",
                   "properties": {
                     "500": {
-                      "type" : "integer",
-                      "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts"
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
+                      "description": "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name."
                     }
                   },
                   "additionalProperties": {
-                    "type" : "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for"
+                    "type": "integer",
+                    "x-cds-type": "NaturalNumber",
+                    "description": "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 401, 403, 404, 405, 406, 415, 422, 429, 500, 503, 504_."
                   }
                 }
               }
             },
-            "description": "Number of calls resulting in error for authenticated endpoints",
+            "description": "Number of calls resulting in error for authenticated endpoints.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1387,20 +1388,20 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "Number of calls rejected for current day"
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
+                "description": "Number of calls rejected for current day."
               },
               "previousDays": {
                 "type": "array",
                 "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
-            "description": "Rejection counts for all authenticated endpoints",
+            "description": "Rejection counts for all authenticated endpoints.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1410,27 +1411,27 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "Number of calls rejected for current day"
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
+                "description": "Number of calls rejected for current day."
               },
               "previousDays": {
                 "type": "array",
                 "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
-            "description": "Rejection counts for all unauthenticated endpoints",
+            "description": "Rejection counts for all unauthenticated endpoints.",
             "x-conditional": [
               "currentDay",
               "previousDays"
             ]
           }
         },
-        "description": "Number of calls rejected due to traffic thresholds over time"
+        "description": "Number of calls rejected due to traffic thresholds, over time."
       },
       "SecondaryHolderMetricsV2": {
         "required": [
@@ -1443,20 +1444,20 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "Number of errors for current day"
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
+                "description": "Number of errors for current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
-            "description": "Number of calls resulting in error due to server execution over time",
+            "description": "Number of calls resulting in error due to server execution, over time.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1466,27 +1467,27 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "Number of rejections for current day"
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
+                "description": "Number of rejections for current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
-            "description": "Number of calls rejected due to traffic thresholds over time",
+            "description": "Number of calls rejected due to traffic thresholds, over time.",
             "x-conditional": [
               "currentDay",
               "previousDays"
             ]
           }
         },
-        "description": "Errors and rejections received by the primary data holder from the secondary data holder. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
+        "description": "Errors and rejections received by the primary data holder from the secondary data holder. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster."
       },
       "AuthorisationMetricsV2": {
         "required": [
@@ -1509,16 +1510,16 @@
             "properties": {
               "individual": {
                 "type": "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "Active ongoing authorisation count for individual customers"
+                "x-cds-type": "NaturalNumber",
+                "description": "Active ongoing authorisation count for individual customers."
               },
               "nonIndividual": {
                 "type": "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "Active ongoing authorisation count for non-individual customers"
+                "x-cds-type": "NaturalNumber",
+                "description": "Active ongoing authorisation count for non-individual customers."
               }
             },
-            "description": "The number of active ongoing authorisations"
+            "description": "The number of active ongoing authorisations."
           },
           "newAuthorisationCount": {
             "type": "object",
@@ -1539,16 +1540,16 @@
                     "properties": {
                       "individual": {
                         "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "New authorisation count for individual customers"
+                        "x-cds-type": "NaturalNumber",
+                        "description": "New authorisation count for individual customers."
                       },
                       "nonIndividual": {
                         "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "New authorisation count for non-individual customers"
+                        "x-cds-type": "NaturalNumber",
+                        "description": "New authorisation count for non-individual customers."
                       }
                     },
-                    "description": "New authorisation count for once-off authorisations"
+                    "description": "New authorisation count for once-off authorisations."
                   },
                   "ongoing": {
                     "required": [
@@ -1559,23 +1560,23 @@
                     "properties": {
                       "individual": {
                         "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "New authorisation count for individual customers"
+                        "x-cds-type": "NaturalNumber",
+                        "description": "New authorisation count for individual customers."
                       },
                       "nonIndividual": {
                         "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "New authorisation count for non-individual customers"
+                        "x-cds-type": "NaturalNumber",
+                        "description": "New authorisation count for non-individual customers."
                       }
                     },
-                    "description": "New authorisation count for ongoing authorisations"
+                    "description": "New authorisation count for ongoing authorisations."
                   }
                 },
-                "description": "Number of new authorisations for the current day"
+                "description": "Number of new authorisations for the current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Number of new authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "Number of new authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
                   "required": [
                     "onceOff",
@@ -1592,16 +1593,16 @@
                       "properties": {
                         "individual": {
                           "type": "integer",
-                          "x-cds-type" : "NaturalNumber",
-                          "description": "New authorisation count for individual customers"
+                          "x-cds-type": "NaturalNumber",
+                          "description": "New authorisation count for individual customers."
                         },
                         "nonIndividual": {
                           "type": "integer",
-                          "x-cds-type" : "NaturalNumber",
-                          "description": "New authorisation count for non-individual customers"
+                          "x-cds-type": "NaturalNumber",
+                          "description": "New authorisation count for non-individual customers."
                         }
                       },
-                      "description": "New authorisation count for once-off authorisations"
+                      "description": "New authorisation count for once-off authorisations."
                     },
                     "ongoing": {
                       "required": [
@@ -1612,22 +1613,22 @@
                       "properties": {
                         "individual": {
                           "type": "integer",
-                          "x-cds-type" : "NaturalNumber",
-                          "description": "New authorisation count for individual customers"
+                          "x-cds-type": "NaturalNumber",
+                          "description": "New authorisation count for individual customers."
                         },
                         "nonIndividual": {
                           "type": "integer",
-                          "x-cds-type" : "NaturalNumber",
-                          "description": "New authorisation count for non-individual customers"
+                          "x-cds-type": "NaturalNumber",
+                          "description": "New authorisation count for non-individual customers."
                         }
                       },
-                      "description": "New authorisation count for ongoing authorisations"
+                      "description": "New authorisation count for ongoing authorisations."
                     }
                   }
                 }
               }
             },
-            "description": "The number of new authorisations",
+            "description": "The number of new authorisations.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1645,42 +1646,42 @@
                 "properties": {
                   "individual": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Revoked authorisation count for individual customers"
+                    "x-cds-type": "NaturalNumber",
+                    "description": "Revoked authorisation count for individual customers."
                   },
                   "nonIndividual": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Revoked authorisation count for non-individual customers"
+                    "x-cds-type": "NaturalNumber",
+                    "description": "Revoked authorisation count for non-individual customers."
                   }
                 },
-                "description": "Number of revoked authorisations for the current day"
+                "description": "Number of revoked authorisations for the current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Number of revoked authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "Number of revoked authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                    "required": [
-                      "individual",
-                      "nonIndividual"
-                    ],
-                    "type": "object",
-                    "properties": {
-                      "individual": {
-                        "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "Revoked authorisation count for individual customers"
-                      },
-                      "nonIndividual": {
-                        "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "Revoked authorisation count for non-individual customers"
-                      }
+                  "required": [
+                    "individual",
+                    "nonIndividual"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "individual": {
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
+                      "description": "Revoked authorisation count for individual customers."
+                    },
+                    "nonIndividual": {
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
+                      "description": "Revoked authorisation count for non-individual customers."
                     }
+                  }
                 }
               }
             },
-            "description": "The number of revoked authorisations",
+            "description": "The number of revoked authorisations.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1698,42 +1699,42 @@
                 "properties": {
                   "individual": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Amended authorisation count for individual customers"
+                    "x-cds-type": "NaturalNumber",
+                    "description": "Amended authorisation count for individual customers."
                   },
                   "nonIndividual": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Amended authorisation count for non-individual customers"
+                    "x-cds-type": "NaturalNumber",
+                    "description": "Amended authorisation count for non-individual customers."
                   }
                 },
-                "description": "Number of amended authorisations for the current day"
+                "description": "Number of amended authorisations for the current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Number of amended authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "Number of amended authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                    "required": [
-                      "individual",
-                      "nonIndividual"
-                    ],
-                    "type": "object",
-                    "properties": {
-                      "individual": {
-                        "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "Amended authorisation count for individual customers"
-                      },
-                      "nonIndividual": {
-                        "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "Amended authorisation count for non-individual customers"
-                      }
+                  "required": [
+                    "individual",
+                    "nonIndividual"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "individual": {
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
+                      "description": "Amended authorisation count for individual customers."
+                    },
+                    "nonIndividual": {
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
+                      "description": "Amended authorisation count for non-individual customers."
                     }
+                  }
                 }
               }
             },
-            "description": "The number of amended ongoing authorisations",
+            "description": "The number of amended ongoing authorisations.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1751,42 +1752,42 @@
                 "properties": {
                   "individual": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Expired authorisation count for individual customers"
+                    "x-cds-type": "NaturalNumber",
+                    "description": "Expired authorisation count for individual customers."
                   },
                   "nonIndividual": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Expired authorisation count for non-individual customers"
+                    "x-cds-type": "NaturalNumber",
+                    "description": "Expired authorisation count for non-individual customers."
                   }
                 },
-                "description": "Number of expired authorisations for the current day"
+                "description": "Number of expired authorisations for the current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Number of expired authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "Number of expired authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                    "required": [
-                      "individual",
-                      "nonIndividual"
-                    ],
-                    "type": "object",
-                    "properties": {
-                      "individual": {
-                        "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "Expired authorisation count for individual customers"
-                      },
-                      "nonIndividual": {
-                        "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "Expired authorisation count for non-individual customers"
-                      }
+                  "required": [
+                    "individual",
+                    "nonIndividual"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "individual": {
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
+                      "description": "Expired authorisation count for individual customers."
+                    },
+                    "nonIndividual": {
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
+                      "description": "Expired authorisation count for non-individual customers."
                     }
+                  }
                 }
               }
             },
-            "description": "The number of expired ongoing authorisations",
+            "description": "The number of expired ongoing authorisations.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1797,19 +1798,19 @@
             "properties": {
               "currentDay": {
                 "type": "integer",
-                "x-cds-type" : "NaturalNumber",
-                "description": "Number of consents flows that were not successfully authorised for the current day"
+                "x-cds-type": "NaturalNumber",
+                "description": "Number of consents flows that were not successfully authorised for the current day."
               },
               "previousDays": {
                 "type": "array",
-                "description": "Number of consents flows that were not successfully authorised for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "description": "Number of consents flows that were not successfully authorised for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
                   "type": "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
-            "description": "The number of consents flows that were not successfully authorised",
+            "description": "The number of consents flows that were not successfully authorised.",
             "x-conditional": [
               "currentDay",
               "previousDays"
@@ -1831,19 +1832,19 @@
                 "properties": {
                   "currentDay": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Number of abandoned consent flows for this stage for the current day"
+                    "x-cds-type": "NaturalNumber",
+                    "description": "Number of abandoned consent flows for this stage for the current day."
                   },
                   "previousDays": {
                     "type": "array",
-                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                     "items": {
                       "type": "integer",
-                      "x-cds-type" : "NaturalNumber"
+                      "x-cds-type": "NaturalNumber"
                     }
                   }
                 },
-                "description": "The number of authorisations that commenced with the data holder but the customer did not successfully identify their profile or user ID",
+                "description": "The number of authorisations that commenced with the data holder but the customer did not successfully identify their profile or user ID.",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
@@ -1854,19 +1855,19 @@
                 "properties": {
                   "currentDay": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Number of abandoned consent flows for this stage for the current day"
+                    "x-cds-type": "NaturalNumber",
+                    "description": "Number of abandoned consent flows for this stage for the current day."
                   },
                   "previousDays": {
                     "type": "array",
-                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                     "items": {
                       "type": "integer",
-                      "x-cds-type" : "NaturalNumber"
+                      "x-cds-type": "NaturalNumber"
                     }
                   }
                 },
-                "description": "The number of authorisations where the customer identified themselves (ie. they successfully identify the customer profile to use for the authorisation) but failed to provide a valid OTP or equivalent",
+                "description": "The number of authorisations where the customer identified themselves (i.e. they successfully identify the customer profile to use for the authorisation) but failed to provide a valid OTP or equivalent.",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
@@ -1877,19 +1878,19 @@
                 "properties": {
                   "currentDay": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Number of abandoned consent flows for this stage for the current day"
+                    "x-cds-type": "NaturalNumber",
+                    "description": "Number of abandoned consent flows for this stage for the current day."
                   },
                   "previousDays": {
                     "type": "array",
-                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                     "items": {
                       "type": "integer",
-                      "x-cds-type" : "NaturalNumber"
+                      "x-cds-type": "NaturalNumber"
                     }
                   }
                 },
-                "description": "The number of authorisations where the customer successfully authenticated with a valid OTP or equivalent but abandoned the process before selecting accounts",
+                "description": "The number of authorisations where the customer successfully authenticated with a valid OTP or equivalent but abandoned the process before selecting accounts.",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
@@ -1900,19 +1901,19 @@
                 "properties": {
                   "currentDay": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Number of abandoned consent flows for this stage for the current day"
+                    "x-cds-type": "NaturalNumber",
+                    "description": "Number of abandoned consent flows for this stage for the current day."
                   },
                   "previousDays": {
                     "type": "array",
-                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                     "items": {
                       "type": "integer",
-                      "x-cds-type" : "NaturalNumber"
+                      "x-cds-type": "NaturalNumber"
                     }
                   }
                 },
-                "description": "The number of authorisations where the customer has passed the account selection step but abandoned the process before approving or rejecting the consent being requested",
+                "description": "The number of authorisations where the customer has passed the account selection step but abandoned the process before approving or rejecting the consent being requested.",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
@@ -1923,19 +1924,19 @@
                 "properties": {
                   "currentDay": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Number of abandoned consent flows for this stage for the current day"
+                    "x-cds-type": "NaturalNumber",
+                    "description": "Number of abandoned consent flows for this stage for the current day."
                   },
                   "previousDays": {
                     "type": "array",
-                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                     "items": {
                       "type": "integer",
-                      "x-cds-type" : "NaturalNumber"
+                      "x-cds-type": "NaturalNumber"
                     }
                   }
                 },
-                "description": "The number of authorisations where the customer actively rejected the authorisation rather than abandoning the process",
+                "description": "The number of authorisations where the customer actively rejected the authorisation rather than abandoning the process.",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
@@ -1946,29 +1947,29 @@
                 "properties": {
                   "currentDay": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Number of abandoned consent flows for this stage for the current day"
+                    "x-cds-type": "NaturalNumber",
+                    "description": "Number of abandoned consent flows for this stage for the current day."
                   },
                   "previousDays": {
                     "type": "array",
-                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                    "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                     "items": {
                       "type": "integer",
-                      "x-cds-type" : "NaturalNumber"
+                      "x-cds-type": "NaturalNumber"
                     }
                   }
                 },
-                "description": "The number of authorisations that completed the interactive flow with the consumer authorising the consent, but the ADR failed to - or was unable to - obtain a refresh or access token using the authorisation code",
+                "description": "The number of authorisations that completed the interactive flow with the consumer authorising the consent, but the ADR failed to - or was unable to - obtain a refresh or access token using the authorisation code.",
                 "x-conditional": [
                   "currentDay",
                   "previousDays"
                 ]
               }
             },
-            "description": "Customer abandonment count per stage of the consent flow. Note that the aggregated abandonment count for all stages for a period should equal the count in `abandonedConsentFlowCount` for the same period (ie. each abandoned consent should assigned to one, and only one, stage)"
+            "description": "Customer abandonment count per stage of the consent flow. Note that the aggregated abandonment count for all stages for a period should equal the count in _abandonedConsentFlowCount_ for the same period (i.e. each abandoned consent should assigned to one, and only one, stage)."
           }
         },
-        "description": "Authorisation counts for the data holder"
+        "description": "Authorisation counts for the data holder."
       },
       "Links": {
         "required": [
@@ -1978,7 +1979,7 @@
         "properties": {
           "self": {
             "type": "string",
-            "description": "Fully qualified link to this API call",
+            "description": "Fully qualified link to this API call.",
             "x-cds-type": "URIString"
           }
         }
@@ -1991,10 +1992,10 @@
         "properties": {
           "urn": {
             "type": "string",
-            "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
+            "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code."
           }
         },
-        "description": "Additional data for customised error codes",
+        "description": "Additional data for customised error codes.",
         "x-conditional": [
           "urn"
         ]
@@ -2044,7 +2045,7 @@
       "RequestHeader_x-v": {
         "name": "x-v",
         "in": "header",
-        "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+        "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
         "required": true,
         "schema": {
           "type": "string"
@@ -2053,7 +2054,7 @@
       "RequestHeader_x-min-v": {
         "name": "x-min-v",
         "in": "header",
-        "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
+        "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder should respond with a `406 Not Acceptable`.",
         "schema": {
           "type": "string"
         }
