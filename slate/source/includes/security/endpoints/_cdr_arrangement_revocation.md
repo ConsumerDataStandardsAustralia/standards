@@ -31,9 +31,7 @@ Data Holders and Data Recipient Software Products MUST implement a CDR Arrangeme
 
 <br/>
 
-```diff
-Clarified 'CDR Arrangement JWT method' details
-```
+
 
 **CDR Arrangement Form Parameter method**
 

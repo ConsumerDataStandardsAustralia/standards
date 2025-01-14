@@ -182,10 +182,7 @@ To register with a Data Holder, the Data Recipient sends an HTTP POST to the Dat
 
 The client registration request **MUST** contain the following claims in the JWT payload unless designated as Optional:
 
-```diff
-+ Qualified that ID token encryption shall not be used for Authorization Code Flow
-+ Incorporated retirement date for OIDC Hybrid Flow
-```
+
 
 | Claim | Required | Description
 |--------------|-------|-----------------------------------------------------------------------------------------------
@@ -254,9 +251,7 @@ Data Holders **MUST** adhere to the [NFR performance requirements](#performance-
 
 ### Registration Response
 
-```diff
-- Removed OIDC Hybrid Flow non-normative examples.
-```
+
 
 >
 Example Created Response  

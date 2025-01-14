@@ -1,9 +1,7 @@
 
 ### Pushed Authorisation endpoint
 
-```diff
-- Removed OIDC Hybrid Flow non-normative examples.
-```
+
 
 > Non-Normative Example  
 > Utilising FAPI 1.0 Final, RFC9126, PKCE, JARM and Authorization Code Flow

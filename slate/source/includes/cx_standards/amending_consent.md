@@ -1,8 +1,6 @@
 <h2 id="consumer-experience_amending-consent-standards">Amending Consent Standards</h2>
 
-```diff
-Added Amending Consent Standards section
-```
+
 
 Each of the below data standards are for the purposes of rule 8.11(1)(a)(ii):
 

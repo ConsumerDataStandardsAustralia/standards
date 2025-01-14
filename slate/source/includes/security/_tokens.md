@@ -21,31 +21,23 @@ ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-c
 
 #### Baseline ID Token requirements
 
-```diff
-- Removed OIDC Hybrid Flow qualifications
-```
+
 
 In addition to the mandatory claims specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[[OIDC]](#nref-OIDC)** standard, required claims for ID Tokens **MUST** align to [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server) and [section 8.4.3](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-response-parameter-injection-attack) of the **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** profile.
 
 ID Tokens **MUST** be signed by Data Holders as specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2-1_0.html#algorithm-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
 
-```diff
-- Moved PI restriction for ID tokens out of the OIDC Hybrid Flow requirements to apply as a Baseline requirement
-```
+
 
 ID Tokens **MUST NOT** contain any Personal Information (PI) claims.
 
-```diff
-- OIDC Hybrid Flow is deprecated and shall be retired from May 12th 2025.
-```
+
 
 #### OIDC Hybrid Flow requirements
 
 In accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, ID Tokens **MUST** be signed and encrypted when returned to a Data Recipient Software Product from both the Authorisation endpoint and Token endpoint.
 
-```diff
-+ Moved OIDC Hybrid Flow qualifications out of the Baseline ID Token requirements
-```
+
 
 In addition required claims for ID Tokens **MUST** align to [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) (Authentication using the Hybrid Flow) unless otherwise constrained by **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** profile.
 
@@ -71,9 +63,7 @@ The process for refreshing an Access Token is described in [section 12.1](https:
 * Data Holders **MUST** reject token request with an authorization code (Section 1.3.1 of **[[RFC6749]](#nref-RFC6749)**) if it has been previously used.
 
 
-```diff
-Updated the refresh token expiry time to be issued equal to the sharing duration authorised by the consumer
-```
+
 
 ### Refresh Token
 Refresh Tokens **MUST** be supported by Data Holders in accordance with [section 12](https://openid.net/specs/openid-connect-core-1_0.html#RefreshTokens) of **[[OIDC]](#nref-OIDC)**.

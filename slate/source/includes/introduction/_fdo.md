@@ -1,20 +1,6 @@
 ## Future Dated Obligations
 
-```diff
-Added FDOs for the following:
-+ Get Metrics error reporting clarification
-+ Maintenance Issue #667: Refresh Token expiry obligations
-+ Retirement of OIDC Hybrid Flow
-+ Amending consent: Changing attributes
-+ CDR Receipts
-+ 90-day notifications
-+ Get Product Detail v5
-+ Get Transaction Detail V2.
 
-Added milestone dates for 2026 and 2027 to the Obligation Date Schedule.
-
-Updated 'MAY retire' statements from 'by (date)' to 'from (date)'.
-```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 
 

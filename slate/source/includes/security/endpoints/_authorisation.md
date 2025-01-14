@@ -1,8 +1,6 @@
 ### Authorisation endpoint
 
-```diff
-- Removed OIDC Hybrid Flow non-normative examples.
-```
+
 
 > Non-Normative Example  
 > This example demonstrates how an ADR may send a staged authorisation request (using PAR) in the back-channel to the Data Holder.
@@ -27,9 +25,7 @@ Host: tls.dh.example.com
 | Client Authentication Required| No|
 | Bearer Token Required| No|
 
-```diff
-- Updated references to Authorization Code Flow. Previously OIDC Hybrid Flow.
-```
+
 
 The requirements for the Authorisation endpoint are specified in [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[[OIDC]](#nref-OIDC)** and further specified under section [5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**. This endpoint is invoked as part of the [Authentication Code Flow](#authorization-code-flow).
 

@@ -1,9 +1,7 @@
 
 ## Certificate Management
 
-```diff
-Clarified Server Certificate statements for Data Holders and Data Recipients and referred to Participant endpoints detail
-```
+
 
 ### Issued by the Register for Data Holders
 Certificate | Function | Notes

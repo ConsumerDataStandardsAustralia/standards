@@ -33,11 +33,7 @@ Host: cdr.register
 <InfoSecBaseUri>/.well-known/openid-configuration
 ```
 
-```diff
-Added clarifying statements for endpoints specified as MTLS and TLS.
 
-Added Transaction Security column and clarified descriptions.
-```
 
 Participants will be required to register base URIs against each of their brands to facilitate the implementation of the Consumer Data Standards
 

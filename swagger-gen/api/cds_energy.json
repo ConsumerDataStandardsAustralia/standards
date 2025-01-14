@@ -3,7 +3,7 @@
   "info": {
     "title": "CDR Energy API",
     "description": "Consumer Data Right endpoints and payloads for the Energy sector.",
-    "version": "1.33.0"
+    "version": "1.34.0"
   },
   "servers": [
     {
@@ -5094,7 +5094,7 @@
           "Generic Tariffs"
         ],
         "x-version": "3",
-        "x-version-notes": "The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.",
+        "x-version-notes": "The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.34.0.html) for more details.",
         "parameters": [
           {
             "name": "planId",
@@ -6125,7 +6125,7 @@
           "Energy Accounts"
         ],
         "x-version": "4",
-        "x-version-notes": "The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.",
+        "x-version-notes": "The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.34.0.html) for more details.",
         "parameters": [
           {
             "$ref": "#/components/parameters/accountId"

@@ -60,9 +60,7 @@ Data Holders MUST make their OpenID Provider Metadata available via a configurat
 
 This endpoint does not require [CORS](#cors).
 
-```diff
-Separated OIDC Hybrid Flow requirements during transitionary period to retirement
-```
+
 
 At a minimum, the Data Holder metadata **MUST** include:
 

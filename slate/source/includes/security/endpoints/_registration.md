@@ -6,11 +6,7 @@ For more details of these endpoints see the [DCR APIs](#dcr-apis) section.
 
 For additional statements on the operation of these endpoint during client registration see the [Client Registration](#client-registration) section.
 
-```diff
-Changed the third column name in the table to align to the Normative References title
-- TLS-MA
-+ MTLS
-```
+
 
 | HTTP Verb | Auth Server Support | MTLS | HoK | Grant Type | Access Token Scope
 |--------------|-------|:-------:|:-------:|------|-----------------------------------------------------------------------------
