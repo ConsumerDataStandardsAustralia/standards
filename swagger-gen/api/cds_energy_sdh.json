@@ -777,7 +777,7 @@
             "default": false
           },
           "protectionMode": {
-            "description": "Required only when the _hasCentralProtectionAndControl_ flag is set to `true`. One or more of the object fields will be provided to describe the protection modes in place.",
+            "description": "Required only when the _hasCentralProtectionControl_ flag is set to `true`. One or more of the object fields will be provided to describe the protection modes in place.",
             "type": "object",
             "properties": {
               "exportLimitKva": {
