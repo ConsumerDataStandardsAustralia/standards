@@ -72,9 +72,9 @@
 <h3 id="{{= data.title_prefix }}_{{= s.toLowerCase() }}_properties">Properties</h3>
 {{?}}
 
-{{? block.rows.length}}|Name|Type|Required|Description|
-|---|---|---|---|{{?}}
-{{~ block.rows :p}}|{{=p.displayName}}|{{? p.cdrType}}{{=p.cdrType}}{{??}}{{=p.safeType}}{{?}}|{{=p.required_text}}|{{=p.description||'none'}}|
+{{? block.rows.length}}|Name|Type|Required|Default|Description|
+|---|---|---|---|---|{{?}}
+{{~ block.rows :p}}|{{=p.displayName}}|{{? p.cdrType}}{{=p.cdrType}}{{??}}{{=p.safeType}}{{?}}|{{=p.required_text}}|{{= (p.schema.default !== undefined ? '`' + p.schema.default + '`' : '') }}|{{=p.description||'none'}}|
 {{~}}
 {{~}}
 {{? (blocks[0].rows.length === 0) && (blocks.length === 1) }}
