@@ -77,7 +77,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "content": {
               "application/json": {
                 "schema": {
@@ -87,7 +87,7 @@
             }
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+            "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "content": {
               "application/json": {
                 "schema": {
@@ -112,7 +112,7 @@
           "Metrics"
         ],
         "summary": "Get Metrics",
-        "description": "This endpoint allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this endpoint are determined by the non-functional requirements for the CDR regime.\n\nThis endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version **MUST** be implemented by **May 13th 2024**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nDeprecated versions:\n\n- [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023. Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version\n- [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**.\n\nIf the Data Holder supports `private_key_jwt` client authentication they MUST validate the scope.",
+        "description": "This endpoint allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this endpoint are determined by the non-functional requirements for the CDR regime.\n\nThis endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version **MUST** be implemented by **May 13th 2024**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nDeprecated versions:\n\n- [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023. Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version\n- [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**.\n\nIf the Data Holder supports `private_key_jwt` client authentication they **MUST** validate the scope.",
         "operationId": "getMetrics",
         "parameters": [
           {
@@ -167,7 +167,7 @@
             }
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "content": {
               "application/json": {
                 "schema": {
@@ -177,7 +177,7 @@
             }
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+            "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "content": {
               "application/json": {
                 "schema": {
@@ -2023,7 +2023,7 @@
                 },
                 "title": {
                   "type": "string",
-                  "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
+                  "description": "A short, human-readable summary of the problem that **MUST NOT** change from occurrence to occurrence of the problem represented by the error code."
                 },
                 "detail": {
                   "type": "string",

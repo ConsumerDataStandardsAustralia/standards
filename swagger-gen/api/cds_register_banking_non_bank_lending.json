@@ -916,7 +916,7 @@
           },
           "title": {
             "type": "string",
-            "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
+            "description": "A short, human-readable summary of the problem that **MUST NOT** change from occurrence to occurrence of the problem represented by the error code."
           },
           "detail": {
             "type": "string",

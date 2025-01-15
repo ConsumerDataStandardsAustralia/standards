@@ -2,11 +2,11 @@
 
 This section outlines how participants in the CDR regime will authenticate clients seeking access to endpoints.
 
-Note that, while **[[MTLS]](#nref-MTLS)** is utilised for transaction security and as a Holder of Key mechanism, the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported as the mechanism for client authentication.
+Note that, while **[[MTLS]](#nref-MTLS)** is utilised for transaction security and as a Holder of Key mechanism, the PKI Mutual TLS OAuth Client Authentication Method **SHALL NOT** be supported as the mechanism for client authentication.
 
 The following authentication methods are supported:
 
-* Data Holders SHALL authenticate the CDR Register client using one of the following Client Authentication methods: 
+* Data Holders **SHALL** authenticate the CDR Register client using one of the following Client Authentication methods: 
   * Self-signed JWT client assertion authenticated by the protected request endpoint according to [Self-signed JWT Client Authentication](#self-signed-jwt-client-authentication), or 
   * `private_key_jwt` authentication using `client_credentials` authorisation grant flow according to [Private Key JWT Client Authentication](#private-key-jwt-client-authentication).
 * Data Holders and the CDR Register **MUST** authenticate Data Recipient Software Products using the [Private Key JWT Client Authentication](#private-key-jwt-client-authentication) method.

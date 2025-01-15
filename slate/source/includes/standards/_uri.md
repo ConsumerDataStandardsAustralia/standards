@@ -40,7 +40,7 @@
 5. https://mtls.dh.example.com/api/cds-au/v1/ACME/apply
 ```
 
-The URI structure for API endpoints in the standards MUST be implemented as follows: 
+The URI structure for API endpoints in the standards **MUST** be implemented as follows: 
 <pre class="display-inline light-box">
 <b>uri-string</b> =  "https://" <b>\<holder-path\></b> "/" <b>cds-au</b> "/" <b>\<version\></b> "/" ( <b>\<industry\></b> | <b>\<HID\></b> ) "/" <b>\<resource\></b>
 

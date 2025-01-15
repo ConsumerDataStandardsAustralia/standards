@@ -340,7 +340,7 @@
           },
           "redirect_uris": {
             "type": "array",
-            "description": "Array of redirection URI strings for use in redirect-based flows. If used, _redirect_uris_ MUST match or be a subset of the _redirect_uris_ as defined in the SSA.",
+            "description": "Array of redirection URI strings for use in redirect-based flows. If used, _redirect_uris_ **MUST** match or be a subset of the _redirect_uris_ as defined in the SSA.",
             "example": [
               "https://adr.example.com/redirects/redirect1",
               "https://adr.example.com/redirects/redirect2"
@@ -358,7 +358,7 @@
           },
           "logo_uri": {
             "type": "string",
-            "description": "URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval.",
+            "description": "URL string that references a logo for the client. If present, the server **SHOULD** display this image to the end-user during approval.",
             "example": "https://adr.example.com/logos/logo1.png",
             "x-cds-type": "URIString"
           },
