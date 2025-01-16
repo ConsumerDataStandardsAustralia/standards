@@ -80,9 +80,9 @@
             "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ExternalRef"
-            }
+              "type": "string"
+            },
+            "x-cds-type": "ExternalRef"
           }
         ],
         "responses": {
@@ -102,9 +102,9 @@
               "WWW-Authenticate": {
                 "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ExternalRef"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ExternalRef"
               }
             }
           },
@@ -139,9 +139,9 @@
             "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ExternalRef"
-            }
+              "type": "string"
+            },
+            "x-cds-type": "ExternalRef"
           }
         ],
         "requestBody": {
@@ -182,9 +182,9 @@
               "WWW-Authenticate": {
                 "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ExternalRef"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ExternalRef"
               }
             }
           },
@@ -220,9 +220,9 @@
             "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ExternalRef"
-            }
+              "type": "string"
+            },
+            "x-cds-type": "ExternalRef"
           }
         ],
         "responses": {
@@ -235,9 +235,9 @@
               "WWW-Authenticate": {
                 "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ExternalRef"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ExternalRef"
               }
             }
           },
@@ -394,7 +394,6 @@
           },
           "token_endpoint_auth_method": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "The requested authentication method for the token endpoint.",
             "enum": [
               "private_key_jwt"
@@ -402,7 +401,6 @@
           },
           "token_endpoint_auth_signing_alg": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "The algorithm used for signing the JWT.",
             "enum": [
               "PS256",
@@ -419,7 +417,6 @@
             ],
             "items": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "client_credentials",
                 "authorization_code",
@@ -432,7 +429,6 @@
             "description": "Array of the OAuth 2.0 _response_type_ strings that the client can use at the authorization endpoint.<br><br>_response_type_ value `code` is required for Authorization Code Flow.<br>_response_type_ value `code id_token` is required for OIDC Hybrid Flow.",
             "items": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "code",
                 "code id_token"
@@ -441,7 +437,6 @@
           },
           "application_type": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Kind of the application. The only supported application type will be `web`.",
             "enum": [
               "web"
@@ -449,7 +444,6 @@
           },
           "id_token_signed_response_alg": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Algorithm with which an id_token is to be signed.",
             "enum": [
               "PS256",
@@ -499,7 +493,6 @@
           },
           "request_object_signing_alg": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder.",
             "enum": [
               "PS256",
@@ -518,7 +511,6 @@
           },
           "software_roles": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "String containing a role of the software in the CDR Regime. Initially the only value used will be `data-recipient-software-product`.",
             "example": "data-recipient-software-product",
             "enum": [
@@ -587,7 +579,6 @@
         "properties": {
           "error": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Predefined error code as described in [section 3.3 OIDC Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html).",
             "enum": [
               "invalid_redirect_uri",
@@ -621,9 +612,9 @@
           "WWW-Authenticate": {
             "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
             "schema": {
-              "type": "string",
-              "x-cds-type": "ExternalRef"
-            }
+              "type": "string"
+            },
+            "x-cds-type": "ExternalRef"
           }
         }
       },
@@ -641,9 +632,9 @@
         "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
         "required": true,
         "schema": {
-          "type": "string",
-          "x-cds-type": "ExternalRef"
-        }
+          "type": "string"
+        },
+        "x-cds-type": "ExternalRef"
       },
       "ClientId": {
         "name": "ClientId",

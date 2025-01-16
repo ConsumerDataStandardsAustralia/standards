@@ -61,8 +61,7 @@
             "in": "header",
             "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true
+              "type": "string"
             },
             "x-conditional": true
           },
@@ -79,9 +78,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -195,8 +192,7 @@
             "in": "header",
             "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true
+              "type": "string"
             },
             "x-conditional": true
           },
@@ -213,9 +209,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -552,8 +546,7 @@
           },
           "isPartial": {
             "type": "boolean",
-            "description": "Flag that indicates, if present and set to `true`, that the outage is only partial meaning that only a subset of normally available endpoints will be affected by the outage.",
-            "x-cds-type": "Boolean"
+            "description": "Flag that indicates, if present and set to `true`, that the outage is only partial meaning that only a subset of normally available endpoints will be affected by the outage."
           },
           "explanation": {
             "type": "string",
@@ -785,8 +778,7 @@
           },
           "isACNCRegistered": {
             "type": "boolean",
-            "description": "`true` if registered with the ACNC. `false` if not. Absent or `null` if not confirmed.",
-            "x-cds-type": "Boolean"
+            "description": "`true` if registered with the ACNC. `false` if not. Absent or `null` if not confirmed."
           },
           "industryCode": {
             "type": "string",
@@ -861,8 +853,7 @@
         "properties": {
           "isPreferred": {
             "type": "boolean",
-            "description": "May be `true` for one and only one entry to indicate the preferred phone number. Assumed to be `false` if not present.",
-            "x-cds-type": "Boolean"
+            "description": "May be `true` for one and only one entry to indicate the preferred phone number. Assumed to be `false` if not present."
           },
           "purpose": {
             "type": "string",
@@ -911,8 +902,7 @@
         "properties": {
           "isPreferred": {
             "type": "boolean",
-            "description": "May be `true` for one and only one email record in the collection. Denotes the default email address.",
-            "x-cds-type": "Boolean"
+            "description": "May be `true` for one and only one email record in the collection. Denotes the default email address."
           },
           "purpose": {
             "type": "string",
@@ -1234,8 +1224,7 @@
         "in": "header",
         "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
         "schema": {
-          "type": "string",
-          "x-conditional": true
+          "type": "string"
         },
         "x-conditional": true
       },
@@ -1252,9 +1241,7 @@
         "in": "header",
         "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
         "schema": {
-          "type": "string",
-          "x-conditional": true,
-          "x-cds-type": "Base64"
+          "type": "string"
         },
         "x-conditional": true,
         "x-cds-type": "Base64"

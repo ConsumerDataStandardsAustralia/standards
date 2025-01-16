@@ -78,7 +78,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "banking",
                 "energy",
@@ -93,9 +92,9 @@
             "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ExternalRef"
-            }
+              "type": "string"
+            },
+            "x-cds-type": "ExternalRef"
           },
           {
             "name": "x-v",
@@ -119,9 +118,9 @@
             "in": "query",
             "description": "Query filter returns results updated since the specified date-time.",
             "schema": {
-              "type": "string",
-              "x-cds-type": "DateTimeString"
-            }
+              "type": "string"
+            },
+            "x-cds-type": "DateTimeString"
           },
           {
             "name": "page",
@@ -179,9 +178,9 @@
               "WWW-Authenticate": {
                 "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ExternalRef"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ExternalRef"
               }
             }
           },
@@ -218,7 +217,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "banking",
                 "energy",
@@ -249,9 +247,9 @@
             "in": "header",
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
-            }
+              "type": "string"
+            },
+            "x-cds-type": "ASCIIString"
           }
         ],
         "responses": {
@@ -267,9 +265,9 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ASCIIString"
               }
             },
             "content": {
@@ -286,9 +284,9 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ASCIIString"
               }
             }
           },
@@ -348,7 +346,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "banking",
                 "energy",
@@ -398,9 +395,9 @@
             "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ExternalRef"
-            }
+              "type": "string"
+            },
+            "x-cds-type": "ExternalRef"
           }
         ],
         "responses": {
@@ -439,9 +436,9 @@
               "WWW-Authenticate": {
                 "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ExternalRef"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ExternalRef"
               }
             }
           },
@@ -508,7 +505,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "banking",
                 "energy",
@@ -539,9 +535,9 @@
             "in": "header",
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
-            }
+              "type": "string"
+            },
+            "x-cds-type": "ASCIIString"
           }
         ],
         "responses": {
@@ -557,9 +553,9 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ASCIIString"
               }
             },
             "content": {
@@ -576,9 +572,9 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ASCIIString"
               }
             }
           },
@@ -622,7 +618,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "banking",
                 "energy",
@@ -653,9 +648,9 @@
             "in": "header",
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
-            }
+              "type": "string"
+            },
+            "x-cds-type": "ASCIIString"
           }
         ],
         "responses": {
@@ -671,9 +666,9 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ASCIIString"
               }
             },
             "content": {
@@ -690,9 +685,9 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ASCIIString"
               }
             }
           },
@@ -736,7 +731,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "banking",
                 "energy",
@@ -767,9 +761,9 @@
             "in": "header",
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
-            }
+              "type": "string"
+            },
+            "x-cds-type": "ASCIIString"
           }
         ],
         "responses": {
@@ -785,9 +779,9 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ASCIIString"
               }
             },
             "content": {
@@ -804,9 +798,9 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ASCIIString"
               }
             }
           },
@@ -850,7 +844,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "banking",
                 "energy",
@@ -881,9 +874,9 @@
             "in": "header",
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
-            }
+              "type": "string"
+            },
+            "x-cds-type": "ASCIIString"
           }
         ],
         "responses": {
@@ -899,9 +892,9 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ASCIIString"
               }
             },
             "content": {
@@ -918,9 +911,9 @@
               "Etag": {
                 "description": "Entity tag that uniquely represents the requested resource.",
                 "schema": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
-                }
+                  "type": "string"
+                },
+                "x-cds-type": "ASCIIString"
               }
             }
           },
@@ -1042,8 +1035,7 @@
           },
           "tls_client_certificate_bound_access_tokens": {
             "type": "boolean",
-            "description": "Boolean value indicating server support for mutual TLS client certificate bound access tokens.",
-            "x-cds-type": "Boolean"
+            "description": "Boolean value indicating server support for mutual TLS client certificate bound access tokens."
           },
           "token_endpoint_auth_signing_alg_values_supported": {
             "type": "array",
@@ -1173,7 +1165,6 @@
             "description": "The industries the Data Holder Brand belongs to.",
             "items": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "banking",
                 "energy",
@@ -1192,7 +1183,6 @@
           },
           "status": {
             "type": "string",
-            "x-cds-type": "Enum",
             "enum": [
               "ACTIVE",
               "INACTIVE",
@@ -1285,7 +1275,6 @@
             "description": "The industries the Data Holder Brand belongs to.",
             "items": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "banking",
                 "energy",
@@ -1353,7 +1342,6 @@
           },
           "status": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Data Holder status in the CDR Register.",
             "enum": [
               "ACTIVE",
@@ -1400,7 +1388,6 @@
           },
           "status": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Software product status in the CDR Register.",
             "enum": [
               "ACTIVE",
@@ -1448,7 +1435,6 @@
           },
           "status": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Data Recipient status in the CDR Register.",
             "enum": [
               "ACTIVE",
@@ -1513,7 +1499,6 @@
           },
           "accreditationLevel": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Accreditation level of the Data Recipient in the CDR Register.",
             "enum": [
               "UNRESTRICTED",
@@ -1535,7 +1520,6 @@
           },
           "status": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Data Recipient status in the CDR Register.",
             "enum": [
               "ACTIVE",
@@ -1585,7 +1569,6 @@
           },
           "status": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Data Recipient Brand status in the CDR Register.",
             "enum": [
               "ACTIVE",
@@ -1629,7 +1612,6 @@
           },
           "status": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Software Product status in the CDR Register.",
             "enum": [
               "ACTIVE",
@@ -1702,7 +1684,6 @@
           },
           "organisationType": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Legal organisation type.",
             "enum": [
               "SOLE_TRADER",
@@ -1715,7 +1696,6 @@
           },
           "status": {
             "type": "string",
-            "x-cds-type": "Enum",
             "enum": [
               "ACTIVE",
               "REMOVED"
@@ -1780,7 +1760,6 @@
         "properties": {
           "registerUType": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "The type of authentication and authorisation mechanism in use.",
             "enum": [
               "SIGNED-JWT"
@@ -1947,9 +1926,9 @@
           "Etag": {
             "description": "Entity tag that uniquely represents the requested resource.",
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
-            }
+              "type": "string"
+            },
+            "x-cds-type": "ASCIIString"
           }
         }
       },
@@ -1971,9 +1950,9 @@
         "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
         "required": true,
         "schema": {
-          "type": "string",
-          "x-cds-type": "ExternalRef"
-        }
+          "type": "string"
+        },
+        "x-cds-type": "ExternalRef"
       },
       "XV": {
         "name": "x-v",
@@ -1990,7 +1969,6 @@
         "required": true,
         "schema": {
           "type": "string",
-          "x-cds-type": "Enum",
           "enum": [
             "banking",
             "energy",
@@ -2012,18 +1990,18 @@
         "in": "header",
         "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
         "schema": {
-          "type": "string",
-          "x-cds-type": "ASCIIString"
-        }
+          "type": "string"
+        },
+        "x-cds-type": "ASCIIString"
       },
       "UpdatedSince": {
         "name": "updated-since",
         "in": "query",
         "description": "query filter returns results updated since the specified date-time.",
         "schema": {
-          "type": "string",
-          "x-cds-type": "DateTimeString"
-        }
+          "type": "string"
+        },
+        "x-cds-type": "DateTimeString"
       },
       "Page": {
         "name": "page",

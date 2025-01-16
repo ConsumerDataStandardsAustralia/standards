@@ -2621,8 +2621,7 @@
           },
           "islandableInstallation": {
             "description": "For identification of small generating units designed with the ability to operate in an islanded mode.",
-            "type": "boolean",
-            "x-cds-type": "Boolean"
+            "type": "boolean"
           },
           "hasCentralProtectionControl": {
             "description": "For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter. If absent then assumed to be `false`.",

@@ -34,7 +34,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "banking",
                 "energy",
@@ -175,7 +174,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "banking",
                 "energy",
@@ -300,7 +298,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "banking",
                 "energy",
@@ -457,7 +454,6 @@
             "description": "The industries the Data Holder Brand belongs to.",
             "items": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "banking",
                 "energy",
@@ -477,7 +473,6 @@
           },
           "status": {
             "type": "string",
-            "x-cds-type": "Enum",
             "enum": [
               "ACTIVE",
               "INACTIVE",
@@ -570,7 +565,6 @@
             "description": "The industries the Data Holder Brand belongs to.",
             "items": {
               "type": "string",
-              "x-cds-type": "Enum",
               "enum": [
                 "banking",
                 "energy",
@@ -639,7 +633,6 @@
           },
           "status": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Data Holder status in the CDR Register.",
             "enum": [
               "ACTIVE",
@@ -710,7 +703,6 @@
           },
           "organisationType": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Legal organisation type.",
             "enum": [
               "SOLE_TRADER",
@@ -723,7 +715,6 @@
           },
           "status": {
             "type": "string",
-            "x-cds-type": "Enum",
             "enum": [
               "ACTIVE",
               "REMOVED"
@@ -788,7 +779,6 @@
         "properties": {
           "registerUType": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "The type of authentication and authorisation mechanism in use.",
             "enum": [
               "SIGNED-JWT"
@@ -998,7 +988,6 @@
         "required": true,
         "schema": {
           "type": "string",
-          "x-cds-type": "Enum",
           "enum": [
             "banking",
             "energy",
