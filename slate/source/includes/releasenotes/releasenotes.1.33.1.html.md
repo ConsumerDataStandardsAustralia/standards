@@ -17,7 +17,7 @@ Release notes for version **1.33.1** of the [CDR Standards](../../).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #432 - Specify custom OAS fields consistently](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/432)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -33,7 +33,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail. | [Standards section](../../#section)
+| Specify custom OpenAPI Spec. (OAS) fields consistently | [**Standards Staging #432**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/432): Where schema extensions such as `x-cds-type` and `x-conditional` had been applied, these are now in a consistent location and duplicate statements have been removed. Other redundant statements (`"x-cds-type": "enum"`, `"x-cds-type": "Boolean"`) have been removed as these can be inferred from normative statements. | [Standards section](../../#section)
 | Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail. | [Standards section](../../#section)
 | Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail. | [Standards section](../../#section)
 
