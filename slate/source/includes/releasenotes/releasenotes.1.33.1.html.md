@@ -1,5 +1,5 @@
 ---
-title: Consumer Data Standards - v1.34.0 Release Notes
+title: Consumer Data Standards - v1.33.1 Release Notes
 
 #language_tabs: # must be one of https://git.io/vQNgJ
 
@@ -9,8 +9,8 @@ toc_footers:
 search: false
 ---
 
-# V1.34.0 Release Notes
-Release notes for version **1.34.0** of the [CDR Standards](../../).
+# V1.33.1 Release Notes
+Release notes for version **1.33.1** of the [CDR Standards](../../).
 
 ## Changes Made
 ### Change Requests

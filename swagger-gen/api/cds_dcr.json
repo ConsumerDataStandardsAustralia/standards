@@ -3,7 +3,7 @@
   "info": {
     "title": "CDR Dynamic Client Registration API",
     "description": "This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.",
-    "version": "1.34.0"
+    "version": "1.33.1"
   },
   "servers": [
     {
