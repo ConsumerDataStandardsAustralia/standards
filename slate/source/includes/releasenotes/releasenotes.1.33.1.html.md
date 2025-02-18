@@ -33,7 +33,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Specify custom OpenAPI Spec. (OAS) fields consistently | [**Standards Staging #432**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/432): Where schema extensions such as `x-cds-type` and `x-conditional` had been applied, these are now in a consistent location and duplicate statements have been removed. Other redundant statements (`"x-cds-type": "enum"`, `"x-cds-type": "Boolean"`) have been removed as these can be inferred from normative statements. | [Standards section](../../#section)
+| Specify custom OpenAPI Spec. (OAS) fields consistently | [**Standards Staging #432**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/432): Where schema extensions such as `x-cds-type` and `x-conditional` had been applied, these are now in a consistent location and duplicate statements have been removed. Other redundant statements (`"x-cds-type": "enum"`, `"x-cds-type": "Boolean"`) have been removed as these can be inferred from normative statements. | N/A
 | Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail. | [Standards section](../../#section)
 | Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail. | [Standards section](../../#section)
 
