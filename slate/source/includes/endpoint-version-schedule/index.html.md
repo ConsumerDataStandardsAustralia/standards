@@ -11,6 +11,7 @@ includes:
   - common-dh
   - register
   - data-recipients
+  - footer
 
 toc_footers:
   - <a href='../../'>Consumer Data Standards</a>

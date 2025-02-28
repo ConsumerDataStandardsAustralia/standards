@@ -25,7 +25,7 @@ grant_type=client_credentials&
   client_id=5ntwEOpMdPxxy49Gt28SXWY6j3afl2CP2&
   scope=admin%3Ametrics.basic%3Aread&
   client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
-  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
+  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey...
 
 ## Decoded client assertion JWT
 {
@@ -138,9 +138,9 @@ If the Data Holder supports the [Self-signed JWT Client Authentication](#self-si
 POST https://adr.example.com/arrangements/revoke HTTP/1.1
 Host: adr.example.com
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey …
+Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey...
 
-cdr_arrangement_jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6IjEyNDU2In0.ey ...
+cdr_arrangement_jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6IjEyNDU2In0.ey...
 
 ## Decoded Bearer token JWT
 {
@@ -173,7 +173,7 @@ grant_type=authorization_code&
   client_id=s6BhdRkqt3&
   code_verifier=4d9213fb-d68b-49d1-a2c9-486e5a0b4e14&
   client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
-  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
+  client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey...
 
 ## Decoded client assertion JWT
 {

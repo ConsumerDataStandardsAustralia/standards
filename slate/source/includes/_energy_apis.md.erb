@@ -3,6 +3,20 @@
 
 This specification defines the APIs for Data Holders exposing Energy endpoints.
 
+```diff
+Corrected typo in EnergyPlanControlledLoadV2.rateBlockUType field description:
+- controlloed
++ controlled
+
+Corrected the description of the 'type' field to align to the Enum format in the following schemas:
+  * EnergyPlanTariffPeriodV2
+  * EnergyInvoiceGasUsageCharges
+  * EnergyInvoiceElectricityUsageCharges
+  * EnergyBillingOtherTransaction
+- Type of charge. Assumed to be other if absent.
++ Type of charge. Assumed to be OTHER if absent.
+```
+
 <table>
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>

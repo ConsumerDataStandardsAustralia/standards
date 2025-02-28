@@ -181,7 +181,11 @@ function getParameters(data) {
                 let schemaName = pSchema["x-widdershins-oldRef"].replace('#/components/schemas/','');
                 param.safeType = '['+schemaName+'](#schema'+data.title_prefix+schemaName.toLowerCase()+')';
             }
-            if (param.refName) param.safeType = '['+param.refName+'](#schema'+data.title_prefix+param.refName.toLowerCase()+')';
+            
+            // Using refName to refer to a schema doesnt appear to work correctly. This breaks the statement above.
+            //if (param.refName) {
+            //  param.safeType = '['+param.refName+'](#schema'+data.title_prefix+param.refName.toLowerCase()+')';
+            //}
         }
         if (pSchema) {
             param.exampleValues.object = param.example || param.default || common.getSample(pSchema,data.options,{skipReadOnly:true},data.api);
@@ -262,6 +266,11 @@ function getParameters(data) {
 
         if (param.schema && param.schema.enum) {
           param.cdrType = '[Enum](#common-field-types)';
+        }
+        
+        // Link to referenced schemas
+        if (param.schema && param.schema['x-widdershins-oldRef'] && param.safeType) {
+          param.cdrType = param.safeType;
         }
     }
 

@@ -6,7 +6,8 @@
 {{ for (var r in data.resources) { }}
 {{ data.resource = data.resources[r]; }}
 
-{{? data.resource.description }}{{= data.resource.description}}{{?}}
+<!-- Endpoint tag group description -->
+<!-- {{? data.resource.description }}{{= data.resource.description}}{{?}} -->
 
 {{? data.resource.externalDocs}}
 <a href="{{=data.resource.externalDocs.url}}">{{=data.resource.externalDocs.description||'External documentation'}}</a>
