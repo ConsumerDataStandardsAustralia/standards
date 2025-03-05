@@ -37,7 +37,7 @@
         },
         "responses": {
           "201": {
-            "$ref": "#/components/responses/postClientRegistration201"
+            "$ref": "#/components/responses/PostClientRegistration201"
           },
           "400": {
             "$ref": "#/components/responses/DCRGeneric400"
@@ -96,7 +96,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/putClientRegistration200"
+            "$ref": "#/components/responses/PutClientRegistration200"
           },
           "400": {
             "$ref": "#/components/responses/DCRGeneric400"
@@ -183,7 +183,7 @@
       }
     },
     "responses": {
-      "postClientRegistration201": {
+      "PostClientRegistration201": {
         "description": "Client registration success",
         "content": {
           "application/json": {
@@ -203,7 +203,7 @@
           }
         }
       },
-      "putClientRegistration200": {
+      "PutClientRegistration200": {
         "description": "Client registration update success",
         "content": {
           "application/json": {

@@ -138,16 +138,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listTelcoProducts200"
+            "$ref": "#/components/responses/ListTelcoProducts200"
           },
           "400": {
-            "$ref": "#/components/responses/listTelcoProducts400"
+            "$ref": "#/components/responses/ListTelcoProducts400"
           },
           "406": {
-            "$ref": "#/components/responses/listTelcoProducts406"
+            "$ref": "#/components/responses/ListTelcoProducts406"
           },
           "422": {
-            "$ref": "#/components/responses/listTelcoProducts422"
+            "$ref": "#/components/responses/ListTelcoProducts422"
           }
         },
         "summary": "Get Telco Products",
@@ -187,16 +187,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getTelcoProductDetail200"
+            "$ref": "#/components/responses/GetTelcoProductDetail200"
           },
           "400": {
-            "$ref": "#/components/responses/getTelcoProductDetail400"
+            "$ref": "#/components/responses/GetTelcoProductDetail400"
           },
           "404": {
-            "$ref": "#/components/responses/getTelcoProductDetail404"
+            "$ref": "#/components/responses/GetTelcoProductDetail404"
           },
           "406": {
-            "$ref": "#/components/responses/getTelcoProductDetail406"
+            "$ref": "#/components/responses/GetTelcoProductDetail406"
           }
         },
         "summary": "Get Telco Product Detail",
@@ -241,19 +241,19 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getTelcoServiceUsage200"
+            "$ref": "#/components/responses/GetTelcoServiceUsage200"
           },
           "400": {
-            "$ref": "#/components/responses/getTelcoServiceUsage400"
+            "$ref": "#/components/responses/GetTelcoServiceUsage400"
           },
           "404": {
-            "$ref": "#/components/responses/getTelcoServiceUsage404"
+            "$ref": "#/components/responses/GetTelcoServiceUsage404"
           },
           "406": {
-            "$ref": "#/components/responses/getTelcoServiceUsage406"
+            "$ref": "#/components/responses/GetTelcoServiceUsage406"
           },
           "422": {
-            "$ref": "#/components/responses/getTelcoServiceUsage422"
+            "$ref": "#/components/responses/GetTelcoServiceUsage422"
           }
         },
         "summary": "Get Usage For Telco Service",
@@ -304,16 +304,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listTelcoServiceUsage200"
+            "$ref": "#/components/responses/ListTelcoServiceUsage200"
           },
           "400": {
-            "$ref": "#/components/responses/listTelcoServiceUsage400"
+            "$ref": "#/components/responses/ListTelcoServiceUsage400"
           },
           "406": {
-            "$ref": "#/components/responses/listTelcoServiceUsage406"
+            "$ref": "#/components/responses/ListTelcoServiceUsage406"
           },
           "422": {
-            "$ref": "#/components/responses/listTelcoServiceUsage422"
+            "$ref": "#/components/responses/ListTelcoServiceUsage422"
           }
         },
         "summary": "Get Usage",
@@ -359,16 +359,16 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listTelcoUsageForSpecificService200"
+            "$ref": "#/components/responses/ListTelcoUsageForSpecificService200"
           },
           "400": {
-            "$ref": "#/components/responses/listTelcoUsageForSpecificService400"
+            "$ref": "#/components/responses/ListTelcoUsageForSpecificService400"
           },
           "406": {
-            "$ref": "#/components/responses/listTelcoUsageForSpecificService406"
+            "$ref": "#/components/responses/ListTelcoUsageForSpecificService406"
           },
           "422": {
-            "$ref": "#/components/responses/listTelcoUsageForSpecificService422"
+            "$ref": "#/components/responses/ListTelcoUsageForSpecificService422"
           }
         },
         "summary": "Get Usage For Specific Telco Service",
@@ -426,16 +426,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listTelcoAccounts200"
+            "$ref": "#/components/responses/ListTelcoAccounts200"
           },
           "400": {
-            "$ref": "#/components/responses/listTelcoAccounts400"
+            "$ref": "#/components/responses/ListTelcoAccounts400"
           },
           "406": {
-            "$ref": "#/components/responses/listTelcoAccounts406"
+            "$ref": "#/components/responses/ListTelcoAccounts406"
           },
           "422": {
-            "$ref": "#/components/responses/listTelcoAccounts422"
+            "$ref": "#/components/responses/ListTelcoAccounts422"
           }
         },
         "summary": "Get Telco Accounts",
@@ -477,16 +477,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getTelcoAccountDetail200"
+            "$ref": "#/components/responses/GetTelcoAccountDetail200"
           },
           "400": {
-            "$ref": "#/components/responses/getTelcoAccountDetail400"
+            "$ref": "#/components/responses/GetTelcoAccountDetail400"
           },
           "404": {
-            "$ref": "#/components/responses/getTelcoAccountDetail404"
+            "$ref": "#/components/responses/GetTelcoAccountDetail404"
           },
           "406": {
-            "$ref": "#/components/responses/getTelcoAccountDetail406"
+            "$ref": "#/components/responses/GetTelcoAccountDetail406"
           }
         },
         "summary": "Get Telco Account Detail",
@@ -528,16 +528,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getTelcoAccountPaymentSchedule200"
+            "$ref": "#/components/responses/GetTelcoAccountPaymentSchedule200"
           },
           "400": {
-            "$ref": "#/components/responses/getTelcoAccountPaymentSchedule400"
+            "$ref": "#/components/responses/GetTelcoAccountPaymentSchedule400"
           },
           "404": {
-            "$ref": "#/components/responses/getTelcoAccountPaymentSchedule404"
+            "$ref": "#/components/responses/GetTelcoAccountPaymentSchedule404"
           },
           "406": {
-            "$ref": "#/components/responses/getTelcoAccountPaymentSchedule406"
+            "$ref": "#/components/responses/GetTelcoAccountPaymentSchedule406"
           }
         },
         "summary": "Get Telco Agreed Payment Schedule",
@@ -579,16 +579,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getTelcoAccountConcessions200"
+            "$ref": "#/components/responses/GetTelcoAccountConcessions200"
           },
           "400": {
-            "$ref": "#/components/responses/getTelcoAccountConcessions400"
+            "$ref": "#/components/responses/GetTelcoAccountConcessions400"
           },
           "404": {
-            "$ref": "#/components/responses/getTelcoAccountConcessions404"
+            "$ref": "#/components/responses/GetTelcoAccountConcessions404"
           },
           "406": {
-            "$ref": "#/components/responses/getTelcoAccountConcessions406"
+            "$ref": "#/components/responses/GetTelcoAccountConcessions406"
           }
         },
         "summary": "Get Telco Concessions",
@@ -630,16 +630,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getTelcoAccountBalance200"
+            "$ref": "#/components/responses/GetTelcoAccountBalance200"
           },
           "400": {
-            "$ref": "#/components/responses/getTelcoAccountBalance400"
+            "$ref": "#/components/responses/GetTelcoAccountBalance400"
           },
           "404": {
-            "$ref": "#/components/responses/getTelcoAccountBalance404"
+            "$ref": "#/components/responses/GetTelcoAccountBalance404"
           },
           "406": {
-            "$ref": "#/components/responses/getTelcoAccountBalance406"
+            "$ref": "#/components/responses/GetTelcoAccountBalance406"
           }
         },
         "summary": "Get Balance For Telco Account",
@@ -684,16 +684,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listTelcoAccountBalances200"
+            "$ref": "#/components/responses/ListTelcoAccountBalances200"
           },
           "400": {
-            "$ref": "#/components/responses/listTelcoAccountBalances400"
+            "$ref": "#/components/responses/ListTelcoAccountBalances400"
           },
           "406": {
-            "$ref": "#/components/responses/listTelcoAccountBalances406"
+            "$ref": "#/components/responses/ListTelcoAccountBalances406"
           },
           "422": {
-            "$ref": "#/components/responses/listTelcoAccountBalances422"
+            "$ref": "#/components/responses/ListTelcoAccountBalances422"
           }
         },
         "summary": "Get Bulk Telco Balances",
@@ -739,16 +739,16 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listTelcoBalancesForSpecificAccounts200"
+            "$ref": "#/components/responses/ListTelcoBalancesForSpecificAccounts200"
           },
           "400": {
-            "$ref": "#/components/responses/listTelcoBalancesForSpecificAccounts400"
+            "$ref": "#/components/responses/ListTelcoBalancesForSpecificAccounts400"
           },
           "406": {
-            "$ref": "#/components/responses/listTelcoBalancesForSpecificAccounts406"
+            "$ref": "#/components/responses/ListTelcoBalancesForSpecificAccounts406"
           },
           "422": {
-            "$ref": "#/components/responses/listTelcoBalancesForSpecificAccounts422"
+            "$ref": "#/components/responses/ListTelcoBalancesForSpecificAccounts422"
           }
         },
         "summary": "Get Balances For Specific Telco Accounts",
@@ -790,19 +790,19 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getInvoicesForTelcoAccount200"
+            "$ref": "#/components/responses/GetInvoicesForTelcoAccount200"
           },
           "400": {
-            "$ref": "#/components/responses/getInvoicesForTelcoAccount400"
+            "$ref": "#/components/responses/GetInvoicesForTelcoAccount400"
           },
           "404": {
-            "$ref": "#/components/responses/getInvoicesForTelcoAccount404"
+            "$ref": "#/components/responses/GetInvoicesForTelcoAccount404"
           },
           "406": {
-            "$ref": "#/components/responses/getInvoicesForTelcoAccount406"
+            "$ref": "#/components/responses/GetInvoicesForTelcoAccount406"
           },
           "422": {
-            "$ref": "#/components/responses/getInvoicesForTelcoAccount422"
+            "$ref": "#/components/responses/GetInvoicesForTelcoAccount422"
           }
         },
         "summary": "Get Invoices For Telco Account",
@@ -853,16 +853,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listTelcoAccountInvoicesBulk200"
+            "$ref": "#/components/responses/ListTelcoAccountInvoicesBulk200"
           },
           "400": {
-            "$ref": "#/components/responses/listTelcoAccountInvoicesBulk400"
+            "$ref": "#/components/responses/ListTelcoAccountInvoicesBulk400"
           },
           "406": {
-            "$ref": "#/components/responses/listTelcoAccountInvoicesBulk406"
+            "$ref": "#/components/responses/ListTelcoAccountInvoicesBulk406"
           },
           "422": {
-            "$ref": "#/components/responses/listTelcoAccountInvoicesBulk422"
+            "$ref": "#/components/responses/ListTelcoAccountInvoicesBulk422"
           }
         },
         "summary": "Get Telco Invoices",
@@ -914,16 +914,16 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listTelcoInvoicesForSpecificAccounts200"
+            "$ref": "#/components/responses/ListTelcoInvoicesForSpecificAccounts200"
           },
           "400": {
-            "$ref": "#/components/responses/listTelcoInvoicesForSpecificAccounts400"
+            "$ref": "#/components/responses/ListTelcoInvoicesForSpecificAccounts400"
           },
           "406": {
-            "$ref": "#/components/responses/listTelcoInvoicesForSpecificAccounts406"
+            "$ref": "#/components/responses/ListTelcoInvoicesForSpecificAccounts406"
           },
           "422": {
-            "$ref": "#/components/responses/listTelcoInvoicesForSpecificAccounts422"
+            "$ref": "#/components/responses/ListTelcoInvoicesForSpecificAccounts422"
           }
         },
         "summary": "Get Invoices For Specific Telco Accounts",
@@ -977,19 +977,19 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getTransactionsForTelcoAccount200"
+            "$ref": "#/components/responses/GetTransactionsForTelcoAccount200"
           },
           "400": {
-            "$ref": "#/components/responses/getTransactionsForTelcoAccount400"
+            "$ref": "#/components/responses/GetTransactionsForTelcoAccount400"
           },
           "404": {
-            "$ref": "#/components/responses/getTransactionsForTelcoAccount404"
+            "$ref": "#/components/responses/GetTransactionsForTelcoAccount404"
           },
           "406": {
-            "$ref": "#/components/responses/getTransactionsForTelcoAccount406"
+            "$ref": "#/components/responses/GetTransactionsForTelcoAccount406"
           },
           "422": {
-            "$ref": "#/components/responses/getTransactionsForTelcoAccount422"
+            "$ref": "#/components/responses/GetTransactionsForTelcoAccount422"
           }
         },
         "summary": "Get Transactions For Telco Account",
@@ -1040,16 +1040,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listTelcoTransactionsBulk200"
+            "$ref": "#/components/responses/ListTelcoTransactionsBulk200"
           },
           "400": {
-            "$ref": "#/components/responses/listTelcoTransactionsBulk400"
+            "$ref": "#/components/responses/ListTelcoTransactionsBulk400"
           },
           "406": {
-            "$ref": "#/components/responses/listTelcoTransactionsBulk406"
+            "$ref": "#/components/responses/ListTelcoTransactionsBulk406"
           },
           "422": {
-            "$ref": "#/components/responses/listTelcoTransactionsBulk422"
+            "$ref": "#/components/responses/ListTelcoTransactionsBulk422"
           }
         },
         "summary": "Get Telco Transactions",
@@ -1101,16 +1101,16 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listTelcoBillingForSpecificAccounts200"
+            "$ref": "#/components/responses/ListTelcoBillingForSpecificAccounts200"
           },
           "400": {
-            "$ref": "#/components/responses/listTelcoBillingForSpecificAccounts400"
+            "$ref": "#/components/responses/ListTelcoBillingForSpecificAccounts400"
           },
           "406": {
-            "$ref": "#/components/responses/listTelcoBillingForSpecificAccounts406"
+            "$ref": "#/components/responses/ListTelcoBillingForSpecificAccounts406"
           },
           "422": {
-            "$ref": "#/components/responses/listTelcoBillingForSpecificAccounts422"
+            "$ref": "#/components/responses/ListTelcoBillingForSpecificAccounts422"
           }
         },
         "summary": "Get Transactions For Specific Telco Accounts",
@@ -1318,7 +1318,7 @@
       }
     },
     "responses": {
-      "listTelcoProducts200": {
+      "ListTelcoProducts200": {
         "content": {
           "application/json": {
             "schema": {
@@ -1333,7 +1333,7 @@
           }
         }
       },
-      "listTelcoProducts400": {
+      "ListTelcoProducts400": {
         "content": {
           "application/json": {
             "schema": {
@@ -1343,7 +1343,7 @@
         },
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
       },
-      "listTelcoProducts406": {
+      "ListTelcoProducts406": {
         "content": {
           "application/json": {
             "schema": {
@@ -1353,7 +1353,7 @@
         },
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
       },
-      "listTelcoProducts422": {
+      "ListTelcoProducts422": {
         "content": {
           "application/json": {
             "schema": {
@@ -1363,7 +1363,7 @@
         },
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>"
       },
-      "getTelcoProductDetail200": {
+      "GetTelcoProductDetail200": {
         "content": {
           "application/json": {
             "schema": {
@@ -1378,7 +1378,7 @@
           }
         }
       },
-      "getTelcoProductDetail400": {
+      "GetTelcoProductDetail400": {
         "content": {
           "application/json": {
             "schema": {
@@ -1388,7 +1388,7 @@
         },
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
       },
-      "getTelcoProductDetail404": {
+      "GetTelcoProductDetail404": {
         "content": {
           "application/json": {
             "schema": {
@@ -1399,7 +1399,7 @@
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>",
         "headers": {}
       },
-      "getTelcoProductDetail406": {
+      "GetTelcoProductDetail406": {
         "content": {
           "application/json": {
             "schema": {
@@ -1409,7 +1409,7 @@
         },
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
       },
-      "getTelcoServiceUsage200": {
+      "GetTelcoServiceUsage200": {
         "content": {
           "application/json": {
             "schema": {
@@ -1427,7 +1427,7 @@
           }
         }
       },
-      "getTelcoServiceUsage400": {
+      "GetTelcoServiceUsage400": {
         "content": {
           "application/json": {
             "schema": {
@@ -1442,7 +1442,7 @@
           }
         }
       },
-      "getTelcoServiceUsage404": {
+      "GetTelcoServiceUsage404": {
         "content": {
           "application/json": {
             "schema": {
@@ -1457,7 +1457,7 @@
           }
         }
       },
-      "getTelcoServiceUsage406": {
+      "GetTelcoServiceUsage406": {
         "content": {
           "application/json": {
             "schema": {
@@ -1472,7 +1472,7 @@
           }
         }
       },
-      "getTelcoServiceUsage422": {
+      "GetTelcoServiceUsage422": {
         "content": {
           "application/json": {
             "schema": {
@@ -1487,7 +1487,7 @@
           }
         }
       },
-      "listTelcoServiceUsage200": {
+      "ListTelcoServiceUsage200": {
         "content": {
           "application/json": {
             "schema": {
@@ -1505,7 +1505,7 @@
           }
         }
       },
-      "listTelcoServiceUsage400": {
+      "ListTelcoServiceUsage400": {
         "content": {
           "application/json": {
             "schema": {
@@ -1520,7 +1520,7 @@
           }
         }
       },
-      "listTelcoServiceUsage406": {
+      "ListTelcoServiceUsage406": {
         "content": {
           "application/json": {
             "schema": {
@@ -1535,7 +1535,7 @@
           }
         }
       },
-      "listTelcoServiceUsage422": {
+      "ListTelcoServiceUsage422": {
         "content": {
           "application/json": {
             "schema": {
@@ -1550,7 +1550,7 @@
           }
         }
       },
-      "listTelcoUsageForSpecificService200": {
+      "ListTelcoUsageForSpecificService200": {
         "content": {
           "application/json": {
             "schema": {
@@ -1568,7 +1568,7 @@
           }
         }
       },
-      "listTelcoUsageForSpecificService400": {
+      "ListTelcoUsageForSpecificService400": {
         "content": {
           "application/json": {
             "schema": {
@@ -1583,7 +1583,7 @@
           }
         }
       },
-      "listTelcoUsageForSpecificService406": {
+      "ListTelcoUsageForSpecificService406": {
         "content": {
           "application/json": {
             "schema": {
@@ -1598,7 +1598,7 @@
           }
         }
       },
-      "listTelcoUsageForSpecificService422": {
+      "ListTelcoUsageForSpecificService422": {
         "content": {
           "application/json": {
             "schema": {
@@ -1613,7 +1613,7 @@
           }
         }
       },
-      "listTelcoAccounts200": {
+      "ListTelcoAccounts200": {
         "content": {
           "application/json": {
             "schema": {
@@ -1631,7 +1631,7 @@
           }
         }
       },
-      "listTelcoAccounts400": {
+      "ListTelcoAccounts400": {
         "content": {
           "application/json": {
             "schema": {
@@ -1646,7 +1646,7 @@
           }
         }
       },
-      "listTelcoAccounts406": {
+      "ListTelcoAccounts406": {
         "content": {
           "application/json": {
             "schema": {
@@ -1661,7 +1661,7 @@
           }
         }
       },
-      "listTelcoAccounts422": {
+      "ListTelcoAccounts422": {
         "content": {
           "application/json": {
             "schema": {
@@ -1676,7 +1676,7 @@
           }
         }
       },
-      "getTelcoAccountDetail200": {
+      "GetTelcoAccountDetail200": {
         "content": {
           "application/json": {
             "schema": {
@@ -1694,7 +1694,7 @@
           }
         }
       },
-      "getTelcoAccountDetail400": {
+      "GetTelcoAccountDetail400": {
         "content": {
           "application/json": {
             "schema": {
@@ -1709,7 +1709,7 @@
           }
         }
       },
-      "getTelcoAccountDetail404": {
+      "GetTelcoAccountDetail404": {
         "content": {
           "application/json": {
             "schema": {
@@ -1724,7 +1724,7 @@
           }
         }
       },
-      "getTelcoAccountDetail406": {
+      "GetTelcoAccountDetail406": {
         "content": {
           "application/json": {
             "schema": {
@@ -1739,7 +1739,7 @@
           }
         }
       },
-      "getTelcoAccountPaymentSchedule200": {
+      "GetTelcoAccountPaymentSchedule200": {
         "content": {
           "application/json": {
             "schema": {
@@ -1757,7 +1757,7 @@
           }
         }
       },
-      "getTelcoAccountPaymentSchedule400": {
+      "GetTelcoAccountPaymentSchedule400": {
         "content": {
           "application/json": {
             "schema": {
@@ -1772,7 +1772,7 @@
           }
         }
       },
-      "getTelcoAccountPaymentSchedule404": {
+      "GetTelcoAccountPaymentSchedule404": {
         "content": {
           "application/json": {
             "schema": {
@@ -1787,7 +1787,7 @@
           }
         }
       },
-      "getTelcoAccountPaymentSchedule406": {
+      "GetTelcoAccountPaymentSchedule406": {
         "content": {
           "application/json": {
             "schema": {
@@ -1802,7 +1802,7 @@
           }
         }
       },
-      "getTelcoAccountConcessions200": {
+      "GetTelcoAccountConcessions200": {
         "content": {
           "application/json": {
             "schema": {
@@ -1820,7 +1820,7 @@
           }
         }
       },
-      "getTelcoAccountConcessions400": {
+      "GetTelcoAccountConcessions400": {
         "content": {
           "application/json": {
             "schema": {
@@ -1835,7 +1835,7 @@
           }
         }
       },
-      "getTelcoAccountConcessions404": {
+      "GetTelcoAccountConcessions404": {
         "content": {
           "application/json": {
             "schema": {
@@ -1850,7 +1850,7 @@
           }
         }
       },
-      "getTelcoAccountConcessions406": {
+      "GetTelcoAccountConcessions406": {
         "content": {
           "application/json": {
             "schema": {
@@ -1865,7 +1865,7 @@
           }
         }
       },
-      "getTelcoAccountBalance200": {
+      "GetTelcoAccountBalance200": {
         "content": {
           "application/json": {
             "schema": {
@@ -1883,7 +1883,7 @@
           }
         }
       },
-      "getTelcoAccountBalance400": {
+      "GetTelcoAccountBalance400": {
         "content": {
           "application/json": {
             "schema": {
@@ -1898,7 +1898,7 @@
           }
         }
       },
-      "getTelcoAccountBalance404": {
+      "GetTelcoAccountBalance404": {
         "content": {
           "application/json": {
             "schema": {
@@ -1913,7 +1913,7 @@
           }
         }
       },
-      "getTelcoAccountBalance406": {
+      "GetTelcoAccountBalance406": {
         "content": {
           "application/json": {
             "schema": {
@@ -1928,7 +1928,7 @@
           }
         }
       },
-      "listTelcoAccountBalances200": {
+      "ListTelcoAccountBalances200": {
         "content": {
           "application/json": {
             "schema": {
@@ -1946,7 +1946,7 @@
           }
         }
       },
-      "listTelcoAccountBalances400": {
+      "ListTelcoAccountBalances400": {
         "content": {
           "application/json": {
             "schema": {
@@ -1961,7 +1961,7 @@
           }
         }
       },
-      "listTelcoAccountBalances406": {
+      "ListTelcoAccountBalances406": {
         "content": {
           "application/json": {
             "schema": {
@@ -1976,7 +1976,7 @@
           }
         }
       },
-      "listTelcoAccountBalances422": {
+      "ListTelcoAccountBalances422": {
         "content": {
           "application/json": {
             "schema": {
@@ -1991,7 +1991,7 @@
           }
         }
       },
-      "listTelcoBalancesForSpecificAccounts200": {
+      "ListTelcoBalancesForSpecificAccounts200": {
         "content": {
           "application/json": {
             "schema": {
@@ -2009,7 +2009,7 @@
           }
         }
       },
-      "listTelcoBalancesForSpecificAccounts400": {
+      "ListTelcoBalancesForSpecificAccounts400": {
         "content": {
           "application/json": {
             "schema": {
@@ -2024,7 +2024,7 @@
           }
         }
       },
-      "listTelcoBalancesForSpecificAccounts406": {
+      "ListTelcoBalancesForSpecificAccounts406": {
         "content": {
           "application/json": {
             "schema": {
@@ -2039,7 +2039,7 @@
           }
         }
       },
-      "listTelcoBalancesForSpecificAccounts422": {
+      "ListTelcoBalancesForSpecificAccounts422": {
         "content": {
           "application/json": {
             "schema": {
@@ -2054,7 +2054,7 @@
           }
         }
       },
-      "getInvoicesForTelcoAccount200": {
+      "GetInvoicesForTelcoAccount200": {
         "content": {
           "application/json": {
             "schema": {
@@ -2072,7 +2072,7 @@
           }
         }
       },
-      "getInvoicesForTelcoAccount400": {
+      "GetInvoicesForTelcoAccount400": {
         "content": {
           "application/json": {
             "schema": {
@@ -2087,7 +2087,7 @@
           }
         }
       },
-      "getInvoicesForTelcoAccount404": {
+      "GetInvoicesForTelcoAccount404": {
         "content": {
           "application/json": {
             "schema": {
@@ -2102,7 +2102,7 @@
           }
         }
       },
-      "getInvoicesForTelcoAccount406": {
+      "GetInvoicesForTelcoAccount406": {
         "content": {
           "application/json": {
             "schema": {
@@ -2117,7 +2117,7 @@
           }
         }
       },
-      "getInvoicesForTelcoAccount422": {
+      "GetInvoicesForTelcoAccount422": {
         "content": {
           "application/json": {
             "schema": {
@@ -2132,7 +2132,7 @@
           }
         }
       },
-      "listTelcoAccountInvoicesBulk200": {
+      "ListTelcoAccountInvoicesBulk200": {
         "content": {
           "application/json": {
             "schema": {
@@ -2150,7 +2150,7 @@
           }
         }
       },
-      "listTelcoAccountInvoicesBulk400": {
+      "ListTelcoAccountInvoicesBulk400": {
         "content": {
           "application/json": {
             "schema": {
@@ -2165,7 +2165,7 @@
           }
         }
       },
-      "listTelcoAccountInvoicesBulk406": {
+      "ListTelcoAccountInvoicesBulk406": {
         "content": {
           "application/json": {
             "schema": {
@@ -2180,7 +2180,7 @@
           }
         }
       },
-      "listTelcoAccountInvoicesBulk422": {
+      "ListTelcoAccountInvoicesBulk422": {
         "content": {
           "application/json": {
             "schema": {
@@ -2195,7 +2195,7 @@
           }
         }
       },
-      "listTelcoInvoicesForSpecificAccounts200": {
+      "ListTelcoInvoicesForSpecificAccounts200": {
         "content": {
           "application/json": {
             "schema": {
@@ -2213,7 +2213,7 @@
           }
         }
       },
-      "listTelcoInvoicesForSpecificAccounts400": {
+      "ListTelcoInvoicesForSpecificAccounts400": {
         "content": {
           "application/json": {
             "schema": {
@@ -2228,7 +2228,7 @@
           }
         }
       },
-      "listTelcoInvoicesForSpecificAccounts406": {
+      "ListTelcoInvoicesForSpecificAccounts406": {
         "content": {
           "application/json": {
             "schema": {
@@ -2243,7 +2243,7 @@
           }
         }
       },
-      "listTelcoInvoicesForSpecificAccounts422": {
+      "ListTelcoInvoicesForSpecificAccounts422": {
         "content": {
           "application/json": {
             "schema": {
@@ -2258,7 +2258,7 @@
           }
         }
       },
-      "getTransactionsForTelcoAccount200": {
+      "GetTransactionsForTelcoAccount200": {
         "content": {
           "application/json": {
             "schema": {
@@ -2276,7 +2276,7 @@
           }
         }
       },
-      "getTransactionsForTelcoAccount400": {
+      "GetTransactionsForTelcoAccount400": {
         "content": {
           "application/json": {
             "schema": {
@@ -2291,7 +2291,7 @@
           }
         }
       },
-      "getTransactionsForTelcoAccount404": {
+      "GetTransactionsForTelcoAccount404": {
         "content": {
           "application/json": {
             "schema": {
@@ -2306,7 +2306,7 @@
           }
         }
       },
-      "getTransactionsForTelcoAccount406": {
+      "GetTransactionsForTelcoAccount406": {
         "content": {
           "application/json": {
             "schema": {
@@ -2321,7 +2321,7 @@
           }
         }
       },
-      "getTransactionsForTelcoAccount422": {
+      "GetTransactionsForTelcoAccount422": {
         "content": {
           "application/json": {
             "schema": {
@@ -2336,7 +2336,7 @@
           }
         }
       },
-      "listTelcoTransactionsBulk200": {
+      "ListTelcoTransactionsBulk200": {
         "content": {
           "application/json": {
             "schema": {
@@ -2354,7 +2354,7 @@
           }
         }
       },
-      "listTelcoTransactionsBulk400": {
+      "ListTelcoTransactionsBulk400": {
         "content": {
           "application/json": {
             "schema": {
@@ -2369,7 +2369,7 @@
           }
         }
       },
-      "listTelcoTransactionsBulk406": {
+      "ListTelcoTransactionsBulk406": {
         "content": {
           "application/json": {
             "schema": {
@@ -2384,7 +2384,7 @@
           }
         }
       },
-      "listTelcoTransactionsBulk422": {
+      "ListTelcoTransactionsBulk422": {
         "content": {
           "application/json": {
             "schema": {
@@ -2399,7 +2399,7 @@
           }
         }
       },
-      "listTelcoBillingForSpecificAccounts200": {
+      "ListTelcoBillingForSpecificAccounts200": {
         "content": {
           "application/json": {
             "schema": {
@@ -2417,7 +2417,7 @@
           }
         }
       },
-      "listTelcoBillingForSpecificAccounts400": {
+      "ListTelcoBillingForSpecificAccounts400": {
         "content": {
           "application/json": {
             "schema": {
@@ -2432,7 +2432,7 @@
           }
         }
       },
-      "listTelcoBillingForSpecificAccounts406": {
+      "ListTelcoBillingForSpecificAccounts406": {
         "content": {
           "application/json": {
             "schema": {
@@ -2447,7 +2447,7 @@
           }
         }
       },
-      "listTelcoBillingForSpecificAccounts422": {
+      "ListTelcoBillingForSpecificAccounts422": {
         "content": {
           "application/json": {
             "schema": {

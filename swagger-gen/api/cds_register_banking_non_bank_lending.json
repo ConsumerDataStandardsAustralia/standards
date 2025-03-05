@@ -73,16 +73,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getDataHolderBrands200"
+            "$ref": "#/components/responses/GetDataHolderBrands200"
           },
           "400": {
-            "$ref": "#/components/responses/registerGeneric400"
+            "$ref": "#/components/responses/RegisterGeneric400"
           },
           "401": {
-            "$ref": "#/components/responses/registerGeneric401"
+            "$ref": "#/components/responses/RegisterGeneric401"
           },
           "406": {
-            "$ref": "#/components/responses/registerGeneric406"
+            "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
         "x-version": "3",
@@ -115,19 +115,19 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getDataHolderBrandsSummary200"
+            "$ref": "#/components/responses/GetDataHolderBrandsSummary200"
           },
           "304": {
-            "$ref": "#/components/responses/registerGeneric304"
+            "$ref": "#/components/responses/RegisterGeneric304"
           },
           "400": {
-            "$ref": "#/components/responses/registerGeneric400"
+            "$ref": "#/components/responses/RegisterGeneric400"
           },
           "404": {
-            "$ref": "#/components/responses/getDataHolderBrandsSummary404"
+            "$ref": "#/components/responses/GetDataHolderBrandsSummary404"
           },
           "406": {
-            "$ref": "#/components/responses/registerGeneric406"
+            "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
         "x-version": "2"
@@ -157,16 +157,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getDataHolderStatuses200"
+            "$ref": "#/components/responses/GetDataHolderStatuses200"
           },
           "304": {
-            "$ref": "#/components/responses/registerGeneric304"
+            "$ref": "#/components/responses/RegisterGeneric304"
           },
           "400": {
-            "$ref": "#/components/responses/registerGeneric400"
+            "$ref": "#/components/responses/RegisterGeneric400"
           },
           "406": {
-            "$ref": "#/components/responses/registerGeneric406"
+            "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
         "x-version": "2"
@@ -267,7 +267,7 @@
       }
     },
     "responses": {
-      "getDataHolderBrands200": {
+      "GetDataHolderBrands200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -282,7 +282,7 @@
           }
         }
       },
-      "getDataHolderBrandsSummary200": {
+      "GetDataHolderBrandsSummary200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -300,7 +300,7 @@
           }
         }
       },
-      "getDataHolderBrandsSummary404": {
+      "GetDataHolderBrandsSummary404": {
         "description": "Industry Not Found",
         "content": {
           "application/json": {
@@ -310,7 +310,7 @@
           }
         }
       },
-      "getDataHolderStatuses200": {
+      "GetDataHolderStatuses200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -328,7 +328,7 @@
           }
         }
       },
-      "registerGeneric304": {
+      "RegisterGeneric304": {
         "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
         "headers": {
           "Etag": {
@@ -336,7 +336,7 @@
           }
         }
       },
-      "registerGeneric400": {
+      "RegisterGeneric400": {
         "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
         "content": {
           "application/json": {
@@ -346,7 +346,7 @@
           }
         }
       },
-      "registerGeneric401": {
+      "RegisterGeneric401": {
         "description": "Invalid Bearer Token",
         "headers": {
           "WWW-Authenticate": {
@@ -358,7 +358,7 @@
           }
         }
       },
-      "registerGeneric406": {
+      "RegisterGeneric406": {
         "description": "Unsupported Version",
         "content": {
           "application/json": {

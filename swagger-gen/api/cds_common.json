@@ -63,13 +63,13 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getCustomer200"
+            "$ref": "#/components/responses/GetCustomer200"
           },
           "400": {
-            "$ref": "#/components/responses/getCustomer400"
+            "$ref": "#/components/responses/GetCustomer400"
           },
           "406": {
-            "$ref": "#/components/responses/getCustomer406"
+            "$ref": "#/components/responses/GetCustomer406"
           }
         },
         "x-scopes": [
@@ -108,13 +108,13 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getCustomerDetail200"
+            "$ref": "#/components/responses/GetCustomerDetail200"
           },
           "400": {
-            "$ref": "#/components/responses/getCustomerDetail400"
+            "$ref": "#/components/responses/GetCustomerDetail400"
           },
           "406": {
-            "$ref": "#/components/responses/getCustomerDetail406"
+            "$ref": "#/components/responses/GetCustomerDetail406"
           }
         },
         "x-scopes": [
@@ -147,13 +147,13 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getStatus200"
+            "$ref": "#/components/responses/GetStatus200"
           },
           "400": {
-            "$ref": "#/components/responses/getStatus400"
+            "$ref": "#/components/responses/GetStatus400"
           },
           "406": {
-            "$ref": "#/components/responses/getStatus406"
+            "$ref": "#/components/responses/GetStatus406"
           }
         },
         "x-version": "1"
@@ -183,13 +183,13 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getOutages200"
+            "$ref": "#/components/responses/GetOutages200"
           },
           "400": {
-            "$ref": "#/components/responses/getOutages400"
+            "$ref": "#/components/responses/GetOutages400"
           },
           "406": {
-            "$ref": "#/components/responses/getOutages406"
+            "$ref": "#/components/responses/GetOutages406"
           }
         },
         "x-version": "1"
@@ -268,7 +268,7 @@
       }
     },
     "responses": {
-      "getCustomer200": {
+      "GetCustomer200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -286,7 +286,7 @@
           }
         }
       },
-      "getCustomer400": {
+      "GetCustomer400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -301,7 +301,7 @@
           }
         }
       },
-      "getCustomer406": {
+      "GetCustomer406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -316,7 +316,7 @@
           }
         }
       },
-      "getCustomerDetail200": {
+      "GetCustomerDetail200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -334,7 +334,7 @@
           }
         }
       },
-      "getCustomerDetail400": {
+      "GetCustomerDetail400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -349,7 +349,7 @@
           }
         }
       },
-      "getCustomerDetail406": {
+      "GetCustomerDetail406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -364,7 +364,7 @@
           }
         }
       },
-      "getStatus200": {
+      "GetStatus200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -379,7 +379,7 @@
           }
         }
       },
-      "getStatus400": {
+      "GetStatus400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "content": {
           "application/json": {
@@ -389,7 +389,7 @@
           }
         }
       },
-      "getStatus406": {
+      "GetStatus406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "content": {
           "application/json": {
@@ -399,7 +399,7 @@
           }
         }
       },
-      "getOutages200": {
+      "GetOutages200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -414,7 +414,7 @@
           }
         }
       },
-      "getOutages400": {
+      "GetOutages400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "content": {
           "application/json": {
@@ -424,7 +424,7 @@
           }
         }
       },
-      "getOutages406": {
+      "GetOutages406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "content": {
           "application/json": {

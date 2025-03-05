@@ -103,16 +103,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listBankingAccounts200"
+            "$ref": "#/components/responses/ListBankingAccounts200"
           },
           "400": {
-            "$ref": "#/components/responses/listBankingAccounts400"
+            "$ref": "#/components/responses/ListBankingAccounts400"
           },
           "406": {
-            "$ref": "#/components/responses/listBankingAccounts406"
+            "$ref": "#/components/responses/ListBankingAccounts406"
           },
           "422": {
-            "$ref": "#/components/responses/listBankingAccounts422"
+            "$ref": "#/components/responses/ListBankingAccounts422"
           }
         },
         "x-scopes": [
@@ -166,16 +166,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listBankingBalancesBulk200"
+            "$ref": "#/components/responses/ListBankingBalancesBulk200"
           },
           "400": {
-            "$ref": "#/components/responses/listBankingBalancesBulk400"
+            "$ref": "#/components/responses/ListBankingBalancesBulk400"
           },
           "406": {
-            "$ref": "#/components/responses/listBankingBalancesBulk406"
+            "$ref": "#/components/responses/ListBankingBalancesBulk406"
           },
           "422": {
-            "$ref": "#/components/responses/listBankingBalancesBulk422"
+            "$ref": "#/components/responses/ListBankingBalancesBulk422"
           }
         },
         "x-scopes": [
@@ -221,16 +221,16 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listBankingBalancesSpecificAccounts200"
+            "$ref": "#/components/responses/ListBankingBalancesSpecificAccounts200"
           },
           "400": {
-            "$ref": "#/components/responses/listBankingBalancesSpecificAccounts400"
+            "$ref": "#/components/responses/ListBankingBalancesSpecificAccounts400"
           },
           "406": {
-            "$ref": "#/components/responses/listBankingBalancesSpecificAccounts406"
+            "$ref": "#/components/responses/ListBankingBalancesSpecificAccounts406"
           },
           "422": {
-            "$ref": "#/components/responses/listBankingBalancesSpecificAccounts422"
+            "$ref": "#/components/responses/ListBankingBalancesSpecificAccounts422"
           }
         },
         "x-scopes": [
@@ -272,16 +272,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getBankingBalance200"
+            "$ref": "#/components/responses/GetBankingBalance200"
           },
           "400": {
-            "$ref": "#/components/responses/getBankingBalance400"
+            "$ref": "#/components/responses/GetBankingBalance400"
           },
           "404": {
-            "$ref": "#/components/responses/getBankingBalance404"
+            "$ref": "#/components/responses/GetBankingBalance404"
           },
           "406": {
-            "$ref": "#/components/responses/getBankingBalance406"
+            "$ref": "#/components/responses/GetBankingBalance406"
           }
         },
         "x-scopes": [
@@ -323,16 +323,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getBankingAccountDetail200"
+            "$ref": "#/components/responses/GetBankingAccountDetail200"
           },
           "400": {
-            "$ref": "#/components/responses/getBankingAccountDetail400"
+            "$ref": "#/components/responses/GetBankingAccountDetail400"
           },
           "404": {
-            "$ref": "#/components/responses/getBankingAccountDetail404"
+            "$ref": "#/components/responses/GetBankingAccountDetail404"
           },
           "406": {
-            "$ref": "#/components/responses/getBankingAccountDetail406"
+            "$ref": "#/components/responses/GetBankingAccountDetail406"
           }
         },
         "x-scopes": [
@@ -395,19 +395,19 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listBankingTransactions200"
+            "$ref": "#/components/responses/ListBankingTransactions200"
           },
           "400": {
-            "$ref": "#/components/responses/listBankingTransactions400"
+            "$ref": "#/components/responses/ListBankingTransactions400"
           },
           "404": {
-            "$ref": "#/components/responses/listBankingTransactions404"
+            "$ref": "#/components/responses/ListBankingTransactions404"
           },
           "406": {
-            "$ref": "#/components/responses/listBankingTransactions406"
+            "$ref": "#/components/responses/ListBankingTransactions406"
           },
           "422": {
-            "$ref": "#/components/responses/listBankingTransactions422"
+            "$ref": "#/components/responses/ListBankingTransactions422"
           }
         },
         "x-scopes": [
@@ -458,16 +458,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getBankingTransactionDetail200"
+            "$ref": "#/components/responses/GetBankingTransactionDetail200"
           },
           "400": {
-            "$ref": "#/components/responses/getBankingTransactionDetail400"
+            "$ref": "#/components/responses/GetBankingTransactionDetail400"
           },
           "404": {
-            "$ref": "#/components/responses/getBankingTransactionDetail404"
+            "$ref": "#/components/responses/GetBankingTransactionDetail404"
           },
           "406": {
-            "$ref": "#/components/responses/getBankingTransactionDetail406"
+            "$ref": "#/components/responses/GetBankingTransactionDetail406"
           }
         },
         "x-scopes": [
@@ -515,19 +515,19 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listDirectDebits200"
+            "$ref": "#/components/responses/ListDirectDebits200"
           },
           "400": {
-            "$ref": "#/components/responses/listDirectDebits400"
+            "$ref": "#/components/responses/ListDirectDebits400"
           },
           "404": {
-            "$ref": "#/components/responses/listDirectDebits404"
+            "$ref": "#/components/responses/ListDirectDebits404"
           },
           "406": {
-            "$ref": "#/components/responses/listDirectDebits406"
+            "$ref": "#/components/responses/ListDirectDebits406"
           },
           "422": {
-            "$ref": "#/components/responses/listDirectDebits422"
+            "$ref": "#/components/responses/ListDirectDebits422"
           }
         },
         "x-scopes": [
@@ -581,16 +581,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listDirectDebitsBulk200"
+            "$ref": "#/components/responses/ListDirectDebitsBulk200"
           },
           "400": {
-            "$ref": "#/components/responses/listDirectDebitsBulk400"
+            "$ref": "#/components/responses/ListDirectDebitsBulk400"
           },
           "406": {
-            "$ref": "#/components/responses/listDirectDebitsBulk406"
+            "$ref": "#/components/responses/ListDirectDebitsBulk406"
           },
           "422": {
-            "$ref": "#/components/responses/listDirectDebitsBulk422"
+            "$ref": "#/components/responses/ListDirectDebitsBulk422"
           }
         },
         "x-scopes": [
@@ -636,16 +636,16 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listDirectDebitsSpecificAccounts200"
+            "$ref": "#/components/responses/ListDirectDebitsSpecificAccounts200"
           },
           "400": {
-            "$ref": "#/components/responses/listDirectDebitsSpecificAccounts400"
+            "$ref": "#/components/responses/ListDirectDebitsSpecificAccounts400"
           },
           "406": {
-            "$ref": "#/components/responses/listDirectDebitsSpecificAccounts406"
+            "$ref": "#/components/responses/ListDirectDebitsSpecificAccounts406"
           },
           "422": {
-            "$ref": "#/components/responses/listDirectDebitsSpecificAccounts422"
+            "$ref": "#/components/responses/ListDirectDebitsSpecificAccounts422"
           }
         },
         "x-scopes": [
@@ -693,19 +693,19 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listScheduledPayments200"
+            "$ref": "#/components/responses/ListScheduledPayments200"
           },
           "400": {
-            "$ref": "#/components/responses/listScheduledPayments400"
+            "$ref": "#/components/responses/ListScheduledPayments400"
           },
           "404": {
-            "$ref": "#/components/responses/listScheduledPayments404"
+            "$ref": "#/components/responses/ListScheduledPayments404"
           },
           "406": {
-            "$ref": "#/components/responses/listScheduledPayments406"
+            "$ref": "#/components/responses/ListScheduledPayments406"
           },
           "422": {
-            "$ref": "#/components/responses/listScheduledPayments422"
+            "$ref": "#/components/responses/ListScheduledPayments422"
           }
         },
         "x-scopes": [
@@ -759,16 +759,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listScheduledPaymentsBulk200"
+            "$ref": "#/components/responses/ListScheduledPaymentsBulk200"
           },
           "400": {
-            "$ref": "#/components/responses/listScheduledPaymentsBulk400"
+            "$ref": "#/components/responses/ListScheduledPaymentsBulk400"
           },
           "406": {
-            "$ref": "#/components/responses/listScheduledPaymentsBulk406"
+            "$ref": "#/components/responses/ListScheduledPaymentsBulk406"
           },
           "422": {
-            "$ref": "#/components/responses/listScheduledPaymentsBulk422"
+            "$ref": "#/components/responses/ListScheduledPaymentsBulk422"
           }
         },
         "x-scopes": [
@@ -814,16 +814,16 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listScheduledPaymentsSpecificAccounts200"
+            "$ref": "#/components/responses/ListScheduledPaymentsSpecificAccounts200"
           },
           "400": {
-            "$ref": "#/components/responses/listScheduledPaymentsSpecificAccounts400"
+            "$ref": "#/components/responses/ListScheduledPaymentsSpecificAccounts400"
           },
           "406": {
-            "$ref": "#/components/responses/listScheduledPaymentsSpecificAccounts406"
+            "$ref": "#/components/responses/ListScheduledPaymentsSpecificAccounts406"
           },
           "422": {
-            "$ref": "#/components/responses/listScheduledPaymentsSpecificAccounts422"
+            "$ref": "#/components/responses/ListScheduledPaymentsSpecificAccounts422"
           }
         },
         "x-scopes": [
@@ -884,16 +884,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listBankingPayees200"
+            "$ref": "#/components/responses/ListBankingPayees200"
           },
           "400": {
-            "$ref": "#/components/responses/listBankingPayees400"
+            "$ref": "#/components/responses/ListBankingPayees400"
           },
           "406": {
-            "$ref": "#/components/responses/listBankingPayees406"
+            "$ref": "#/components/responses/ListBankingPayees406"
           },
           "422": {
-            "$ref": "#/components/responses/listBankingPayees422"
+            "$ref": "#/components/responses/ListBankingPayees422"
           }
         },
         "x-scopes": [
@@ -941,19 +941,19 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getBankingPayeeDetail200"
+            "$ref": "#/components/responses/GetBankingPayeeDetail200"
           },
           "400": {
-            "$ref": "#/components/responses/getBankingPayeeDetail400"
+            "$ref": "#/components/responses/GetBankingPayeeDetail400"
           },
           "404": {
-            "$ref": "#/components/responses/getBankingPayeeDetail404"
+            "$ref": "#/components/responses/GetBankingPayeeDetail404"
           },
           "406": {
-            "$ref": "#/components/responses/getBankingPayeeDetail406"
+            "$ref": "#/components/responses/GetBankingPayeeDetail406"
           },
           "422": {
-            "$ref": "#/components/responses/getBankingPayeeDetail422"
+            "$ref": "#/components/responses/GetBankingPayeeDetail422"
           }
         },
         "x-scopes": [
@@ -1026,16 +1026,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listBankingProducts200"
+            "$ref": "#/components/responses/ListBankingProducts200"
           },
           "400": {
-            "$ref": "#/components/responses/listBankingProducts400"
+            "$ref": "#/components/responses/ListBankingProducts400"
           },
           "406": {
-            "$ref": "#/components/responses/listBankingProducts406"
+            "$ref": "#/components/responses/ListBankingProducts406"
           },
           "422": {
-            "$ref": "#/components/responses/listBankingProducts422"
+            "$ref": "#/components/responses/ListBankingProducts422"
           }
         },
         "x-version": "3"
@@ -1075,16 +1075,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getBankingProductDetail200"
+            "$ref": "#/components/responses/GetBankingProductDetail200"
           },
           "400": {
-            "$ref": "#/components/responses/getBankingProductDetail400"
+            "$ref": "#/components/responses/GetBankingProductDetail400"
           },
           "404": {
-            "$ref": "#/components/responses/getBankingProductDetail404"
+            "$ref": "#/components/responses/GetBankingProductDetail404"
           },
           "406": {
-            "$ref": "#/components/responses/getBankingProductDetail406"
+            "$ref": "#/components/responses/GetBankingProductDetail406"
           }
         },
         "x-version": "5"
@@ -1279,7 +1279,7 @@
       }
     },
     "responses": {
-      "listBankingAccounts200": {
+      "ListBankingAccounts200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1297,7 +1297,7 @@
           }
         }
       },
-      "listBankingAccounts400": {
+      "ListBankingAccounts400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1312,7 +1312,7 @@
           }
         }
       },
-      "listBankingAccounts406": {
+      "ListBankingAccounts406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1327,7 +1327,7 @@
           }
         }
       },
-      "listBankingAccounts422": {
+      "ListBankingAccounts422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1342,7 +1342,7 @@
           }
         }
       },
-      "listBankingBalancesBulk200": {
+      "ListBankingBalancesBulk200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1360,7 +1360,7 @@
           }
         }
       },
-      "listBankingBalancesBulk400": {
+      "ListBankingBalancesBulk400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1375,7 +1375,7 @@
           }
         }
       },
-      "listBankingBalancesBulk406": {
+      "ListBankingBalancesBulk406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1390,7 +1390,7 @@
           }
         }
       },
-      "listBankingBalancesBulk422": {
+      "ListBankingBalancesBulk422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1405,7 +1405,7 @@
           }
         }
       },
-      "listBankingBalancesSpecificAccounts200": {
+      "ListBankingBalancesSpecificAccounts200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1423,7 +1423,7 @@
           }
         }
       },
-      "listBankingBalancesSpecificAccounts400": {
+      "ListBankingBalancesSpecificAccounts400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1438,7 +1438,7 @@
           }
         }
       },
-      "listBankingBalancesSpecificAccounts406": {
+      "ListBankingBalancesSpecificAccounts406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1453,7 +1453,7 @@
           }
         }
       },
-      "listBankingBalancesSpecificAccounts422": {
+      "ListBankingBalancesSpecificAccounts422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1468,7 +1468,7 @@
           }
         }
       },
-      "getBankingBalance200": {
+      "GetBankingBalance200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1486,7 +1486,7 @@
           }
         }
       },
-      "getBankingBalance400": {
+      "GetBankingBalance400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1501,7 +1501,7 @@
           }
         }
       },
-      "getBankingBalance404": {
+      "GetBankingBalance404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1516,7 +1516,7 @@
           }
         }
       },
-      "getBankingBalance406": {
+      "GetBankingBalance406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1531,7 +1531,7 @@
           }
         }
       },
-      "getBankingAccountDetail200": {
+      "GetBankingAccountDetail200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1549,7 +1549,7 @@
           }
         }
       },
-      "getBankingAccountDetail400": {
+      "GetBankingAccountDetail400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1564,7 +1564,7 @@
           }
         }
       },
-      "getBankingAccountDetail404": {
+      "GetBankingAccountDetail404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1579,7 +1579,7 @@
           }
         }
       },
-      "getBankingAccountDetail406": {
+      "GetBankingAccountDetail406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1594,7 +1594,7 @@
           }
         }
       },
-      "listBankingTransactions200": {
+      "ListBankingTransactions200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1612,7 +1612,7 @@
           }
         }
       },
-      "listBankingTransactions400": {
+      "ListBankingTransactions400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1627,7 +1627,7 @@
           }
         }
       },
-      "listBankingTransactions404": {
+      "ListBankingTransactions404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1642,7 +1642,7 @@
           }
         }
       },
-      "listBankingTransactions406": {
+      "ListBankingTransactions406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1657,7 +1657,7 @@
           }
         }
       },
-      "listBankingTransactions422": {
+      "ListBankingTransactions422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1672,7 +1672,7 @@
           }
         }
       },
-      "getBankingTransactionDetail200": {
+      "GetBankingTransactionDetail200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1690,7 +1690,7 @@
           }
         }
       },
-      "getBankingTransactionDetail400": {
+      "GetBankingTransactionDetail400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1705,7 +1705,7 @@
           }
         }
       },
-      "getBankingTransactionDetail404": {
+      "GetBankingTransactionDetail404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1720,7 +1720,7 @@
           }
         }
       },
-      "getBankingTransactionDetail406": {
+      "GetBankingTransactionDetail406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1735,7 +1735,7 @@
           }
         }
       },
-      "listDirectDebits200": {
+      "ListDirectDebits200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1753,7 +1753,7 @@
           }
         }
       },
-      "listDirectDebits400": {
+      "ListDirectDebits400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1768,7 +1768,7 @@
           }
         }
       },
-      "listDirectDebits404": {
+      "ListDirectDebits404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1783,7 +1783,7 @@
           }
         }
       },
-      "listDirectDebits406": {
+      "ListDirectDebits406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1798,7 +1798,7 @@
           }
         }
       },
-      "listDirectDebits422": {
+      "ListDirectDebits422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1813,7 +1813,7 @@
           }
         }
       },
-      "listDirectDebitsBulk200": {
+      "ListDirectDebitsBulk200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1831,7 +1831,7 @@
           }
         }
       },
-      "listDirectDebitsBulk400": {
+      "ListDirectDebitsBulk400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1846,7 +1846,7 @@
           }
         }
       },
-      "listDirectDebitsBulk406": {
+      "ListDirectDebitsBulk406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1861,7 +1861,7 @@
           }
         }
       },
-      "listDirectDebitsBulk422": {
+      "ListDirectDebitsBulk422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1876,7 +1876,7 @@
           }
         }
       },
-      "listDirectDebitsSpecificAccounts200": {
+      "ListDirectDebitsSpecificAccounts200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1894,7 +1894,7 @@
           }
         }
       },
-      "listDirectDebitsSpecificAccounts400": {
+      "ListDirectDebitsSpecificAccounts400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1909,7 +1909,7 @@
           }
         }
       },
-      "listDirectDebitsSpecificAccounts406": {
+      "ListDirectDebitsSpecificAccounts406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1924,7 +1924,7 @@
           }
         }
       },
-      "listDirectDebitsSpecificAccounts422": {
+      "ListDirectDebitsSpecificAccounts422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1939,7 +1939,7 @@
           }
         }
       },
-      "listScheduledPayments200": {
+      "ListScheduledPayments200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1957,7 +1957,7 @@
           }
         }
       },
-      "listScheduledPayments400": {
+      "ListScheduledPayments400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1972,7 +1972,7 @@
           }
         }
       },
-      "listScheduledPayments404": {
+      "ListScheduledPayments404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1987,7 +1987,7 @@
           }
         }
       },
-      "listScheduledPayments406": {
+      "ListScheduledPayments406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2002,7 +2002,7 @@
           }
         }
       },
-      "listScheduledPayments422": {
+      "ListScheduledPayments422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2017,7 +2017,7 @@
           }
         }
       },
-      "listScheduledPaymentsBulk200": {
+      "ListScheduledPaymentsBulk200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2035,7 +2035,7 @@
           }
         }
       },
-      "listScheduledPaymentsBulk400": {
+      "ListScheduledPaymentsBulk400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2050,7 +2050,7 @@
           }
         }
       },
-      "listScheduledPaymentsBulk406": {
+      "ListScheduledPaymentsBulk406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2065,7 +2065,7 @@
           }
         }
       },
-      "listScheduledPaymentsBulk422": {
+      "ListScheduledPaymentsBulk422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2080,7 +2080,7 @@
           }
         }
       },
-      "listScheduledPaymentsSpecificAccounts200": {
+      "ListScheduledPaymentsSpecificAccounts200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2098,7 +2098,7 @@
           }
         }
       },
-      "listScheduledPaymentsSpecificAccounts400": {
+      "ListScheduledPaymentsSpecificAccounts400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2113,7 +2113,7 @@
           }
         }
       },
-      "listScheduledPaymentsSpecificAccounts406": {
+      "ListScheduledPaymentsSpecificAccounts406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2128,7 +2128,7 @@
           }
         }
       },
-      "listScheduledPaymentsSpecificAccounts422": {
+      "ListScheduledPaymentsSpecificAccounts422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2143,7 +2143,7 @@
           }
         }
       },
-      "listBankingPayees200": {
+      "ListBankingPayees200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2161,7 +2161,7 @@
           }
         }
       },
-      "listBankingPayees400": {
+      "ListBankingPayees400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2176,7 +2176,7 @@
           }
         }
       },
-      "listBankingPayees406": {
+      "ListBankingPayees406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2191,7 +2191,7 @@
           }
         }
       },
-      "listBankingPayees422": {
+      "ListBankingPayees422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2206,7 +2206,7 @@
           }
         }
       },
-      "getBankingPayeeDetail200": {
+      "GetBankingPayeeDetail200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2224,7 +2224,7 @@
           }
         }
       },
-      "getBankingPayeeDetail400": {
+      "GetBankingPayeeDetail400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2239,7 +2239,7 @@
           }
         }
       },
-      "getBankingPayeeDetail404": {
+      "GetBankingPayeeDetail404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2254,7 +2254,7 @@
           }
         }
       },
-      "getBankingPayeeDetail406": {
+      "GetBankingPayeeDetail406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2269,7 +2269,7 @@
           }
         }
       },
-      "getBankingPayeeDetail422": {
+      "GetBankingPayeeDetail422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2284,7 +2284,7 @@
           }
         }
       },
-      "listBankingProducts200": {
+      "ListBankingProducts200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2299,7 +2299,7 @@
           }
         }
       },
-      "listBankingProducts400": {
+      "ListBankingProducts400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
         "content": {
           "application/json": {
@@ -2309,7 +2309,7 @@
           }
         }
       },
-      "listBankingProducts406": {
+      "ListBankingProducts406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "content": {
           "application/json": {
@@ -2319,7 +2319,7 @@
           }
         }
       },
-      "listBankingProducts422": {
+      "ListBankingProducts422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "content": {
           "application/json": {
@@ -2329,7 +2329,7 @@
           }
         }
       },
-      "getBankingProductDetail200": {
+      "GetBankingProductDetail200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2344,7 +2344,7 @@
           }
         }
       },
-      "getBankingProductDetail400": {
+      "GetBankingProductDetail400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "content": {
           "application/json": {
@@ -2354,7 +2354,7 @@
           }
         }
       },
-      "getBankingProductDetail404": {
+      "GetBankingProductDetail404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>",
         "content": {
           "application/json": {
@@ -2364,7 +2364,7 @@
           }
         }
       },
-      "getBankingProductDetail406": {
+      "GetBankingProductDetail406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "content": {
           "application/json": {

@@ -44,7 +44,7 @@
         "operationId": "getRegisterOpenIdProviderConfig",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getRegisterOpenIdProviderConfig200"
+            "$ref": "#/components/responses/GetRegisterOpenIdProviderConfig200"
           }
         }
       }
@@ -59,7 +59,7 @@
         "operationId": "getRegisterJwks",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getRegisterJwks200"
+            "$ref": "#/components/responses/GetRegisterJwks200"
           }
         }
       }
@@ -103,16 +103,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getDataHolderBrands200"
+            "$ref": "#/components/responses/GetDataHolderBrands200"
           },
           "400": {
-            "$ref": "#/components/responses/registerGeneric400"
+            "$ref": "#/components/responses/RegisterGeneric400"
           },
           "401": {
-            "$ref": "#/components/responses/registerGeneric401"
+            "$ref": "#/components/responses/RegisterGeneric401"
           },
           "406": {
-            "$ref": "#/components/responses/registerGeneric406"
+            "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
         "x-version": "2",
@@ -145,19 +145,19 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getDataHolderBrandsSummary200"
+            "$ref": "#/components/responses/GetDataHolderBrandsSummary200"
           },
           "304": {
-            "$ref": "#/components/responses/registerGeneric304"
+            "$ref": "#/components/responses/RegisterGeneric304"
           },
           "400": {
-            "$ref": "#/components/responses/registerGeneric400"
+            "$ref": "#/components/responses/RegisterGeneric400"
           },
           "404": {
-            "$ref": "#/components/responses/getDataHolderBrandsSummary404"
+            "$ref": "#/components/responses/GetDataHolderBrandsSummary404"
           },
           "406": {
-            "$ref": "#/components/responses/registerGeneric406"
+            "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
         "x-version": "1"
@@ -211,13 +211,13 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getSoftwareStatementAssertion200"
+            "$ref": "#/components/responses/GetSoftwareStatementAssertion200"
           },
           "400": {
-            "$ref": "#/components/responses/registerGeneric400"
+            "$ref": "#/components/responses/RegisterGeneric400"
           },
           "401": {
-            "$ref": "#/components/responses/registerGeneric401"
+            "$ref": "#/components/responses/RegisterGeneric401"
           },
           "403": {
             "description": "Invalid BrandId",
@@ -240,7 +240,7 @@
             }
           },
           "406": {
-            "$ref": "#/components/responses/registerGeneric406"
+            "$ref": "#/components/responses/RegisterGeneric406"
           },
           "422": {
             "description": "SSA validation failed",
@@ -294,16 +294,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getDataHolderStatuses200"
+            "$ref": "#/components/responses/GetDataHolderStatuses200"
           },
           "304": {
-            "$ref": "#/components/responses/registerGeneric304"
+            "$ref": "#/components/responses/RegisterGeneric304"
           },
           "400": {
-            "$ref": "#/components/responses/registerGeneric400"
+            "$ref": "#/components/responses/RegisterGeneric400"
           },
           "406": {
-            "$ref": "#/components/responses/registerGeneric406"
+            "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
         "x-version": "1"
@@ -333,16 +333,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getSoftwareProductsStatuses200"
+            "$ref": "#/components/responses/GetSoftwareProductsStatuses200"
           },
           "304": {
-            "$ref": "#/components/responses/registerGeneric304"
+            "$ref": "#/components/responses/RegisterGeneric304"
           },
           "400": {
-            "$ref": "#/components/responses/registerGeneric400"
+            "$ref": "#/components/responses/RegisterGeneric400"
           },
           "406": {
-            "$ref": "#/components/responses/registerGeneric406"
+            "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
         "x-version": "2"
@@ -372,16 +372,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getDataRecipientsStatuses200"
+            "$ref": "#/components/responses/GetDataRecipientsStatuses200"
           },
           "304": {
-            "$ref": "#/components/responses/registerGeneric304"
+            "$ref": "#/components/responses/RegisterGeneric304"
           },
           "400": {
-            "$ref": "#/components/responses/registerGeneric400"
+            "$ref": "#/components/responses/RegisterGeneric400"
           },
           "406": {
-            "$ref": "#/components/responses/registerGeneric406"
+            "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
         "x-version": "2"
@@ -411,16 +411,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getDataRecipients200"
+            "$ref": "#/components/responses/GetDataRecipients200"
           },
           "304": {
-            "$ref": "#/components/responses/registerGeneric304"
+            "$ref": "#/components/responses/RegisterGeneric304"
           },
           "400": {
-            "$ref": "#/components/responses/registerGeneric400"
+            "$ref": "#/components/responses/RegisterGeneric400"
           },
           "406": {
-            "$ref": "#/components/responses/registerGeneric406"
+            "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
         "x-version": "3"
@@ -521,7 +521,7 @@
       }
     },
     "responses": {
-      "getRegisterOpenIdProviderConfig200": {
+      "GetRegisterOpenIdProviderConfig200": {
         "description": "The OpenID Provider Configuration Metadata values",
         "content": {
           "application/json": {
@@ -531,7 +531,7 @@
           }
         }
       },
-      "getRegisterJwks200": {
+      "GetRegisterJwks200": {
         "description": "A JSON object that represents a set of JWKs",
         "content": {
           "application/json": {
@@ -541,7 +541,7 @@
           }
         }
       },
-      "getDataHolderBrands200": {
+      "GetDataHolderBrands200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -556,7 +556,7 @@
           }
         }
       },
-      "getDataHolderBrandsSummary200": {
+      "GetDataHolderBrandsSummary200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -574,7 +574,7 @@
           }
         }
       },
-      "getDataHolderBrandsSummary404": {
+      "GetDataHolderBrandsSummary404": {
         "description": "Industry Not Found",
         "content": {
           "application/json": {
@@ -584,7 +584,7 @@
           }
         }
       },
-      "getSoftwareStatementAssertion200": {
+      "GetSoftwareStatementAssertion200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -603,7 +603,7 @@
           }
         }
       },
-      "getDataHolderStatuses200": {
+      "GetDataHolderStatuses200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -621,7 +621,7 @@
           }
         }
       },
-      "getSoftwareProductsStatuses200": {
+      "GetSoftwareProductsStatuses200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -639,7 +639,7 @@
           }
         }
       },
-      "getDataRecipientsStatuses200": {
+      "GetDataRecipientsStatuses200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -657,7 +657,7 @@
           }
         }
       },
-      "getDataRecipients200": {
+      "GetDataRecipients200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -675,7 +675,7 @@
           }
         }
       },
-      "registerGeneric304": {
+      "RegisterGeneric304": {
         "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
         "headers": {
           "Etag": {
@@ -683,7 +683,7 @@
           }
         }
       },
-      "registerGeneric400": {
+      "RegisterGeneric400": {
         "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
         "content": {
           "application/json": {
@@ -693,7 +693,7 @@
           }
         }
       },
-      "registerGeneric401": {
+      "RegisterGeneric401": {
         "description": "Invalid Bearer Token",
         "headers": {
           "WWW-Authenticate": {
@@ -705,7 +705,7 @@
           }
         }
       },
-      "registerGeneric406": {
+      "RegisterGeneric406": {
         "description": "Unsupported Version",
         "content": {
           "application/json": {

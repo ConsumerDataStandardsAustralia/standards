@@ -49,13 +49,13 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/metadataUpdate200"
+            "$ref": "#/components/responses/MetadataUpdate200"
           },
           "400": {
-            "$ref": "#/components/responses/metadataUpdate400"
+            "$ref": "#/components/responses/MetadataUpdate400"
           },
           "406": {
-            "$ref": "#/components/responses/metadataUpdate406"
+            "$ref": "#/components/responses/MetadataUpdate406"
           }
         },
         "x-scopes": [
@@ -86,13 +86,13 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getMetrics200"
+            "$ref": "#/components/responses/GetMetrics200"
           },
           "400": {
-            "$ref": "#/components/responses/getMetrics400"
+            "$ref": "#/components/responses/GetMetrics400"
           },
           "406": {
-            "$ref": "#/components/responses/getMetrics406"
+            "$ref": "#/components/responses/GetMetrics406"
           }
         },
         "x-scopes": [
@@ -159,7 +159,7 @@
       }
     },
     "responses": {
-      "metadataUpdate200": {
+      "MetadataUpdate200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -172,7 +172,7 @@
           }
         }
       },
-      "metadataUpdate400": {
+      "MetadataUpdate400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "content": {
           "application/json": {
@@ -182,7 +182,7 @@
           }
         }
       },
-      "metadataUpdate406": {
+      "MetadataUpdate406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "content": {
           "application/json": {
@@ -192,7 +192,7 @@
           }
         }
       },
-      "getMetrics200": {
+      "GetMetrics200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -207,7 +207,7 @@
           }
         }
       },
-      "getMetrics400": {
+      "GetMetrics400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "content": {
           "application/json": {
@@ -217,7 +217,7 @@
           }
         }
       },
-      "getMetrics406": {
+      "GetMetrics406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "content": {
           "application/json": {

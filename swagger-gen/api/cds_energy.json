@@ -146,16 +146,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listEnergyPlans200"
+            "$ref": "#/components/responses/ListEnergyPlans200"
           },
           "400": {
-            "$ref": "#/components/responses/listEnergyPlans400"
+            "$ref": "#/components/responses/ListEnergyPlans400"
           },
           "406": {
-            "$ref": "#/components/responses/listEnergyPlans406"
+            "$ref": "#/components/responses/ListEnergyPlans406"
           },
           "422": {
-            "$ref": "#/components/responses/listEnergyPlans422"
+            "$ref": "#/components/responses/ListEnergyPlans422"
           }
         }
       }
@@ -195,16 +195,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getEnergyPlanDetail200"
+            "$ref": "#/components/responses/GetEnergyPlanDetail200"
           },
           "400": {
-            "$ref": "#/components/responses/getEnergyPlanDetail400"
+            "$ref": "#/components/responses/GetEnergyPlanDetail400"
           },
           "404": {
-            "$ref": "#/components/responses/getEnergyPlanDetail404"
+            "$ref": "#/components/responses/GetEnergyPlanDetail404"
           },
           "406": {
-            "$ref": "#/components/responses/getEnergyPlanDetail406"
+            "$ref": "#/components/responses/GetEnergyPlanDetail406"
           }
         }
       }
@@ -249,16 +249,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listElectricityServicePoints200"
+            "$ref": "#/components/responses/ListElectricityServicePoints200"
           },
           "400": {
-            "$ref": "#/components/responses/listElectricityServicePoints400"
+            "$ref": "#/components/responses/ListElectricityServicePoints400"
           },
           "406": {
-            "$ref": "#/components/responses/listElectricityServicePoints406"
+            "$ref": "#/components/responses/ListElectricityServicePoints406"
           },
           "422": {
-            "$ref": "#/components/responses/listElectricityServicePoints422"
+            "$ref": "#/components/responses/ListElectricityServicePoints422"
           }
         }
       }
@@ -300,16 +300,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getElectricityServicePointDetail200"
+            "$ref": "#/components/responses/GetElectricityServicePointDetail200"
           },
           "400": {
-            "$ref": "#/components/responses/getElectricityServicePointDetail400"
+            "$ref": "#/components/responses/GetElectricityServicePointDetail400"
           },
           "404": {
-            "$ref": "#/components/responses/getElectricityServicePointDetail404"
+            "$ref": "#/components/responses/GetElectricityServicePointDetail404"
           },
           "406": {
-            "$ref": "#/components/responses/getElectricityServicePointDetail406"
+            "$ref": "#/components/responses/GetElectricityServicePointDetail406"
           }
         }
       }
@@ -366,19 +366,19 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getElectricityServicePointUsage200"
+            "$ref": "#/components/responses/GetElectricityServicePointUsage200"
           },
           "400": {
-            "$ref": "#/components/responses/getElectricityServicePointUsage400"
+            "$ref": "#/components/responses/GetElectricityServicePointUsage400"
           },
           "404": {
-            "$ref": "#/components/responses/getElectricityServicePointUsage404"
+            "$ref": "#/components/responses/GetElectricityServicePointUsage404"
           },
           "406": {
-            "$ref": "#/components/responses/getElectricityServicePointUsage406"
+            "$ref": "#/components/responses/GetElectricityServicePointUsage406"
           },
           "422": {
-            "$ref": "#/components/responses/getElectricityServicePointUsage422"
+            "$ref": "#/components/responses/GetElectricityServicePointUsage422"
           }
         }
       }
@@ -432,16 +432,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listElectricityUsageBulk200"
+            "$ref": "#/components/responses/ListElectricityUsageBulk200"
           },
           "400": {
-            "$ref": "#/components/responses/listElectricityUsageBulk400"
+            "$ref": "#/components/responses/ListElectricityUsageBulk400"
           },
           "406": {
-            "$ref": "#/components/responses/listElectricityUsageBulk406"
+            "$ref": "#/components/responses/ListElectricityUsageBulk406"
           },
           "422": {
-            "$ref": "#/components/responses/listElectricityUsageBulk422"
+            "$ref": "#/components/responses/ListElectricityUsageBulk422"
           }
         }
       },
@@ -496,16 +496,16 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listElectricityUsageForServicePoints200"
+            "$ref": "#/components/responses/ListElectricityUsageForServicePoints200"
           },
           "400": {
-            "$ref": "#/components/responses/listElectricityUsageForServicePoints400"
+            "$ref": "#/components/responses/ListElectricityUsageForServicePoints400"
           },
           "406": {
-            "$ref": "#/components/responses/listElectricityUsageForServicePoints406"
+            "$ref": "#/components/responses/ListElectricityUsageForServicePoints406"
           },
           "422": {
-            "$ref": "#/components/responses/listElectricityUsageForServicePoints422"
+            "$ref": "#/components/responses/ListElectricityUsageForServicePoints422"
           }
         }
       }
@@ -547,16 +547,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getElectricityDERForServicePoint200"
+            "$ref": "#/components/responses/GetElectricityDERForServicePoint200"
           },
           "400": {
-            "$ref": "#/components/responses/getElectricityDERForServicePoint400"
+            "$ref": "#/components/responses/GetElectricityDERForServicePoint400"
           },
           "404": {
-            "$ref": "#/components/responses/getElectricityDERForServicePoint404"
+            "$ref": "#/components/responses/GetElectricityDERForServicePoint404"
           },
           "406": {
-            "$ref": "#/components/responses/getElectricityDERForServicePoint406"
+            "$ref": "#/components/responses/GetElectricityDERForServicePoint406"
           }
         }
       }
@@ -601,16 +601,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listElectricityDERBulk200"
+            "$ref": "#/components/responses/ListElectricityDERBulk200"
           },
           "400": {
-            "$ref": "#/components/responses/listElectricityDERBulk400"
+            "$ref": "#/components/responses/ListElectricityDERBulk400"
           },
           "406": {
-            "$ref": "#/components/responses/listElectricityDERBulk406"
+            "$ref": "#/components/responses/ListElectricityDERBulk406"
           },
           "422": {
-            "$ref": "#/components/responses/listElectricityDERBulk422"
+            "$ref": "#/components/responses/ListElectricityDERBulk422"
           }
         }
       },
@@ -656,16 +656,16 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listElectricityDERForSpecificServicePoints200"
+            "$ref": "#/components/responses/ListElectricityDERForSpecificServicePoints200"
           },
           "400": {
-            "$ref": "#/components/responses/listElectricityDERForSpecificServicePoints400"
+            "$ref": "#/components/responses/ListElectricityDERForSpecificServicePoints400"
           },
           "406": {
-            "$ref": "#/components/responses/listElectricityDERForSpecificServicePoints406"
+            "$ref": "#/components/responses/ListElectricityDERForSpecificServicePoints406"
           },
           "422": {
-            "$ref": "#/components/responses/listElectricityDERForSpecificServicePoints422"
+            "$ref": "#/components/responses/ListElectricityDERForSpecificServicePoints422"
           }
         }
       }
@@ -713,16 +713,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listEnergyAccounts200"
+            "$ref": "#/components/responses/ListEnergyAccounts200"
           },
           "400": {
-            "$ref": "#/components/responses/listEnergyAccounts400"
+            "$ref": "#/components/responses/ListEnergyAccounts400"
           },
           "406": {
-            "$ref": "#/components/responses/listEnergyAccounts406"
+            "$ref": "#/components/responses/ListEnergyAccounts406"
           },
           "422": {
-            "$ref": "#/components/responses/listEnergyAccounts422"
+            "$ref": "#/components/responses/ListEnergyAccounts422"
           }
         }
       }
@@ -765,16 +765,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getEnergyAccountDetail200"
+            "$ref": "#/components/responses/GetEnergyAccountDetail200"
           },
           "400": {
-            "$ref": "#/components/responses/getEnergyAccountDetail400"
+            "$ref": "#/components/responses/GetEnergyAccountDetail400"
           },
           "404": {
-            "$ref": "#/components/responses/getEnergyAccountDetail404"
+            "$ref": "#/components/responses/GetEnergyAccountDetail404"
           },
           "406": {
-            "$ref": "#/components/responses/getEnergyAccountDetail406"
+            "$ref": "#/components/responses/GetEnergyAccountDetail406"
           }
         }
       }
@@ -816,16 +816,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getEnergyAccountPaymentSchedule200"
+            "$ref": "#/components/responses/GetEnergyAccountPaymentSchedule200"
           },
           "400": {
-            "$ref": "#/components/responses/getEnergyAccountPaymentSchedule400"
+            "$ref": "#/components/responses/GetEnergyAccountPaymentSchedule400"
           },
           "404": {
-            "$ref": "#/components/responses/getEnergyAccountPaymentSchedule404"
+            "$ref": "#/components/responses/GetEnergyAccountPaymentSchedule404"
           },
           "406": {
-            "$ref": "#/components/responses/getEnergyAccountPaymentSchedule406"
+            "$ref": "#/components/responses/GetEnergyAccountPaymentSchedule406"
           }
         }
       }
@@ -867,16 +867,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getEnergyAccountConcessions200"
+            "$ref": "#/components/responses/GetEnergyAccountConcessions200"
           },
           "400": {
-            "$ref": "#/components/responses/getEnergyAccountConcessions400"
+            "$ref": "#/components/responses/GetEnergyAccountConcessions400"
           },
           "404": {
-            "$ref": "#/components/responses/getEnergyAccountConcessions404"
+            "$ref": "#/components/responses/GetEnergyAccountConcessions404"
           },
           "406": {
-            "$ref": "#/components/responses/getEnergyAccountConcessions406"
+            "$ref": "#/components/responses/GetEnergyAccountConcessions406"
           }
         }
       }
@@ -918,16 +918,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getEnergyAccountBalance200"
+            "$ref": "#/components/responses/GetEnergyAccountBalance200"
           },
           "400": {
-            "$ref": "#/components/responses/getEnergyAccountBalance400"
+            "$ref": "#/components/responses/GetEnergyAccountBalance400"
           },
           "404": {
-            "$ref": "#/components/responses/getEnergyAccountBalance404"
+            "$ref": "#/components/responses/GetEnergyAccountBalance404"
           },
           "406": {
-            "$ref": "#/components/responses/getEnergyAccountBalance406"
+            "$ref": "#/components/responses/GetEnergyAccountBalance406"
           }
         }
       }
@@ -972,16 +972,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listEnergyAccountBalancesBulk200"
+            "$ref": "#/components/responses/ListEnergyAccountBalancesBulk200"
           },
           "400": {
-            "$ref": "#/components/responses/listEnergyAccountBalancesBulk400"
+            "$ref": "#/components/responses/ListEnergyAccountBalancesBulk400"
           },
           "406": {
-            "$ref": "#/components/responses/listEnergyAccountBalancesBulk406"
+            "$ref": "#/components/responses/ListEnergyAccountBalancesBulk406"
           },
           "422": {
-            "$ref": "#/components/responses/listEnergyAccountBalancesBulk422"
+            "$ref": "#/components/responses/ListEnergyAccountBalancesBulk422"
           }
         }
       },
@@ -1027,16 +1027,16 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listEnergyAccountBalancesSpecificAccounts200"
+            "$ref": "#/components/responses/ListEnergyAccountBalancesSpecificAccounts200"
           },
           "400": {
-            "$ref": "#/components/responses/listEnergyAccountBalancesSpecificAccounts400"
+            "$ref": "#/components/responses/ListEnergyAccountBalancesSpecificAccounts400"
           },
           "406": {
-            "$ref": "#/components/responses/listEnergyAccountBalancesSpecificAccounts406"
+            "$ref": "#/components/responses/ListEnergyAccountBalancesSpecificAccounts406"
           },
           "422": {
-            "$ref": "#/components/responses/listEnergyAccountBalancesSpecificAccounts422"
+            "$ref": "#/components/responses/ListEnergyAccountBalancesSpecificAccounts422"
           }
         }
       }
@@ -1090,19 +1090,19 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getEnergyAccountInvoices200"
+            "$ref": "#/components/responses/GetEnergyAccountInvoices200"
           },
           "400": {
-            "$ref": "#/components/responses/getEnergyAccountInvoices400"
+            "$ref": "#/components/responses/GetEnergyAccountInvoices400"
           },
           "404": {
-            "$ref": "#/components/responses/getEnergyAccountInvoices404"
+            "$ref": "#/components/responses/GetEnergyAccountInvoices404"
           },
           "406": {
-            "$ref": "#/components/responses/getEnergyAccountInvoices406"
+            "$ref": "#/components/responses/GetEnergyAccountInvoices406"
           },
           "422": {
-            "$ref": "#/components/responses/getEnergyAccountInvoices422"
+            "$ref": "#/components/responses/GetEnergyAccountInvoices422"
           }
         }
       }
@@ -1153,16 +1153,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listEnergyAccountInvoicesBulk200"
+            "$ref": "#/components/responses/ListEnergyAccountInvoicesBulk200"
           },
           "400": {
-            "$ref": "#/components/responses/listEnergyAccountInvoicesBulk400"
+            "$ref": "#/components/responses/ListEnergyAccountInvoicesBulk400"
           },
           "406": {
-            "$ref": "#/components/responses/listEnergyAccountInvoicesBulk406"
+            "$ref": "#/components/responses/ListEnergyAccountInvoicesBulk406"
           },
           "422": {
-            "$ref": "#/components/responses/listEnergyAccountInvoicesBulk422"
+            "$ref": "#/components/responses/ListEnergyAccountInvoicesBulk422"
           }
         }
       },
@@ -1214,16 +1214,16 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listEnergyInvoicesForSpecificAccounts200"
+            "$ref": "#/components/responses/ListEnergyInvoicesForSpecificAccounts200"
           },
           "400": {
-            "$ref": "#/components/responses/listEnergyInvoicesForSpecificAccounts400"
+            "$ref": "#/components/responses/ListEnergyInvoicesForSpecificAccounts400"
           },
           "406": {
-            "$ref": "#/components/responses/listEnergyInvoicesForSpecificAccounts406"
+            "$ref": "#/components/responses/ListEnergyInvoicesForSpecificAccounts406"
           },
           "422": {
-            "$ref": "#/components/responses/listEnergyInvoicesForSpecificAccounts422"
+            "$ref": "#/components/responses/ListEnergyInvoicesForSpecificAccounts422"
           }
         }
       }
@@ -1277,19 +1277,19 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/getBillingForEnergyAccount200"
+            "$ref": "#/components/responses/GetBillingForEnergyAccount200"
           },
           "400": {
-            "$ref": "#/components/responses/getBillingForEnergyAccount400"
+            "$ref": "#/components/responses/GetBillingForEnergyAccount400"
           },
           "404": {
-            "$ref": "#/components/responses/getBillingForEnergyAccount404"
+            "$ref": "#/components/responses/GetBillingForEnergyAccount404"
           },
           "406": {
-            "$ref": "#/components/responses/getBillingForEnergyAccount406"
+            "$ref": "#/components/responses/GetBillingForEnergyAccount406"
           },
           "422": {
-            "$ref": "#/components/responses/getBillingForEnergyAccount422"
+            "$ref": "#/components/responses/GetBillingForEnergyAccount422"
           }
         }
       }
@@ -1340,16 +1340,16 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listEnergyAccountBillingBulk200"
+            "$ref": "#/components/responses/ListEnergyAccountBillingBulk200"
           },
           "400": {
-            "$ref": "#/components/responses/listEnergyAccountBillingBulk400"
+            "$ref": "#/components/responses/ListEnergyAccountBillingBulk400"
           },
           "406": {
-            "$ref": "#/components/responses/listEnergyAccountBillingBulk406"
+            "$ref": "#/components/responses/ListEnergyAccountBillingBulk406"
           },
           "422": {
-            "$ref": "#/components/responses/listEnergyAccountBillingBulk422"
+            "$ref": "#/components/responses/ListEnergyAccountBillingBulk422"
           }
         }
       },
@@ -1401,16 +1401,16 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/listEnergyAccountBillingForSpecificAccounts200"
+            "$ref": "#/components/responses/ListEnergyAccountBillingForSpecificAccounts200"
           },
           "400": {
-            "$ref": "#/components/responses/listEnergyAccountBillingForSpecificAccounts400"
+            "$ref": "#/components/responses/ListEnergyAccountBillingForSpecificAccounts400"
           },
           "406": {
-            "$ref": "#/components/responses/listEnergyAccountBillingForSpecificAccounts406"
+            "$ref": "#/components/responses/ListEnergyAccountBillingForSpecificAccounts406"
           },
           "422": {
-            "$ref": "#/components/responses/listEnergyAccountBillingForSpecificAccounts422"
+            "$ref": "#/components/responses/ListEnergyAccountBillingForSpecificAccounts422"
           }
         }
       }
@@ -1632,7 +1632,7 @@
       }
     },
     "responses": {
-      "listEnergyPlans200": {
+      "ListEnergyPlans200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1647,7 +1647,7 @@
           }
         }
       },
-      "listEnergyPlans400": {
+      "ListEnergyPlans400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "content": {
           "application/json": {
@@ -1657,7 +1657,7 @@
           }
         }
       },
-      "listEnergyPlans406": {
+      "ListEnergyPlans406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "content": {
           "application/json": {
@@ -1667,7 +1667,7 @@
           }
         }
       },
-      "listEnergyPlans422": {
+      "ListEnergyPlans422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "content": {
           "application/json": {
@@ -1677,7 +1677,7 @@
           }
         }
       },
-      "getEnergyPlanDetail200": {
+      "GetEnergyPlanDetail200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1692,7 +1692,7 @@
           }
         }
       },
-      "getEnergyPlanDetail400": {
+      "GetEnergyPlanDetail400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "content": {
           "application/json": {
@@ -1702,7 +1702,7 @@
           }
         }
       },
-      "getEnergyPlanDetail404": {
+      "GetEnergyPlanDetail404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>",
         "content": {
           "application/json": {
@@ -1712,7 +1712,7 @@
           }
         }
       },
-      "getEnergyPlanDetail406": {
+      "GetEnergyPlanDetail406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "content": {
           "application/json": {
@@ -1722,7 +1722,7 @@
           }
         }
       },
-      "listElectricityServicePoints200": {
+      "ListElectricityServicePoints200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1740,7 +1740,7 @@
           }
         }
       },
-      "listElectricityServicePoints400": {
+      "ListElectricityServicePoints400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1755,7 +1755,7 @@
           }
         }
       },
-      "listElectricityServicePoints406": {
+      "ListElectricityServicePoints406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1770,7 +1770,7 @@
           }
         }
       },
-      "listElectricityServicePoints422": {
+      "ListElectricityServicePoints422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1785,7 +1785,7 @@
           }
         }
       },
-      "getElectricityServicePointDetail200": {
+      "GetElectricityServicePointDetail200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1803,7 +1803,7 @@
           }
         }
       },
-      "getElectricityServicePointDetail400": {
+      "GetElectricityServicePointDetail400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1818,7 +1818,7 @@
           }
         }
       },
-      "getElectricityServicePointDetail404": {
+      "GetElectricityServicePointDetail404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1833,7 +1833,7 @@
           }
         }
       },
-      "getElectricityServicePointDetail406": {
+      "GetElectricityServicePointDetail406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1848,7 +1848,7 @@
           }
         }
       },
-      "getElectricityServicePointUsage200": {
+      "GetElectricityServicePointUsage200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1866,7 +1866,7 @@
           }
         }
       },
-      "getElectricityServicePointUsage400": {
+      "GetElectricityServicePointUsage400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1881,7 +1881,7 @@
           }
         }
       },
-      "getElectricityServicePointUsage404": {
+      "GetElectricityServicePointUsage404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1896,7 +1896,7 @@
           }
         }
       },
-      "getElectricityServicePointUsage406": {
+      "GetElectricityServicePointUsage406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1911,7 +1911,7 @@
           }
         }
       },
-      "getElectricityServicePointUsage422": {
+      "GetElectricityServicePointUsage422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1926,7 +1926,7 @@
           }
         }
       },
-      "listElectricityUsageBulk200": {
+      "ListElectricityUsageBulk200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -1944,7 +1944,7 @@
           }
         }
       },
-      "listElectricityUsageBulk400": {
+      "ListElectricityUsageBulk400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1959,7 +1959,7 @@
           }
         }
       },
-      "listElectricityUsageBulk406": {
+      "ListElectricityUsageBulk406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1974,7 +1974,7 @@
           }
         }
       },
-      "listElectricityUsageBulk422": {
+      "ListElectricityUsageBulk422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -1989,7 +1989,7 @@
           }
         }
       },
-      "listElectricityUsageForServicePoints200": {
+      "ListElectricityUsageForServicePoints200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2007,7 +2007,7 @@
           }
         }
       },
-      "listElectricityUsageForServicePoints400": {
+      "ListElectricityUsageForServicePoints400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2022,7 +2022,7 @@
           }
         }
       },
-      "listElectricityUsageForServicePoints406": {
+      "ListElectricityUsageForServicePoints406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2037,7 +2037,7 @@
           }
         }
       },
-      "listElectricityUsageForServicePoints422": {
+      "ListElectricityUsageForServicePoints422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2052,7 +2052,7 @@
           }
         }
       },
-      "getElectricityDERForServicePoint200": {
+      "GetElectricityDERForServicePoint200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2070,7 +2070,7 @@
           }
         }
       },
-      "getElectricityDERForServicePoint400": {
+      "GetElectricityDERForServicePoint400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2085,7 +2085,7 @@
           }
         }
       },
-      "getElectricityDERForServicePoint404": {
+      "GetElectricityDERForServicePoint404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2100,7 +2100,7 @@
           }
         }
       },
-      "getElectricityDERForServicePoint406": {
+      "GetElectricityDERForServicePoint406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2115,7 +2115,7 @@
           }
         }
       },
-      "listElectricityDERBulk200": {
+      "ListElectricityDERBulk200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2133,7 +2133,7 @@
           }
         }
       },
-      "listElectricityDERBulk400": {
+      "ListElectricityDERBulk400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2148,7 +2148,7 @@
           }
         }
       },
-      "listElectricityDERBulk406": {
+      "ListElectricityDERBulk406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2163,7 +2163,7 @@
           }
         }
       },
-      "listElectricityDERBulk422": {
+      "ListElectricityDERBulk422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2178,7 +2178,7 @@
           }
         }
       },
-      "listElectricityDERForSpecificServicePoints200": {
+      "ListElectricityDERForSpecificServicePoints200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2196,7 +2196,7 @@
           }
         }
       },
-      "listElectricityDERForSpecificServicePoints400": {
+      "ListElectricityDERForSpecificServicePoints400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2211,7 +2211,7 @@
           }
         }
       },
-      "listElectricityDERForSpecificServicePoints406": {
+      "ListElectricityDERForSpecificServicePoints406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2226,7 +2226,7 @@
           }
         }
       },
-      "listElectricityDERForSpecificServicePoints422": {
+      "ListElectricityDERForSpecificServicePoints422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2241,7 +2241,7 @@
           }
         }
       },
-      "listEnergyAccounts200": {
+      "ListEnergyAccounts200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2259,7 +2259,7 @@
           }
         }
       },
-      "listEnergyAccounts400": {
+      "ListEnergyAccounts400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2274,7 +2274,7 @@
           }
         }
       },
-      "listEnergyAccounts406": {
+      "ListEnergyAccounts406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2289,7 +2289,7 @@
           }
         }
       },
-      "listEnergyAccounts422": {
+      "ListEnergyAccounts422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2304,7 +2304,7 @@
           }
         }
       },
-      "getEnergyAccountDetail200": {
+      "GetEnergyAccountDetail200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2322,7 +2322,7 @@
           }
         }
       },
-      "getEnergyAccountDetail400": {
+      "GetEnergyAccountDetail400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2337,7 +2337,7 @@
           }
         }
       },
-      "getEnergyAccountDetail404": {
+      "GetEnergyAccountDetail404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2352,7 +2352,7 @@
           }
         }
       },
-      "getEnergyAccountDetail406": {
+      "GetEnergyAccountDetail406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2367,7 +2367,7 @@
           }
         }
       },
-      "getEnergyAccountPaymentSchedule200": {
+      "GetEnergyAccountPaymentSchedule200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2385,7 +2385,7 @@
           }
         }
       },
-      "getEnergyAccountPaymentSchedule400": {
+      "GetEnergyAccountPaymentSchedule400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2400,7 +2400,7 @@
           }
         }
       },
-      "getEnergyAccountPaymentSchedule404": {
+      "GetEnergyAccountPaymentSchedule404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2415,7 +2415,7 @@
           }
         }
       },
-      "getEnergyAccountPaymentSchedule406": {
+      "GetEnergyAccountPaymentSchedule406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2430,7 +2430,7 @@
           }
         }
       },
-      "getEnergyAccountConcessions200": {
+      "GetEnergyAccountConcessions200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2448,7 +2448,7 @@
           }
         }
       },
-      "getEnergyAccountConcessions400": {
+      "GetEnergyAccountConcessions400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2463,7 +2463,7 @@
           }
         }
       },
-      "getEnergyAccountConcessions404": {
+      "GetEnergyAccountConcessions404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2478,7 +2478,7 @@
           }
         }
       },
-      "getEnergyAccountConcessions406": {
+      "GetEnergyAccountConcessions406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2493,7 +2493,7 @@
           }
         }
       },
-      "getEnergyAccountBalance200": {
+      "GetEnergyAccountBalance200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2511,7 +2511,7 @@
           }
         }
       },
-      "getEnergyAccountBalance400": {
+      "GetEnergyAccountBalance400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2526,7 +2526,7 @@
           }
         }
       },
-      "getEnergyAccountBalance404": {
+      "GetEnergyAccountBalance404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2541,7 +2541,7 @@
           }
         }
       },
-      "getEnergyAccountBalance406": {
+      "GetEnergyAccountBalance406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2556,7 +2556,7 @@
           }
         }
       },
-      "listEnergyAccountBalancesBulk200": {
+      "ListEnergyAccountBalancesBulk200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2574,7 +2574,7 @@
           }
         }
       },
-      "listEnergyAccountBalancesBulk400": {
+      "ListEnergyAccountBalancesBulk400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2589,7 +2589,7 @@
           }
         }
       },
-      "listEnergyAccountBalancesBulk406": {
+      "ListEnergyAccountBalancesBulk406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2604,7 +2604,7 @@
           }
         }
       },
-      "listEnergyAccountBalancesBulk422": {
+      "ListEnergyAccountBalancesBulk422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2619,7 +2619,7 @@
           }
         }
       },
-      "listEnergyAccountBalancesSpecificAccounts200": {
+      "ListEnergyAccountBalancesSpecificAccounts200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2637,7 +2637,7 @@
           }
         }
       },
-      "listEnergyAccountBalancesSpecificAccounts400": {
+      "ListEnergyAccountBalancesSpecificAccounts400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2652,7 +2652,7 @@
           }
         }
       },
-      "listEnergyAccountBalancesSpecificAccounts406": {
+      "ListEnergyAccountBalancesSpecificAccounts406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2667,7 +2667,7 @@
           }
         }
       },
-      "listEnergyAccountBalancesSpecificAccounts422": {
+      "ListEnergyAccountBalancesSpecificAccounts422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2682,7 +2682,7 @@
           }
         }
       },
-      "getEnergyAccountInvoices200": {
+      "GetEnergyAccountInvoices200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2700,7 +2700,7 @@
           }
         }
       },
-      "getEnergyAccountInvoices400": {
+      "GetEnergyAccountInvoices400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2715,7 +2715,7 @@
           }
         }
       },
-      "getEnergyAccountInvoices404": {
+      "GetEnergyAccountInvoices404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2730,7 +2730,7 @@
           }
         }
       },
-      "getEnergyAccountInvoices406": {
+      "GetEnergyAccountInvoices406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2745,7 +2745,7 @@
           }
         }
       },
-      "getEnergyAccountInvoices422": {
+      "GetEnergyAccountInvoices422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2760,7 +2760,7 @@
           }
         }
       },
-      "listEnergyAccountInvoicesBulk200": {
+      "ListEnergyAccountInvoicesBulk200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2778,7 +2778,7 @@
           }
         }
       },
-      "listEnergyAccountInvoicesBulk400": {
+      "ListEnergyAccountInvoicesBulk400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2793,7 +2793,7 @@
           }
         }
       },
-      "listEnergyAccountInvoicesBulk406": {
+      "ListEnergyAccountInvoicesBulk406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2808,7 +2808,7 @@
           }
         }
       },
-      "listEnergyAccountInvoicesBulk422": {
+      "ListEnergyAccountInvoicesBulk422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2823,7 +2823,7 @@
           }
         }
       },
-      "listEnergyInvoicesForSpecificAccounts200": {
+      "ListEnergyInvoicesForSpecificAccounts200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2841,7 +2841,7 @@
           }
         }
       },
-      "listEnergyInvoicesForSpecificAccounts400": {
+      "ListEnergyInvoicesForSpecificAccounts400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2856,7 +2856,7 @@
           }
         }
       },
-      "listEnergyInvoicesForSpecificAccounts406": {
+      "ListEnergyInvoicesForSpecificAccounts406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2871,7 +2871,7 @@
           }
         }
       },
-      "listEnergyInvoicesForSpecificAccounts422": {
+      "ListEnergyInvoicesForSpecificAccounts422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2886,7 +2886,7 @@
           }
         }
       },
-      "getBillingForEnergyAccount200": {
+      "GetBillingForEnergyAccount200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2904,7 +2904,7 @@
           }
         }
       },
-      "getBillingForEnergyAccount400": {
+      "GetBillingForEnergyAccount400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2919,7 +2919,7 @@
           }
         }
       },
-      "getBillingForEnergyAccount404": {
+      "GetBillingForEnergyAccount404": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Energy Account](#error-404-unavailable-energy-account)</li><li>[404 - Invalid Energy Account](#error-404-invalid-energy-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2934,7 +2934,7 @@
           }
         }
       },
-      "getBillingForEnergyAccount406": {
+      "GetBillingForEnergyAccount406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2949,7 +2949,7 @@
           }
         }
       },
-      "getBillingForEnergyAccount422": {
+      "GetBillingForEnergyAccount422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2964,7 +2964,7 @@
           }
         }
       },
-      "listEnergyAccountBillingBulk200": {
+      "ListEnergyAccountBillingBulk200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -2982,7 +2982,7 @@
           }
         }
       },
-      "listEnergyAccountBillingBulk400": {
+      "ListEnergyAccountBillingBulk400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -2997,7 +2997,7 @@
           }
         }
       },
-      "listEnergyAccountBillingBulk406": {
+      "ListEnergyAccountBillingBulk406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -3012,7 +3012,7 @@
           }
         }
       },
-      "listEnergyAccountBillingBulk422": {
+      "ListEnergyAccountBillingBulk422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -3027,7 +3027,7 @@
           }
         }
       },
-      "listEnergyAccountBillingForSpecificAccounts200": {
+      "ListEnergyAccountBillingForSpecificAccounts200": {
         "description": "Successful response",
         "headers": {
           "x-v": {
@@ -3045,7 +3045,7 @@
           }
         }
       },
-      "listEnergyAccountBillingForSpecificAccounts400": {
+      "ListEnergyAccountBillingForSpecificAccounts400": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -3060,7 +3060,7 @@
           }
         }
       },
-      "listEnergyAccountBillingForSpecificAccounts406": {
+      "ListEnergyAccountBillingForSpecificAccounts406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
@@ -3075,7 +3075,7 @@
           }
         }
       },
-      "listEnergyAccountBillingForSpecificAccounts422": {
+      "ListEnergyAccountBillingForSpecificAccounts422": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Energy Account](#error-422-unavailable-energy-account)</li><li>[422 - Invalid Energy Account](#error-422-invalid-energy-account)</li></ul>",
         "headers": {
           "x-fapi-interaction-id": {
