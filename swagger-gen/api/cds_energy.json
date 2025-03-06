@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Energy API",
-    "version": "1.33.1",
+    "version": "1.34.0",
     "description": "Specifications for resource endpoints applicable to data holders in the Energy sector.",
     "contact": {
       "name": "Data Standards Body",

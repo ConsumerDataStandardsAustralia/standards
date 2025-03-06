@@ -14,12 +14,9 @@ Some of these standards will be binding data standards under the Competition and
 
 
 ## Version
-These standards represent version **1.33.1** of the high level standards. See the [versioning section](#versioning) for more information on how versions are managed in the standard.
+These standards represent version **1.34.0** of the high level standards. See the [versioning section](#versioning) for more information on how versions are managed in the standard.
 
-```diff
-Refactored all OpenAPI Specification (OAS) files to use common code components for improved consistency and compatibility with other API tooling.
-Endpoints in the Register and Banking API menus have been reordered according to updated tags in the OAS.
-```
+
 
 ## Interpretation
 Note that, in these standards, the key words **MUST**, **MUST NOT**, **REQUIRED**, **SHALL**, **SHALL NOT**, **SHOULD**, **SHOULD NOT**, **RECOMMENDED**, **MAY**, and **OPTIONAL** are to be interpreted as described in **[[RFC2119]](#nref-RFC2119)**.
