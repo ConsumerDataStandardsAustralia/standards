@@ -1,18 +1,32 @@
 openapi: 3.0.3
 info:
-  description: Consumer Data Right endpoints and payloads for Secondary Data Holder
-    for the Energy sector.
+  contact:
+    email: contact@dsb.gov.au
+    name: Data Standards Body
+    url: https://dsb.gov.au/
+  description: Specifications for resource endpoints applicable to secondary data
+    holders in the Energy sector.
   title: CDR Energy Secondary Data Holder API
-  version: 1.33.0
+  version: 1.33.1
 servers:
 - description: TLS
   url: https://tls.sdh.example.com/cds-au/v1
+tags:
+- description: Electricity Service Point (SR) endpoints
+  name: Electricity Service Points (SR)
+  x-shortName: Service Points
+- description: Electricity Usage (SR) endpoints
+  name: Electricity Usage (SR)
+  x-shortName: Usage
+- description: Distributed Energy Resource (SR) endpoints
+  name: Distributed Energy Resources (SR)
+  x-shortName: Distributed Energy Resources
 paths:
   /secondary/energy/electricity/servicepoints:
     post:
       description: Obtain a list of service points owned by the customer that has
         authorised the current session.
-      operationId: listServicePoints
+      operationId: listElectricityServicePointsSR
       parameters:
       - description: Page of results to request (standard pagination).
         explode: true
@@ -33,12 +47,12 @@ paths:
         style: form
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The data holder should respond with the highest
+          set to a positive integer. The endpoint should respond with the highest
           supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
           If the value of [_x-min-v_](#request-headers) is equal to or higher than
           the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
           header should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a `406 Not Acceptable`. See [HTTP
+          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
           Headers](#request-headers).
         explode: false
         in: header
@@ -48,10 +62,10 @@ paths:
           type: string
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The data holder should respond
+          Must be set to a positive integer if provided. The endpoint should respond
           with the highest supported version between [_x-min-v_](#request-headers)
           and [_x-v_](#request-headers). If all versions requested are not supported
-          then the data holder must respond with a `406 Not Acceptable`.
+          then the endpoint **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -61,8 +75,8 @@ paths:
         style: simple
       - description: The _x-fapi-interaction-id_ header value provided by the Data
           Recipient. If not supplied by the Data Recipient, the primary Data Holder
-          MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the _x-fapi-interaction-id_
-          header.
+          **MUST** create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the
+          _x-fapi-interaction-id_ header.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -72,12 +86,12 @@ paths:
         style: simple
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
-          identifier MUST be unique per customer according to the definition of customer
-          in the CDR Federation section of this profile. The _x-cds-arrangement_ should
-          contain the arrangement ID for the consent that the request is being made
-          under and will be used for tracing and audit purposes. This field MUST be
-          populated but AEMO MUST NOT seek to validate the consent associated with
-          the arrangement.
+          identifier **MUST** be unique per customer according to the definition of
+          customer in the CDR Federation section of this profile. The _x-cds-arrangement_
+          should contain the arrangement ID for the consent that the request is being
+          made under and will be used for tracing and audit purposes. This field **MUST**
+          be populated but AEMO **MUST NOT** seek to validate the consent associated
+          with the arrangement.
         explode: false
         in: header
         name: x-cds-arrangement
@@ -86,13 +100,7 @@ paths:
           type: string
         style: simple
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestServicePointIdList'
-        description: Request payload containing list of specific Service Points to
-          obtain data for.
-        required: true
+        $ref: '#/components/requestBodies/RequestSDHServicePointIds'
       responses:
         "200":
           content:
@@ -102,36 +110,23 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The [version](#response-headers) of the API endpoint that
-                the data holder has responded with.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XV'
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "400":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
             Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
             - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                id. If provided, the data holder **MUST** play back this value in
+                the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -143,48 +138,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "422":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
       summary: Get Service Points (SR)
       tags:
-      - Energy-SDH
-      - NMI Standing Data
+      - Electricity Service Points (SR)
       x-restricted-access: AEMO
       x-version: "1"
   /secondary/energy/electricity/servicepoints/{servicePointId}:
     get:
       description: Obtain detailed standing information for a specific service point
         that is owned by the customer that has authorised the current session.
-      operationId: getServicePoint
+      operationId: getElectricityServicePointDetailSR
       parameters:
       - description: The independent ID of the service point, known in the industry
           as the NMI. The _servicePointId_ will be replaced with NMI for all interactions
@@ -194,15 +172,15 @@ paths:
         name: servicePointId
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/EnergySDHServicePointId'
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The data holder should respond with the highest
+          set to a positive integer. The endpoint should respond with the highest
           supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
           If the value of [_x-min-v_](#request-headers) is equal to or higher than
           the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
           header should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a `406 Not Acceptable`. See [HTTP
+          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
           Headers](#request-headers).
         explode: false
         in: header
@@ -212,10 +190,10 @@ paths:
           type: string
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The data holder should respond
+          Must be set to a positive integer if provided. The endpoint should respond
           with the highest supported version between [_x-min-v_](#request-headers)
           and [_x-v_](#request-headers). If all versions requested are not supported
-          then the data holder must respond with a `406 Not Acceptable`.
+          then the endpoint **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -225,8 +203,8 @@ paths:
         style: simple
       - description: The _x-fapi-interaction-id_ header value provided by the Data
           Recipient. If not supplied by the Data Recipient, the primary Data Holder
-          MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the _x-fapi-interaction-id_
-          header.
+          **MUST** create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the
+          _x-fapi-interaction-id_ header.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -236,12 +214,12 @@ paths:
         style: simple
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
-          identifier MUST be unique per customer according to the definition of customer
-          in the CDR Federation section of this profile. The _x-cds-arrangement_ should
-          contain the arrangement ID for the consent that the request is being made
-          under and will be used for tracing and audit purposes. This field MUST be
-          populated but AEMO MUST NOT seek to validate the consent associated with
-          the arrangement.
+          identifier **MUST** be unique per customer according to the definition of
+          customer in the CDR Federation section of this profile. The _x-cds-arrangement_
+          should contain the arrangement ID for the consent that the request is being
+          made under and will be used for tracing and audit purposes. This field **MUST**
+          be populated but AEMO **MUST NOT** seek to validate the consent associated
+          with the arrangement.
         explode: false
         in: header
         name: x-cds-arrangement
@@ -258,54 +236,33 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The [version](#response-headers) of the API endpoint that
-                the data holder has responded with.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XV'
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "400":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
             Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404
             - Invalid Service Point](#error-404-invalid-service-point)</li></ul>
           headers:
             x-fapi-interaction-id:
               description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+                id. If provided, the data holder **MUST** play back this value in
+                the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
                 UUID value is required to be provided in the response header to track
                 the interaction.
               explode: false
@@ -317,30 +274,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
       summary: Get Service Point Detail (SR)
       tags:
-      - Energy-SDH
-      - NMI Standing Data
+      - Electricity Service Points (SR)
       x-restricted-access: AEMO
       x-version: "1"
   /secondary/energy/electricity/servicepoints/{servicePointId}/usage:
     get:
       description: Obtain a list of electricity usage data from a particular service
         point.
-      operationId: getUsageForServicePoint
+      operationId: getElectricityServicePointUsageSR
       parameters:
       - description: The independent ID of the service point, known in the industry
           as the NMI. The _servicePointId_ will be replaced with NMI for all interactions
@@ -350,7 +298,7 @@ paths:
         name: servicePointId
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/EnergySDHServicePointId'
         style: simple
       - description: Constrain the request to records with effective date at or after
           this date. If absent defaults to _newest-date_ minus 24 months. Format is
@@ -407,12 +355,12 @@ paths:
         style: form
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The data holder should respond with the highest
+          set to a positive integer. The endpoint should respond with the highest
           supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
           If the value of [_x-min-v_](#request-headers) is equal to or higher than
           the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
           header should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a `406 Not Acceptable`. See [HTTP
+          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
           Headers](#request-headers).
         explode: false
         in: header
@@ -422,10 +370,10 @@ paths:
           type: string
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The data holder should respond
+          Must be set to a positive integer if provided. The endpoint should respond
           with the highest supported version between [_x-min-v_](#request-headers)
           and [_x-v_](#request-headers). If all versions requested are not supported
-          then the data holder must respond with a `406 Not Acceptable`.
+          then the endpoint **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -435,8 +383,8 @@ paths:
         style: simple
       - description: The _x-fapi-interaction-id_ header value provided by the Data
           Recipient. If not supplied by the Data Recipient, the primary Data Holder
-          MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the _x-fapi-interaction-id_
-          header.
+          **MUST** create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the
+          _x-fapi-interaction-id_ header.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -446,12 +394,12 @@ paths:
         style: simple
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
-          identifier MUST be unique per customer according to the definition of customer
-          in the CDR Federation section of this profile. The _x-cds-arrangement_ should
-          contain the arrangement ID for the consent that the request is being made
-          under and will be used for tracing and audit purposes. This field MUST be
-          populated but AEMO MUST NOT seek to validate the consent associated with
-          the arrangement.
+          identifier **MUST** be unique per customer according to the definition of
+          customer in the CDR Federation section of this profile. The _x-cds-arrangement_
+          should contain the arrangement ID for the consent that the request is being
+          made under and will be used for tracing and audit purposes. This field **MUST**
+          be populated but AEMO **MUST NOT** seek to validate the consent associated
+          with the arrangement.
         explode: false
         in: header
         name: x-cds-arrangement
@@ -468,109 +416,63 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The [version](#response-headers) of the API endpoint that
-                the data holder has responded with.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XV'
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "400":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
             Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400
             - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
             - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404
             - Invalid Service Point](#error-404-invalid-service-point)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "406":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "422":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
       summary: Get Usage For Service Point (SR)
       tags:
-      - Energy-SDH
-      - Electricity Usage
+      - Electricity Usage (SR)
       x-restricted-access: AEMO
       x-version: "1"
   /secondary/energy/electricity/servicepoints/usage:
     post:
       description: Obtain the electricity usage data for a specific set of service
         points.
-      operationId: listUsageForServicePoints
+      operationId: listElectricityUsageForServicePointsSR
       parameters:
       - description: Constrain the request to records with effective date at or after
           this date. If absent defaults to _newest-date_ minus 24 months. Format is
@@ -627,12 +529,12 @@ paths:
         style: form
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The data holder should respond with the highest
+          set to a positive integer. The endpoint should respond with the highest
           supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
           If the value of [_x-min-v_](#request-headers) is equal to or higher than
           the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
           header should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a `406 Not Acceptable`. See [HTTP
+          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
           Headers](#request-headers).
         explode: false
         in: header
@@ -642,10 +544,10 @@ paths:
           type: string
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The data holder should respond
+          Must be set to a positive integer if provided. The endpoint should respond
           with the highest supported version between [_x-min-v_](#request-headers)
           and [_x-v_](#request-headers). If all versions requested are not supported
-          then the data holder must respond with a `406 Not Acceptable`.
+          then the endpoint **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -655,8 +557,8 @@ paths:
         style: simple
       - description: The _x-fapi-interaction-id_ header value provided by the Data
           Recipient. If not supplied by the Data Recipient, the primary Data Holder
-          MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the _x-fapi-interaction-id_
-          header.
+          **MUST** create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the
+          _x-fapi-interaction-id_ header.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -666,12 +568,12 @@ paths:
         style: simple
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
-          identifier MUST be unique per customer according to the definition of customer
-          in the CDR Federation section of this profile. The _x-cds-arrangement_ should
-          contain the arrangement ID for the consent that the request is being made
-          under and will be used for tracing and audit purposes. This field MUST be
-          populated but AEMO MUST NOT seek to validate the consent associated with
-          the arrangement.
+          identifier **MUST** be unique per customer according to the definition of
+          customer in the CDR Federation section of this profile. The _x-cds-arrangement_
+          should contain the arrangement ID for the consent that the request is being
+          made under and will be used for tracing and audit purposes. This field **MUST**
+          be populated but AEMO **MUST NOT** seek to validate the consent associated
+          with the arrangement.
         explode: false
         in: header
         name: x-cds-arrangement
@@ -680,13 +582,7 @@ paths:
           type: string
         style: simple
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestServicePointIdList'
-        description: Request payload containing list of specific Service Points to
-          obtain data for.
-        required: true
+        $ref: '#/components/requestBodies/RequestSDHServicePointIds'
       responses:
         "200":
           content:
@@ -696,91 +592,53 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The [version](#response-headers) of the API endpoint that
-                the data holder has responded with.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XV'
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "400":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
             Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400
             - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
             - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "406":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "422":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable
             Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid
             Service Point](#error-422-invalid-service-point)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
       summary: Get Usage For Specific Service Points (SR)
       tags:
-      - Energy-SDH
-      - Electricity Usage
+      - Electricity Usage (SR)
       x-restricted-access: AEMO
       x-version: "1"
   /secondary/energy/electricity/servicepoints/{servicePointId}/der:
     get:
       description: Obtain a list of DER data from a particular service point.
-      operationId: getDERForServicePoint
+      operationId: getElectricityDERForServicePointSR
       parameters:
       - description: The independent ID of the service point, known in the industry
           as the NMI. The _servicePointId_ will be replaced with NMI for all interactions
@@ -790,15 +648,15 @@ paths:
         name: servicePointId
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/EnergySDHServicePointId'
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The data holder should respond with the highest
+          set to a positive integer. The endpoint should respond with the highest
           supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
           If the value of [_x-min-v_](#request-headers) is equal to or higher than
           the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
           header should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a `406 Not Acceptable`. See [HTTP
+          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
           Headers](#request-headers).
         explode: false
         in: header
@@ -808,10 +666,10 @@ paths:
           type: string
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The data holder should respond
+          Must be set to a positive integer if provided. The endpoint should respond
           with the highest supported version between [_x-min-v_](#request-headers)
           and [_x-v_](#request-headers). If all versions requested are not supported
-          then the data holder must respond with a `406 Not Acceptable`.
+          then the endpoint **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -821,8 +679,8 @@ paths:
         style: simple
       - description: The _x-fapi-interaction-id_ header value provided by the Data
           Recipient. If not supplied by the Data Recipient, the primary Data Holder
-          MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the _x-fapi-interaction-id_
-          header.
+          **MUST** create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the
+          _x-fapi-interaction-id_ header.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -832,12 +690,12 @@ paths:
         style: simple
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
-          identifier MUST be unique per customer according to the definition of customer
-          in the CDR Federation section of this profile. The _x-cds-arrangement_ should
-          contain the arrangement ID for the consent that the request is being made
-          under and will be used for tracing and audit purposes. This field MUST be
-          populated but AEMO MUST NOT seek to validate the consent associated with
-          the arrangement.
+          identifier **MUST** be unique per customer according to the definition of
+          customer in the CDR Federation section of this profile. The _x-cds-arrangement_
+          should contain the arrangement ID for the consent that the request is being
+          made under and will be used for tracing and audit purposes. This field **MUST**
+          be populated but AEMO **MUST NOT** seek to validate the consent associated
+          with the arrangement.
         explode: false
         in: header
         name: x-cds-arrangement
@@ -854,88 +712,50 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The [version](#response-headers) of the API endpoint that
-                the data holder has responded with.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XV'
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "400":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
             Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "404":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[404
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404
             - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404
             - Invalid Service Point](#error-404-invalid-service-point)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "406":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
       summary: Get DER For Service Point (SR)
       tags:
-      - Energy-SDH
-      - Distributed Energy Resources
+      - Distributed Energy Resources (SR)
       x-restricted-access: AEMO
       x-version: "1"
   /secondary/energy/electricity/servicepoints/der:
     post:
       description: Obtain DER data for a specific set of service points.
-      operationId: listDERForServicePoints
+      operationId: listElectricityDERForSpecificServicePointsSR
       parameters:
       - description: Page of results to request (standard pagination).
         explode: true
@@ -956,12 +776,12 @@ paths:
         style: form
         x-cds-type: PositiveInteger
       - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The data holder should respond with the highest
+          set to a positive integer. The endpoint should respond with the highest
           supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
           If the value of [_x-min-v_](#request-headers) is equal to or higher than
           the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
           header should be treated as absent. If all versions requested are not supported
-          then the data holder must respond with a `406 Not Acceptable`. See [HTTP
+          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
           Headers](#request-headers).
         explode: false
         in: header
@@ -971,10 +791,10 @@ paths:
           type: string
         style: simple
       - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The data holder should respond
+          Must be set to a positive integer if provided. The endpoint should respond
           with the highest supported version between [_x-min-v_](#request-headers)
           and [_x-v_](#request-headers). If all versions requested are not supported
-          then the data holder must respond with a `406 Not Acceptable`.
+          then the endpoint **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -984,8 +804,8 @@ paths:
         style: simple
       - description: The _x-fapi-interaction-id_ header value provided by the Data
           Recipient. If not supplied by the Data Recipient, the primary Data Holder
-          MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the _x-fapi-interaction-id_
-          header.
+          **MUST** create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the
+          _x-fapi-interaction-id_ header.
         explode: false
         in: header
         name: x-fapi-interaction-id
@@ -995,12 +815,12 @@ paths:
         style: simple
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
-          identifier MUST be unique per customer according to the definition of customer
-          in the CDR Federation section of this profile. The _x-cds-arrangement_ should
-          contain the arrangement ID for the consent that the request is being made
-          under and will be used for tracing and audit purposes. This field MUST be
-          populated but AEMO MUST NOT seek to validate the consent associated with
-          the arrangement.
+          identifier **MUST** be unique per customer according to the definition of
+          customer in the CDR Federation section of this profile. The _x-cds-arrangement_
+          should contain the arrangement ID for the consent that the request is being
+          made under and will be used for tracing and audit purposes. This field **MUST**
+          be populated but AEMO **MUST NOT** seek to validate the consent associated
+          with the arrangement.
         explode: false
         in: header
         name: x-cds-arrangement
@@ -1009,13 +829,7 @@ paths:
           type: string
         style: simple
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestServicePointIdList'
-        description: Request payload containing list of specific Service Points to
-          obtain data for.
-        required: true
+        $ref: '#/components/requestBodies/RequestSDHServicePointIds'
       responses:
         "200":
           content:
@@ -1025,89 +839,70 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The [version](#response-headers) of the API endpoint that
-                the data holder has responded with.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XV'
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "400":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[400
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
             Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
             - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "406":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[406
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
             - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
         "422":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes MUST be supported:<br/><ul class="error-code-list"><li>[422
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422
             - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable
             Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid
             Service Point](#error-422-invalid-service-point)</li></ul>
           headers:
             x-fapi-interaction-id:
-              description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-                id. If provided, the data holder must play back this value in the
-                _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
-                UUID value is required to be provided in the response header to track
-                the interaction.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XFAPIInteractionId'
       summary: Get DER For Specific Service Points (SR)
       tags:
-      - Energy-SDH
-      - Distributed Energy Resources
+      - Distributed Energy Resources (SR)
       x-restricted-access: AEMO
       x-version: "1"
 components:
+  headers:
+    XV:
+      description: The [payload version](#response-headers) that the endpoint has
+        responded with.
+      explode: false
+      required: true
+      schema:
+        type: string
+      style: simple
+    XFAPIInteractionId:
+      description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id.
+        If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
+        response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+        is required to be provided in the response header to track the interaction.
+      explode: false
+      required: true
+      schema:
+        type: string
+      style: simple
   parameters:
-    servicePointId:
+    PathSDHServicePointId:
       description: The independent ID of the service point, known in the industry
         as the NMI. The _servicePointId_ will be replaced with NMI for all interactions
         between Data Holder and AEMO.
@@ -1116,9 +911,9 @@ components:
       name: servicePointId
       required: true
       schema:
-        type: string
+        $ref: '#/components/schemas/EnergySDHServicePointId'
       style: simple
-    interval-reads:
+    QueryEnergyIntervalReads:
       description: Type of interval reads. Any one of the valid values for this field
         can be supplied. If absent defaults to `NONE`.
       explode: true
@@ -1133,31 +928,7 @@ components:
         - FULL
         type: string
       style: form
-    newest-time:
-      description: Constrain the request to records with effective time at or before
-        this date/time. If absent defaults to current date/time. Format is aligned
-        to DateTimeString common type.
-      explode: true
-      in: query
-      name: newest-time
-      required: false
-      schema:
-        type: string
-      style: form
-      x-cds-type: DateTimeString
-    oldest-time:
-      description: Constrain the request to records with effective time at or after
-        this date/time. If absent defaults to _newest-time_ minus 12 months. Format
-        is aligned to DateTimeString common type.
-      explode: true
-      in: query
-      name: oldest-time
-      required: false
-      schema:
-        type: string
-      style: form
-      x-cds-type: DateTimeString
-    newest-date:
+    QueryNewestDate:
       description: Constrain the request to records with effective date at or before
         this date. If absent defaults to current date. Format is aligned to DateString
         common type.
@@ -1169,7 +940,7 @@ components:
         type: string
       style: form
       x-cds-type: DateString
-    oldest-date:
+    QueryOldestDate:
       description: Constrain the request to records with effective date at or after
         this date. If absent defaults to _newest-date_ minus 24 months. Format is
         aligned to DateString common type.
@@ -1181,7 +952,7 @@ components:
         type: string
       style: form
       x-cds-type: DateString
-    page:
+    QueryPage:
       description: Page of results to request (standard pagination).
       explode: true
       in: query
@@ -1191,7 +962,7 @@ components:
         type: integer
       style: form
       x-cds-type: PositiveInteger
-    page-size:
+    QueryPageSize:
       description: Page size to request. Default is 25 (standard pagination).
       explode: true
       in: query
@@ -1201,14 +972,15 @@ components:
         type: integer
       style: form
       x-cds-type: PositiveInteger
-    x-v:
+    HeaderXV:
       description: Version of the API endpoint requested by the client. Must be set
-        to a positive integer. The data holder should respond with the highest supported
+        to a positive integer. The endpoint should respond with the highest supported
         version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
         If the value of [_x-min-v_](#request-headers) is equal to or higher than the
         value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
         header should be treated as absent. If all versions requested are not supported
-        then the data holder must respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).
+        then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
+        Headers](#request-headers).
       explode: false
       in: header
       name: x-v
@@ -1216,11 +988,11 @@ components:
       schema:
         type: string
       style: simple
-    x-min-v:
+    HeaderXMinV:
       description: Minimum version of the API endpoint requested by the client. Must
-        be set to a positive integer if provided. The data holder should respond with
+        be set to a positive integer if provided. The endpoint should respond with
         the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
-        If all versions requested are not supported then the data holder must respond
+        If all versions requested are not supported then the endpoint **MUST** respond
         with a `406 Not Acceptable`.
       explode: false
       in: header
@@ -1229,9 +1001,9 @@ components:
       schema:
         type: string
       style: simple
-    x-fapi-interaction-id:
+    HeaderXFAPIInteractionId:
       description: The _x-fapi-interaction-id_ header value provided by the Data Recipient.
-        If not supplied by the Data Recipient, the primary Data Holder MUST create
+        If not supplied by the Data Recipient, the primary Data Holder **MUST** create
         a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the _x-fapi-interaction-id_
         header.
       explode: false
@@ -1241,14 +1013,15 @@ components:
       schema:
         type: string
       style: simple
-    x-cds-arrangement:
+    HeaderXCDSArrangement:
       description: A unique string representing a consent arrangement between a Data
         Recipient Software Product and Data Holder for a given consumer. The identifier
-        MUST be unique per customer according to the definition of customer in the
-        CDR Federation section of this profile. The _x-cds-arrangement_ should contain
-        the arrangement ID for the consent that the request is being made under and
-        will be used for tracing and audit purposes. This field MUST be populated
-        but AEMO MUST NOT seek to validate the consent associated with the arrangement.
+        **MUST** be unique per customer according to the definition of customer in
+        the CDR Federation section of this profile. The _x-cds-arrangement_ should
+        contain the arrangement ID for the consent that the request is being made
+        under and will be used for tracing and audit purposes. This field **MUST**
+        be populated but AEMO **MUST NOT** seek to validate the consent associated
+        with the arrangement.
       explode: false
       in: header
       name: x-cds-arrangement
@@ -1256,8 +1029,17 @@ components:
       schema:
         type: string
       style: simple
+  requestBodies:
+    RequestSDHServicePointIds:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestSDHServicePointIdListV1'
+      description: Request payload containing a list of _servicePointId_ values to
+        obtain data for.
+      required: true
   responses:
-    servicePointList:
+    ListElectricityServicePoints200:
       content:
         application/json:
           schema:
@@ -1265,22 +1047,50 @@ components:
       description: Successful response
       headers:
         x-v:
-          description: The [version](#response-headers) of the API endpoint that the
-            data holder has responded with.
-          explode: false
+          $ref: '#/components/headers/XV'
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListElectricityServicePoints400:
+      content:
+        application/json:
           schema:
-            type: string
-          style: simple
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
+        - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+        Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li></ul>
+      headers:
         x-fapi-interaction-id:
           description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-            id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_
-            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-            value is required to be provided in the response header to track the interaction.
+            id. If provided, the data holder **MUST** play back this value in the
+            _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+            UUID value is required to be provided in the response header to track
+            the interaction.
           explode: false
           schema:
             type: string
           style: simple
-    servicePointDetail:
+    ListElectricityServicePoints406:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
+        - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListElectricityServicePoints422:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422
+        - Invalid Page](#error-422-field-invalid-page)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    GetElectricityServicePointDetail200:
       content:
         application/json:
           schema:
@@ -1288,22 +1098,50 @@ components:
       description: Successful response
       headers:
         x-v:
-          description: The [version](#response-headers) of the API endpoint that the
-            data holder has responded with.
-          explode: false
+          $ref: '#/components/headers/XV'
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    GetElectricityServicePointDetail400:
+      content:
+        application/json:
           schema:
-            type: string
-          style: simple
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
+        - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    GetElectricityServicePointDetail404:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404
+        - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404
+        - Invalid Service Point](#error-404-invalid-service-point)</li></ul>
+      headers:
         x-fapi-interaction-id:
           description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-            id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_
-            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-            value is required to be provided in the response header to track the interaction.
+            id. If provided, the data holder **MUST** play back this value in the
+            _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)**
+            UUID value is required to be provided in the response header to track
+            the interaction.
           explode: false
           schema:
             type: string
           style: simple
-    usageList:
+    GetElectricityServicePointDetail406:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
+        - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    GetElectricityServicePointUsage200:
       content:
         application/json:
           schema:
@@ -1311,45 +1149,100 @@ components:
       description: Successful response
       headers:
         x-v:
-          description: The [version](#response-headers) of the API endpoint that the
-            data holder has responded with.
-          explode: false
-          schema:
-            type: string
-          style: simple
+          $ref: '#/components/headers/XV'
         x-fapi-interaction-id:
-          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-            id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_
-            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-            value is required to be provided in the response header to track the interaction.
-          explode: false
-          schema:
-            type: string
-          style: simple
-    derList:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    GetElectricityServicePointUsage400:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EnergyDerListResponse'
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
+        - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+        Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400
+        - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+        Version](#error-400-header-invalid-version)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    GetElectricityServicePointUsage404:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404
+        - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404
+        - Invalid Service Point](#error-404-invalid-service-point)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    GetElectricityServicePointUsage406:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
+        - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    GetElectricityServicePointUsage422:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422
+        - Invalid Page](#error-422-field-invalid-page)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListElectricityUsageForServicePoints200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EnergyUsageListResponse'
       description: Successful response
       headers:
         x-v:
-          description: The [version](#response-headers) of the API endpoint that the
-            data holder has responded with.
-          explode: false
-          schema:
-            type: string
-          style: simple
+          $ref: '#/components/headers/XV'
         x-fapi-interaction-id:
-          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-            id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_
-            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-            value is required to be provided in the response header to track the interaction.
-          explode: false
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListElectricityUsageForServicePoints400:
+      content:
+        application/json:
           schema:
-            type: string
-          style: simple
-    derDetail:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
+        - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+        Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400
+        - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+        Version](#error-400-header-invalid-version)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListElectricityUsageForServicePoints406:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
+        - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListElectricityUsageForServicePoints422:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422
+        - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable
+        Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid
+        Service Point](#error-422-invalid-service-point)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    GetElectricityDERForServicePoint200:
       content:
         application/json:
           schema:
@@ -1357,21 +1250,86 @@ components:
       description: Successful response
       headers:
         x-v:
-          description: The [version](#response-headers) of the API endpoint that the
-            data holder has responded with.
-          explode: false
-          schema:
-            type: string
-          style: simple
+          $ref: '#/components/headers/XV'
         x-fapi-interaction-id:
-          description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
-            id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_
-            response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID
-            value is required to be provided in the response header to track the interaction.
-          explode: false
+          $ref: '#/components/headers/XFAPIInteractionId'
+    GetElectricityDERForServicePoint400:
+      content:
+        application/json:
           schema:
-            type: string
-          style: simple
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
+        - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    GetElectricityDERForServicePoint404:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404
+        - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404
+        - Invalid Service Point](#error-404-invalid-service-point)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    GetElectricityDERForServicePoint406:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
+        - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListElectricityDERForSpecificServicePoints200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EnergyDerListResponse'
+      description: Successful response
+      headers:
+        x-v:
+          $ref: '#/components/headers/XV'
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListElectricityDERForSpecificServicePoints400:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
+        - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+        Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListElectricityDERForSpecificServicePoints406:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
+        - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListElectricityDERForSpecificServicePoints422:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422
+        - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable
+        Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid
+        Service Point](#error-422-invalid-service-point)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
   schemas:
     EnergyServicePointListResponse:
       example:
@@ -1387,7 +1345,7 @@ components:
             nationalMeteringId: nationalMeteringId
             servicePointStatus: ACTIVE
             servicePointClassification: EXTERNAL_PROFILE
-            isGenerator: true
+            isGenerator: false
           - lastUpdateDateTime: lastUpdateDateTime
             consumerProfile:
               threshold: LOW
@@ -1398,7 +1356,7 @@ components:
             nationalMeteringId: nationalMeteringId
             servicePointStatus: ACTIVE
             servicePointClassification: EXTERNAL_PROFILE
-            isGenerator: true
+            isGenerator: false
         meta:
           totalRecords: 0
           totalPages: 6
@@ -1422,120 +1380,6 @@ components:
       type: object
     EnergyServicePointDetailResponse:
       example:
-        data:
-          lastUpdateDateTime: lastUpdateDateTime
-          consumerProfile:
-            threshold: LOW
-            classification: BUSINESS
-          distributionLossFactor:
-            code: code
-            description: description
-            lossValue: lossValue
-          servicePointId: servicePointId
-          relatedParticipants:
-          - role: FRMP
-            party: party
-          - role: FRMP
-            party: party
-          servicePointStatus: ACTIVE
-          servicePointClassification: EXTERNAL_PROFILE
-          meters:
-          - meterId: meterId
-            registers:
-            - unitOfMeasure: unitOfMeasure
-              registerId: registerId
-              consumptionType: ACTUAL
-              averagedDailyLoad: 5.962133916683182
-              multiplier: 5.637376656633329
-              registerConsumptionType: INTERVAL
-              networkTariffCode: networkTariffCode
-              registerSuffix: registerSuffix
-              controlledLoad: true
-              timeOfDay: ALLDAY
-            - unitOfMeasure: unitOfMeasure
-              registerId: registerId
-              consumptionType: ACTUAL
-              averagedDailyLoad: 5.962133916683182
-              multiplier: 5.637376656633329
-              registerConsumptionType: INTERVAL
-              networkTariffCode: networkTariffCode
-              registerSuffix: registerSuffix
-              controlledLoad: true
-              timeOfDay: ALLDAY
-            specifications:
-              installationType: BASIC
-              nextScheduledReadDate: nextScheduledReadDate
-              model: model
-              readType: readType
-              status: CURRENT
-              manufacturer: manufacturer
-          - meterId: meterId
-            registers:
-            - unitOfMeasure: unitOfMeasure
-              registerId: registerId
-              consumptionType: ACTUAL
-              averagedDailyLoad: 5.962133916683182
-              multiplier: 5.637376656633329
-              registerConsumptionType: INTERVAL
-              networkTariffCode: networkTariffCode
-              registerSuffix: registerSuffix
-              controlledLoad: true
-              timeOfDay: ALLDAY
-            - unitOfMeasure: unitOfMeasure
-              registerId: registerId
-              consumptionType: ACTUAL
-              averagedDailyLoad: 5.962133916683182
-              multiplier: 5.637376656633329
-              registerConsumptionType: INTERVAL
-              networkTariffCode: networkTariffCode
-              registerSuffix: registerSuffix
-              controlledLoad: true
-              timeOfDay: ALLDAY
-            specifications:
-              installationType: BASIC
-              nextScheduledReadDate: nextScheduledReadDate
-              model: model
-              readType: readType
-              status: CURRENT
-              manufacturer: manufacturer
-          jurisdictionCode: ALL
-          validFromDate: validFromDate
-          location:
-            paf:
-              streetType: streetType
-              floorLevelNumber: floorLevelNumber
-              thoroughfareNumber1Suffix: thoroughfareNumber1Suffix
-              postalDeliveryNumber: 1
-              dpid: dpid
-              thoroughfareNumber2: 6
-              postcode: postcode
-              thoroughfareNumber1: 0
-              flatUnitNumber: flatUnitNumber
-              lotNumber: lotNumber
-              buildingName1: buildingName1
-              buildingName2: buildingName2
-              streetName: streetName
-              localityName: localityName
-              flatUnitType: flatUnitType
-              floorLevelType: floorLevelType
-              postalDeliveryNumberSuffix: postalDeliveryNumberSuffix
-              postalDeliveryType: postalDeliveryType
-              streetSuffix: streetSuffix
-              state: state
-              postalDeliveryNumberPrefix: postalDeliveryNumberPrefix
-              thoroughfareNumber2Suffix: thoroughfareNumber2Suffix
-            simple:
-              country: AUS
-              city: city
-              postcode: postcode
-              addressLine1: addressLine1
-              addressLine2: addressLine2
-              addressLine3: addressLine3
-              state: state
-              mailingName: mailingName
-            addressUType: paf
-          nationalMeteringId: nationalMeteringId
-          isGenerator: true
         meta: '{}'
         links:
           self: self
@@ -1678,7 +1522,7 @@ components:
                 type: FOSSIL
                 manufacturer: manufacturer
                 status: ACTIVE
-              equipmentType: INVERTER
+              equipmentType: OTHER
               status: ACTIVE
             - inverterSeries: inverterSeries
               inverterModelNumber: inverterModelNumber
@@ -1706,7 +1550,7 @@ components:
                 type: FOSSIL
                 manufacturer: manufacturer
                 status: ACTIVE
-              equipmentType: INVERTER
+              equipmentType: OTHER
               status: ACTIVE
           - protectionMode:
               interTripScheme: interTripScheme
@@ -1757,7 +1601,7 @@ components:
                 type: FOSSIL
                 manufacturer: manufacturer
                 status: ACTIVE
-              equipmentType: INVERTER
+              equipmentType: OTHER
               status: ACTIVE
             - inverterSeries: inverterSeries
               inverterModelNumber: inverterModelNumber
@@ -1785,7 +1629,7 @@ components:
                 type: FOSSIL
                 manufacturer: manufacturer
                 status: ACTIVE
-              equipmentType: INVERTER
+              equipmentType: OTHER
               status: ACTIVE
         meta:
           totalRecords: 0
@@ -1860,7 +1704,7 @@ components:
               type: FOSSIL
               manufacturer: manufacturer
               status: ACTIVE
-            equipmentType: INVERTER
+            equipmentType: OTHER
             status: ACTIVE
           - inverterSeries: inverterSeries
             inverterModelNumber: inverterModelNumber
@@ -1888,7 +1732,7 @@ components:
               type: FOSSIL
               manufacturer: manufacturer
               status: ACTIVE
-            equipmentType: INVERTER
+            equipmentType: OTHER
             status: ACTIVE
         meta: '{}'
         links:
@@ -1907,11 +1751,37 @@ components:
     ResponseErrorListV2:
       properties:
         errors:
+          description: List of errors.
           items:
-            $ref: '#/components/schemas/ResponseErrorListV2_errors'
+            $ref: '#/components/schemas/ErrorV2'
           type: array
       required:
       - errors
+      type: object
+    ErrorV2:
+      properties:
+        code:
+          description: The code of the error encountered. Where the error is specific
+            to the respondent, an application-specific error code, expressed as a
+            string value. If the error is application-specific, the URN code that
+            the specific error extends must be provided in the _meta_ object. Otherwise,
+            the value is the error code URN.
+          type: string
+        title:
+          description: A short, human-readable summary of the problem that **MUST
+            NOT** change from occurrence to occurrence of the problem represented
+            by the error code.
+          type: string
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem.
+          type: string
+        meta:
+          $ref: '#/components/schemas/ErrorV2_meta'
+      required:
+      - code
+      - detail
+      - title
       type: object
       x-conditional:
       - meta
@@ -1927,7 +1797,7 @@ components:
         nationalMeteringId: nationalMeteringId
         servicePointStatus: ACTIVE
         servicePointClassification: EXTERNAL_PROFILE
-        isGenerator: true
+        isGenerator: false
       properties:
         servicePointId:
           description: The independent ID of the service point, known in the industry
@@ -1935,6 +1805,7 @@ components:
             will be replaced with NMI for all interactions between Data Holder and
             AEMO.
           type: string
+          x-cds-type: ASCIIString
         nationalMeteringId:
           description: The independent ID of the service point, known in the industry
             as the NMI.
@@ -1985,6 +1856,7 @@ components:
           - VIC
           type: string
         isGenerator:
+          default: false
           description: This flag determines whether the energy at this connection
             point is to be treated as consumer load or as a generating unit (this
             may include generator auxiliary loads). If absent defaults to `false`.
@@ -2013,220 +1885,9 @@ components:
       - validFromDate
       type: object
     EnergyServicePointDetail:
-      example:
-        lastUpdateDateTime: lastUpdateDateTime
-        consumerProfile:
-          threshold: LOW
-          classification: BUSINESS
-        distributionLossFactor:
-          code: code
-          description: description
-          lossValue: lossValue
-        servicePointId: servicePointId
-        relatedParticipants:
-        - role: FRMP
-          party: party
-        - role: FRMP
-          party: party
-        servicePointStatus: ACTIVE
-        servicePointClassification: EXTERNAL_PROFILE
-        meters:
-        - meterId: meterId
-          registers:
-          - unitOfMeasure: unitOfMeasure
-            registerId: registerId
-            consumptionType: ACTUAL
-            averagedDailyLoad: 5.962133916683182
-            multiplier: 5.637376656633329
-            registerConsumptionType: INTERVAL
-            networkTariffCode: networkTariffCode
-            registerSuffix: registerSuffix
-            controlledLoad: true
-            timeOfDay: ALLDAY
-          - unitOfMeasure: unitOfMeasure
-            registerId: registerId
-            consumptionType: ACTUAL
-            averagedDailyLoad: 5.962133916683182
-            multiplier: 5.637376656633329
-            registerConsumptionType: INTERVAL
-            networkTariffCode: networkTariffCode
-            registerSuffix: registerSuffix
-            controlledLoad: true
-            timeOfDay: ALLDAY
-          specifications:
-            installationType: BASIC
-            nextScheduledReadDate: nextScheduledReadDate
-            model: model
-            readType: readType
-            status: CURRENT
-            manufacturer: manufacturer
-        - meterId: meterId
-          registers:
-          - unitOfMeasure: unitOfMeasure
-            registerId: registerId
-            consumptionType: ACTUAL
-            averagedDailyLoad: 5.962133916683182
-            multiplier: 5.637376656633329
-            registerConsumptionType: INTERVAL
-            networkTariffCode: networkTariffCode
-            registerSuffix: registerSuffix
-            controlledLoad: true
-            timeOfDay: ALLDAY
-          - unitOfMeasure: unitOfMeasure
-            registerId: registerId
-            consumptionType: ACTUAL
-            averagedDailyLoad: 5.962133916683182
-            multiplier: 5.637376656633329
-            registerConsumptionType: INTERVAL
-            networkTariffCode: networkTariffCode
-            registerSuffix: registerSuffix
-            controlledLoad: true
-            timeOfDay: ALLDAY
-          specifications:
-            installationType: BASIC
-            nextScheduledReadDate: nextScheduledReadDate
-            model: model
-            readType: readType
-            status: CURRENT
-            manufacturer: manufacturer
-        jurisdictionCode: ALL
-        validFromDate: validFromDate
-        location:
-          paf:
-            streetType: streetType
-            floorLevelNumber: floorLevelNumber
-            thoroughfareNumber1Suffix: thoroughfareNumber1Suffix
-            postalDeliveryNumber: 1
-            dpid: dpid
-            thoroughfareNumber2: 6
-            postcode: postcode
-            thoroughfareNumber1: 0
-            flatUnitNumber: flatUnitNumber
-            lotNumber: lotNumber
-            buildingName1: buildingName1
-            buildingName2: buildingName2
-            streetName: streetName
-            localityName: localityName
-            flatUnitType: flatUnitType
-            floorLevelType: floorLevelType
-            postalDeliveryNumberSuffix: postalDeliveryNumberSuffix
-            postalDeliveryType: postalDeliveryType
-            streetSuffix: streetSuffix
-            state: state
-            postalDeliveryNumberPrefix: postalDeliveryNumberPrefix
-            thoroughfareNumber2Suffix: thoroughfareNumber2Suffix
-          simple:
-            country: AUS
-            city: city
-            postcode: postcode
-            addressLine1: addressLine1
-            addressLine2: addressLine2
-            addressLine3: addressLine3
-            state: state
-            mailingName: mailingName
-          addressUType: paf
-        nationalMeteringId: nationalMeteringId
-        isGenerator: true
-      properties:
-        servicePointId:
-          description: The independent ID of the service point, known in the industry
-            as the National Meter Identifier (NMI). Note that the _servicePointId_
-            will be replaced with NMI for all interactions between Data Holder and
-            AEMO.
-          type: string
-        nationalMeteringId:
-          description: The independent ID of the service point, known in the industry
-            as the NMI.
-          type: string
-        servicePointClassification:
-          description: The classification of the service point as defined in MSATS
-            procedures.
-          enum:
-          - EXTERNAL_PROFILE
-          - GENERATOR
-          - LARGE
-          - SMALL
-          - WHOLESALE
-          - NON_CONTEST_UNMETERED_LOAD
-          - NON_REGISTERED_EMBEDDED_GENERATOR
-          - DISTRIBUTION_WHOLESALE
-          type: string
-        servicePointStatus:
-          description: 'Code used to indicate the status of the service point. Note
-            the details for the enumeration values below: <ul><li>`ACTIVE`: An active,
-            energised, service point</li><li>`DE_ENERGISED`: The service point exists
-            but is deenergised</li><li>`EXTINCT`: The service point has been permanently
-            decommissioned</li><li>`GREENFIELD`: Applies to a service point that has
-            never been energised</li><li>`OFF_MARKET`: Applies when the service point
-            is no longer settled in the NEM.</li></ul>'
-          enum:
-          - ACTIVE
-          - DE_ENERGISED
-          - EXTINCT
-          - GREENFIELD
-          - OFF_MARKET
-          type: string
-        jurisdictionCode:
-          description: 'Jurisdiction code to which the service point belongs. This
-            code defines the jurisdictional rules which apply to the service point.
-            Note the details of enumeration values below: <ul><li>`ALL`: All Jurisdictions</li><li>`ACT`:
-            Australian Capital Territory</li><li>`NEM`: National Electricity Market</li><li>`NSW`:
-            New South Wales</li><li>`QLD`: Queensland</li><li>`SA`: South Australia</li><li>`TAS`:
-            Tasmania</li><li>`VIC`: Victoria.</li></ul>'
-          enum:
-          - ALL
-          - ACT
-          - NEM
-          - NSW
-          - QLD
-          - SA
-          - TAS
-          - VIC
-          type: string
-        isGenerator:
-          description: This flag determines whether the energy at this connection
-            point is to be treated as consumer load or as a generating unit (this
-            may include generator auxiliary loads). If absent defaults to `false`.
-            <br>**Note:** Only applicable for scheduled or semischeduled generators,
-            does not indicate on site generation by consumer.
-          type: boolean
-        validFromDate:
-          description: The latest start date from which the constituent data sets
-            of this service point became valid.
-          type: string
-          x-cds-type: DateString
-        lastUpdateDateTime:
-          description: The date and time that the information for this service point
-            was modified.
-          type: string
-          x-cds-type: DateTimeString
-        consumerProfile:
-          $ref: '#/components/schemas/EnergyServicePoint_consumerProfile'
-        distributionLossFactor:
-          $ref: '#/components/schemas/EnergyServicePointDetail_distributionLossFactor'
-        relatedParticipants:
-          items:
-            $ref: '#/components/schemas/EnergyServicePointDetail_relatedParticipants'
-          type: array
-        location:
-          $ref: '#/components/schemas/CommonPhysicalAddress'
-        meters:
-          description: The meters associated with the service point. This may be empty
-            where there are no meters physically installed at the service point.
-          items:
-            $ref: '#/components/schemas/EnergyServicePointDetail_meters'
-          type: array
-      required:
-      - distributionLossFactor
-      - jurisdictionCode
-      - lastUpdateDateTime
-      - location
-      - nationalMeteringId
-      - relatedParticipants
-      - servicePointClassification
-      - servicePointId
-      - servicePointStatus
-      - validFromDate
+      allOf:
+      - $ref: '#/components/schemas/EnergyServicePoint'
+      - $ref: '#/components/schemas/EnergyServicePointDetail_allOf'
     EnergyUsageRead:
       example:
         basicRead:
@@ -2261,6 +1922,7 @@ components:
             will be replaced with NMI for all interactions between Data Holder and
             AEMO.
           type: string
+          x-cds-type: ASCIIString
         registerId:
           description: Register ID of the meter register where the meter reads are
             obtained.
@@ -2270,7 +1932,7 @@ components:
             are obtained.
           type: string
         meterId:
-          description: Meter id/serial number as it appears in customer’s bill. ID
+          description: Meter id/serial number as it appears in customer's bill. ID
             permanence rules do not apply.
           type: string
         controlledLoad:
@@ -2364,7 +2026,7 @@ components:
             type: FOSSIL
             manufacturer: manufacturer
             status: ACTIVE
-          equipmentType: INVERTER
+          equipmentType: OTHER
           status: ACTIVE
         - inverterSeries: inverterSeries
           inverterModelNumber: inverterModelNumber
@@ -2392,7 +2054,7 @@ components:
             type: FOSSIL
             manufacturer: manufacturer
             status: ACTIVE
-          equipmentType: INVERTER
+          equipmentType: OTHER
           status: ACTIVE
       properties:
         servicePointId:
@@ -2401,6 +2063,7 @@ components:
             will be replaced with NMI for all interactions between Data Holder and
             AEMO.
           type: string
+          x-cds-type: ASCIIString
         approvedCapacity:
           description: Approved small generating unit capacity as agreed with NSP
             in the connection agreement, expressed in kVA. Value of `0` indicates
@@ -2426,7 +2089,6 @@ components:
           description: For identification of small generating units designed with
             the ability to operate in an islanded mode.
           type: boolean
-          x-cds-type: Boolean
         hasCentralProtectionControl:
           default: false
           description: For DER installations where NSPs specify the need for additional
@@ -2450,40 +2112,6 @@ components:
       x-conditional:
       - protectionMode
     CommonPhysicalAddress:
-      example:
-        paf:
-          streetType: streetType
-          floorLevelNumber: floorLevelNumber
-          thoroughfareNumber1Suffix: thoroughfareNumber1Suffix
-          postalDeliveryNumber: 1
-          dpid: dpid
-          thoroughfareNumber2: 6
-          postcode: postcode
-          thoroughfareNumber1: 0
-          flatUnitNumber: flatUnitNumber
-          lotNumber: lotNumber
-          buildingName1: buildingName1
-          buildingName2: buildingName2
-          streetName: streetName
-          localityName: localityName
-          flatUnitType: flatUnitType
-          floorLevelType: floorLevelType
-          postalDeliveryNumberSuffix: postalDeliveryNumberSuffix
-          postalDeliveryType: postalDeliveryType
-          streetSuffix: streetSuffix
-          state: state
-          postalDeliveryNumberPrefix: postalDeliveryNumberPrefix
-          thoroughfareNumber2Suffix: thoroughfareNumber2Suffix
-        simple:
-          country: AUS
-          city: city
-          postcode: postcode
-          addressLine1: addressLine1
-          addressLine2: addressLine2
-          addressLine3: addressLine3
-          state: state
-          mailingName: mailingName
-        addressUType: paf
       properties:
         addressUType:
           description: The type of address object present.
@@ -2503,15 +2131,6 @@ components:
       - paf
     CommonSimpleAddress:
       description: Required if _addressUType_ is set to `simple`.
-      example:
-        country: AUS
-        city: city
-        postcode: postcode
-        addressLine1: addressLine1
-        addressLine2: addressLine2
-        addressLine3: addressLine3
-        state: state
-        mailingName: mailingName
       properties:
         mailingName:
           description: Name of the individual or business formatted for inclusion
@@ -2555,29 +2174,6 @@ components:
       description: Australian address formatted according to the file format defined
         by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).
         Required if _addressUType_ is set to `paf`.
-      example:
-        streetType: streetType
-        floorLevelNumber: floorLevelNumber
-        thoroughfareNumber1Suffix: thoroughfareNumber1Suffix
-        postalDeliveryNumber: 1
-        dpid: dpid
-        thoroughfareNumber2: 6
-        postcode: postcode
-        thoroughfareNumber1: 0
-        flatUnitNumber: flatUnitNumber
-        lotNumber: lotNumber
-        buildingName1: buildingName1
-        buildingName2: buildingName2
-        streetName: streetName
-        localityName: localityName
-        flatUnitType: flatUnitType
-        floorLevelType: floorLevelType
-        postalDeliveryNumberSuffix: postalDeliveryNumberSuffix
-        postalDeliveryType: postalDeliveryType
-        streetSuffix: streetSuffix
-        state: state
-        postalDeliveryNumberPrefix: postalDeliveryNumberPrefix
-        thoroughfareNumber2Suffix: thoroughfareNumber2Suffix
       properties:
         dpid:
           description: Unique identifier for an address as defined by Australia Post.
@@ -2666,21 +2262,27 @@ components:
       - postcode
       - state
       type: object
-    RequestServicePointIdList:
+    RequestSDHServicePointIdListV1:
       example:
         data:
           servicePointIds:
-          - servicePointIds
-          - servicePointIds
+          - null
+          - null
         meta: '{}'
       properties:
         data:
-          $ref: '#/components/schemas/RequestServicePointIdList_data'
+          $ref: '#/components/schemas/RequestSDHServicePointIdListV1_data'
         meta:
           type: object
       required:
       - data
       type: object
+    EnergySDHServicePointId:
+      description: The independent ID of the service point, known in the industry
+        as the National Meter Identifier (NMI). Note that the _servicePointId_ will
+        be replaced with NMI for all interactions between Data Holder and AEMO.
+      type: string
+      x-cds-type: ASCIIString
     Links:
       example:
         self: self
@@ -2764,7 +2366,7 @@ components:
           nationalMeteringId: nationalMeteringId
           servicePointStatus: ACTIVE
           servicePointClassification: EXTERNAL_PROFILE
-          isGenerator: true
+          isGenerator: false
         - lastUpdateDateTime: lastUpdateDateTime
           consumerProfile:
             threshold: LOW
@@ -2775,7 +2377,7 @@ components:
           nationalMeteringId: nationalMeteringId
           servicePointStatus: ACTIVE
           servicePointClassification: EXTERNAL_PROFILE
-          isGenerator: true
+          isGenerator: false
       properties:
         servicePoints:
           items:
@@ -2899,7 +2501,7 @@ components:
               type: FOSSIL
               manufacturer: manufacturer
               status: ACTIVE
-            equipmentType: INVERTER
+            equipmentType: OTHER
             status: ACTIVE
           - inverterSeries: inverterSeries
             inverterModelNumber: inverterModelNumber
@@ -2927,7 +2529,7 @@ components:
               type: FOSSIL
               manufacturer: manufacturer
               status: ACTIVE
-            equipmentType: INVERTER
+            equipmentType: OTHER
             status: ACTIVE
         - protectionMode:
             interTripScheme: interTripScheme
@@ -2978,7 +2580,7 @@ components:
               type: FOSSIL
               manufacturer: manufacturer
               status: ACTIVE
-            equipmentType: INVERTER
+            equipmentType: OTHER
             status: ACTIVE
           - inverterSeries: inverterSeries
             inverterModelNumber: inverterModelNumber
@@ -3006,7 +2608,7 @@ components:
               type: FOSSIL
               manufacturer: manufacturer
               status: ACTIVE
-            equipmentType: INVERTER
+            equipmentType: OTHER
             status: ACTIVE
       properties:
         derRecords:
@@ -3017,7 +2619,7 @@ components:
       required:
       - derRecords
       type: object
-    ResponseErrorListV2_meta:
+    ErrorV2_meta:
       description: Additional data for customised error codes.
       properties:
         urn:
@@ -3028,31 +2630,6 @@ components:
       type: object
       x-conditional:
       - urn
-    ResponseErrorListV2_errors:
-      properties:
-        code:
-          description: The code of the error encountered. Where the error is specific
-            to the respondent, an application-specific error code, expressed as a
-            string value. If the error is application-specific, the URN code that
-            the specific error extends must be provided in the meta object. Otherwise,
-            the value is the error code URN.
-          type: string
-        title:
-          description: A short, human-readable summary of the problem that MUST NOT
-            change from occurrence to occurrence of the problem represented by the
-            error code.
-          type: string
-        detail:
-          description: A human-readable explanation specific to this occurrence of
-            the problem.
-          type: string
-        meta:
-          $ref: '#/components/schemas/ResponseErrorListV2_meta'
-      required:
-      - code
-      - detail
-      - title
-      type: object
     EnergyServicePoint_consumerProfile:
       example:
         threshold: LOW
@@ -3082,11 +2659,7 @@ components:
           - HIGH
           type: string
       type: object
-    EnergyServicePointDetail_distributionLossFactor:
-      example:
-        code: code
-        description: description
-        lossValue: lossValue
+    EnergyServicePointDetail_allOf_distributionLossFactor:
       properties:
         code:
           description: A code used to identify data loss factor for the service point
@@ -3104,10 +2677,7 @@ components:
       - description
       - lossValue
       type: object
-    EnergyServicePointDetail_relatedParticipants:
-      example:
-        role: FRMP
-        party: party
+    EnergyServicePointDetail_allOf_relatedParticipants:
       properties:
         party:
           description: The name of the party/organisation related to this service
@@ -3129,15 +2699,8 @@ components:
       - party
       - role
       type: object
-    EnergyServicePointDetail_specifications:
+    EnergyServicePointDetail_allOf_specifications:
       description: Technical characteristics of the meter.
-      example:
-        installationType: BASIC
-        nextScheduledReadDate: nextScheduledReadDate
-        model: model
-        readType: readType
-        status: CURRENT
-        manufacturer: manufacturer
       properties:
         status:
           description: 'A code to denote the status of the meter. Note the details
@@ -3211,18 +2774,7 @@ components:
       - installationType
       - status
       type: object
-    EnergyServicePointDetail_registers:
-      example:
-        unitOfMeasure: unitOfMeasure
-        registerId: registerId
-        consumptionType: ACTUAL
-        averagedDailyLoad: 5.962133916683182
-        multiplier: 5.637376656633329
-        registerConsumptionType: INTERVAL
-        networkTariffCode: networkTariffCode
-        registerSuffix: registerSuffix
-        controlledLoad: true
-        timeOfDay: ALLDAY
+    EnergyServicePointDetail_allOf_registers:
       properties:
         registerId:
           description: Unique identifier of the register within this service point.
@@ -3290,37 +2842,7 @@ components:
       - registerConsumptionType
       - registerId
       type: object
-    EnergyServicePointDetail_meters:
-      example:
-        meterId: meterId
-        registers:
-        - unitOfMeasure: unitOfMeasure
-          registerId: registerId
-          consumptionType: ACTUAL
-          averagedDailyLoad: 5.962133916683182
-          multiplier: 5.637376656633329
-          registerConsumptionType: INTERVAL
-          networkTariffCode: networkTariffCode
-          registerSuffix: registerSuffix
-          controlledLoad: true
-          timeOfDay: ALLDAY
-        - unitOfMeasure: unitOfMeasure
-          registerId: registerId
-          consumptionType: ACTUAL
-          averagedDailyLoad: 5.962133916683182
-          multiplier: 5.637376656633329
-          registerConsumptionType: INTERVAL
-          networkTariffCode: networkTariffCode
-          registerSuffix: registerSuffix
-          controlledLoad: true
-          timeOfDay: ALLDAY
-        specifications:
-          installationType: BASIC
-          nextScheduledReadDate: nextScheduledReadDate
-          model: model
-          readType: readType
-          status: CURRENT
-          manufacturer: manufacturer
+    EnergyServicePointDetail_allOf_meters:
       properties:
         meterId:
           description: The meter ID uniquely identifies a meter for a given service
@@ -3328,17 +2850,39 @@ components:
             unique.
           type: string
         specifications:
-          $ref: '#/components/schemas/EnergyServicePointDetail_specifications'
+          $ref: '#/components/schemas/EnergyServicePointDetail_allOf_specifications'
         registers:
           description: Usage data registers available from the meter. This may be
             empty where there are no meters physically installed at the service point.
           items:
-            $ref: '#/components/schemas/EnergyServicePointDetail_registers'
+            $ref: '#/components/schemas/EnergyServicePointDetail_allOf_registers'
           type: array
       required:
       - meterId
       - specifications
       type: object
+    EnergyServicePointDetail_allOf:
+      properties:
+        distributionLossFactor:
+          $ref: '#/components/schemas/EnergyServicePointDetail_allOf_distributionLossFactor'
+        relatedParticipants:
+          items:
+            $ref: '#/components/schemas/EnergyServicePointDetail_allOf_relatedParticipants'
+          type: array
+        location:
+          allOf:
+          - $ref: '#/components/schemas/CommonPhysicalAddress'
+          description: Location of the servicepoint.
+        meters:
+          description: The meters associated with the service point. This may be empty
+            where there are no meters physically installed at the service point.
+          items:
+            $ref: '#/components/schemas/EnergyServicePointDetail_allOf_meters'
+          type: array
+      required:
+      - distributionLossFactor
+      - location
+      - relatedParticipants
     EnergyUsageRead_basicRead:
       description: Mandatory if _readUType_ is set to `basicRead`.
       example:
@@ -3440,9 +2984,9 @@ components:
       - intervalReads
       - readQualities
     EnergyDerRecord_protectionMode:
-      description: Required only when the _hasCentralProtectionAndControl_ flag is
-        set to `true`. One or more of the object fields will be provided to describe
-        the protection modes in place.
+      description: Required only when the _hasCentralProtectionControl_ flag is set
+        to `true`. One or more of the object fields will be provided to describe the
+        protection modes in place.
       example:
         interTripScheme: interTripScheme
         underFrequencyProtectionDelay: 2.3021358869347655
@@ -3610,7 +3154,7 @@ components:
           type: FOSSIL
           manufacturer: manufacturer
           status: ACTIVE
-        equipmentType: INVERTER
+        equipmentType: OTHER
         status: ACTIVE
       properties:
         connectionIdentifier:
@@ -3624,6 +3168,7 @@ components:
           type: integer
           x-cds-type: PositiveInteger
         equipmentType:
+          default: OTHER
           description: Indicates whether the DER device is connected via an inverter
             (and what category of inverter it is) or not (e.g., rotating machine).
             If absent, assume equipment type to be `OTHER`.
@@ -3675,16 +3220,16 @@ components:
       - inverterSeries
       - inverterModelNumber
       - inverterDeviceCapacity
-    RequestServicePointIdList_data:
+    RequestSDHServicePointIdListV1_data:
       example:
         servicePointIds:
-        - servicePointIds
-        - servicePointIds
+        - null
+        - null
       properties:
         servicePointIds:
-          description: Array of specific _servicePointIds_ to obtain data for.
+          description: Array of _servicePointId_ values to obtain data for.
           items:
-            type: string
+            $ref: '#/components/schemas/EnergySDHServicePointId'
           type: array
       required:
       - servicePointIds

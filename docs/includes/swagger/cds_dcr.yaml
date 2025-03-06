@@ -1,26 +1,28 @@
 openapi: 3.0.3
 info:
-  description: This specification defines the APIs for Data Holders exposing Dynamic
-    Client Registration endpoints.
+  contact:
+    email: contact@dsb.gov.au
+    name: Data Standards Body
+    url: https://dsb.gov.au/
+  description: Specifications for Dynamic Client Registration endpoints applicable
+    to all data holders (except secondary data holders).
   title: CDR Dynamic Client Registration API
-  version: 1.33.0
+  version: 1.33.1
 servers:
 - description: MTLS
   url: https://mtls.dh.example.com/cds-au/v1
+tags:
+- description: Data Holder Client Registration endpoints
+  name: Data Holder Client Registration
+  x-shortName: Client Registration
 paths:
   /register:
     post:
       description: "Register a client using a CDR Register issued Software Statement\
         \ Assertion. \n\nThis endpoint does not require [CORS](#cors)."
-      operationId: PostDataRecipientRegistration
+      operationId: postClientRegistration
       requestBody:
-        content:
-          application/jwt:
-            schema:
-              $ref: '#/components/schemas/ClientRegistrationRequest'
-        description: The registration request JWT to be used to register with a Data
-          Holder.
-        required: true
+        $ref: '#/components/requestBodies/RequestClientRegistration'
       responses:
         "201":
           content:
@@ -36,12 +38,11 @@ paths:
           description: Request failed due to client error
       summary: Register Data Recipient oAuth Client
       tags:
-      - Client Registration
-      x-codegen-request-body-name: ClientRegistrationRequest
+      - Data Holder Client Registration
   /register/{ClientId}:
     delete:
       description: Delete a Client Registration for a given Client ID.
-      operationId: DeleteDataRecipientRegistration
+      operationId: deleteClientRegistration
       parameters:
       - description: The client ID issued by the target Data Holder.
         explode: false
@@ -58,8 +59,8 @@ paths:
         required: true
         schema:
           type: string
-          x-cds-type: ExternalRef
         style: simple
+        x-cds-type: ExternalRef
       responses:
         "204":
           description: Client deleted
@@ -72,8 +73,8 @@ paths:
               explode: false
               schema:
                 type: string
-                x-cds-type: ExternalRef
               style: simple
+              x-cds-type: ExternalRef
         "403":
           description: The client does not have permission to read, update or delete
             the Client
@@ -81,12 +82,12 @@ paths:
           description: Method Not Allowed. The requested method is unsupported
       summary: Delete Data Recipient oAuth Client Registration
       tags:
-      - Client Registration
+      - Data Holder Client Registration
       x-scopes:
       - cdr:registration
     get:
       description: Get a Client Registration for a given Client ID.
-      operationId: GetClientRegistration
+      operationId: getClientRegistration
       parameters:
       - description: The client ID issued by the target Data Holder.
         explode: false
@@ -103,8 +104,8 @@ paths:
         required: true
         schema:
           type: string
-          x-cds-type: ExternalRef
         style: simple
+        x-cds-type: ExternalRef
       responses:
         "200":
           content:
@@ -121,19 +122,19 @@ paths:
               explode: false
               schema:
                 type: string
-                x-cds-type: ExternalRef
               style: simple
+              x-cds-type: ExternalRef
         "403":
           description: The client does not have permission to read, update or delete
             the Client
       summary: Get oAuth Client Registration
       tags:
-      - Client Registration
+      - Data Holder Client Registration
       x-scopes:
       - cdr:registration
     put:
       description: Update a Client Registration for a given Client ID.
-      operationId: PutDataRecipientRegistration
+      operationId: putClientRegistration
       parameters:
       - description: The client ID issued by the target Data Holder.
         explode: false
@@ -150,16 +151,10 @@ paths:
         required: true
         schema:
           type: string
-          x-cds-type: ExternalRef
         style: simple
+        x-cds-type: ExternalRef
       requestBody:
-        content:
-          application/jwt:
-            schema:
-              $ref: '#/components/schemas/ClientRegistrationRequest'
-        description: The registration request JWT to be used to register with a Data
-          Holder.
-        required: true
+        $ref: '#/components/requestBodies/RequestClientRegistration'
       responses:
         "200":
           content:
@@ -182,20 +177,19 @@ paths:
               explode: false
               schema:
                 type: string
-                x-cds-type: ExternalRef
               style: simple
+              x-cds-type: ExternalRef
         "403":
           description: The client does not have permission to read, update or delete
             the Client
       summary: Update Data Recipient Registration
       tags:
-      - Client Registration
+      - Data Holder Client Registration
       x-scopes:
       - cdr:registration
-      x-codegen-request-body-name: ClientRegistrationRequest
 components:
   parameters:
-    Authorization:
+    HeaderAuthorization:
       description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
       explode: false
       in: header
@@ -203,9 +197,9 @@ components:
       required: true
       schema:
         type: string
-        x-cds-type: ExternalRef
       style: simple
-    ClientId:
+      x-cds-type: ExternalRef
+    PathClientId:
       description: The client ID issued by the target Data Holder.
       explode: false
       in: path
@@ -214,14 +208,41 @@ components:
       schema:
         type: string
       style: simple
+  requestBodies:
+    RequestClientRegistration:
+      content:
+        application/jwt:
+          schema:
+            $ref: '#/components/schemas/ClientRegistrationRequestV1'
+      description: The registration request JWT to be used to register with a Data
+        Holder.
+      required: true
   responses:
-    "400Error":
+    PostClientRegistration201:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RegistrationProperties'
+      description: Client registration success
+    GetClientRegistration200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RegistrationProperties'
+      description: Client registration retrieval success
+    PutClientRegistration200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RegistrationProperties'
+      description: Client registration update success
+    DCRGeneric400:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RegistrationError'
       description: Request failed due to client error
-    "401Error":
+    DCRGeneric401:
       description: Request failed due to unknown or invalid Client or invalid access
         token
       headers:
@@ -230,15 +251,15 @@ components:
           explode: false
           schema:
             type: string
-            x-cds-type: ExternalRef
           style: simple
-    "403Error":
+          x-cds-type: ExternalRef
+    DCRGeneric403:
       description: The client does not have permission to read, update or delete the
         Client
-    "405Error":
+    DCRGeneric405:
       description: Method Not Allowed. The requested method is unsupported
   schemas:
-    ClientRegistrationRequest:
+    ClientRegistrationRequestV1:
       description: The registration request JWT to be used to register with a Data
         Holder. The schema of the payload section of the decoded string(JWT) is defined
         in [ClientRegistration](#cdr-dynamic-client-registration-api_schemas_tocSclientregistration).
@@ -337,7 +358,7 @@ components:
           type: string
         redirect_uris:
           description: Array of redirection URI strings for use in redirect-based
-            flows. If used, _redirect_uris_ MUST match or be a subset of the _redirect_uris_
+            flows. If used, _redirect_uris_ **MUST** match or be a subset of the _redirect_uris_
             as defined in the SSA.
           example:
           - https://adr.example.com/redirects/redirect1
@@ -354,7 +375,7 @@ components:
           x-cds-type: URIString
         logo_uri:
           description: URL string that references a logo for the client. If present,
-            the server SHOULD display this image to the end-user during approval.
+            the server **SHOULD** display this image to the end-user during approval.
           example: https://adr.example.com/logos/logo1.png
           type: string
           x-cds-type: URIString
@@ -394,14 +415,12 @@ components:
           enum:
           - private_key_jwt
           type: string
-          x-cds-type: Enum
         token_endpoint_auth_signing_alg:
           description: The algorithm used for signing the JWT.
           enum:
           - PS256
           - ES256
           type: string
-          x-cds-type: Enum
         grant_types:
           description: Array of OAuth 2.0 grant type strings that the client can use
             at the token endpoint.
@@ -415,7 +434,6 @@ components:
             - authorization_code
             - refresh_token
             type: string
-            x-cds-type: Enum
           type: array
         response_types:
           description: Array of the OAuth 2.0 _response_type_ strings that the client
@@ -427,22 +445,20 @@ components:
             - code
             - code id_token
             type: string
-            x-cds-type: Enum
           type: array
         application_type:
+          default: web
           description: Kind of the application. The only supported application type
             will be `web`.
           enum:
           - web
           type: string
-          x-cds-type: Enum
         id_token_signed_response_alg:
           description: Algorithm with which an id_token is to be signed.
           enum:
           - PS256
           - ES256
           type: string
-          x-cds-type: Enum
         id_token_encrypted_response_alg:
           description: 'JWE _alg_ algorithm with which an id_token is to be encrypted.<br/><br/>Required
             only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered.'
@@ -493,7 +509,6 @@ components:
           - PS256
           - ES256
           type: string
-          x-cds-type: Enum
         software_statement:
           description: The Software Statement Assertion, as defined in CDR standards.
           format: JWT
@@ -506,13 +521,13 @@ components:
           example: 740C368F-ECF9-4D29-A2EA-0514A66B0CDE
           type: string
         software_roles:
+          default: data-recipient-software-product
           description: String containing a role of the software in the CDR Regime.
             Initially the only value used will be `data-recipient-software-product`.
           enum:
           - data-recipient-software-product
           example: data-recipient-software-product
           type: string
-          x-cds-type: Enum
         scope:
           description: String containing a space-separated list of scope values that
             the client can use when requesting access tokens.
@@ -560,7 +575,6 @@ components:
           - invalid_software_statement
           - unapproved_software_statement
           type: string
-          x-cds-type: Enum
         error_description:
           description: Additional text description of the error for debugging.
           type: string

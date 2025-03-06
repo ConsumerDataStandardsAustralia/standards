@@ -1,3 +1,7 @@
+<!-- Endpoint tag group description -->
+
+<!-- Data Holder Client Registration endpoints -->
+
 <h2 id="cdr-dynamic-client-registration-api_register-data-recipient-oauth-client">Register Data Recipient oAuth Client</h2>
 
 <p id="register-data-recipient-oauth-client" class="orig-anchor"></p>
@@ -59,14 +63,16 @@
 <th>In</th>
 <th>Type</th>
 <th>Required</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-dynamic-client-registration-apiclientregistrationrequest">ClientRegistrationRequest</a></td>
+<td><a href="#schemacdr-dynamic-client-registration-apiclientregistrationrequestv1">ClientRegistrationRequestV1</a></td>
 <td>mandatory</td>
+<td></td>
 <td>The registration request JWT to be used to register with a Data Holder.</td>
 </tr>
 </tbody></table>
@@ -201,6 +207,7 @@ This operation does not require authentication.
 <th>In</th>
 <th>Type</th>
 <th>Required</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -209,6 +216,7 @@ This operation does not require authentication.
 <td>path</td>
 <td>string</td>
 <td>mandatory</td>
+<td></td>
 <td>The client ID issued by the target Data Holder.</td>
 </tr>
 <tr>
@@ -216,6 +224,7 @@ This operation does not require authentication.
 <td>header</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
+<td></td>
 <td>An Authorisation Token as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong>.</td>
 </tr>
 </tbody></table>
@@ -307,6 +316,7 @@ This operation does not require authentication.
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -314,6 +324,7 @@ This operation does not require authentication.
 <td>401</td>
 <td>WWW-Authenticate</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
+<td>optional</td>
 <td>The Response Header Field as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong>.</td>
 </tr>
 </tbody></table>
@@ -384,6 +395,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>In</th>
 <th>Type</th>
 <th>Required</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -392,6 +404,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>path</td>
 <td>string</td>
 <td>mandatory</td>
+<td></td>
 <td>The client ID issued by the target Data Holder.</td>
 </tr>
 <tr>
@@ -399,13 +412,15 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
+<td></td>
 <td>An Authorisation Token as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong>.</td>
 </tr>
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacdr-dynamic-client-registration-apiclientregistrationrequest">ClientRegistrationRequest</a></td>
+<td><a href="#schemacdr-dynamic-client-registration-apiclientregistrationrequestv1">ClientRegistrationRequestV1</a></td>
 <td>mandatory</td>
+<td></td>
 <td>The registration request JWT to be used to register with a Data Holder.</td>
 </tr>
 </tbody></table>
@@ -503,6 +518,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -510,6 +526,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>401</td>
 <td>WWW-Authenticate</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
+<td>optional</td>
 <td>The Response Header Field as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong>.</td>
 </tr>
 </tbody></table>
@@ -569,6 +586,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>In</th>
 <th>Type</th>
 <th>Required</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -577,6 +595,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>path</td>
 <td>string</td>
 <td>mandatory</td>
+<td></td>
 <td>The client ID issued by the target Data Holder.</td>
 </tr>
 <tr>
@@ -584,6 +603,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>header</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
+<td></td>
 <td>An Authorisation Token as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong>.</td>
 </tr>
 </tbody></table>
@@ -631,6 +651,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -638,6 +659,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>401</td>
 <td>WWW-Authenticate</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
+<td>optional</td>
 <td>The Response Header Field as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong>.</td>
 </tr>
 </tbody></table>
@@ -649,25 +671,26 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 class="schema-heading" id="cdr-dynamic-client-registration-api-schemas">Schemas</h2>
 
-<h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSclientregistrationrequest">ClientRegistrationRequest</h3>
+<h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSclientregistrationrequestv1">ClientRegistrationRequestV1</h3>
 
-<p id="tocSclientregistrationrequest" class="orig-anchor"></p>
+<p id="tocSclientregistrationrequestv1" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-dynamic-client-registration-api_schema-base_clientregistrationrequest"></a>
-  <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistrationrequest"></a>
+  <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistrationrequestv1"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."</span><span class="w">
 </span></code></pre>
 <p><em>The registration request JWT to be used to register with a Data Holder. The schema of the payload section of the decoded string(JWT) is defined in <a href="#cdr-dynamic-client-registration-api_schemas_tocSclientregistration">ClientRegistration</a>.</em></p>
 
-<h3 id="cdr-dynamic-client-registration-api_clientregistrationrequest_properties">Properties</h3>
+<h3 id="cdr-dynamic-client-registration-api_clientregistrationrequestv1_properties">Properties</h3>
 
 <table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -675,6 +698,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><em>anonymous</em></td>
 <td>string(JWT)</td>
 <td>mandatory</td>
+<td></td>
 <td>The registration request JWT to be used to register with a Data Holder. The schema of the payload section of the decoded string(JWT) is defined in <a href="#cdr-dynamic-client-registration-api_schemas_tocSclientregistration">ClientRegistration</a>.</td>
 </tr>
 </tbody></table>
@@ -739,6 +763,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -746,198 +771,231 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>client_id</td>
 <td>string</td>
 <td>mandatory</td>
+<td></td>
 <td>Data Holder issued client identifier string.</td>
 </tr>
 <tr>
 <td>client_id_issued_at</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>optional</td>
+<td></td>
 <td>Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.</td>
 </tr>
 <tr>
 <td>client_name</td>
 <td>string</td>
 <td>mandatory</td>
+<td></td>
 <td>Human-readable string name of the software product to be presented to the end-user during authorization.</td>
 </tr>
 <tr>
 <td>client_description</td>
 <td>string</td>
 <td>mandatory</td>
+<td></td>
 <td>Human-readable string name of the software product description to be presented to the end user during authorization.</td>
 </tr>
 <tr>
 <td>client_uri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
+<td></td>
 <td>URL string of a web page providing information about the client.</td>
 </tr>
 <tr>
 <td>legal_entity_id</td>
 <td>string</td>
 <td>optional</td>
+<td></td>
 <td>A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity.</td>
 </tr>
 <tr>
 <td>legal_entity_name</td>
 <td>string</td>
 <td>optional</td>
+<td></td>
 <td>Human-readable string name of the Accredited Data Recipient Legal Entity.</td>
 </tr>
 <tr>
 <td>org_id</td>
 <td>string</td>
 <td>mandatory</td>
+<td></td>
 <td>A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand.</td>
 </tr>
 <tr>
 <td>org_name</td>
 <td>string</td>
 <td>mandatory</td>
+<td></td>
 <td>Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization.</td>
 </tr>
 <tr>
 <td>redirect_uris</td>
 <td><a href="#common-field-types">[URIString]</a></td>
 <td>mandatory</td>
-<td>Array of redirection URI strings for use in redirect-based flows. If used, <em>redirect_uris</em> MUST match or be a subset of the <em>redirect_uris</em> as defined in the SSA.</td>
+<td></td>
+<td>Array of redirection URI strings for use in redirect-based flows. If used, <em>redirect_uris</em> <strong>MUST</strong> match or be a subset of the <em>redirect_uris</em> as defined in the SSA.</td>
 </tr>
 <tr>
 <td>sector_identifier_uri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
+<td></td>
 <td>URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier.</td>
 </tr>
 <tr>
 <td>logo_uri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
-<td>URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval.</td>
+<td></td>
+<td>URL string that references a logo for the client. If present, the server <strong>SHOULD</strong> display this image to the end-user during approval.</td>
 </tr>
 <tr>
 <td>tos_uri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
+<td></td>
 <td>URL string that points to a human-readable terms of service document for the Software Product.</td>
 </tr>
 <tr>
 <td>policy_uri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
+<td></td>
 <td>URL string that points to a human-readable policy document for the Software Product.</td>
 </tr>
 <tr>
 <td>jwks_uri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
+<td></td>
 <td>URL string referencing the client JSON Web Key (JWK) Set <strong><a href="#nref-RFC7517">[RFC7517]</a></strong> document, which contains the client public keys.</td>
 </tr>
 <tr>
 <td>revocation_uri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
+<td></td>
 <td>URI string that references the location of the Software Product consent revocation endpoint.</td>
 </tr>
 <tr>
 <td>recipient_base_uri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>optional</td>
+<td></td>
 <td>Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints.</td>
 </tr>
 <tr>
 <td>token_endpoint_auth_method</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
+<td></td>
 <td>The requested authentication method for the token endpoint.</td>
 </tr>
 <tr>
 <td>token_endpoint_auth_signing_alg</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
+<td></td>
 <td>The algorithm used for signing the JWT.</td>
 </tr>
 <tr>
 <td>grant_types</td>
 <td>[<a href="#common-field-types">Enum</a>]</td>
 <td>mandatory</td>
+<td></td>
 <td>Array of OAuth 2.0 grant type strings that the client can use at the token endpoint.</td>
 </tr>
 <tr>
 <td>response_types</td>
 <td>[<a href="#common-field-types">Enum</a>]</td>
 <td>mandatory</td>
+<td></td>
 <td>Array of the OAuth 2.0 <em>response_type</em> strings that the client can use at the authorization endpoint.<br><br><em>response_type</em> value <code>code</code> is required for Authorization Code Flow.<br><em>response_type</em> value <code>code id_token</code> is required for OIDC Hybrid Flow.</td>
 </tr>
 <tr>
 <td>application_type</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
+<td><code>web</code></td>
 <td>Kind of the application. The only supported application type will be <code>web</code>.</td>
 </tr>
 <tr>
 <td>id_token_signed_response_alg</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
+<td></td>
 <td>Algorithm with which an id_token is to be signed.</td>
 </tr>
 <tr>
 <td>id_token_encrypted_response_alg</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>conditional</td>
+<td></td>
 <td>JWE <em>alg</em> algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (<em>response_type</em>: <code>code id_token</code>) is registered.</td>
 </tr>
 <tr>
 <td>id_token_encrypted_response_enc</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>conditional</td>
+<td></td>
 <td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (<em>response_type</em>: <code>code id_token</code>) is registered.</td>
 </tr>
 <tr>
 <td>authorization_signed_response_alg</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>conditional</td>
+<td></td>
 <td>The JWS <em>alg</em> algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm <code>none</code> is not allowed.<br><br>Required if <em>response_type</em> of <code>code</code> is registered by the client.</td>
 </tr>
 <tr>
 <td>authorization_encrypted_response_alg</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>conditional</td>
+<td></td>
 <td>The JWE <em>alg</em> algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if <em>authorization_encrypted_response_enc</em> is included.</td>
 </tr>
 <tr>
 <td>authorization_encrypted_response_enc</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
+<td></td>
 <td>The JWE <em>enc</em> algorithm required for encrypting authorization responses. If <em>authorization_encrypted_response_alg</em> is specified, the default for this value is <code>A128CBC-HS256</code>.</td>
 </tr>
 <tr>
 <td>request_object_signing_alg</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
+<td></td>
 <td>Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder.</td>
 </tr>
 <tr>
 <td>software_statement</td>
 <td>string(JWT)</td>
 <td>mandatory</td>
+<td></td>
 <td>The Software Statement Assertion, as defined in CDR standards.</td>
 </tr>
 <tr>
 <td>software_id</td>
 <td>string</td>
 <td>mandatory</td>
+<td></td>
 <td>String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. <br><br>The <em>software_id</em> will remain the same for the lifetime of the product, across multiple updates and versions.</td>
 </tr>
 <tr>
 <td>software_roles</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>optional</td>
+<td><code>data-recipient-software-product</code></td>
 <td>String containing a role of the software in the CDR Regime. Initially the only value used will be <code>data-recipient-software-product</code>.</td>
 </tr>
 <tr>
 <td>scope</td>
 <td>string</td>
 <td>mandatory</td>
+<td></td>
 <td>String containing a space-separated list of scope values that the client can use when requesting access tokens.</td>
 </tr>
 </tbody></table>
@@ -1099,6 +1157,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1106,36 +1165,42 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><em>anonymous</em></td>
 <td>object</td>
 <td>mandatory</td>
+<td></td>
 <td>none</td>
 </tr>
 <tr>
 <td>» iss</td>
 <td>string</td>
 <td>mandatory</td>
+<td></td>
 <td>Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register.</td>
 </tr>
 <tr>
 <td>» iat</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
+<td></td>
 <td>The time at which the request was issued by the Data Recipient expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.</td>
 </tr>
 <tr>
 <td>» exp</td>
 <td><a href="#common-field-types">ExternalRef</a></td>
 <td>mandatory</td>
+<td></td>
 <td>The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.</td>
 </tr>
 <tr>
 <td>» jti</td>
 <td>string</td>
 <td>mandatory</td>
+<td></td>
 <td>Unique identifier for the JWT, used to prevent replay of the token.</td>
 </tr>
 <tr>
 <td>» aud</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
+<td></td>
 <td>Contains the Data Holder issuer value as described in the OIDC Discovery Document.</td>
 </tr>
 </tbody></table>
@@ -1147,6 +1212,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1154,6 +1220,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><em>anonymous</em></td>
 <td><a href="#schemacdr-dynamic-client-registration-apiregistrationproperties">RegistrationProperties</a></td>
 <td>mandatory</td>
+<td></td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -1178,6 +1245,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <th>Name</th>
 <th>Type</th>
 <th>Required</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1185,12 +1253,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>error</td>
 <td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
+<td></td>
 <td>Predefined error code as described in <a href="https://openid.net/specs/openid-connect-registration-1_0.html">section 3.3 OIDC Dynamic Client Registration</a>.</td>
 </tr>
 <tr>
 <td>error_description</td>
 <td><a href="#common-field-types">ASCIIString</a></td>
 <td>optional</td>
+<td></td>
 <td>Additional text description of the error for debugging.</td>
 </tr>
 </tbody></table>

@@ -1,4 +1,5 @@
-<h1 id='known-issues'>Known Issues</h1>
+<h1 id='known-issues'>Known Issues</h1><pre class="highlight diff tab-diff"><code>Added Known Issues item regarding Telco Candidate API
+</code></pre>
 <p>There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.</p>
 
 <table><thead>
@@ -8,8 +9,8 @@
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">None</td>
-<td style="text-align: left">N/A</td>
+<td style="text-align: left">Inconsistencies in Telco Candidate Standards</td>
+<td style="text-align: left"><li>The Get Telco Products endpoint schema references an array of <em>plans</em>, which should be <em>products</em>.</li><li>Transaction endpoints reference a <em>serviceIds</em> (plural) property described as an &#39;Array list&#39;, but with a Type as &#39;string&#39;.</li><li>Redundant <em>service</em> object in Telco Usage list endpoints.</li><li>Redundant <em>balance</em> object in Telco Balance list endpoints.</li><li>Telco Usage list endpoints should have pagination links.</li><li>Some mandatory fields are not specified with valid &#39;required&#39; statements, and some are incorrectly specified with default values.</li></ul></td>
 </tr>
 </tbody></table>
 <h2 id='future-improvements'>Future improvements</h2>
@@ -26,32 +27,32 @@
 </thead><tbody>
 <tr>
 <td><a href="#cdr-participant-discovery-api_get-data-holder-brands">Get Data Holder Brands</a></td>
-<td>400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
-<td>404: <br />Invalid Industry</td>
+<td>400: <br>Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
+<td>404: <br>Invalid Industry</td>
 </tr>
 <tr>
 <td><a href="#cdr-participant-discovery-api_get-software-statement-assertion-ssa">Get Software Statement Assertion (SSA)</a></td>
-<td>400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field <br /><br />403: <br />The ADR or the ADR&#39;s Software Product is not active <br /><br />404: <br />Invalid Industry / Invalid Brand Id / Invalid Software Product Id</td>
+<td>400: <br>Missing Required Header / Invalid Header / Invalid Version / Invalid Field <br><br>403: <br>The ADR or the ADR&#39;s Software Product is not active <br><br>404: <br>Invalid Industry / Invalid Brand Id / Invalid Software Product Id</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="#cdr-participant-discovery-api_get-data-holder-statuses">Get Data Holder Statuses</a></td>
-<td>400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
-<td>404: <br />Invalid Industry</td>
+<td>400: <br>Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
+<td>404: <br>Invalid Industry</td>
 </tr>
 <tr>
 <td><a href="#cdr-participant-discovery-api_get-software-products-statuses">Get Software Products Statuses</a></td>
-<td>400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
-<td>404: <br />Invalid Industry</td>
+<td>400: <br>Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
+<td>404: <br>Invalid Industry</td>
 </tr>
 <tr>
 <td><a href="#cdr-participant-discovery-api_get-data-recipients-statuses">Get Data Recipients Statuses</a></td>
-<td>400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
-<td>404: <br />Invalid Industry</td>
+<td>400: <br>Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
+<td>404: <br>Invalid Industry</td>
 </tr>
 <tr>
 <td><a href="#cdr-participant-discovery-api_get-data-recipients">Get Data Recipients</a></td>
-<td>400: <br />Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
-<td>404: <br />Invalid Industry</td>
+<td>400: <br>Missing Required Header / Invalid Header / Invalid Version / Invalid Field</td>
+<td>404: <br>Invalid Industry</td>
 </tr>
 </tbody></table>

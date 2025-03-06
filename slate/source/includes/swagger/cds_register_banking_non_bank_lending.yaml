@@ -1,10 +1,25 @@
 openapi: 3.0.3
 info:
-  title: CDR Participant Discovery API
-  version: 1.33.0
+  contact:
+    email: contact@dsb.gov.au
+    name: Data Standards Body
+    url: https://dsb.gov.au/
+  description: Specifications for Register endpoints made available to participants.
+  title: CDR Register API (modified for NBL)
+  version: 1.33.1
 servers:
 - description: Production TLS
   url: https://api.cdr.gov.au
+tags:
+- description: Register Operations endpoints
+  name: Register Operations
+  x-shortName: Operations
+- description: Register Data Holder discovery endpoints
+  name: Register Data Holder discovery
+  x-shortName: Data Holder discovery
+- description: Register Data Recipient discovery endpoints
+  name: Register Data Recipient discovery
+  x-shortName: Data Recipient discovery
 paths:
   /cdr-register/v1/{industry}/data-holders/brands:
     get:
@@ -12,7 +27,7 @@ paths:
         Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.
 
         Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.html), [v2](../../../../includes/obsolete/get-data-holder-brands-v2.html).
-      operationId: GetDataHolderBrands
+      operationId: getDataHolderBrands
       parameters:
       - description: The industry the participant is retrieving data for (Banking,
           etc.)
@@ -21,14 +36,7 @@ paths:
         name: industry
         required: true
         schema:
-          enum:
-          - banking
-          - energy
-          - non-bank-lending
-          - telco
-          - all
-          type: string
-          x-cds-type: Enum
+          $ref: '#/components/schemas/IndustryEnum'
         style: simple
       - description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
         explode: false
@@ -37,23 +45,28 @@ paths:
         required: true
         schema:
           type: string
-          x-cds-type: ExternalRef
         style: simple
-      - description: The version of the API endpoint requested by the client. Must
-          be set to a positive integer. For backwards compatiblity defaults to 1 if
-          absent. Note that once version 1 is decommissioned the header will be mandatory
-          for a valid response to be obtained.
+        x-cds-type: ExternalRef
+      - description: Version of the API endpoint requested by the client. Must be
+          set to a positive integer. The endpoint should respond with the highest
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
-        required: false
+        required: true
         schema:
-          default: "1"
           type: string
         style: simple
-      - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
-          of the API endpoint requested by the client. Must be set to a positive integer
-          if provided.
+      - description: Minimum version of the API endpoint requested by the client.
+          Must be set to a positive integer if provided. The endpoint should respond
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the endpoint **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -68,9 +81,9 @@ paths:
         required: false
         schema:
           type: string
-          x-cds-type: DateTimeString
         style: form
-      - description: The page number to return.
+        x-cds-type: DateTimeString
+      - description: Page of results to request (standard pagination).
         explode: true
         in: query
         name: page
@@ -80,7 +93,7 @@ paths:
           type: integer
         style: form
         x-cds-type: PositiveInteger
-      - description: The number of records to return per page.
+      - description: Page size to request. Default is 25 (standard pagination).
         explode: true
         in: query
         name: page-size
@@ -99,12 +112,7 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The version of the API endpoint that the CDR Register has
-                responded with.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XV'
         "400":
           content:
             application/json:
@@ -119,8 +127,8 @@ paths:
               explode: false
               schema:
                 type: string
-                x-cds-type: ExternalRef
               style: simple
+              x-cds-type: ExternalRef
         "406":
           content:
             application/json:
@@ -132,7 +140,7 @@ paths:
         url: https://secure.api.cdr.gov.au
       summary: Get Data Holder Brands
       tags:
-      - Register
+      - Register Data Holder discovery
       x-version: "3"
       x-scopes:
       - cdr-register:read
@@ -142,7 +150,7 @@ paths:
         Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register
 
         Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-summary-v1.html).
-      operationId: GetDataHolderBrandsSummary
+      operationId: getDataHolderBrandsSummary
       parameters:
       - description: The industry the participant is retrieving data for (Banking,
           etc.)
@@ -151,17 +159,16 @@ paths:
         name: industry
         required: true
         schema:
-          enum:
-          - banking
-          - energy
-          - non-bank-lending
-          - telco
-          - all
-          type: string
-          x-cds-type: Enum
+          $ref: '#/components/schemas/IndustryEnum'
         style: simple
-      - description: The version of the API endpoint requested by the client. Must
-          be set to a positive integer.
+      - description: Version of the API endpoint requested by the client. Must be
+          set to a positive integer. The endpoint should respond with the highest
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
@@ -169,9 +176,11 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
-          of the API endpoint requested by the client. Must be set to a positive integer
-          if provided.
+      - description: Minimum version of the API endpoint requested by the client.
+          Must be set to a positive integer if provided. The endpoint should respond
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the endpoint **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -188,8 +197,8 @@ paths:
         required: false
         schema:
           type: string
-          x-cds-type: ASCIIString
         style: simple
+        x-cds-type: ASCIIString
       responses:
         "200":
           content:
@@ -199,30 +208,15 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The version of the API endpoint that the CDR Register has
-                responded with.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XV'
             Etag:
-              description: Entity tag that uniquely represents the requested resource.
-              explode: false
-              schema:
-                type: string
-                x-cds-type: ASCIIString
-              style: simple
+              $ref: '#/components/headers/Etag'
         "304":
           description: Not Modified - The current representation of the target resource
             matches with the entity-tag provided in the _If-None-Match_ request header
           headers:
             Etag:
-              description: Entity tag that uniquely represents the requested resource.
-              explode: false
-              schema:
-                type: string
-                x-cds-type: ASCIIString
-              style: simple
+              $ref: '#/components/headers/Etag'
         "400":
           content:
             application/json:
@@ -243,7 +237,7 @@ paths:
           description: Unsupported Version
       summary: Get Data Holder Brands Summary
       tags:
-      - Register
+      - Register Data Holder discovery
       x-version: "2"
   /cdr-register/v1/{industry}/data-holders/status:
     get:
@@ -251,7 +245,7 @@ paths:
         Endpoint used by participants to discover the statuses for Data Holders from the CDR Register
 
         Obsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v1.html).
-      operationId: GetDataHolderStatuses
+      operationId: getDataHolderStatuses
       parameters:
       - description: The industry the participant is retrieving data for (Banking,
           etc.)
@@ -260,30 +254,28 @@ paths:
         name: industry
         required: true
         schema:
-          enum:
-          - banking
-          - energy
-          - non-bank-lending
-          - telco
-          - all
-          type: string
-          x-cds-type: Enum
+          $ref: '#/components/schemas/IndustryEnum'
         style: simple
-      - description: The version of the API endpoint requested by the client. Must
-          be set to a positive integer. For backwards compatiblity defaults to 1 if
-          absent. Note that once version 1 is decommissioned the header will be mandatory
-          for a valid response to be obtained.
+      - description: Version of the API endpoint requested by the client. Must be
+          set to a positive integer. The endpoint should respond with the highest
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
-        required: false
+        required: true
         schema:
-          default: "1"
           type: string
         style: simple
-      - description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
-          of the API endpoint requested by the client. Must be set to a positive integer
-          if provided.
+      - description: Minimum version of the API endpoint requested by the client.
+          Must be set to a positive integer if provided. The endpoint should respond
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the endpoint **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -300,8 +292,8 @@ paths:
         required: false
         schema:
           type: string
-          x-cds-type: ASCIIString
         style: simple
+        x-cds-type: ASCIIString
       responses:
         "200":
           content:
@@ -311,30 +303,15 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The version of the API endpoint that the CDR Register has
-                responded with.
-              explode: false
-              schema:
-                type: string
-              style: simple
+              $ref: '#/components/headers/XV'
             Etag:
-              description: Entity tag that uniquely represents the requested resource.
-              explode: false
-              schema:
-                type: string
-                x-cds-type: ASCIIString
-              style: simple
+              $ref: '#/components/headers/Etag'
         "304":
           description: Not Modified - The current representation of the target resource
             matches with the entity-tag provided in the _If-None-Match_ request header
           headers:
             Etag:
-              description: Entity tag that uniquely represents the requested resource.
-              explode: false
-              schema:
-                type: string
-                x-cds-type: ASCIIString
-              style: simple
+              $ref: '#/components/headers/Etag'
         "400":
           content:
             application/json:
@@ -349,11 +326,27 @@ paths:
           description: Unsupported Version
       summary: Get Data Holder Statuses
       tags:
-      - Register
+      - Register Data Holder discovery
       x-version: "2"
 components:
+  headers:
+    XV:
+      description: The [payload version](#response-headers) that the endpoint has
+        responded with.
+      explode: false
+      required: true
+      schema:
+        type: string
+      style: simple
+    Etag:
+      description: Entity tag that uniquely represents the requested resource.
+      explode: false
+      schema:
+        type: string
+      style: simple
+      x-cds-type: ASCIIString
   parameters:
-    Authorization:
+    HeaderAuthorization:
       description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
       explode: false
       in: header
@@ -361,38 +354,30 @@ components:
       required: true
       schema:
         type: string
-        x-cds-type: ExternalRef
       style: simple
-    XV:
-      description: The version of the API endpoint requested by the client. Must be
-        set to a positive integer.
+      x-cds-type: ExternalRef
+    HeaderXV:
+      description: Version of the API endpoint requested by the client. Must be set
+        to a positive integer. The endpoint should respond with the highest supported
+        version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+        If the value of [_x-min-v_](#request-headers) is equal to or higher than the
+        value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+        header should be treated as absent. If all versions requested are not supported
+        then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
+        Headers](#request-headers).
       explode: false
       in: header
       name: x-v
-      required: false
-      schema:
-        type: string
-      style: simple
-    Industry:
-      description: The industry the participant is retrieving data for (Banking, etc.)
-      explode: false
-      in: path
-      name: industry
       required: true
       schema:
-        enum:
-        - banking
-        - energy
-        - non-bank-lending
-        - telco
-        - all
         type: string
-        x-cds-type: Enum
       style: simple
-    XMinV:
-      description: The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers)
-        of the API endpoint requested by the client. Must be set to a positive integer
-        if provided.
+    HeaderXMinV:
+      description: Minimum version of the API endpoint requested by the client. Must
+        be set to a positive integer if provided. The endpoint should respond with
+        the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+        If all versions requested are not supported then the endpoint **MUST** respond
+        with a `406 Not Acceptable`.
       explode: false
       in: header
       name: x-min-v
@@ -400,7 +385,16 @@ components:
       schema:
         type: string
       style: simple
-    IfNoneMatch:
+    PathIndustry:
+      description: The industry the participant is retrieving data for (Banking, etc.)
+      explode: false
+      in: path
+      name: industry
+      required: true
+      schema:
+        $ref: '#/components/schemas/IndustryEnum'
+      style: simple
+    HeaderIfNoneMatch:
       description: Makes the request method conditional on a recipient cache or origin
         server not having any current representation of the target resource with an
         entity-tag that does not match any of those listed in the field-value.
@@ -410,20 +404,20 @@ components:
       required: false
       schema:
         type: string
-        x-cds-type: ASCIIString
       style: simple
-    UpdatedSince:
-      description: query filter returns results updated since the specified date-time.
+      x-cds-type: ASCIIString
+    QueryUpdatedSince:
+      description: Query filter returns results updated since the specified date-time.
       explode: true
       in: query
       name: updated-since
       required: false
       schema:
         type: string
-        x-cds-type: DateTimeString
       style: form
-    Page:
-      description: The page number to return.
+      x-cds-type: DateTimeString
+    QueryPage:
+      description: Page of results to request (standard pagination).
       explode: true
       in: query
       name: page
@@ -433,8 +427,8 @@ components:
         type: integer
       style: form
       x-cds-type: PositiveInteger
-    PageSize:
-      description: The number of records to return per page.
+    QueryPageSize:
+      description: Page size to request. Default is 25 (standard pagination).
       explode: true
       in: query
       name: page-size
@@ -445,32 +439,68 @@ components:
       style: form
       x-cds-type: PositiveInteger
   responses:
-    BadRequest:
+    GetDataHolderBrands200:
       content:
-        '*/*':
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseRegisterDataHolderBrandList'
+      description: Successful response
+      headers:
+        x-v:
+          $ref: '#/components/headers/XV'
+    GetDataHolderBrandsSummary200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseDataHoldersBrandSummaryList'
+      description: Successful response
+      headers:
+        x-v:
+          $ref: '#/components/headers/XV'
+        Etag:
+          $ref: '#/components/headers/Etag'
+    GetDataHolderBrandsSummary404:
+      content:
+        application/json:
           schema:
             $ref: '#/components/schemas/ResponseErrorListV2'
-      description: Missing Required Header / Invalid Version / Invalid Path Parameter
-    InvalidBearerToken:
+      description: Industry Not Found
+    GetDataHolderStatuses200:
       content:
-        '*/*':
+        application/json:
           schema:
-            $ref: '#/components/schemas/ResponseErrorListV2'
-      description: Invalid Bearer Token
-    NotModified:
+            $ref: '#/components/schemas/DataHoldersStatusList'
+      description: Successful response
+      headers:
+        x-v:
+          $ref: '#/components/headers/XV'
+        Etag:
+          $ref: '#/components/headers/Etag'
+    RegisterGeneric304:
       description: Not Modified - The current representation of the target resource
         matches with the entity-tag provided in the _If-None-Match_ request header
       headers:
         Etag:
-          description: Entity tag that uniquely represents the requested resource.
+          $ref: '#/components/headers/Etag'
+    RegisterGeneric400:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: Missing Required Header / Invalid Version / Invalid Path Parameter
+    RegisterGeneric401:
+      description: Invalid Bearer Token
+      headers:
+        WWW-Authenticate:
+          description: The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.
           explode: false
           schema:
             type: string
-            x-cds-type: ASCIIString
           style: simple
-    UnsupportedVersion:
+          x-cds-type: ExternalRef
+    RegisterGeneric406:
       content:
-        '*/*':
+        application/json:
           schema:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: Unsupported Version
@@ -482,8 +512,8 @@ components:
         - lastUpdated: lastUpdated
           brandName: brandName
           industries:
-          - banking
-          - banking
+          - null
+          - null
           dataHolderBrandId: dataHolderBrandId
           endpointDetail:
             websiteUri: websiteUri
@@ -515,8 +545,8 @@ components:
         - lastUpdated: lastUpdated
           brandName: brandName
           industries:
-          - banking
-          - banking
+          - null
+          - null
           dataHolderBrandId: dataHolderBrandId
           endpointDetail:
             websiteUri: websiteUri
@@ -575,8 +605,8 @@ components:
         lastUpdated: lastUpdated
         brandName: brandName
         industries:
-        - banking
-        - banking
+        - null
+        - null
         dataHolderBrandId: dataHolderBrandId
         endpointDetail:
           websiteUri: websiteUri
@@ -617,13 +647,7 @@ components:
         industries:
           description: The industries the Data Holder Brand belongs to.
           items:
-            enum:
-            - banking
-            - energy
-            - non-bank-lending
-            - telco
-            type: string
-            x-cds-type: Enum
+            $ref: '#/components/schemas/IndustriesEnum'
           type: array
           uniqueItems: true
         logoUri:
@@ -639,7 +663,6 @@ components:
           - INACTIVE
           - REMOVED
           type: string
-          x-cds-type: Enum
         endpointDetail:
           $ref: '#/components/schemas/RegisterDataHolderBrandServiceEndpoint'
         authDetails:
@@ -671,8 +694,8 @@ components:
           brandName: brandName
           publicBaseUri: publicBaseUri
           industries:
-          - banking
-          - banking
+          - null
+          - null
           dataHolderBrandId: dataHolderBrandId
           logoUri: logoUri
           abn: abn
@@ -683,8 +706,8 @@ components:
           brandName: brandName
           publicBaseUri: publicBaseUri
           industries:
-          - banking
-          - banking
+          - null
+          - null
           dataHolderBrandId: dataHolderBrandId
           logoUri: logoUri
           abn: abn
@@ -716,8 +739,8 @@ components:
         brandName: brandName
         publicBaseUri: publicBaseUri
         industries:
-        - banking
-        - banking
+        - null
+        - null
         dataHolderBrandId: dataHolderBrandId
         logoUri: logoUri
         abn: abn
@@ -731,7 +754,7 @@ components:
           x-conditional: true
         interimId:
           description: Interim id of the Data Holder Brand issued by the CDR Register.
-            This is to be used to uniquely identify the record when dataHolderBrandId
+            This is to be used to uniquely identify the record when _dataHolderBrandId_
             is not populated and is not to be reused.
           maxLength: 36
           type: string
@@ -754,13 +777,7 @@ components:
         industries:
           description: The industries the Data Holder Brand belongs to.
           items:
-            enum:
-            - banking
-            - energy
-            - non-bank-lending
-            - telco
-            type: string
-            x-cds-type: Enum
+            $ref: '#/components/schemas/IndustriesEnum'
           type: array
           uniqueItems: true
         lastUpdated:
@@ -788,6 +805,21 @@ components:
       - logoUri
       - publicBaseUri
       type: object
+    IndustryEnum:
+      enum:
+      - banking
+      - energy
+      - non-bank-lending
+      - telco
+      - all
+      type: string
+    IndustriesEnum:
+      enum:
+      - banking
+      - energy
+      - non-bank-lending
+      - telco
+      type: string
     DataHoldersStatusList:
       example:
         data:
@@ -830,7 +862,6 @@ components:
           - ACTIVE
           - REMOVED
           type: string
-          x-cds-type: Enum
       required:
       - legalEntityId
       - status
@@ -907,13 +938,11 @@ components:
           - GOVERNMENT_ENTITY
           - OTHER
           type: string
-          x-cds-type: Enum
         status:
           enum:
           - ACTIVE
           - REMOVED
           type: string
-          x-cds-type: Enum
       required:
       - legalEntityId
       - legalEntityName
@@ -985,7 +1014,6 @@ components:
           enum:
           - SIGNED-JWT
           type: string
-          x-cds-type: Enum
         jwksEndpoint:
           description: JWKS endpoint used for authentication by the Data Holder with
             the Data Recipient.
@@ -1061,7 +1089,44 @@ components:
       type: object
     Meta:
       type: object
-    MetaError:
+    ResponseErrorListV2:
+      properties:
+        errors:
+          description: List of errors.
+          items:
+            $ref: '#/components/schemas/ErrorV2'
+          type: array
+      required:
+      - errors
+      type: object
+    ErrorV2:
+      properties:
+        code:
+          description: The code of the error encountered. Where the error is specific
+            to the respondent, an application-specific error code, expressed as a
+            string value. If the error is application-specific, the URN code that
+            the specific error extends must be provided in the _meta_ object. Otherwise,
+            the value is the error code URN.
+          type: string
+        title:
+          description: A short, human-readable summary of the problem that **MUST
+            NOT** change from occurrence to occurrence of the problem represented
+            by the error code.
+          type: string
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem.
+          type: string
+        meta:
+          $ref: '#/components/schemas/ErrorV2_meta'
+      required:
+      - code
+      - detail
+      - title
+      type: object
+      x-conditional:
+      - meta
+    ErrorV2_meta:
       description: Additional data for customised error codes.
       properties:
         urn:
@@ -1072,39 +1137,3 @@ components:
       type: object
       x-conditional:
       - urn
-    ResponseErrorListV2:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ResponseErrorListV2_errors'
-          type: array
-      required:
-      - errors
-      type: object
-      x-conditional:
-      - meta
-    ResponseErrorListV2_errors:
-      properties:
-        code:
-          description: The code of the error encountered. Where the error is specific
-            to the respondent, an application-specific error code, expressed as a
-            string value. If the error is application-specific, the URN code that
-            the specific error extends must be provided in the _meta_ object. Otherwise,
-            the value is the error code URN.
-          type: string
-        title:
-          description: A short, human-readable summary of the problem that MUST NOT
-            change from occurrence to occurrence of the problem represented by the
-            error code.
-          type: string
-        detail:
-          description: A human-readable explanation specific to this occurrence of
-            the problem.
-          type: string
-        meta:
-          $ref: '#/components/schemas/MetaError'
-      required:
-      - code
-      - detail
-      - title
-      type: object
