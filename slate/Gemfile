@@ -13,3 +13,5 @@ gem 'nokogiri', '~> 1.13.10'
 
 # Additional deps
 #gem 'therubyracer', '~> 0.12.3'
+
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?

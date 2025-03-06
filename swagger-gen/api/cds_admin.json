@@ -2,17 +2,17 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Admin API",
-    "description": "Data Holder Consumer Data Standards Administration endpoints created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker.",
-    "contact": {
-      "name": "Consumer Data Standards Administration endpoints",
-      "url": "https://consumerdatastandards.gov.au",
-      "email": "contact@consumerdatastandards.gov.au"
-    },
+    "version": "1.33.1",
+    "description": "Specifications for admin endpoints applicable to all data holders (except secondary data holders).",
     "license": {
       "name": "MIT License",
       "url": "https://opensource.org/licenses/MIT"
     },
-    "version": "1.33.1"
+    "contact": {
+      "name": "Data Standards Body",
+      "email": "contact@dsb.gov.au",
+      "url": "https://dsb.gov.au/"
+    }
   },
   "servers": [
     {
@@ -20,171 +20,79 @@
       "url": "https://mtls.dh.example.com/cds-au/v1"
     }
   ],
+  "tags": [
+    {
+      "name": "Data Holder Admin",
+      "x-shortName": "Admin",
+      "description": "Data Holder Admin endpoints"
+    }
+  ],
   "paths": {
     "/admin/register/metadata": {
       "post": {
         "tags": [
-          "Admin",
-          "Register"
+          "Data Holder Admin"
         ],
         "summary": "Metadata Update",
         "description": "Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained.",
         "operationId": "metadataUpdate",
         "parameters": [
           {
-            "name": "x-v",
-            "in": "header",
-            "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "name": "x-min-v",
-            "in": "header",
-            "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder should respond with a `406 Not Acceptable`.",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/HeaderXMinV"
           }
         ],
         "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestMetaDataUpdate"
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/RequestMetaDataUpdate"
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
+            "$ref": "#/components/responses/MetadataUpdate200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/MetadataUpdate400"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/MetadataUpdate406"
           }
         },
         "x-scopes": [
           "admin:metadata:update"
         ],
         "x-restricted-access": "REGISTER",
-        "x-version": "1",
-        "x-codegen-request-body-name": "action"
+        "x-version": "1"
       }
     },
     "/admin/metrics": {
       "get": {
         "tags": [
-          "Admin",
-          "Metrics"
+          "Data Holder Admin"
         ],
         "summary": "Get Metrics",
-        "description": "This endpoint allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this endpoint are determined by the non-functional requirements for the CDR regime.\n\nThis endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version **MUST** be implemented by **May 13th 2024**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nDeprecated versions:\n\n- [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023. Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version\n- [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**.\n\nIf the Data Holder supports `private_key_jwt` client authentication they MUST validate the scope.",
+        "description": "This endpoint allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this endpoint are determined by the non-functional requirements for the CDR regime.\n\nThis endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version **MUST** be implemented by **May 13th 2024**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nDeprecated versions:\n\n- [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023. Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version\n- [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**.\n\nIf the Data Holder supports `private_key_jwt` client authentication they **MUST** validate the scope.",
         "operationId": "getMetrics",
         "parameters": [
           {
-            "name": "period",
-            "in": "query",
-            "description": "The period of metrics to be requested. Values can be `CURRENT` (meaning metrics for current period, dependent on the metric type), `HISTORIC` (meaning metrics for previous period, depending on the metric type) or `ALL`. If absent the default is `ALL`.",
-            "schema": {
-              "type": "string",
-              "default": "ALL",
-              "enum": [
-                "CURRENT",
-                "HISTORIC",
-                "ALL"
-              ]
-            }
+            "$ref": "#/components/parameters/QueryPeriod"
           },
           {
-            "name": "x-v",
-            "in": "header",
-            "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "name": "x-min-v",
-            "in": "header",
-            "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder should respond with a `406 Not Acceptable`.",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/HeaderXMinV"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseMetricsListV5"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetMetrics200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetMetrics400"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetMetrics406"
           }
         },
         "x-scopes": [
@@ -196,8 +104,132 @@
     }
   },
   "components": {
-    "schemas": {
+    "parameters": {
+      "QueryPeriod": {
+        "name": "period",
+        "in": "query",
+        "description": "The period of metrics to be requested. Values can be `CURRENT` (meaning metrics for current period, dependent on the metric type), `HISTORIC` (meaning metrics for previous period, depending on the metric type) or `ALL`. If absent the default is `ALL`.",
+        "schema": {
+          "type": "string",
+          "default": "ALL",
+          "enum": [
+            "CURRENT",
+            "HISTORIC",
+            "ALL"
+          ]
+        }
+      },
+      "HeaderXV": {
+        "name": "x-v",
+        "in": "header",
+        "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint should respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "HeaderXMinV": {
+        "name": "x-min-v",
+        "in": "header",
+        "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint should respond with a `406 Not Acceptable`.",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "headers": {
+      "XV": {
+        "description": "The [payload version](#response-headers) that the endpoint has responded with.",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "requestBodies": {
       "RequestMetaDataUpdate": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/RequestMetaDataUpdateV1"
+            }
+          }
+        },
+        "required": true
+      }
+    },
+    "responses": {
+      "MetadataUpdate200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {}
+          }
+        }
+      },
+      "MetadataUpdate400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "MetadataUpdate406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetMetrics200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseMetricsListV5"
+            }
+          }
+        }
+      },
+      "GetMetrics400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetMetrics406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "RequestMetaDataUpdateV1": {
         "required": [
           "data"
         ],
@@ -1987,76 +2019,57 @@
       "Meta": {
         "type": "object"
       },
-      "MetaError": {
-        "type": "object",
-        "properties": {
-          "urn": {
-            "type": "string",
-            "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code."
-          }
-        },
-        "description": "Additional data for customised error codes.",
-        "x-conditional": [
-          "urn"
-        ]
-      },
       "ResponseErrorListV2": {
+        "type": "object",
         "required": [
           "errors"
         ],
-        "type": "object",
         "properties": {
           "errors": {
+            "description": "List of errors.",
             "type": "array",
-            "description": "",
             "items": {
-              "required": [
-                "code",
-                "detail",
-                "title"
-              ],
-              "type": "object",
-              "properties": {
-                "code": {
-                  "type": "string",
-                  "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
-                },
-                "title": {
-                  "type": "string",
-                  "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
-                },
-                "detail": {
-                  "type": "string",
-                  "description": "A human-readable explanation specific to this occurrence of the problem."
-                },
-                "meta": {
-                  "$ref": "#/components/schemas/MetaError"
-                }
+              "$ref": "#/components/schemas/ErrorV2"
+            }
+          }
+        }
+      },
+      "ErrorV2": {
+        "type": "object",
+        "required": [
+          "code",
+          "title",
+          "detail"
+        ],
+        "x-conditional": [
+          "meta"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the _meta_ object. Otherwise, the value is the error code URN."
+          },
+          "title": {
+            "type": "string",
+            "description": "A short, human-readable summary of the problem that **MUST NOT** change from occurrence to occurrence of the problem represented by the error code."
+          },
+          "detail": {
+            "type": "string",
+            "description": "A human-readable explanation specific to this occurrence of the problem."
+          },
+          "meta": {
+            "type": "object",
+            "x-conditional": [
+              "urn"
+            ],
+            "description": "Additional data for customised error codes.",
+            "properties": {
+              "urn": {
+                "type": "string",
+                "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code."
               }
             }
           }
-        },
-        "x-conditional": [
-          "meta"
-        ]
-      }
-    },
-    "parameters": {
-      "RequestHeader_x-v": {
-        "name": "x-v",
-        "in": "header",
-        "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
-        "required": true,
-        "schema": {
-          "type": "string"
-        }
-      },
-      "RequestHeader_x-min-v": {
-        "name": "x-min-v",
-        "in": "header",
-        "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder should respond with a `406 Not Acceptable`.",
-        "schema": {
-          "type": "string"
         }
       }
     }

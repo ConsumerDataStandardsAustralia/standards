@@ -56,7 +56,7 @@ Content-Type: application/json
 | Client Authentication Required| No|
 | Bearer Token Required| No|
 
-Data Holders MUST make their OpenID Provider Metadata available via a configuration endpoint as outlined in [Section 3 and 4 of the OpenID Connect Discovery standards](https://openid.net/specs/openid-connect-discovery-1_0.html) **[[OIDD]](#nref-OIDD)**.
+Data Holders **MUST** make their OpenID Provider Metadata available via a configuration endpoint as outlined in [Section 3 and 4 of the OpenID Connect Discovery standards](https://openid.net/specs/openid-connect-discovery-1_0.html) **[[OIDD]](#nref-OIDD)**.
 
 This endpoint does not require [CORS](#cors).
 

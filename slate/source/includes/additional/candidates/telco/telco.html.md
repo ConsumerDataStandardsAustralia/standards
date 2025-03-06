@@ -12,6 +12,7 @@ includes:
   - additional/candidates/candidate_header
   - additional/candidates/telco/telco_apis
   - cds_telco
+  - footer
 
 search: true
 ---

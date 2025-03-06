@@ -42,6 +42,7 @@ includes:
   - separator
   - known-issues
   - changelog
+  - footer
 
 search: true
 ---

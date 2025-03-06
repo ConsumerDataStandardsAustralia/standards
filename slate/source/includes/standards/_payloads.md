@@ -17,7 +17,7 @@ This section of the standard outlines the request and response payload structure
 ```
 
 
-Each API request payload MUST have a JSON object at the root level known as the **root object**. This object MUST contain a _data_ object to hold the primary data for the request.
+Each API request payload **MUST** have a JSON object at the root level known as the **root object**. This object **MUST** contain a _data_ object to hold the primary data for the request.
 
 The root object will contain a _meta_ object if, and only if, it is specifically REQUIRED by the endpoint. The _meta_ object is used to provide additional information such as second factor authorisation data, traffic management, pagination counts or other purposes that are complementary to the workings of the API.
 
@@ -61,22 +61,22 @@ The definition of the contents for the _data_ object and _meta_ object will be d
 }
 ```
 
-Each API response payload MUST have a JSON object at the root level known as the **root object**.
+Each API response payload **MUST** have a JSON object at the root level known as the **root object**.
 
 The contents of the root object are as follows:
 
 * If the response is successful (200 OK) the root object:
-  * MUST contain a _data_ object
-  * MUST contain a _links_ object
-  * MAY contain a _meta_ object if REQUIRED by the definition of the specific endpoint.
+  * **MUST** contain a _data_ object
+  * **MUST** contain a _links_ object
+  * **MAY** contain a _meta_ object if REQUIRED by the definition of the specific endpoint.
 * If the response is unsuccessful (not 200 OK) the root object:
-  * MAY contain an _errors_ object (as per the specific endpoint definition).
+  * **MAY** contain an _errors_ object (as per the specific endpoint definition).
 
 The definition of the contents for the _data_ object and _meta_ object will be defined separately for each endpoint.
 
 The _links_ object will contain links to related API endpoints. This will include links to support pagination.
 
-The _links_ object MUST contain a field named _self_ that will have the fully qualified URI to the current request as a value.
+The _links_ object **MUST** contain a field named _self_ that will have the fully qualified URI to the current request as a value.
 
 The _errors_ object is defined in the [Error Codes](#error-response-structure) section.
 
@@ -84,10 +84,10 @@ The _errors_ object is defined in the [Error Codes](#error-response-structure) s
 
 #### Valid Characters In Field Names
 
-All field names defined in either a request or response payload MUST be treated as case sensitive by clients and servers, and they MUST meet all of the following conditions:
+All field names defined in either a request or response payload **MUST** be treated as case sensitive by clients and servers, and they **MUST** meet all of the following conditions:
 
-* Member names MUST contain at least one character.
-* Member names MUST contain only the allowed characters listed below:
+* Member names **MUST** contain at least one character.
+* Member names **MUST** contain only the allowed characters listed below:
   * U+0061 to U+007A, **a-z**
   * U+0041 to U+005A, **A-Z**
   * U+0030 to U+0039, **0-9**
@@ -96,45 +96,45 @@ All field names defined in either a request or response payload MUST be treated 
   * U+005F LOW LINE, '**_**'
   * U+0024 DOLLAR SIGN, '**$**'
 
-Any other character MUST NOT be used in field names.
+Any other character **MUST NOT** be used in field names.
 
 #### Field Naming Style
 
-Field names MUST be meaningful names with defined semantics.
+Field names **MUST** be meaningful names with defined semantics.
 
-Fields representing the same data in different payloads or different parts of a payload MUST have
+Fields representing the same data in different payloads or different parts of a payload **MUST** have
 the same name.
 
-Array types SHOULD have plural field names. All other field names SHOULD be singular.
+Array types **SHOULD** have plural field names. All other field names **SHOULD** be singular.
 
-Field names MUST be defined using camel case with the following clarifications:
+Field names **MUST** be defined using camel case with the following clarifications:
 
-* If a field name is a single acronym it SHOULD be lowercase
-* If a field name contains an acronym along with other words it MAY be uppercase
-* The first character in a field name SHOULD be lower case unless it is part of an acronym
+* If a field name is a single acronym it **SHOULD** be lowercase
+* If a field name contains an acronym along with other words it **MAY** be uppercase
+* The first character in a field name **SHOULD** be lower case unless it is part of an acronym
 
-Fields MUST NOT be named using reserved javascript tokens.
+Fields **MUST NOT** be named using reserved javascript tokens.
 
 #### Maps
-For JSON maps (i.e. key/value pairs) any Unicode character MAY be used as a field name and stylistic requirements do not apply.
+For JSON maps (i.e. key/value pairs) any Unicode character **MAY** be used as a field name and stylistic requirements do not apply.
 
 ### Field Property Conventions
 
 #### Field Data Types
 
-Each field defined for the payloads of an endpoint MUST have an assigned data type.
+Each field defined for the payloads of an endpoint **MUST** have an assigned data type.
 
-The list of valid data types are set out in the [common field types](#common-field-types) section. If a custom data type is required for a field then the field SHOULD be classified as a string with a clear description of how the property value is to be interpreted or defined.
+The list of valid data types are set out in the [common field types](#common-field-types) section. If a custom data type is required for a field then the field **SHOULD** be classified as a string with a clear description of how the property value is to be interpreted or defined.
 
 #### Mandatory/Optional Fields
 
-Each field defined for the payloads of an endpoint MUST have an assigned status of mandatory, optional or conditional.
+Each field defined for the payloads of an endpoint **MUST** have an assigned status of mandatory, optional or conditional.
 
-Mandatory fields MUST be present and have a non-null value in a request or response payload for the payload to be considered valid.
+Mandatory fields **MUST** be present and have a non-null value in a request or response payload for the payload to be considered valid.
 
-Optional fields MAY be present but this is not guaranteed. It is also valid for these fields to be present but have a `null` value. Note that optional fields indicate that data may sometimes not be held by a Data Holder and this is an expected scenario. 
+Optional fields **MAY** be present but this is not guaranteed. It is also valid for these fields to be present but have a `null` value. Note that optional fields indicate that data may sometimes not be held by a Data Holder and this is an expected scenario. 
 
-Conditional fields MUST have an associated conditional statement. If the conditional statement is true in a specific request or response the field is considered mandatory. If the conditional statement is false then the field is considered optional.
+Conditional fields **MUST** have an associated conditional statement. If the conditional statement is true in a specific request or response the field is considered mandatory. If the conditional statement is false then the field is considered optional.
 
 <aside class="notice">
 Note that optional fields are not considered optionally implementable by a Data Holder.

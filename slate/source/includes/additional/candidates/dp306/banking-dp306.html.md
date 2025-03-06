@@ -13,6 +13,7 @@ includes:
   - cds_banking_dp306
   - additional/candidates/dp306/_product_categories-dp306
   - additional/candidates/dp306/_product_components-dp306
+  - footer
 
 search: true
 ---

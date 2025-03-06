@@ -1,8 +1,8 @@
 <h3 id="{{= data.cds_uniqueAnchorPrefix }}_parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-{{~ data.parameters :p}}|{{=p.name}}|{{=p.in}}|{{? p.cdrType}}{{=p.cdrType}}{{??}}{{=p.safeType}}{{?}}|{{? p.required}}mandatory{{??}}{{? p.cdrConditional}}conditional{{??}}optional{{?}}{{?}}|{{=p.shortDesc || 'none'}}|
+|Name|In|Type|Required|Default|Description|
+|---|---|---|---|---|---|
+{{~ data.parameters :p}}|{{=p.name}}|{{=p.in}}|{{? p.cdrType}}{{=p.cdrType}}{{??}}{{=p.safeType}}{{?}}|{{? p.required}}mandatory{{??}}{{? p.cdrConditional}}conditional{{??}}optional{{?}}{{?}}|{{= (p.schema.default !== undefined ? '`' + p.schema.default + '`' : '') }}|{{=p.shortDesc || 'none'}}|
 {{~}}
 
 {{? data.longDescs }}

@@ -2,17 +2,17 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Banking API",
-    "description": "Consumer Data Standards APIs created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker to meet the needs of the Consumer Data Right.",
-    "contact": {
-      "name": "Consumer Data Standards",
-      "url": "https://consumerdatastandards.gov.au",
-      "email": "contact@consumerdatastandards.gov.au"
-    },
+    "version": "1.33.1",
+    "description": "Specifications for resource endpoints applicable to data holders in the Banking sector.",
     "license": {
       "name": "MIT License",
       "url": "https://opensource.org/licenses/MIT"
     },
-    "version": "1.33.1"
+    "contact": {
+      "name": "Data Standards Body",
+      "email": "contact@dsb.gov.au",
+      "url": "https://dsb.gov.au/"
+    }
   },
   "servers": [
     {
@@ -20,114 +20,99 @@
       "url": "https://mtls.dh.example.com/cds-au/v1"
     }
   ],
+  "tags": [
+    {
+      "name": "Banking Products",
+      "x-shortName": "Products",
+      "description": "Banking Product endpoints"
+    },
+    {
+      "name": "Banking Accounts",
+      "x-shortName": "Accounts",
+      "description": "Banking Account endpoints"
+    },
+    {
+      "name": "Banking Account Balances",
+      "x-shortName": "Account Balances",
+      "description": "Banking Account Balance endpoints"
+    },
+    {
+      "name": "Banking Account Transactions",
+      "x-shortName": "Transactions",
+      "description": "Banking Account Transaction endpoints"
+    },
+    {
+      "name": "Banking Account Direct Debits",
+      "x-shortName": "Direct Debits",
+      "description": "Banking Account Direct Debit endpoints"
+    },
+    {
+      "name": "Banking Account Scheduled Payments",
+      "x-shortName": "Scheduled Payments",
+      "description": "Banking Account Scheduled Payment endpoints"
+    },
+    {
+      "name": "Banking Payees",
+      "x-shortName": "Payees",
+      "description": "Banking Payee endpoints"
+    }
+  ],
   "paths": {
     "/banking/accounts": {
       "get": {
         "tags": [
-          "Banking",
-          "Accounts"
+          "Banking Accounts"
         ],
         "summary": "Get Accounts",
         "description": "Obtain a list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-accounts-v1.html).",
-        "operationId": "listAccounts",
+        "operationId": "listBankingAccounts",
         "parameters": [
           {
-            "$ref": "#/components/parameters/Param_product-category"
+            "$ref": "#/components/parameters/QueryBankingProductCategory"
           },
           {
-            "$ref": "#/components/parameters/Param_account_open-status"
+            "$ref": "#/components/parameters/QueryBankingAccountOpenStatus"
           },
           {
-            "$ref": "#/components/parameters/Param_account_is-owned"
+            "$ref": "#/components/parameters/QueryBankingAccountIsOwned"
           },
           {
-            "$ref": "#/components/parameters/Param_page"
+            "$ref": "#/components/parameters/QueryPage"
           },
           {
-            "$ref": "#/components/parameters/Param_page-size"
+            "$ref": "#/components/parameters/QueryPageSize"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingAccountListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingAccounts200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingAccounts400"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingAccounts406"
           },
           "422": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingAccounts422"
           }
         },
         "x-scopes": [
@@ -139,110 +124,58 @@
     "/banking/accounts/balances": {
       "get": {
         "tags": [
-          "Banking",
-          "Accounts"
+          "Banking Account Balances"
         ],
         "summary": "Get Bulk Balances",
         "description": "Obtain balances for multiple, filtered accounts.",
-        "operationId": "listBalancesBulk",
+        "operationId": "listBankingBalancesBulk",
         "parameters": [
           {
-            "$ref": "#/components/parameters/Param_product-category"
+            "$ref": "#/components/parameters/QueryBankingProductCategory"
           },
           {
-            "$ref": "#/components/parameters/Param_account_open-status"
+            "$ref": "#/components/parameters/QueryBankingAccountOpenStatus"
           },
           {
-            "$ref": "#/components/parameters/Param_account_is-owned"
+            "$ref": "#/components/parameters/QueryBankingAccountIsOwned"
           },
           {
-            "$ref": "#/components/parameters/Param_page"
+            "$ref": "#/components/parameters/QueryPage"
           },
           {
-            "$ref": "#/components/parameters/Param_page-size"
+            "$ref": "#/components/parameters/QueryPageSize"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingAccountsBalanceList"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingBalancesBulk200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingBalancesBulk400"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingBalancesBulk406"
           },
           "422": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingBalancesBulk422"
           }
         },
         "x-scopes": [
@@ -252,223 +185,103 @@
       },
       "post": {
         "tags": [
-          "Banking",
-          "Accounts"
+          "Banking Account Balances"
         ],
         "summary": "Get Balances For Specific Accounts",
         "description": "Obtain balances for a specified list of accounts.",
-        "operationId": "listBalancesSpecificAccounts",
+        "operationId": "listBankingBalancesSpecificAccounts",
         "parameters": [
           {
-            "$ref": "#/components/parameters/Param_page"
+            "$ref": "#/components/parameters/QueryPage"
           },
           {
-            "$ref": "#/components/parameters/Param_page-size"
+            "$ref": "#/components/parameters/QueryPageSize"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "requestBody": {
-          "description": "The list of _accountId_ values to obtain balances for.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestAccountIds"
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/RequestAccountIds"
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingAccountsBalanceList"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingBalancesSpecificAccounts200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingBalancesSpecificAccounts400"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingBalancesSpecificAccounts406"
           },
           "422": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingBalancesSpecificAccounts422"
           }
         },
         "x-scopes": [
           "bank:accounts.basic:read"
         ],
-        "x-version": "1",
-        "x-codegen-request-body-name": "accountIds"
+        "x-version": "1"
       }
     },
     "/banking/accounts/{accountId}/balance": {
       "get": {
         "tags": [
-          "Banking",
-          "Accounts"
+          "Banking Account Balances"
         ],
         "summary": "Get Account Balance",
         "description": "Obtain the balance for a single specified account.",
-        "operationId": "getBalance",
+        "operationId": "getBankingBalance",
         "parameters": [
           {
-            "name": "accountId",
-            "in": "path",
-            "description": "ID of the specific account requested.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-cds-type": "ASCIIString"
+            "$ref": "#/components/parameters/PathAccountId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingAccountsBalanceById"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingBalance200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingBalance400"
           },
           "404": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingBalance404"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingBalance406"
           }
         },
         "x-scopes": [
@@ -480,105 +293,46 @@
     "/banking/accounts/{accountId}": {
       "get": {
         "tags": [
-          "Banking",
-          "Accounts"
+          "Banking Accounts"
         ],
         "summary": "Get Account Detail",
         "description": "Obtain detailed information on a single account.\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html).",
-        "operationId": "getAccountDetail",
+        "operationId": "getBankingAccountDetail",
         "parameters": [
           {
-            "name": "accountId",
-            "in": "path",
-            "description": "A tokenised identifier for the account which is unique but not shareable.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-cds-type": "ASCIIString"
+            "$ref": "#/components/parameters/PathAccountId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingAccountByIdV3"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingAccountDetail200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingAccountDetail400"
           },
           "404": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingAccountDetail404"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingAccountDetail406"
           }
         },
         "x-scopes": [
@@ -590,141 +344,70 @@
     "/banking/accounts/{accountId}/transactions": {
       "get": {
         "tags": [
-          "Banking",
-          "Accounts"
+          "Banking Account Transactions"
         ],
         "summary": "Get Transactions For Account",
         "description": "Obtain transactions for a specific account.\n\nSome general notes that apply to all endpoints that retrieve transactions:<ul><li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the \"effective\" date/time which will be defined as:<ul><li>Posted date/time if available, then<li>Execution date/time if available, then<li>A reasonable date/time nominated by the data holder using internal data structures</ul><li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</ul>",
-        "operationId": "getTransactions",
+        "operationId": "listBankingTransactions",
         "parameters": [
           {
-            "name": "accountId",
-            "in": "path",
-            "description": "ID of the account to get transactions for. Must have previously been returned by one of the account list endpoints.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-cds-type": "ASCIIString"
+            "$ref": "#/components/parameters/PathAccountId"
           },
           {
-            "$ref": "#/components/parameters/Param_transaction_oldest-time"
+            "$ref": "#/components/parameters/QueryOldestTime"
           },
           {
-            "$ref": "#/components/parameters/Param_transaction_newest-time"
+            "$ref": "#/components/parameters/QueryNewestTime"
           },
           {
-            "$ref": "#/components/parameters/Param_transaction_min-amount"
+            "$ref": "#/components/parameters/QueryMinAmount"
           },
           {
-            "$ref": "#/components/parameters/Param_transaction_max-amount"
+            "$ref": "#/components/parameters/QueryMaxAmount"
           },
           {
-            "$ref": "#/components/parameters/Param_transaction_text"
+            "$ref": "#/components/parameters/QueryBankingTransactionText"
           },
           {
-            "$ref": "#/components/parameters/Param_page"
+            "$ref": "#/components/parameters/QueryPage"
           },
           {
-            "$ref": "#/components/parameters/Param_page-size"
+            "$ref": "#/components/parameters/QueryPageSize"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingTransactionList"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingTransactions200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingTransactions400"
           },
           "404": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingTransactions404"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingTransactions406"
           },
           "422": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingTransactions422"
           }
         },
         "x-scopes": [
@@ -736,115 +419,55 @@
     "/banking/accounts/{accountId}/transactions/{transactionId}": {
       "get": {
         "tags": [
-          "Banking",
-          "Accounts"
+          "Banking Account Transactions"
         ],
         "summary": "Get Transaction Detail",
         "description": "Obtain detailed information on a transaction for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-transaction-detail-v1.html).",
-        "operationId": "getTransactionDetail",
+        "operationId": "getBankingTransactionDetail",
         "parameters": [
           {
-            "name": "accountId",
-            "in": "path",
-            "description": "ID of the account to get transactions for. Must have previously been returned by one of the account list endpoints.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-cds-type": "ASCIIString"
+            "$ref": "#/components/parameters/PathAccountId"
           },
           {
             "name": "transactionId",
             "in": "path",
-            "description": "ID of the transaction obtained from a previous call to one of the other transaction endpoints.",
+            "description": "The _transactionId_ to obtain data for. _transactionId_ values are returned by transaction list endpoints.",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "x-cds-type": "ASCIIString"
+              "$ref": "#/components/schemas/BankingTransactionId"
+            }
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingTransactionByIdV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingTransactionDetail200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingTransactionDetail400"
           },
           "404": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingTransactionDetail404"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingTransactionDetail406"
           }
         },
         "x-scopes": [
@@ -856,126 +479,55 @@
     "/banking/accounts/{accountId}/direct-debits": {
       "get": {
         "tags": [
-          "Banking",
-          "Direct Debits"
+          "Banking Account Direct Debits"
         ],
         "summary": "Get Direct Debits For Account",
         "description": "Obtain direct debit authorisations for a specific account.",
         "operationId": "listDirectDebits",
         "parameters": [
           {
-            "name": "accountId",
-            "in": "path",
-            "description": "ID of the account to get direct debit authorisations for. Must have previously been returned by one of the account list endpoints.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-cds-type": "ASCIIString"
+            "$ref": "#/components/parameters/PathAccountId"
           },
           {
-            "$ref": "#/components/parameters/Param_page"
+            "$ref": "#/components/parameters/QueryPage"
           },
           {
-            "$ref": "#/components/parameters/Param_page-size"
+            "$ref": "#/components/parameters/QueryPageSize"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingDirectDebitAuthorisationList"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListDirectDebits200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListDirectDebits400"
           },
           "404": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListDirectDebits404"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListDirectDebits406"
           },
           "422": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListDirectDebits422"
           }
         },
         "x-scopes": [
@@ -987,110 +539,58 @@
     "/banking/accounts/direct-debits": {
       "get": {
         "tags": [
-          "Banking",
-          "Direct Debits"
+          "Banking Account Direct Debits"
         ],
         "summary": "Get Bulk Direct Debits",
         "description": "Obtain direct debit authorisations for multiple, filtered accounts.",
         "operationId": "listDirectDebitsBulk",
         "parameters": [
           {
-            "$ref": "#/components/parameters/Param_product-category"
+            "$ref": "#/components/parameters/QueryBankingProductCategory"
           },
           {
-            "$ref": "#/components/parameters/Param_account_open-status"
+            "$ref": "#/components/parameters/QueryBankingAccountOpenStatus"
           },
           {
-            "$ref": "#/components/parameters/Param_account_is-owned"
+            "$ref": "#/components/parameters/QueryBankingAccountIsOwned"
           },
           {
-            "$ref": "#/components/parameters/Param_page"
+            "$ref": "#/components/parameters/QueryPage"
           },
           {
-            "$ref": "#/components/parameters/Param_page-size"
+            "$ref": "#/components/parameters/QueryPageSize"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingDirectDebitAuthorisationList"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListDirectDebitsBulk200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListDirectDebitsBulk400"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListDirectDebitsBulk406"
           },
           "422": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListDirectDebitsBulk422"
           }
         },
         "x-scopes": [
@@ -1100,244 +600,112 @@
       },
       "post": {
         "tags": [
-          "Banking",
-          "Direct Debits"
+          "Banking Account Direct Debits"
         ],
         "summary": "Get Direct Debits For Specific Accounts",
         "description": "Obtain direct debit authorisations for a specified list of accounts.",
         "operationId": "listDirectDebitsSpecificAccounts",
         "parameters": [
           {
-            "$ref": "#/components/parameters/Param_page"
+            "$ref": "#/components/parameters/QueryPage"
           },
           {
-            "$ref": "#/components/parameters/Param_page-size"
+            "$ref": "#/components/parameters/QueryPageSize"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "requestBody": {
-          "description": "Array of _accountId_ values to obtain authorisations for.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestAccountIds"
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/RequestAccountIds"
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingDirectDebitAuthorisationList"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListDirectDebitsSpecificAccounts200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListDirectDebitsSpecificAccounts400"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListDirectDebitsSpecificAccounts406"
           },
           "422": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListDirectDebitsSpecificAccounts422"
           }
         },
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "1",
-        "x-codegen-request-body-name": "accountIds"
+        "x-version": "1"
       }
     },
     "/banking/accounts/{accountId}/payments/scheduled": {
       "get": {
         "tags": [
-          "Banking",
-          "Scheduled Payments"
+          "Banking Account Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments for Account",
         "description": "Obtain scheduled, outgoing payments for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.html).",
         "operationId": "listScheduledPayments",
         "parameters": [
           {
-            "name": "accountId",
-            "in": "path",
-            "description": "ID of the account to get scheduled payments for. Must have previously been returned by one of the account list endpoints. The account specified is the source account for the payment.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-cds-type": "ASCIIString"
+            "$ref": "#/components/parameters/PathAccountId"
           },
           {
-            "$ref": "#/components/parameters/Param_page"
+            "$ref": "#/components/parameters/QueryPage"
           },
           {
-            "$ref": "#/components/parameters/Param_page-size"
+            "$ref": "#/components/parameters/QueryPageSize"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListScheduledPayments200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListScheduledPayments400"
           },
           "404": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListScheduledPayments404"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListScheduledPayments406"
           },
           "422": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListScheduledPayments422"
           }
         },
         "x-scopes": [
@@ -1349,110 +717,58 @@
     "/banking/payments/scheduled": {
       "get": {
         "tags": [
-          "Banking",
-          "Scheduled Payments"
+          "Banking Account Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments Bulk",
         "description": "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html).",
         "operationId": "listScheduledPaymentsBulk",
         "parameters": [
           {
-            "$ref": "#/components/parameters/Param_product-category"
+            "$ref": "#/components/parameters/QueryBankingProductCategory"
           },
           {
-            "$ref": "#/components/parameters/Param_account_open-status"
+            "$ref": "#/components/parameters/QueryBankingAccountOpenStatus"
           },
           {
-            "$ref": "#/components/parameters/Param_account_is-owned"
+            "$ref": "#/components/parameters/QueryBankingAccountIsOwned"
           },
           {
-            "$ref": "#/components/parameters/Param_page"
+            "$ref": "#/components/parameters/QueryPage"
           },
           {
-            "$ref": "#/components/parameters/Param_page-size"
+            "$ref": "#/components/parameters/QueryPageSize"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListScheduledPaymentsBulk200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListScheduledPaymentsBulk400"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListScheduledPaymentsBulk406"
           },
           "422": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListScheduledPaymentsBulk422"
           }
         },
         "x-scopes": [
@@ -1462,130 +778,68 @@
       },
       "post": {
         "tags": [
-          "Banking",
-          "Scheduled Payments"
+          "Banking Account Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments For Specific Accounts",
         "description": "Obtain scheduled payments for a specified list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html).",
         "operationId": "listScheduledPaymentsSpecificAccounts",
         "parameters": [
           {
-            "$ref": "#/components/parameters/Param_page"
+            "$ref": "#/components/parameters/QueryPage"
           },
           {
-            "$ref": "#/components/parameters/Param_page-size"
+            "$ref": "#/components/parameters/QueryPageSize"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "requestBody": {
-          "description": "Array of _accountId_ values to obtain scheduled payments for. The accounts specified are the source of funds for the payments returned.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestAccountIds"
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/RequestAccountIds"
         },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListScheduledPaymentsSpecificAccounts200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListScheduledPaymentsSpecificAccounts400"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListScheduledPaymentsSpecificAccounts406"
           },
           "422": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListScheduledPaymentsSpecificAccounts422"
           }
         },
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "2",
-        "x-codegen-request-body-name": "accountIds"
+        "x-version": "2"
       }
     },
     "/banking/payees": {
       "get": {
         "tags": [
-          "Banking",
-          "Payees"
+          "Banking Payees"
         ],
         "summary": "Get Payees",
         "description": "Obtain a list of pre-registered payees.\n\nObsolete versions: [v1](includes/obsolete/get-payees-v1.html).",
-        "operationId": "listPayees",
+        "operationId": "listBankingPayees",
         "parameters": [
           {
             "name": "type",
@@ -1604,93 +858,42 @@
             }
           },
           {
-            "$ref": "#/components/parameters/Param_page"
+            "$ref": "#/components/parameters/QueryPage"
           },
           {
-            "$ref": "#/components/parameters/Param_page-size"
+            "$ref": "#/components/parameters/QueryPageSize"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingPayeeListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingPayees200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingPayees400"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingPayees406"
           },
           "422": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingPayees422"
           }
         },
         "x-scopes": [
@@ -1702,120 +905,55 @@
     "/banking/payees/{payeeId}": {
       "get": {
         "tags": [
-          "Banking",
-          "Payees"
+          "Banking Payees"
         ],
         "summary": "Get Payee Detail",
         "description": "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.\n\nObsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html).",
-        "operationId": "getPayeeDetail",
+        "operationId": "getBankingPayeeDetail",
         "parameters": [
           {
             "name": "payeeId",
             "in": "path",
-            "description": "The ID used to locate the details of a particular payee.",
+            "description": "The _payeeId_ to obtain data for. _payeeId_ values are returned by payee list endpoints.",
             "required": true,
             "schema": {
-              "type": "string"
-            },
-            "x-cds-type": "ASCIIString"
+              "$ref": "#/components/schemas/BankingPayeeId"
+            }
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-interaction-id"
+            "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-auth-date"
+            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-fapi-customer-ip-address"
+            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-cds-client-headers"
+            "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              },
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingPayeeByIdV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingPayeeDetail200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingPayeeDetail400"
           },
           "404": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingPayeeDetail404"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingPayeeDetail406"
           },
           "422": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
-            "headers": {
-              "x-fapi-interaction-id": {
-                "$ref": "#/components/headers/ResponseHeader_x-fapi-interaction-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingPayeeDetail422"
           }
         },
         "x-scopes": [
@@ -1833,12 +971,11 @@
           }
         ],
         "tags": [
-          "Banking",
-          "Products"
+          "Banking Products"
         ],
         "summary": "Get Products",
         "description": "Obtain a list of products that are currently openly offered to the market.\n\nNote that the results returned by this endpoint are expected to be ordered in descending order according to _lastUpdated_.\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained below.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field named [_additionalValue_](#productfeaturetypedoc). This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the `ADDITIONAL_CARDS` feature is the number of cards allowed while the contents of this field for the `MAX_LIMIT` constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an _additionalInfo_ and _additionalInfoUri_ field. The _additionalInfo_ field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The _additionalInfoUri_ provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use different HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge. Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while _productCategory_ is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actually has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank. To minimise the volume and frequency of these calls the ability to set a _lastUpdated_ field with the date and time of the last update to this product is included. A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the _updated-since_ query parameter.\n\nIn addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no longer offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.\n\nObsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/obsolete/get-products-v2.html).",
-        "operationId": "listProducts",
+        "operationId": "listBankingProducts",
         "parameters": [
           {
             "name": "effective",
@@ -1872,66 +1009,33 @@
             }
           },
           {
-            "$ref": "#/components/parameters/Param_product-category"
+            "$ref": "#/components/parameters/QueryBankingProductCategory"
           },
           {
-            "$ref": "#/components/parameters/Param_page"
+            "$ref": "#/components/parameters/QueryPage"
           },
           {
-            "$ref": "#/components/parameters/Param_page-size"
+            "$ref": "#/components/parameters/QueryPageSize"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingProductListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingProducts200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingProducts400"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingProducts406"
           },
           "422": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ListBankingProducts422"
           }
         },
         "x-version": "3"
@@ -1946,75 +1050,41 @@
           }
         ],
         "tags": [
-          "Banking",
-          "Products"
+          "Banking Products"
         ],
         "summary": "Get Product Detail",
         "description": "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](includes/obsolete/get-product-detail-v2.html), [v3](includes/obsolete/get-product-detail-v3.html), [v4](includes/obsolete/get-product-detail-v4.html).",
-        "operationId": "getProductDetail",
+        "operationId": "getBankingProductDetail",
         "parameters": [
           {
             "name": "productId",
             "in": "path",
-            "description": "ID of the specific product requested.",
+            "description": "The _productId_ to obtain data for. _productId_ values are returned by product list endpoints.",
             "required": true,
             "schema": {
-              "type": "string"
+              "$ref": "#/components/schemas/BankingProductId"
             },
             "x-cds-type": "ASCIIString"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-v"
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "$ref": "#/components/parameters/RequestHeader_x-min-v"
+            "$ref": "#/components/parameters/HeaderXMinV"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "$ref": "#/components/headers/ResponseHeader_x-v"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseBankingProductByIdV5"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingProductDetail200"
           },
           "400": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingProductDetail400"
           },
           "404": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingProductDetail404"
           },
           "406": {
-            "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetBankingProductDetail406"
           }
         },
         "x-version": "5"
@@ -2022,25 +1092,1307 @@
     }
   },
   "components": {
-    "schemas": {
+    "parameters": {
+      "HeaderXV": {
+        "name": "x-v",
+        "in": "header",
+        "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "HeaderXMinV": {
+        "name": "x-min-v",
+        "in": "header",
+        "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "HeaderXFAPIInteractionId": {
+        "name": "x-fapi-interaction-id",
+        "in": "header",
+        "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "HeaderXFAPIAuthDate": {
+        "name": "x-fapi-auth-date",
+        "in": "header",
+        "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+        "schema": {
+          "type": "string"
+        },
+        "x-conditional": true
+      },
+      "HeaderXFAPICustomerIPAddress": {
+        "name": "x-fapi-customer-ip-address",
+        "in": "header",
+        "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "HeaderXCDSClientHeaders": {
+        "name": "x-cds-client-headers",
+        "in": "header",
+        "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+        "schema": {
+          "type": "string"
+        },
+        "x-conditional": true,
+        "x-cds-type": "Base64"
+      },
+      "PathAccountId": {
+        "name": "accountId",
+        "in": "path",
+        "description": "The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/BankingAccountId"
+        }
+      },
+      "QueryBankingAccountOpenStatus": {
+        "name": "open-status",
+        "in": "query",
+        "description": "Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.",
+        "schema": {
+          "type": "string",
+          "default": "ALL",
+          "enum": [
+            "ALL",
+            "CLOSED",
+            "OPEN"
+          ]
+        }
+      },
+      "QueryBankingProductCategory": {
+        "name": "product-category",
+        "in": "query",
+        "description": "Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
+        "schema": {
+          "$ref": "#/components/schemas/BankingProductCategory"
+        }
+      },
+      "QueryBankingAccountIsOwned": {
+        "name": "is-owned",
+        "in": "query",
+        "description": "Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "QueryPage": {
+        "name": "page",
+        "in": "query",
+        "description": "Page of results to request (standard pagination).",
+        "schema": {
+          "type": "integer",
+          "default": 1
+        },
+        "x-cds-type": "PositiveInteger"
+      },
+      "QueryPageSize": {
+        "name": "page-size",
+        "in": "query",
+        "description": "Page size to request. Default is 25 (standard pagination).",
+        "schema": {
+          "type": "integer",
+          "default": 25
+        },
+        "x-cds-type": "PositiveInteger"
+      },
+      "QueryNewestTime": {
+        "name": "newest-time",
+        "in": "query",
+        "description": "Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to today. Format is aligned to [DateTimeString](#common-field-types) common type.",
+        "schema": {
+          "type": "string"
+        },
+        "x-cds-type": "DateTimeString"
+      },
+      "QueryOldestTime": {
+        "name": "oldest-time",
+        "in": "query",
+        "description": "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to _newest-time_ minus 90 days. Format is aligned to [DateTimeString](#common-field-types) common type.",
+        "schema": {
+          "type": "string"
+        },
+        "x-cds-type": "DateTimeString"
+      },
+      "QueryMinAmount": {
+        "name": "min-amount",
+        "in": "query",
+        "description": "Filter transactions to only transactions with amounts higher than or equal to this amount.",
+        "schema": {
+          "type": "string"
+        },
+        "x-cds-type": "AmountString"
+      },
+      "QueryMaxAmount": {
+        "name": "max-amount",
+        "in": "query",
+        "description": "Filter transactions to only transactions with amounts less than or equal to this amount.",
+        "schema": {
+          "type": "string"
+        },
+        "x-cds-type": "AmountString"
+      },
+      "QueryBankingTransactionText": {
+        "name": "text",
+        "in": "query",
+        "description": "Filter transactions to only transactions where this string value is found as a substring of either the _reference_ or _description_ fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named _isQueryParamUnsupported_ should be included in the meta object and set to `true` (whether the text parameter is supplied or not).",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "headers": {
+      "XV": {
+        "description": "The [payload version](#response-headers) that the endpoint has responded with.",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "XFAPIInteractionId": {
+        "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "requestBodies": {
       "RequestAccountIds": {
+        "description": "Request payload containing a list of _accountId_ values to obtain data for.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/RequestAccountIdListV1"
+            }
+          }
+        },
+        "required": true
+      }
+    },
+    "responses": {
+      "ListBankingAccounts200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingAccountListV2"
+            }
+          }
+        }
+      },
+      "ListBankingAccounts400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingAccounts406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingAccounts422": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingBalancesBulk200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingAccountsBalanceList"
+            }
+          }
+        }
+      },
+      "ListBankingBalancesBulk400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingBalancesBulk406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingBalancesBulk422": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingBalancesSpecificAccounts200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingAccountsBalanceList"
+            }
+          }
+        }
+      },
+      "ListBankingBalancesSpecificAccounts400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingBalancesSpecificAccounts406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingBalancesSpecificAccounts422": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingBalance200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingAccountsBalanceById"
+            }
+          }
+        }
+      },
+      "GetBankingBalance400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingBalance404": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingBalance406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingAccountDetail200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingAccountByIdV3"
+            }
+          }
+        }
+      },
+      "GetBankingAccountDetail400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingAccountDetail404": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingAccountDetail406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingTransactions200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingTransactionList"
+            }
+          }
+        }
+      },
+      "ListBankingTransactions400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingTransactions404": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingTransactions406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingTransactions422": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingTransactionDetail200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingTransactionByIdV2"
+            }
+          }
+        }
+      },
+      "GetBankingTransactionDetail400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingTransactionDetail404": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingTransactionDetail406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListDirectDebits200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingDirectDebitAuthorisationList"
+            }
+          }
+        }
+      },
+      "ListDirectDebits400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListDirectDebits404": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListDirectDebits406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListDirectDebits422": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListDirectDebitsBulk200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingDirectDebitAuthorisationList"
+            }
+          }
+        }
+      },
+      "ListDirectDebitsBulk400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListDirectDebitsBulk406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListDirectDebitsBulk422": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListDirectDebitsSpecificAccounts200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingDirectDebitAuthorisationList"
+            }
+          }
+        }
+      },
+      "ListDirectDebitsSpecificAccounts400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListDirectDebitsSpecificAccounts406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListDirectDebitsSpecificAccounts422": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListScheduledPayments200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
+            }
+          }
+        }
+      },
+      "ListScheduledPayments400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListScheduledPayments404": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListScheduledPayments406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListScheduledPayments422": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListScheduledPaymentsBulk200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
+            }
+          }
+        }
+      },
+      "ListScheduledPaymentsBulk400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListScheduledPaymentsBulk406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListScheduledPaymentsBulk422": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListScheduledPaymentsSpecificAccounts200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingScheduledPaymentsListV2"
+            }
+          }
+        }
+      },
+      "ListScheduledPaymentsSpecificAccounts400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListScheduledPaymentsSpecificAccounts406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListScheduledPaymentsSpecificAccounts422": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingPayees200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingPayeeListV2"
+            }
+          }
+        }
+      },
+      "ListBankingPayees400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingPayees406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingPayees422": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingPayeeDetail200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingPayeeByIdV2"
+            }
+          }
+        }
+      },
+      "GetBankingPayeeDetail400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingPayeeDetail404": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingPayeeDetail406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingPayeeDetail422": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+        "headers": {
+          "x-fapi-interaction-id": {
+            "$ref": "#/components/headers/XFAPIInteractionId"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingProducts200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingProductListV2"
+            }
+          }
+        }
+      },
+      "ListBankingProducts400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingProducts406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "ListBankingProducts422": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingProductDetail200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBankingProductByIdV5"
+            }
+          }
+        }
+      },
+      "GetBankingProductDetail400": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingProductDetail404": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetBankingProductDetail406": {
+        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "RequestAccountIdListV1": {
+        "type": "object",
         "required": [
           "data"
         ],
-        "type": "object",
         "properties": {
           "data": {
+            "type": "object",
             "required": [
               "accountIds"
             ],
-            "type": "object",
             "properties": {
               "accountIds": {
                 "type": "array",
-                "description": "Array of _accountId_ values.",
+                "description": "Array of _accountId_ values to obtain data for.",
                 "items": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
+                  "$ref": "#/components/schemas/BankingAccountId"
                 }
               }
             }
@@ -2094,9 +2446,7 @@
         "type": "object",
         "properties": {
           "productId": {
-            "type": "string",
-            "description": "A data holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
-            "x-cds-type": "ASCIIString"
+            "$ref": "#/components/schemas/BankingProductId"
           },
           "effectiveFrom": {
             "type": "string",
@@ -2285,7 +2635,7 @@
             "properties": {
               "bundles": {
                 "type": "array",
-                "description": "An array of bundles that this product participates in. Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle. It is assumed that the current product is included in the bundle also.",
+                "description": "An array of bundles that this product participates in. Each bundle is described by free form information but also by a list of _productID_ values of the other products that are included in the bundle. It is assumed that the current product is included in the bundle also.",
                 "items": {
                   "$ref": "#/components/schemas/BankingProductBundle"
                 }
@@ -2362,10 +2712,9 @@
           },
           "productIds": {
             "type": "array",
-            "description": "Array of product IDs for products included in the bundle that are available via the product endpoints. Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference endpoints.",
+            "description": "Array of _productID_ values for products included in the bundle that are available via the product endpoints. Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference endpoints.",
             "items": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
+              "$ref": "#/components/schemas/BankingProductId"
             }
           }
         }
@@ -2565,6 +2914,7 @@
           "currency": {
             "type": "string",
             "description": "The currency the fee will be charged in. Assumes `AUD` if absent.",
+            "default": "AUD",
             "x-cds-type": "CurrencyString"
           },
           "additionalValue": {
@@ -2986,9 +3336,10 @@
         "type": "object",
         "properties": {
           "accountId": {
-            "type": "string",
-            "description": "A unique ID of the account adhering to the standards for ID permanence.",
-            "x-cds-type": "ASCIIString"
+            "description": "Unique identifier for the account.",
+            "allOf": [{
+              "$ref": "#/components/schemas/BankingAccountId"
+            }]
           },
           "creationDate": {
             "type": "string",
@@ -3139,7 +3490,7 @@
                       "properties": {
                         "isActivated": {
                           "type": "boolean",
-                          "description": "`true` if the feature is already activated and `false` if the feature is available for activation. Defaults to `true` if absent.<br>Note: this is an additional field appended to the feature object defined in the Product Reference payload.",
+                          "description": "`true` if the feature is already activated and `false` if the feature is available for activation. Defaults to `true` if absent.<br>**Note:** this is an additional field appended to the feature object defined in the Product Reference payload.",
                           "default": true
                         }
                       }
@@ -3196,6 +3547,7 @@
           "maturityCurrency": {
             "type": "string",
             "description": "If absent assumes `AUD`.",
+            "default": "AUD",
             "x-cds-type": "CurrencyString"
           },
           "maturityInstructions": {
@@ -3230,6 +3582,7 @@
           "paymentCurrency": {
             "type": "string",
             "description": "If absent assumes `AUD`.",
+            "default": "AUD",
             "x-cds-type": "CurrencyString"
           },
           "paymentDueDate": {
@@ -3255,6 +3608,7 @@
           "originalLoanCurrency": {
             "type": "string",
             "description": "If absent assumes `AUD`.",
+            "default": "AUD",
             "x-cds-type": "CurrencyString"
           },
           "loanEndDate": {
@@ -3275,6 +3629,7 @@
           "minInstalmentCurrency": {
             "type": "string",
             "description": "If absent assumes `AUD`.",
+            "default": "AUD",
             "x-cds-type": "CurrencyString"
           },
           "maxRedraw": {
@@ -3285,6 +3640,7 @@
           "maxRedrawCurrency": {
             "type": "string",
             "description": "If absent assumes `AUD`.",
+            "default": "AUD",
             "x-cds-type": "CurrencyString"
           },
           "minRedraw": {
@@ -3295,6 +3651,7 @@
           "minRedrawCurrency": {
             "type": "string",
             "description": "If absent assumes `AUD`.",
+            "default": "AUD",
             "x-cds-type": "CurrencyString"
           },
           "offsetAccountEnabled": {
@@ -3305,8 +3662,7 @@
             "type": "array",
             "description": "The _accountId_ values of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that _offsetAccountEnabled_ is set to `true` but the _offsetAccountIds_ field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation.",
             "items": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
+              "$ref": "#/components/schemas/BankingAccountId"
             }
           },
           "repaymentType": {
@@ -3368,14 +3724,16 @@
         "type": "object",
         "properties": {
           "accountId": {
-            "type": "string",
-            "description": "ID of the account for which transactions are provided.",
-            "x-cds-type": "ASCIIString"
+            "description": "Unique identifier for the account.",
+            "allOf": [{
+              "$ref": "#/components/schemas/BankingAccountId"
+            }]
           },
           "transactionId": {
-            "type": "string",
-            "description": "A unique ID of the transaction adhering to the standards for ID permanence. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if _isDetailAvailable_ is set to `true`.",
-            "x-cds-type": "ASCIIString"
+            "description": "Unique identifier for the transaction. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if _isDetailAvailable_ is set to `true`.",
+            "allOf": [{
+              "$ref": "#/components/schemas/BankingTransactionId"
+            }]
           },
           "isDetailAvailable": {
             "type": "boolean",
@@ -3430,6 +3788,7 @@
           "currency": {
             "type": "string",
             "description": "The currency for the transaction amount. `AUD` assumed if not present.",
+            "default": "AUD",
             "x-cds-type": "CurrencyString"
           },
           "reference": {
@@ -3517,7 +3876,10 @@
                   "nppPayload": {
                     "type": "object",
                     "description": "Required if the _extensionUType_ value is `nppPayload`.",
-                    "required": ["service","serviceVersion"],
+                    "required": [
+                      "service",
+                      "serviceVersion"
+                    ],
                     "x-conditional": [
                       "extendedDescription"
                     ],
@@ -3615,9 +3977,10 @@
         "type": "object",
         "properties": {
           "accountId": {
-            "type": "string",
-            "description": "A unique ID of the account adhering to the standards for ID permanence.",
-            "x-cds-type": "ASCIIString"
+            "description": "Unique identifier for the account.",
+            "allOf": [{
+              "$ref": "#/components/schemas/BankingAccountId"
+            }]
           },
           "currentBalance": {
             "type": "string",
@@ -3642,6 +4005,7 @@
           "currency": {
             "type": "string",
             "description": "The currency for the balance amounts. If absent assumed to be `AUD`.",
+            "default": "AUD",
             "x-cds-type": "CurrencyString"
           },
           "purses": {
@@ -3729,9 +4093,10 @@
         "type": "object",
         "properties": {
           "payeeId": {
-            "type": "string",
-            "description": "ID of the payee adhering to the rules of ID permanence.",
-            "x-cds-type": "ASCIIString"
+            "description": "Unique identifier for the payee.",
+            "allOf": [{
+              "$ref": "#/components/schemas/BankingPayeeId"
+            }]
           },
           "nickname": {
             "type": "string",
@@ -4083,9 +4448,10 @@
         "type": "object",
         "properties": {
           "accountId": {
-            "type": "string",
-            "description": "A unique ID of the account adhering to the standards for ID permanence.",
-            "x-cds-type": "ASCIIString"
+            "description": "Unique identifier for the account.",
+            "allOf": [{
+              "$ref": "#/components/schemas/BankingAccountId"
+            }]
           },
           "authorisedEntity": {
             "$ref": "#/components/schemas/BankingAuthorisedEntity"
@@ -4173,9 +4539,10 @@
         "type": "object",
         "properties": {
           "scheduledPaymentId": {
-            "type": "string",
-            "description": "A unique ID of the scheduled payment adhering to the standards for ID permanence.",
-            "x-cds-type": "ASCIIString"
+            "description": "Unique identifier for the scheduled payment.",
+            "allOf": [{
+              "$ref": "#/components/schemas/BankingScheduledPaymentId"
+            }]
           },
           "nickname": {
             "type": "string",
@@ -4226,7 +4593,8 @@
           },
           "isAmountCalculated": {
             "type": "boolean",
-            "description": "Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then `false` is assumed."
+            "description": "Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then `false` is assumed.",
+            "default": false
           },
           "amount": {
             "type": "string",
@@ -4236,6 +4604,7 @@
           "currency": {
             "type": "string",
             "description": "The currency for the payment. `AUD` assumed if not present.",
+            "default": "AUD",
             "x-cds-type": "CurrencyString"
           }
         },
@@ -4263,14 +4632,16 @@
             ]
           },
           "accountId": {
-            "type": "string",
             "description": "Present if _toUType_ is set to `accountId`. Indicates that the payment is to another account that is accessible under the current consent.",
-            "x-cds-type": "ASCIIString"
+            "allOf": [{
+              "$ref": "#/components/schemas/BankingAccountId"
+            }]
           },
           "payeeId": {
-            "type": "string",
             "description": "Present if _toUType_ is set to `payeeId`. Indicates that the payment is to registered payee that can be accessed using the payee endpoint. If the Bank Payees scope has not been consented to then a _payeeId_ should not be provided and the full payee details should be provided instead.",
-            "x-cds-type": "ASCIIString"
+            "allOf": [{
+              "$ref": "#/components/schemas/BankingPayeeId"
+            }]
           },
           "nickname": {
             "type": "string",
@@ -4312,9 +4683,10 @@
         "type": "object",
         "properties": {
           "accountId": {
-            "type": "string",
-            "description": "_accountId_ of the account that is the source of funds for the payment.",
-            "x-cds-type": "ASCIIString"
+            "description": "Unique identifier for the account.",
+            "allOf": [{
+              "$ref": "#/components/schemas/BankingAccountId"
+            }]
           }
         },
         "description": "Object containing details of the source of the payment. Currently only specifies an _accountId_ but provided as an object to facilitate future extensibility and consistency with the _to_ object."
@@ -4761,58 +5133,58 @@
           }
         ]
       },
-      "MetaError": {
-        "type": "object",
-        "properties": {
-          "urn": {
-            "type": "string",
-            "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code."
-          }
-        },
-        "description": "Additional data for customised error codes.",
-        "x-conditional": [
-          "urn"
-        ]
-      },
       "ResponseErrorListV2": {
+        "type": "object",
         "required": [
           "errors"
         ],
-        "type": "object",
         "properties": {
           "errors": {
+            "description": "List of errors.",
             "type": "array",
-            "description": "",
             "items": {
-              "required": [
-                "code",
-                "detail",
-                "title"
-              ],
-              "type": "object",
-              "properties": {
-                "code": {
-                  "type": "string",
-                  "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
-                },
-                "title": {
-                  "type": "string",
-                  "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
-                },
-                "detail": {
-                  "type": "string",
-                  "description": "A human-readable explanation specific to this occurrence of the problem."
-                },
-                "meta": {
-                  "$ref": "#/components/schemas/MetaError"
-                }
+              "$ref": "#/components/schemas/ErrorV2"
+            }
+          }
+        }
+      },
+      "ErrorV2": {
+        "type": "object",
+        "required": [
+          "code",
+          "title",
+          "detail"
+        ],
+        "x-conditional": [
+          "meta"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the _meta_ object. Otherwise, the value is the error code URN."
+          },
+          "title": {
+            "type": "string",
+            "description": "A short, human-readable summary of the problem that **MUST NOT** change from occurrence to occurrence of the problem represented by the error code."
+          },
+          "detail": {
+            "type": "string",
+            "description": "A human-readable explanation specific to this occurrence of the problem."
+          },
+          "meta": {
+            "type": "object",
+            "x-conditional": [
+              "urn"
+            ],
+            "description": "Additional data for customised error codes.",
+            "properties": {
+              "urn": {
+                "type": "string",
+                "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code."
               }
             }
           }
-        },
-        "x-conditional": [
-          "meta"
-        ]
+        }
       },
       "BankingProductCategory": {
         "type": "string",
@@ -4836,185 +5208,37 @@
         "type": "string",
         "description": "Identifier of the applicable overlay service. The _service_ is used in conjunction with the _serviceVersion_. See [here](#npp-services) for more details.",
         "enum": [
-          "X2P1", "IFTI", "BSCT", "CATSCT"
+          "X2P1",
+          "IFTI",
+          "BSCT",
+          "CATSCT"
         ],
         "example": "X2P1"
-      }
-    },
-    "headers": {
-      "ResponseHeader_x-v": {
-        "description": "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-        "schema": {
-          "type": "string"
-        }
       },
-      "ResponseHeader_x-fapi-interaction-id": {
-        "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-        "schema": {
-          "type": "string"
-        }
-      }
-    },
-    "parameters": {
-      "RequestHeader_x-v": {
-        "name": "x-v",
-        "in": "header",
-        "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
-        "required": true,
-        "schema": {
-          "type": "string"
-        }
+      "BankingProductId": {
+        "type": "string",
+        "description": "A data holder-specific unique identifier for a Banking product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
+        "x-cds-type": "ASCIIString"
       },
-      "RequestHeader_x-min-v": {
-        "name": "x-min-v",
-        "in": "header",
-        "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
-        "schema": {
-          "type": "string"
-        }
+      "BankingAccountId": {
+        "type": "string",
+        "description": "A unique identifier for a Banking account, generated according to [CDR ID Permanence](#id-permanence) requirements.",
+        "x-cds-type": "ASCIIString"
       },
-      "RequestHeader_x-fapi-interaction-id": {
-        "name": "x-fapi-interaction-id",
-        "in": "header",
-        "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-        "schema": {
-          "type": "string"
-        }
+      "BankingTransactionId": {
+        "type": "string",
+        "description": "A unique identifier for a Banking transaction, generated according to [CDR ID Permanence](#id-permanence) requirements.",
+        "x-cds-type": "ASCIIString"
       },
-      "RequestHeader_x-fapi-auth-date": {
-        "name": "x-fapi-auth-date",
-        "in": "header",
-        "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
-        "schema": {
-          "type": "string"
-        },
-        "x-conditional": true
+      "BankingScheduledPaymentId": {
+        "type": "string",
+        "description": "A unique identifier for a Banking scheduled payment, generated according to [CDR ID Permanence](#id-permanence) requirements.",
+        "x-cds-type": "ASCIIString"
       },
-      "RequestHeader_x-fapi-customer-ip-address": {
-        "name": "x-fapi-customer-ip-address",
-        "in": "header",
-        "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-        "schema": {
-          "type": "string"
-        }
-      },
-      "RequestHeader_x-cds-client-headers": {
-        "name": "x-cds-client-headers",
-        "in": "header",
-        "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
-        "schema": {
-          "type": "string"
-        },
-        "x-conditional": true,
-        "x-cds-type": "Base64"
-      },
-      "Param_account_open-status": {
-        "name": "open-status",
-        "in": "query",
-        "description": "Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.",
-        "schema": {
-          "type": "string",
-          "default": "ALL",
-          "enum": [
-            "ALL",
-            "CLOSED",
-            "OPEN"
-          ]
-        }
-      },
-      "Param_product-category": {
-        "name": "product-category",
-        "in": "query",
-        "description": "Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
-        "schema": {
-          "type": "string",
-          "enum": [
-            "BUSINESS_LOANS",
-            "CRED_AND_CHRG_CARDS",
-            "LEASES",
-            "MARGIN_LOANS",
-            "OVERDRAFTS",
-            "PERS_LOANS",
-            "REGULATED_TRUST_ACCOUNTS",
-            "RESIDENTIAL_MORTGAGES",
-            "TERM_DEPOSITS",
-            "TRADE_FINANCE",
-            "TRANS_AND_SAVINGS_ACCOUNTS",
-            "TRAVEL_CARDS"
-          ]
-        }
-      },
-      "Param_account_is-owned": {
-        "name": "is-owned",
-        "in": "query",
-        "description": "Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.",
-        "schema": {
-          "type": "boolean"
-        }
-      },
-      "Param_page": {
-        "name": "page",
-        "in": "query",
-        "description": "Page of results to request (standard pagination).",
-        "schema": {
-          "type": "integer",
-          "default": 1
-        },
-        "x-cds-type": "PositiveInteger"
-      },
-      "Param_page-size": {
-        "name": "page-size",
-        "in": "query",
-        "description": "Page size to request. Default is 25 (standard pagination).",
-        "schema": {
-          "type": "integer",
-          "default": 25
-        },
-        "x-cds-type": "PositiveInteger"
-      },
-      "Param_transaction_newest-time": {
-        "name": "newest-time",
-        "in": "query",
-        "description": "Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to today. Format is aligned to [DateTimeString](#common-field-types) common type.",
-        "schema": {
-          "type": "string"
-        },
-        "x-cds-type": "DateTimeString"
-      },
-      "Param_transaction_oldest-time": {
-        "name": "oldest-time",
-        "in": "query",
-        "description": "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to _newest-time_ minus 90 days. Format is aligned to [DateTimeString](#common-field-types) common type.",
-        "schema": {
-          "type": "string"
-        },
-        "x-cds-type": "DateTimeString"
-      },
-      "Param_transaction_min-amount": {
-        "name": "min-amount",
-        "in": "query",
-        "description": "Filter transactions to only transactions with amounts higher than or equal to this amount.",
-        "schema": {
-          "type": "string"
-        },
-        "x-cds-type": "AmountString"
-      },
-      "Param_transaction_max-amount": {
-        "name": "max-amount",
-        "in": "query",
-        "description": "Filter transactions to only transactions with amounts less than or equal to this amount.",
-        "schema": {
-          "type": "string"
-        },
-        "x-cds-type": "AmountString"
-      },
-      "Param_transaction_text": {
-        "name": "text",
-        "in": "query",
-        "description": "Filter transactions to only transactions where this string value is found as a substring of either the _reference_ or _description_ fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named _isQueryParamUnsupported_ should be included in the meta object and set to `true` (whether the text parameter is supplied or not).",
-        "schema": {
-          "type": "string"
-        }
+      "BankingPayeeId": {
+        "type": "string",
+        "description": "A unique identifier for a Banking payee, generated according to [CDR ID Permanence](#id-permanence) requirements.",
+        "x-cds-type": "ASCIIString"
       }
     }
   }

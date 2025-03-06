@@ -2,8 +2,13 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Dynamic Client Registration API",
-    "description": "This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.",
-    "version": "1.33.1"
+    "version": "1.33.1",
+    "description": "Specifications for Dynamic Client Registration endpoints applicable to all data holders (except secondary data holders).",
+    "contact": {
+      "name": "Data Standards Body",
+      "email": "contact@dsb.gov.au",
+      "url": "https://dsb.gov.au/"
+    }
   },
   "servers": [
     {
@@ -11,105 +16,60 @@
       "url": "https://mtls.dh.example.com/cds-au/v1"
     }
   ],
+  "tags": [
+    {
+      "name": "Data Holder Client Registration",
+      "x-shortName": "Client Registration",
+      "description": "Data Holder Client Registration endpoints"
+    }
+  ],
   "paths": {
     "/register": {
       "post": {
         "tags": [
-          "Client Registration"
+          "Data Holder Client Registration"
         ],
         "summary": "Register Data Recipient oAuth Client",
         "description": "Register a client using a CDR Register issued Software Statement Assertion. \n\nThis endpoint does not require [CORS](#cors).",
-        "operationId": "PostDataRecipientRegistration",
+        "operationId": "postClientRegistration",
         "requestBody": {
-          "description": "The registration request JWT to be used to register with a Data Holder.",
-          "content": {
-            "application/jwt": {
-              "schema": {
-                "$ref": "#/components/schemas/ClientRegistrationRequest"
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/RequestClientRegistration"
         },
         "responses": {
           "201": {
-            "description": "Client registration success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RegistrationProperties"
-                }
-              }
-            }
+            "$ref": "#/components/responses/PostClientRegistration201"
           },
           "400": {
-            "description": "Request failed due to client error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RegistrationError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/DCRGeneric400"
           }
-        },
-        "x-codegen-request-body-name": "ClientRegistrationRequest"
+        }
       }
     },
     "/register/{ClientId}": {
       "get": {
         "tags": [
-          "Client Registration"
+          "Data Holder Client Registration"
         ],
         "summary": "Get oAuth Client Registration",
         "description": "Get a Client Registration for a given Client ID.",
-        "operationId": "GetClientRegistration",
+        "operationId": "getClientRegistration",
         "parameters": [
           {
-            "name": "ClientId",
-            "in": "path",
-            "description": "The client ID issued by the target Data Holder.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/PathClientId"
           },
           {
-            "name": "Authorization",
-            "in": "header",
-            "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-cds-type": "ExternalRef"
+            "$ref": "#/components/parameters/HeaderAuthorization"
           }
         ],
         "responses": {
           "200": {
-            "description": "Client registration retrieval success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RegistrationProperties"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetClientRegistration200"
           },
           "401": {
-            "description": "Request failed due to unknown or invalid Client or invalid access token",
-            "headers": {
-              "WWW-Authenticate": {
-                "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
-                "schema": {
-                  "type": "string"
-                },
-                "x-cds-type": "ExternalRef"
-              }
-            }
+            "$ref": "#/components/responses/DCRGeneric401"
           },
           "403": {
-            "description": "The client does not have permission to read, update or delete the Client"
+            "$ref": "#/components/responses/DCRGeneric403"
           }
         },
         "x-scopes": [
@@ -118,111 +78,53 @@
       },
       "put": {
         "tags": [
-          "Client Registration"
+          "Data Holder Client Registration"
         ],
         "summary": "Update Data Recipient Registration",
         "description": "Update a Client Registration for a given Client ID.",
-        "operationId": "PutDataRecipientRegistration",
+        "operationId": "putClientRegistration",
         "parameters": [
           {
-            "name": "ClientId",
-            "in": "path",
-            "description": "The client ID issued by the target Data Holder.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/PathClientId"
           },
           {
-            "name": "Authorization",
-            "in": "header",
-            "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-cds-type": "ExternalRef"
+            "$ref": "#/components/parameters/HeaderAuthorization"
           }
         ],
         "requestBody": {
-          "description": "The registration request JWT to be used to register with a Data Holder.",
-          "content": {
-            "application/jwt": {
-              "schema": {
-                "$ref": "#/components/schemas/ClientRegistrationRequest"
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/RequestClientRegistration"
         },
         "responses": {
           "200": {
-            "description": "Client registration update success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RegistrationProperties"
-                }
-              }
-            }
+            "$ref": "#/components/responses/PutClientRegistration200"
           },
           "400": {
-            "description": "Request failed due to client error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RegistrationError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/DCRGeneric400"
           },
           "401": {
-            "description": "Request failed due to unknown or invalid Client or invalid access token",
-            "headers": {
-              "WWW-Authenticate": {
-                "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
-                "schema": {
-                  "type": "string"
-                },
-                "x-cds-type": "ExternalRef"
-              }
-            }
+            "$ref": "#/components/responses/DCRGeneric401"
           },
           "403": {
-            "description": "The client does not have permission to read, update or delete the Client"
+            "$ref": "#/components/responses/DCRGeneric403"
           }
         },
         "x-scopes": [
           "cdr:registration"
-        ],
-        "x-codegen-request-body-name": "ClientRegistrationRequest"
+        ]
       },
       "delete": {
         "tags": [
-          "Client Registration"
+          "Data Holder Client Registration"
         ],
         "summary": "Delete Data Recipient oAuth Client Registration",
         "description": "Delete a Client Registration for a given Client ID.",
-        "operationId": "DeleteDataRecipientRegistration",
+        "operationId": "deleteClientRegistration",
         "parameters": [
           {
-            "name": "ClientId",
-            "in": "path",
-            "description": "The client ID issued by the target Data Holder.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/PathClientId"
           },
           {
-            "name": "Authorization",
-            "in": "header",
-            "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-cds-type": "ExternalRef"
+            "$ref": "#/components/parameters/HeaderAuthorization"
           }
         ],
         "responses": {
@@ -230,22 +132,13 @@
             "description": "Client deleted"
           },
           "401": {
-            "description": "Request failed due to unknown or invalid Client or invalid access token",
-            "headers": {
-              "WWW-Authenticate": {
-                "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
-                "schema": {
-                  "type": "string"
-                },
-                "x-cds-type": "ExternalRef"
-              }
-            }
+            "$ref": "#/components/responses/DCRGeneric401"
           },
           "403": {
-            "description": "The client does not have permission to read, update or delete the Client"
+            "$ref": "#/components/responses/DCRGeneric403"
           },
           "405": {
-            "description": "Method Not Allowed. The requested method is unsupported"
+            "$ref": "#/components/responses/DCRGeneric405"
           }
         },
         "x-scopes": [
@@ -255,8 +148,102 @@
     }
   },
   "components": {
+    "parameters": {
+      "HeaderAuthorization": {
+        "name": "Authorization",
+        "in": "header",
+        "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "x-cds-type": "ExternalRef"
+      },
+      "PathClientId": {
+        "name": "ClientId",
+        "in": "path",
+        "description": "The client ID issued by the target Data Holder.",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "requestBodies": {
+      "RequestClientRegistration": {
+        "description": "The registration request JWT to be used to register with a Data Holder.",
+        "content": {
+          "application/jwt": {
+            "schema": {
+              "$ref": "#/components/schemas/ClientRegistrationRequestV1"
+            }
+          }
+        },
+        "required": true
+      }
+    },
+    "responses": {
+      "PostClientRegistration201": {
+        "description": "Client registration success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/RegistrationProperties"
+            }
+          }
+        }
+      },
+      "GetClientRegistration200": {
+        "description": "Client registration retrieval success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/RegistrationProperties"
+            }
+          }
+        }
+      },
+      "PutClientRegistration200": {
+        "description": "Client registration update success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/RegistrationProperties"
+            }
+          }
+        }
+      },
+      "DCRGeneric400": {
+        "description": "Request failed due to client error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/RegistrationError"
+            }
+          }
+        }
+      },
+      "DCRGeneric401": {
+        "description": "Request failed due to unknown or invalid Client or invalid access token",
+        "headers": {
+          "WWW-Authenticate": {
+            "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
+            "schema": {
+              "type": "string"
+            },
+            "x-cds-type": "ExternalRef"
+          }
+        }
+      },
+      "DCRGeneric403": {
+        "description": "The client does not have permission to read, update or delete the Client"
+      },
+      "DCRGeneric405": {
+        "description": "Method Not Allowed. The requested method is unsupported"
+      }
+    },
     "schemas": {
-      "ClientRegistrationRequest": {
+      "ClientRegistrationRequestV1": {
         "type": "string",
         "description": "The registration request JWT to be used to register with a Data Holder. The schema of the payload section of the decoded string(JWT) is defined in [ClientRegistration](#cdr-dynamic-client-registration-api_schemas_tocSclientregistration).",
         "format": "JWT",
@@ -340,7 +327,7 @@
           },
           "redirect_uris": {
             "type": "array",
-            "description": "Array of redirection URI strings for use in redirect-based flows. If used, _redirect_uris_ MUST match or be a subset of the _redirect_uris_ as defined in the SSA.",
+            "description": "Array of redirection URI strings for use in redirect-based flows. If used, _redirect_uris_ **MUST** match or be a subset of the _redirect_uris_ as defined in the SSA.",
             "example": [
               "https://adr.example.com/redirects/redirect1",
               "https://adr.example.com/redirects/redirect2"
@@ -358,7 +345,7 @@
           },
           "logo_uri": {
             "type": "string",
-            "description": "URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval.",
+            "description": "URL string that references a logo for the client. If present, the server **SHOULD** display this image to the end-user during approval.",
             "example": "https://adr.example.com/logos/logo1.png",
             "x-cds-type": "URIString"
           },
@@ -438,6 +425,7 @@
           "application_type": {
             "type": "string",
             "description": "Kind of the application. The only supported application type will be `web`.",
+            "default": "web",
             "enum": [
               "web"
             ]
@@ -512,6 +500,7 @@
           "software_roles": {
             "type": "string",
             "description": "String containing a role of the software in the CDR Regime. Initially the only value used will be `data-recipient-software-product`.",
+            "default": "data-recipient-software-product",
             "example": "data-recipient-software-product",
             "enum": [
               "data-recipient-software-product"
@@ -592,57 +581,6 @@
             "description": "Additional text description of the error for debugging.",
             "x-cds-type": "ASCIIString"
           }
-        }
-      }
-    },
-    "responses": {
-      "400Error": {
-        "description": "Request failed due to client error",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/RegistrationError"
-            }
-          }
-        }
-      },
-      "401Error": {
-        "description": "Request failed due to unknown or invalid Client or invalid access token",
-        "headers": {
-          "WWW-Authenticate": {
-            "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
-            "schema": {
-              "type": "string"
-            },
-            "x-cds-type": "ExternalRef"
-          }
-        }
-      },
-      "403Error": {
-        "description": "The client does not have permission to read, update or delete the Client"
-      },
-      "405Error": {
-        "description": "Method Not Allowed. The requested method is unsupported"
-      }
-    },
-    "parameters": {
-      "Authorization": {
-        "name": "Authorization",
-        "in": "header",
-        "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
-        "required": true,
-        "schema": {
-          "type": "string"
-        },
-        "x-cds-type": "ExternalRef"
-      },
-      "ClientId": {
-        "name": "ClientId",
-        "in": "path",
-        "description": "The client ID issued by the target Data Holder.",
-        "required": true,
-        "schema": {
-          "type": "string"
         }
       }
     }

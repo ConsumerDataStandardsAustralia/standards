@@ -7,7 +7,7 @@ For the energy sector requests for the following data clusters are Shared Respon
 * Energy Usage
 * Distributed Energy Resources.
 
-CDR requests for these data clusters to a Data Holder MUST be fulfilled by a request to AEMO.
+CDR requests for these data clusters to a Data Holder **MUST** be fulfilled by a request to AEMO.
 
 <h3 id="shared-responsibility_energy_security-profile">Security Profile</h3>
 
