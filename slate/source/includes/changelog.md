@@ -12,6 +12,7 @@ The following table lists the changes made to these standards in reverse date or
 
 | Date | Version | Description | Detail of change |
 |-----------|-------|-----------|----------------|
+| 06/03/2025 | [1.33.1](https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.33.1/) | Changes from OpenAPI spec refactoring. | See [release notes](includes/releasenotes/releasenotes.1.33.1.html) for details. |
 | 18/12/2024 | [1.33.0](https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.33.0/) | Changes from Decision 356 (Maintenance Iteration 21) and Decision 350 (August 2024 Rules - Standards Impacts). | See [release notes](includes/releasenotes/releasenotes.1.33.0.html), [Decision 356](https://github.com/ConsumerDataStandardsAustralia/standards/issues/356) and [Decision 350](https://github.com/ConsumerDataStandardsAustralia/standards/issues/350) for details. |
 | 21/10/2024 | <a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.32.0/'>1.32.0</a> | Changes from Maintenance Iteration 20. | See [release notes](includes/releasenotes/releasenotes.1.32.0.html) and [Decision 353](https://github.com/ConsumerDataStandardsAustralia/standards/issues/353) for details. |
 | 03/07/2024 | <a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.31.0/'>1.31.0</a> | Changes from Maintenance Iteration 19 | See [release notes](includes/releasenotes/releasenotes.1.31.0.html) and [Decision 347](https://github.com/ConsumerDataStandardsAustralia/standards/issues/347) for details. |
@@ -97,8 +98,3 @@ The following table lists the changes made to these standards in reverse date or
 | 18/12/2018 | 0.1.0 | Updated swagger files | Swagger files were updated to address feedback. Documentation has not been changed to reflect these changes unless stated. Changes are as follows:<ul><li>Extracted common query parameters</li><li>Extracted enums with repeated use</li><li>Used schema composition to facilitate model inheritance</li><li>Removed erroneous default values</li><li>Corrected for JSON syntax errors</li><li>Standardised Operation IDs and Model names</li><li>Change $type fields to PType (also fixed in doco)</li></ul>|
 | 18/12/2018 | 0.1.0 | Addition of change log | This change log was added to the standards documentation|
 | 02/11/2018 | <a href='https://consumerdatastandardsaustralia.github.io/standards-archives/standards-0.1/'>0.1.0</a> | (November 2018 Working Draft) | November 2018 Working Draft. |
-
-<br>
-<br>
-<br>
-<br>

@@ -1,0 +1,323 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Consumer Data Standards - v1.33.1 Release Notes</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="no-code-layout includes includes_releasenotes includes_releasenotes_releasenotes" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#v1-33-1-release-notes" class="toc-h1 toc-link" data-title="V1.33.1 Release Notes">V1.33.1 Release Notes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#changes-made" class="toc-h2 toc-link" data-title="Changes Made">Changes Made</a>
+                  </li>
+                  <li>
+                    <a href="#general-changes" class="toc-h2 toc-link" data-title="General Changes">General Changes</a>
+                  </li>
+                  <li>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
+                  <li>
+                    <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
+                  </li>
+                  <li>
+                    <a href="#api-endpoints" class="toc-h2 toc-link" data-title="API Endpoints">API Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#information-security-profile" class="toc-h2 toc-link" data-title="Information Security Profile">Information Security Profile</a>
+                  </li>
+                  <li>
+                    <a href="#register-standards" class="toc-h2 toc-link" data-title="Register Standards">Register Standards</a>
+                  </li>
+                  <li>
+                    <a href="#consumer-experience" class="toc-h2 toc-link" data-title="Consumer Experience">Consumer Experience</a>
+                  </li>
+                  <li>
+                    <a href="#non-functional-requirements" class="toc-h2 toc-link" data-title="Non-Functional Requirements">Non-Functional Requirements</a>
+                  </li>
+                  <li>
+                    <a href="#additional-standards" class="toc-h2 toc-link" data-title="Additional Standards">Additional Standards</a>
+                  </li>
+                  <li>
+                    <a href="#known-issues" class="toc-h2 toc-link" data-title="Known Issues">Known Issues</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="content">
+        <h1 id='v1-33-1-release-notes'>V1.33.1 Release Notes</h1>
+<p>Release notes for version <strong>1.33.1</strong> of the <a href="../../">CDR Standards</a>.</p>
+<h2 id='changes-made'>Changes Made</h2><h3 id='change-requests'>Change Requests</h3>
+<p>This release addresses the following minor defects raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues">Standards Staging</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/183">Standards Staging #183 - Refactor swagger definitions to factor out reusable components</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/428">Standards Staging #428 - Fixes for Telco spec.</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/432">Standards Staging #432 - Specify custom OAS fields consistently</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/472">Standards Staging #472 - Bug fixes - typos and formatting</a></li>
+</ul>
+<h2 id='general-changes'>General Changes</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Refactor swagger definitions</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/183"><strong>Standards Staging #183</strong></a>: Key changes resulting from this issue are described below as part of Staging #472.</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Fixes for Telco spec.</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/428"><strong>Standards Staging #428</strong></a>: Key changes resulting from this issue are described below as part of Staging #472.</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Specify custom OpenAPI Spec. (OAS) fields consistently</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/432"><strong>Standards Staging #432</strong></a>: Where schema extensions such as <code>x-cds-type</code> and <code>x-conditional</code> had been applied, these are now in a consistent location and duplicate statements have been removed. Other redundant statements (<code>&quot;x-cds-type&quot;: &quot;enum&quot;</code>, <code>&quot;x-cds-type&quot;: &quot;Boolean&quot;</code>) have been removed as these can be inferred from normative statements.</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Refactor, bug fixes, typos and formatting</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/472"><strong>Standards Staging #472</strong></a>: <ul><li>Corrected typos and text styling.</li><li>Requirements for endpoint response headers are now displayed.</li><li>For consistency, common statements referring to endpoint behaviour have been simplified to remove specific participant references. (e.g., &#39;the data holder MUST&#39; and &#39;the Register MUST&#39; have become &#39;the endpoint MUST&#39;)</li><li>Refactored all OpenAPI Spec. (OAS) files to use components consistently. Some components have been renamed to provide clarity or remain unique or consistent across the complete standards API suite.</li><li>Updated endpoint <em>tags</em> in the OAS to improve grouping and sorting of endpoints in the Standards and other schema tools. The endpoint menu order has changed in the Register and Banking sections as a result.</li><li>Updated the referencing of the ResponseErrorList schema for consistency across all APIs and corrected the requirement of the <em>meta</em> field from optional to conditional, to align to the condition specified in the <em>code</em> field.</li><li>Updated some endpoint <em>operationId</em> values for consistency and to ensure they are unique across the complete API suite.</li><li>Where field descriptions specified default values, they are now also specified in the schema and displayed in the schema Properties tables.</li><li>Updated description of Energy <em>minDemand</em> field to represent the default value in the specified AmountString format (<code>0.00</code>) instead of <code>0</code>.</li><li>Corrected the specification of custom descriptions for referenced schemas that were ignored outside the rendering of the Standards page (e.g. other Swagger tools) by enclosing the referenced schemas in allOf statements.</li><li>Removed duplicate code (endpoint properties) in the Energy APIs and Energy Secondary DH APIs OAS - the <em>EnergyServicePointDetail</em> schema now references common fields from the <em>EnergyServicePoint</em> schema rather than duplicating them.</li><li>Created Enum schemas to allow frequently used values to reference a common source rather than being duplicated inline (Register: <em>industries</em>, Energy: <em>measureUnit</em>, <em>days</em>).</li><li>Consolidated multiple instances of common <em>requestBody</em> schemas into <em>requestBodies</em> components.</li><li>Removed the <em>x-codegen-request-body-name</em> custom field specified a limited number of times in the following APIs (endpoint instances): DCR (2), Banking (3), Admin (1).</li><li>Where ID Permanence values were specified, previously discrete fields now reference a common schema component describing the respective field.</li><li>Removed unused schemas from the Telco OAS.</li><li>Added an item to the Known Issues section detailing Telco Candidate issues.</li></ul>These changes are not intended to modify the requirements or obligations of the Standards, but aim to clarify and improve the technical specifications supporting them.</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+<h2 id='introduction'>Introduction</h2>
+<p>None</p>
+<h2 id='high-level-standards'>High Level Standards</h2>
+<p>None</p>
+<h2 id='api-endpoints'>API Endpoints</h2>
+<p>None</p>
+<h2 id='information-security-profile'>Information Security Profile</h2>
+<p>None</p>
+<h2 id='register-standards'>Register Standards</h2>
+<p>None</p>
+<h2 id='consumer-experience'>Consumer Experience</h2>
+<p>None</p>
+<h2 id='non-functional-requirements'>Non-Functional Requirements</h2>
+<p>None</p>
+<h2 id='additional-standards'>Additional Standards</h2>
+<p>None</p>
+<h2 id='known-issues'>Known Issues</h2>
+<p>None</p>
+<p style="margin-bottom:300px"></p>
+
+      </div>
+    </div>
+  </body>
+</html>

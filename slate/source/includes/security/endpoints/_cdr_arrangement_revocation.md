@@ -27,13 +27,11 @@ Content-Type: application/x-www-form-urlencoded
 **Data Holder Path:** The _cdr_arrangement_revocation_endpoint_ defined using OIDC Discovery.  
 **Data Recipient Software Product Path:** `<RecipientBaseUri>/arrangements/revoke` where `<RecipientBaseUri>` is registered with the CDR Register.
 
-Data Holders and Data Recipient Software Products MUST implement a CDR Arrangement Revocation endpoint that can be used to revoke an existing sharing arrangement.
+Data Holders and Data Recipient Software Products **MUST** implement a CDR Arrangement Revocation endpoint that can be used to revoke an existing sharing arrangement.
 
 <br/>
 
-```diff
-Clarified 'CDR Arrangement JWT method' details
-```
+
 
 **CDR Arrangement Form Parameter method**
 
@@ -55,11 +53,11 @@ The location of the Data Holder CDR Arrangement Revocation endpoint is determine
 
 This endpoint will be implemented according to the following:
 
-* Data Holders MUST only support "CDR Arrangement Form Parameter" method.
-* Data Recipient Software Products MUST revoke consent by calling the CDR Arrangement Revocation endpoint with a valid CDR Arrangement ID.
-* Data Holders MUST publish their CDR Arrangement Revocation endpoint using their OpenID Provider Metadata Discovery endpoint.
-* Consent revocation MUST also revoke associated refresh and/or access tokens.
-* If the _cdr_arrangement_id_ is not related to the client making the call it MUST be rejected.
+* Data Holders **MUST** only support "CDR Arrangement Form Parameter" method.
+* Data Recipient Software Products **MUST** revoke consent by calling the CDR Arrangement Revocation endpoint with a valid CDR Arrangement ID.
+* Data Holders **MUST** publish their CDR Arrangement Revocation endpoint using their OpenID Provider Metadata Discovery endpoint.
+* Consent revocation **MUST** also revoke associated refresh and/or access tokens.
+* If the _cdr_arrangement_id_ is not related to the client making the call it **MUST** be rejected.
 
 
 > Non-Normative Example: Data Recipient endpoint  
@@ -128,12 +126,12 @@ This endpoint will be implemented according to the following:
 
 **Response Codes**
 
-The following responses are in addition to error responses covered by normative references. Error scenarios in the following table MUST use the error structure defined in the [Payload Conventions](#payload-conventions).
+The following responses are in addition to error responses covered by normative references. Error scenarios in the following table **MUST** use the error structure defined in the [Payload Conventions](#payload-conventions).
 
 Response Code | Situation | Description
 -- | -- | --
 204 No Content | Success | The sharing arrangement has been revoked successfully.
-422 Unprocessable Entity | Invalid Arrangement ID | The client submitted an invalid arrangement identifier or the identifier could not be found. The server MUST respond with [Invalid Consent Arrangement](#error-422-authorisation-invalid-arrangement).
+422 Unprocessable Entity | Invalid Arrangement ID | The client submitted an invalid arrangement identifier or the identifier could not be found. The server **MUST** respond with [Invalid Consent Arrangement](#error-422-authorisation-invalid-arrangement).
 
 
 

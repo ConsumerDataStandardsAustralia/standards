@@ -1,8 +1,6 @@
 ## Common Field Types
 
-```diff
-Applied consistent styling in descriptions and Valid Examples
-```
+
 
 The following table outlines the common data types for fields used in the standard.
 

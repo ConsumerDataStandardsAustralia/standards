@@ -173,15 +173,15 @@
 
 <h3 id='low-velocity-data-sets'>Low Velocity Data Sets</h3>
 
-<p>For endpoints that provide access to data that is low velocity (ie. the data does not change frequently) the Data Recipient Software Product is expected to cache the results of any data they receive and not request the same resource again until the data may reasonably have changed.</p>
+<p>For endpoints that provide access to data that is low velocity (i.e. the data does not change frequently) the Data Recipient Software Product is expected to cache the results of any data they receive and not request the same resource again until the data may reasonably have changed.</p>
 
 <p>For low velocity data sets, if the same data is requested repeatedly a Data Holder may reject subsequent requests for the same data during a specified period.</p>
 
 <p>Identified low velocity data sets are to be handled according to the following table noting that:</p>
 
 <ul>
-<li>the Velocity Time Period is a continuous period of time in which calls beyond a specific threshold MAY be rejected by the Data Holder</li>
-<li>the Allowable Call Volume is the threshold number of calls to the same resource for the same arrangement above which calls MAY be rejected by the Data Holder.</li>
+<li>the Velocity Time Period is a continuous period of time in which calls beyond a specific threshold <strong>MAY</strong> be rejected by the Data Holder</li>
+<li>the Allowable Call Volume is the threshold number of calls to the same resource for the same arrangement above which calls <strong>MAY</strong> be rejected by the Data Holder.</li>
 </ul>
 
 <table><thead>
@@ -212,13 +212,13 @@
 </tr>
 </tbody></table>
 
-<h2 id='reporting-requirements'>Reporting Requirements</h2><pre class="highlight diff tab-diff"><code>Removed outdated reporting detail and updated link to Get Metrics endpoint
-</code></pre>
+<h2 id='reporting-requirements'>Reporting Requirements</h2>
+
 <p>The mechanism for reporting will be via the <a href="#cdr-admin-api_get-metrics">Get Metrics endpoint</a>.</p>
 
 <h2 id='data-latency'>Data Latency</h2>
 
-<p>Within this proposal there is no specific requirement with regard to data latency (ie. how up to date data should be). Instead, the requirement for data latency is that data presented via API endpoints should be commensurate to data presented via other primary digital channels.</p>
+<p>Within this proposal there is no specific requirement with regard to data latency (i.e. how up to date data should be). Instead, the requirement for data latency is that data presented via API endpoints should be commensurate to data presented via other primary digital channels.</p>
 
 <p>For example, for a Bank that provides a mobile application as their primary digital experience, a balance presented via one of the balance endpoints should be the same as the balance presented through the mobile application.</p>
 

@@ -1,6 +1,5 @@
 <h2 class="schema-heading" id="consumer-experience_notification-standards">Notification Standards</h2>
-<pre class="highlight diff tab-diff"><code>Added detail for CDR Receipts
-</code></pre>
+
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_notification-standards_cdr-receipts">CDR Receipts</h3>
 
 <p>Each of the below data standards are for the purposes of rule 8.11(1)(fa):</p>
@@ -20,8 +19,7 @@
 <td>A CDR receipt provided by a data recipient <strong>MUST</strong> be given in writing otherwise than through the consumer dashboard.</td>
 </tr>
 </tbody></table>
-<pre class="highlight diff tab-diff"><code>Added detail for 90-day notifications
-</code></pre>
+
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_notification-standards_notifications-90-day-notifications">90-day notifications</h3>
 
 <p>Each of the below data standards are for the purposes of rule 8.11(1)(fb):</p>

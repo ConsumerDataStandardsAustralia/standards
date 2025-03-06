@@ -7,14 +7,14 @@ Data Recipient Software Products will be limited by the traffic thresholds docum
 - Unattended calls should be managed to avoid short term bursts of traffic.
 
 ### Low Velocity Data Sets
-For endpoints that provide access to data that is low velocity (ie. the data does not change frequently) the Data Recipient Software Product is expected to cache the results of any data they receive and not request the same resource again until the data may reasonably have changed.
+For endpoints that provide access to data that is low velocity (i.e. the data does not change frequently) the Data Recipient Software Product is expected to cache the results of any data they receive and not request the same resource again until the data may reasonably have changed.
 
 For low velocity data sets, if the same data is requested repeatedly a Data Holder may reject subsequent requests for the same data during a specified period.
 
 Identified low velocity data sets are to be handled according to the following table noting that:
 
-- the Velocity Time Period is a continuous period of time in which calls beyond a specific threshold MAY be rejected by the Data Holder
-- the Allowable Call Volume is the threshold number of calls to the same resource for the same arrangement above which calls MAY be rejected by the Data Holder.
+- the Velocity Time Period is a continuous period of time in which calls beyond a specific threshold **MAY** be rejected by the Data Holder
+- the Allowable Call Volume is the threshold number of calls to the same resource for the same arrangement above which calls **MAY** be rejected by the Data Holder.
 
 | Data Set | Impacted Endpoints | Velocity Time Period | Allowable Call Volume |
 |----------|--------------------|----------------------|-----------------------|

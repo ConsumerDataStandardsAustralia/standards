@@ -15,6 +15,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>06/03/2025</td>
+<td><a href="https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.33.1/">1.33.1</a></td>
+<td>Changes from OpenAPI spec refactoring.</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.33.1.html">release notes</a> for details.</td>
+</tr>
+<tr>
 <td>18/12/2024</td>
 <td><a href="https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.33.0/">1.33.0</a></td>
 <td>Changes from Decision 356 (Maintenance Iteration 21) and Decision 350 (August 2024 Rules - Standards Impacts).</td>
@@ -525,8 +531,3 @@
 <td>November 2018 Working Draft.</td>
 </tr>
 </tbody></table>
-
-<p><br>
-<br>
-<br>
-<br></p>

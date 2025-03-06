@@ -181,7 +181,11 @@ function getParameters(data) {
                 let schemaName = pSchema["x-widdershins-oldRef"].replace('#/components/schemas/','');
                 param.safeType = '['+schemaName+'](#schema'+data.title_prefix+schemaName.toLowerCase()+')';
             }
-            if (param.refName) param.safeType = '['+param.refName+'](#schema'+data.title_prefix+param.refName.toLowerCase()+')';
+            
+            // Using refName to refer to a schema doesnt appear to work correctly. This breaks the statement above.
+            //if (param.refName) {
+            //  param.safeType = '['+param.refName+'](#schema'+data.title_prefix+param.refName.toLowerCase()+')';
+            //}
         }
         if (pSchema) {
             param.exampleValues.object = param.example || param.default || common.getSample(pSchema,data.options,{skipReadOnly:true},data.api);
@@ -240,28 +244,27 @@ function getParameters(data) {
         }
         templateVars[stupidity(param.name)] = param.exampleValues.object;
 
-        // Specifying at the top level could be deprecated
+        // Denote custom types for endpoint parameters E.g., DateString or PositiveInteger
         if (typeof param['x-cds-type'] === 'string') {
           param.cdrType = '[' + param['x-cds-type'] +'](#common-field-types)';
         }
 
-        // Specifying inside the schema object could be a common location
-        if (param.schema && typeof param.schema['x-cds-type'] === 'string') {
-          param.cdrType = '[' + param.schema['x-cds-type'] +'](#common-field-types)';
-        }
-
-        // Specifying at the top level could be deprecated
+        // Denote conditional parameters
         if (typeof param['x-conditional'] === 'boolean') {
           param.cdrConditional = param['x-conditional'];
         }
 
-        // Specifying inside the schema object could be a common location
-        if (param.schema && typeof param.schema['x-conditional'] === 'boolean') {
-          param.cdrConditional = param.schema['x-conditional'];
-        }
-
+        // Denote custom parameter types (based on standard properties)
         if (param.schema && param.schema.enum) {
           param.cdrType = '[Enum](#common-field-types)';
+        }
+        if (param.schema && param.schema.type === 'boolean') {
+          param.cdrType = '[Boolean](#common-field-types)';
+        }
+        
+        // Link to referenced schemas
+        if (param.schema && param.schema['x-widdershins-oldRef'] && param.safeType) {
+          param.cdrType = param.safeType;
         }
     }
 
@@ -550,13 +553,10 @@ function getResponseHeaders(data) {
                 entry.schema = header.schema || {};
                 entry.type = entry.schema.type;
                 
-                // Specifying at the top level could be deprecated
+                // Denote custom response header types. E.g., ASCIIString or ExternalRef
+                entry['x-cds-type'] = header['x-cds-type'];
                 if (entry['x-cds-type']) {
                   entry.cdrType = '[' + entry['x-cds-type'] +'](#common-field-types)';
-                }
-                // Specifying inside the schema object could be a common location
-                if (entry.schema && entry.schema['x-cds-type']) {
-                  entry.cdrType = '[' + entry.schema['x-cds-type'] +'](#common-field-types)';
                 }
                 
                 entry.format = entry.schema.format;

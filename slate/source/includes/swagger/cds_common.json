@@ -2,29 +2,38 @@
   "openapi" : "3.0.3",
   "info" : {
     "contact" : {
-      "email" : "contact@consumerdatastandards.gov.au",
-      "name" : "Consumer Data Standards",
-      "url" : "https://consumerdatastandards.gov.au"
+      "email" : "contact@dsb.gov.au",
+      "name" : "Data Standards Body",
+      "url" : "https://dsb.gov.au/"
     },
-    "description" : "Consumer Data Standards APIs created by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker to meet the needs of the Consumer Data Right.",
+    "description" : "Specifications for common endpoints applicable to all data holders (except secondary data holders).",
     "license" : {
       "name" : "MIT License",
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Common API",
-    "version" : "1.33.0"
+    "version" : "1.33.1"
   },
   "servers" : [ {
     "description" : "MTLS",
     "url" : "https://mtls.dh.example.com/cds-au/v1"
   } ],
+  "tags" : [ {
+    "description" : "Data Holder Customer endpoints",
+    "name" : "Data Holder Customers",
+    "x-shortName" : "Customers"
+  }, {
+    "description" : "Data Holder Operations endpoints",
+    "name" : "Data Holder Operations",
+    "x-shortName" : "Operations"
+  } ],
   "paths" : {
     "/common/customer" : {
       "get" : {
-        "description" : "Obtain basic information on the customer that has authorised the current session.\n\n<h3 id='cdr-common-api_get-customer_conventions'>Conventions</h3>\nIn the customer payloads there are conventions that are explained below.\n\n#### Given Names\n\n_firstName_ represents the first of a person's given names.\n\n_middleNames_ represents a collection of given names if the person has more than one given name.\n\nWhere a data holder holds a person's given names as a single string in source systems, it may not possible in some situations to reliably split these given names into their component first and middle names. In these situations, data holders MAY use the _firstName_ field to return the single string of given names and an empty _middleNames_ array.\n\nFor example, if a person's given names are \"John Paul Winston\" and the Data Holder is unable to determine which is the first name, they can return `\"firstName\": \"John Paul Winston\"`.",
+        "description" : "Obtain basic information on the customer that has authorised the current session.\n\n<h3 id='cdr-common-api_get-customer_conventions'>Conventions</h3>\nIn the customer payloads there are conventions that are explained below.\n\n#### Given Names\n\n_firstName_ represents the first of a person's given names.\n\n_middleNames_ represents a collection of given names if the person has more than one given name.\n\nWhere a data holder holds a person's given names as a single string in source systems, it may not possible in some situations to reliably split these given names into their component first and middle names. In these situations, data holders **MAY** use the _firstName_ field to return the single string of given names and an empty _middleNames_ array.\n\nFor example, if a person's given names are \"John Paul Winston\" and the Data Holder is unable to determine which is the first name, they can return `\"firstName\": \"John Paul Winston\"`.",
         "operationId" : "getCustomer",
         "parameters" : [ {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -34,7 +43,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -60,8 +69,7 @@
           "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "type" : "string",
-            "x-conditional" : true
+            "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -82,9 +90,7 @@
           "name" : "x-cds-client-headers",
           "required" : false,
           "schema" : {
-            "type" : "string",
-            "x-conditional" : true,
-            "x-cds-type" : "Base64"
+            "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true,
@@ -102,20 +108,10 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/XV"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/XFAPIInteractionId"
               }
             }
           },
@@ -127,15 +123,10 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/XFAPIInteractionId"
               }
             }
           },
@@ -147,21 +138,16 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+            "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/XFAPIInteractionId"
               }
             }
           }
         },
         "summary" : "Get Customer",
-        "tags" : [ "Common", "Customer" ],
+        "tags" : [ "Data Holder Customers" ],
         "x-scopes" : [ "common:customer.basic:read" ],
         "x-version" : "1"
       }
@@ -171,7 +157,7 @@
         "description" : "Obtain detailed information on the authorised customer within the current session.\n\nObsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html).",
         "operationId" : "getCustomerDetail",
         "parameters" : [ {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -181,7 +167,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -207,8 +193,7 @@
           "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "type" : "string",
-            "x-conditional" : true
+            "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -229,9 +214,7 @@
           "name" : "x-cds-client-headers",
           "required" : false,
           "schema" : {
-            "type" : "string",
-            "x-conditional" : true,
-            "x-cds-type" : "Base64"
+            "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true,
@@ -249,20 +232,10 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/XV"
               },
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/XFAPIInteractionId"
               }
             }
           },
@@ -274,15 +247,10 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+            "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/XFAPIInteractionId"
               }
             }
           },
@@ -294,21 +262,16 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+            "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
             "headers" : {
               "x-fapi-interaction-id" : {
-                "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/XFAPIInteractionId"
               }
             }
           }
         },
         "summary" : "Get Customer Detail",
-        "tags" : [ "Common", "Customer" ],
+        "tags" : [ "Data Holder Customers" ],
         "x-scopes" : [ "common:customer.detail:read" ],
         "x-version" : "2"
       }
@@ -318,7 +281,7 @@
         "description" : "Obtain a health check status for the implementation.",
         "operationId" : "getStatus",
         "parameters" : [ {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -328,7 +291,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -350,12 +313,7 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/XV"
               }
             }
           },
@@ -367,7 +325,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
+            "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
           },
           "406" : {
             "content" : {
@@ -377,7 +335,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
+            "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
           }
         },
         "servers" : [ {
@@ -385,7 +343,7 @@
           "url" : "https://tls.dh.example.com/cds-au/v1"
         } ],
         "summary" : "Get Status",
-        "tags" : [ "Common", "Discovery" ],
+        "tags" : [ "Data Holder Operations" ],
         "x-version" : "1"
       }
     },
@@ -394,7 +352,7 @@
         "description" : "Obtain a list of scheduled outages for the implementation.",
         "operationId" : "getOutages",
         "parameters" : [ {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
           "explode" : false,
           "in" : "header",
           "name" : "x-v",
@@ -404,7 +362,7 @@
           },
           "style" : "simple"
         }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
+          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
           "explode" : false,
           "in" : "header",
           "name" : "x-min-v",
@@ -426,12 +384,7 @@
             "description" : "Successful response",
             "headers" : {
               "x-v" : {
-                "description" : "The [version](#response-headers) of the API endpoint that the data holder has responded with.",
-                "explode" : false,
-                "schema" : {
-                  "type" : "string"
-                },
-                "style" : "simple"
+                "$ref" : "#/components/headers/XV"
               }
             }
           },
@@ -443,7 +396,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
+            "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
           },
           "406" : {
             "content" : {
@@ -453,7 +406,7 @@
                 }
               }
             },
-            "description" : "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
+            "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
           }
         },
         "servers" : [ {
@@ -461,15 +414,35 @@
           "url" : "https://tls.dh.example.com/cds-au/v1"
         } ],
         "summary" : "Get Outages",
-        "tags" : [ "Common", "Discovery" ],
+        "tags" : [ "Data Holder Operations" ],
         "x-version" : "1"
       }
     }
   },
   "components" : {
+    "headers" : {
+      "XV" : {
+        "description" : "The [payload version](#response-headers) that the endpoint has responded with.",
+        "explode" : false,
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        },
+        "style" : "simple"
+      },
+      "XFAPIInteractionId" : {
+        "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+        "explode" : false,
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        },
+        "style" : "simple"
+      }
+    },
     "parameters" : {
-      "RequestHeader_x-v" : {
-        "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+      "HeaderXV" : {
+        "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
         "explode" : false,
         "in" : "header",
         "name" : "x-v",
@@ -479,8 +452,8 @@
         },
         "style" : "simple"
       },
-      "RequestHeader_x-min-v" : {
-        "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a `406 Not Acceptable`.",
+      "HeaderXMinV" : {
+        "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
         "explode" : false,
         "in" : "header",
         "name" : "x-min-v",
@@ -490,7 +463,7 @@
         },
         "style" : "simple"
       },
-      "RequestHeader_x-fapi-interaction-id" : {
+      "HeaderXFAPIInteractionId" : {
         "description" : "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
         "explode" : false,
         "in" : "header",
@@ -501,20 +474,19 @@
         },
         "style" : "simple"
       },
-      "RequestHeader_x-fapi-auth-date" : {
+      "HeaderXFAPIAuthDate" : {
         "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
         "explode" : false,
         "in" : "header",
         "name" : "x-fapi-auth-date",
         "required" : false,
         "schema" : {
-          "type" : "string",
-          "x-conditional" : true
+          "type" : "string"
         },
         "style" : "simple",
         "x-conditional" : true
       },
-      "RequestHeader_x-fapi-customer-ip-address" : {
+      "HeaderXFAPICustomerIPAddress" : {
         "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
         "explode" : false,
         "in" : "header",
@@ -525,20 +497,186 @@
         },
         "style" : "simple"
       },
-      "RequestHeader_x-cds-client-headers" : {
+      "HeaderXCDSClientHeaders" : {
         "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
         "explode" : false,
         "in" : "header",
         "name" : "x-cds-client-headers",
         "required" : false,
         "schema" : {
-          "type" : "string",
-          "x-conditional" : true,
-          "x-cds-type" : "Base64"
+          "type" : "string"
         },
         "style" : "simple",
         "x-conditional" : true,
         "x-cds-type" : "Base64"
+      }
+    },
+    "responses" : {
+      "GetCustomer200" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ResponseCommonCustomer"
+            }
+          }
+        },
+        "description" : "Successful response",
+        "headers" : {
+          "x-v" : {
+            "$ref" : "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id" : {
+            "$ref" : "#/components/headers/XFAPIInteractionId"
+          }
+        }
+      },
+      "GetCustomer400" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        },
+        "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+        "headers" : {
+          "x-fapi-interaction-id" : {
+            "$ref" : "#/components/headers/XFAPIInteractionId"
+          }
+        }
+      },
+      "GetCustomer406" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        },
+        "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers" : {
+          "x-fapi-interaction-id" : {
+            "$ref" : "#/components/headers/XFAPIInteractionId"
+          }
+        }
+      },
+      "GetCustomerDetail200" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ResponseCommonCustomerDetailV2"
+            }
+          }
+        },
+        "description" : "Successful response",
+        "headers" : {
+          "x-v" : {
+            "$ref" : "#/components/headers/XV"
+          },
+          "x-fapi-interaction-id" : {
+            "$ref" : "#/components/headers/XFAPIInteractionId"
+          }
+        }
+      },
+      "GetCustomerDetail400" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        },
+        "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+        "headers" : {
+          "x-fapi-interaction-id" : {
+            "$ref" : "#/components/headers/XFAPIInteractionId"
+          }
+        }
+      },
+      "GetCustomerDetail406" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        },
+        "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+        "headers" : {
+          "x-fapi-interaction-id" : {
+            "$ref" : "#/components/headers/XFAPIInteractionId"
+          }
+        }
+      },
+      "GetStatus200" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ResponseCommonDiscoveryStatus"
+            }
+          }
+        },
+        "description" : "Successful response",
+        "headers" : {
+          "x-v" : {
+            "$ref" : "#/components/headers/XV"
+          }
+        }
+      },
+      "GetStatus400" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        },
+        "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
+      },
+      "GetStatus406" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        },
+        "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
+      },
+      "GetOutages200" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ResponseDiscoveryOutagesList"
+            }
+          }
+        },
+        "description" : "Successful response",
+        "headers" : {
+          "x-v" : {
+            "$ref" : "#/components/headers/XV"
+          }
+        }
+      },
+      "GetOutages400" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        },
+        "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
+      },
+      "GetOutages406" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        },
+        "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
       }
     },
     "schemas" : {
@@ -586,8 +724,7 @@
           },
           "isPartial" : {
             "description" : "Flag that indicates, if present and set to `true`, that the outage is only partial meaning that only a subset of normally available endpoints will be affected by the outage.",
-            "type" : "boolean",
-            "x-cds-type" : "Boolean"
+            "type" : "boolean"
           },
           "explanation" : {
             "description" : "Provides an explanation of the current outage that can be displayed to an end customer.",
@@ -635,7 +772,7 @@
             "x-cds-type" : "DateTimeString"
           },
           "firstName" : {
-            "description" : "For people with single names this field need not be present. The single name should be in the _lastName_ field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided.",
+            "description" : "For people with single names this field need not be present. The single name should be in the _lastName_ field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names **MAY** be provided.",
             "type" : "string"
           },
           "lastName" : {
@@ -721,8 +858,7 @@
           },
           "isACNCRegistered" : {
             "description" : "`true` if registered with the ACNC. `false` if not. Absent or `null` if not confirmed.",
-            "type" : "boolean",
-            "x-cds-type" : "Boolean"
+            "type" : "boolean"
           },
           "industryCode" : {
             "description" : "A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.",
@@ -741,6 +877,7 @@
             "type" : "string"
           },
           "registeredCountry" : {
+            "default" : "AUS",
             "description" : "Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes. Assumed to be `AUS` if absent.",
             "type" : "string",
             "x-cds-type" : "ExternalRef"
@@ -765,9 +902,9 @@
       "CommonPhoneNumber" : {
         "properties" : {
           "isPreferred" : {
+            "default" : false,
             "description" : "May be `true` for one and only one entry to indicate the preferred phone number. Assumed to be `false` if not present.",
-            "type" : "boolean",
-            "x-cds-type" : "Boolean"
+            "type" : "boolean"
           },
           "purpose" : {
             "description" : "The purpose of the number as specified by the customer.",
@@ -804,8 +941,7 @@
         "properties" : {
           "isPreferred" : {
             "description" : "May be `true` for one and only one email record in the collection. Denotes the default email address.",
-            "type" : "boolean",
-            "x-cds-type" : "Boolean"
+            "type" : "boolean"
           },
           "purpose" : {
             "description" : "The purpose for the email, as specified by the customer.",
@@ -1000,27 +1136,38 @@
       "Meta" : {
         "type" : "object"
       },
-      "MetaError" : {
-        "description" : "Additional data for customised error codes.",
-        "properties" : {
-          "urn" : {
-            "description" : "The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code.",
-            "type" : "string"
-          }
-        },
-        "type" : "object",
-        "x-conditional" : [ "urn" ]
-      },
       "ResponseErrorListV2" : {
         "properties" : {
           "errors" : {
+            "description" : "List of errors.",
             "items" : {
-              "$ref" : "#/components/schemas/ResponseErrorListV2_errors"
+              "$ref" : "#/components/schemas/ErrorV2"
             },
             "type" : "array"
           }
         },
         "required" : [ "errors" ],
+        "type" : "object"
+      },
+      "ErrorV2" : {
+        "properties" : {
+          "code" : {
+            "description" : "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the _meta_ object. Otherwise, the value is the error code URN.",
+            "type" : "string"
+          },
+          "title" : {
+            "description" : "A short, human-readable summary of the problem that **MUST NOT** change from occurrence to occurrence of the problem represented by the error code.",
+            "type" : "string"
+          },
+          "detail" : {
+            "description" : "A human-readable explanation specific to this occurrence of the problem.",
+            "type" : "string"
+          },
+          "meta" : {
+            "$ref" : "#/components/schemas/ErrorV2_meta"
+          }
+        },
+        "required" : [ "code", "detail", "title" ],
         "type" : "object",
         "x-conditional" : [ "meta" ]
       },
@@ -1155,26 +1302,16 @@
         "required" : [ "purpose" ],
         "type" : "object"
       },
-      "ResponseErrorListV2_errors" : {
+      "ErrorV2_meta" : {
+        "description" : "Additional data for customised error codes.",
         "properties" : {
-          "code" : {
-            "description" : "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.",
+          "urn" : {
+            "description" : "The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code.",
             "type" : "string"
-          },
-          "title" : {
-            "description" : "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.",
-            "type" : "string"
-          },
-          "detail" : {
-            "description" : "A human-readable explanation specific to this occurrence of the problem.",
-            "type" : "string"
-          },
-          "meta" : {
-            "$ref" : "#/components/schemas/MetaError"
           }
         },
-        "required" : [ "code", "detail", "title" ],
-        "type" : "object"
+        "type" : "object",
+        "x-conditional" : [ "urn" ]
       }
     }
   }

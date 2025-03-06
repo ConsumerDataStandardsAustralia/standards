@@ -1,8 +1,6 @@
 ## Request Object
 
-```diff
-- Removed OIDC Hybrid Flow non-normative examples.
-```
+
 
 > Non-Normative Example  
 
@@ -39,10 +37,7 @@
 }
 ```
 
-```diff
-- Removed `request` parameter requirement as RFC9126 is required
-- "As per [FAPI-1.0-Advanced] [section 5.2.2], the `request` parameter MUST be present on requests to the [OIDC]"
-```
+
 The Request Object is a signed and encoded JWT specified in [section 6.1](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) of **[OIDC]**. The Request Object enables **[OIDC]** requests to be passed in a single and self-contained parameter.
 
 Request Objects **MUST** be signed by Data Recipient Software Products as specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2-1_0.html#algorithm-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.

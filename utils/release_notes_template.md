@@ -6,6 +6,9 @@ title: Consumer Data Standards - v{version_number} Release Notes
 toc_footers:
   - <a href='../../'>Consumer Data Standards</a>
 
+includes:
+  - footer
+
 search: false
 ---
 
@@ -82,8 +85,3 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 
-
-<br>
-<br>
-<br>
-<br>

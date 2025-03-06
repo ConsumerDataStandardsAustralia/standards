@@ -1,8 +1,14 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "CDR Participant Discovery API",
-    "version": "1.33.0"
+    "title": "CDR Register API (modified for NBL)",
+    "version": "1.33.1",
+    "description": "Specifications for Register endpoints made available to participants.",
+    "contact": {
+      "name": "Data Standards Body",
+      "email": "contact@dsb.gov.au",
+      "url": "https://dsb.gov.au/"
+    }
   },
   "servers": [
     {
@@ -10,7 +16,23 @@
       "url": "https://api.cdr.gov.au"
     }
   ],
-  "tags": [],
+  "tags": [
+    {
+      "name": "Register Operations",
+      "x-shortName": "Operations",
+      "description": "Register Operations endpoints"
+    },
+    {
+      "name": "Register Data Holder discovery",
+      "x-shortName": "Data Holder discovery",
+      "description": "Register Data Holder discovery endpoints"
+    },
+    {
+      "name": "Register Data Recipient discovery",
+      "x-shortName": "Data Recipient discovery",
+      "description": "Register Data Recipient discovery endpoints"
+    }
+  ],
   "paths": {
     "/cdr-register/v1/{industry}/data-holders/brands": {
       "get": {
@@ -21,136 +43,46 @@
           }
         ],
         "tags": [
-          "Register"
+          "Register Data Holder discovery"
         ],
         "summary": "Get Data Holder Brands",
         "description": "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.html), [v2](../../../../includes/obsolete/get-data-holder-brands-v2.html).",
-        "operationId": "GetDataHolderBrands",
+        "operationId": "getDataHolderBrands",
         "parameters": [
           {
-            "name": "industry",
-            "in": "path",
-            "description": "The industry the participant is retrieving data for (Banking, etc.)",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "Enum",
-              "enum": [
-                "banking",
-                "energy",
-                "non-bank-lending",
-                "telco",
-                "all"
-              ]
-            }
+            "$ref": "#/components/parameters/PathIndustry"
           },
           {
-            "name": "Authorization",
-            "in": "header",
-            "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "ExternalRef"
-            }
+            "$ref": "#/components/parameters/HeaderAuthorization"
           },
           {
-            "name": "x-v",
-            "in": "header",
-            "description": "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained.",
-            "schema": {
-              "type": "string",
-              "default": 1
-            }
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "name": "x-min-v",
-            "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "name": "updated-since",
-            "in": "query",
-            "description": "Query filter returns results updated since the specified date-time.",
-            "schema": {
-              "type": "string",
-              "x-cds-type": "DateTimeString"
-            }
+            "$ref": "#/components/parameters/QueryUpdatedSince"
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "The page number to return.",
-            "schema": {
-              "type": "integer",
-              "default": 1
-            },
-            "x-cds-type": "PositiveInteger"
+            "$ref": "#/components/parameters/QueryPage"
           },
           {
-            "name": "page-size",
-            "in": "query",
-            "description": "The number of records to return per page.",
-            "schema": {
-              "type": "integer",
-              "default": 25
-            },
-            "x-cds-type": "PositiveInteger"
+            "$ref": "#/components/parameters/QueryPageSize"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "description": "The version of the API endpoint that the CDR Register has responded with.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseRegisterDataHolderBrandList"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetDataHolderBrands200"
           },
           "400": {
-            "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/RegisterGeneric400"
           },
           "401": {
-            "description": "Invalid Bearer Token",
-            "headers": {
-              "WWW-Authenticate": {
-                "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
-                "schema": {
-                  "type": "string",
-                  "x-cds-type": "ExternalRef"
-                }
-              }
-            }
+            "$ref": "#/components/responses/RegisterGeneric401"
           },
           "406": {
-            "description": "Unsupported Version",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
         "x-version": "3",
@@ -162,123 +94,40 @@
     "/cdr-register/v1/{industry}/data-holders/brands/summary": {
       "get": {
         "tags": [
-          "Register"
+          "Register Data Holder discovery"
         ],
         "summary": "Get Data Holder Brands Summary",
         "description": "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-summary-v1.html).",
-        "operationId": "GetDataHolderBrandsSummary",
+        "operationId": "getDataHolderBrandsSummary",
         "parameters": [
           {
-            "name": "industry",
-            "in": "path",
-            "description": "The industry the participant is retrieving data for (Banking, etc.)",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "Enum",
-              "enum": [
-                "banking",
-                "energy",
-                "non-bank-lending",
-                "telco",
-                "all"
-              ]
-            }
+            "$ref": "#/components/parameters/PathIndustry"
           },
           {
-            "name": "x-v",
-            "in": "header",
-            "description": "The version of the API endpoint requested by the client. Must be set to a positive integer.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "name": "x-min-v",
-            "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "name": "If-None-Match",
-            "in": "header",
-            "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
-            "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
-            }
+            "$ref": "#/components/parameters/HeaderIfNoneMatch"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "description": "The version of the API endpoint that the CDR Register has responded with.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Etag": {
-                "description": "Entity tag that uniquely represents the requested resource.",
-                "schema": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseDataHoldersBrandSummaryList"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetDataHolderBrandsSummary200"
           },
           "304": {
-            "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
-            "headers": {
-              "Etag": {
-                "description": "Entity tag that uniquely represents the requested resource.",
-                "schema": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
-                }
-              }
-            }
+            "$ref": "#/components/responses/RegisterGeneric304"
           },
           "400": {
-            "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/RegisterGeneric400"
           },
           "404": {
-            "description": "Industry Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetDataHolderBrandsSummary404"
           },
           "406": {
-            "description": "Unsupported Version",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
         "x-version": "2"
@@ -287,113 +136,37 @@
     "/cdr-register/v1/{industry}/data-holders/status": {
       "get": {
         "tags": [
-          "Register"
+          "Register Data Holder discovery"
         ],
         "summary": "Get Data Holder Statuses",
         "description": "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v1.html).",
-        "operationId": "GetDataHolderStatuses",
+        "operationId": "getDataHolderStatuses",
         "parameters": [
           {
-            "name": "industry",
-            "in": "path",
-            "description": "The industry the participant is retrieving data for (Banking, etc.)",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "x-cds-type": "Enum",
-              "enum": [
-                "banking",
-                "energy",
-                "non-bank-lending",
-                "telco",
-                "all"
-              ]
-            }
+            "$ref": "#/components/parameters/PathIndustry"
           },
           {
-            "name": "x-v",
-            "in": "header",
-            "description": "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained.",
-            "schema": {
-              "type": "string",
-              "default": "1"
-            }
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "name": "x-min-v",
-            "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
-            "name": "If-None-Match",
-            "in": "header",
-            "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
-            "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
-            }
+            "$ref": "#/components/parameters/HeaderIfNoneMatch"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {
-              "x-v": {
-                "description": "The version of the API endpoint that the CDR Register has responded with.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Etag": {
-                "description": "Entity tag that uniquely represents the requested resource.",
-                "schema": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DataHoldersStatusList"
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetDataHolderStatuses200"
           },
           "304": {
-            "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
-            "headers": {
-              "Etag": {
-                "description": "Entity tag that uniquely represents the requested resource.",
-                "schema": {
-                  "type": "string",
-                  "x-cds-type": "ASCIIString"
-                }
-              }
-            }
+            "$ref": "#/components/responses/RegisterGeneric304"
           },
           "400": {
-            "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/RegisterGeneric400"
           },
           "406": {
-            "description": "Unsupported Version",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            }
+            "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
         "x-version": "2"
@@ -401,6 +174,201 @@
     }
   },
   "components": {
+    "parameters": {
+      "HeaderAuthorization": {
+        "name": "Authorization",
+        "in": "header",
+        "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "x-cds-type": "ExternalRef"
+      },
+      "HeaderXV": {
+        "name": "x-v",
+        "in": "header",
+        "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "HeaderXMinV": {
+        "name": "x-min-v",
+        "in": "header",
+        "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "PathIndustry": {
+        "name": "industry",
+        "in": "path",
+        "description": "The industry the participant is retrieving data for (Banking, etc.)",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/IndustryEnum"
+        }
+      },
+      "HeaderIfNoneMatch": {
+        "name": "If-None-Match",
+        "in": "header",
+        "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
+        "schema": {
+          "type": "string"
+        },
+        "x-cds-type": "ASCIIString"
+      },
+      "QueryUpdatedSince": {
+        "name": "updated-since",
+        "in": "query",
+        "description": "Query filter returns results updated since the specified date-time.",
+        "schema": {
+          "type": "string"
+        },
+        "x-cds-type": "DateTimeString"
+      },
+      "QueryPage": {
+        "name": "page",
+        "in": "query",
+        "description": "Page of results to request (standard pagination).",
+        "schema": {
+          "type": "integer",
+          "default": 1
+        },
+        "x-cds-type": "PositiveInteger"
+      },
+      "QueryPageSize": {
+        "name": "page-size",
+        "in": "query",
+        "description": "Page size to request. Default is 25 (standard pagination).",
+        "schema": {
+          "type": "integer",
+          "default": 25
+        },
+        "x-cds-type": "PositiveInteger"
+      }
+    },
+    "headers": {
+      "XV": {
+        "description": "The [payload version](#response-headers) that the endpoint has responded with.",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Etag": {
+        "description": "Entity tag that uniquely represents the requested resource.",
+        "schema": {
+          "type": "string"
+        },
+        "x-cds-type": "ASCIIString"
+      }
+    },
+    "responses": {
+      "GetDataHolderBrands200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseRegisterDataHolderBrandList"
+            }
+          }
+        }
+      },
+      "GetDataHolderBrandsSummary200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "Etag": {
+            "$ref": "#/components/headers/Etag"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseDataHoldersBrandSummaryList"
+            }
+          }
+        }
+      },
+      "GetDataHolderBrandsSummary404": {
+        "description": "Industry Not Found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "GetDataHolderStatuses200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "Etag": {
+            "$ref": "#/components/headers/Etag"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/DataHoldersStatusList"
+            }
+          }
+        }
+      },
+      "RegisterGeneric304": {
+        "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
+        "headers": {
+          "Etag": {
+            "$ref": "#/components/headers/Etag"
+          }
+        }
+      },
+      "RegisterGeneric400": {
+        "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      },
+      "RegisterGeneric401": {
+        "description": "Invalid Bearer Token",
+        "headers": {
+          "WWW-Authenticate": {
+            "description": "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.",
+            "schema": {
+              "type": "string"
+            },
+            "x-cds-type": "ExternalRef"
+          }
+        }
+      },
+      "RegisterGeneric406": {
+        "description": "Unsupported Version",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseErrorListV2"
+            }
+          }
+        }
+      }
+    },
     "schemas": {
       "ResponseRegisterDataHolderBrandList": {
         "required": [
@@ -456,14 +424,7 @@
             "type": "array",
             "description": "The industries the Data Holder Brand belongs to.",
             "items": {
-              "type": "string",
-              "x-cds-type": "Enum",
-              "enum": [
-                "banking",
-                "energy",
-                "non-bank-lending",
-                "telco"
-              ]
+              "$ref": "#/components/schemas/IndustriesEnum"
             }
           },
           "logoUri": {
@@ -477,7 +438,6 @@
           },
           "status": {
             "type": "string",
-            "x-cds-type": "Enum",
             "enum": [
               "ACTIVE",
               "INACTIVE",
@@ -545,7 +505,7 @@
             "maxLength": 36,
             "type": "string",
             "x-conditional": true,
-            "description": "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused."
+            "description": "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when _dataHolderBrandId_ is not populated and is not to be reused."
           },
           "brandName": {
             "maxLength": 200,
@@ -569,14 +529,7 @@
             "type": "array",
             "description": "The industries the Data Holder Brand belongs to.",
             "items": {
-              "type": "string",
-              "x-cds-type": "Enum",
-              "enum": [
-                "banking",
-                "energy",
-                "non-bank-lending",
-                "telco"
-              ]
+              "$ref": "#/components/schemas/IndustriesEnum"
             }
           },
           "lastUpdated": {
@@ -600,6 +553,25 @@
             "description": "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies."
           }
         }
+      },
+      "IndustryEnum": {
+        "type": "string",
+        "enum": [
+          "banking",
+          "energy",
+          "non-bank-lending",
+          "telco",
+          "all"
+        ]
+      },
+      "IndustriesEnum": {
+        "type": "string",
+        "enum": [
+          "banking",
+          "energy",
+          "non-bank-lending",
+          "telco"
+        ]
       },
       "DataHoldersStatusList": {
         "required": [
@@ -639,7 +611,6 @@
           },
           "status": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Data Holder status in the CDR Register.",
             "enum": [
               "ACTIVE",
@@ -710,7 +681,6 @@
           },
           "organisationType": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "Legal organisation type.",
             "enum": [
               "SOLE_TRADER",
@@ -723,7 +693,6 @@
           },
           "status": {
             "type": "string",
-            "x-cds-type": "Enum",
             "enum": [
               "ACTIVE",
               "REMOVED"
@@ -788,7 +757,6 @@
         "properties": {
           "registerUType": {
             "type": "string",
-            "x-cds-type": "Enum",
             "description": "The type of authentication and authorisation mechanism in use.",
             "enum": [
               "SIGNED-JWT"
@@ -871,44 +839,31 @@
       "Meta": {
         "type": "object"
       },
-      "MetaError": {
-        "type": "object",
-        "properties": {
-          "urn": {
-            "type": "string",
-            "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code."
-          }
-        },
-        "description": "Additional data for customised error codes.",
-        "x-conditional": [
-          "urn"
-        ]
-      },
       "ResponseErrorListV2": {
+        "type": "object",
         "required": [
           "errors"
         ],
-        "type": "object",
         "properties": {
           "errors": {
+            "description": "List of errors.",
             "type": "array",
-            "description": "",
             "items": {
-              "$ref": "#/components/schemas/ResponseErrorListV2_errors"
+              "$ref": "#/components/schemas/ErrorV2"
             }
           }
-        },
-        "x-conditional": [
-          "meta"
-        ]
+        }
       },
-      "ResponseErrorListV2_errors": {
+      "ErrorV2": {
+        "type": "object",
         "required": [
           "code",
-          "detail",
-          "title"
+          "title",
+          "detail"
         ],
-        "type": "object",
+        "x-conditional": [
+          "meta"
+        ],
         "properties": {
           "code": {
             "type": "string",
@@ -916,143 +871,26 @@
           },
           "title": {
             "type": "string",
-            "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
+            "description": "A short, human-readable summary of the problem that **MUST NOT** change from occurrence to occurrence of the problem represented by the error code."
           },
           "detail": {
             "type": "string",
             "description": "A human-readable explanation specific to this occurrence of the problem."
           },
           "meta": {
-            "$ref": "#/components/schemas/MetaError"
-          }
-        }
-      }
-    },
-    "responses": {
-      "BadRequest": {
-        "description": "Missing Required Header / Invalid Version / Invalid Path Parameter",
-        "content": {
-          "*/*": {
-            "schema": {
-              "$ref": "#/components/schemas/ResponseErrorListV2"
+            "type": "object",
+            "x-conditional": [
+              "urn"
+            ],
+            "description": "Additional data for customised error codes.",
+            "properties": {
+              "urn": {
+                "type": "string",
+                "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code."
+              }
             }
           }
         }
-      },
-      "InvalidBearerToken": {
-        "description": "Invalid Bearer Token",
-        "content": {
-          "*/*": {
-            "schema": {
-              "$ref": "#/components/schemas/ResponseErrorListV2"
-            }
-          }
-        }
-      },
-      "NotModified": {
-        "description": "Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header",
-        "headers": {
-          "Etag": {
-            "description": "Entity tag that uniquely represents the requested resource.",
-            "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
-            }
-          }
-        }
-      },
-      "UnsupportedVersion": {
-        "description": "Unsupported Version",
-        "content": {
-          "*/*": {
-            "schema": {
-              "$ref": "#/components/schemas/ResponseErrorListV2"
-            }
-          }
-        }
-      }
-    },
-    "parameters": {
-      "Authorization": {
-        "name": "Authorization",
-        "in": "header",
-        "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
-        "required": true,
-        "schema": {
-          "type": "string",
-          "x-cds-type": "ExternalRef"
-        }
-      },
-      "XV": {
-        "name": "x-v",
-        "in": "header",
-        "description": "The version of the API endpoint requested by the client. Must be set to a positive integer.",
-        "schema": {
-          "type": "string"
-        }
-      },
-      "Industry": {
-        "name": "industry",
-        "in": "path",
-        "description": "The industry the participant is retrieving data for (Banking, etc.)",
-        "required": true,
-        "schema": {
-          "type": "string",
-          "x-cds-type": "Enum",
-          "enum": [
-            "banking",
-            "energy",
-            "non-bank-lending",
-            "telco",
-            "all"
-          ]
-        }
-      },
-      "XMinV": {
-        "name": "x-min-v",
-        "in": "header",
-        "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
-        "schema": {
-          "type": "string"
-        }
-      },
-      "IfNoneMatch": {
-        "name": "If-None-Match",
-        "in": "header",
-        "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
-        "schema": {
-          "type": "string",
-          "x-cds-type": "ASCIIString"
-        }
-      },
-      "UpdatedSince": {
-        "name": "updated-since",
-        "in": "query",
-        "description": "query filter returns results updated since the specified date-time.",
-        "schema": {
-          "type": "string",
-          "x-cds-type": "DateTimeString"
-        }
-      },
-      "Page": {
-        "name": "page",
-        "in": "query",
-        "description": "The page number to return.",
-        "schema": {
-          "type": "integer",
-          "default": 1
-        },
-        "x-cds-type": "PositiveInteger"
-      },
-      "PageSize": {
-        "name": "page-size",
-        "in": "query",
-        "description": "The number of records to return per page.",
-        "schema": {
-          "type": "integer",
-          "default": 25
-        },
-        "x-cds-type": "PositiveInteger"
       }
     }
   }

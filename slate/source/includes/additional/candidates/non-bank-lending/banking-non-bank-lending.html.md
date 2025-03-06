@@ -20,6 +20,7 @@ includes:
   - cds_banking_non_bank_lending
   - additional/candidates/non-bank-lending/_product_categories_nbl
   - additional/candidates/non-bank-lending/_product_components_nbl
+  - footer
 
 search: true
 ---

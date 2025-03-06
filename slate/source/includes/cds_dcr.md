@@ -1,5 +1,8 @@
 
 
+<!-- Endpoint tag group description -->
+<!-- Data Holder Client Registration endpoints -->
+
 <h2 id="cdr-dynamic-client-registration-api_register-data-recipient-oauth-client">Register Data Recipient oAuth Client</h2>
 <p id="register-data-recipient-oauth-client" class="orig-anchor"></p>
 
@@ -50,9 +53,9 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 <h3 id="cdr-dynamic-client-registration-api_register-data-recipient-oauth-client_parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|[ClientRegistrationRequest](#schemacdr-dynamic-client-registration-apiclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
+|Name|In|Type|Required|Default|Description|
+|---|---|---|---|---|---|
+|body|body|[ClientRegistrationRequestV1](#schemacdr-dynamic-client-registration-apiclientregistrationrequestv1)|mandatory||The registration request JWT to be used to register with a Data Holder.|
 
 > Example responses
 
@@ -159,10 +162,10 @@ Get a Client Registration for a given Client ID.
 
 <h3 id="cdr-dynamic-client-registration-api_get-oauth-client-registration_parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|ClientId|path|string|mandatory|The client ID issued by the target Data Holder.|
-|Authorization|header|[ExternalRef](#common-field-types)|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
+|Name|In|Type|Required|Default|Description|
+|---|---|---|---|---|---|
+|ClientId|path|string|mandatory||The client ID issued by the target Data Holder.|
+|Authorization|header|[ExternalRef](#common-field-types)|mandatory||An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
 
 > Example responses
 
@@ -225,9 +228,9 @@ Get a Client Registration for a given Client ID.
 
 <h3 id="cdr-dynamic-client-registration-api_get-oauth-client-registration_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Description|
+|Status|Header|Type|Required|Description|
 |---|---|---|---|---|
-|401|WWW-Authenticate|[ExternalRef](#common-field-types)|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.|
+|401|WWW-Authenticate|[ExternalRef](#common-field-types)|optional|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.|
 
   
     
@@ -289,11 +292,11 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 <h3 id="cdr-dynamic-client-registration-api_update-data-recipient-registration_parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|ClientId|path|string|mandatory|The client ID issued by the target Data Holder.|
-|Authorization|header|[ExternalRef](#common-field-types)|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
-|body|body|[ClientRegistrationRequest](#schemacdr-dynamic-client-registration-apiclientregistrationrequest)|mandatory|The registration request JWT to be used to register with a Data Holder.|
+|Name|In|Type|Required|Default|Description|
+|---|---|---|---|---|---|
+|ClientId|path|string|mandatory||The client ID issued by the target Data Holder.|
+|Authorization|header|[ExternalRef](#common-field-types)|mandatory||An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
+|body|body|[ClientRegistrationRequestV1](#schemacdr-dynamic-client-registration-apiclientregistrationrequestv1)|mandatory||The registration request JWT to be used to register with a Data Holder.|
 
 > Example responses
 
@@ -357,9 +360,9 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 <h3 id="cdr-dynamic-client-registration-api_update-data-recipient-registration_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Description|
+|Status|Header|Type|Required|Description|
 |---|---|---|---|---|
-|401|WWW-Authenticate|[ExternalRef](#common-field-types)|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.|
+|401|WWW-Authenticate|[ExternalRef](#common-field-types)|optional|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.|
 
   
     
@@ -409,10 +412,10 @@ Delete a Client Registration for a given Client ID.
 
 <h3 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration_parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|ClientId|path|string|mandatory|The client ID issued by the target Data Holder.|
-|Authorization|header|[ExternalRef](#common-field-types)|mandatory|An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
+|Name|In|Type|Required|Default|Description|
+|---|---|---|---|---|---|
+|ClientId|path|string|mandatory||The client ID issued by the target Data Holder.|
+|Authorization|header|[ExternalRef](#common-field-types)|mandatory||An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
 
 <h3 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration_responses">Responses</h3>
 
@@ -425,9 +428,9 @@ Delete a Client Registration for a given Client ID.
 
 <h3 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration_response-headers">Response Headers</h3>
 
-|Status|Header|Type|Description|
+|Status|Header|Type|Required|Description|
 |---|---|---|---|---|
-|401|WWW-Authenticate|[ExternalRef](#common-field-types)|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.|
+|401|WWW-Authenticate|[ExternalRef](#common-field-types)|optional|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.|
 
   
     
@@ -441,12 +444,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 class="schema-heading" id="cdr-dynamic-client-registration-api-schemas">Schemas</h2>
 
-<h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSclientregistrationrequest">ClientRegistrationRequest</h3>
-<p id="tocSclientregistrationrequest" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSclientregistrationrequestv1">ClientRegistrationRequestV1</h3>
+<p id="tocSclientregistrationrequestv1" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-dynamic-client-registration-api_schema-base_clientregistrationrequest"></a>
-  <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistrationrequest"></a>
+  <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistrationrequestv1"></a>
 </p>
 
 ```json
@@ -455,11 +458,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *The registration request JWT to be used to register with a Data Holder. The schema of the payload section of the decoded string(JWT) is defined in [ClientRegistration](#cdr-dynamic-client-registration-api_schemas_tocSclientregistration).*
 
-<h3 id="cdr-dynamic-client-registration-api_clientregistrationrequest_properties">Properties</h3>
+<h3 id="cdr-dynamic-client-registration-api_clientregistrationrequestv1_properties">Properties</h3>
 
-|Name|Type|Required|Description|
-|---|---|---|---|
-|*anonymous*|string(JWT)|mandatory|The registration request JWT to be used to register with a Data Holder. The schema of the payload section of the decoded string(JWT) is defined in [ClientRegistration](#cdr-dynamic-client-registration-api_schemas_tocSclientregistration).|
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|*anonymous*|string(JWT)|mandatory||The registration request JWT to be used to register with a Data Holder. The schema of the payload section of the decoded string(JWT) is defined in [ClientRegistration](#cdr-dynamic-client-registration-api_schemas_tocSclientregistration).|
 
 <h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSregistrationproperties">RegistrationProperties</h3>
 <p id="tocSregistrationproperties" class="orig-anchor"></p>
@@ -518,41 +521,41 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 id="cdr-dynamic-client-registration-api_registrationproperties_properties">Properties</h3>
 
-|Name|Type|Required|Description|
-|---|---|---|---|
-|client_id|string|mandatory|Data Holder issued client identifier string.|
-|client_id_issued_at|[ExternalRef](#common-field-types)|optional|Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.|
-|client_name|string|mandatory|Human-readable string name of the software product to be presented to the end-user during authorization.|
-|client_description|string|mandatory|Human-readable string name of the software product description to be presented to the end user during authorization.|
-|client_uri|[URIString](#common-field-types)|mandatory|URL string of a web page providing information about the client.|
-|legal_entity_id|string|optional|A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity.|
-|legal_entity_name|string|optional|Human-readable string name of the Accredited Data Recipient Legal Entity.|
-|org_id|string|mandatory|A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand.|
-|org_name|string|mandatory|Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization.|
-|redirect_uris|[[URIString]](#common-field-types)|mandatory|Array of redirection URI strings for use in redirect-based flows. If used, _redirect_uris_ MUST match or be a subset of the _redirect_uris_ as defined in the SSA.|
-|sector_identifier_uri|[URIString](#common-field-types)|optional|URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier.|
-|logo_uri|[URIString](#common-field-types)|mandatory|URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval.|
-|tos_uri|[URIString](#common-field-types)|optional|URL string that points to a human-readable terms of service document for the Software Product.|
-|policy_uri|[URIString](#common-field-types)|optional|URL string that points to a human-readable policy document for the Software Product.|
-|jwks_uri|[URIString](#common-field-types)|mandatory|URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client public keys.|
-|revocation_uri|[URIString](#common-field-types)|optional|URI string that references the location of the Software Product consent revocation endpoint.|
-|recipient_base_uri|[URIString](#common-field-types)|optional|Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints.|
-|token_endpoint_auth_method|[Enum](#common-field-types)|mandatory|The requested authentication method for the token endpoint.|
-|token_endpoint_auth_signing_alg|[Enum](#common-field-types)|mandatory|The algorithm used for signing the JWT.|
-|grant_types|[[Enum](#common-field-types)]|mandatory|Array of OAuth 2.0 grant type strings that the client can use at the token endpoint.|
-|response_types|[[Enum](#common-field-types)]|mandatory|Array of the OAuth 2.0 _response_type_ strings that the client can use at the authorization endpoint.<br><br>_response_type_ value `code` is required for Authorization Code Flow.<br>_response_type_ value `code id_token` is required for OIDC Hybrid Flow.|
-|application_type|[Enum](#common-field-types)|optional|Kind of the application. The only supported application type will be `web`.|
-|id_token_signed_response_alg|[Enum](#common-field-types)|mandatory|Algorithm with which an id_token is to be signed.|
-|id_token_encrypted_response_alg|[ExternalRef](#common-field-types)|conditional|JWE _alg_ algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered.|
-|id_token_encrypted_response_enc|[ExternalRef](#common-field-types)|conditional|JWE `enc` algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered.|
-|authorization_signed_response_alg|[Enum](#common-field-types)|conditional|The JWS _alg_ algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm `none` is not allowed.<br><br>Required if _response_type_ of `code` is registered by the client.|
-|authorization_encrypted_response_alg|[Enum](#common-field-types)|conditional|The JWE _alg_ algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if _authorization_encrypted_response_enc_ is included.|
-|authorization_encrypted_response_enc|[Enum](#common-field-types)|optional|The JWE _enc_ algorithm required for encrypting authorization responses. If _authorization_encrypted_response_alg_ is specified, the default for this value is `A128CBC-HS256`.|
-|request_object_signing_alg|[Enum](#common-field-types)|mandatory|Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder.|
-|software_statement|string(JWT)|mandatory|The Software Statement Assertion, as defined in CDR standards.|
-|software_id|string|mandatory|String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. <br><br>The _software_id_ will remain the same for the lifetime of the product, across multiple updates and versions.|
-|software_roles|[Enum](#common-field-types)|optional|String containing a role of the software in the CDR Regime. Initially the only value used will be `data-recipient-software-product`.|
-|scope|string|mandatory|String containing a space-separated list of scope values that the client can use when requesting access tokens.|
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|client_id|string|mandatory||Data Holder issued client identifier string.|
+|client_id_issued_at|[ExternalRef](#common-field-types)|optional||Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.|
+|client_name|string|mandatory||Human-readable string name of the software product to be presented to the end-user during authorization.|
+|client_description|string|mandatory||Human-readable string name of the software product description to be presented to the end user during authorization.|
+|client_uri|[URIString](#common-field-types)|mandatory||URL string of a web page providing information about the client.|
+|legal_entity_id|string|optional||A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity.|
+|legal_entity_name|string|optional||Human-readable string name of the Accredited Data Recipient Legal Entity.|
+|org_id|string|mandatory||A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand.|
+|org_name|string|mandatory||Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization.|
+|redirect_uris|[[URIString]](#common-field-types)|mandatory||Array of redirection URI strings for use in redirect-based flows. If used, _redirect_uris_ **MUST** match or be a subset of the _redirect_uris_ as defined in the SSA.|
+|sector_identifier_uri|[URIString](#common-field-types)|optional||URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier.|
+|logo_uri|[URIString](#common-field-types)|mandatory||URL string that references a logo for the client. If present, the server **SHOULD** display this image to the end-user during approval.|
+|tos_uri|[URIString](#common-field-types)|optional||URL string that points to a human-readable terms of service document for the Software Product.|
+|policy_uri|[URIString](#common-field-types)|optional||URL string that points to a human-readable policy document for the Software Product.|
+|jwks_uri|[URIString](#common-field-types)|mandatory||URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client public keys.|
+|revocation_uri|[URIString](#common-field-types)|optional||URI string that references the location of the Software Product consent revocation endpoint.|
+|recipient_base_uri|[URIString](#common-field-types)|optional||Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints.|
+|token_endpoint_auth_method|[Enum](#common-field-types)|mandatory||The requested authentication method for the token endpoint.|
+|token_endpoint_auth_signing_alg|[Enum](#common-field-types)|mandatory||The algorithm used for signing the JWT.|
+|grant_types|[[Enum](#common-field-types)]|mandatory||Array of OAuth 2.0 grant type strings that the client can use at the token endpoint.|
+|response_types|[[Enum](#common-field-types)]|mandatory||Array of the OAuth 2.0 _response_type_ strings that the client can use at the authorization endpoint.<br><br>_response_type_ value `code` is required for Authorization Code Flow.<br>_response_type_ value `code id_token` is required for OIDC Hybrid Flow.|
+|application_type|[Enum](#common-field-types)|optional|`web`|Kind of the application. The only supported application type will be `web`.|
+|id_token_signed_response_alg|[Enum](#common-field-types)|mandatory||Algorithm with which an id_token is to be signed.|
+|id_token_encrypted_response_alg|[ExternalRef](#common-field-types)|conditional||JWE _alg_ algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered.|
+|id_token_encrypted_response_enc|[ExternalRef](#common-field-types)|conditional||JWE `enc` algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered.|
+|authorization_signed_response_alg|[Enum](#common-field-types)|conditional||The JWS _alg_ algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm `none` is not allowed.<br><br>Required if _response_type_ of `code` is registered by the client.|
+|authorization_encrypted_response_alg|[Enum](#common-field-types)|conditional||The JWE _alg_ algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if _authorization_encrypted_response_enc_ is included.|
+|authorization_encrypted_response_enc|[Enum](#common-field-types)|optional||The JWE _enc_ algorithm required for encrypting authorization responses. If _authorization_encrypted_response_alg_ is specified, the default for this value is `A128CBC-HS256`.|
+|request_object_signing_alg|[Enum](#common-field-types)|mandatory||Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder.|
+|software_statement|string(JWT)|mandatory||The Software Statement Assertion, as defined in CDR standards.|
+|software_id|string|mandatory||String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. <br><br>The _software_id_ will remain the same for the lifetime of the product, across multiple updates and versions.|
+|software_roles|[Enum](#common-field-types)|optional|`data-recipient-software-product`|String containing a role of the software in the CDR Regime. Initially the only value used will be `data-recipient-software-product`.|
+|scope|string|mandatory||String containing a space-separated list of scope values that the client can use when requesting access tokens.|
 
 <h4 id="cdr-dynamic-client-registration-api_registrationproperties_enumerated-values-main">Enumerated Values</h4>
 
@@ -643,20 +646,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *allOf*
 
-|Name|Type|Required|Description|
-|---|---|---|---|
-|*anonymous*|object|mandatory|none|
-|» iss|string|mandatory|Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register.|
-|» iat|[ExternalRef](#common-field-types)|mandatory|The time at which the request was issued by the Data Recipient expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.|
-|» exp|[ExternalRef](#common-field-types)|mandatory|The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.|
-|» jti|string|mandatory|Unique identifier for the JWT, used to prevent replay of the token.|
-|» aud|[URIString](#common-field-types)|mandatory|Contains the Data Holder issuer value as described in the OIDC Discovery Document.|
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|*anonymous*|object|mandatory||none|
+|» iss|string|mandatory||Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register.|
+|» iat|[ExternalRef](#common-field-types)|mandatory||The time at which the request was issued by the Data Recipient expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.|
+|» exp|[ExternalRef](#common-field-types)|mandatory||The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.|
+|» jti|string|mandatory||Unique identifier for the JWT, used to prevent replay of the token.|
+|» aud|[URIString](#common-field-types)|mandatory||Contains the Data Holder issuer value as described in the OIDC Discovery Document.|
 
 *and*
 
-|Name|Type|Required|Description|
-|---|---|---|---|
-|*anonymous*|[RegistrationProperties](#schemacdr-dynamic-client-registration-apiregistrationproperties)|mandatory|none|
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|*anonymous*|[RegistrationProperties](#schemacdr-dynamic-client-registration-apiregistrationproperties)|mandatory||none|
 
 <h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSregistrationerror">RegistrationError</h3>
 <p id="tocSregistrationerror" class="orig-anchor"></p>
@@ -675,10 +678,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 id="cdr-dynamic-client-registration-api_registrationerror_properties">Properties</h3>
 
-|Name|Type|Required|Description|
-|---|---|---|---|
-|error|[Enum](#common-field-types)|mandatory|Predefined error code as described in [section 3.3 OIDC Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html).|
-|error_description|[ASCIIString](#common-field-types)|optional|Additional text description of the error for debugging.|
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|error|[Enum](#common-field-types)|mandatory||Predefined error code as described in [section 3.3 OIDC Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html).|
+|error_description|[ASCIIString](#common-field-types)|optional||Additional text description of the error for debugging.|
 
 <h4 id="cdr-dynamic-client-registration-api_registrationerror_enumerated-values-main">Enumerated Values</h4>
 

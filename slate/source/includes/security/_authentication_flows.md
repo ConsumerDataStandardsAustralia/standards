@@ -1,9 +1,7 @@
 ## Authentication Flows
 This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)** as constrained further by **[[FAPI]](#iref-FAPI)**.
 
-```diff
-- Deprecated OIDC Hybrid Flow requirements. This authentication flow is no longer supported
-```
+
 
 Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[[OIDC]](#nref-OIDC)** is supported.
 
@@ -17,9 +15,7 @@ No other flows are currently supported.
 #### Data Holders
 The _request_uri_ parameter is only supported if the Data Holder supports PAR.
 
-```diff 
-- Removed "to both the OIDC Hybrid Flow and Authorization Code Flow" from the applicable statements wording.
-```
+
 
 In addition, the following statements are applicable:
 
@@ -51,9 +47,7 @@ In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authoris
 
 #### Data Recipient Software Products
 
-```diff
-- Deprecated OIDC Hybrid Flow requirements. This authentication flow is no longer supported
-```
+
 **Until 12th May 2025**, Data Recipient Software Products **SHOULD** use Authorization Code Flow. 
 **From 12th May 2025**, Data Recipient Software Products **SHALL** only use Authorization Code Flow. 
 

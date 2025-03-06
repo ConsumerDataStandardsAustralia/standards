@@ -1,8 +1,6 @@
 ## Normative References
 
-```diff
-Combined entries for [PAR] and [RFC9126]
-```
+
 
 | Reference | Description | Version |
 |-----------|-------------|---------|

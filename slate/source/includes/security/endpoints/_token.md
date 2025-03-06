@@ -10,4 +10,4 @@ The requirements for the Token endpoint are specified in [section 3.3.3](https:/
 
 To obtain an Access Token, an ID Token, and a Refresh Token, the Data Recipient Software Product sends a Token Request to the Token endpoint.
 
-Data Holders MUST support a Token endpoint.
+Data Holders **MUST** support a Token endpoint.

@@ -25,6 +25,7 @@ GEM
       http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
     eventmachine (1.2.7)
+    eventmachine (1.2.7-x64-mingw32)
     execjs (2.7.0)
     fast_blank (1.0.0)
     fastimage (2.1.5)
@@ -126,6 +127,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
+    wdm (0.1.1)
 
 PLATFORMS
   ruby
@@ -140,6 +142,7 @@ DEPENDENCIES
   nokogiri (~> 1.13.10)
   redcarpet (~> 3.4.0)
   rouge (~> 2.0.5)
+  wdm (>= 0.1.0)
 
 RUBY VERSION
    ruby 2.6.3p62

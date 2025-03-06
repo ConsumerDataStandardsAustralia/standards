@@ -23,7 +23,7 @@ Content-Type: application/x-www-form-urlencoded
 
 client_id=s6BhdRkqt3
 &client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
-&client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
+&client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey...
 &grant_type=refresh_token
 &refresh_token=8xLOxBtZp8
 &scope=openid%20profile
@@ -68,7 +68,7 @@ Content-Type: application/x-www-form-urlencoded
 
 client_id=s6BhdRkqt3
 &client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
-&client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey ...
+&client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey...
 &token=tGzv3JOkF0XG5Qx2TlKWIA
 &token_type_hint=refresh_token
 ```
