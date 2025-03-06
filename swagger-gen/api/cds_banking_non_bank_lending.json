@@ -73,10 +73,8 @@
             "in": "query",
             "description": "Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.",
             "schema": {
-              "type": "boolean",
-              "x-cds-type": "Boolean"
-            },
-            "x-cds-type": "Boolean"
+              "type": "boolean"
+            }
           },
           {
             "name": "page",
@@ -84,8 +82,7 @@
             "description": "Page of results to request (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "default": 1
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -95,8 +92,7 @@
             "description": "Page size to request. Default is 25 (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 25,
-              "x-cds-type": "PositiveInteger"
+              "default": 25
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -148,9 +144,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -294,10 +288,8 @@
             "in": "query",
             "description": "Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.",
             "schema": {
-              "type": "boolean",
-              "x-cds-type": "Boolean"
-            },
-            "x-cds-type": "Boolean"
+              "type": "boolean"
+            }
           },
           {
             "name": "page",
@@ -305,8 +297,7 @@
             "description": "Page of results to request (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "default": 1
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -316,8 +307,7 @@
             "description": "Page size to request. Default is 25 (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 25,
-              "x-cds-type": "PositiveInteger"
+              "default": 25
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -369,9 +359,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -477,8 +465,7 @@
             "description": "Page of results to request (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "default": 1
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -488,8 +475,7 @@
             "description": "Page size to request. Default is 25 (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 25,
-              "x-cds-type": "PositiveInteger"
+              "default": 25
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -541,9 +527,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -663,8 +647,7 @@
             "description": "ID of the specific account requested.",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
+              "type": "string"
             },
             "x-cds-type": "ASCIIString"
           },
@@ -716,9 +699,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -826,8 +807,7 @@
             "description": "A tokenised identifier for the account which is unique but not shareable.",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
+              "type": "string"
             },
             "x-cds-type": "ASCIIString"
           },
@@ -879,9 +859,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -989,8 +967,7 @@
             "description": "ID of the account to get transactions for. Must have previously been returned by one of the account list endpoints.",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
+              "type": "string"
             },
             "x-cds-type": "ASCIIString"
           },
@@ -999,8 +976,7 @@
             "in": "query",
             "description": "Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to newest-time minus 90 days. Format is aligned to [DateTimeString](#common-field-types) common type.",
             "schema": {
-              "type": "string",
-              "x-cds-type": "DateTimeString"
+              "type": "string"
             },
             "x-cds-type": "DateTimeString"
           },
@@ -1009,8 +985,7 @@
             "in": "query",
             "description": "Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to today. Format is aligned to [DateTimeString](#common-field-types) common type.",
             "schema": {
-              "type": "string",
-              "x-cds-type": "DateTimeString"
+              "type": "string"
             },
             "x-cds-type": "DateTimeString"
           },
@@ -1019,8 +994,7 @@
             "in": "query",
             "description": "Filter transactions to only transactions with amounts higher than or equal to this amount.",
             "schema": {
-              "type": "string",
-              "x-cds-type": "AmountString"
+              "type": "string"
             },
             "x-cds-type": "AmountString"
           },
@@ -1029,8 +1003,7 @@
             "in": "query",
             "description": "Filter transactions to only transactions with amounts less than or equal to this amount.",
             "schema": {
-              "type": "string",
-              "x-cds-type": "AmountString"
+              "type": "string"
             },
             "x-cds-type": "AmountString"
           },
@@ -1048,8 +1021,7 @@
             "description": "Page of results to request (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "default": 1
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -1059,8 +1031,7 @@
             "description": "Page size to request. Default is 25 (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 25,
-              "x-cds-type": "PositiveInteger"
+              "default": 25
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -1112,9 +1083,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -1240,8 +1209,7 @@
             "description": "ID of the account to get transactions for. Must have previously been returned by one of the account list endpoints.",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
+              "type": "string"
             },
             "x-cds-type": "ASCIIString"
           },
@@ -1251,8 +1219,7 @@
             "description": "ID of the transaction obtained from a previous call to one of the other transaction endpoints.",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
+              "type": "string"
             },
             "x-cds-type": "ASCIIString"
           },
@@ -1304,9 +1271,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -1414,8 +1379,7 @@
             "description": "ID of the account to get direct debit authorisations for. Must have previously been returned by one of the account list endpoints.",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
+              "type": "string"
             },
             "x-cds-type": "ASCIIString"
           },
@@ -1425,8 +1389,7 @@
             "description": "Page of results to request (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "default": 1
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -1436,8 +1399,7 @@
             "description": "Page size to request. Default is 25 (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 25,
-              "x-cds-type": "PositiveInteger"
+              "default": 25
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -1489,9 +1451,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -1653,10 +1613,8 @@
             "in": "query",
             "description": "Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.",
             "schema": {
-              "type": "boolean",
-              "x-cds-type": "Boolean"
-            },
-            "x-cds-type": "Boolean"
+              "type": "boolean"
+            }
           },
           {
             "name": "page",
@@ -1664,8 +1622,7 @@
             "description": "Page of results to request (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "default": 1
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -1675,8 +1632,7 @@
             "description": "Page size to request. Default is 25 (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 25,
-              "x-cds-type": "PositiveInteger"
+              "default": 25
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -1728,9 +1684,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -1836,8 +1790,7 @@
             "description": "Page of results to request (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "default": 1
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -1847,8 +1800,7 @@
             "description": "Page size to request. Default is 25 (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 25,
-              "x-cds-type": "PositiveInteger"
+              "default": 25
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -1900,9 +1852,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -2022,8 +1972,7 @@
             "description": "ID of the account to get scheduled payments for. Must have previously been returned by one of the account list endpoints. The account specified is the source account for the payment.",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
+              "type": "string"
             },
             "x-cds-type": "ASCIIString"
           },
@@ -2033,8 +1982,7 @@
             "description": "Page of results to request (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "default": 1
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -2044,8 +1992,7 @@
             "description": "Page size to request. Default is 25 (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 25,
-              "x-cds-type": "PositiveInteger"
+              "default": 25
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -2097,9 +2044,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -2261,10 +2206,8 @@
             "in": "query",
             "description": "Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.",
             "schema": {
-              "type": "boolean",
-              "x-cds-type": "Boolean"
-            },
-            "x-cds-type": "Boolean"
+              "type": "boolean"
+            }
           },
           {
             "name": "page",
@@ -2272,8 +2215,7 @@
             "description": "Page of results to request (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "default": 1
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -2283,8 +2225,7 @@
             "description": "Page size to request. Default is 25 (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 25,
-              "x-cds-type": "PositiveInteger"
+              "default": 25
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -2336,9 +2277,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -2444,8 +2383,7 @@
             "description": "Page of results to request (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "default": 1
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -2455,8 +2393,7 @@
             "description": "Page size to request. Default is 25 (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 25,
-              "x-cds-type": "PositiveInteger"
+              "default": 25
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -2508,9 +2445,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -2646,8 +2581,7 @@
             "description": "Page of results to request (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "default": 1
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -2657,8 +2591,7 @@
             "description": "Page size to request. Default is 25 (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 25,
-              "x-cds-type": "PositiveInteger"
+              "default": 25
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -2710,9 +2643,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -2820,8 +2751,7 @@
             "description": "The ID used to locate the details of a particular payee.",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
+              "type": "string"
             },
             "x-cds-type": "ASCIIString"
           },
@@ -2873,9 +2803,7 @@
             "in": "header",
             "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
             "schema": {
-              "type": "string",
-              "x-conditional": true,
-              "x-cds-type": "Base64"
+              "type": "string"
             },
             "x-conditional": true,
             "x-cds-type": "Base64"
@@ -3020,8 +2948,7 @@
             "in": "query",
             "description": "Only include products that have been updated after the specified date and time. If absent defaults to include all products.",
             "schema": {
-              "type": "string",
-              "x-cds-type": "DateTimeString"
+              "type": "string"
             },
             "x-cds-type": "DateTimeString"
           },
@@ -3062,8 +2989,7 @@
             "description": "Page of results to request (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 1,
-              "x-cds-type": "PositiveInteger"
+              "default": 1
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -3073,8 +2999,7 @@
             "description": "Page size to request. Default is 25 (standard pagination).",
             "schema": {
               "type": "integer",
-              "default": 25,
-              "x-cds-type": "PositiveInteger"
+              "default": 25
             },
             "x-cds-type": "PositiveInteger"
           },
@@ -3171,8 +3096,7 @@
             "description": "ID of the specific product requested.",
             "required": true,
             "schema": {
-              "type": "string",
-              "x-cds-type": "ASCIIString"
+              "type": "string"
             },
             "x-cds-type": "ASCIIString"
           },
@@ -3366,8 +3290,7 @@
           },
           "isTailored": {
             "type": "boolean",
-            "description": "Indicates whether the product is specifically tailored to a circumstance. In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable.",
-            "x-cds-type": "Boolean"
+            "description": "Indicates whether the product is specifically tailored to a circumstance. In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable."
           },
           "additionalInformation": {
             "$ref": "#/components/schemas/BankingProductAdditionalInformationV2"
@@ -4294,8 +4217,7 @@
           "isOwned": {
             "type": "boolean",
             "description": "Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then `true` is assumed.",
-            "default": true,
-            "x-cds-type": "Boolean"
+            "default": true
           },
           "accountOwnership": {
             "type": "string",
@@ -4423,8 +4345,7 @@
                         "isActivated": {
                           "type": "boolean",
                           "description": "`true` if the feature is already activated and `false` if the feature is available for activation. Defaults to `true` if absent.<br>Note: this is an additional field appended to the feature object defined in the Product Reference payload.",
-                          "default": true,
-                          "x-cds-type": "Boolean"
+                          "default": true
                         }
                       }
                     }
@@ -4666,8 +4587,7 @@
           },
           "offsetAccountEnabled": {
             "type": "boolean",
-            "description": "Set to `true` if one or more offset accounts are configured for this loan account.",
-            "x-cds-type": "Boolean"
+            "description": "Set to `true` if one or more offset accounts are configured for this loan account."
           },
           "offsetAccountIds": {
             "type": "array",
@@ -4747,8 +4667,7 @@
           },
           "isDetailAvailable": {
             "type": "boolean",
-            "description": "`true` if extended information is available using the transaction detail endpoint. `false` if extended data is not available.",
-            "x-cds-type": "Boolean"
+            "description": "`true` if extended information is available using the transaction detail endpoint. `false` if extended data is not available."
           },
           "type": {
             "type": "string",
@@ -5593,8 +5512,7 @@
           },
           "isAmountCalculated": {
             "type": "boolean",
-            "description": "Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then `false` is assumed.",
-            "x-cds-type": "Boolean"
+            "description": "Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then `false` is assumed."
           },
           "amount": {
             "type": "string",
@@ -6123,8 +6041,7 @@
               "isQueryParamUnsupported": {
                 "type": "boolean",
                 "description": "`true` if _text_ query parameter is not supported.",
-                "default": false,
-                "x-cds-type": "Boolean"
+                "default": false
               }
             }
           }
@@ -6301,10 +6218,8 @@
         "in": "query",
         "description": "Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.",
         "schema": {
-          "type": "boolean",
-          "x-cds-type": "Boolean"
-        },
-        "x-cds-type": "Boolean"
+          "type": "boolean"
+        }
       },
       "ParamPage": {
         "name": "page",

@@ -405,17 +405,24 @@ function schemaToArray(schema,offset,options,data) {
           block.rows.push(entry);
         }
 
+        // Denote custom field types for properties
         if (typeof schema['x-cds-type'] === 'string') {
           entry.cdrType = '[' + schema['x-cds-type'] +'](#common-field-types)';
         }
+        // Denote custom field types for properties in arrays
         if (schema.items && typeof schema.items['x-cds-type'] === 'string') {
           entry.cdrType = '[[' + schema.items['x-cds-type'] +']](#common-field-types)';
         }
+
+        // Denote custom field types for other known types
         if (schema.enum) {
           entry.cdrType = '[Enum](#common-field-types)';
         }
         if (schema.items && schema.items.enum) {
           entry.cdrType = '[[Enum](#common-field-types)]';
+        }
+        if (schema.type === 'boolean') {
+          entry.cdrType = '[Boolean](#common-field-types)';
         }
     });
     return container;
