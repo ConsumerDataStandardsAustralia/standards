@@ -20,8 +20,8 @@ Some of these standards will be binding data standards under the Competition and
 
 | Chair | Tenure | Information
 | :----- | :------ | :---------- |
-| Dr. Ian Oppermann | March 2025 - present | Dr Ian Opperman serves as the current Data Standards Chair for both the [Consumer Data Right](https://www.cdr.gov.au/about) and [Digital ID](https://www.digitalidsystem.gov.au/how-the-system-works).
-| Andrew Stevens | May 2018 - February 2025 | Andrew Stevens served as the inaugural Data Standards Chair for the [Consumer Data Right](https://www.cdr.gov.au/about). |
+| Dr Ian Oppermann | March 2025 - present | Dr Ian Oppermann serves as the current Data Standards Chair for both the [Consumer Data Right](https://www.cdr.gov.au/about) and [Digital ID](https://www.digitalidsystem.gov.au/how-the-system-works).
+| Mr Andrew Stevens | May 2018 - February 2025 | Mr Andrew Stevens served as the inaugural Data Standards Chair for the [Consumer Data Right](https://www.cdr.gov.au/about). |
  
 Further details of Data Standards Chair appointments can be found [here](https://www.directory.gov.au/portfolios/treasury/department-treasury/data-standards-chair).
 
