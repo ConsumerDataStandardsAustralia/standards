@@ -38,14 +38,22 @@ values that are valid for a Data Recipient to be able to call back to the Data H
 
 #### Additional Requirements
 
+```diff
+Updated Additional Requirements with notes for electricity usage data sharing using LCCD 
+```
+
 The following statements also apply to the endpoints published by AEMO:
 
 * General headers should be provided as if the request were coming from the primary Data Holder and not propagated from the call made by the Data Recipient
 * The _x-fapi-interaction-id_ header must be propagated from the Data Recipient call to AEMO to allow for end to end tracing. If not supplied by the Data Recipient, the primary Data Holder **MUST** create a unique value for the _x-fapi-interaction-id_ header before calling AEMO
 * Endpoints that require knowledge of the NMIs that belong to the CDR Consumer have been excluded from the AEMO endpoint set. This includes *Get Bulk Usage* and *Get Bulk DER*. When a primary Data Holder is required to respond to these endpoints they should call the equivalent endpoint for specific service points and provide the specific list of NMIs to AEMO
 * Some primary Data Holders may interact with AEMO using multiple participant IDs. For these Data Holders it is possible that a single request from a CDR Consumer covering multiple NMIs would require multiple calls to AEMO if the NMIs were associated with multiple participant IDs owned by the Data Holder. In this scenario the retailer **MUST** call AEMO multiple times and aggregate the results before responding to the Data Recipient
-* If a request for usage data spans a time period when AEMO cannot definitively determine that the primary Data Holder was not in control of the NMI then:
-  * AEMO **MUST NOT** respond with an error
-  * AEMO **MUST** respond with the usage for the period that the primary Data Holder can be definitively determined to be in control of the NMI
-  * AEMO **MUST NOT** share data outside the period of control of the primary Data Holder
+* If the request is for electricity usage data, then:
+  * If LCCD value is held for the requested NMI, and the LCCD falls within the period request, then:
+      * AEMO **MUST** limit the usage data returned to the period dating back to (and inclusive of) the LCCD
+  * If LCCD value is not held for the requested NMI, or the period requested is prior to LCCD, then:
+      * AEMO **MUST NOT** respond with an error
+      * AEMO **MUST** respond with the usage for the period that the Primary Data Holder can be definitively determined to be in control of the NMI
+      * AEMO **MUST NOT** share data outside the period of control of the Primary Data Holder
 * The primary Data Holder **MUST** ensure that the data requested and then shared with the Data Recipient is not outside the bounds of control of the specific CDR Consumer.
+<br>**Note:** the maximum historical period for usage data would be provided in accordance with Paragraph 3.2 in Schedule 4, Part 3 of the CDR rules.
