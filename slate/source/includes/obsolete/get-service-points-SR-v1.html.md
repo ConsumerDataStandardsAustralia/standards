@@ -8,6 +8,9 @@ title: Get Service Points (SR) v1
 toc_footers:
   - <a href='../../index.html'>Consumer Data Standards</a>
 
+includes:
+  - footer
+
 search: false
 ---
 
