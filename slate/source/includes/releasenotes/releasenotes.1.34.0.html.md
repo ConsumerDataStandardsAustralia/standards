@@ -20,7 +20,7 @@ Release notes for version **1.34.0** of the [CDR Standards](../../).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #481 - Update energy endpoint version schedule](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -50,6 +50,8 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 | FDO for LCCD changes | [**Decision Proposal #361**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/361): Added FDOs for Last Consumer Change Date (LCCD) related changes in Energy standards. | [FDO](../../#fdo)
+| Updated Energy Endpoint Version Schedule | [**Standards Staging #481**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/481): Replaced **"Energy Shared Responsibility APIs"** with **"Energy Secondary DH APIs"**. Moved energy shared responsibility APIs into Energy APIs. | [Endpoint Version Schedule](../../#endpoint-version-schedule)
+
 
 ## API Endpoints
 |Change|Description|Link|
