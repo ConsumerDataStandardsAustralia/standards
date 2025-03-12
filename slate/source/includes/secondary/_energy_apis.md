@@ -39,7 +39,7 @@ values that are valid for a Data Recipient to be able to call back to the Data H
 #### Additional Requirements
 
 ```diff
-Updated Additional Requirements with notes for electricity usage data sharing using LCCD 
+Updated Additional Requirements with notes for electricity usage data sharing using Last Consumer Change Date (LCCD) 
 ```
 
 The following statements also apply to the endpoints published by AEMO:
@@ -56,4 +56,4 @@ The following statements also apply to the endpoints published by AEMO:
       * AEMO **MUST** respond with the usage for the period that the Primary Data Holder can be definitively determined to be in control of the NMI
       * AEMO **MUST NOT** share data outside the period of control of the Primary Data Holder
 * The primary Data Holder **MUST** ensure that the data requested and then shared with the Data Recipient is not outside the bounds of control of the specific CDR Consumer.
-<br>**Note:** the maximum historical period for usage data would be provided in accordance with Paragraph 3.2 in Schedule 4, Part 3 of the CDR rules.
+<br>**Note:** The maximum historical period for usage data would be provided in accordance with Paragraph 3.2 in Schedule 4, Part 3 of the CDR rules.

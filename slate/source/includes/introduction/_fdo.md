@@ -1,7 +1,7 @@
 ## Future Dated Obligations
 
 ```diff
-Added FDOs for LCCD related changes in Energy standards
+Added FDOs for Last Consumer Change Date (LCCD) related changes in Energy standards
 ```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 

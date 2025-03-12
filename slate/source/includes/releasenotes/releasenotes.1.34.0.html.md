@@ -49,7 +49,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
-| FDO for LCCD changes | [**Decision Proposal #361**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/361): Added FDOs for LCCD related changes in Energy standards. | [FDO](../../#fdo)
+| FDO for LCCD changes | [**Decision Proposal #361**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/361): Added FDOs for Last Consumer Change Date (LCCD) related changes in Energy standards. | [FDO](../../#fdo)
 
 ## API Endpoints
 |Change|Description|Link|
@@ -79,7 +79,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Shared Responsibility
 |Change|Description|Link|
 |------|-----------|----|
-| LCCD changes | [**Decision Proposal #361**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/361): Updated **Additional Requirements** section with notes for electricity usage data sharing using LCCD | [Additional Requirements](../../#additional-requirements)
+| LCCD changes | [**Decision Proposal #361**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/361): Updated **Additional Requirements** section with notes for electricity usage data sharing using Last Consumer Change Date (LCCD) | [Additional Requirements](../../#additional-requirements)
 
 ## Additional Standards
 |Change|Description|Link|
