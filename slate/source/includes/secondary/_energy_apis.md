@@ -49,7 +49,7 @@ The following statements also apply to the endpoints published by AEMO:
 * Endpoints that require knowledge of the NMIs that belong to the CDR Consumer have been excluded from the AEMO endpoint set. This includes *Get Bulk Usage* and *Get Bulk DER*. When a primary Data Holder is required to respond to these endpoints they should call the equivalent endpoint for specific service points and provide the specific list of NMIs to AEMO
 * Some primary Data Holders may interact with AEMO using multiple participant IDs. For these Data Holders it is possible that a single request from a CDR Consumer covering multiple NMIs would require multiple calls to AEMO if the NMIs were associated with multiple participant IDs owned by the Data Holder. In this scenario the retailer **MUST** call AEMO multiple times and aggregate the results before responding to the Data Recipient
 * If the request is for electricity usage data, then:
-  * If LCCD value is held for the requested NMI, and the LCCD falls within the period request, then:
+  * If LCCD value is held for the requested NMI, and the LCCD falls within the period requested, then:
       * AEMO **MUST** limit the usage data returned to the period dating back to (and inclusive of) the LCCD
   * If LCCD value is not held for the requested NMI, or the period requested is prior to LCCD, then:
       * AEMO **MUST NOT** respond with an error
