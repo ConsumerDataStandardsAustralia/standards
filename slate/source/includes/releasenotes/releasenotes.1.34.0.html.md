@@ -21,7 +21,8 @@ Release notes for version **1.34.0** of the [CDR Standards](../../).
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
 - [Standards Staging #477 - Add a list of Data Standards Chairs](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/477)
-- [Standards Staging #481 - Update energy endpoint version schedule](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #481 - Update energy endpoint version schedule](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/481)
+- [Standards Staging #479 - Update documentation links to Register endpoints](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/479)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -38,7 +39,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail. | [Standards section](../../#section)
+| Update links | [**Standards Staging #479**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/479): Corrected documentation links referring to Register endpoints. | N/A
 | Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail. | [Standards section](../../#section)
 
 

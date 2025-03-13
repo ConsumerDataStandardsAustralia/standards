@@ -15,7 +15,7 @@ Such that:
 * Software Statements are issued with a **10 minute** expiry time.
 * As per **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**, SSAs are signed by the CDR Register using **PS256**.
 * CDR Register public keys are exposed on a dedicated JWKS URI endpoint.
-* The CDR Register [JWKS endpoint](#cdr-participant-discovery-api_get-jwks) is an unauthenticated endpoint, using TLS.
+* The CDR Register [JWKS endpoint](#cdr-register-api_get-jwks) is an unauthenticated endpoint, using TLS.
 * Data Recipients **MUST** present a valid SSA when undertaking dynamic client registration.
 * Data Holders **MUST NOT** register Data Recipient software products unless they present a verified [Registration Request](#registration-request-using-jwt) with a verified [SSA](#ssa-definition).
 
@@ -239,7 +239,7 @@ Data Recipients **MUST** support the minimum required algorithms.
 
 Validation and use of the JWT and the claims described above **MUST** be performed in accordance with **[[JWT]](#nref-JWT)**.
 
-SSA JWT signatures **MUST** be verified against the associated JWK published at the CDR Register [JWKS endpoint](#cdr-participant-discovery-api_get-jwks).
+SSA JWT signatures **MUST** be verified against the associated JWK published at the CDR Register [JWKS endpoint](#cdr-register-api_get-jwks).
 
 The registration request JWT **MUST** be verified against the associated JWK published by the Data Recipient. Data Holders are required to verify the request JWT signature against an associated JWK from the _jwks_uri_ extracted from the SSA.
 
