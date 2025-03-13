@@ -22,14 +22,6 @@ echo "*** Generate cds_banking_non_bank_lending.md"
 diff -w cds_banking_non_bank_lending.md ../slate/source/includes/cds_banking_non_bank_lending.md > diff_banking_non_bank_lending.txt
 
 
-echo "*** Generate cds_banking_dp306.md"
-{
-  node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript--nodejs:Javascript' --summary api/cds_banking_dp306.json -o cds_banking_dp306.md >> create-markdown-log.txt
-} >> create-markdown-log.txt 2>&1
-
-diff -w cds_banking_dp306.md ../slate/source/includes/cds_banking_dp306.md > diff_banking_dp306.txt
-
-
 echo "*** Generate cds_energy.md"
 {
   node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript--nodejs:Javascript' --summary api/cds_energy.json -o cds_energy.md >> create-markdown-log.txt

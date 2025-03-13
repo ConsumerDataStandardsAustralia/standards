@@ -7,7 +7,7 @@ info:
   description: Specifications for resource endpoints applicable to data holders in
     the Energy sector.
   title: CDR Energy API
-  version: 1.33.1
+  version: 1.34.0
 servers:
 - description: MTLS
   url: https://mtls.dh.example.com/cds-au/v1
@@ -284,8 +284,10 @@ paths:
         for more details.
   /energy/electricity/servicepoints:
     get:
-      description: Obtain a list of service points owned by the customer that has
-        authorised the current session.
+      description: |-
+        Obtain a list of service points owned by the customer that has authorised the current session.
+
+        Other Versions: [v1](includes/obsolete/get-service-points-v1.html).
       operationId: listElectricityServicePoints
       parameters:
       - description: Page of results to request (standard pagination).
@@ -385,7 +387,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnergyServicePointListResponse'
+                $ref: '#/components/schemas/EnergyServicePointListResponseV2'
           description: Successful response
           headers:
             x-v:
@@ -429,11 +431,13 @@ paths:
       - Electricity Service Points
       x-scopes:
       - energy:electricity.servicepoints.basic:read
-      x-version: "1"
+      x-version: "2"
   /energy/electricity/servicepoints/{servicePointId}:
     get:
-      description: Obtain detailed standing information for a specific service point
-        that is owned by the customer that has authorised the current session.
+      description: |-
+        Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.
+
+        Other Versions: [v1](includes/obsolete/get-service-point-detail-v1.html).
       operationId: getElectricityServicePointDetail
       parameters:
       - description: The _servicePointId_ to obtain data for. _servicePointId_ values
@@ -524,7 +528,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnergyServicePointDetailResponse'
+                $ref: '#/components/schemas/EnergyServicePointDetailResponseV2'
           description: Successful response
           headers:
             x-v:
@@ -568,7 +572,7 @@ paths:
       - Electricity Service Points
       x-scopes:
       - energy:electricity.servicepoints.detail:read
-      x-version: "1"
+      x-version: "2"
   /energy/electricity/servicepoints/{servicePointId}/usage:
     get:
       description: Obtain a list of electricity usage data from a particular service
@@ -4017,7 +4021,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EnergyServicePointListResponse'
+            $ref: '#/components/schemas/EnergyServicePointListResponseV2'
       description: Successful response
       headers:
         x-v:
@@ -4060,7 +4064,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EnergyServicePointDetailResponse'
+            $ref: '#/components/schemas/EnergyServicePointDetailResponseV2'
       description: Successful response
       headers:
         x-v:
@@ -5066,7 +5070,7 @@ components:
       - data
       - links
       type: object
-    EnergyServicePointListResponse:
+    EnergyServicePointListResponseV2:
       example:
         data:
           servicePoints:
@@ -5080,6 +5084,7 @@ components:
             nationalMeteringId: nationalMeteringId
             servicePointStatus: ACTIVE
             servicePointClassification: EXTERNAL_PROFILE
+            lastConsumerChangeDate: lastConsumerChangeDate
             isGenerator: false
           - lastUpdateDateTime: lastUpdateDateTime
             consumerProfile:
@@ -5091,6 +5096,7 @@ components:
             nationalMeteringId: nationalMeteringId
             servicePointStatus: ACTIVE
             servicePointClassification: EXTERNAL_PROFILE
+            lastConsumerChangeDate: lastConsumerChangeDate
             isGenerator: false
         meta:
           totalRecords: 0
@@ -5103,7 +5109,7 @@ components:
           first: first
       properties:
         data:
-          $ref: '#/components/schemas/EnergyServicePointListResponse_data'
+          $ref: '#/components/schemas/EnergyServicePointListResponseV2_data'
         links:
           $ref: '#/components/schemas/LinksPaginated'
         meta:
@@ -5113,14 +5119,14 @@ components:
       - links
       - meta
       type: object
-    EnergyServicePointDetailResponse:
+    EnergyServicePointDetailResponseV2:
       example:
         meta: '{}'
         links:
           self: self
       properties:
         data:
-          $ref: '#/components/schemas/EnergyServicePointDetail'
+          $ref: '#/components/schemas/EnergyServicePointDetailV2'
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -7934,7 +7940,7 @@ components:
       - SAT
       - PUBLIC_HOLIDAYS
       type: string
-    EnergyServicePoint:
+    EnergyServicePointV2:
       example:
         lastUpdateDateTime: lastUpdateDateTime
         consumerProfile:
@@ -7946,6 +7952,7 @@ components:
         nationalMeteringId: nationalMeteringId
         servicePointStatus: ACTIVE
         servicePointClassification: EXTERNAL_PROFILE
+        lastConsumerChangeDate: lastConsumerChangeDate
         isGenerator: false
       properties:
         servicePointId:
@@ -8019,8 +8026,12 @@ components:
             was modified.
           type: string
           x-cds-type: DateTimeString
+        lastConsumerChangeDate:
+          description: The date the account holder changed for the NMI.
+          type: string
+          x-cds-type: DateString
         consumerProfile:
-          $ref: '#/components/schemas/EnergyServicePoint_consumerProfile'
+          $ref: '#/components/schemas/EnergyServicePointV2_consumerProfile'
       required:
       - jurisdictionCode
       - lastUpdateDateTime
@@ -8030,10 +8041,10 @@ components:
       - servicePointStatus
       - validFromDate
       type: object
-    EnergyServicePointDetail:
+    EnergyServicePointDetailV2:
       allOf:
-      - $ref: '#/components/schemas/EnergyServicePoint'
-      - $ref: '#/components/schemas/EnergyServicePointDetail_allOf'
+      - $ref: '#/components/schemas/EnergyServicePointV2'
+      - $ref: '#/components/schemas/EnergyServicePointDetailV2_allOf'
     EnergyUsageRead:
       example:
         basicRead:
@@ -9286,7 +9297,7 @@ components:
       required:
       - plans
       type: object
-    EnergyServicePointListResponse_data:
+    EnergyServicePointListResponseV2_data:
       example:
         servicePoints:
         - lastUpdateDateTime: lastUpdateDateTime
@@ -9299,6 +9310,7 @@ components:
           nationalMeteringId: nationalMeteringId
           servicePointStatus: ACTIVE
           servicePointClassification: EXTERNAL_PROFILE
+          lastConsumerChangeDate: lastConsumerChangeDate
           isGenerator: false
         - lastUpdateDateTime: lastUpdateDateTime
           consumerProfile:
@@ -9310,11 +9322,12 @@ components:
           nationalMeteringId: nationalMeteringId
           servicePointStatus: ACTIVE
           servicePointClassification: EXTERNAL_PROFILE
+          lastConsumerChangeDate: lastConsumerChangeDate
           isGenerator: false
       properties:
         servicePoints:
           items:
-            $ref: '#/components/schemas/EnergyServicePoint'
+            $ref: '#/components/schemas/EnergyServicePointV2'
           type: array
       required:
       - servicePoints
@@ -9982,7 +9995,7 @@ components:
       - benefitPeriod
       - variation
       - coolingOffDays
-    EnergyServicePoint_consumerProfile:
+    EnergyServicePointV2_consumerProfile:
       example:
         threshold: LOW
         classification: BUSINESS
@@ -10011,7 +10024,7 @@ components:
           - HIGH
           type: string
       type: object
-    EnergyServicePointDetail_allOf_distributionLossFactor:
+    EnergyServicePointDetailV2_allOf_distributionLossFactor:
       properties:
         code:
           description: A code used to identify data loss factor for the service point
@@ -10029,7 +10042,7 @@ components:
       - description
       - lossValue
       type: object
-    EnergyServicePointDetail_allOf_relatedParticipants:
+    EnergyServicePointDetailV2_allOf_relatedParticipants:
       properties:
         party:
           description: The name of the party/organisation related to this service
@@ -10051,7 +10064,7 @@ components:
       - party
       - role
       type: object
-    EnergyServicePointDetail_allOf_specifications:
+    EnergyServicePointDetailV2_allOf_specifications:
       description: Technical characteristics of the meter.
       properties:
         status:
@@ -10126,7 +10139,7 @@ components:
       - installationType
       - status
       type: object
-    EnergyServicePointDetail_allOf_registers:
+    EnergyServicePointDetailV2_allOf_registers:
       properties:
         registerId:
           description: Unique identifier of the register within this service point.
@@ -10194,7 +10207,7 @@ components:
       - registerConsumptionType
       - registerId
       type: object
-    EnergyServicePointDetail_allOf_meters:
+    EnergyServicePointDetailV2_allOf_meters:
       properties:
         meterId:
           description: The meter ID uniquely identifies a meter for a given service
@@ -10202,24 +10215,24 @@ components:
             unique.
           type: string
         specifications:
-          $ref: '#/components/schemas/EnergyServicePointDetail_allOf_specifications'
+          $ref: '#/components/schemas/EnergyServicePointDetailV2_allOf_specifications'
         registers:
           description: Usage data registers available from the meter. This may be
             empty where there are no meters physically installed at the service point.
           items:
-            $ref: '#/components/schemas/EnergyServicePointDetail_allOf_registers'
+            $ref: '#/components/schemas/EnergyServicePointDetailV2_allOf_registers'
           type: array
       required:
       - meterId
       - specifications
       type: object
-    EnergyServicePointDetail_allOf:
+    EnergyServicePointDetailV2_allOf:
       properties:
         distributionLossFactor:
-          $ref: '#/components/schemas/EnergyServicePointDetail_allOf_distributionLossFactor'
+          $ref: '#/components/schemas/EnergyServicePointDetailV2_allOf_distributionLossFactor'
         relatedParticipants:
           items:
-            $ref: '#/components/schemas/EnergyServicePointDetail_allOf_relatedParticipants'
+            $ref: '#/components/schemas/EnergyServicePointDetailV2_allOf_relatedParticipants'
           type: array
         location:
           allOf:
@@ -10229,7 +10242,7 @@ components:
           description: The meters associated with the service point. This may be empty
             where there are no meters physically installed at the service point.
           items:
-            $ref: '#/components/schemas/EnergyServicePointDetail_allOf_meters'
+            $ref: '#/components/schemas/EnergyServicePointDetailV2_allOf_meters'
           type: array
       required:
       - distributionLossFactor

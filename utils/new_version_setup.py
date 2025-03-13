@@ -152,7 +152,7 @@ def create_releasenotes():
 def add_changelog_entry():
      
     # Create new changelog entry
-    new_changelog_entry = create_new_entry("TBC", f"[{new_version}](https://consumerdatastandardsaustralia.github.io/standards-archives/standards-{new_version}/)", "Changes TBC", f"See [release notes](includes/releasenotes/releasenotes.{new_version}.html) and [Decision XXX](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX) for details.")
+    new_changelog_entry = create_new_entry(" TBC", f"[{new_version}](https://consumerdatastandardsaustralia.github.io/standards-archives/standards-{new_version}/)", "Changes TBC", f"See [release notes](includes/releasenotes/releasenotes.{new_version}.html) and [Decision XXX](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX) for details.")
     
     # Add new changelog entry
     add_new_entry(CHANGEPATH, changelog_table_header, new_changelog_entry)

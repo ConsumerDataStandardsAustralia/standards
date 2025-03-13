@@ -72,12 +72,12 @@ It is expected that data consumers needing this data will call relatively freque
 
 In addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no longer offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
 
-Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/obsolete/get-products-v2.html).
+Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/obsolete/get-products-v2.html), [v3](includes/obsolete/get-products-v3.html).
 
 <h3 id="cdr-banking-api_get-products_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**3**
+|Version|**4**
 
 <h3 id="cdr-banking-api_get-products_parameters">Parameters</h3>
 
@@ -171,6 +171,8 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/o
         },
         "cardArt": [
           {
+            "cardScheme": "AMEX",
+            "cardType": "CHARGE",
             "title": "string",
             "imageUri": "string"
           }
@@ -196,7 +198,7 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/o
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingProductListV2](#schemacdr-banking-apiresponsebankingproductlistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingProductListV3](#schemacdr-banking-apiresponsebankingproductlistv3)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -249,12 +251,12 @@ fetch('https://tls.dh.example.com/cds-au/v1/banking/products/{productId}', {
 
 Obtain detailed information on a single product offered openly to the market.
 
-Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](includes/obsolete/get-product-detail-v2.html), [v3](includes/obsolete/get-product-detail-v3.html), [v4](includes/obsolete/get-product-detail-v4.html).
+Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](includes/obsolete/get-product-detail-v2.html), [v3](includes/obsolete/get-product-detail-v3.html), [v4](includes/obsolete/get-product-detail-v4.html), [v5](includes/obsolete/get-product-detail-v5.html).
 
 <h3 id="cdr-banking-api_get-product-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**5**
+|Version|**6**
 
 <h3 id="cdr-banking-api_get-product-detail_parameters">Parameters</h3>
 
@@ -321,6 +323,8 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](incl
     },
     "cardArt": [
       {
+        "cardScheme": "AMEX",
+        "cardType": "CHARGE",
         "title": "string",
         "imageUri": "string"
       }
@@ -363,12 +367,26 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](incl
     "fees": [
       {
         "name": "string",
-        "feeType": "DEPOSIT",
-        "amount": "string",
-        "balanceRate": "string",
-        "transactionRate": "string",
-        "accruedRate": "string",
-        "accrualFrequency": "string",
+        "feeType": "CASH_ADVANCE",
+        "feeMethodUType": "fixedAmount",
+        "fixedAmount": {
+          "amount": "string"
+        },
+        "rateBased": {
+          "rateType": "BALANCE",
+          "rate": "string",
+          "accrualFrequency": "string",
+          "amountRange": {
+            "feeMinimum": "string",
+            "feeMaximum": "string"
+          }
+        },
+        "variable": {
+          "feeMinimum": "string",
+          "feeMaximum": "string"
+        },
+        "feeCap": "string",
+        "feeCapPeriod": "string",
         "currency": "AUD",
         "additionalValue": "string",
         "additionalInfo": "string",
@@ -377,11 +395,18 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](incl
           {
             "description": "string",
             "discountType": "BALANCE",
-            "amount": "string",
-            "balanceRate": "string",
-            "transactionRate": "string",
-            "accruedRate": "string",
-            "feeRate": "string",
+            "discountMethodUType": "fixedAmount",
+            "fixedAmount": {
+              "amount": "string"
+            },
+            "rateBased": {
+              "rateType": "BALANCE",
+              "rate": "string",
+              "amountRange": {
+                "discountMinimum": "string",
+                "discountMaximum": "string"
+              }
+            },
             "additionalValue": "string",
             "additionalInfo": "string",
             "additionalInfoUri": "string",
@@ -402,18 +427,31 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](incl
         "depositRateType": "VARIABLE",
         "rate": "string",
         "calculationFrequency": "string",
+        "applicationType": "PERIODIC",
         "applicationFrequency": "string",
         "tiers": [
           {
             "name": "string",
             "unitOfMeasure": "DAY",
-            "minimumValue": 0,
-            "maximumValue": 0,
+            "minimumValue": "string",
+            "maximumValue": "string",
             "rateApplicationMethod": "PER_TIER",
-            "applicabilityConditions": {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            },
+            "applicabilityConditions": [
+              {
+                "rateApplicabilityType": "NEW_CUSTOMER",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          }
+        ],
+        "applicabilityConditions": [
+          {
+            "rateApplicabilityType": "NEW_CUSTOMER",
+            "additionalValue": "string",
             "additionalInfo": "string",
             "additionalInfoUri": "string"
           }
@@ -429,6 +467,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](incl
         "rate": "string",
         "comparisonRate": "string",
         "calculationFrequency": "string",
+        "applicationType": "PERIODIC",
         "applicationFrequency": "string",
         "interestPaymentDue": "IN_ADVANCE",
         "repaymentType": "INTEREST_ONLY",
@@ -437,13 +476,25 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](incl
           {
             "name": "string",
             "unitOfMeasure": "DAY",
-            "minimumValue": 0,
-            "maximumValue": 0,
+            "minimumValue": "string",
+            "maximumValue": "string",
             "rateApplicationMethod": "PER_TIER",
-            "applicabilityConditions": {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            },
+            "applicabilityConditions": [
+              {
+                "rateApplicabilityType": "NEW_CUSTOMER",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          }
+        ],
+        "applicabilityConditions": [
+          {
+            "rateApplicabilityType": "NEW_CUSTOMER",
+            "additionalValue": "string",
             "additionalInfo": "string",
             "additionalInfoUri": "string"
           }
@@ -465,7 +516,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](incl
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingProductByIdV5](#schemacdr-banking-apiresponsebankingproductbyidv5)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingProductByIdV6](#schemacdr-banking-apiresponsebankingproductbyidv6)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -680,12 +731,12 @@ fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}', {
 
 Obtain detailed information on a single account.
 
-Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html).
+Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html), [v3](includes/obsolete/get-account-detail-v3.html).
 
 <h3 id="cdr-banking-api_get-account-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**3**
+|Version|**4**
 
 <h3 id="cdr-banking-api_get-account-detail_parameters">Parameters</h3>
 
@@ -761,18 +812,31 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](incl
         "depositRateType": "VARIABLE",
         "rate": "string",
         "calculationFrequency": "string",
+        "applicationType": "PERIODIC",
         "applicationFrequency": "string",
         "tiers": [
           {
             "name": "string",
             "unitOfMeasure": "DAY",
-            "minimumValue": 0,
-            "maximumValue": 0,
+            "minimumValue": "string",
+            "maximumValue": "string",
             "rateApplicationMethod": "PER_TIER",
-            "applicabilityConditions": {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            },
+            "applicabilityConditions": [
+              {
+                "rateApplicabilityType": "NEW_CUSTOMER",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          }
+        ],
+        "applicabilityConditions": [
+          {
+            "rateApplicabilityType": "NEW_CUSTOMER",
+            "additionalValue": "string",
             "additionalInfo": "string",
             "additionalInfoUri": "string"
           }
@@ -788,6 +852,7 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](incl
         "rate": "string",
         "comparisonRate": "string",
         "calculationFrequency": "string",
+        "applicationType": "PERIODIC",
         "applicationFrequency": "string",
         "interestPaymentDue": "IN_ADVANCE",
         "repaymentType": "INTEREST_ONLY",
@@ -796,13 +861,25 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](incl
           {
             "name": "string",
             "unitOfMeasure": "DAY",
-            "minimumValue": 0,
-            "maximumValue": 0,
+            "minimumValue": "string",
+            "maximumValue": "string",
             "rateApplicationMethod": "PER_TIER",
-            "applicabilityConditions": {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            },
+            "applicabilityConditions": [
+              {
+                "rateApplicabilityType": "NEW_CUSTOMER",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          }
+        ],
+        "applicabilityConditions": [
+          {
+            "rateApplicabilityType": "NEW_CUSTOMER",
+            "additionalValue": "string",
             "additionalInfo": "string",
             "additionalInfoUri": "string"
           }
@@ -818,18 +895,32 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](incl
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string",
-        "isActivated": true
+        "isActivated": "ACTIVATED"
       }
     ],
     "fees": [
       {
         "name": "string",
-        "feeType": "DEPOSIT",
-        "amount": "string",
-        "balanceRate": "string",
-        "transactionRate": "string",
-        "accruedRate": "string",
-        "accrualFrequency": "string",
+        "feeType": "CASH_ADVANCE",
+        "feeMethodUType": "fixedAmount",
+        "fixedAmount": {
+          "amount": "string"
+        },
+        "rateBased": {
+          "rateType": "BALANCE",
+          "rate": "string",
+          "accrualFrequency": "string",
+          "amountRange": {
+            "feeMinimum": "string",
+            "feeMaximum": "string"
+          }
+        },
+        "variable": {
+          "feeMinimum": "string",
+          "feeMaximum": "string"
+        },
+        "feeCap": "string",
+        "feeCapPeriod": "string",
         "currency": "AUD",
         "additionalValue": "string",
         "additionalInfo": "string",
@@ -838,11 +929,18 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](incl
           {
             "description": "string",
             "discountType": "BALANCE",
-            "amount": "string",
-            "balanceRate": "string",
-            "transactionRate": "string",
-            "accruedRate": "string",
-            "feeRate": "string",
+            "discountMethodUType": "fixedAmount",
+            "fixedAmount": {
+              "amount": "string"
+            },
+            "rateBased": {
+              "rateType": "BALANCE",
+              "rate": "string",
+              "amountRange": {
+                "discountMinimum": "string",
+                "discountMaximum": "string"
+              }
+            },
             "additionalValue": "string",
             "additionalInfo": "string",
             "additionalInfoUri": "string",
@@ -909,7 +1007,7 @@ Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](incl
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingAccountByIdV3](#schemacdr-banking-apiresponsebankingaccountbyidv3)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingAccountByIdV4](#schemacdr-banking-apiresponsebankingaccountbyidv4)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -3106,12 +3204,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» accountIds|[[BankingAccountId](#schemacdr-banking-apibankingaccountid)]|mandatory||Array of _accountId_ values to obtain data for.|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional||none|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductlistv2">ResponseBankingProductListV2</h3>
-<p id="tocSresponsebankingproductlistv2" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductlistv3">ResponseBankingProductListV3</h3>
+<p id="tocSresponsebankingproductlistv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingproductlist"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductlistv2"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductlistv3"></a>
 </p>
 
 ```json
@@ -3169,6 +3267,8 @@ To perform this operation, you must be authenticated and authorised with the fol
         },
         "cardArt": [
           {
+            "cardScheme": "AMEX",
+            "cardType": "CHARGE",
             "title": "string",
             "imageUri": "string"
           }
@@ -3190,21 +3290,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_responsebankingproductlistv2_properties">Properties</h3>
+<h3 id="cdr-banking-api_responsebankingproductlistv3_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
 |data|object|mandatory||none|
-|» products|[[BankingProductV4](#schemacdr-banking-apibankingproductv4)]|mandatory||The list of products returned. If the filter results in an empty set then this array may have no records.|
+|» products|[[BankingProductV5](#schemacdr-banking-apibankingproductv5)]|mandatory||The list of products returned. If the filter results in an empty set then this array may have no records.|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory||none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory||none|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductv4">BankingProductV4</h3>
-<p id="tocSbankingproductv4" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductv5">BankingProductV5</h3>
+<p id="tocSbankingproductv5" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproduct"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductv4"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductv5"></a>
 </p>
 
 ```json
@@ -3259,6 +3359,8 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "cardArt": [
     {
+      "cardScheme": "AMEX",
+      "cardType": "CHARGE",
       "title": "string",
       "imageUri": "string"
     }
@@ -3266,7 +3368,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingproductv4_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductv5_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
@@ -3282,9 +3384,46 @@ To perform this operation, you must be authenticated and authorised with the fol
 |applicationUri|[URIString](#common-field-types)|optional||A link to an application web page where this product can be applied for.|
 |isTailored|[Boolean](#common-field-types)|mandatory||Indicates whether the product is specifically tailored to a circumstance. In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable.|
 |additionalInformation|[BankingProductAdditionalInformationV2](#schemacdr-banking-apibankingproductadditionalinformationv2)|optional||Object that contains links to additional information on specific topics.|
-|cardArt|[object]|optional||An array of card art images.|
-|» title|string|optional||Display label for the specific image.|
-|» imageUri|[URIString](#common-field-types)|mandatory||URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**.|
+|cardArt|[[BankingProductCardArt](#schemacdr-banking-apibankingproductcardart)]|optional||Information about any cards available with the account.|
+
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductcardart">BankingProductCardArt</h3>
+<p id="tocSbankingproductcardart" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-banking-api_schema-base_bankingproductcardart"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductcardart"></a>
+</p>
+
+```json
+{
+  "cardScheme": "AMEX",
+  "cardType": "CHARGE",
+  "title": "string",
+  "imageUri": "string"
+}
+```
+
+<h3 id="cdr-banking-api_bankingproductcardart_properties">Properties</h3>
+
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|cardScheme|[Enum](#common-field-types)|mandatory||Card scheme available with the account.|
+|cardType|[Enum](#common-field-types)|mandatory||Card type available with the account.|
+|title|string|optional||Display label for the specific image.|
+|imageUri|[URIString](#common-field-types)|mandatory||URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**.|
+
+<h4 id="cdr-banking-api_bankingproductcardart_enumerated-values-main">Enumerated Values</h4>
+
+|Property|Value|
+|---|---|
+|cardScheme|AMEX|
+|cardScheme|EFTPOS|
+|cardScheme|MASTERCARD|
+|cardScheme|VISA|
+|cardScheme|OTHER|
+|cardType|CHARGE|
+|cardType|CREDIT|
+|cardType|DEBIT|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductadditionalinformationv2">BankingProductAdditionalInformationV2</h3>
 <p id="tocSbankingproductadditionalinformationv2" class="orig-anchor"></p>
@@ -3373,12 +3512,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |description|string|optional||Display text providing more information about the document URI.|
 |additionalInfoUri|[URIString](#common-field-types)|mandatory||The URI describing the additional information.|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductbyidv5">ResponseBankingProductByIdV5</h3>
-<p id="tocSresponsebankingproductbyidv5" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductbyidv6">ResponseBankingProductByIdV6</h3>
+<p id="tocSresponsebankingproductbyidv6" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingproductbyid"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductbyidv5"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductbyidv6"></a>
 </p>
 
 ```json
@@ -3434,6 +3573,8 @@ To perform this operation, you must be authenticated and authorised with the fol
     },
     "cardArt": [
       {
+        "cardScheme": "AMEX",
+        "cardType": "CHARGE",
         "title": "string",
         "imageUri": "string"
       }
@@ -3476,12 +3617,26 @@ To perform this operation, you must be authenticated and authorised with the fol
     "fees": [
       {
         "name": "string",
-        "feeType": "DEPOSIT",
-        "amount": "string",
-        "balanceRate": "string",
-        "transactionRate": "string",
-        "accruedRate": "string",
-        "accrualFrequency": "string",
+        "feeType": "CASH_ADVANCE",
+        "feeMethodUType": "fixedAmount",
+        "fixedAmount": {
+          "amount": "string"
+        },
+        "rateBased": {
+          "rateType": "BALANCE",
+          "rate": "string",
+          "accrualFrequency": "string",
+          "amountRange": {
+            "feeMinimum": "string",
+            "feeMaximum": "string"
+          }
+        },
+        "variable": {
+          "feeMinimum": "string",
+          "feeMaximum": "string"
+        },
+        "feeCap": "string",
+        "feeCapPeriod": "string",
         "currency": "AUD",
         "additionalValue": "string",
         "additionalInfo": "string",
@@ -3490,11 +3645,18 @@ To perform this operation, you must be authenticated and authorised with the fol
           {
             "description": "string",
             "discountType": "BALANCE",
-            "amount": "string",
-            "balanceRate": "string",
-            "transactionRate": "string",
-            "accruedRate": "string",
-            "feeRate": "string",
+            "discountMethodUType": "fixedAmount",
+            "fixedAmount": {
+              "amount": "string"
+            },
+            "rateBased": {
+              "rateType": "BALANCE",
+              "rate": "string",
+              "amountRange": {
+                "discountMinimum": "string",
+                "discountMaximum": "string"
+              }
+            },
             "additionalValue": "string",
             "additionalInfo": "string",
             "additionalInfoUri": "string",
@@ -3515,18 +3677,31 @@ To perform this operation, you must be authenticated and authorised with the fol
         "depositRateType": "VARIABLE",
         "rate": "string",
         "calculationFrequency": "string",
+        "applicationType": "PERIODIC",
         "applicationFrequency": "string",
         "tiers": [
           {
             "name": "string",
             "unitOfMeasure": "DAY",
-            "minimumValue": 0,
-            "maximumValue": 0,
+            "minimumValue": "string",
+            "maximumValue": "string",
             "rateApplicationMethod": "PER_TIER",
-            "applicabilityConditions": {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            },
+            "applicabilityConditions": [
+              {
+                "rateApplicabilityType": "NEW_CUSTOMER",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          }
+        ],
+        "applicabilityConditions": [
+          {
+            "rateApplicabilityType": "NEW_CUSTOMER",
+            "additionalValue": "string",
             "additionalInfo": "string",
             "additionalInfoUri": "string"
           }
@@ -3542,6 +3717,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "rate": "string",
         "comparisonRate": "string",
         "calculationFrequency": "string",
+        "applicationType": "PERIODIC",
         "applicationFrequency": "string",
         "interestPaymentDue": "IN_ADVANCE",
         "repaymentType": "INTEREST_ONLY",
@@ -3550,13 +3726,25 @@ To perform this operation, you must be authenticated and authorised with the fol
           {
             "name": "string",
             "unitOfMeasure": "DAY",
-            "minimumValue": 0,
-            "maximumValue": 0,
+            "minimumValue": "string",
+            "maximumValue": "string",
             "rateApplicationMethod": "PER_TIER",
-            "applicabilityConditions": {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            },
+            "applicabilityConditions": [
+              {
+                "rateApplicabilityType": "NEW_CUSTOMER",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          }
+        ],
+        "applicabilityConditions": [
+          {
+            "rateApplicabilityType": "NEW_CUSTOMER",
+            "additionalValue": "string",
             "additionalInfo": "string",
             "additionalInfoUri": "string"
           }
@@ -3574,20 +3762,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_responsebankingproductbyidv5_properties">Properties</h3>
+<h3 id="cdr-banking-api_responsebankingproductbyidv6_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
-|data|[BankingProductDetailV5](#schemacdr-banking-apibankingproductdetailv5)|mandatory||none|
+|data|[BankingProductDetailV6](#schemacdr-banking-apibankingproductdetailv6)|mandatory||none|
 |links|[Links](#schemacdr-banking-apilinks)|mandatory||none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional||none|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdetailv5">BankingProductDetailV5</h3>
-<p id="tocSbankingproductdetailv5" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdetailv6">BankingProductDetailV6</h3>
+<p id="tocSbankingproductdetailv6" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductdetail"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdetailv5"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdetailv6"></a>
 </p>
 
 ```json
@@ -3642,6 +3830,8 @@ To perform this operation, you must be authenticated and authorised with the fol
   },
   "cardArt": [
     {
+      "cardScheme": "AMEX",
+      "cardType": "CHARGE",
       "title": "string",
       "imageUri": "string"
     }
@@ -3684,12 +3874,26 @@ To perform this operation, you must be authenticated and authorised with the fol
   "fees": [
     {
       "name": "string",
-      "feeType": "DEPOSIT",
-      "amount": "string",
-      "balanceRate": "string",
-      "transactionRate": "string",
-      "accruedRate": "string",
-      "accrualFrequency": "string",
+      "feeType": "CASH_ADVANCE",
+      "feeMethodUType": "fixedAmount",
+      "fixedAmount": {
+        "amount": "string"
+      },
+      "rateBased": {
+        "rateType": "BALANCE",
+        "rate": "string",
+        "accrualFrequency": "string",
+        "amountRange": {
+          "feeMinimum": "string",
+          "feeMaximum": "string"
+        }
+      },
+      "variable": {
+        "feeMinimum": "string",
+        "feeMaximum": "string"
+      },
+      "feeCap": "string",
+      "feeCapPeriod": "string",
       "currency": "AUD",
       "additionalValue": "string",
       "additionalInfo": "string",
@@ -3698,11 +3902,18 @@ To perform this operation, you must be authenticated and authorised with the fol
         {
           "description": "string",
           "discountType": "BALANCE",
-          "amount": "string",
-          "balanceRate": "string",
-          "transactionRate": "string",
-          "accruedRate": "string",
-          "feeRate": "string",
+          "discountMethodUType": "fixedAmount",
+          "fixedAmount": {
+            "amount": "string"
+          },
+          "rateBased": {
+            "rateType": "BALANCE",
+            "rate": "string",
+            "amountRange": {
+              "discountMinimum": "string",
+              "discountMaximum": "string"
+            }
+          },
           "additionalValue": "string",
           "additionalInfo": "string",
           "additionalInfoUri": "string",
@@ -3723,18 +3934,31 @@ To perform this operation, you must be authenticated and authorised with the fol
       "depositRateType": "VARIABLE",
       "rate": "string",
       "calculationFrequency": "string",
+      "applicationType": "PERIODIC",
       "applicationFrequency": "string",
       "tiers": [
         {
           "name": "string",
           "unitOfMeasure": "DAY",
-          "minimumValue": 0,
-          "maximumValue": 0,
+          "minimumValue": "string",
+          "maximumValue": "string",
           "rateApplicationMethod": "PER_TIER",
-          "applicabilityConditions": {
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          },
+          "applicabilityConditions": [
+            {
+              "rateApplicabilityType": "NEW_CUSTOMER",
+              "additionalValue": "string",
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "applicabilityConditions": [
+        {
+          "rateApplicabilityType": "NEW_CUSTOMER",
+          "additionalValue": "string",
           "additionalInfo": "string",
           "additionalInfoUri": "string"
         }
@@ -3750,6 +3974,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "rate": "string",
       "comparisonRate": "string",
       "calculationFrequency": "string",
+      "applicationType": "PERIODIC",
       "applicationFrequency": "string",
       "interestPaymentDue": "IN_ADVANCE",
       "repaymentType": "INTEREST_ONLY",
@@ -3758,13 +3983,25 @@ To perform this operation, you must be authenticated and authorised with the fol
         {
           "name": "string",
           "unitOfMeasure": "DAY",
-          "minimumValue": 0,
-          "maximumValue": 0,
+          "minimumValue": "string",
+          "maximumValue": "string",
           "rateApplicationMethod": "PER_TIER",
-          "applicabilityConditions": {
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          },
+          "applicabilityConditions": [
+            {
+              "rateApplicabilityType": "NEW_CUSTOMER",
+              "additionalValue": "string",
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "applicabilityConditions": [
+        {
+          "rateApplicabilityType": "NEW_CUSTOMER",
+          "additionalValue": "string",
           "additionalInfo": "string",
           "additionalInfoUri": "string"
         }
@@ -3777,13 +4014,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingproductdetailv5_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductdetailv6_properties">Properties</h3>
 
 *allOf*
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
-|*anonymous*|[BankingProductV4](#schemacdr-banking-apibankingproductv4)|mandatory||none|
+|*anonymous*|[BankingProductV5](#schemacdr-banking-apibankingproductv5)|mandatory||none|
 
 *and*
 
@@ -3791,12 +4028,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |*anonymous*|object|mandatory||none|
 |» bundles|[[BankingProductBundle](#schemacdr-banking-apibankingproductbundle)]|optional||An array of bundles that this product participates in. Each bundle is described by free form information but also by a list of _productID_ values of the other products that are included in the bundle. It is assumed that the current product is included in the bundle also.|
-|» features|[[BankingProductFeatureV2](#schemacdr-banking-apibankingproductfeaturev2)]|optional||Array of features available for the product.|
-|» constraints|[[BankingProductConstraintV2](#schemacdr-banking-apibankingproductconstraintv2)]|optional||Constraints on the application for or operation of the product such as minimum balances or limit thresholds.|
-|» eligibility|[[BankingProductEligibility](#schemacdr-banking-apibankingproducteligibility)]|optional||Eligibility criteria for the product.|
-|» fees|[[BankingProductFee](#schemacdr-banking-apibankingproductfee)]|optional||Fees applicable to the product.|
-|» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional||Interest rates available for deposits.|
-|» lendingRates|[[BankingProductLendingRateV2](#schemacdr-banking-apibankingproductlendingratev2)]|optional||Interest rates charged against lending balances.|
+|» features|[[BankingProductFeatureV3](#schemacdr-banking-apibankingproductfeaturev3)]|optional||Array of features and limitations of the product.|
+|» constraints|[[BankingProductConstraintV3](#schemacdr-banking-apibankingproductconstraintv3)]|optional||Constraints on the application for the product such as minimum balances or limit thresholds.|
+|» eligibility|[[BankingProductEligibilityV2](#schemacdr-banking-apibankingproducteligibilityv2)]|optional||Eligibility criteria for the product.|
+|» fees|[[BankingProductFeeV2](#schemacdr-banking-apibankingproductfeev2)]|optional||Fees applicable to the product.|
+|» depositRates|[[BankingProductDepositRateV2](#schemacdr-banking-apibankingproductdepositratev2)]|optional||Interest rates available for deposits.|
+|» lendingRates|[[BankingProductLendingRateV3](#schemacdr-banking-apibankingproductlendingratev3)]|optional||Interest rates charged against lending balances.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductbundle">BankingProductBundle</h3>
 <p id="tocSbankingproductbundle" class="orig-anchor"></p>
@@ -3828,12 +4065,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |additionalInfoUri|[URIString](#common-field-types)|optional||Link to a web page with more information on the bundle criteria and benefits.|
 |productIds|[[BankingProductId](#schemacdr-banking-apibankingproductid)]|optional||Array of _productID_ values for products included in the bundle that are available via the product endpoints. Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference endpoints.|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductfeaturev2">BankingProductFeatureV2</h3>
-<p id="tocSbankingproductfeaturev2" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductfeaturev3">BankingProductFeatureV3</h3>
+<p id="tocSbankingproductfeaturev3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductfeature"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductfeaturev2"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductfeaturev3"></a>
 </p>
 
 ```json
@@ -3845,7 +4082,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingproductfeaturev2_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductfeaturev3_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
@@ -3854,7 +4091,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |additionalInfo|string|conditional||Display text providing more information on the feature. Mandatory if [_featureType_](#tocSproductfeaturetypedoc) is set to `OTHER`.|
 |additionalInfoUri|[URIString](#common-field-types)|optional||Link to a web page with more information on this feature.|
 
-<h4 id="cdr-banking-api_bankingproductfeaturev2_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingproductfeaturev3_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -3872,9 +4109,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |featureType|FRAUD_PROTECTION|
 |featureType|FREE_TXNS|
 |featureType|FREE_TXNS_ALLOWANCE|
+|featureType|FUNDS_AVAILABLE_AFTER|
 |featureType|GUARANTOR|
-|featureType|INSURANCE|
 |featureType|INSTALMENT_PLAN|
+|featureType|INSURANCE|
 |featureType|INTEREST_FREE|
 |featureType|INTEREST_FREE_TRANSFERS|
 |featureType|LOYALTY_PROGRAM|
@@ -3888,12 +4126,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |featureType|RELATIONSHIP_MANAGEMENT|
 |featureType|UNLIMITED_TXNS|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductconstraintv2">BankingProductConstraintV2</h3>
-<p id="tocSbankingproductconstraintv2" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductconstraintv3">BankingProductConstraintV3</h3>
+<p id="tocSbankingproductconstraintv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductconstraint"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductconstraintv2"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductconstraintv3"></a>
 </p>
 
 ```json
@@ -3905,16 +4143,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingproductconstraintv2_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductconstraintv3_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
 |constraintType|[Enum](#common-field-types)|mandatory||The type of constraint described. For further details, refer to [Product Constraint Types](#tocSproductconstrainttypedoc).|
 |additionalValue|string|conditional||Generic field containing additional information relevant to the [_constraintType_](#tocSproductconstrainttypedoc) specified. Whether mandatory or not is dependent on the value of [_constraintType_](#tocSproductconstrainttypedoc).|
-|additionalInfo|string|optional||Display text providing more information on the constraint.|
+|additionalInfo|string|conditional||Display text providing more information on the constraint. Mandatory if the [_constraintType_](#tocSproductconstrainttypedoc) value is `OTHER`.|
 |additionalInfoUri|[URIString](#common-field-types)|optional||Link to a web page with more information on the constraint.|
 
-<h4 id="cdr-banking-api_bankingproductconstraintv2_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingproductconstraintv3_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -3925,13 +4163,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 |constraintType|MIN_LIMIT|
 |constraintType|MIN_LVR|
 |constraintType|OPENING_BALANCE|
+|constraintType|OTHER|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproducteligibility">BankingProductEligibility</h3>
-<p id="tocSbankingproducteligibility" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproducteligibilityv2">BankingProductEligibilityV2</h3>
+<p id="tocSbankingproducteligibilityv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproducteligibility"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproducteligibility"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproducteligibilityv2"></a>
 </p>
 
 ```json
@@ -3943,7 +4182,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingproducteligibility_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproducteligibilityv2_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
@@ -3952,7 +4191,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |additionalInfo|string|conditional||Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to `OTHER`.|
 |additionalInfoUri|[URIString](#common-field-types)|optional||Link to a web page with more information on this eligibility criteria.|
 
-<h4 id="cdr-banking-api_bankingproducteligibility_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingproducteligibilityv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -3969,23 +4208,37 @@ To perform this operation, you must be authenticated and authorised with the fol
 |eligibilityType|STAFF|
 |eligibilityType|STUDENT|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductfee">BankingProductFee</h3>
-<p id="tocSbankingproductfee" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductfeev2">BankingProductFeeV2</h3>
+<p id="tocSbankingproductfeev2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductfee"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductfee"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductfeev2"></a>
 </p>
 
 ```json
 {
   "name": "string",
-  "feeType": "DEPOSIT",
-  "amount": "string",
-  "balanceRate": "string",
-  "transactionRate": "string",
-  "accruedRate": "string",
-  "accrualFrequency": "string",
+  "feeType": "CASH_ADVANCE",
+  "feeMethodUType": "fixedAmount",
+  "fixedAmount": {
+    "amount": "string"
+  },
+  "rateBased": {
+    "rateType": "BALANCE",
+    "rate": "string",
+    "accrualFrequency": "string",
+    "amountRange": {
+      "feeMinimum": "string",
+      "feeMaximum": "string"
+    }
+  },
+  "variable": {
+    "feeMinimum": "string",
+    "feeMaximum": "string"
+  },
+  "feeCap": "string",
+  "feeCapPeriod": "string",
   "currency": "AUD",
   "additionalValue": "string",
   "additionalInfo": "string",
@@ -3994,11 +4247,18 @@ To perform this operation, you must be authenticated and authorised with the fol
     {
       "description": "string",
       "discountType": "BALANCE",
-      "amount": "string",
-      "balanceRate": "string",
-      "transactionRate": "string",
-      "accruedRate": "string",
-      "feeRate": "string",
+      "discountMethodUType": "fixedAmount",
+      "fixedAmount": {
+        "amount": "string"
+      },
+      "rateBased": {
+        "rateType": "BALANCE",
+        "rate": "string",
+        "amountRange": {
+          "discountMinimum": "string",
+          "discountMaximum": "string"
+        }
+      },
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string",
@@ -4015,55 +4275,154 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingproductfee_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductfeev2_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
 |name|string|mandatory||Name of the fee.|
 |feeType|[Enum](#common-field-types)|mandatory||The type of fee. For further details, refer to [Product Fee Types](#tocSproductfeetypedoc).|
-|amount|[AmountString](#common-field-types)|conditional||The amount charged for the fee. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.|
-|balanceRate|[RateString](#common-field-types)|conditional||A fee rate calculated based on a proportion of the balance. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.|
-|transactionRate|[RateString](#common-field-types)|conditional||A fee rate calculated based on a proportion of a transaction. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.|
-|accruedRate|[RateString](#common-field-types)|conditional||A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.|
-|accrualFrequency|[ExternalRef](#common-field-types)|optional||The indicative frequency with which the fee is calculated on the account. Only applies if _balanceRate_ or _accruedRate_ is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|feeMethodUType|[Enum](#common-field-types)|mandatory||Reference to the applicable fee charging method structure.|
+|fixedAmount|[BankingFeeAmount](#schemacdr-banking-apibankingfeeamount)|conditional||Mandatory if the _feeMethodUType_ value is `fixedAmount`. Where the fee is a specific amount.|
+|rateBased|[BankingFeeRate](#schemacdr-banking-apibankingfeerate)|conditional||Mandatory if the _feeMethodUType_ value is `rateBased`. Where the fee is based on a type of rate.|
+|variable|[BankingFeeRange](#schemacdr-banking-apibankingfeerange)|conditional||Mandatory if the _feeMethodUType_ value is `variable`. Where the amount or rate may not be known until the fee is incurred.|
+|feeCap|[AmountString](#common-field-types)|optional||The cap amount if multiple occurrences of the fee are capped to a limit.|
+|feeCapPeriod|[ExternalRef](#common-field-types)|optional||Specifies a duration over which multiple occurrences of the fee will be capped. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
 |currency|[CurrencyString](#common-field-types)|optional|`AUD`|The currency the fee will be charged in. Assumes `AUD` if absent.|
 |additionalValue|string|conditional||Generic field containing additional information relevant to the [_feeType_](#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [_feeType_](#tocSproductfeetypedoc).|
-|additionalInfo|string|optional||Display text providing more information on the fee.|
+|additionalInfo|string|conditional||Display text providing more information on the fee. Mandatory if the [_feeType_](#tocSproductfeetypedoc) value is `OTHER`.|
 |additionalInfoUri|[URIString](#common-field-types)|optional||Link to a web page with more information on this fee.|
-|discounts|[[BankingProductDiscount](#schemacdr-banking-apibankingproductdiscount)]|optional||An optional list of discounts to this fee that may be available.|
+|discounts|[[BankingProductDiscountV2](#schemacdr-banking-apibankingproductdiscountv2)]|optional||An optional list of discounts to this fee that may be available.|
 
-<h4 id="cdr-banking-api_bankingproductfee_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingproductfeev2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
+|feeType|CASH_ADVANCE|
 |feeType|DEPOSIT|
+|feeType|DISHONOUR|
+|feeType|ENQUIRY|
 |feeType|EVENT|
 |feeType|EXIT|
+|feeType|LATE_PAYMENT|
+|feeType|OTHER|
 |feeType|PAYMENT|
 |feeType|PERIODIC|
 |feeType|PURCHASE|
+|feeType|REPLACEMENT|
 |feeType|TRANSACTION|
 |feeType|UPFRONT|
-|feeType|VARIABLE|
+|feeType|UPFRONT_PER_PLAN|
+|feeType|VARIATION|
 |feeType|WITHDRAWAL|
+|feeMethodUType|fixedAmount|
+|feeMethodUType|rateBased|
+|feeMethodUType|variable|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdiscount">BankingProductDiscount</h3>
-<p id="tocSbankingproductdiscount" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeeamount">BankingFeeAmount</h3>
+<p id="tocSbankingfeeamount" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-banking-api_schema-base_bankingfeeamount"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingfeeamount"></a>
+</p>
+
+```json
+{
+  "amount": "string"
+}
+```
+
+<h3 id="cdr-banking-api_bankingfeeamount_properties">Properties</h3>
+
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|amount|[AmountString](#common-field-types)|mandatory||The specific amount charged for the fee each time it is incurred.|
+
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeerate">BankingFeeRate</h3>
+<p id="tocSbankingfeerate" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-banking-api_schema-base_bankingfeerate"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingfeerate"></a>
+</p>
+
+```json
+{
+  "rateType": "BALANCE",
+  "rate": "string",
+  "accrualFrequency": "string",
+  "amountRange": {
+    "feeMinimum": "string",
+    "feeMaximum": "string"
+  }
+}
+```
+
+<h3 id="cdr-banking-api_bankingfeerate_properties">Properties</h3>
+
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|rateType|[Enum](#common-field-types)|mandatory||Type of fee rate calculation.<ul><li>`BALANCE` A fee rate based on a balance</li><li>`INTEREST_ACCRUED` A fee rate based on interest accrued</li><li>`TRANSACTION` A fee rate based on a transaction.</li></ul>|
+|rate|[RateString](#common-field-types)|mandatory||The fee rate calculated according to the _rateType_.|
+|accrualFrequency|[ExternalRef](#common-field-types)|optional||The indicative frequency with which the fee is calculated on the account if applicable. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|amountRange|[BankingFeeRange](#schemacdr-banking-apibankingfeerange)|optional||A minimum or maximum fee amount where a specific fixed amount is not known until the fee is incurred.|
+
+<h4 id="cdr-banking-api_bankingfeerate_enumerated-values-main">Enumerated Values</h4>
+
+|Property|Value|
+|---|---|
+|rateType|BALANCE|
+|rateType|INTEREST_ACCRUED|
+|rateType|TRANSACTION|
+
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeerange">BankingFeeRange</h3>
+<p id="tocSbankingfeerange" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-banking-api_schema-base_bankingfeerange"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingfeerange"></a>
+</p>
+
+```json
+{
+  "feeMinimum": "string",
+  "feeMaximum": "string"
+}
+```
+
+*A minimum or maximum fee amount where a specific fixed amount is not known until the fee is incurred.*
+
+<h3 id="cdr-banking-api_bankingfeerange_properties">Properties</h3>
+
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|feeMinimum|[AmountString](#common-field-types)|optional||The minimum fee that will be charged per occurrence.|
+|feeMaximum|[AmountString](#common-field-types)|optional||The maximum fee that will be charged per occurrence.|
+
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdiscountv2">BankingProductDiscountV2</h3>
+<p id="tocSbankingproductdiscountv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductdiscount"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdiscount"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdiscountv2"></a>
 </p>
 
 ```json
 {
   "description": "string",
   "discountType": "BALANCE",
-  "amount": "string",
-  "balanceRate": "string",
-  "transactionRate": "string",
-  "accruedRate": "string",
-  "feeRate": "string",
+  "discountMethodUType": "fixedAmount",
+  "fixedAmount": {
+    "amount": "string"
+  },
+  "rateBased": {
+    "rateType": "BALANCE",
+    "rate": "string",
+    "amountRange": {
+      "discountMinimum": "string",
+      "discountMaximum": "string"
+    }
+  },
   "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string",
@@ -4078,23 +4437,23 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingproductdiscount_properties">Properties</h3>
+*Note that the currency of the fee discount is expected to be the same as the currency of the fee itself.*
+
+<h3 id="cdr-banking-api_bankingproductdiscountv2_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
 |description|string|mandatory||Description of the discount.|
 |discountType|[Enum](#common-field-types)|mandatory||The type of discount. For further details, refer to [Product Discount Types](#tocSproductdiscounttypedoc).|
-|amount|[AmountString](#common-field-types)|conditional||Dollar value of the discount. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory.|
-|balanceRate|[RateString](#common-field-types)|conditional||A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee.|
-|transactionRate|[RateString](#common-field-types)|conditional||A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory.|
-|accruedRate|[RateString](#common-field-types)|conditional||A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee.|
-|feeRate|[RateString](#common-field-types)|conditional||A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee.|
+|discountMethodUType|[Enum](#common-field-types)|mandatory||Reference to the applicable fee discount method structure.|
+|fixedAmount|[BankingFeeDiscountAmount](#schemacdr-banking-apibankingfeediscountamount)|conditional||Mandatory if the _discountMethodUType_ value is `fixedAmount`. Where the discount is a specific amount.|
+|rateBased|[BankingFeeDiscountRate](#schemacdr-banking-apibankingfeediscountrate)|conditional||Mandatory if the _discountMethodUType_ value is `rateBased`. Where the discount is based on a type of rate. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee.|
 |additionalValue|string|conditional||Generic field containing additional information relevant to the [_discountType_](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [_discountType_](#tocSproductdiscounttypedoc).|
 |additionalInfo|string|optional||Display text providing more information on the discount.|
 |additionalInfoUri|[URIString](#common-field-types)|optional||Link to a web page with more information on this discount.|
 |eligibility|[[BankingProductDiscountEligibility](#schemacdr-banking-apibankingproductdiscounteligibility)]|conditional||Eligibility constraints that apply to this discount. Mandatory if _discountType_ is `ELIGIBILITY_ONLY`.|
 
-<h4 id="cdr-banking-api_bankingproductdiscount_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingproductdiscountv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4103,6 +4462,88 @@ To perform this operation, you must be authenticated and authorised with the fol
 |discountType|ELIGIBILITY_ONLY|
 |discountType|FEE_CAP|
 |discountType|PAYMENTS|
+|discountMethodUType|fixedAmount|
+|discountMethodUType|rateBased|
+
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeediscountamount">BankingFeeDiscountAmount</h3>
+<p id="tocSbankingfeediscountamount" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-banking-api_schema-base_bankingfeediscountamount"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingfeediscountamount"></a>
+</p>
+
+```json
+{
+  "amount": "string"
+}
+```
+
+<h3 id="cdr-banking-api_bankingfeediscountamount_properties">Properties</h3>
+
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|amount|[AmountString](#common-field-types)|mandatory||The specific amount discounted from the fee each time it is incurred.|
+
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeediscountrate">BankingFeeDiscountRate</h3>
+<p id="tocSbankingfeediscountrate" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-banking-api_schema-base_bankingfeediscountrate"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingfeediscountrate"></a>
+</p>
+
+```json
+{
+  "rateType": "BALANCE",
+  "rate": "string",
+  "amountRange": {
+    "discountMinimum": "string",
+    "discountMaximum": "string"
+  }
+}
+```
+
+<h3 id="cdr-banking-api_bankingfeediscountrate_properties">Properties</h3>
+
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|rateType|[Enum](#common-field-types)|mandatory||Type of fee rate discount calculation.<ul><li>`BALANCE` A fee rate discount based on a balance</li><li>`FEE` A fee rate discount based on the fee to which the discount is attached</li><li>`INTEREST_ACCRUED` A fee rate discount based on interest accrued</li><li>`TRANSACTION` A fee rate discount based on a transaction.</li></ul>|
+|rate|[RateString](#common-field-types)|mandatory||The fee rate discount calculated according to the _rateType_.|
+|amountRange|[BankingFeeDiscountRange](#schemacdr-banking-apibankingfeediscountrange)|optional||A minimum or maximum fee discount amount where a specific fixed amount is not known until the fee is incurred.|
+
+<h4 id="cdr-banking-api_bankingfeediscountrate_enumerated-values-main">Enumerated Values</h4>
+
+|Property|Value|
+|---|---|
+|rateType|BALANCE|
+|rateType|FEE|
+|rateType|INTEREST_ACCRUED|
+|rateType|TRANSACTION|
+
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeediscountrange">BankingFeeDiscountRange</h3>
+<p id="tocSbankingfeediscountrange" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-banking-api_schema-base_bankingfeediscountrange"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingfeediscountrange"></a>
+</p>
+
+```json
+{
+  "discountMinimum": "string",
+  "discountMaximum": "string"
+}
+```
+
+*A minimum or maximum fee discount amount where a specific fixed amount is not known until the fee is incurred.*
+
+<h3 id="cdr-banking-api_bankingfeediscountrange_properties">Properties</h3>
+
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|discountMinimum|[AmountString](#common-field-types)|optional||The minimum fee discount that will be applied per occurrence.|
+|discountMaximum|[AmountString](#common-field-types)|optional||The maximum fee discount that will be applied per occurrence.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h3>
 <p id="tocSbankingproductdiscounteligibility" class="orig-anchor"></p>
@@ -4148,12 +4589,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |discountEligibilityType|STAFF|
 |discountEligibilityType|STUDENT|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdepositrate">BankingProductDepositRate</h3>
-<p id="tocSbankingproductdepositrate" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdepositratev2">BankingProductDepositRateV2</h3>
+<p id="tocSbankingproductdepositratev2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductdepositrate"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdepositrate"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdepositratev2"></a>
 </p>
 
 ```json
@@ -4161,18 +4602,31 @@ To perform this operation, you must be authenticated and authorised with the fol
   "depositRateType": "VARIABLE",
   "rate": "string",
   "calculationFrequency": "string",
+  "applicationType": "PERIODIC",
   "applicationFrequency": "string",
   "tiers": [
     {
       "name": "string",
       "unitOfMeasure": "DAY",
-      "minimumValue": 0,
-      "maximumValue": 0,
+      "minimumValue": "string",
+      "maximumValue": "string",
       "rateApplicationMethod": "PER_TIER",
-      "applicabilityConditions": {
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      },
+      "applicabilityConditions": [
+        {
+          "rateApplicabilityType": "NEW_CUSTOMER",
+          "additionalValue": "string",
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
+  "applicabilityConditions": [
+    {
+      "rateApplicabilityType": "NEW_CUSTOMER",
+      "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
     }
@@ -4183,20 +4637,22 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingproductdepositrate_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductdepositratev2_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
 |depositRateType|[Enum](#common-field-types)|mandatory||The type of rate (`FIXED`, `VARIABLE`, `BONUS`, etc.) For further details, refer to [Product Deposit Rate Types](#tocSproductdepositratetypedoc).|
 |rate|[RateString](#common-field-types)|mandatory||The rate to be applied.|
 |calculationFrequency|[ExternalRef](#common-field-types)|optional||The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see _applicationFrequency_). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
-|applicationFrequency|[ExternalRef](#common-field-types)|optional||The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
-|tiers|[[BankingProductRateTierV3](#schemacdr-banking-apibankingproductratetierv3)]|optional||Rate tiers applicable for this rate.|
+|applicationType|[Enum](#common-field-types)|mandatory||The type of approach used to apply the rate to the account.|
+|applicationFrequency|[ExternalRef](#common-field-types)|conditional||The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Mandatory if the _applicationType_ value is `PERIODIC`.|
+|tiers|[[BankingProductRateTierV4](#schemacdr-banking-apibankingproductratetierv4)]|optional||Rate tiers applicable for this rate.|
+|applicabilityConditions|[[BankingProductRateConditionV2](#schemacdr-banking-apibankingproductrateconditionv2)]|optional||Applicability conditions for the rate.|
 |additionalValue|string|conditional||Generic field containing additional information relevant to the [_depositRateType_](#tocSproductdepositratetypedoc) specified. Whether mandatory or not is dependent on the value of [_depositRateType_](#tocSproductdepositratetypedoc).|
 |additionalInfo|string|optional||Display text providing more information on the rate.|
 |additionalInfoUri|[URIString](#common-field-types)|optional||Link to a web page with more information on this rate.|
 
-<h4 id="cdr-banking-api_bankingproductdepositrate_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingproductdepositratev2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4207,13 +4663,16 @@ To perform this operation, you must be authenticated and authorised with the fol
 |depositRateType|INTRODUCTORY|
 |depositRateType|MARKET_LINKED|
 |depositRateType|VARIABLE|
+|applicationType|MATURITY|
+|applicationType|PERIODIC|
+|applicationType|UPFRONT|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductlendingratev2">BankingProductLendingRateV2</h3>
-<p id="tocSbankingproductlendingratev2" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductlendingratev3">BankingProductLendingRateV3</h3>
+<p id="tocSbankingproductlendingratev3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductlendingrate"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductlendingratev2"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductlendingratev3"></a>
 </p>
 
 ```json
@@ -4222,6 +4681,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "rate": "string",
   "comparisonRate": "string",
   "calculationFrequency": "string",
+  "applicationType": "PERIODIC",
   "applicationFrequency": "string",
   "interestPaymentDue": "IN_ADVANCE",
   "repaymentType": "INTEREST_ONLY",
@@ -4230,13 +4690,25 @@ To perform this operation, you must be authenticated and authorised with the fol
     {
       "name": "string",
       "unitOfMeasure": "DAY",
-      "minimumValue": 0,
-      "maximumValue": 0,
+      "minimumValue": "string",
+      "maximumValue": "string",
       "rateApplicationMethod": "PER_TIER",
-      "applicabilityConditions": {
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      },
+      "applicabilityConditions": [
+        {
+          "rateApplicabilityType": "NEW_CUSTOMER",
+          "additionalValue": "string",
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
+  "applicabilityConditions": [
+    {
+      "rateApplicabilityType": "NEW_CUSTOMER",
+      "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string"
     }
@@ -4247,7 +4719,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingproductlendingratev2_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductlendingratev3_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
@@ -4255,19 +4727,22 @@ To perform this operation, you must be authenticated and authorised with the fol
 |rate|[RateString](#common-field-types)|mandatory||The rate to be applied.|
 |comparisonRate|[RateString](#common-field-types)|optional||A comparison rate equivalent for this rate.|
 |calculationFrequency|[ExternalRef](#common-field-types)|optional||The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see _applicationFrequency_). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
-|applicationFrequency|[ExternalRef](#common-field-types)|optional||The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
+|applicationType|[Enum](#common-field-types)|mandatory||The type of approach used to apply the rate to the account.|
+|applicationFrequency|[ExternalRef](#common-field-types)|conditional||The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Mandatory if the _applicationType_ value is `PERIODIC`.|
 |interestPaymentDue|[Enum](#common-field-types)|optional||When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered.|
-|repaymentType|[Enum](#common-field-types)|optional||Options in place for repayments. If absent, the lending rate is applicable to all repayment types.|
-|loanPurpose|[Enum](#common-field-types)|optional||The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes.|
-|tiers|[[BankingProductRateTierV3](#schemacdr-banking-apibankingproductratetierv3)]|optional||Rate tiers applicable for this rate.|
+|repaymentType|[Enum](#common-field-types)|mandatory||Option in place for repayments.|
+|loanPurpose|[Enum](#common-field-types)|mandatory||The reason for taking out the loan.|
+|tiers|[[BankingProductRateTierV4](#schemacdr-banking-apibankingproductratetierv4)]|optional||Rate tiers applicable for this rate.|
+|applicabilityConditions|[[BankingProductRateConditionV2](#schemacdr-banking-apibankingproductrateconditionv2)]|optional||Applicability conditions for the rate.|
 |additionalValue|string|conditional||Generic field containing additional information relevant to the [_lendingRateType_](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [_lendingRateType_](#tocSproductlendingratetypedoc).|
 |additionalInfo|string|optional||Display text providing more information on the rate.|
 |additionalInfoUri|[URIString](#common-field-types)|optional||Link to a web page with more information on this rate.|
 
-<h4 id="cdr-banking-api_bankingproductlendingratev2_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingproductlendingratev3_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
+|lendingRateType|BALANCE_TRANSFER|
 |lendingRateType|BUNDLE_DISCOUNT_FIXED|
 |lendingRateType|BUNDLE_DISCOUNT_VARIABLE|
 |lendingRateType|CASH_ADVANCE|
@@ -4279,32 +4754,43 @@ To perform this operation, you must be authenticated and authorised with the fol
 |lendingRateType|PENALTY|
 |lendingRateType|PURCHASE|
 |lendingRateType|VARIABLE|
+|applicationType|MATURITY|
+|applicationType|PERIODIC|
+|applicationType|UPFRONT|
 |interestPaymentDue|IN_ADVANCE|
 |interestPaymentDue|IN_ARREARS|
 |repaymentType|INTEREST_ONLY|
+|repaymentType|OTHER|
 |repaymentType|PRINCIPAL_AND_INTEREST|
+|repaymentType|UNCONSTRAINED|
 |loanPurpose|INVESTMENT|
+|loanPurpose|OTHER|
 |loanPurpose|OWNER_OCCUPIED|
+|loanPurpose|UNCONSTRAINED|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductratetierv3">BankingProductRateTierV3</h3>
-<p id="tocSbankingproductratetierv3" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductratetierv4">BankingProductRateTierV4</h3>
+<p id="tocSbankingproductratetierv4" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductratetier"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductratetierv3"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductratetierv4"></a>
 </p>
 
 ```json
 {
   "name": "string",
   "unitOfMeasure": "DAY",
-  "minimumValue": 0,
-  "maximumValue": 0,
+  "minimumValue": "string",
+  "maximumValue": "string",
   "rateApplicationMethod": "PER_TIER",
-  "applicabilityConditions": {
-    "additionalInfo": "string",
-    "additionalInfoUri": "string"
-  },
+  "applicabilityConditions": [
+    {
+      "rateApplicabilityType": "NEW_CUSTOMER",
+      "additionalValue": "string",
+      "additionalInfo": "string",
+      "additionalInfoUri": "string"
+    }
+  ],
   "additionalInfo": "string",
   "additionalInfoUri": "string"
 }
@@ -4312,20 +4798,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *Defines the criteria and conditions for which a rate applies.*
 
-<h3 id="cdr-banking-api_bankingproductratetierv3_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductratetierv4_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
 |name|string|mandatory||A display name for the tier.|
-|unitOfMeasure|[Enum](#common-field-types)|mandatory||The unit of measure that applies to the _minimumValue_ and _maximumValue_ values e.g.,<ul><li>`DOLLAR` amount.<li>`PERCENT` (in the case of loan-to-value ratio or LVR).<li>Tier term period representing a discrete number of `MONTH`(s) or `DAY`(s) (in the case of term deposit tiers).</ul>|
-|minimumValue|[Number](#common-field-types)|mandatory||The number of _unitOfMeasure_ units that form the lower bound of the tier. The tier should be inclusive of this value.|
-|maximumValue|[Number](#common-field-types)|optional||The number of _unitOfMeasure_ units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g., 1 month) this must be the same as _minimumValue_. Where this is the same as the _minimumValue_ value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.|
+|unitOfMeasure|[Enum](#common-field-types)|mandatory||The unit of measure that applies to the _minimumValue_ and _maximumValue_ values, e.g.,<ul><li>`DOLLAR` for a dollar amount (with values in AmountString format)<li>`PERCENT` for Loan-to-Value Ratio or LVR (with values in RateString format)<li>`MONTH` or `DAY` for a period representing a discrete number of months or days for a fixed-term deposit or loan (with values as a string containing a positive integer).</ul>|
+|minimumValue|string|mandatory||The number of _unitOfMeasure_ units that form the lower bound of the tier. The tier should be inclusive of this value.|
+|maximumValue|string|optional||The number of _unitOfMeasure_ units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g., 1 month) this must be the same as _minimumValue_. Where this is the same as the _minimumValue_ value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.|
 |rateApplicationMethod|[Enum](#common-field-types)|optional||The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps').|
-|applicabilityConditions|[BankingProductRateCondition](#schemacdr-banking-apibankingproductratecondition)|optional||Defines a condition for the applicability of a tiered rate.|
+|applicabilityConditions|[[BankingProductRateConditionV2](#schemacdr-banking-apibankingproductrateconditionv2)]|optional||Applicability conditions for the rate tier.|
 |additionalInfo|string|optional||Display text providing more information on the rate tier.|
 |additionalInfoUri|[URIString](#common-field-types)|optional||Link to a web page with more information on this rate tier.|
 
-<h4 id="cdr-banking-api_bankingproductratetierv3_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingproductratetierv4_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4336,29 +4822,50 @@ To perform this operation, you must be authenticated and authorised with the fol
 |rateApplicationMethod|PER_TIER|
 |rateApplicationMethod|WHOLE_BALANCE|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductratecondition">BankingProductRateCondition</h3>
-<p id="tocSbankingproductratecondition" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductrateconditionv2">BankingProductRateConditionV2</h3>
+<p id="tocSbankingproductrateconditionv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductratecondition"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductratecondition"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductrateconditionv2"></a>
 </p>
 
 ```json
 {
+  "rateApplicabilityType": "NEW_CUSTOMER",
+  "additionalValue": "string",
   "additionalInfo": "string",
   "additionalInfoUri": "string"
 }
 ```
 
-*Defines a condition for the applicability of a tiered rate.*
+*Defines a condition for the applicability of a rate.*
 
-<h3 id="cdr-banking-api_bankingproductratecondition_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductrateconditionv2_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
-|additionalInfo|string|optional||Display text providing more information on the condition.|
+|rateApplicabilityType|[Enum](#common-field-types)|mandatory||Category of applicability condition associated with the rate. For more information refer to [Rate and Tier Applicability Types](#tocSbankingproductrateconditiondoc).|
+|additionalValue|string|conditional||Generic field containing additional information relevant to the _rateApplicabilityType_ specified. Whether mandatory or not is dependent on the value of [_rateApplicabilityType_](#tocSbankingproductrateconditiondoc).|
+|additionalInfo|string|conditional||Display text providing more information on the condition. Mandatory if the [_rateApplicabilityType_](#tocSbankingproductrateconditiondoc) value is `OTHER`.|
 |additionalInfoUri|[URIString](#common-field-types)|optional||Link to a web page with more information on this condition.|
+
+<h4 id="cdr-banking-api_bankingproductrateconditionv2_enumerated-values-main">Enumerated Values</h4>
+
+|Property|Value|
+|---|---|
+|rateApplicabilityType|MIN_DEPOSITS|
+|rateApplicabilityType|MIN_DEPOSIT_AMOUNT|
+|rateApplicabilityType|DEPOSIT_BALANCE_INCREASED|
+|rateApplicabilityType|EXISTING_CUST|
+|rateApplicabilityType|NEW_ACCOUNTS|
+|rateApplicabilityType|NEW_CUSTOMER|
+|rateApplicabilityType|NEW_CUSTOMER_TO_GROUP|
+|rateApplicabilityType|ONLINE_ONLY|
+|rateApplicabilityType|OTHER|
+|rateApplicabilityType|MIN_PURCHASES|
+|rateApplicabilityType|MAX_WITHDRAWALS|
+|rateApplicabilityType|MAX_WITHDRAWAL_AMOUNT|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountlistv2">ResponseBankingAccountListV2</h3>
 <p id="tocSresponsebankingaccountlistv2" class="orig-anchor"></p>
@@ -4459,12 +4966,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |accountOwnership|MANY_PARTY|
 |accountOwnership|OTHER|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountbyidv3">ResponseBankingAccountByIdV3</h3>
-<p id="tocSresponsebankingaccountbyidv3" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountbyidv4">ResponseBankingAccountByIdV4</h3>
+<p id="tocSresponsebankingaccountbyidv4" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingaccountbyid"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountbyidv3"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountbyidv4"></a>
 </p>
 
 ```json
@@ -4525,18 +5032,31 @@ To perform this operation, you must be authenticated and authorised with the fol
         "depositRateType": "VARIABLE",
         "rate": "string",
         "calculationFrequency": "string",
+        "applicationType": "PERIODIC",
         "applicationFrequency": "string",
         "tiers": [
           {
             "name": "string",
             "unitOfMeasure": "DAY",
-            "minimumValue": 0,
-            "maximumValue": 0,
+            "minimumValue": "string",
+            "maximumValue": "string",
             "rateApplicationMethod": "PER_TIER",
-            "applicabilityConditions": {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            },
+            "applicabilityConditions": [
+              {
+                "rateApplicabilityType": "NEW_CUSTOMER",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          }
+        ],
+        "applicabilityConditions": [
+          {
+            "rateApplicabilityType": "NEW_CUSTOMER",
+            "additionalValue": "string",
             "additionalInfo": "string",
             "additionalInfoUri": "string"
           }
@@ -4552,6 +5072,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "rate": "string",
         "comparisonRate": "string",
         "calculationFrequency": "string",
+        "applicationType": "PERIODIC",
         "applicationFrequency": "string",
         "interestPaymentDue": "IN_ADVANCE",
         "repaymentType": "INTEREST_ONLY",
@@ -4560,13 +5081,25 @@ To perform this operation, you must be authenticated and authorised with the fol
           {
             "name": "string",
             "unitOfMeasure": "DAY",
-            "minimumValue": 0,
-            "maximumValue": 0,
+            "minimumValue": "string",
+            "maximumValue": "string",
             "rateApplicationMethod": "PER_TIER",
-            "applicabilityConditions": {
-              "additionalInfo": "string",
-              "additionalInfoUri": "string"
-            },
+            "applicabilityConditions": [
+              {
+                "rateApplicabilityType": "NEW_CUSTOMER",
+                "additionalValue": "string",
+                "additionalInfo": "string",
+                "additionalInfoUri": "string"
+              }
+            ],
+            "additionalInfo": "string",
+            "additionalInfoUri": "string"
+          }
+        ],
+        "applicabilityConditions": [
+          {
+            "rateApplicabilityType": "NEW_CUSTOMER",
+            "additionalValue": "string",
             "additionalInfo": "string",
             "additionalInfoUri": "string"
           }
@@ -4582,18 +5115,32 @@ To perform this operation, you must be authenticated and authorised with the fol
         "additionalValue": "string",
         "additionalInfo": "string",
         "additionalInfoUri": "string",
-        "isActivated": true
+        "isActivated": "ACTIVATED"
       }
     ],
     "fees": [
       {
         "name": "string",
-        "feeType": "DEPOSIT",
-        "amount": "string",
-        "balanceRate": "string",
-        "transactionRate": "string",
-        "accruedRate": "string",
-        "accrualFrequency": "string",
+        "feeType": "CASH_ADVANCE",
+        "feeMethodUType": "fixedAmount",
+        "fixedAmount": {
+          "amount": "string"
+        },
+        "rateBased": {
+          "rateType": "BALANCE",
+          "rate": "string",
+          "accrualFrequency": "string",
+          "amountRange": {
+            "feeMinimum": "string",
+            "feeMaximum": "string"
+          }
+        },
+        "variable": {
+          "feeMinimum": "string",
+          "feeMaximum": "string"
+        },
+        "feeCap": "string",
+        "feeCapPeriod": "string",
         "currency": "AUD",
         "additionalValue": "string",
         "additionalInfo": "string",
@@ -4602,11 +5149,18 @@ To perform this operation, you must be authenticated and authorised with the fol
           {
             "description": "string",
             "discountType": "BALANCE",
-            "amount": "string",
-            "balanceRate": "string",
-            "transactionRate": "string",
-            "accruedRate": "string",
-            "feeRate": "string",
+            "discountMethodUType": "fixedAmount",
+            "fixedAmount": {
+              "amount": "string"
+            },
+            "rateBased": {
+              "rateType": "BALANCE",
+              "rate": "string",
+              "amountRange": {
+                "discountMinimum": "string",
+                "discountMaximum": "string"
+              }
+            },
             "additionalValue": "string",
             "additionalInfo": "string",
             "additionalInfoUri": "string",
@@ -4669,20 +5223,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_responsebankingaccountbyidv3_properties">Properties</h3>
+<h3 id="cdr-banking-api_responsebankingaccountbyidv4_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
-|data|[BankingAccountDetailV3](#schemacdr-banking-apibankingaccountdetailv3)|mandatory||none|
+|data|[BankingAccountDetailV4](#schemacdr-banking-apibankingaccountdetailv4)|mandatory||none|
 |links|[Links](#schemacdr-banking-apilinks)|mandatory||none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional||none|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountdetailv3">BankingAccountDetailV3</h3>
-<p id="tocSbankingaccountdetailv3" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountdetailv4">BankingAccountDetailV4</h3>
+<p id="tocSbankingaccountdetailv4" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingaccountdetail"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingaccountdetailv3"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingaccountdetailv4"></a>
 </p>
 
 ```json
@@ -4742,18 +5296,31 @@ To perform this operation, you must be authenticated and authorised with the fol
       "depositRateType": "VARIABLE",
       "rate": "string",
       "calculationFrequency": "string",
+      "applicationType": "PERIODIC",
       "applicationFrequency": "string",
       "tiers": [
         {
           "name": "string",
           "unitOfMeasure": "DAY",
-          "minimumValue": 0,
-          "maximumValue": 0,
+          "minimumValue": "string",
+          "maximumValue": "string",
           "rateApplicationMethod": "PER_TIER",
-          "applicabilityConditions": {
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          },
+          "applicabilityConditions": [
+            {
+              "rateApplicabilityType": "NEW_CUSTOMER",
+              "additionalValue": "string",
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "applicabilityConditions": [
+        {
+          "rateApplicabilityType": "NEW_CUSTOMER",
+          "additionalValue": "string",
           "additionalInfo": "string",
           "additionalInfoUri": "string"
         }
@@ -4769,6 +5336,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       "rate": "string",
       "comparisonRate": "string",
       "calculationFrequency": "string",
+      "applicationType": "PERIODIC",
       "applicationFrequency": "string",
       "interestPaymentDue": "IN_ADVANCE",
       "repaymentType": "INTEREST_ONLY",
@@ -4777,13 +5345,25 @@ To perform this operation, you must be authenticated and authorised with the fol
         {
           "name": "string",
           "unitOfMeasure": "DAY",
-          "minimumValue": 0,
-          "maximumValue": 0,
+          "minimumValue": "string",
+          "maximumValue": "string",
           "rateApplicationMethod": "PER_TIER",
-          "applicabilityConditions": {
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          },
+          "applicabilityConditions": [
+            {
+              "rateApplicabilityType": "NEW_CUSTOMER",
+              "additionalValue": "string",
+              "additionalInfo": "string",
+              "additionalInfoUri": "string"
+            }
+          ],
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "applicabilityConditions": [
+        {
+          "rateApplicabilityType": "NEW_CUSTOMER",
+          "additionalValue": "string",
           "additionalInfo": "string",
           "additionalInfoUri": "string"
         }
@@ -4799,18 +5379,32 @@ To perform this operation, you must be authenticated and authorised with the fol
       "additionalValue": "string",
       "additionalInfo": "string",
       "additionalInfoUri": "string",
-      "isActivated": true
+      "isActivated": "ACTIVATED"
     }
   ],
   "fees": [
     {
       "name": "string",
-      "feeType": "DEPOSIT",
-      "amount": "string",
-      "balanceRate": "string",
-      "transactionRate": "string",
-      "accruedRate": "string",
-      "accrualFrequency": "string",
+      "feeType": "CASH_ADVANCE",
+      "feeMethodUType": "fixedAmount",
+      "fixedAmount": {
+        "amount": "string"
+      },
+      "rateBased": {
+        "rateType": "BALANCE",
+        "rate": "string",
+        "accrualFrequency": "string",
+        "amountRange": {
+          "feeMinimum": "string",
+          "feeMaximum": "string"
+        }
+      },
+      "variable": {
+        "feeMinimum": "string",
+        "feeMaximum": "string"
+      },
+      "feeCap": "string",
+      "feeCapPeriod": "string",
       "currency": "AUD",
       "additionalValue": "string",
       "additionalInfo": "string",
@@ -4819,11 +5413,18 @@ To perform this operation, you must be authenticated and authorised with the fol
         {
           "description": "string",
           "discountType": "BALANCE",
-          "amount": "string",
-          "balanceRate": "string",
-          "transactionRate": "string",
-          "accruedRate": "string",
-          "feeRate": "string",
+          "discountMethodUType": "fixedAmount",
+          "fixedAmount": {
+            "amount": "string"
+          },
+          "rateBased": {
+            "rateType": "BALANCE",
+            "rate": "string",
+            "amountRange": {
+              "discountMinimum": "string",
+              "discountMaximum": "string"
+            }
+          },
           "additionalValue": "string",
           "additionalInfo": "string",
           "additionalInfoUri": "string",
@@ -4881,7 +5482,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingaccountdetailv3_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingaccountdetailv4_properties">Properties</h3>
 
 *allOf*
 
@@ -4898,42 +5499,45 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» accountNumber|string|optional||The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.|
 |» bundleName|string|optional||Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer.|
 |» specificAccountUType|[Enum](#common-field-types)|optional||The type of structure to present account specific fields.|
-|» termDeposit|[[BankingTermDepositAccount](#schemacdr-banking-apibankingtermdepositaccount)]|conditional||none|
-|» creditCard|[BankingCreditCardAccount](#schemacdr-banking-apibankingcreditcardaccount)|conditional||none|
-|» loan|[BankingLoanAccountV2](#schemacdr-banking-apibankingloanaccountv2)|conditional||none|
+|» termDeposit|[[BankingTermDepositAccount](#schemacdr-banking-apibankingtermdepositaccount)]|conditional||Mandatory if the _specificAccountUType_ value is `termDeposit`.|
+|» creditCard|[BankingCreditCardAccount](#schemacdr-banking-apibankingcreditcardaccount)|conditional||Mandatory if the _specificAccountUType_ value is `creditCard`.|
+|» loan|[BankingLoanAccountV3](#schemacdr-banking-apibankingloanaccountv3)|conditional||Mandatory if the _specificAccountUType_ value is `loan`.|
 |» depositRate|[RateString](#common-field-types)|optional||Current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call.|
 |» lendingRate|[RateString](#common-field-types)|optional||The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call.|
-|» depositRates|[[BankingProductDepositRate](#schemacdr-banking-apibankingproductdepositrate)]|optional||Fully described deposit rates for this account based on the equivalent structure in Product Reference.|
-|» lendingRates|[[BankingProductLendingRateV2](#schemacdr-banking-apibankingproductlendingratev2)]|optional||Fully described lending rates for this account based on the equivalent structure in Product Reference.|
+|» depositRates|[[BankingProductDepositRateV2](#schemacdr-banking-apibankingproductdepositratev2)]|optional||Fully described deposit rates for this account based on the equivalent structure in Product Reference.|
+|» lendingRates|[[BankingProductLendingRateV3](#schemacdr-banking-apibankingproductlendingratev3)]|optional||Fully described lending rates for this account based on the equivalent structure in Product Reference.|
 |» features|[allOf]|optional||Array of features of the account based on the equivalent structure in Product Reference with the following additional field.|
 
 *allOf*
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
-|»» *anonymous*|[BankingProductFeatureV2](#schemacdr-banking-apibankingproductfeaturev2)|mandatory||none|
+|»» *anonymous*|[BankingProductFeatureV3](#schemacdr-banking-apibankingproductfeaturev3)|mandatory||none|
 
 *and*
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
 |»» *anonymous*|object|mandatory||none|
-|»»» isActivated|[Boolean](#common-field-types)|optional|`true`|`true` if the feature is already activated and `false` if the feature is available for activation. Defaults to `true` if absent.<br>**Note:** this is an additional field appended to the feature object defined in the Product Reference payload.|
+|»»» isActivated|[Enum](#common-field-types)|optional|`UNKNOWN`|<ul><li>`ACTIVATED` if the feature has been activated by the customer or is a standard feature of the product</li><li>`NOT_ACTIVATED` if the feature is not activated but is available for activation</li><li>`UNKNOWN` or absent if the activation state is unknown.</ul>**Note:** This is an additional field appended to the feature structure defined in the Product Reference payload.|
 
 *continued*
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
-|» fees|[[BankingProductFee](#schemacdr-banking-apibankingproductfee)]|optional||Fees and charges applicable to the account based on the equivalent structure in Product Reference.|
+|» fees|[[BankingProductFeeV2](#schemacdr-banking-apibankingproductfeev2)]|optional||Fees and charges applicable to the account based on the equivalent structure in Product Reference.|
 |» addresses|[[CommonPhysicalAddress](#schemacdr-banking-apicommonphysicaladdress)]|optional||The addresses for the account to be used for correspondence.|
 
-<h4 id="cdr-banking-api_bankingaccountdetailv3_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingaccountdetailv4_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |specificAccountUType|creditCard|
 |specificAccountUType|loan|
 |specificAccountUType|termDeposit|
+|isActivated|ACTIVATED|
+|isActivated|NOT_ACTIVATED|
+|isActivated|UNKNOWN|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtermdepositaccount">BankingTermDepositAccount</h3>
 <p id="tocSbankingtermdepositaccount" class="orig-anchor"></p>
@@ -4997,12 +5601,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentCurrency|[CurrencyString](#common-field-types)|optional|`AUD`|If absent assumes `AUD`.|
 |paymentDueDate|[DateString](#common-field-types)|mandatory||Date that the next payment for the card is due.|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingloanaccountv2">BankingLoanAccountV2</h3>
-<p id="tocSbankingloanaccountv2" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingloanaccountv3">BankingLoanAccountV3</h3>
+<p id="tocSbankingloanaccountv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingloanaccount"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingloanaccountv2"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingloanaccountv3"></a>
 </p>
 
 ```json
@@ -5027,7 +5631,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingloanaccountv2_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingloanaccountv3_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
@@ -5044,15 +5648,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 |minRedrawCurrency|[CurrencyString](#common-field-types)|optional|`AUD`|If absent assumes `AUD`.|
 |offsetAccountEnabled|[Boolean](#common-field-types)|optional||Set to `true` if one or more offset accounts are configured for this loan account.|
 |offsetAccountIds|[[BankingAccountId](#schemacdr-banking-apibankingaccountid)]|optional||The _accountId_ values of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that _offsetAccountEnabled_ is set to `true` but the _offsetAccountIds_ field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation.|
-|repaymentType|[Enum](#common-field-types)|optional|`PRINCIPAL_AND_INTEREST`|Options in place for repayments. If absent defaults to `PRINCIPAL_AND_INTEREST`.|
+|repaymentType|[Enum](#common-field-types)|mandatory||Option in place for repayments.|
 |repaymentFrequency|[ExternalRef](#common-field-types)|optional||The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
 
-<h4 id="cdr-banking-api_bankingloanaccountv2_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingloanaccountv3_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |repaymentType|INTEREST_ONLY|
+|repaymentType|OTHER|
 |repaymentType|PRINCIPAL_AND_INTEREST|
+|repaymentType|UNCONSTRAINED|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingtransactionlist">ResponseBankingTransactionList</h3>
 <p id="tocSresponsebankingtransactionlist" class="orig-anchor"></p>
@@ -5148,7 +5754,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
 |accountId|[BankingAccountId](#schemacdr-banking-apibankingaccountid)|mandatory||Unique identifier for the account.|
-|transactionId|[BankingTransactionId](#schemacdr-banking-apibankingtransactionid)|conditional||Unique identifier for the transaction. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if _isDetailAvailable_ is set to `true`.|
+|transactionId|[BankingTransactionId](#schemacdr-banking-apibankingtransactionid)|conditional||Unique identifier for the transaction. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. Mandatory if the _isDetailAvailable_ value is `true`.|
 |isDetailAvailable|[Boolean](#common-field-types)|mandatory||`true` if extended information is available using the transaction detail endpoint. `false` if extended data is not available.|
 |type|[Enum](#common-field-types)|mandatory||The type of the transaction.|
 |status|[Enum](#common-field-types)|mandatory||Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to guarantee the ability to correlate a pending transaction with an associated posted transaction.|

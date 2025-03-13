@@ -76,6 +76,11 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 
 
+## Shared Responsibility
+|Change|Description|Link|
+|------|-----------|----|
+
+
 ## Additional Standards
 |Change|Description|Link|
 |------|-----------|----|

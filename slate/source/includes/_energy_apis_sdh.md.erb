@@ -3,15 +3,29 @@
 
 This specification defines the APIs for Data Holders exposing Energy Secondary Data Holder endpoints.
 
-```diff
-Corrected typo in protectionMode field description:
-- hasCentralProtectionAndControl
-+ hasCentralProtectionControl
-```
+
 
 <table>
 <tr><td><a href='./includes/swagger/cds_energy_sdh.json'>Energy Secondary Data Holder OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy_sdh.yaml'>Energy Secondary Data Holder OpenAPI Specification (YAML)</a></td></tr>
 </table>
+
+```diff
+Made following changes to Get Service Points (SR) and Get Service Point Detail (SR) APIs
++ Added new field EnergyServicePointV2.lastConsumerChangeDate
++ Incremented version to v2
+
+Update schema versions of following
+from:
+- EnergyServicePointListResponse
+- EnergyServicePointDetailResponse
+- EnergyServicePoint
+- EnergyServicePointDetail
+to:
++ EnergyServicePointListResponseV2
++ EnergyServicePointDetailResponseV2
++ EnergyServicePointV2
++ EnergyServicePointDetailV2
+```
 
 <%= partial "includes/cds_energy_sdh.md" %>
