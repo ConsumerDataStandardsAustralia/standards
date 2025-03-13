@@ -212,7 +212,7 @@
     "/energy/electricity/servicepoints": {
       "get": {
         "summary": "Get Service Points",
-        "description": "Obtain a list of service points owned by the customer that has authorised the current session.",
+        "description": "Obtain a list of service points owned by the customer that has authorised the current session.\n\nOther Versions: [v1](includes/obsolete/get-service-points-v1.html).",
         "operationId": "listElectricityServicePoints",
         "x-scopes": [
           "energy:electricity.servicepoints.basic:read"
@@ -220,7 +220,7 @@
         "tags": [
           "Electricity Service Points"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryPage"
@@ -270,11 +270,11 @@
         "x-scopes": [
           "energy:electricity.servicepoints.detail:read"
         ],
-        "description": "Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.",
+        "description": "Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.\n\nOther Versions: [v1](includes/obsolete/get-service-point-detail-v1.html).",
         "tags": [
           "Electricity Service Points"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathServicePointId"
@@ -1735,7 +1735,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/EnergyServicePointListResponse"
+              "$ref": "#/components/schemas/EnergyServicePointListResponseV2"
             }
           }
         }
@@ -1798,7 +1798,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/EnergyServicePointDetailResponse"
+              "$ref": "#/components/schemas/EnergyServicePointDetailResponseV2"
             }
           }
         }
@@ -3141,7 +3141,7 @@
           }
         }
       },
-      "EnergyServicePointListResponse": {
+      "EnergyServicePointListResponseV2": {
         "type": "object",
         "required": [
           "data",
@@ -3158,7 +3158,7 @@
               "servicePoints": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/EnergyServicePoint"
+                  "$ref": "#/components/schemas/EnergyServicePointV2"
                 }
               }
             }
@@ -3171,7 +3171,7 @@
           }
         }
       },
-      "EnergyServicePointDetailResponse": {
+      "EnergyServicePointDetailResponseV2": {
         "type": "object",
         "required": [
           "data",
@@ -3179,7 +3179,7 @@
         ],
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/EnergyServicePointDetail"
+            "$ref": "#/components/schemas/EnergyServicePointDetailV2"
           },
           "links": {
             "$ref": "#/components/schemas/Links"
@@ -5083,7 +5083,7 @@
           "PUBLIC_HOLIDAYS"
         ]
       },
-      "EnergyServicePoint": {
+      "EnergyServicePointV2": {
         "type": "object",
         "required": [
           "servicePointId",
@@ -5159,6 +5159,11 @@
             "x-cds-type": "DateTimeString",
             "description": "The date and time that the information for this service point was modified."
           },
+          "lastConsumerChangeDate": {
+            "type": "string",
+            "x-cds-type": "DateString",
+            "description": "The date the account holder changed for the NMI."
+          },
           "consumerProfile": {
             "type": "object",
             "properties": {
@@ -5182,10 +5187,10 @@
           }
         }
       },
-      "EnergyServicePointDetail": {
+      "EnergyServicePointDetailV2": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/EnergyServicePoint"
+            "$ref": "#/components/schemas/EnergyServicePointV2"
           },
           {
             "required": [
