@@ -1,0 +1,2092 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Get Service Point Detail v1</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <script src="https://cdn.usefathom.com/script.js" data-spa="hash" data-site="GWAEHCUX" defer></script>
+    
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="includes includes_obsolete includes_obsolete_get-service-point-detail-v1" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+            <li class="toc-child">
+              <a href="#get-service-point-detail-v1" class="toc-h1 toc-link" data-title="Get Service Point Detail V1">Get Service Point Detail V1</a>
+              <ul class="toc-list-h2">
+                      <li>
+                        <a href="#get-service-point-detail" class="toc-h2 toc-link" data-title="Get Service Point Detail">Get Service Point Detail</a>
+                      </li>
+                    <li class="toc-schema-list toggle">
+                      <a href="#cdr-energy-api-schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
+                      <span class="toggle"></span>
+                        <ul class="schema-list">
+                              <li>
+                                <a href="#cdr-energy-api_schemas_tocSenergyservicepointdetailresponse" class="toc-h3 toc-link" data-title="EnergyServicePointDetailResponse">EnergyServicePointDetailResponse</a>
+                              </li>
+                              <li>
+                                <a href="#cdr-energy-api_schemas_tocSenergyservicepointdetail" class="toc-h3 toc-link" data-title="EnergyServicePointDetail">EnergyServicePointDetail</a>
+                              </li>
+                              <li>
+                                <a href="#cdr-energy-api_schemas_tocSenergyservicepoint" class="toc-h3 toc-link" data-title="EnergyServicePoint">EnergyServicePoint</a>
+                              </li>
+                              <li>
+                                <a href="#cdr-energy-api_schemas_tocSenergyservicepointid" class="toc-h3 toc-link" data-title="EnergyServicePointId">EnergyServicePointId</a>
+                              </li>
+                              <li>
+                                <a href="#cdr-energy-api_schemas_tocScommonphysicaladdress" class="toc-h3 toc-link" data-title="CommonPhysicalAddress">CommonPhysicalAddress</a>
+                              </li>
+                              <li>
+                                <a href="#cdr-energy-api_schemas_tocScommonsimpleaddress" class="toc-h3 toc-link" data-title="CommonSimpleAddress">CommonSimpleAddress</a>
+                              </li>
+                              <li>
+                                <a href="#cdr-energy-api_schemas_tocScommonpafaddress" class="toc-h3 toc-link" data-title="CommonPAFAddress">CommonPAFAddress</a>
+                              </li>
+                              <li>
+                                <a href="#cdr-energy-api_schemas_tocSresponseerrorlistv2" class="toc-h3 toc-link" data-title="ResponseErrorListV2">ResponseErrorListV2</a>
+                              </li>
+                              <li>
+                                <a href="#cdr-energy-api_schemas_tocSerrorv2" class="toc-h3 toc-link" data-title="ErrorV2">ErrorV2</a>
+                              </li>
+                              <li>
+                                <a href="#cdr-energy-api_schemas_tocSlinkspaginated" class="toc-h3 toc-link" data-title="LinksPaginated">LinksPaginated</a>
+                              </li>
+                              <li>
+                                <a href="#cdr-energy-api_schemas_tocSmetapaginated" class="toc-h3 toc-link" data-title="MetaPaginated">MetaPaginated</a>
+                              </li>
+                        </ul>
+                    </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../index.html'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='get-service-point-detail-v1'>Get Service Point Detail V1</h1>
+<p>This page documents version 1 of the Get Service Point Detail endpoint. </p>
+
+<p>Data Holders can retire this version after <strong>March 16th 2026</strong>. Data Recipients must update to newer versions prior to this date.</p>
+<h2 id='get-service-point-detail'>Get Service Point Detail</h2>
+<p id="get-service-point-detail" class="orig-anchor"></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/{servicePointId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mtls.dh.example.com</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://mtls.dh.example.com/cds-au/v1/energy/electricity/servicepoints/{servicePointId}'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p><code>GET /energy/electricity/servicepoints/{servicePointId}</code></p>
+
+<p>Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.</p>
+
+<h3 id="cdr-energy-api_get-service-point-detail_endpoint-version">Endpoint Version</h3>
+
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td><strong>1</strong></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-energy-api_get-service-point-detail_parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>servicePointId</td>
+<td>path</td>
+<td><a href="#schemacdr-energy-apienergyservicepointid">EnergyServicePointId</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The <em>servicePointId</em> to obtain data for. <em>servicePointId</em> values are returned by service point list endpoints. Note that it is not a <em>nationalMeteringId</em>.</td>
+</tr>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
+</tr>
+<tr>
+<td>x-fapi-interaction-id</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>x-fapi-auth-date</td>
+<td>header</td>
+<td>string</td>
+<td>conditional</td>
+<td></td>
+<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
+</tr>
+<tr>
+<td>x-fapi-customer-ip-address</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+</tr>
+<tr>
+<td>x-cds-client-headers</td>
+<td>header</td>
+<td><a href="#common-field-types">Base64</a></td>
+<td>conditional</td>
+<td></td>
+<td>The customer&#39;s original standard http headers <a href="#common-field-types">Base64</a> encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nationalMeteringId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"servicePointClassification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXTERNAL_PROFILE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"servicePointStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jurisdictionCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"distributionLossFactor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lossValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relatedParticipants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"party"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRMP"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressLine3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"thoroughfareNumber1Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"thoroughfareNumber2"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"thoroughfareNumber2Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"flatUnitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"streetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"streetSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalDeliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalDeliveryNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalDeliveryNumberPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalDeliveryNumberSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"localityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-energy-api_get-service-point-detail_responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Successful response</td>
+<td><a href="#schemacdr-energy-apienergyservicepointdetailresponse">EnergyServicePointDetailResponse</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>The following error codes <strong>MUST</strong> be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>The following error codes <strong>MUST</strong> be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-service-point">404 - Unavailable Service Point</a></li><li><a href="#error-404-invalid-service-point">404 - Invalid Service Point</a></li></ul></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
+<td>The following error codes <strong>MUST</strong> be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemacdr-energy-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-energy-api_get-service-point-detail_response-headers">Response Headers</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The <a href="#response-headers">payload version</a> that the endpoint has responded with.</td>
+</tr>
+<tr>
+<td>200</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td>mandatory</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td>mandatory</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td>mandatory</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>x-fapi-interaction-id</td>
+<td>string</td>
+<td>mandatory</td>
+<td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
+</tr>
+</tbody></table>
+
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">energy:electricity.servicepoints.detail:read.</a>
+</aside></p>
+
+<h2 class="schema-heading" id="cdr-energy-api-schemas">Schemas</h2>
+
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
+
+<p id="tocSenergyservicepointdetailresponse" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-energy-api_schema-base_energyservicepointdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetailresponse"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nationalMeteringId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"servicePointClassification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXTERNAL_PROFILE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"servicePointStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jurisdictionCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"distributionLossFactor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lossValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relatedParticipants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"party"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRMP"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressLine3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"thoroughfareNumber1Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"thoroughfareNumber2"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"thoroughfareNumber2Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"flatUnitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"streetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"streetSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalDeliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalDeliveryNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalDeliveryNumberPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalDeliveryNumberSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"localityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-energy-api_energyservicepointdetailresponse_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td><a href="#schemacdr-energy-apienergyservicepointdetail">EnergyServicePointDetail</a></td>
+<td>mandatory</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>links</td>
+<td><a href="#schemacdr-energy-apilinks">Links</a></td>
+<td>mandatory</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemacdr-energy-apimeta">Meta</a></td>
+<td>optional</td>
+<td></td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
+
+<p id="tocSenergyservicepointdetail" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-energy-api_schema-base_energyservicepointdetail"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetail"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"nationalMeteringId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"servicePointClassification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXTERNAL_PROFILE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"servicePointStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"jurisdictionCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"distributionLossFactor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lossValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"relatedParticipants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"party"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRMP"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressLine3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"thoroughfareNumber1Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"thoroughfareNumber2"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"thoroughfareNumber2Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"flatUnitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"streetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"streetSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalDeliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalDeliveryNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalDeliveryNumberPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postalDeliveryNumberSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"localityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"meterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"specifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"installationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"readType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nextScheduledReadDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"registers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"registerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"registerSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"averagedDailyLoad"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"registerConsumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INTERVAL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"networkTariffCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unitOfMeasure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"timeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALLDAY"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"controlledLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"consumptionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTUAL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-energy-api_energyservicepointdetail_properties">Properties</h3>
+
+<p><em>allOf</em></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#schemacdr-energy-apienergyservicepoint">EnergyServicePoint</a></td>
+<td>mandatory</td>
+<td></td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p><em>and</em></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>object</td>
+<td>mandatory</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>» distributionLossFactor</td>
+<td>object</td>
+<td>mandatory</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» code</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>A code used to identify data loss factor for the service point values. Refer to AEMO distribution loss factor documents for each financial year to interpret.</td>
+</tr>
+<tr>
+<td>»» description</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Description of the data loss factor code and value.</td>
+</tr>
+<tr>
+<td>»» lossValue</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>The value associated with the loss factor code.</td>
+</tr>
+<tr>
+<td>» relatedParticipants</td>
+<td>[object]</td>
+<td>mandatory</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» party</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>The name of the party/organisation related to this service point.</td>
+</tr>
+<tr>
+<td>»» role</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li><code>FRMP</code>: Financially Responsible Market Participant</li><li><code>LNSP</code>: Local Network Service Provider or Embedded Network Manager for child connection points</li><li><code>DRSP</code>: wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included.</li></ul></td>
+</tr>
+<tr>
+<td>» location</td>
+<td><a href="#schemacdr-energy-apicommonphysicaladdress">CommonPhysicalAddress</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Location of the servicepoint.</td>
+</tr>
+<tr>
+<td>» meters</td>
+<td>[object]</td>
+<td>optional</td>
+<td></td>
+<td>The meters associated with the service point. This may be empty where there are no meters physically installed at the service point.</td>
+</tr>
+<tr>
+<td>»» meterId</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>The meter ID uniquely identifies a meter for a given service point. It is unique in the context of the service point. It is not globally unique.</td>
+</tr>
+<tr>
+<td>»» specifications</td>
+<td>object</td>
+<td>mandatory</td>
+<td></td>
+<td>Technical characteristics of the meter.</td>
+</tr>
+<tr>
+<td>»»» status</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>A code to denote the status of the meter. Note the details of enumeration values below: <ul><li><code>CURRENT</code>: Applies when a meter is current and not disconnected</li><li><code>DISCONNECTED</code>: Applies when a meter is present but has been remotely disconnected.</li></ul></td>
+</tr>
+<tr>
+<td>»»» installationType</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li><code>BASIC</code>: Accumulation Meter – Type 6</li><li><code>COMMS1</code>: Interval Meter with communications – Type 1</li><li><code>COMMS2</code>: Interval Meter with communications – Type 2</li><li><code>COMMS3</code>: Interval Meter with communications – Type 3</li><li><code>COMMS4</code>: Interval Meter with communications – Type 4</li><li><code>COMMS4C</code>: CT connected metering installation that meets the minimum services specifications</li><li><code>COMMS4D</code>: Whole current metering installation that meets the minimum services specifications</li><li><code>MRAM</code>: Small customer metering installation – Type 4A</li><li><code>MRIM</code>: Manually Read Interval Meter – Type 5</li><li><code>UMCP</code>: Unmetered Supply – Type 7</li><li><code>VICAMI</code>: A relevant metering installation as defined in clause 9.9C of the NER</li><li><code>NCONUML</code>: Non-contestable unmeter load - Introduced as part of Global Settlement.</li></ul></td>
+</tr>
+<tr>
+<td>»»» manufacturer</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Free text field to identify the manufacturer of the installed meter.</td>
+</tr>
+<tr>
+<td>»»» model</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Free text field to identify the meter manufacturer&#39;s designation for the meter model.</td>
+</tr>
+<tr>
+<td>»»» readType</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (<code>R</code>) or Manual (<code>M</code>)</li><li>Second Character = Mode: <code>T</code> = telephone, <code>W</code> = wireless, <code>P</code> = powerline, <code>I</code> = infra-red, <code>G</code> = galvanic, <code>V</code> = visual</li><li>Third Character = Frequency of Scheduled Meter Readings: <code>1</code> = Twelve times per year, <code>2</code> = Six times per year, <code>3</code> = Four times per year, <code>D</code> = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: <code>A</code> = 5 minute, <code>B</code> = 15 minute, <code>C</code> = 30 minute, <code>D</code> = Cannot convert to 5 minute (i.e. due to metering installation de-energised), <code>M</code> = Manually Read Accumulation Meter.</li></ul>For example, <ul><li><code>MV3</code> = Manual, Visual, Quarterly</li><li><code>MV3M</code> = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li><li><code>RWDC</code> = Remote, Wireless, Daily, 30 minutes interval.</li></ul></td>
+</tr>
+<tr>
+<td>»»» nextScheduledReadDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td></td>
+<td>This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required.</td>
+</tr>
+<tr>
+<td>»» registers</td>
+<td>[object]</td>
+<td>optional</td>
+<td></td>
+<td>Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point.</td>
+</tr>
+<tr>
+<td>»»» registerId</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Unique identifier of the register within this service point. Is not globally unique.</td>
+</tr>
+<tr>
+<td>»»» registerSuffix</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Register suffix of the meter register where the meter reads are obtained.</td>
+</tr>
+<tr>
+<td>»»» averagedDailyLoad</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+<td>The energy delivered through a connection point or metering point over an extended period normalised to a &#39;per day&#39; basis (kWh). This value is calculated annually.</td>
+</tr>
+<tr>
+<td>»»» registerConsumptionType</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Indicates the consumption type of register.</td>
+</tr>
+<tr>
+<td>»»» networkTariffCode</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider.</td>
+</tr>
+<tr>
+<td>»»» unitOfMeasure</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>The unit of measure for data held in this register.</td>
+</tr>
+<tr>
+<td>»»» timeOfDay</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>optional</td>
+<td></td>
+<td>Code to identify the time validity of register contents.</td>
+</tr>
+<tr>
+<td>»»» multiplier</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+<td>Multiplier required to take a register value and turn it into a value representing billable energy.</td>
+</tr>
+<tr>
+<td>»»» controlledLoad</td>
+<td><a href="#common-field-types">Boolean</a></td>
+<td>optional</td>
+<td></td>
+<td>Indicates whether the energy recorded by this register is created under a Controlled Load regime.</td>
+</tr>
+<tr>
+<td>»»» consumptionType</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>optional</td>
+<td></td>
+<td>Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li><code>ACTUAL</code>: implies volume of energy actually metered between two dates</li><li><code>CUMULATIVE</code>: indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates.</li></ul></td>
+</tr>
+</tbody></table>
+
+<h4 id="cdr-energy-api_energyservicepointdetail_enumerated-values-main">Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>role</td>
+<td>FRMP</td>
+</tr>
+<tr>
+<td>role</td>
+<td>LNSP</td>
+</tr>
+<tr>
+<td>role</td>
+<td>DRSP</td>
+</tr>
+<tr>
+<td>status</td>
+<td>CURRENT</td>
+</tr>
+<tr>
+<td>status</td>
+<td>DISCONNECTED</td>
+</tr>
+<tr>
+<td>installationType</td>
+<td>BASIC</td>
+</tr>
+<tr>
+<td>installationType</td>
+<td>COMMS1</td>
+</tr>
+<tr>
+<td>installationType</td>
+<td>COMMS2</td>
+</tr>
+<tr>
+<td>installationType</td>
+<td>COMMS3</td>
+</tr>
+<tr>
+<td>installationType</td>
+<td>COMMS4</td>
+</tr>
+<tr>
+<td>installationType</td>
+<td>COMMS4C</td>
+</tr>
+<tr>
+<td>installationType</td>
+<td>COMMS4D</td>
+</tr>
+<tr>
+<td>installationType</td>
+<td>MRAM</td>
+</tr>
+<tr>
+<td>installationType</td>
+<td>MRIM</td>
+</tr>
+<tr>
+<td>installationType</td>
+<td>PROF</td>
+</tr>
+<tr>
+<td>installationType</td>
+<td>SAMPLE</td>
+</tr>
+<tr>
+<td>installationType</td>
+<td>UMCP</td>
+</tr>
+<tr>
+<td>installationType</td>
+<td>VICAMI</td>
+</tr>
+<tr>
+<td>installationType</td>
+<td>NCOLNUML</td>
+</tr>
+<tr>
+<td>registerConsumptionType</td>
+<td>INTERVAL</td>
+</tr>
+<tr>
+<td>registerConsumptionType</td>
+<td>BASIC</td>
+</tr>
+<tr>
+<td>registerConsumptionType</td>
+<td>PROFILE_DATA</td>
+</tr>
+<tr>
+<td>registerConsumptionType</td>
+<td>ACTIVE_IMPORT</td>
+</tr>
+<tr>
+<td>registerConsumptionType</td>
+<td>ACTIVE</td>
+</tr>
+<tr>
+<td>registerConsumptionType</td>
+<td>REACTIVE_IMPORT</td>
+</tr>
+<tr>
+<td>registerConsumptionType</td>
+<td>REACTIVE</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>ALLDAY</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>INTERVAL</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>PEAK</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>BUSINESS</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>SHOULDER</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>EVENING</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>OFFPEAK</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>CONTROLLED</td>
+</tr>
+<tr>
+<td>timeOfDay</td>
+<td>DEMAND</td>
+</tr>
+<tr>
+<td>consumptionType</td>
+<td>ACTUAL</td>
+</tr>
+<tr>
+<td>consumptionType</td>
+<td>CUMULATIVE</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepoint">EnergyServicePoint</h3>
+
+<p id="tocSenergyservicepoint" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-energy-api_schema-base_energyservicepoint"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepoint"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"nationalMeteringId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"servicePointClassification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXTERNAL_PROFILE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"servicePointStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"jurisdictionCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALL"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-energy-api_energyservicepoint_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>servicePointId</td>
+<td><a href="#schemacdr-energy-apienergyservicepointid">EnergyServicePointId</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Unique identifier for the service point.</td>
+</tr>
+<tr>
+<td>nationalMeteringId</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>The independent ID of the service point, known in the industry as the NMI.</td>
+</tr>
+<tr>
+<td>servicePointClassification</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The classification of the service point as defined in MSATS procedures.</td>
+</tr>
+<tr>
+<td>servicePointStatus</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li><code>ACTIVE</code>: An active, energised, service point</li><li><code>DE_ENERGISED</code>: The service point exists but is deenergised</li><li><code>EXTINCT</code>: The service point has been permanently decommissioned</li><li><code>GREENFIELD</code>: Applies to a service point that has never been energised</li><li><code>OFF_MARKET</code>: Applies when the service point is no longer settled in the NEM.</li></ul></td>
+</tr>
+<tr>
+<td>jurisdictionCode</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li><code>ALL</code>: All Jurisdictions</li><li><code>ACT</code>: Australian Capital Territory</li><li><code>NEM</code>: National Electricity Market</li><li><code>NSW</code>: New South Wales</li><li><code>QLD</code>: Queensland</li><li><code>SA</code>: South Australia</li><li><code>TAS</code>: Tasmania</li><li><code>VIC</code>: Victoria.</li></ul></td>
+</tr>
+<tr>
+<td>isGenerator</td>
+<td><a href="#common-field-types">Boolean</a></td>
+<td>optional</td>
+<td><code>false</code></td>
+<td>This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit (this may include generator auxiliary loads). If absent defaults to <code>false</code>. <br><strong>Note:</strong> Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer.</td>
+</tr>
+<tr>
+<td>validFromDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The latest start date from which the constituent data sets of this service point became valid.</td>
+</tr>
+<tr>
+<td>lastUpdateDateTime</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The date and time that the information for this service point was modified.</td>
+</tr>
+<tr>
+<td>consumerProfile</td>
+<td>object</td>
+<td>optional</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>» classification</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>optional</td>
+<td></td>
+<td>A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments.</td>
+</tr>
+<tr>
+<td>» threshold</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>optional</td>
+<td></td>
+<td>A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li><code>LOW</code>: Consumption is less than the &#39;lower consumption threshold&#39; as defined in the National Energy Retail Regulations</li><li><code>MEDIUM</code>: Consumption is equal to or greater than the &#39;lower consumption threshold&#39;, but less than the &#39;upper consumption threshold&#39;, as defined in the National Energy Retail Regulations</li><li><code>HIGH</code>: Consumption is equal to or greater than the &#39;upper consumption threshold&#39; as defined in the National Energy Retail Regulations.</li></ul></td>
+</tr>
+</tbody></table>
+
+<h4 id="cdr-energy-api_energyservicepoint_enumerated-values-main">Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>servicePointClassification</td>
+<td>EXTERNAL_PROFILE</td>
+</tr>
+<tr>
+<td>servicePointClassification</td>
+<td>GENERATOR</td>
+</tr>
+<tr>
+<td>servicePointClassification</td>
+<td>LARGE</td>
+</tr>
+<tr>
+<td>servicePointClassification</td>
+<td>SMALL</td>
+</tr>
+<tr>
+<td>servicePointClassification</td>
+<td>WHOLESALE</td>
+</tr>
+<tr>
+<td>servicePointClassification</td>
+<td>NON_CONTEST_UNMETERED_LOAD</td>
+</tr>
+<tr>
+<td>servicePointClassification</td>
+<td>NON_REGISTERED_EMBEDDED_GENERATOR</td>
+</tr>
+<tr>
+<td>servicePointClassification</td>
+<td>DISTRIBUTION_WHOLESALE</td>
+</tr>
+<tr>
+<td>servicePointStatus</td>
+<td>ACTIVE</td>
+</tr>
+<tr>
+<td>servicePointStatus</td>
+<td>DE_ENERGISED</td>
+</tr>
+<tr>
+<td>servicePointStatus</td>
+<td>EXTINCT</td>
+</tr>
+<tr>
+<td>servicePointStatus</td>
+<td>GREENFIELD</td>
+</tr>
+<tr>
+<td>servicePointStatus</td>
+<td>OFF_MARKET</td>
+</tr>
+<tr>
+<td>jurisdictionCode</td>
+<td>ALL</td>
+</tr>
+<tr>
+<td>jurisdictionCode</td>
+<td>ACT</td>
+</tr>
+<tr>
+<td>jurisdictionCode</td>
+<td>NEM</td>
+</tr>
+<tr>
+<td>jurisdictionCode</td>
+<td>NSW</td>
+</tr>
+<tr>
+<td>jurisdictionCode</td>
+<td>QLD</td>
+</tr>
+<tr>
+<td>jurisdictionCode</td>
+<td>SA</td>
+</tr>
+<tr>
+<td>jurisdictionCode</td>
+<td>TAS</td>
+</tr>
+<tr>
+<td>jurisdictionCode</td>
+<td>VIC</td>
+</tr>
+<tr>
+<td>classification</td>
+<td>BUSINESS</td>
+</tr>
+<tr>
+<td>classification</td>
+<td>RESIDENTIAL</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>HIGH</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointid">EnergyServicePointId</h3>
+
+<p id="tocSenergyservicepointid" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-energy-api_schema-base_energyservicepointid"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointid"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="s2">"string"</span><span class="w">
+</span></code></pre>
+<p><em>A unique identifier for an Energy service point, generated according to <a href="#id-permanence">CDR ID Permanence</a> requirements.</em></p>
+
+<h3 id="cdr-energy-api_energyservicepointid_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#common-field-types">ASCIIString</a></td>
+<td>mandatory</td>
+<td></td>
+<td>A unique identifier for an Energy service point, generated according to <a href="#id-permanence">CDR ID Permanence</a> requirements.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
+
+<p id="tocScommonphysicaladdress" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-energy-api_schema-base_commonphysicaladdress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apicommonphysicaladdress"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"addressUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"simple"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"paf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber1Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber2"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"thoroughfareNumber2Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"flatUnitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryNumberPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalDeliveryNumberSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"localityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-energy-api_commonphysicaladdress_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>addressUType</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The type of address object present.</td>
+</tr>
+<tr>
+<td>simple</td>
+<td><a href="#schemacdr-energy-apicommonsimpleaddress">CommonSimpleAddress</a></td>
+<td>conditional</td>
+<td></td>
+<td>Required if <em>addressUType</em> is set to <code>simple</code>.</td>
+</tr>
+<tr>
+<td>paf</td>
+<td><a href="#schemacdr-energy-apicommonpafaddress">CommonPAFAddress</a></td>
+<td>conditional</td>
+<td></td>
+<td>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if <em>addressUType</em> is set to <code>paf</code>.</td>
+</tr>
+</tbody></table>
+
+<h4 id="cdr-energy-api_commonphysicaladdress_enumerated-values-main">Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>addressUType</td>
+<td>paf</td>
+</tr>
+<tr>
+<td>addressUType</td>
+<td>simple</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
+
+<p id="tocScommonsimpleaddress" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-energy-api_schema-base_commonsimpleaddress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apicommonsimpleaddress"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"mailingName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressLine3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><em>Required if <em>addressUType</em> is set to <code>simple</code>.</em></p>
+
+<h3 id="cdr-energy-api_commonsimpleaddress_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mailingName</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Name of the individual or business formatted for inclusion in an address used for physical mail.</td>
+</tr>
+<tr>
+<td>addressLine1</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>First line of the standard address object.</td>
+</tr>
+<tr>
+<td>addressLine2</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Second line of the standard address object.</td>
+</tr>
+<tr>
+<td>addressLine3</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Third line of the standard address object.</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td>string</td>
+<td>conditional</td>
+<td></td>
+<td>Mandatory for Australian addresses.</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Name of the city or locality.</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Free text if the country is not Australia. If country is Australia then must be one of the values defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a> in the PAF file format. <code>NSW</code>, <code>QLD</code>, <code>VIC</code>, <code>NT</code>, <code>WA</code>, <code>SA</code>, <code>TAS</code>, <code>ACT</code>, <code>AAT</code>.</td>
+</tr>
+<tr>
+<td>country</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
+<td>optional</td>
+<td><code>AUS</code></td>
+<td>A valid <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166 Alpha-3</a> country code. Australia (<code>AUS</code>) is assumed if country is not present.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
+
+<p id="tocScommonpafaddress" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-energy-api_schema-base_commonpafaddress"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apicommonpafaddress"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"dpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber1"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber1Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber2"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"thoroughfareNumber2Suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"flatUnitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"flatUnitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"floorLevelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"floorLevelNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lotNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buildingName1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buildingName2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"streetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"streetSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryNumberPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalDeliveryNumberSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"localityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if <em>addressUType</em> is set to <code>paf</code>.</em></p>
+
+<h3 id="cdr-energy-api_commonpafaddress_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dpid</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Unique identifier for an address as defined by Australia Post. Also known as Delivery Point Identifier.</td>
+</tr>
+<tr>
+<td>thoroughfareNumber1</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>optional</td>
+<td></td>
+<td>Thoroughfare number for a property (first number in a property ranged address).</td>
+</tr>
+<tr>
+<td>thoroughfareNumber1Suffix</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Suffix for the thoroughfare number. Only relevant if <em>thoroughfareNumber1</em> is populated.</td>
+</tr>
+<tr>
+<td>thoroughfareNumber2</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>optional</td>
+<td></td>
+<td>Second thoroughfare number (only used if the property has a ranged address e.g., 23-25).</td>
+</tr>
+<tr>
+<td>thoroughfareNumber2Suffix</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Suffix for the second thoroughfare number. Only relevant if <em>thoroughfareNumber2</em> is populated.</td>
+</tr>
+<tr>
+<td>flatUnitType</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Type of flat or unit for the address.</td>
+</tr>
+<tr>
+<td>flatUnitNumber</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Unit number (including suffix, if applicable).</td>
+</tr>
+<tr>
+<td>floorLevelType</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Type of floor or level for the address.</td>
+</tr>
+<tr>
+<td>floorLevelNumber</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Floor or level number (including alpha characters).</td>
+</tr>
+<tr>
+<td>lotNumber</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Allotment number for the address.</td>
+</tr>
+<tr>
+<td>buildingName1</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Building/Property name 1.</td>
+</tr>
+<tr>
+<td>buildingName2</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Building/Property name 2.</td>
+</tr>
+<tr>
+<td>streetName</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>The name of the street.</td>
+</tr>
+<tr>
+<td>streetType</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>The street type. Valid enumeration defined by Australia Post PAF code file.</td>
+</tr>
+<tr>
+<td>streetSuffix</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>The street type suffix. Valid enumeration defined by Australia Post PAF code file.</td>
+</tr>
+<tr>
+<td>postalDeliveryType</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Postal delivery type. (e.g., PO BOX). Valid enumeration defined by Australia Post PAF code file.</td>
+</tr>
+<tr>
+<td>postalDeliveryNumber</td>
+<td><a href="#common-field-types">PositiveInteger</a></td>
+<td>optional</td>
+<td></td>
+<td>Postal delivery number if the address is a postal delivery type.</td>
+</tr>
+<tr>
+<td>postalDeliveryNumberPrefix</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Postal delivery number prefix related to the postal delivery number.</td>
+</tr>
+<tr>
+<td>postalDeliveryNumberSuffix</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Postal delivery number suffix related to the postal delivery number.</td>
+</tr>
+<tr>
+<td>localityName</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Full name of locality.</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Postcode for the locality.</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>State in which the address belongs. Valid enumeration defined by Australia Post PAF code file <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">State Type Abbreviation</a>. <code>NSW</code>, <code>QLD</code>, <code>VIC</code>, <code>NT</code>, <code>WA</code>, <code>SA</code>, <code>TAS</code>, <code>ACT</code>, <code>AAT</code>.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+
+<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-energy-api_schema-base_responseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apiresponseerrorlistv2"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-energy-api_responseerrorlistv2_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errors</td>
+<td>[<a href="#schemacdr-energy-apierrorv2">ErrorV2</a>]</td>
+<td>mandatory</td>
+<td></td>
+<td>List of errors.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSerrorv2">ErrorV2</h3>
+
+<p id="tocSerrorv2" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-energy-api_schema-base_error"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apierrorv2"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-energy-api_errorv2_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the <em>meta</em> object. Otherwise, the value is the error code URN.</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>A short, human-readable summary of the problem that <strong>MUST NOT</strong> change from occurrence to occurrence of the problem represented by the error code.</td>
+</tr>
+<tr>
+<td>detail</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>A human-readable explanation specific to this occurrence of the problem.</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>object</td>
+<td>conditional</td>
+<td></td>
+<td>Additional data for customised error codes.</td>
+</tr>
+<tr>
+<td>» urn</td>
+<td>string</td>
+<td>conditional</td>
+<td></td>
+<td>The CDR error code URN which the application-specific error code extends. Mandatory if the error <em>code</em> is an application-specific error rather than a standardised error code.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
+
+<p id="tocSlinkspaginated" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-energy-api_schema-base_linkspaginated"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apilinkspaginated"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-energy-api_linkspaginated_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>self</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Fully qualified link that generated the current response document.</td>
+</tr>
+<tr>
+<td>first</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td></td>
+<td>URI to the first page of this set. Mandatory if this response is not the first page.</td>
+</tr>
+<tr>
+<td>prev</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td></td>
+<td>URI to the previous page of this set. Mandatory if this response is not the first page.</td>
+</tr>
+<tr>
+<td>next</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td></td>
+<td>URI to the next page of this set. Mandatory if this response is not the last page.</td>
+</tr>
+<tr>
+<td>last</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>conditional</td>
+<td></td>
+<td>URI to the last page of this set. Mandatory if this response is not the last page.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSmetapaginated">MetaPaginated</h3>
+
+<p id="tocSmetapaginated" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-energy-api_schema-base_metapaginated"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apimetapaginated"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-energy-api_metapaginated_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>totalRecords</td>
+<td><a href="#common-field-types">NaturalNumber</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The total number of records in the full set. See <a href="#pagination">pagination</a>.</td>
+</tr>
+<tr>
+<td>totalPages</td>
+<td><a href="#common-field-types">NaturalNumber</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The total number of pages in the full set. See <a href="#pagination">pagination</a>.</td>
+</tr>
+</tbody></table>
+<p style="margin-bottom:300px"></p>
+
+      </div>
+      <div class="dark-box">
+        <div id="diff-scroll-buttons" class="scroll-buttons">
+          <a href="#" id="scroll-prev" title="Previous" class="scroll-button previous round">&#8249;</a>
+          <a href="#" id="scroll-next" title="Next" class="scroll-button next round">&#8250;</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1054,6 +1054,8 @@ This operation does not require authentication.
 
 <p>Obtain a list of service points owned by the customer that has authorised the current session.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-service-points-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-api_get-service-points_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -1064,7 +1066,7 @@ This operation does not require authentication.
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -1163,6 +1165,7 @@ This operation does not require authentication.
         </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastConsumerChangeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
@@ -1197,7 +1200,7 @@ This operation does not require authentication.
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-apienergyservicepointlistresponse">EnergyServicePointListResponse</a></td>
+<td><a href="#schemacdr-energy-apienergyservicepointlistresponsev2">EnergyServicePointListResponseV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -1312,6 +1315,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-service-point-detail-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-api_get-service-point-detail_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -1322,7 +1327,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -1411,6 +1416,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastConsumerChangeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
@@ -1511,7 +1517,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-apienergyservicepointdetailresponse">EnergyServicePointDetailResponse</a></td>
+<td><a href="#schemacdr-energy-apienergyservicepointdetailresponsev2">EnergyServicePointDetailResponseV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -8505,13 +8511,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointlistresponsev2">EnergyServicePointListResponseV2</h3>
 
-<p id="tocSenergyservicepointlistresponse" class="orig-anchor"></p>
+<p id="tocSenergyservicepointlistresponsev2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyservicepointlistresponse"></a>
-  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointlistresponsev2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8525,6 +8531,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastConsumerChangeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
@@ -8545,7 +8552,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-energy-api_energyservicepointlistresponse_properties">Properties</h3>
+<h3 id="cdr-energy-api_energyservicepointlistresponsev2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -8565,7 +8572,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 <tr>
 <td>» servicePoints</td>
-<td>[<a href="#schemacdr-energy-apienergyservicepoint">EnergyServicePoint</a>]</td>
+<td>[<a href="#schemacdr-energy-apienergyservicepointv2">EnergyServicePointV2</a>]</td>
 <td>mandatory</td>
 <td></td>
 <td>none</td>
@@ -8586,13 +8593,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointdetailresponsev2">EnergyServicePointDetailResponseV2</h3>
 
-<p id="tocSenergyservicepointdetailresponse" class="orig-anchor"></p>
+<p id="tocSenergyservicepointdetailresponsev2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyservicepointdetailresponse"></a>
-  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetailresponsev2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8604,6 +8611,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastConsumerChangeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
@@ -8690,7 +8698,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-energy-api_energyservicepointdetailresponse_properties">Properties</h3>
+<h3 id="cdr-energy-api_energyservicepointdetailresponsev2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -8703,7 +8711,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-energy-apienergyservicepointdetail">EnergyServicePointDetail</a></td>
+<td><a href="#schemacdr-energy-apienergyservicepointdetailv2">EnergyServicePointDetailV2</a></td>
 <td>mandatory</td>
 <td></td>
 <td>none</td>
@@ -13971,13 +13979,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepoint">EnergyServicePoint</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointv2">EnergyServicePointV2</h3>
 
-<p id="tocSenergyservicepoint" class="orig-anchor"></p>
+<p id="tocSenergyservicepointv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyservicepoint"></a>
-  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepoint"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -13988,13 +13996,14 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastConsumerChangeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-energy-api_energyservicepoint_properties">Properties</h3>
+<h3 id="cdr-energy-api_energyservicepointv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -14062,6 +14071,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>The date and time that the information for this service point was modified.</td>
 </tr>
 <tr>
+<td>lastConsumerChangeDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td></td>
+<td>The date the account holder changed for the NMI.</td>
+</tr>
+<tr>
 <td>consumerProfile</td>
 <td>object</td>
 <td>optional</td>
@@ -14084,7 +14100,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h4 id="cdr-energy-api_energyservicepoint_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-energy-api_energyservicepointv2_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -14198,13 +14214,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointdetailv2">EnergyServicePointDetailV2</h3>
 
-<p id="tocSenergyservicepointdetail" class="orig-anchor"></p>
+<p id="tocSenergyservicepointdetailv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyservicepointdetail"></a>
-  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetail"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointdetailv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -14215,6 +14231,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastConsumerChangeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
@@ -14296,7 +14313,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-energy-api_energyservicepointdetail_properties">Properties</h3>
+<h3 id="cdr-energy-api_energyservicepointdetailv2_properties">Properties</h3>
 
 <p><em>allOf</em></p>
 
@@ -14311,7 +14328,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacdr-energy-apienergyservicepoint">EnergyServicePoint</a></td>
+<td><a href="#schemacdr-energy-apienergyservicepointv2">EnergyServicePointV2</a></td>
 <td>mandatory</td>
 <td></td>
 <td>none</td>
@@ -14534,7 +14551,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h4 id="cdr-energy-api_energyservicepointdetail_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-energy-api_energyservicepointdetailv2_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>

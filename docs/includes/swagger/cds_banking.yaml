@@ -10,7 +10,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Banking API
-  version: 1.33.1
+  version: 1.34.0
 servers:
 - description: MTLS
   url: https://mtls.dh.example.com/cds-au/v1
@@ -701,7 +701,7 @@ paths:
       description: |-
         Obtain detailed information on a single account.
 
-        Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html).
+        Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html), [v3](includes/obsolete/get-account-detail-v3.html).
       operationId: getBankingAccountDetail
       parameters:
       - description: The _accountId_ to obtain data for. _accountId_ values are returned
@@ -792,7 +792,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBankingAccountByIdV3'
+                $ref: '#/components/schemas/ResponseBankingAccountByIdV4'
           description: Successful response
           headers:
             x-v:
@@ -836,7 +836,7 @@ paths:
       - Banking Accounts
       x-scopes:
       - bank:accounts.detail:read
-      x-version: "3"
+      x-version: "4"
   /banking/accounts/{accountId}/transactions:
     get:
       description: |-
@@ -2599,7 +2599,7 @@ paths:
 
         In addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no longer offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
 
-        Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/obsolete/get-products-v2.html).
+        Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/obsolete/get-products-v2.html), [v3](includes/obsolete/get-products-v3.html).
       operationId: listBankingProducts
       parameters:
       - description: Allows for the filtering of products based on whether the current
@@ -2698,7 +2698,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBankingProductListV2'
+                $ref: '#/components/schemas/ResponseBankingProductListV3'
           description: Successful response
           headers:
             x-v:
@@ -2733,13 +2733,13 @@ paths:
       summary: Get Products
       tags:
       - Banking Products
-      x-version: "3"
+      x-version: "4"
   /banking/products/{productId}:
     get:
       description: |-
         Obtain detailed information on a single product offered openly to the market.
 
-        Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](includes/obsolete/get-product-detail-v2.html), [v3](includes/obsolete/get-product-detail-v3.html), [v4](includes/obsolete/get-product-detail-v4.html).
+        Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](includes/obsolete/get-product-detail-v2.html), [v3](includes/obsolete/get-product-detail-v3.html), [v4](includes/obsolete/get-product-detail-v4.html), [v5](includes/obsolete/get-product-detail-v5.html).
       operationId: getBankingProductDetail
       parameters:
       - description: The _productId_ to obtain data for. _productId_ values are returned
@@ -2784,7 +2784,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBankingProductByIdV5'
+                $ref: '#/components/schemas/ResponseBankingProductByIdV6'
           description: Successful response
           headers:
             x-v:
@@ -2818,7 +2818,7 @@ paths:
       summary: Get Product Detail
       tags:
       - Banking Products
-      x-version: "5"
+      x-version: "6"
 components:
   headers:
     XV:
@@ -3239,7 +3239,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ResponseBankingAccountByIdV3'
+            $ref: '#/components/schemas/ResponseBankingAccountByIdV4'
       description: Successful response
       headers:
         x-v:
@@ -3764,7 +3764,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ResponseBankingProductListV2'
+            $ref: '#/components/schemas/ResponseBankingProductListV3'
       description: Successful response
       headers:
         x-v:
@@ -3797,7 +3797,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ResponseBankingProductByIdV5'
+            $ref: '#/components/schemas/ResponseBankingProductByIdV6'
       description: Successful response
       headers:
         x-v:
@@ -3841,7 +3841,7 @@ components:
       required:
       - data
       type: object
-    ResponseBankingProductListV2:
+    ResponseBankingProductListV3:
       example:
         data:
           products:
@@ -3882,8 +3882,12 @@ components:
             effectiveTo: effectiveTo
             cardArt:
             - imageUri: imageUri
+              cardScheme: AMEX
+              cardType: CHARGE
               title: title
             - imageUri: imageUri
+              cardScheme: AMEX
+              cardType: CHARGE
               title: title
             lastUpdated: lastUpdated
             isTailored: true
@@ -3928,8 +3932,12 @@ components:
             effectiveTo: effectiveTo
             cardArt:
             - imageUri: imageUri
+              cardScheme: AMEX
+              cardType: CHARGE
               title: title
             - imageUri: imageUri
+              cardScheme: AMEX
+              cardType: CHARGE
               title: title
             lastUpdated: lastUpdated
             isTailored: true
@@ -3948,7 +3956,7 @@ components:
           first: first
       properties:
         data:
-          $ref: '#/components/schemas/ResponseBankingProductListV2_data'
+          $ref: '#/components/schemas/ResponseBankingProductListV3_data'
         links:
           $ref: '#/components/schemas/LinksPaginated'
         meta:
@@ -3958,7 +3966,7 @@ components:
       - links
       - meta
       type: object
-    BankingProductV4:
+    BankingProductV5:
       example:
         additionalInformation:
           eligibilityUri: eligibilityUri
@@ -3997,8 +4005,12 @@ components:
         effectiveTo: effectiveTo
         cardArt:
         - imageUri: imageUri
+          cardScheme: AMEX
+          cardType: CHARGE
           title: title
         - imageUri: imageUri
+          cardScheme: AMEX
+          cardType: CHARGE
           title: title
         lastUpdated: lastUpdated
         isTailored: true
@@ -4060,9 +4072,9 @@ components:
         additionalInformation:
           $ref: '#/components/schemas/BankingProductAdditionalInformationV2'
         cardArt:
-          description: An array of card art images.
+          description: Information about any cards available with the account.
           items:
-            $ref: '#/components/schemas/BankingProductV4_cardArt'
+            $ref: '#/components/schemas/BankingProductCardArt'
           type: array
       required:
       - brand
@@ -4072,6 +4084,43 @@ components:
       - name
       - productCategory
       - productId
+      type: object
+    BankingProductCardArt:
+      example:
+        imageUri: imageUri
+        cardScheme: AMEX
+        cardType: CHARGE
+        title: title
+      properties:
+        cardScheme:
+          description: Card scheme available with the account.
+          enum:
+          - AMEX
+          - EFTPOS
+          - MASTERCARD
+          - VISA
+          - OTHER
+          type: string
+        cardType:
+          description: Card type available with the account.
+          enum:
+          - CHARGE
+          - CREDIT
+          - DEBIT
+          type: string
+        title:
+          description: Display label for the specific image.
+          type: string
+        imageUri:
+          description: URI reference to a PNG, JPG or GIF image with proportions defined
+            by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference
+            may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**.
+          type: string
+          x-cds-type: URIString
+      required:
+      - cardScheme
+      - cardType
+      - imageUri
       type: object
     BankingProductAdditionalInformationV2:
       description: Object that contains links to additional information on specific
@@ -4193,14 +4242,14 @@ components:
       required:
       - additionalInfoUri
       type: object
-    ResponseBankingProductByIdV5:
+    ResponseBankingProductByIdV6:
       example:
         meta: '{}'
         links:
           self: self
       properties:
         data:
-          $ref: '#/components/schemas/BankingProductDetailV5'
+          $ref: '#/components/schemas/BankingProductDetailV6'
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -4209,10 +4258,10 @@ components:
       - data
       - links
       type: object
-    BankingProductDetailV5:
+    BankingProductDetailV6:
       allOf:
-      - $ref: '#/components/schemas/BankingProductV4'
-      - $ref: '#/components/schemas/BankingProductDetailV5_allOf'
+      - $ref: '#/components/schemas/BankingProductV5'
+      - $ref: '#/components/schemas/BankingProductDetailV6_allOf'
     BankingProductBundle:
       properties:
         name:
@@ -4242,7 +4291,7 @@ components:
       - description
       - name
       type: object
-    BankingProductFeatureV2:
+    BankingProductFeatureV3:
       properties:
         featureType:
           description: The type of feature described. For further details, refer to
@@ -4262,9 +4311,10 @@ components:
           - FRAUD_PROTECTION
           - FREE_TXNS
           - FREE_TXNS_ALLOWANCE
+          - FUNDS_AVAILABLE_AFTER
           - GUARANTOR
-          - INSURANCE
           - INSTALMENT_PLAN
+          - INSURANCE
           - INTEREST_FREE
           - INTEREST_FREE_TRANSFERS
           - LOYALTY_PROGRAM
@@ -4297,7 +4347,7 @@ components:
       x-conditional:
       - additionalValue
       - additionalInfo
-    BankingProductConstraintV2:
+    BankingProductConstraintV3:
       properties:
         constraintType:
           description: The type of constraint described. For further details, refer
@@ -4310,6 +4360,7 @@ components:
           - MIN_LIMIT
           - MIN_LVR
           - OPENING_BALANCE
+          - OTHER
           type: string
         additionalValue:
           description: Generic field containing additional information relevant to
@@ -4318,6 +4369,8 @@ components:
           type: string
         additionalInfo:
           description: Display text providing more information on the constraint.
+            Mandatory if the [_constraintType_](#tocSproductconstrainttypedoc) value
+            is `OTHER`.
           type: string
         additionalInfoUri:
           description: Link to a web page with more information on the constraint.
@@ -4328,7 +4381,8 @@ components:
       type: object
       x-conditional:
       - additionalValue
-    BankingProductEligibility:
+      - additionalInfo
+    BankingProductEligibilityV2:
       properties:
         eligibilityType:
           description: The type of eligibility criteria described. For further details,
@@ -4367,7 +4421,7 @@ components:
       x-conditional:
       - additionalValue
       - additionalInfo
-    BankingProductFee:
+    BankingProductFeeV2:
       properties:
         name:
           description: Name of the fee.
@@ -4376,45 +4430,55 @@ components:
           description: The type of fee. For further details, refer to [Product Fee
             Types](#tocSproductfeetypedoc).
           enum:
+          - CASH_ADVANCE
           - DEPOSIT
+          - DISHONOUR
+          - ENQUIRY
           - EVENT
           - EXIT
+          - LATE_PAYMENT
+          - OTHER
           - PAYMENT
           - PERIODIC
           - PURCHASE
+          - REPLACEMENT
           - TRANSACTION
           - UPFRONT
-          - VARIABLE
+          - UPFRONT_PER_PLAN
+          - VARIATION
           - WITHDRAWAL
+          example: CASH_ADVANCE
           type: string
-        amount:
-          description: The amount charged for the fee. One of _amount_, _balanceRate_,
-            _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_
-            `VARIABLE` is supplied.
+        feeMethodUType:
+          description: Reference to the applicable fee charging method structure.
+          enum:
+          - fixedAmount
+          - rateBased
+          - variable
+          type: string
+        fixedAmount:
+          allOf:
+          - $ref: '#/components/schemas/BankingFeeAmount'
+          description: Mandatory if the _feeMethodUType_ value is `fixedAmount`. Where
+            the fee is a specific amount.
+        rateBased:
+          allOf:
+          - $ref: '#/components/schemas/BankingFeeRate'
+          description: Mandatory if the _feeMethodUType_ value is `rateBased`. Where
+            the fee is based on a type of rate.
+        variable:
+          allOf:
+          - $ref: '#/components/schemas/BankingFeeRange'
+          description: Mandatory if the _feeMethodUType_ value is `variable`. Where
+            the amount or rate may not be known until the fee is incurred.
+        feeCap:
+          description: The cap amount if multiple occurrences of the fee are capped
+            to a limit.
           type: string
           x-cds-type: AmountString
-        balanceRate:
-          description: A fee rate calculated based on a proportion of the balance.
-            One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is
-            mandatory unless the _feeType_ `VARIABLE` is supplied.
-          type: string
-          x-cds-type: RateString
-        transactionRate:
-          description: A fee rate calculated based on a proportion of a transaction.
-            One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is
-            mandatory unless the _feeType_ `VARIABLE` is supplied.
-          type: string
-          x-cds-type: RateString
-        accruedRate:
-          description: A fee rate calculated based on a proportion of the calculated
-            interest accrued on the account. One of _amount_, _balanceRate_, _transactionRate_
-            and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.
-          type: string
-          x-cds-type: RateString
-        accrualFrequency:
-          description: The indicative frequency with which the fee is calculated on
-            the account. Only applies if _balanceRate_ or _accruedRate_ is also present.
-            Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+        feeCapPeriod:
+          description: Specifies a duration over which multiple occurrences of the
+            fee will be capped. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
             (excludes recurrence syntax).
           type: string
           x-cds-type: ExternalRef
@@ -4429,7 +4493,8 @@ components:
             not is dependent on the value of [_feeType_](#tocSproductfeetypedoc).
           type: string
         additionalInfo:
-          description: Display text providing more information on the fee.
+          description: Display text providing more information on the fee. Mandatory
+            if the [_feeType_](#tocSproductfeetypedoc) value is `OTHER`.
           type: string
         additionalInfoUri:
           description: Link to a web page with more information on this fee.
@@ -4438,19 +4503,75 @@ components:
         discounts:
           description: An optional list of discounts to this fee that may be available.
           items:
-            $ref: '#/components/schemas/BankingProductDiscount'
+            $ref: '#/components/schemas/BankingProductDiscountV2'
           type: array
       required:
+      - feeMethodUType
       - feeType
       - name
       type: object
       x-conditional:
+      - fixedAmount
+      - rateBased
+      - variable
       - additionalValue
+      - additionalInfo
+    BankingFeeAmount:
+      properties:
+        amount:
+          description: The specific amount charged for the fee each time it is incurred.
+          type: string
+          x-cds-type: AmountString
+      required:
       - amount
+      type: object
+    BankingFeeRate:
+      properties:
+        rateType:
+          description: Type of fee rate calculation.<ul><li>`BALANCE` A fee rate based
+            on a balance</li><li>`INTEREST_ACCRUED` A fee rate based on interest accrued</li><li>`TRANSACTION`
+            A fee rate based on a transaction.</li></ul>
+          enum:
+          - BALANCE
+          - INTEREST_ACCRUED
+          - TRANSACTION
+          type: string
+        rate:
+          description: The fee rate calculated according to the _rateType_.
+          type: string
+          x-cds-type: RateString
+        accrualFrequency:
+          description: The indicative frequency with which the fee is calculated on
+            the account if applicable. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+            (excludes recurrence syntax).
+          type: string
+          x-cds-type: ExternalRef
+        amountRange:
+          $ref: '#/components/schemas/BankingFeeRange'
+      required:
+      - rate
+      - rateType
+      type: object
+      x-conditional:
       - balanceRate
       - transactionRate
       - accruedRate
-    BankingProductDiscount:
+    BankingFeeRange:
+      description: A minimum or maximum fee amount where a specific fixed amount is
+        not known until the fee is incurred.
+      properties:
+        feeMinimum:
+          description: The minimum fee that will be charged per occurrence.
+          type: string
+          x-cds-type: AmountString
+        feeMaximum:
+          description: The maximum fee that will be charged per occurrence.
+          type: string
+          x-cds-type: AmountString
+      type: object
+    BankingProductDiscountV2:
+      description: Note that the currency of the fee discount is expected to be the
+        same as the currency of the fee itself.
       properties:
         description:
           description: Description of the discount.
@@ -4465,45 +4586,24 @@ components:
           - FEE_CAP
           - PAYMENTS
           type: string
-        amount:
-          description: Dollar value of the discount. One of _amount_, _balanceRate_,
-            _transactionRate_, _accruedRate_ and _feeRate_ is mandatory.
+        discountMethodUType:
+          description: Reference to the applicable fee discount method structure.
+          enum:
+          - fixedAmount
+          - rateBased
           type: string
-          x-cds-type: AmountString
-        balanceRate:
-          description: A discount rate calculated based on a proportion of the balance.
-            Note that the currency of the fee discount is expected to be the same
-            as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_,
-            _accruedRate_ and _feeRate_ is mandatory. Unless noted in _additionalInfo_,
+        fixedAmount:
+          allOf:
+          - $ref: '#/components/schemas/BankingFeeDiscountAmount'
+          description: Mandatory if the _discountMethodUType_ value is `fixedAmount`.
+            Where the discount is a specific amount.
+        rateBased:
+          allOf:
+          - $ref: '#/components/schemas/BankingFeeDiscountRate'
+          description: Mandatory if the _discountMethodUType_ value is `rateBased`.
+            Where the discount is based on a type of rate. Unless noted in _additionalInfo_,
             assumes the application and calculation frequency are the same as the
             corresponding fee.
-          type: string
-          x-cds-type: RateString
-        transactionRate:
-          description: A discount rate calculated based on a proportion of a transaction.
-            Note that the currency of the fee discount is expected to be the same
-            as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_,
-            _accruedRate_ and _feeRate_ is mandatory.
-          type: string
-          x-cds-type: RateString
-        accruedRate:
-          description: A discount rate calculated based on a proportion of the calculated
-            interest accrued on the account. Note that the currency of the fee discount
-            is expected to be the same as the currency of the fee itself. One of _amount_,
-            _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory.
-            Unless noted in _additionalInfo_, assumes the application and calculation
-            frequency are the same as the corresponding fee.
-          type: string
-          x-cds-type: RateString
-        feeRate:
-          description: A discount rate calculated based on a proportion of the fee
-            to which this discount is attached. Note that the currency of the fee
-            discount is expected to be the same as the currency of the fee itself.
-            One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_
-            is mandatory. Unless noted in _additionalInfo_, assumes the application
-            and calculation frequency are the same as the corresponding fee.
-          type: string
-          x-cds-type: RateString
         additionalValue:
           description: Generic field containing additional information relevant to
             the [_discountType_](#tocSproductdiscounttypedoc) specified. Whether mandatory
@@ -4524,16 +4624,61 @@ components:
           type: array
       required:
       - description
+      - discountMethodUType
       - discountType
       type: object
       x-conditional:
-      - accruedRate
+      - fixedAmount
+      - rateBased
       - additionalValue
-      - amount
-      - balanceRate
       - eligibility
-      - feeRate
-      - transactionRate
+    BankingFeeDiscountAmount:
+      properties:
+        amount:
+          description: The specific amount discounted from the fee each time it is
+            incurred.
+          type: string
+          x-cds-type: AmountString
+      required:
+      - amount
+      type: object
+    BankingFeeDiscountRate:
+      properties:
+        rateType:
+          description: Type of fee rate discount calculation.<ul><li>`BALANCE` A fee
+            rate discount based on a balance</li><li>`FEE` A fee rate discount based
+            on the fee to which the discount is attached</li><li>`INTEREST_ACCRUED`
+            A fee rate discount based on interest accrued</li><li>`TRANSACTION` A
+            fee rate discount based on a transaction.</li></ul>
+          enum:
+          - BALANCE
+          - FEE
+          - INTEREST_ACCRUED
+          - TRANSACTION
+          type: string
+        rate:
+          description: The fee rate discount calculated according to the _rateType_.
+          type: string
+          x-cds-type: RateString
+        amountRange:
+          $ref: '#/components/schemas/BankingFeeDiscountRange'
+      required:
+      - rate
+      - rateType
+      type: object
+    BankingFeeDiscountRange:
+      description: A minimum or maximum fee discount amount where a specific fixed
+        amount is not known until the fee is incurred.
+      properties:
+        discountMinimum:
+          description: The minimum fee discount that will be applied per occurrence.
+          type: string
+          x-cds-type: AmountString
+        discountMaximum:
+          description: The maximum fee discount that will be applied per occurrence.
+          type: string
+          x-cds-type: AmountString
+      type: object
     BankingProductDiscountEligibility:
       properties:
         discountEligibilityType:
@@ -4574,7 +4719,7 @@ components:
       x-conditional:
       - additionalInfo
       - additionalValue
-    BankingProductDepositRate:
+    BankingProductDepositRateV2:
       properties:
         depositRateType:
           description: The type of rate (`FIXED`, `VARIABLE`, `BONUS`, etc.) For further
@@ -4602,17 +4747,31 @@ components:
             (excludes recurrence syntax).
           type: string
           x-cds-type: ExternalRef
+        applicationType:
+          description: The type of approach used to apply the rate to the account.
+          enum:
+          - MATURITY
+          - PERIODIC
+          - UPFRONT
+          example: PERIODIC
+          type: string
         applicationFrequency:
           description: The period after which the calculated amount(s) (see _calculationFrequency_)
             are 'applied' (i.e. debited or credited) to the account. Formatted according
             to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-            (excludes recurrence syntax).
+            (excludes recurrence syntax). Mandatory if the _applicationType_ value
+            is `PERIODIC`.
           type: string
           x-cds-type: ExternalRef
         tiers:
           description: Rate tiers applicable for this rate.
           items:
-            $ref: '#/components/schemas/BankingProductRateTierV3'
+            $ref: '#/components/schemas/BankingProductRateTierV4'
+          type: array
+        applicabilityConditions:
+          description: Applicability conditions for the rate.
+          items:
+            $ref: '#/components/schemas/BankingProductRateConditionV2'
           type: array
         additionalValue:
           description: Generic field containing additional information relevant to
@@ -4627,17 +4786,20 @@ components:
           type: string
           x-cds-type: URIString
       required:
+      - applicationType
       - depositRateType
       - rate
       type: object
       x-conditional:
       - additionalValue
-    BankingProductLendingRateV2:
+      - applicationFrequency
+    BankingProductLendingRateV3:
       properties:
         lendingRateType:
           description: The type of rate (`FIXED`, `VARIABLE`, etc.) For further details,
             refer to [Product Lending Rate Types](#tocSproductlendingratetypedoc).
           enum:
+          - BALANCE_TRANSFER
           - BUNDLE_DISCOUNT_FIXED
           - BUNDLE_DISCOUNT_VARIABLE
           - CASH_ADVANCE
@@ -4668,11 +4830,20 @@ components:
             (excludes recurrence syntax).
           type: string
           x-cds-type: ExternalRef
+        applicationType:
+          description: The type of approach used to apply the rate to the account.
+          enum:
+          - MATURITY
+          - PERIODIC
+          - UPFRONT
+          example: PERIODIC
+          type: string
         applicationFrequency:
           description: The period after which the calculated amount(s) (see _calculationFrequency_)
             are 'applied' (i.e. debited or credited) to the account. Formatted according
             to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-            (excludes recurrence syntax).
+            (excludes recurrence syntax). Mandatory if the _applicationType_ value
+            is `PERIODIC`.
           type: string
           x-cds-type: ExternalRef
         interestPaymentDue:
@@ -4683,23 +4854,30 @@ components:
           - IN_ARREARS
           type: string
         repaymentType:
-          description: Options in place for repayments. If absent, the lending rate
-            is applicable to all repayment types.
+          description: Option in place for repayments.
           enum:
           - INTEREST_ONLY
+          - OTHER
           - PRINCIPAL_AND_INTEREST
+          - UNCONSTRAINED
           type: string
         loanPurpose:
-          description: The reason for taking out the loan. If absent, the lending
-            rate is applicable to all loan purposes.
+          description: The reason for taking out the loan.
           enum:
           - INVESTMENT
+          - OTHER
           - OWNER_OCCUPIED
+          - UNCONSTRAINED
           type: string
         tiers:
           description: Rate tiers applicable for this rate.
           items:
-            $ref: '#/components/schemas/BankingProductRateTierV3'
+            $ref: '#/components/schemas/BankingProductRateTierV4'
+          type: array
+        applicabilityConditions:
+          description: Applicability conditions for the rate.
+          items:
+            $ref: '#/components/schemas/BankingProductRateConditionV2'
           type: array
         additionalValue:
           description: Generic field containing additional information relevant to
@@ -4714,12 +4892,16 @@ components:
           type: string
           x-cds-type: URIString
       required:
+      - applicationType
       - lendingRateType
+      - loanPurpose
       - rate
+      - repaymentType
       type: object
       x-conditional:
       - additionalValue
-    BankingProductRateTierV3:
+      - applicationFrequency
+    BankingProductRateTierV4:
       description: Defines the criteria and conditions for which a rate applies.
       properties:
         name:
@@ -4727,10 +4909,11 @@ components:
           type: string
         unitOfMeasure:
           description: The unit of measure that applies to the _minimumValue_ and
-            _maximumValue_ values e.g.,<ul><li>`DOLLAR` amount.<li>`PERCENT` (in the
-            case of loan-to-value ratio or LVR).<li>Tier term period representing
-            a discrete number of `MONTH`(s) or `DAY`(s) (in the case of term deposit
-            tiers).</ul>
+            _maximumValue_ values, e.g.,<ul><li>`DOLLAR` for a dollar amount (with
+            values in AmountString format)<li>`PERCENT` for Loan-to-Value Ratio or
+            LVR (with values in RateString format)<li>`MONTH` or `DAY` for a period
+            representing a discrete number of months or days for a fixed-term deposit
+            or loan (with values as a string containing a positive integer).</ul>
           enum:
           - DAY
           - DOLLAR
@@ -4740,8 +4923,7 @@ components:
         minimumValue:
           description: The number of _unitOfMeasure_ units that form the lower bound
             of the tier. The tier should be inclusive of this value.
-          type: number
-          x-cds-type: Number
+          type: string
         maximumValue:
           description: 'The number of _unitOfMeasure_ units that form the upper bound
             of the tier or band. For a tier with a discrete value (as opposed to a
@@ -4751,8 +4933,7 @@ components:
             a term deposit of 2 months falls into the upper tier of the following
             tiers: (1 – 2 months, 2 – 3 months). If absent the tier''s range has no
             upper bound.'
-          type: number
-          x-cds-type: Number
+          type: string
         rateApplicationMethod:
           description: The method used to calculate the amount to be applied using
             one or more tiers. A single rate may be applied to the entire balance
@@ -4763,7 +4944,10 @@ components:
           - WHOLE_BALANCE
           type: string
         applicabilityConditions:
-          $ref: '#/components/schemas/BankingProductRateCondition'
+          description: Applicability conditions for the rate tier.
+          items:
+            $ref: '#/components/schemas/BankingProductRateConditionV2'
+          type: array
         additionalInfo:
           description: Display text providing more information on the rate tier.
           type: string
@@ -4776,17 +4960,47 @@ components:
       - name
       - unitOfMeasure
       type: object
-    BankingProductRateCondition:
-      description: Defines a condition for the applicability of a tiered rate.
+    BankingProductRateConditionV2:
+      description: Defines a condition for the applicability of a rate.
       properties:
+        rateApplicabilityType:
+          description: Category of applicability condition associated with the rate.
+            For more information refer to [Rate and Tier Applicability Types](#tocSbankingproductrateconditiondoc).
+          enum:
+          - MIN_DEPOSITS
+          - MIN_DEPOSIT_AMOUNT
+          - DEPOSIT_BALANCE_INCREASED
+          - EXISTING_CUST
+          - NEW_ACCOUNTS
+          - NEW_CUSTOMER
+          - NEW_CUSTOMER_TO_GROUP
+          - ONLINE_ONLY
+          - OTHER
+          - MIN_PURCHASES
+          - MAX_WITHDRAWALS
+          - MAX_WITHDRAWAL_AMOUNT
+          example: NEW_CUSTOMER
+          type: string
+        additionalValue:
+          description: Generic field containing additional information relevant to
+            the _rateApplicabilityType_ specified. Whether mandatory or not is dependent
+            on the value of [_rateApplicabilityType_](#tocSbankingproductrateconditiondoc).
+          type: string
         additionalInfo:
-          description: Display text providing more information on the condition.
+          description: Display text providing more information on the condition. Mandatory
+            if the [_rateApplicabilityType_](#tocSbankingproductrateconditiondoc)
+            value is `OTHER`.
           type: string
         additionalInfoUri:
           description: Link to a web page with more information on this condition.
           type: string
           x-cds-type: URIString
+      required:
+      - rateApplicabilityType
       type: object
+      x-conditional:
+      - additionalValue
+      - additionalInfo
     ResponseBankingAccountListV2:
       example:
         data:
@@ -4903,14 +5117,14 @@ components:
       - productCategory
       - productName
       type: object
-    ResponseBankingAccountByIdV3:
+    ResponseBankingAccountByIdV4:
       example:
         meta: '{}'
         links:
           self: self
       properties:
         data:
-          $ref: '#/components/schemas/BankingAccountDetailV3'
+          $ref: '#/components/schemas/BankingAccountDetailV4'
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -4919,10 +5133,10 @@ components:
       - data
       - links
       type: object
-    BankingAccountDetailV3:
+    BankingAccountDetailV4:
       allOf:
       - $ref: '#/components/schemas/BankingAccountV2'
-      - $ref: '#/components/schemas/BankingAccountDetailV3_allOf'
+      - $ref: '#/components/schemas/BankingAccountDetailV4_allOf'
     BankingTermDepositAccount:
       properties:
         lodgementDate:
@@ -4982,7 +5196,7 @@ components:
       - paymentDueAmount
       - paymentDueDate
       type: object
-    BankingLoanAccountV2:
+    BankingLoanAccountV3:
       properties:
         originalStartDate:
           description: Optional original start date for the loan.
@@ -5048,11 +5262,12 @@ components:
             $ref: '#/components/schemas/BankingAccountId'
           type: array
         repaymentType:
-          default: PRINCIPAL_AND_INTEREST
-          description: Options in place for repayments. If absent defaults to `PRINCIPAL_AND_INTEREST`.
+          description: Option in place for repayments.
           enum:
           - INTEREST_ONLY
+          - OTHER
           - PRINCIPAL_AND_INTEREST
+          - UNCONSTRAINED
           type: string
         repaymentFrequency:
           description: The expected or required repayment frequency. Formatted according
@@ -5060,6 +5275,8 @@ components:
             (excludes recurrence syntax).
           type: string
           x-cds-type: ExternalRef
+      required:
+      - repaymentType
       type: object
     ResponseBankingTransactionList:
       example:
@@ -5150,7 +5367,7 @@ components:
           description: Unique identifier for the transaction. This is mandatory (through
             hashing if necessary) unless there are specific and justifiable technical
             reasons why a transaction cannot be uniquely identified for a particular
-            account type. It is mandatory if _isDetailAvailable_ is set to `true`.
+            account type. Mandatory if the _isDetailAvailable_ value is `true`.
         isDetailAvailable:
           description: '`true` if extended information is available using the transaction
             detail endpoint. `false` if extended data is not available.'
@@ -6997,7 +7214,7 @@ components:
       required:
       - accountIds
       type: object
-    ResponseBankingProductListV2_data:
+    ResponseBankingProductListV3_data:
       example:
         products:
         - additionalInformation:
@@ -7037,8 +7254,12 @@ components:
           effectiveTo: effectiveTo
           cardArt:
           - imageUri: imageUri
+            cardScheme: AMEX
+            cardType: CHARGE
             title: title
           - imageUri: imageUri
+            cardScheme: AMEX
+            cardType: CHARGE
             title: title
           lastUpdated: lastUpdated
           isTailored: true
@@ -7083,8 +7304,12 @@ components:
           effectiveTo: effectiveTo
           cardArt:
           - imageUri: imageUri
+            cardScheme: AMEX
+            cardType: CHARGE
             title: title
           - imageUri: imageUri
+            cardScheme: AMEX
+            cardType: CHARGE
             title: title
           lastUpdated: lastUpdated
           isTailored: true
@@ -7097,29 +7322,12 @@ components:
           description: The list of products returned. If the filter results in an
             empty set then this array may have no records.
           items:
-            $ref: '#/components/schemas/BankingProductV4'
+            $ref: '#/components/schemas/BankingProductV5'
           type: array
       required:
       - products
       type: object
-    BankingProductV4_cardArt:
-      example:
-        imageUri: imageUri
-        title: title
-      properties:
-        title:
-          description: Display label for the specific image.
-          type: string
-        imageUri:
-          description: URI reference to a PNG, JPG or GIF image with proportions defined
-            by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference
-            may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**.
-          type: string
-          x-cds-type: URIString
-      required:
-      - imageUri
-      type: object
-    BankingProductDetailV5_allOf:
+    BankingProductDetailV6_allOf:
       properties:
         bundles:
           description: An array of bundles that this product participates in. Each
@@ -7130,35 +7338,35 @@ components:
             $ref: '#/components/schemas/BankingProductBundle'
           type: array
         features:
-          description: Array of features available for the product.
+          description: Array of features and limitations of the product.
           items:
-            $ref: '#/components/schemas/BankingProductFeatureV2'
+            $ref: '#/components/schemas/BankingProductFeatureV3'
           type: array
         constraints:
-          description: Constraints on the application for or operation of the product
-            such as minimum balances or limit thresholds.
+          description: Constraints on the application for the product such as minimum
+            balances or limit thresholds.
           items:
-            $ref: '#/components/schemas/BankingProductConstraintV2'
+            $ref: '#/components/schemas/BankingProductConstraintV3'
           type: array
         eligibility:
           description: Eligibility criteria for the product.
           items:
-            $ref: '#/components/schemas/BankingProductEligibility'
+            $ref: '#/components/schemas/BankingProductEligibilityV2'
           type: array
         fees:
           description: Fees applicable to the product.
           items:
-            $ref: '#/components/schemas/BankingProductFee'
+            $ref: '#/components/schemas/BankingProductFeeV2'
           type: array
         depositRates:
           description: Interest rates available for deposits.
           items:
-            $ref: '#/components/schemas/BankingProductDepositRate'
+            $ref: '#/components/schemas/BankingProductDepositRateV2'
           type: array
         lendingRates:
           description: Interest rates charged against lending balances.
           items:
-            $ref: '#/components/schemas/BankingProductLendingRateV2'
+            $ref: '#/components/schemas/BankingProductLendingRateV3'
           type: array
       type: object
     ResponseBankingAccountListV2_data:
@@ -7192,7 +7400,7 @@ components:
       required:
       - accounts
       type: object
-    BankingAccountDetailV3_allOf:
+    BankingAccountDetailV4_allOf:
       properties:
         bsb:
           description: The unmasked BSB for the account. Is expected to be formatted
@@ -7216,13 +7424,18 @@ components:
           - termDeposit
           type: string
         termDeposit:
+          description: Mandatory if the _specificAccountUType_ value is `termDeposit`.
           items:
             $ref: '#/components/schemas/BankingTermDepositAccount'
           type: array
         creditCard:
-          $ref: '#/components/schemas/BankingCreditCardAccount'
+          allOf:
+          - $ref: '#/components/schemas/BankingCreditCardAccount'
+          description: Mandatory if the _specificAccountUType_ value is `creditCard`.
         loan:
-          $ref: '#/components/schemas/BankingLoanAccountV2'
+          allOf:
+          - $ref: '#/components/schemas/BankingLoanAccountV3'
+          description: Mandatory if the _specificAccountUType_ value is `loan`.
         depositRate:
           description: Current rate to calculate interest earned being applied to
             deposit balances as it stands at the time of the API call.
@@ -7237,28 +7450,34 @@ components:
           description: Fully described deposit rates for this account based on the
             equivalent structure in Product Reference.
           items:
-            $ref: '#/components/schemas/BankingProductDepositRate'
+            $ref: '#/components/schemas/BankingProductDepositRateV2'
           type: array
         lendingRates:
           description: Fully described lending rates for this account based on the
             equivalent structure in Product Reference.
           items:
-            $ref: '#/components/schemas/BankingProductLendingRateV2'
+            $ref: '#/components/schemas/BankingProductLendingRateV3'
           type: array
         features:
           description: Array of features of the account based on the equivalent structure
             in Product Reference with the following additional field.
           items:
             allOf:
-            - $ref: '#/components/schemas/BankingProductFeatureV2'
+            - $ref: '#/components/schemas/BankingProductFeatureV3'
             - properties:
                 isActivated:
-                  default: true
-                  description: '`true` if the feature is already activated and `false`
-                    if the feature is available for activation. Defaults to `true`
-                    if absent.<br>**Note:** this is an additional field appended to
-                    the feature object defined in the Product Reference payload.'
-                  type: boolean
+                  default: UNKNOWN
+                  description: <ul><li>`ACTIVATED` if the feature has been activated
+                    by the customer or is a standard feature of the product</li><li>`NOT_ACTIVATED`
+                    if the feature is not activated but is available for activation</li><li>`UNKNOWN`
+                    or absent if the activation state is unknown.</ul>**Note:** This
+                    is an additional field appended to the feature structure defined
+                    in the Product Reference payload.
+                  enum:
+                  - ACTIVATED
+                  - NOT_ACTIVATED
+                  - UNKNOWN
+                  type: string
               type: object
             type: object
           type: array
@@ -7266,7 +7485,7 @@ components:
           description: Fees and charges applicable to the account based on the equivalent
             structure in Product Reference.
           items:
-            $ref: '#/components/schemas/BankingProductFee'
+            $ref: '#/components/schemas/BankingProductFeeV2'
           type: array
         addresses:
           description: The addresses for the account to be used for correspondence.

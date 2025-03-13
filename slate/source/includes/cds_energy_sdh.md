@@ -53,6 +53,8 @@ fetch('https://tls.sdh.example.com/cds-au/v1/secondary/energy/electricity/servic
 
 Obtain a list of service points owned by the customer that has authorised the current session.
 
+Other Versions: [v1](includes/obsolete/get-service-points-SR-v1.html).
+
 > Body parameter
 
 ```json
@@ -69,7 +71,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 <h3 id="cdr-energy-secondary-data-holder-api_get-service-points-sr_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="cdr-energy-secondary-data-holder-api_get-service-points-sr_parameters">Parameters</h3>
 
@@ -100,6 +102,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
         "isGenerator": false,
         "validFromDate": "string",
         "lastUpdateDateTime": "string",
+        "lastConsumerChangeDate": "string",
         "consumerProfile": {
           "classification": "BUSINESS",
           "threshold": "LOW"
@@ -125,7 +128,7 @@ Obtain a list of service points owned by the customer that has authorised the cu
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyServicePointListResponse](#schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyServicePointListResponseV2](#schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponsev2)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
@@ -188,10 +191,12 @@ fetch('https://tls.sdh.example.com/cds-au/v1/secondary/energy/electricity/servic
 
 Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.
 
+Other Versions: [v1](includes/obsolete/get-service-point-detail-SR-v1.html).
+
 <h3 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
 <h3 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr_parameters">Parameters</h3>
 
@@ -218,6 +223,7 @@ Obtain detailed standing information for a specific service point that is owned 
     "isGenerator": false,
     "validFromDate": "string",
     "lastUpdateDateTime": "string",
+    "lastConsumerChangeDate": "string",
     "consumerProfile": {
       "classification": "BUSINESS",
       "threshold": "LOW"
@@ -309,7 +315,7 @@ Obtain detailed standing information for a specific service point that is owned 
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyServicePointDetailResponse](#schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyServicePointDetailResponseV2](#schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponsev2)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2)|
@@ -992,12 +998,12 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h2 class="schema-heading" id="cdr-energy-secondary-data-holder-api-schemas">Schemas</h2>
 
-<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
-<p id="tocSenergyservicepointlistresponse" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointlistresponsev2">EnergyServicePointListResponseV2</h3>
+<p id="tocSenergyservicepointlistresponsev2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointlistresponse"></a>
-  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponsev2"></a>
 </p>
 
 ```json
@@ -1013,6 +1019,7 @@ This operation may only be called by an Energy Retailer using the information se
         "isGenerator": false,
         "validFromDate": "string",
         "lastUpdateDateTime": "string",
+        "lastConsumerChangeDate": "string",
         "consumerProfile": {
           "classification": "BUSINESS",
           "threshold": "LOW"
@@ -1034,21 +1041,21 @@ This operation may only be called by an Energy Retailer using the information se
 }
 ```
 
-<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointlistresponse_properties">Properties</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointlistresponsev2_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
 |data|object|mandatory||none|
-|» servicePoints|[[EnergyServicePoint](#schemacdr-energy-secondary-data-holder-apienergyservicepoint)]|mandatory||none|
+|» servicePoints|[[EnergyServicePointV2](#schemacdr-energy-secondary-data-holder-apienergyservicepointv2)]|mandatory||none|
 |links|[LinksPaginated](#schemacdr-energy-secondary-data-holder-apilinkspaginated)|mandatory||none|
 |meta|[MetaPaginated](#schemacdr-energy-secondary-data-holder-apimetapaginated)|mandatory||none|
 
-<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
-<p id="tocSenergyservicepointdetailresponse" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetailresponsev2">EnergyServicePointDetailResponseV2</h3>
+<p id="tocSenergyservicepointdetailresponsev2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointdetailresponse"></a>
-  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponsev2"></a>
 </p>
 
 ```json
@@ -1062,6 +1069,7 @@ This operation may only be called by an Energy Retailer using the information se
     "isGenerator": false,
     "validFromDate": "string",
     "lastUpdateDateTime": "string",
+    "lastConsumerChangeDate": "string",
     "consumerProfile": {
       "classification": "BUSINESS",
       "threshold": "LOW"
@@ -1149,11 +1157,11 @@ This operation may only be called by an Energy Retailer using the information se
 }
 ```
 
-<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointdetailresponse_properties">Properties</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointdetailresponsev2_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
-|data|[EnergyServicePointDetail](#schemacdr-energy-secondary-data-holder-apienergyservicepointdetail)|mandatory||none|
+|data|[EnergyServicePointDetailV2](#schemacdr-energy-secondary-data-holder-apienergyservicepointdetailv2)|mandatory||none|
 |links|[Links](#schemacdr-energy-secondary-data-holder-apilinks)|mandatory||none|
 |meta|[Meta](#schemacdr-energy-secondary-data-holder-apimeta)|optional||none|
 
@@ -1445,12 +1453,12 @@ This operation may only be called by an Energy Retailer using the information se
 |meta|object|conditional||Additional data for customised error codes.|
 |» urn|string|conditional||The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code.|
 
-<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepoint">EnergyServicePoint</h3>
-<p id="tocSenergyservicepoint" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointv2">EnergyServicePointV2</h3>
+<p id="tocSenergyservicepointv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepoint"></a>
-  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepoint"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointv2"></a>
 </p>
 
 ```json
@@ -1463,6 +1471,7 @@ This operation may only be called by an Energy Retailer using the information se
   "isGenerator": false,
   "validFromDate": "string",
   "lastUpdateDateTime": "string",
+  "lastConsumerChangeDate": "string",
   "consumerProfile": {
     "classification": "BUSINESS",
     "threshold": "LOW"
@@ -1470,7 +1479,7 @@ This operation may only be called by an Energy Retailer using the information se
 }
 ```
 
-<h3 id="cdr-energy-secondary-data-holder-api_energyservicepoint_properties">Properties</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointv2_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
@@ -1482,11 +1491,12 @@ This operation may only be called by an Energy Retailer using the information se
 |isGenerator|[Boolean](#common-field-types)|optional|`false`|This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit (this may include generator auxiliary loads). If absent defaults to `false`. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer.|
 |validFromDate|[DateString](#common-field-types)|mandatory||The latest start date from which the constituent data sets of this service point became valid.|
 |lastUpdateDateTime|[DateTimeString](#common-field-types)|mandatory||The date and time that the information for this service point was modified.|
+|lastConsumerChangeDate|[DateString](#common-field-types)|optional||The date the account holder changed for the NMI.|
 |consumerProfile|object|optional||none|
 |» classification|[Enum](#common-field-types)|optional||A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments.|
 |» threshold|[Enum](#common-field-types)|optional||A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>`LOW`: Consumption is less than the 'lower consumption threshold' as defined in the National Energy Retail Regulations</li><li>`MEDIUM`: Consumption is equal to or greater than the 'lower consumption threshold', but less than the 'upper consumption threshold', as defined in the National Energy Retail Regulations</li><li>`HIGH`: Consumption is equal to or greater than the 'upper consumption threshold' as defined in the National Energy Retail Regulations.</li></ul>|
 
-<h4 id="cdr-energy-secondary-data-holder-api_energyservicepoint_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-energy-secondary-data-holder-api_energyservicepointv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -1517,12 +1527,12 @@ This operation may only be called by an Energy Retailer using the information se
 |threshold|MEDIUM|
 |threshold|HIGH|
 
-<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
-<p id="tocSenergyservicepointdetail" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetailv2">EnergyServicePointDetailV2</h3>
+<p id="tocSenergyservicepointdetailv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointdetail"></a>
-  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetail"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetailv2"></a>
 </p>
 
 ```json
@@ -1535,6 +1545,7 @@ This operation may only be called by an Energy Retailer using the information se
   "isGenerator": false,
   "validFromDate": "string",
   "lastUpdateDateTime": "string",
+  "lastConsumerChangeDate": "string",
   "consumerProfile": {
     "classification": "BUSINESS",
     "threshold": "LOW"
@@ -1617,13 +1628,13 @@ This operation may only be called by an Energy Retailer using the information se
 }
 ```
 
-<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointdetail_properties">Properties</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointdetailv2_properties">Properties</h3>
 
 *allOf*
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
-|*anonymous*|[EnergyServicePoint](#schemacdr-energy-secondary-data-holder-apienergyservicepoint)|mandatory||none|
+|*anonymous*|[EnergyServicePointV2](#schemacdr-energy-secondary-data-holder-apienergyservicepointv2)|mandatory||none|
 
 *and*
 
@@ -1659,7 +1670,7 @@ This operation may only be called by an Energy Retailer using the information se
 |»»» controlledLoad|[Boolean](#common-field-types)|optional||Indicates whether the energy recorded by this register is created under a Controlled Load regime.|
 |»»» consumptionType|[Enum](#common-field-types)|optional||Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>`ACTUAL`: implies volume of energy actually metered between two dates</li><li>`CUMULATIVE`: indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates.</li></ul>|
 
-<h4 id="cdr-energy-secondary-data-holder-api_energyservicepointdetail_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-energy-secondary-data-holder-api_energyservicepointdetailv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|

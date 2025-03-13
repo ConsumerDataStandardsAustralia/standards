@@ -15,6 +15,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>13/03/2025</td>
+<td><a href="https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.34.0/">1.34.0</a></td>
+<td>Changes from Decision 338 (Updates to Banking Products and Accounts) and Decision 361 (Energy Last Consumer Change Date)</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.34.0.html">release notes</a>, <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/338">Decision 338</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/361">Decision 361</a> for details.</td>
+</tr>
+<tr>
 <td>06/03/2025</td>
 <td><a href="https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.33.1/">1.33.1</a></td>
 <td>Changes from OpenAPI spec refactoring.</td>

@@ -108,7 +108,7 @@ None
 |Change|Description|Link|
 |------|-----------|----|
 |Non-Bank Lending Candidate Standards|**[Decision Proposal #318](https://github.com/ConsumerDataStandardsAustralia/standards/issues/318):** The Draft Non-Bank Lending Standards have been made as Candidate Standards. No other changes were made between the Draft and Candidate version.|[Additional Standards](../../#additional-standards)|
-|Version Delta|No changes were made to the [Candidate Standards for Banking Decision Proposal 306](../../includes/additional/candidates/dp306/banking-dp306.html) in this release, but the Version Delta notes in that Candidate have been retained from version 1.28.0 for reference. |[Additional Standards](../../#additional-standards)|
+|Version Delta|No changes were made to the [Candidate Standards for Banking Decision Proposal 306](https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.29.0/includes/additional/candidates/dp306/banking-dp306.html) in this release, but the Version Delta notes in that Candidate have been retained from version 1.28.0 for reference. |[Additional Standards](../../#additional-standards)|
 
 ## Known Issues
 

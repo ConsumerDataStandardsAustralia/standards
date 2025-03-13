@@ -1,0 +1,382 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Consumer Data Standards - v1.34.0 Release Notes</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="no-code-layout includes includes_releasenotes includes_releasenotes_releasenotes" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#v1-34-0-release-notes" class="toc-h1 toc-link" data-title="V1.34.0 Release Notes">V1.34.0 Release Notes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#changes-made" class="toc-h2 toc-link" data-title="Changes Made">Changes Made</a>
+                  </li>
+                  <li>
+                    <a href="#general-changes" class="toc-h2 toc-link" data-title="General Changes">General Changes</a>
+                  </li>
+                  <li>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
+                  <li>
+                    <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
+                  </li>
+                  <li>
+                    <a href="#api-endpoints" class="toc-h2 toc-link" data-title="API Endpoints">API Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#information-security-profile" class="toc-h2 toc-link" data-title="Information Security Profile">Information Security Profile</a>
+                  </li>
+                  <li>
+                    <a href="#register-standards" class="toc-h2 toc-link" data-title="Register Standards">Register Standards</a>
+                  </li>
+                  <li>
+                    <a href="#consumer-experience" class="toc-h2 toc-link" data-title="Consumer Experience">Consumer Experience</a>
+                  </li>
+                  <li>
+                    <a href="#non-functional-requirements" class="toc-h2 toc-link" data-title="Non-Functional Requirements">Non-Functional Requirements</a>
+                  </li>
+                  <li>
+                    <a href="#shared-responsibility" class="toc-h2 toc-link" data-title="Shared Responsibility">Shared Responsibility</a>
+                  </li>
+                  <li>
+                    <a href="#additional-standards" class="toc-h2 toc-link" data-title="Additional Standards">Additional Standards</a>
+                  </li>
+                  <li>
+                    <a href="#known-issues" class="toc-h2 toc-link" data-title="Known Issues">Known Issues</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../'>Consumer Data Standards</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="content">
+        <h1 id='v1-34-0-release-notes'>V1.34.0 Release Notes</h1>
+<p>Release notes for version <strong>1.34.0</strong> of the <a href="../../">CDR Standards</a>.</p>
+<h2 id='changes-made'>Changes Made</h2><h3 id='change-requests'>Change Requests</h3>
+<p>This release addresses the following minor defects raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues">Standards Staging</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/477">Standards Staging #477 - Add a list of Data Standards Chairs</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/479">Standards Staging #479 - Update documentation links to Register endpoints</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/481">Standards Staging #481 - Update energy endpoint version schedule</a></li>
+</ul>
+<h3 id='decision-proposals'>Decision Proposals</h3>
+<p>This release addresses the following Decision Proposals published on <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues">Standards</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/338">Decision Proposal #338 - Updates to Banking Products and Accounts</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/361">Decision Proposal #361 - Energy LCCD Phase 2</a></li>
+</ul>
+<h2 id='general-changes'>General Changes</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Update links</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/479"><strong>Standards Staging #479</strong></a>: Corrected documentation links referring to Register endpoints.</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+<h2 id='introduction'>Introduction</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>FDO for LCCD changes</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/361"><strong>Decision Proposal #361</strong></a>: Added FDOs for Last Consumer Change Date (LCCD) related changes in Energy standards.</td>
+<td><a href="../../#future-dated-obligations">FDO</a></td>
+</tr>
+<tr>
+<td>Added Data Standards Chair section</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/477"><strong>Standards Staging #477</strong></a>: A new section has been added to the standards to cover the Data Standards Chair appointments.</td>
+<td><a href="../../#data-standards-chair">Data Standards Chair</a></td>
+</tr>
+<tr>
+<td>Updated Energy Endpoint Version Schedule</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/481"><strong>Standards Staging #481</strong></a>: Replaced <strong>&quot;Energy Shared Responsibility APIs&quot;</strong> with <strong>&quot;Energy Secondary DH APIs&quot;</strong>. Moved endpoints from previous &quot;Energy Shared Responsibility APIs&quot; table into &quot;Energy APIs&quot; table.</td>
+<td><a href="../../#endpoint-version-schedule">Endpoint Version Schedule</a></td>
+</tr>
+</tbody></table>
+<h2 id='high-level-standards'>High Level Standards</h2>
+<p>None</p>
+<h2 id='api-endpoints'>API Endpoints</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Updates to Banking Products and Accounts</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/338"><strong>Decision Proposal #338</strong></a>: Incorporated changes from Decision 338:<ul><li>Incremented endpoint versions:<ul><li>Get Products v4</li><li>Get Product Detail v6</li><li>Get Account Detail v4</li></ul></li><li>Changes incorporated into the updated versions include:<ul><li>Added <em>cardScheme</em> and <em>cardType</em> fields in the existing <em>cardArt</em> object</li><li>Added <code>BALANCE_TRANSFER</code> <em>lendingRateType</em> option</li><li>Modified the feature <em>isActivated</em> field behaviour</li><li>Added <code>FUNDS_AVAILABLE_AFTER</code> <em>featureType</em> option</li><li>Added <code>OTHER</code> <em>constraintType</em> option</li><li>Clarified the descriptions of the <em>constraints</em> and <em>features</em> fields</li><li>Updated and aligned the <code>PENSION_RECIPIENT</code> and <code>STUDENT</code> eligibility and discount eligibility &#39;Use of additionalValue Field&#39; details</li><li>Added <code>OTHER</code> and <code>UNCONSTRAINED</code> <em>repaymentType</em> options and specified the field as mandatory</li><li>Added <code>OTHER</code> and <code>UNCONSTRAINED</code> <em>loanPurpose</em> options and specified the field as mandatory</li><li>Modified the existing <em>applicabilityConditions</em> structure in rate tier objects and added the same structure at the rate level</li><li>Added rate <em>applicationType</em> field in rate objects and modified the corresponding <em>applicationFrequency</em> field requirement</li><li>Changed the field type for the <em>minimumValue</em> and <em>maximumValue</em> fields in the rate tier structure from &#39;Number&#39; to &#39;string&#39;</li><li>Removed the <code>VARIABLE</code> <em>feeType</em> value, added eight new <em>feeType</em> values, and refined the fee and fee discount structures.</li></ul></li><li>Minor documentation updates for consistency.</li></ul></td>
+<td><a href="../../#banking-apis">Banking APIs</a></td>
+</tr>
+<tr>
+<td>LCCD changes</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/361"><strong>Decision Proposal #361</strong></a>: <ul><li>Incremented versions of Get Service Points, Get Service Point Detail, Get Service Points (SR) and Get Service Point Detail (SR) APIs to v2</li><li>Added new field EnergyServicePointV2.lastConsumerChangeDate.</li></ul></td>
+<td><a href="../../#energy-apis">Energy APIs</a>, <a href="../../#energy-secondary-dh-apis">Energy SDH APIs</a></td>
+</tr>
+</tbody></table>
+<h2 id='information-security-profile'>Information Security Profile</h2>
+<p>None</p>
+<h2 id='register-standards'>Register Standards</h2>
+<p>None</p>
+<h2 id='consumer-experience'>Consumer Experience</h2>
+<p>None</p>
+<h2 id='non-functional-requirements'>Non-Functional Requirements</h2>
+<p>None</p>
+<h2 id='shared-responsibility'>Shared Responsibility</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>LCCD changes</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/361"><strong>Decision Proposal #361</strong></a>: Updated <strong>Additional Requirements</strong> section with notes for electricity usage data sharing using Last Consumer Change Date (LCCD).</td>
+<td><a href="../../#additional-requirements">Additional Requirements</a></td>
+</tr>
+</tbody></table>
+<h2 id='additional-standards'>Additional Standards</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Removed Candidate</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/338"><strong>Decision Proposal #338</strong></a>: Removed Candidate Standards for Banking Decision Proposal 306.</td>
+<td><a href="../../#additional-standards">Additional Standards</a></td>
+</tr>
+</tbody></table>
+<h2 id='known-issues'>Known Issues</h2>
+<p>None</p>
+<p style="margin-bottom:300px"></p>
+
+      </div>
+    </div>
+  </body>
+</html>

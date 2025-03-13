@@ -228,7 +228,7 @@
                     <a href="#energy-apis" class="toc-h2 toc-link" data-title="Energy APIs">Energy APIs</a>
                   </li>
                   <li>
-                    <a href="#energy-shared-responsibility-apis" class="toc-h2 toc-link" data-title="Energy Shared Responsibility APIs">Energy Shared Responsibility APIs</a>
+                    <a href="#energy-secondary-dh-apis" class="toc-h2 toc-link" data-title="Energy Secondary DH APIs">Energy Secondary DH APIs</a>
                   </li>
                   <li>
                     <a href="#dynamic-client-registration-apis" class="toc-h2 toc-link" data-title="Dynamic Client Registration APIs">Dynamic Client Registration APIs</a>
@@ -319,7 +319,7 @@
 <tr>
 <td style="text-align: left"><strong>Y25 #5</strong></td>
 <td style="text-align: center">2025-11-10</td>
-<td style="text-align: center">0</td>
+<td style="text-align: center">8</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Y26 #1</strong></td>
@@ -459,8 +459,19 @@
 <td><span class="method get">GET</span></td>
 <td>V3</td>
 <td>2021-02-28</td>
-<td>N/A</td>
+<td>2026-05-11</td>
 <td>2020-04-17, V1.3.0</td>
+<td>2025-03-13, V1.34.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Products</td>
+<td><code>/banking/products</code></td>
+<td><span class="method get">GET</span></td>
+<td>V4</td>
+<td>2025-11-10</td>
+<td>N/A</td>
+<td>2025-03-13, V1.34.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -514,8 +525,19 @@
 <td><span class="method get">GET</span></td>
 <td>V5</td>
 <td>2025-07-14</td>
-<td>N/A</td>
+<td>2026-05-11</td>
 <td>2024-12-18, V1.33.0</td>
+<td>2025-03-13, V1.34.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Product Detail</td>
+<td><code>/banking/product/{productId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V6</td>
+<td>2025-11-10</td>
+<td>N/A</td>
+<td>2025-03-13, V1.34.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -602,8 +624,19 @@
 <td><span class="method get">GET</span></td>
 <td>V3</td>
 <td>2023-07-10</td>
-<td>N/A</td>
+<td>2026-05-11</td>
 <td>2022-12-22, V1.22.0</td>
+<td>2025-03-13, V1.34.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Account Detail</td>
+<td><code>/banking/accounts/{accountId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V4</td>
+<td>2025-11-10</td>
+<td>N/A</td>
+<td>2025-03-13, V1.34.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -817,7 +850,7 @@
 <td>2022-10-01</td>
 <td>2024-09-09</td>
 <td>2021-10-29, V1.14.0</td>
-<td>2023-05-07, 1.24.0</td>
+<td>2023-05-07, V1.24.0</td>
 </tr>
 <tr>
 <td>Energy APIs</td>
@@ -827,8 +860,8 @@
 <td>V2</td>
 <td>2023-11-01</td>
 <td>2025-03-03</td>
-<td>2023-05-07, 1.24.0</td>
-<td>2024-04-24, 1.30.0</td>
+<td>2023-05-07, V1.24.0</td>
+<td>2024-04-24, V1.30.0</td>
 </tr>
 <tr>
 <td>Energy APIs</td>
@@ -838,7 +871,117 @@
 <td>V3</td>
 <td>2024-11-11</td>
 <td>N/A</td>
-<td>2024-04-24, 1.30.0</td>
+<td>2024-04-24, V1.30.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Service Points</td>
+<td><code>/energy/electricity/servicepoints</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>2026-03-16</td>
+<td>2021-10-29, V1.14.0</td>
+<td>2025-03-13, V1.34.0</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Service Points</td>
+<td><code>/energy/electricity/servicepoints</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2025-11-10</td>
+<td>N/A</td>
+<td>2025-03-13, V1.34.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Service Point Detail</td>
+<td><code>/energy/electricity/servicepoints/{servicePointId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>2026-03-16</td>
+<td>2021-10-29, V1.14.0</td>
+<td>2025-03-13, V1.34.0</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Service Point Detail</td>
+<td><code>/energy/electricity/servicepoints/{servicePointId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2025-11-10</td>
+<td>N/A</td>
+<td>2025-03-13, V1.34.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Usage For Service Point</td>
+<td><code>/energy/electricity/servicepoints/{servicePointId}/usage</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Bulk Usage</td>
+<td><code>/energy/electricity/servicepoints/usage</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Usage For Specific Service Points</td>
+<td><code>/energy/electricity/servicepoints/usage</code></td>
+<td><span class="method post">POST</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get DER For Service Point</td>
+<td><code>/energy/electricity/servicepoints/{servicePointId}/der</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Bulk DER</td>
+<td><code>/energy/electricity/servicepoints/der</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get DER For Specific Service Points</td>
+<td><code>/energy/electricity/servicepoints/der</code></td>
+<td><span class="method post">POST</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>N/A</td>
+<td>2021-10-29, V1.14.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -883,7 +1026,7 @@
 <td>2023-04-14</td>
 <td>2024-09-09</td>
 <td>2022-09-13, V1.19.0</td>
-<td>2023-05-07, 1.24.0</td>
+<td>2023-05-07, V1.24.0</td>
 </tr>
 <tr>
 <td>Energy APIs</td>
@@ -893,8 +1036,8 @@
 <td>V3</td>
 <td>2023-11-01</td>
 <td>2025-03-03</td>
-<td>2023-05-07, 1.24.0</td>
-<td>2024-04-24, 1.30.0</td>
+<td>2023-05-07, V1.24.0</td>
+<td>2024-04-24, V1.30.0</td>
 </tr>
 <tr>
 <td>Energy APIs</td>
@@ -904,7 +1047,7 @@
 <td>V4</td>
 <td>2024-11-11</td>
 <td>N/A</td>
-<td>2024-04-24, 1.30.0</td>
+<td>2024-04-24, V1.30.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -1095,7 +1238,7 @@
 <td>N/A</td>
 </tr>
 </tbody></table>
-<h2 id='energy-shared-responsibility-apis'>Energy Shared Responsibility APIs</h2>
+<h2 id='energy-secondary-dh-apis'>Energy Secondary DH APIs</h2>
 <table><thead>
 <tr>
 <th>Section</th>
@@ -1111,8 +1254,52 @@
 </thead><tbody>
 <tr>
 <td>Energy APIs</td>
-<td>Get Service Points</td>
-<td><code>/energy/electricity/servicepoints</code></td>
+<td>Get Service Points (SR)</td>
+<td><code>/secondary/energy/electricity/servicepoints</code></td>
+<td><span class="method post">POST</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>2026-03-16</td>
+<td>2021-10-29, V1.14.0</td>
+<td>2025-03-13, V1.34.0</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Service Points (SR)</td>
+<td><code>/secondary/energy/electricity/servicepoints</code></td>
+<td><span class="method post">POST</span></td>
+<td>V2</td>
+<td>2025-11-10</td>
+<td>N/A</td>
+<td>2025-03-13, V1.34.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Service Point Detail (SR)</td>
+<td><code>/secondary/energy/electricity/servicepoints/{servicePointId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2022-11-15</td>
+<td>2026-03-16</td>
+<td>2021-10-29, V1.14.0</td>
+<td>2025-03-13, V1.34.0</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Service Point Detail (SR)</td>
+<td><code>/secondary/energy/electricity/servicepoints/{servicePointId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2025-11-10</td>
+<td>N/A</td>
+<td>2025-03-13, V1.34.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Energy APIs</td>
+<td>Get Usage For Service Point (SR)</td>
+<td><code>/secondary/energy/electricity/servicepoints/{servicePointId}/usage</code></td>
 <td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2022-11-15</td>
@@ -1122,41 +1309,8 @@
 </tr>
 <tr>
 <td>Energy APIs</td>
-<td>Get Service Point Detail</td>
-<td><code>/energy/electricity/servicepoints/{servicePointId}</code></td>
-<td><span class="method get">GET</span></td>
-<td>V1</td>
-<td>2022-11-15</td>
-<td>N/A</td>
-<td>2021-10-29, V1.14.0</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td>Energy APIs</td>
-<td>Get Usage For Service Point</td>
-<td><code>/energy/electricity/servicepoints/&lt;br/&gt;{servicePointId}/usage</code></td>
-<td><span class="method get">GET</span></td>
-<td>V1</td>
-<td>2022-11-15</td>
-<td>N/A</td>
-<td>2021-10-29, V1.14.0</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td>Energy APIs</td>
-<td>Get Bulk Usage</td>
-<td><code>/energy/electricity/servicepoints/usage</code></td>
-<td><span class="method get">GET</span></td>
-<td>V1</td>
-<td>2022-11-15</td>
-<td>N/A</td>
-<td>2021-10-29, V1.14.0</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td>Energy APIs</td>
-<td>Get Usage For Specific Service Points</td>
-<td><code>/energy/electricity/servicepoints/usage</code></td>
+<td>Get Usage For Specific Service Points (SR)</td>
+<td><code>/secondary/energy/electricity/servicepoints/usage</code></td>
 <td><span class="method post">POST</span></td>
 <td>V1</td>
 <td>2022-11-15</td>
@@ -1166,8 +1320,8 @@
 </tr>
 <tr>
 <td>Energy APIs</td>
-<td>Get DER For Service Point</td>
-<td><code>/energy/electricity/servicepoints/</code><br/><code>{servicePointId}/der</code></td>
+<td>Get DER For Service Point (SR)</td>
+<td><code>/secondary/energy/electricity/servicepoints/{servicePointId}/der</code></td>
 <td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2022-11-15</td>
@@ -1177,19 +1331,8 @@
 </tr>
 <tr>
 <td>Energy APIs</td>
-<td>Get Bulk DER</td>
-<td><code>/energy/electricity/servicepoints/der</code></td>
-<td><span class="method get">GET</span></td>
-<td>V1</td>
-<td>2022-11-15</td>
-<td>N/A</td>
-<td>2021-10-29, V1.14.0</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td>Energy APIs</td>
-<td>Get DER For Specific Service Points</td>
-<td><code>/energy/electricity/servicepoints/der</code></td>
+<td>Get DER For Specific Service Points (SR)</td>
+<td><code>/secondary/energy/electricity/servicepoints/der</code></td>
 <td><span class="method post">POST</span></td>
 <td>V1</td>
 <td>2022-11-15</td>

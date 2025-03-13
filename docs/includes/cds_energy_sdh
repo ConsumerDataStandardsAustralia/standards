@@ -49,6 +49,8 @@
 
 <p>Obtain a list of service points owned by the customer that has authorised the current session.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-service-points-SR-v1.html">v1</a>.</p>
+
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -71,7 +73,7 @@
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -162,6 +164,7 @@
         </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastConsumerChangeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
@@ -196,7 +199,7 @@
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponse">EnergyServicePointListResponse</a></td>
+<td><a href="#schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponsev2">EnergyServicePointListResponseV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -306,6 +309,8 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p>Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-service-point-detail-SR-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -316,7 +321,7 @@ This operation may only be called by an Energy Retailer using the information se
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -389,6 +394,7 @@ This operation may only be called by an Energy Retailer using the information se
     </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastConsumerChangeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
@@ -489,7 +495,7 @@ This operation may only be called by an Energy Retailer using the information se
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponse">EnergyServicePointDetailResponse</a></td>
+<td><a href="#schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponsev2">EnergyServicePointDetailResponseV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -1781,13 +1787,13 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h2 class="schema-heading" id="cdr-energy-secondary-data-holder-api-schemas">Schemas</h2>
 
-<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointlistresponse">EnergyServicePointListResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointlistresponsev2">EnergyServicePointListResponseV2</h3>
 
-<p id="tocSenergyservicepointlistresponse" class="orig-anchor"></p>
+<p id="tocSenergyservicepointlistresponsev2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointlistresponse"></a>
-  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponsev2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1801,6 +1807,7 @@ This operation may only be called by an Energy Retailer using the information se
         </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastConsumerChangeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
@@ -1821,7 +1828,7 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointlistresponse_properties">Properties</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointlistresponsev2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1841,7 +1848,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 <tr>
 <td>» servicePoints</td>
-<td>[<a href="#schemacdr-energy-secondary-data-holder-apienergyservicepoint">EnergyServicePoint</a>]</td>
+<td>[<a href="#schemacdr-energy-secondary-data-holder-apienergyservicepointv2">EnergyServicePointV2</a>]</td>
 <td>mandatory</td>
 <td></td>
 <td>none</td>
@@ -1862,13 +1869,13 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetailresponse">EnergyServicePointDetailResponse</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetailresponsev2">EnergyServicePointDetailResponseV2</h3>
 
-<p id="tocSenergyservicepointdetailresponse" class="orig-anchor"></p>
+<p id="tocSenergyservicepointdetailresponsev2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointdetailresponse"></a>
-  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponse"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetailresponsev2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1880,6 +1887,7 @@ This operation may only be called by an Energy Retailer using the information se
     </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastConsumerChangeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
@@ -1966,7 +1974,7 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointdetailresponse_properties">Properties</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointdetailresponsev2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1979,7 +1987,7 @@ This operation may only be called by an Energy Retailer using the information se
 </thead><tbody>
 <tr>
 <td>data</td>
-<td><a href="#schemacdr-energy-secondary-data-holder-apienergyservicepointdetail">EnergyServicePointDetail</a></td>
+<td><a href="#schemacdr-energy-secondary-data-holder-apienergyservicepointdetailv2">EnergyServicePointDetailV2</a></td>
 <td>mandatory</td>
 <td></td>
 <td>none</td>
@@ -2420,13 +2428,13 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepoint">EnergyServicePoint</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointv2">EnergyServicePointV2</h3>
 
-<p id="tocSenergyservicepoint" class="orig-anchor"></p>
+<p id="tocSenergyservicepointv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepoint"></a>
-  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepoint"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2437,13 +2445,14 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastConsumerChangeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-energy-secondary-data-holder-api_energyservicepoint_properties">Properties</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -2511,6 +2520,13 @@ This operation may only be called by an Energy Retailer using the information se
 <td>The date and time that the information for this service point was modified.</td>
 </tr>
 <tr>
+<td>lastConsumerChangeDate</td>
+<td><a href="#common-field-types">DateString</a></td>
+<td>optional</td>
+<td></td>
+<td>The date the account holder changed for the NMI.</td>
+</tr>
+<tr>
 <td>consumerProfile</td>
 <td>object</td>
 <td>optional</td>
@@ -2533,7 +2549,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h4 id="cdr-energy-secondary-data-holder-api_energyservicepoint_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-energy-secondary-data-holder-api_energyservicepointv2_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -2647,13 +2663,13 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetail">EnergyServicePointDetail</h3>
+<h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetailv2">EnergyServicePointDetailV2</h3>
 
-<p id="tocSenergyservicepointdetail" class="orig-anchor"></p>
+<p id="tocSenergyservicepointdetailv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointdetail"></a>
-  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetail"></a>
+  <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointdetailv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servicePointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2664,6 +2680,7 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="s2">"isGenerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"validFromDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"lastUpdateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastConsumerChangeDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"consumerProfile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUSINESS"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOW"</span><span class="w">
@@ -2745,7 +2762,7 @@ This operation may only be called by an Energy Retailer using the information se
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointdetail_properties">Properties</h3>
+<h3 id="cdr-energy-secondary-data-holder-api_energyservicepointdetailv2_properties">Properties</h3>
 
 <p><em>allOf</em></p>
 
@@ -2760,7 +2777,7 @@ This operation may only be called by an Energy Retailer using the information se
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td><a href="#schemacdr-energy-secondary-data-holder-apienergyservicepoint">EnergyServicePoint</a></td>
+<td><a href="#schemacdr-energy-secondary-data-holder-apienergyservicepointv2">EnergyServicePointV2</a></td>
 <td>mandatory</td>
 <td></td>
 <td>none</td>
@@ -2983,7 +3000,7 @@ This operation may only be called by an Energy Retailer using the information se
 </tr>
 </tbody></table>
 
-<h4 id="cdr-energy-secondary-data-holder-api_energyservicepointdetail_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-energy-secondary-data-holder-api_energyservicepointdetailv2_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>

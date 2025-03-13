@@ -8,7 +8,7 @@
     },
     "description" : "Specifications for Register endpoints made available to participants.",
     "title" : "CDR Register API",
-    "version" : "1.33.1"
+    "version" : "1.34.0"
   },
   "servers" : [ {
     "description" : "Production TLS",

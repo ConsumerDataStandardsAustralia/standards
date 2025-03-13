@@ -10,7 +10,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Admin API
-  version: 1.33.1
+  version: 1.34.0
 servers:
 - description: MTLS
   url: https://mtls.dh.example.com/cds-au/v1
