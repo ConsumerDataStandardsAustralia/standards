@@ -10,10 +10,14 @@ These standards fall into three categories:
 
 ## Candidate Standards
 
+```diff
+Removed Decision Proposal 306 Candidate. Any applicable changes have been incorporated through Decision 338
+- Candidate Standards for Banking Decision Proposal 306
+```
+
 The Consumer Data Standards currently include the following Candidate Standards:
 
 - [Candidate Standards for the Telecommunications sector](./includes/additional/candidates/telco/telco.html).
-- [Candidate Standards for Banking Decision Proposal 306](./includes/additional/candidates/dp306/banking-dp306.html).
 - [Candidate Standards for the Banking and Non-Bank Lending sector](./includes/additional/candidates/non-bank-lending/banking-non-bank-lending.html).
 
 ## Draft Standards

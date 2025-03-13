@@ -1,6 +1,11 @@
 ## Future Dated Obligations
 
 ```diff
+Added Future Dated Obligations for the following new endpoint versions:
++ Get Products v4
++ Get Product Detail v6
++ Get Account Detail v4
+
 Added FDOs for Last Consumer Change Date (LCCD) related changes in Energy standards
 ```
 
@@ -39,6 +44,9 @@ The table below highlights these areas of the standards.
 |[90-day notifications](#consumer-experience_notification-standards_notifications-90-day-notifications)| Binding consumer experience data standards for data recipients regarding the content and delivery of 90-day notifications on and after **14 July 2025** | July 14th 2025 |
 |[Get Product Detail v5](#cdr-banking-api_get-product-detail)|<ul><li>Data Holders **MUST** implement v5 of this endpoint by **July 14th 2025**</li><li>Data Holders **MAY** retire v4 of this endpoint from **November 10th 2025**</li></ul> | July 14th 2025 |
 |[Get Transaction Detail V2](#cdr-banking-api_get-transaction-detail)|Get Transaction Detail V2 **MUST** be supported by **July 14th 2025** | July 14th 2025 |
+|[Get Products v4](#cdr-banking-api_get-products)|<ul><li>Data Holders **MUST** implement v4 of this endpoint by **November 10th 2025**</li><li>Data Holders **MAY** retire v3 of this endpoint from **May 11th 2026**</li></ul> | November 10th 2025 |
+|[Get Product Detail v6](#cdr-banking-api_get-product-detail)|<ul><li>Data Holders **MUST** implement v6 of this endpoint by **November 10th 2025**</li><li>Data Holders **MAY** retire v5 of this endpoint from **May 11th 2026**</li></ul> | November 10th 2025 |
+|[Get Account Detail v4](#cdr-banking-api_get-account-detail)|<ul><li>Data Holders **MUST** implement v4 of this endpoint by **November 10th 2025**</li><li>Data Holders **MAY** retire v3 of this endpoint from **May 11th 2026**</li></ul> | November 10th 2025 |
 |[Get Service Points v2](#cdr-energy-api_get-service-points)|<ul><li>Data Holders **MUST** implement v2 of this endpoint by **November 10th 2025**</li><li>Data Holders **MAY** retire v1 of this endpoint from **March 16th 2026**</li></ul> | November 10th 2025 |
 |[Get Service Point Detail v2](#cdr-energy-api_get-service-point-detail)|<ul><li>Data Holders **MUST** implement v2 of this endpoint by **November 10th 2025**</li><li>Data Holders **MAY** retire v1 of this endpoint from **March 16th 2026**</li></ul> | November 10th 2025 |
 |[Get Service Points (SR) v2](#cdr-energy-secondary-data-holder-api_get-service-points-sr)|<ul><li>Data Holders **MUST** implement v2 of this endpoint by **November 10th 2025**</li><li>Data Holders **MAY** retire v1 of this endpoint from **March 16th 2026**</li></ul> | November 10th 2025 |
