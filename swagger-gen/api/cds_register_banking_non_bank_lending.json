@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Register API (modified for NBL)",
-    "version": "1.34.0",
+    "version": "1.34.1",
     "description": "Specifications for Register endpoints made available to participants.",
     "contact": {
       "name": "Data Standards Body",
