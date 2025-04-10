@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "CDR Register API (modified for NBL)",
+    "title": "CDR Register API",
     "version": "1.34.1",
     "description": "Specifications for Register endpoints made available to participants.",
     "contact": {
@@ -46,7 +46,7 @@
           "Register Data Holder discovery"
         ],
         "summary": "Get Data Holder Brands",
-        "description": "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.html), [v2](../../../../includes/obsolete/get-data-holder-brands-v2.html).",
+        "description": "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "getDataHolderBrands",
         "parameters": [
           {
@@ -97,7 +97,7 @@
           "Register Data Holder discovery"
         ],
         "summary": "Get Data Holder Brands Summary",
-        "description": "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-summary-v1.html).",
+        "description": "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "getDataHolderBrandsSummary",
         "parameters": [
           {
@@ -133,13 +133,106 @@
         "x-version": "2"
       }
     },
+    "/cdr-register/v1/all/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa": {
+      "get": {
+        "servers": [
+          {
+            "description": "Production MTLS",
+            "url": "https://secure.api.cdr.gov.au"
+          }
+        ],
+        "tags": [
+          "Register Operations"
+        ],
+        "summary": "Get Software Statement Assertion (SSA)",
+        "description": "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: _(Refer to Standards.)_",
+        "operationId": "getSoftwareStatementAssertion",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/HeaderXV"
+          },
+          {
+            "$ref": "#/components/parameters/HeaderXMinV"
+          },
+          {
+            "name": "dataRecipientBrandId",
+            "in": "path",
+            "description": "Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "softwareProductId",
+            "in": "path",
+            "description": "Unique id for the Accredited Data Recipient Software Product in the CDR Register.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/HeaderAuthorization"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetSoftwareStatementAssertion200"
+          },
+          "400": {
+            "$ref": "#/components/responses/RegisterGeneric400"
+          },
+          "401": {
+            "$ref": "#/components/responses/RegisterGeneric401"
+          },
+          "403": {
+            "description": "Invalid BrandId",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Invalid Software Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            }
+          },
+          "406": {
+            "$ref": "#/components/responses/RegisterGeneric406"
+          },
+          "422": {
+            "description": "SSA validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorListV2"
+                }
+              }
+            }
+          }
+        },
+        "x-version": "4",
+        "x-scopes": [
+          "cdr-register:read"
+        ]
+      }
+    },
     "/cdr-register/v1/{industry}/data-holders/status": {
       "get": {
         "tags": [
           "Register Data Holder discovery"
         ],
         "summary": "Get Data Holder Statuses",
-        "description": "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v1.html).",
+        "description": "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "getDataHolderStatuses",
         "parameters": [
           {
@@ -170,6 +263,114 @@
           }
         },
         "x-version": "2"
+      }
+    },
+    "/cdr-register/v1/all/data-recipients/brands/software-products/status": {
+      "get": {
+        "tags": [
+          "Register Data Recipient discovery"
+        ],
+        "summary": "Get Software Products Statuses",
+        "description": "Endpoint used by participants to discover the statuses for software products from the CDR Register.\n\nObsolete versions: _(Refer to Standards.)_",
+        "operationId": "getSoftwareProductsStatuses",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/HeaderXV"
+          },
+          {
+            "$ref": "#/components/parameters/HeaderXMinV"
+          },
+          {
+            "$ref": "#/components/parameters/HeaderIfNoneMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetSoftwareProductsStatuses200"
+          },
+          "304": {
+            "$ref": "#/components/responses/RegisterGeneric304"
+          },
+          "400": {
+            "$ref": "#/components/responses/RegisterGeneric400"
+          },
+          "406": {
+            "$ref": "#/components/responses/RegisterGeneric406"
+          }
+        },
+        "x-version": "3"
+      }
+    },
+    "/cdr-register/v1/all/data-recipients/status": {
+      "get": {
+        "tags": [
+          "Register Data Recipient discovery"
+        ],
+        "summary": "Get Data Recipients Statuses",
+        "description": "Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.\n\nObsolete versions: _(Refer to Standards.)_",
+        "operationId": "getDataRecipientsStatuses",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/HeaderXV"
+          },
+          {
+            "$ref": "#/components/parameters/HeaderXMinV"
+          },
+          {
+            "$ref": "#/components/parameters/HeaderIfNoneMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetDataRecipientsStatuses200"
+          },
+          "304": {
+            "$ref": "#/components/responses/RegisterGeneric304"
+          },
+          "400": {
+            "$ref": "#/components/responses/RegisterGeneric400"
+          },
+          "406": {
+            "$ref": "#/components/responses/RegisterGeneric406"
+          }
+        },
+        "x-version": "3"
+      }
+    },
+    "/cdr-register/v1/all/data-recipients": {
+      "get": {
+        "tags": [
+          "Register Data Recipient discovery"
+        ],
+        "summary": "Get Data Recipients",
+        "description": "Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.\n\nObsolete versions: _(Refer to Standards.)_",
+        "operationId": "getDataRecipients",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/HeaderXV"
+          },
+          {
+            "$ref": "#/components/parameters/HeaderXMinV"
+          },
+          {
+            "$ref": "#/components/parameters/HeaderIfNoneMatch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetDataRecipients200"
+          },
+          "304": {
+            "$ref": "#/components/responses/RegisterGeneric304"
+          },
+          "400": {
+            "$ref": "#/components/responses/RegisterGeneric400"
+          },
+          "406": {
+            "$ref": "#/components/responses/RegisterGeneric406"
+          }
+        },
+        "x-version": "4"
       }
     }
   },
@@ -208,7 +409,7 @@
         "description": "The industry the participant is retrieving data for (Banking, etc.)",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/IndustryEnum"
+          "$ref": "#/components/schemas/IndustryEnumV2"
         }
       },
       "HeaderIfNoneMatch": {
@@ -277,7 +478,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ResponseRegisterDataHolderBrandList"
+              "$ref": "#/components/schemas/ResponseRegisterDataHolderBrandListV2"
             }
           }
         }
@@ -310,6 +511,25 @@
           }
         }
       },
+      "GetSoftwareStatementAssertion200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "description": "The [payload version](#response-headers) that the endpoint has responded with.",
+            "schema": {
+              "type": "string",
+              "default": "1"
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
       "GetDataHolderStatuses200": {
         "description": "Successful response",
         "headers": {
@@ -324,6 +544,60 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/DataHoldersStatusList"
+            }
+          }
+        }
+      },
+      "GetSoftwareProductsStatuses200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "Etag": {
+            "$ref": "#/components/headers/Etag"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SoftwareProductsStatusList"
+            }
+          }
+        }
+      },
+      "GetDataRecipientsStatuses200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "Etag": {
+            "$ref": "#/components/headers/Etag"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/DataRecipientsStatusList"
+            }
+          }
+        }
+      },
+      "GetDataRecipients200": {
+        "description": "Successful response",
+        "headers": {
+          "x-v": {
+            "$ref": "#/components/headers/XV"
+          },
+          "Etag": {
+            "$ref": "#/components/headers/Etag"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseRegisterDataRecipientList"
             }
           }
         }
@@ -370,7 +644,7 @@
       }
     },
     "schemas": {
-      "ResponseRegisterDataHolderBrandList": {
+      "ResponseRegisterDataHolderBrandListV2": {
         "required": [
           "data",
           "links",
@@ -383,7 +657,7 @@
             "type": "array",
             "description": "Response data for the query.",
             "items": {
-              "$ref": "#/components/schemas/RegisterDataHolderBrand"
+              "$ref": "#/components/schemas/RegisterDataHolderBrandV2"
             }
           },
           "links": {
@@ -395,7 +669,7 @@
         },
         "description": "Response containing a list of CDR Register Data Holder Brand objects."
       },
-      "RegisterDataHolderBrand": {
+      "RegisterDataHolderBrandV2": {
         "required": [
           "authDetails",
           "brandName",
@@ -424,7 +698,7 @@
             "type": "array",
             "description": "The industries the Data Holder Brand belongs to.",
             "items": {
-              "$ref": "#/components/schemas/IndustriesEnum"
+              "$ref": "#/components/schemas/IndustriesEnumV2"
             }
           },
           "logoUri": {
@@ -474,7 +748,7 @@
             "type": "array",
             "description": "Response data for the query.",
             "items": {
-              "$ref": "#/components/schemas/DataHolderBrandSummary"
+              "$ref": "#/components/schemas/DataHolderBrandSummaryV2"
             }
           },
           "links": {
@@ -485,7 +759,7 @@
           }
         }
       },
-      "DataHolderBrandSummary": {
+      "DataHolderBrandSummaryV2": {
         "required": [
           "brandName",
           "publicBaseUri",
@@ -529,7 +803,7 @@
             "type": "array",
             "description": "The industries the Data Holder Brand belongs to.",
             "items": {
-              "$ref": "#/components/schemas/IndustriesEnum"
+              "$ref": "#/components/schemas/IndustriesEnumV2"
             }
           },
           "lastUpdated": {
@@ -554,7 +828,7 @@
           }
         }
       },
-      "IndustryEnum": {
+      "IndustryEnumV2": {
         "type": "string",
         "enum": [
           "banking",
@@ -564,7 +838,7 @@
           "all"
         ]
       },
-      "IndustriesEnum": {
+      "IndustriesEnumV2": {
         "type": "string",
         "enum": [
           "banking",
@@ -618,6 +892,278 @@
             ]
           }
         }
+      },
+      "SoftwareProductsStatusList": {
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "uniqueItems": true,
+            "type": "array",
+            "description": "Response data for the query.",
+            "items": {
+              "$ref": "#/components/schemas/SoftwareProductStatus"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        }
+      },
+      "SoftwareProductStatus": {
+        "required": [
+          "softwareProductId",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "softwareProductId": {
+            "maxLength": 36,
+            "type": "string",
+            "description": "Unique id of the software product issued by the CDR Register."
+          },
+          "status": {
+            "type": "string",
+            "description": "Software product status in the CDR Register.",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE",
+              "REMOVED"
+            ]
+          }
+        }
+      },
+      "DataRecipientsStatusList": {
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "uniqueItems": true,
+            "type": "array",
+            "description": "Response data for the query.",
+            "items": {
+              "$ref": "#/components/schemas/DataRecipientStatus"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        }
+      },
+      "DataRecipientStatus": {
+        "required": [
+          "legalEntityId",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "legalEntityId": {
+            "maxLength": 36,
+            "type": "string",
+            "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register."
+          },
+          "status": {
+            "type": "string",
+            "description": "Data Recipient status in the CDR Register.",
+            "enum": [
+              "ACTIVE",
+              "SUSPENDED",
+              "REVOKED",
+              "SURRENDERED"
+            ]
+          }
+        }
+      },
+      "ResponseRegisterDataRecipientList": {
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "uniqueItems": true,
+            "type": "array",
+            "description": "Response data for the query.",
+            "items": {
+              "$ref": "#/components/schemas/RegisterDataRecipient"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "description": "Response containing a list of Data Recipients in the CDR Register."
+      },
+      "RegisterDataRecipient": {
+        "required": [
+          "accreditationLevel",
+          "accreditationNumber",
+          "lastUpdated",
+          "legalEntityId",
+          "legalEntityName",
+          "logoUri",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "legalEntityId": {
+            "maxLength": 36,
+            "type": "string",
+            "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register."
+          },
+          "legalEntityName": {
+            "maxLength": 200,
+            "type": "string",
+            "description": "Legal name of the Data Recipient."
+          },
+          "accreditationNumber": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "CDR Register issued human readable unique number given to Data Recipients upon accreditation."
+          },
+          "accreditationLevel": {
+            "type": "string",
+            "description": "Accreditation level of the Data Recipient in the CDR Register.",
+            "enum": [
+              "UNRESTRICTED",
+              "SPONSORED"
+            ]
+          },
+          "logoUri": {
+            "maxLength": 1000,
+            "type": "string",
+            "description": "Legal Entity logo URI.",
+            "x-cds-type": "URIString"
+          },
+          "dataRecipientBrands": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataRecipientBrandMetaData"
+            }
+          },
+          "status": {
+            "type": "string",
+            "description": "Data Recipient status in the CDR Register.",
+            "enum": [
+              "ACTIVE",
+              "SUSPENDED",
+              "REVOKED",
+              "SURRENDERED"
+            ]
+          },
+          "lastUpdated": {
+            "type": "string",
+            "description": "The date/time that the Legal Entity was last updated in the CDR Register.",
+            "x-cds-type": "DateTimeString"
+          }
+        }
+      },
+      "DataRecipientBrandMetaData": {
+        "required": [
+          "brandName",
+          "dataRecipientBrandId",
+          "logoUri",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "dataRecipientBrandId": {
+            "maxLength": 36,
+            "type": "string",
+            "description": "Unique id of the Data Recipient brand issued by the CDR Register."
+          },
+          "brandName": {
+            "maxLength": 200,
+            "type": "string",
+            "description": "Data Recipient Brand name."
+          },
+          "logoUri": {
+            "maxLength": 1000,
+            "type": "string",
+            "description": "Data Recipient Brand logo URI.",
+            "x-cds-type": "URIString"
+          },
+          "softwareProducts": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SoftwareProductMetaData"
+            }
+          },
+          "status": {
+            "type": "string",
+            "description": "Data Recipient Brand status in the CDR Register.",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE",
+              "REMOVED"
+            ]
+          }
+        },
+        "description": "Metadata related to Data Recipient Brand."
+      },
+      "SoftwareProductMetaData": {
+        "required": [
+          "logoUri",
+          "softwareProductId",
+          "softwareProductName",
+          "softwareProductDescription",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "softwareProductId": {
+            "maxLength": 36,
+            "type": "string",
+            "description": "Unique id of the Data Recipient software product issued by the CDR Register."
+          },
+          "softwareProductName": {
+            "maxLength": 200,
+            "type": "string",
+            "description": "Name of the software product."
+          },
+          "softwareProductDescription": {
+            "maxLength": 4000,
+            "type": "string",
+            "description": "Description of the software product."
+          },
+          "logoUri": {
+            "maxLength": 1000,
+            "type": "string",
+            "description": "Software product logo URI.",
+            "x-cds-type": "URIString"
+          },
+          "status": {
+            "type": "string",
+            "description": "Software Product status in the CDR Register.",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE",
+              "REMOVED"
+            ]
+          }
+        },
+        "description": "Data Recipient Brand Software Products."
       },
       "LegalEntityDetail": {
         "required": [

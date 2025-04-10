@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "CDR Banking API (modified for NBL)",
+    "title": "CDR Banking API",
     "version": "1.34.1",
     "description": "Specifications for resource endpoints applicable to data holders in the Banking sector.",
     "license": {
@@ -64,7 +64,7 @@
           "Banking Accounts"
         ],
         "summary": "Get Accounts",
-        "description": "Obtain a list of accounts.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-accounts-v1.html), [v2](../../../../includes/obsolete/get-accounts-v2.html).",
+        "description": "Obtain a list of accounts.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "listBankingAccounts",
         "parameters": [
           {
@@ -127,7 +127,7 @@
           "Banking Account Balances"
         ],
         "summary": "Get Bulk Balances",
-        "description": "Obtain balances for multiple, filtered accounts.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-bulk-balances-v1.html).",
+        "description": "Obtain balances for multiple, filtered accounts.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "listBankingBalancesBulk",
         "parameters": [
           {
@@ -296,7 +296,7 @@
           "Banking Accounts"
         ],
         "summary": "Get Account Detail",
-        "description": "Obtain detailed information on a single account.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-account-detail-v1.html), [v2](../../../../includes/obsolete/get-account-detail-v2.html), [v3](../../../../includes/obsolete/get-account-detail-v3.html).",
+        "description": "Obtain detailed information on a single account.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "getBankingAccountDetail",
         "parameters": [
           {
@@ -338,7 +338,7 @@
         "x-scopes": [
           "bank:accounts.detail:read"
         ],
-        "x-version": "4"
+        "x-version": "5"
       }
     },
     "/banking/accounts/{accountId}/transactions": {
@@ -422,7 +422,7 @@
           "Banking Account Transactions"
         ],
         "summary": "Get Transaction Detail",
-        "description": "Obtain detailed information on a transaction for a specific account.",
+        "description": "Obtain detailed information on a transaction for a specific account.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "getBankingTransactionDetail",
         "parameters": [
           {
@@ -473,7 +473,7 @@
         "x-scopes": [
           "bank:transactions:read"
         ],
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/accounts/{accountId}/direct-debits": {
@@ -542,7 +542,7 @@
           "Banking Account Direct Debits"
         ],
         "summary": "Get Bulk Direct Debits",
-        "description": "Obtain direct debit authorisations for multiple, filtered accounts.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-bulk-direct-debits-v1.html).",
+        "description": "Obtain direct debit authorisations for multiple, filtered accounts.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "listDirectDebitsBulk",
         "parameters": [
           {
@@ -660,7 +660,7 @@
           "Banking Account Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments for Account",
-        "description": "Obtain scheduled, outgoing payments for a specific account.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-for-account-v1.html).",
+        "description": "Obtain scheduled, outgoing payments for a specific account.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "listScheduledPayments",
         "parameters": [
           {
@@ -720,7 +720,7 @@
           "Banking Account Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments Bulk",
-        "description": "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-bulk-v1.html), [v2](../../../../includes/obsolete/get-scheduled-payments-bulk-v2.html).",
+        "description": "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "listScheduledPaymentsBulk",
         "parameters": [
           {
@@ -781,7 +781,7 @@
           "Banking Account Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments For Specific Accounts",
-        "description": "Obtain scheduled payments for a specified list of accounts.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html).",
+        "description": "Obtain scheduled payments for a specified list of accounts.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "listScheduledPaymentsSpecificAccounts",
         "parameters": [
           {
@@ -838,7 +838,7 @@
           "Banking Payees"
         ],
         "summary": "Get Payees",
-        "description": "Obtain a list of pre-registered payees.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-payees-v1.html).",
+        "description": "Obtain a list of pre-registered payees.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "listBankingPayees",
         "parameters": [
           {
@@ -908,7 +908,7 @@
           "Banking Payees"
         ],
         "summary": "Get Payee Detail",
-        "description": "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-payee-detail-v1.html).",
+        "description": "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "getBankingPayeeDetail",
         "parameters": [
           {
@@ -974,7 +974,7 @@
           "Banking Products"
         ],
         "summary": "Get Products",
-        "description": "Obtain a list of products that are currently openly offered to the market.\n\nNote that the results returned by this endpoint are expected to be ordered in descending order according to _lastUpdated_.\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained below.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field named [_additionalValue_](#productfeaturetypedoc). This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the `ADDITIONAL_CARDS` feature is the number of cards allowed while the contents of this field for the `MAX_LIMIT` constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an _additionalInfo_ and _additionalInfoUri_ field. The _additionalInfo_ field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The _additionalInfoUri_ provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use different HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge. Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while _productCategory_ is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actually has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank. To minimise the volume and frequency of these calls the ability to set a _lastUpdated_ field with the date and time of the last update to this product is included. A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the _updated-since_ query parameter.\n\nIn addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no longer offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-products-v1.html), [v2](../../../../includes/obsolete/get-products-v2.html), [v3](../../../../includes/obsolete/get-products-v3.html).",
+        "description": "Obtain a list of products that are currently openly offered to the market.\n\nNote that the results returned by this endpoint are expected to be ordered in descending order according to _lastUpdated_.\n\n### Conventions\nIn the product reference payloads there are a number of recurring conventions that are explained below.\n\n#### Arrays Of Features\n\nIn the product detail payload there are a number of arrays articulating generic features, constraints, prices, etc. The intent of these arrays is as follows:\n\n- Each element in an array has the same structure so that clients can reliably interpret the payloads\n- Each element as a type element that is an enumeration of the specific aspect of a product being described, such as types of fees.\n- Each element has a field named [_additionalValue_](#productfeaturetypedoc). This is a generic field with contents that will vary based on the type of object being described. The contents of this field for the `ADDITIONAL_CARDS` feature is the number of cards allowed while the contents of this field for the `MAX_LIMIT` constraint would be the maximum credit limit allowed for the product.\n- An element in these arrays of the same type may appear more than once. For instance, a product may offer two separate loyalty programs that the customer can select from. A fixed term mortgage may have different rates for different term lengths.\n- An element in these arrays may contain an _additionalInfo_ and _additionalInfoUri_ field. The _additionalInfo_ field is used to provide displayable text clarifying the purpose of the element in some way when the product is presented to a customer. The _additionalInfoUri_ provides a link to externally hosted information specifically relevant to that feature of the product.\n- Depending on the type of data being represented there may be additional specific fields.\n\n#### URIs To More Information\n\nAs the complexities and nuances of a financial product can not easily be fully expressed in a data structure without a high degree of complexity it is necessary to provide additional reference information that a potential customer can access so that they are fully informed of the features and implications of the product. The payloads for product reference therefore contain numerous fields that are provided to allow the product holder to describe the product more fully using a web page hosted on their online channels.\n\nThese URIs do not need to all link to different pages. If desired, they can all link to a single hosted page and use different HTML anchors to focus on a specific topic such as eligibility or fees.\n\n#### Linkage To Accounts\nFrom the moment that a customer applies for a product and an account is created the account and the product that spawned it will diverge. Rates and features of the product may change and a discount may be negotiated for the account.\n\nFor this reason, while _productCategory_ is a common field between accounts and products, there is no specific ID that can be used to link an account to a product within the regime.\n\nSimilarly, many of the fields and objects in the product payload will appear in the account detail payload but the structures and semantics are not identical as one refers to a product that can potentially be originated and one refers to an account that actually has been instantiated and created along with the associated decisions inherent in that process.\n\n#### Dates\nIt is expected that data consumers needing this data will call relatively frequently to ensure the data they have is representative of the current offering from a bank. To minimise the volume and frequency of these calls the ability to set a _lastUpdated_ field with the date and time of the last update to this product is included. A call for a list of products can then be filtered to only return products that have been updated since the last time that data was obtained using the _updated-since_ query parameter.\n\nIn addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no longer offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "listBankingProducts",
         "parameters": [
           {
@@ -1038,7 +1038,7 @@
             "$ref": "#/components/responses/ListBankingProducts422"
           }
         },
-        "x-version": "4"
+        "x-version": "5"
       }
     },
     "/banking/products/{productId}": {
@@ -1053,7 +1053,7 @@
           "Banking Products"
         ],
         "summary": "Get Product Detail",
-        "description": "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-product-detail-v1.html), [v2](../../../../includes/obsolete/get-product-detail-v2.html), [v3](../../../../includes/obsolete/get-product-detail-v3.html), [v4](../../../../includes/obsolete/get-product-detail-v4.html).",
+        "description": "Obtain detailed information on a single product offered openly to the market.\n\nObsolete versions: _(Refer to Standards.)_",
         "operationId": "getBankingProductDetail",
         "parameters": [
           {
@@ -1087,7 +1087,7 @@
             "$ref": "#/components/responses/GetBankingProductDetail406"
           }
         },
-        "x-version": "5"
+        "x-version": "7"
       }
     }
   },
@@ -1544,7 +1544,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ResponseBankingAccountByIdV4"
+              "$ref": "#/components/schemas/ResponseBankingAccountByIdV5"
             }
           }
         }
@@ -1685,7 +1685,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ResponseBankingTransactionById"
+              "$ref": "#/components/schemas/ResponseBankingTransactionByIdV2"
             }
           }
         }
@@ -2294,7 +2294,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ResponseBankingProductListV3"
+              "$ref": "#/components/schemas/ResponseBankingProductListV4"
             }
           }
         }
@@ -2339,7 +2339,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ResponseBankingProductByIdV5"
+              "$ref": "#/components/schemas/ResponseBankingProductByIdV7"
             }
           }
         }
@@ -2402,7 +2402,7 @@
           }
         }
       },
-      "ResponseBankingProductListV3": {
+      "ResponseBankingProductListV4": {
         "required": [
           "data",
           "links",
@@ -2420,7 +2420,7 @@
                 "type": "array",
                 "description": "The list of products returned. If the filter results in an empty set then this array may have no records.",
                 "items": {
-                  "$ref": "#/components/schemas/BankingProductV5"
+                  "$ref": "#/components/schemas/BankingProductV6"
                 }
               }
             }
@@ -2433,7 +2433,7 @@
           }
         }
       },
-      "BankingProductV5": {
+      "BankingProductV6": {
         "required": [
           "brand",
           "description",
@@ -2496,24 +2496,49 @@
           },
           "cardArt": {
             "type": "array",
-            "description": "An array of card art images.",
+            "description": "Information about any cards available with the account.",
             "items": {
-              "required": [
-                "imageUri"
-              ],
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "description": "Display label for the specific image."
-                },
-                "imageUri": {
-                  "type": "string",
-                  "description": "URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**.",
-                  "x-cds-type": "URIString"
-                }
-              }
+              "$ref": "#/components/schemas/BankingProductCardArt"
             }
+          }
+        }
+      },
+      "BankingProductCardArt": {
+        "required": [
+          "cardScheme",
+          "cardType",
+          "imageUri"
+        ],
+        "type": "object",
+        "properties": {
+          "cardScheme": {
+            "type": "string",
+            "description": "Card scheme available with the account.",
+            "enum": [
+              "AMEX",
+              "EFTPOS",
+              "MASTERCARD",
+              "VISA",
+              "OTHER"
+            ]
+          },
+          "cardType": {
+            "type": "string",
+            "description": "Card type available with the account.",
+            "enum": [
+              "CHARGE",
+              "CREDIT",
+              "DEBIT"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "Display label for the specific image."
+          },
+          "imageUri": {
+            "type": "string",
+            "description": "URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**.",
+            "x-cds-type": "URIString"
           }
         }
       },
@@ -2607,7 +2632,7 @@
           }
         }
       },
-      "ResponseBankingProductByIdV5": {
+      "ResponseBankingProductByIdV7": {
         "required": [
           "data",
           "links"
@@ -2615,7 +2640,7 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/BankingProductDetailV5"
+            "$ref": "#/components/schemas/BankingProductDetailV7"
           },
           "links": {
             "$ref": "#/components/schemas/Links"
@@ -2625,10 +2650,10 @@
           }
         }
       },
-      "BankingProductDetailV5": {
+      "BankingProductDetailV7": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/BankingProductV5"
+            "$ref": "#/components/schemas/BankingProductV6"
           },
           {
             "type": "object",
@@ -2642,44 +2667,44 @@
               },
               "features": {
                 "type": "array",
-                "description": "Array of features available for the product.",
+                "description": "Array of features and limitations of the product.",
                 "items": {
-                  "$ref": "#/components/schemas/BankingProductFeatureV3"
+                  "$ref": "#/components/schemas/BankingProductFeatureV4"
                 }
               },
               "constraints": {
                 "type": "array",
-                "description": "Constraints on the application for or operation of the product such as minimum balances or limit thresholds.",
+                "description": "Constraints on the application for the product such as minimum balances or limit thresholds.",
                 "items": {
-                  "$ref": "#/components/schemas/BankingProductConstraint"
+                  "$ref": "#/components/schemas/BankingProductConstraintV3"
                 }
               },
               "eligibility": {
                 "type": "array",
                 "description": "Eligibility criteria for the product.",
                 "items": {
-                  "$ref": "#/components/schemas/BankingProductEligibility"
+                  "$ref": "#/components/schemas/BankingProductEligibilityV2"
                 }
               },
               "fees": {
                 "type": "array",
                 "description": "Fees applicable to the product.",
                 "items": {
-                  "$ref": "#/components/schemas/BankingProductFee"
+                  "$ref": "#/components/schemas/BankingProductFeeV2"
                 }
               },
               "depositRates": {
                 "type": "array",
                 "description": "Interest rates available for deposits.",
                 "items": {
-                  "$ref": "#/components/schemas/BankingProductDepositRate"
+                  "$ref": "#/components/schemas/BankingProductDepositRateV2"
                 }
               },
               "lendingRates": {
                 "type": "array",
                 "description": "Interest rates charged against lending balances.",
                 "items": {
-                  "$ref": "#/components/schemas/BankingProductLendingRateV2"
+                  "$ref": "#/components/schemas/BankingProductLendingRateV3"
                 }
               },
               "instalments": {
@@ -2727,7 +2752,7 @@
           }
         }
       },
-      "BankingProductFeatureV3": {
+      "BankingProductFeatureV4": {
         "required": [
           "featureType"
         ],
@@ -2752,9 +2777,10 @@
               "FRAUD_PROTECTION",
               "FREE_TXNS",
               "FREE_TXNS_ALLOWANCE",
+              "FUNDS_AVAILABLE_AFTER",
               "GUARANTOR",
-              "INSURANCE",
               "INSTALMENT_PLAN",
+              "INSURANCE",
               "INTEREST_FREE",
               "INTEREST_FREE_TRANSFERS",
               "LOYALTY_PROGRAM",
@@ -2788,7 +2814,7 @@
           "additionalInfo"
         ]
       },
-      "BankingProductConstraint": {
+      "BankingProductConstraintV3": {
         "required": [
           "constraintType"
         ],
@@ -2800,9 +2826,12 @@
             "enum": [
               "MAX_BALANCE",
               "MAX_LIMIT",
+              "MAX_LVR",
               "MIN_BALANCE",
               "MIN_LIMIT",
-              "OPENING_BALANCE"
+              "MIN_LVR",
+              "OPENING_BALANCE",
+              "OTHER"
             ]
           },
           "additionalValue": {
@@ -2811,7 +2840,7 @@
           },
           "additionalInfo": {
             "type": "string",
-            "description": "Display text providing more information on the constraint."
+            "description": "Display text providing more information on the constraint. Mandatory if the [_constraintType_](#tocSproductconstrainttypedoc) value is `OTHER`."
           },
           "additionalInfoUri": {
             "type": "string",
@@ -2820,10 +2849,11 @@
           }
         },
         "x-conditional": [
-          "additionalValue"
+          "additionalValue",
+          "additionalInfo"
         ]
       },
-      "BankingProductEligibility": {
+      "BankingProductEligibilityV2": {
         "required": [
           "eligibilityType"
         ],
@@ -2866,10 +2896,11 @@
           "additionalInfo"
         ]
       },
-      "BankingProductFee": {
+      "BankingProductFeeV2": {
         "required": [
+          "name",
           "feeType",
-          "name"
+          "feeMethodUType"
         ],
         "type": "object",
         "properties": {
@@ -2881,43 +2912,67 @@
             "type": "string",
             "description": "The type of fee. For further details, refer to [Product Fee Types](#tocSproductfeetypedoc).",
             "enum": [
+              "CASH_ADVANCE",
               "DEPOSIT",
+              "DISHONOUR",
+              "ENQUIRY",
               "EVENT",
               "EXIT",
+              "LATE_PAYMENT",
+              "OTHER",
               "PAYMENT",
-              "PAYMENT_LATE",
               "PERIODIC",
               "PURCHASE",
+              "REPLACEMENT",
               "TRANSACTION",
               "UPFRONT",
               "UPFRONT_PER_PLAN",
-              "VARIABLE",
+              "VARIATION",
               "WITHDRAWAL"
+            ],
+            "example": "CASH_ADVANCE"
+          },
+          "feeMethodUType": {
+            "type": "string",
+            "description": "Reference to the applicable fee charging method structure.",
+            "enum": [
+              "fixedAmount",
+              "rateBased",
+              "variable"
             ]
           },
-          "amount": {
+          "fixedAmount": {
+            "description": "Mandatory if the _feeMethodUType_ value is `fixedAmount`. Where the fee is a specific amount.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingFeeAmount"
+              }
+            ]
+          },
+          "rateBased": {
+            "description": "Mandatory if the _feeMethodUType_ value is `rateBased`. Where the fee is based on a type of rate.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingFeeRate"
+              }
+            ]
+          },
+          "variable": {
+            "description": "Mandatory if the _feeMethodUType_ value is `variable`. Where the amount or rate may not be known until the fee is incurred.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingFeeRange"
+              }
+            ]
+          },
+          "feeCap": {
             "type": "string",
-            "description": "The amount charged for the fee. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.",
+            "description": "The cap amount if multiple occurrences of the fee are capped to a limit.",
             "x-cds-type": "AmountString"
           },
-          "balanceRate": {
+          "feeCapPeriod": {
             "type": "string",
-            "description": "A fee rate calculated based on a proportion of the balance. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.",
-            "x-cds-type": "RateString"
-          },
-          "transactionRate": {
-            "type": "string",
-            "description": "A fee rate calculated based on a proportion of a transaction. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.",
-            "x-cds-type": "RateString"
-          },
-          "accruedRate": {
-            "type": "string",
-            "description": "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.",
-            "x-cds-type": "RateString"
-          },
-          "accrualFrequency": {
-            "type": "string",
-            "description": "The indicative frequency with which the fee is calculated on the account. Only applies if _balanceRate_ or _accruedRate_ is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+            "description": "Specifies a duration over which multiple occurrences of the fee will be capped. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
             "x-cds-type": "ExternalRef"
           },
           "currency": {
@@ -2932,7 +2987,7 @@
           },
           "additionalInfo": {
             "type": "string",
-            "description": "Display text providing more information on the fee."
+            "description": "Display text providing more information on the fee. Mandatory if the [_feeType_](#tocSproductfeetypedoc) value is `OTHER`."
           },
           "additionalInfoUri": {
             "type": "string",
@@ -2943,22 +2998,89 @@
             "type": "array",
             "description": "An optional list of discounts to this fee that may be available.",
             "items": {
-              "$ref": "#/components/schemas/BankingProductDiscount"
+              "$ref": "#/components/schemas/BankingProductDiscountV2"
             }
           }
         },
         "x-conditional": [
+          "fixedAmount",
+          "rateBased",
+          "variable",
           "additionalValue",
-          "amount",
+          "additionalInfo"
+        ]
+      },
+      "BankingFeeAmount": {
+        "type": "object",
+        "required": [
+          "amount"
+        ],
+        "properties": {
+          "amount": {
+            "type": "string",
+            "description": "The specific amount charged for the fee each time it is incurred.",
+            "x-cds-type": "AmountString"
+          }
+        }
+      },
+      "BankingFeeRate": {
+        "type": "object",
+        "required": [
+          "rateType",
+          "rate"
+        ],
+        "properties": {
+          "rateType": {
+            "type": "string",
+            "description": "Type of fee rate calculation.<ul><li>`BALANCE` A fee rate based on a balance</li><li>`INTEREST_ACCRUED` A fee rate based on interest accrued</li><li>`TRANSACTION` A fee rate based on a transaction.</li></ul>",
+            "enum": [
+              "BALANCE",
+              "INTEREST_ACCRUED",
+              "TRANSACTION"
+            ]
+          },
+          "rate": {
+            "type": "string",
+            "x-cds-type": "RateString",
+            "description": "The fee rate calculated according to the _rateType_."
+          },
+          "accrualFrequency": {
+            "type": "string",
+            "description": "The indicative frequency with which the fee is calculated on the account if applicable. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+            "x-cds-type": "ExternalRef"
+          },
+          "amountRange": {
+            "$ref": "#/components/schemas/BankingFeeRange"
+          }
+        },
+        "x-conditional": [
           "balanceRate",
           "transactionRate",
           "accruedRate"
         ]
       },
-      "BankingProductDiscount": {
+      "BankingFeeRange": {
+        "type": "object",
+        "description": "A minimum or maximum fee amount where a specific fixed amount is not known until the fee is incurred.",
+        "properties": {
+          "feeMinimum": {
+            "type": "string",
+            "description": "The minimum fee that will be charged per occurrence.",
+            "x-cds-type": "AmountString"
+          },
+          "feeMaximum": {
+            "type": "string",
+            "description": "The maximum fee that will be charged per occurrence.",
+            "x-cds-type": "AmountString"
+          }
+        }
+      },
+      "BankingProductDiscountV2": {
+        "description": "Note that the currency of the fee discount is expected to be the same as the currency of the fee itself.",
         "required": [
           "description",
-          "discountType"
+          "discountType",
+          "discountMethodUType"
         ],
         "type": "object",
         "properties": {
@@ -2977,30 +3099,29 @@
               "PAYMENTS"
             ]
           },
-          "amount": {
+          "discountMethodUType": {
             "type": "string",
-            "description": "Dollar value of the discount. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory.",
-            "x-cds-type": "AmountString"
+            "description": "Reference to the applicable fee discount method structure.",
+            "enum": [
+              "fixedAmount",
+              "rateBased"
+            ]
           },
-          "balanceRate": {
-            "type": "string",
-            "description": "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee.",
-            "x-cds-type": "RateString"
+          "fixedAmount": {
+            "description": "Mandatory if the _discountMethodUType_ value is `fixedAmount`. Where the discount is a specific amount.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingFeeDiscountAmount"
+              }
+            ]
           },
-          "transactionRate": {
-            "type": "string",
-            "description": "A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory.",
-            "x-cds-type": "RateString"
-          },
-          "accruedRate": {
-            "type": "string",
-            "description": "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee.",
-            "x-cds-type": "RateString"
-          },
-          "feeRate": {
-            "type": "string",
-            "description": "A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee.",
-            "x-cds-type": "RateString"
+          "rateBased": {
+            "description": "Mandatory if the _discountMethodUType_ value is `rateBased`. Where the discount is based on a type of rate. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingFeeDiscountRate"
+              }
+            ]
           },
           "additionalValue": {
             "type": "string",
@@ -3024,14 +3145,67 @@
           }
         },
         "x-conditional": [
-          "accruedRate",
+          "fixedAmount",
+          "rateBased",
           "additionalValue",
-          "amount",
-          "balanceRate",
-          "eligibility",
-          "feeRate",
-          "transactionRate"
+          "eligibility"
         ]
+      },
+      "BankingFeeDiscountAmount": {
+        "type": "object",
+        "required": [
+          "amount"
+        ],
+        "properties": {
+          "amount": {
+            "type": "string",
+            "description": "The specific amount discounted from the fee each time it is incurred.",
+            "x-cds-type": "AmountString"
+          }
+        }
+      },
+      "BankingFeeDiscountRate": {
+        "type": "object",
+        "required": [
+          "rateType",
+          "rate"
+        ],
+        "properties": {
+          "rateType": {
+            "type": "string",
+            "description": "Type of fee rate discount calculation.<ul><li>`BALANCE` A fee rate discount based on a balance</li><li>`FEE` A fee rate discount based on the fee to which the discount is attached</li><li>`INTEREST_ACCRUED` A fee rate discount based on interest accrued</li><li>`TRANSACTION` A fee rate discount based on a transaction.</li></ul>",
+            "enum": [
+              "BALANCE",
+              "FEE",
+              "INTEREST_ACCRUED",
+              "TRANSACTION"
+            ]
+          },
+          "rate": {
+            "type": "string",
+            "x-cds-type": "RateString",
+            "description": "The fee rate discount calculated according to the _rateType_."
+          },
+          "amountRange": {
+            "$ref": "#/components/schemas/BankingFeeDiscountRange"
+          }
+        }
+      },
+      "BankingFeeDiscountRange": {
+        "type": "object",
+        "description": "A minimum or maximum fee discount amount where a specific fixed amount is not known until the fee is incurred.",
+        "properties": {
+          "discountMinimum": {
+            "type": "string",
+            "description": "The minimum fee discount that will be applied per occurrence.",
+            "x-cds-type": "AmountString"
+          },
+          "discountMaximum": {
+            "type": "string",
+            "description": "The maximum fee discount that will be applied per occurrence.",
+            "x-cds-type": "AmountString"
+          }
+        }
       },
       "BankingProductDiscountEligibility": {
         "required": [
@@ -3077,10 +3251,11 @@
           "additionalValue"
         ]
       },
-      "BankingProductDepositRate": {
+      "BankingProductDepositRateV2": {
         "required": [
           "depositRateType",
-          "rate"
+          "rate",
+          "applicationType"
         ],
         "type": "object",
         "properties": {
@@ -3108,16 +3283,33 @@
             "description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see _applicationFrequency_). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
             "x-cds-type": "ExternalRef"
           },
+          "applicationType": {
+            "type": "string",
+            "description": "The type of approach used to apply the rate to the account.",
+            "enum": [
+              "MATURITY",
+              "PERIODIC",
+              "UPFRONT"
+            ],
+            "example": "PERIODIC"
+          },
           "applicationFrequency": {
             "type": "string",
-            "description": "The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+            "description": "The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Mandatory if the _applicationType_ value is `PERIODIC`.",
             "x-cds-type": "ExternalRef"
           },
           "tiers": {
             "type": "array",
             "description": "Rate tiers applicable for this rate.",
             "items": {
-              "$ref": "#/components/schemas/BankingProductRateTierV3"
+              "$ref": "#/components/schemas/BankingProductRateTierV4"
+            }
+          },
+          "applicabilityConditions": {
+            "type": "array",
+            "description": "Applicability conditions for the rate.",
+            "items": {
+              "$ref": "#/components/schemas/BankingProductRateConditionV2"
             }
           },
           "additionalValue": {
@@ -3135,13 +3327,17 @@
           }
         },
         "x-conditional": [
-          "additionalValue"
+          "additionalValue",
+          "applicationFrequency"
         ]
       },
-      "BankingProductLendingRateV2": {
+      "BankingProductLendingRateV3": {
         "required": [
           "lendingRateType",
-          "rate"
+          "rate",
+          "applicationType",
+          "repaymentType",
+          "loanPurpose"
         ],
         "type": "object",
         "properties": {
@@ -3149,6 +3345,7 @@
             "type": "string",
             "description": "The type of rate (`FIXED`, `VARIABLE`, etc.) For further details, refer to [Product Lending Rate Types](#tocSproductlendingratetypedoc).",
             "enum": [
+              "BALANCE_TRANSFER",
               "BUNDLE_DISCOUNT_FIXED",
               "BUNDLE_DISCOUNT_VARIABLE",
               "CASH_ADVANCE",
@@ -3178,9 +3375,19 @@
             "description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see _applicationFrequency_). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
             "x-cds-type": "ExternalRef"
           },
+          "applicationType": {
+            "type": "string",
+            "description": "The type of approach used to apply the rate to the account.",
+            "enum": [
+              "MATURITY",
+              "PERIODIC",
+              "UPFRONT"
+            ],
+            "example": "PERIODIC"
+          },
           "applicationFrequency": {
             "type": "string",
-            "description": "The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+            "description": "The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Mandatory if the _applicationType_ value is `PERIODIC`.",
             "x-cds-type": "ExternalRef"
           },
           "interestPaymentDue": {
@@ -3193,25 +3400,36 @@
           },
           "repaymentType": {
             "type": "string",
-            "description": "Options in place for repayments. If absent, the lending rate is applicable to all repayment types.",
+            "description": "Option in place for repayments.",
             "enum": [
               "INTEREST_ONLY",
-              "PRINCIPAL_AND_INTEREST"
+              "OTHER",
+              "PRINCIPAL_AND_INTEREST",
+              "UNCONSTRAINED"
             ]
           },
           "loanPurpose": {
             "type": "string",
-            "description": "The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes.",
+            "description": "The reason for taking out the loan.",
             "enum": [
               "INVESTMENT",
-              "OWNER_OCCUPIED"
+              "OTHER",
+              "OWNER_OCCUPIED",
+              "UNCONSTRAINED"
             ]
           },
           "tiers": {
             "type": "array",
             "description": "Rate tiers applicable for this rate.",
             "items": {
-              "$ref": "#/components/schemas/BankingProductRateTierV3"
+              "$ref": "#/components/schemas/BankingProductRateTierV4"
+            }
+          },
+          "applicabilityConditions": {
+            "type": "array",
+            "description": "Applicability conditions for the rate.",
+            "items": {
+              "$ref": "#/components/schemas/BankingProductRateConditionV2"
             }
           },
           "additionalValue": {
@@ -3229,10 +3447,11 @@
           }
         },
         "x-conditional": [
-          "additionalValue"
+          "additionalValue",
+          "applicationFrequency"
         ]
       },
-      "BankingProductRateTierV3": {
+      "BankingProductRateTierV4": {
         "required": [
           "minimumValue",
           "name",
@@ -3246,7 +3465,7 @@
           },
           "unitOfMeasure": {
             "type": "string",
-            "description": "The unit of measure that applies to the _minimumValue_ and _maximumValue_ values e.g.,<ul><li>`DOLLAR` amount.<li>`PERCENT` (in the case of loan-to-value ratio or LVR).<li>Tier term period representing a discrete number of `MONTH`(s) or `DAY`(s) (in the case of term deposit tiers).</ul>",
+            "description": "The unit of measure that applies to the _minimumValue_ and _maximumValue_ values, e.g.,<ul><li>`DOLLAR` for a dollar amount (with values in AmountString format)<li>`PERCENT` for Loan-to-Value Ratio or LVR (with values in RateString format)<li>`MONTH` or `DAY` for a period representing a discrete number of months or days for a fixed-term deposit or loan (with values as a string containing a positive integer).</ul>",
             "enum": [
               "DAY",
               "DOLLAR",
@@ -3255,14 +3474,12 @@
             ]
           },
           "minimumValue": {
-            "type": "number",
-            "description": "The number of _unitOfMeasure_ units that form the lower bound of the tier. The tier should be inclusive of this value.",
-            "x-cds-type": "Number"
+            "type": "string",
+            "description": "The number of _unitOfMeasure_ units that form the lower bound of the tier. The tier should be inclusive of this value."
           },
           "maximumValue": {
-            "type": "number",
-            "description": "The number of _unitOfMeasure_ units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g., 1 month) this must be the same as _minimumValue_. Where this is the same as the _minimumValue_ value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.",
-            "x-cds-type": "Number"
+            "type": "string",
+            "description": "The number of _unitOfMeasure_ units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g., 1 month) this must be the same as _minimumValue_. Where this is the same as the _minimumValue_ value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound."
           },
           "rateApplicationMethod": {
             "type": "string",
@@ -3273,7 +3490,11 @@
             ]
           },
           "applicabilityConditions": {
-            "$ref": "#/components/schemas/BankingProductRateCondition"
+            "type": "array",
+            "description": "Applicability conditions for the rate tier.",
+            "items": {
+              "$ref": "#/components/schemas/BankingProductRateConditionV2"
+            }
           },
           "additionalInfo": {
             "type": "string",
@@ -3287,12 +3508,36 @@
         },
         "description": "Defines the criteria and conditions for which a rate applies."
       },
-      "BankingProductRateCondition": {
+      "BankingProductRateConditionV2": {
         "type": "object",
+        "description": "Defines a condition for the applicability of a rate.",
         "properties": {
+          "rateApplicabilityType": {
+            "type": "string",
+            "description": "Category of applicability condition associated with the rate. For more information refer to [Rate and Tier Applicability Types](#tocSbankingproductrateconditiondoc).",
+            "enum": [
+              "MIN_DEPOSITS",
+              "MIN_DEPOSIT_AMOUNT",
+              "DEPOSIT_BALANCE_INCREASED",
+              "EXISTING_CUST",
+              "NEW_ACCOUNTS",
+              "NEW_CUSTOMER",
+              "NEW_CUSTOMER_TO_GROUP",
+              "ONLINE_ONLY",
+              "OTHER",
+              "MIN_PURCHASES",
+              "MAX_WITHDRAWALS",
+              "MAX_WITHDRAWAL_AMOUNT"
+            ],
+            "example": "NEW_CUSTOMER"
+          },
+          "additionalValue": {
+            "type": "string",
+            "description": "Generic field containing additional information relevant to the _rateApplicabilityType_ specified. Whether mandatory or not is dependent on the value of [_rateApplicabilityType_](#tocSbankingproductrateconditiondoc)."
+          },
           "additionalInfo": {
             "type": "string",
-            "description": "Display text providing more information on the condition."
+            "description": "Display text providing more information on the condition. Mandatory if the [_rateApplicabilityType_](#tocSbankingproductrateconditiondoc) value is `OTHER`."
           },
           "additionalInfoUri": {
             "type": "string",
@@ -3300,7 +3545,13 @@
             "x-cds-type": "URIString"
           }
         },
-        "description": "Defines a condition for the applicability of a tiered rate."
+        "required": [
+          "rateApplicabilityType"
+        ],
+        "x-conditional": [
+          "additionalValue",
+          "additionalInfo"
+        ]
       },
       "BankingProductInstalments": {
         "required": [
@@ -3392,9 +3643,11 @@
         "properties": {
           "accountId": {
             "description": "Unique identifier for the account.",
-            "allOf": [{
-              "$ref": "#/components/schemas/BankingAccountId"
-            }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingAccountId"
+              }
+            ]
           },
           "creationDate": {
             "type": "string",
@@ -3448,7 +3701,7 @@
           }
         }
       },
-      "ResponseBankingAccountByIdV4": {
+      "ResponseBankingAccountByIdV5": {
         "required": [
           "data",
           "links"
@@ -3456,7 +3709,7 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/BankingAccountDetailV4"
+            "$ref": "#/components/schemas/BankingAccountDetailV5"
           },
           "links": {
             "$ref": "#/components/schemas/Links"
@@ -3466,7 +3719,7 @@
           }
         }
       },
-      "BankingAccountDetailV4": {
+      "BankingAccountDetailV5": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BankingAccountV3"
@@ -3500,15 +3753,26 @@
               },
               "termDeposit": {
                 "type": "array",
+                "description": "Mandatory if the _specificAccountUType_ value is `termDeposit`.",
                 "items": {
                   "$ref": "#/components/schemas/BankingTermDepositAccount"
                 }
               },
               "creditCard": {
-                "$ref": "#/components/schemas/BankingCreditCardAccount"
+                "description": "Mandatory if the _specificAccountUType_ value is `creditCard`.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/BankingCreditCardAccount"
+                  }
+                ]
               },
               "loan": {
-                "$ref": "#/components/schemas/BankingLoanAccountV2"
+                "description": "Mandatory if the _specificAccountUType_ value is `loan`.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/BankingLoanAccountV3"
+                  }
+                ]
               },
               "depositRate": {
                 "type": "string",
@@ -3524,14 +3788,14 @@
                 "type": "array",
                 "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference.",
                 "items": {
-                  "$ref": "#/components/schemas/BankingProductDepositRate"
+                  "$ref": "#/components/schemas/BankingProductDepositRateV2"
                 }
               },
               "lendingRates": {
                 "type": "array",
                 "description": "Fully described lending rates for this account based on the equivalent structure in Product Reference.",
                 "items": {
-                  "$ref": "#/components/schemas/BankingProductLendingRateV2"
+                  "$ref": "#/components/schemas/BankingProductLendingRateV3"
                 }
               },
               "features": {
@@ -3541,15 +3805,20 @@
                   "type": "object",
                   "allOf": [
                     {
-                      "$ref": "#/components/schemas/BankingProductFeatureV3"
+                      "$ref": "#/components/schemas/BankingProductFeatureV4"
                     },
                     {
                       "type": "object",
                       "properties": {
                         "isActivated": {
-                          "type": "boolean",
-                          "description": "`true` if the feature is already activated and `false` if the feature is available for activation. Defaults to `true` if absent.<br>**Note:** this is an additional field appended to the feature object defined in the Product Reference payload.",
-                          "default": true
+                          "type": "string",
+                          "description": "<ul><li>`ACTIVATED` if the feature has been activated by the customer or is a standard feature of the product</li><li>`NOT_ACTIVATED` if the feature is not activated but is available for activation</li><li>`UNKNOWN` or absent if the activation state is unknown.</ul>**Note:** This is an additional field appended to the feature structure defined in the Product Reference payload.",
+                          "enum": [
+                            "ACTIVATED",
+                            "NOT_ACTIVATED",
+                            "UNKNOWN"
+                          ],
+                          "default": "UNKNOWN"
                         }
                       }
                     }
@@ -3560,7 +3829,7 @@
                 "type": "array",
                 "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference.",
                 "items": {
-                  "$ref": "#/components/schemas/BankingProductFee"
+                  "$ref": "#/components/schemas/BankingProductFeeV2"
                 }
               },
               "addresses": {
@@ -3733,7 +4002,10 @@
           }
         }
       },
-      "BankingLoanAccountV2": {
+      "BankingLoanAccountV3": {
+        "required": [
+          "repaymentType"
+        ],
         "type": "object",
         "properties": {
           "originalStartDate": {
@@ -3808,11 +4080,12 @@
           },
           "repaymentType": {
             "type": "string",
-            "description": "Options in place for repayments. If absent defaults to `PRINCIPAL_AND_INTEREST`.",
-            "default": "PRINCIPAL_AND_INTEREST",
+            "description": "Option in place for repayments.",
             "enum": [
               "INTEREST_ONLY",
-              "PRINCIPAL_AND_INTEREST"
+              "OTHER",
+              "PRINCIPAL_AND_INTEREST",
+              "UNCONSTRAINED"
             ]
           },
           "repaymentFrequency": {
@@ -3866,15 +4139,19 @@
         "properties": {
           "accountId": {
             "description": "Unique identifier for the account.",
-            "allOf": [{
-              "$ref": "#/components/schemas/BankingAccountId"
-            }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingAccountId"
+              }
+            ]
           },
           "transactionId": {
-            "description": "Unique identifier for the transaction. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if _isDetailAvailable_ is set to `true`.",
-            "allOf": [{
-              "$ref": "#/components/schemas/BankingTransactionId"
-            }]
+            "description": "Unique identifier for the transaction. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. Mandatory if the _isDetailAvailable_ value is `true`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingTransactionId"
+              }
+            ]
           },
           "isDetailAvailable": {
             "type": "boolean",
@@ -3967,7 +4244,7 @@
           "crn"
         ]
       },
-      "ResponseBankingTransactionById": {
+      "ResponseBankingTransactionByIdV2": {
         "required": [
           "data",
           "links"
@@ -3975,7 +4252,7 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/BankingTransactionDetail"
+            "$ref": "#/components/schemas/BankingTransactionDetailV2"
           },
           "links": {
             "$ref": "#/components/schemas/Links"
@@ -3985,7 +4262,7 @@
           }
         }
       },
-      "BankingTransactionDetail": {
+      "BankingTransactionDetailV2": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BankingTransaction"
@@ -3997,9 +4274,6 @@
             "type": "object",
             "properties": {
               "extendedData": {
-                "required": [
-                  "service"
-                ],
                 "type": "object",
                 "properties": {
                   "payer": {
@@ -4012,20 +4286,25 @@
                   },
                   "extensionUType": {
                     "type": "string",
-                    "description": "Optional extended data specific to transactions originated via NPP.",
+                    "description": "Optional extended data specific to transactions. Currently extended data is supported for NPP service overlays.",
                     "enum": [
-                      "x2p101Payload"
+                      "nppPayload"
                     ]
                   },
-                  "x2p101Payload": {
+                  "nppPayload": {
+                    "type": "object",
+                    "description": "Required if the _extensionUType_ value is `nppPayload`.",
+                    "required": [
+                      "service",
+                      "serviceVersion"
+                    ],
                     "x-conditional": [
                       "extendedDescription"
                     ],
-                    "type": "object",
                     "properties": {
                       "extendedDescription": {
                         "type": "string",
-                        "description": "An extended string description. Required if the _extensionUType_ value is `x2p101Payload`."
+                        "description": "An extended string description. Required if the _extensionUType_ value is `nppPayload`."
                       },
                       "endToEndId": {
                         "type": "string",
@@ -4033,22 +4312,25 @@
                       },
                       "purposeCode": {
                         "type": "string",
-                        "description": "Purpose of the payment. Format is defined by NPP standards for the x2p1.01 overlay service."
+                        "x-cds-type": "ExternalRef",
+                        "description": "Purpose of the payment. Format is defined by the NPP standards for the NPP overlay services including Osko (X2P1)."
+                      },
+                      "service": {
+                        "$ref": "#/components/schemas/NppPaymentService"
+                      },
+                      "serviceVersion": {
+                        "type": "string",
+                        "x-cds-type": "ExternalRef",
+                        "description": "Two-digit NPP service overlay version with leading zero.",
+                        "example": "03"
                       }
                     }
-                  },
-                  "service": {
-                    "type": "string",
-                    "description": "Identifier of the applicable overlay service. Valid values are: `X2P1.01`.",
-                    "enum": [
-                      "X2P1.01"
-                    ]
                   }
                 },
                 "x-conditional": [
                   "payer",
                   "payee",
-                  "x2p101Payload"
+                  "nppPayload"
                 ]
               }
             }
@@ -4114,9 +4396,11 @@
         "properties": {
           "accountId": {
             "description": "Unique identifier for the account.",
-            "allOf": [{
-              "$ref": "#/components/schemas/BankingAccountId"
-            }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingAccountId"
+              }
+            ]
           },
           "currentBalance": {
             "type": "string",
@@ -4230,9 +4514,11 @@
         "properties": {
           "payeeId": {
             "description": "Unique identifier for the payee.",
-            "allOf": [{
-              "$ref": "#/components/schemas/BankingPayeeId"
-            }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingPayeeId"
+              }
+            ]
           },
           "nickname": {
             "type": "string",
@@ -4585,9 +4871,11 @@
         "properties": {
           "accountId": {
             "description": "Unique identifier for the account.",
-            "allOf": [{
-              "$ref": "#/components/schemas/BankingAccountId"
-            }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingAccountId"
+              }
+            ]
           },
           "authorisedEntity": {
             "$ref": "#/components/schemas/BankingAuthorisedEntity"
@@ -4676,9 +4964,11 @@
         "properties": {
           "scheduledPaymentId": {
             "description": "Unique identifier for the scheduled payment.",
-            "allOf": [{
-              "$ref": "#/components/schemas/BankingScheduledPaymentId"
-            }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingScheduledPaymentId"
+              }
+            ]
           },
           "nickname": {
             "type": "string",
@@ -4769,16 +5059,19 @@
           },
           "accountId": {
             "description": "Present if _toUType_ is set to `accountId`. Indicates that the payment is to another account that is accessible under the current consent.",
-            "allOf": [{
-              "$ref": "#/components/schemas/BankingAccountId"
-            }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingAccountId"
+              }
+            ]
           },
           "payeeId": {
-            "type": "string",
             "description": "Present if _toUType_ is set to `payeeId`. Indicates that the payment is to registered payee that can be accessed using the payee endpoint. If the Bank Payees scope has not been consented to then a _payeeId_ should not be provided and the full payee details should be provided instead.",
-            "allOf": [{
-              "$ref": "#/components/schemas/BankingPayeeId"
-            }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingPayeeId"
+              }
+            ]
           },
           "nickname": {
             "type": "string",
@@ -4821,9 +5114,11 @@
         "properties": {
           "accountId": {
             "description": "Unique identifier for the account.",
-            "allOf": [{
-              "$ref": "#/components/schemas/BankingAccountId"
-            }]
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BankingAccountId"
+              }
+            ]
           }
         },
         "description": "Object containing details of the source of the payment. Currently only specifies an _accountId_ but provided as an object to facilitate future extensibility and consistency with the _to_ object."
@@ -5341,6 +5636,17 @@
           "TRANS_AND_SAVINGS_ACCOUNTS",
           "TRAVEL_CARDS"
         ]
+      },
+      "NppPaymentService": {
+        "type": "string",
+        "description": "Identifier of the applicable overlay service. The _service_ is used in conjunction with the _serviceVersion_. See [here](#npp-services) for more details.",
+        "enum": [
+          "X2P1",
+          "IFTI",
+          "BSCT",
+          "CATSCT"
+        ],
+        "example": "X2P1"
       },
       "BankingProductId": {
         "type": "string",

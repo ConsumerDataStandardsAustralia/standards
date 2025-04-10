@@ -1,6 +1,31 @@
 # Banking APIs
 
+```diff
+Updated Banking endpoints with latest revisions from 1.34.0.
 
+The following endoints have changed since the previous NBL candidate:
+ - Get Products
+ - Get Product Detail
+ - Get Account Detail
+ - Get Transaction Detail
+
+For NBL:
+ -  the `BUY_NOW_PAY_LATER` value has been added as an option for the 'product-category' query parameter in the below endpoints.
+    - Get Products
+    - Get Accounts
+    - Get Bulk Balances
+    - Get Bulk Direct Debits
+    - Get Scheduled Payments Bulk
+
+ - the `BUY_NOW_PAY_LATER` value has been added as an option for the 'productCategory' property in the below endpoints.
+    - Get Products
+    - Get Product Detail
+    - Get Accounts
+    - Get Account Detail
+
+ - the 'instalments' object has been added to the Get Product Detail and Get Account Detail endpoints.
+ - the `EXTRA_DOWN_PAYMENT` featureType has been added, applicable to the Get Product Detail and Get Account Detail endpoints.
+```
 
 This specification defines the APIs for Data Holders exposing Banking endpoints.
 
