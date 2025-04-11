@@ -13,6 +13,11 @@ Some of these standards will be binding data standards under the Competition and
 
 
 ```diff
+Version 1.34.1 amendment:
+This version is a 'bug fix' release to update the Candidate Standards for the Banking and Non-Bank Lending sector. Version Delta comments from the recent v1.34.0 release have been retained in the binding standards for reference only.
+```
+
+```diff
 + Added a new section to cover the Data Standards Chair appointments
 ```
 
@@ -26,7 +31,7 @@ Some of these standards will be binding data standards under the Competition and
 Further details of Data Standards Chair appointments can be found [here](https://www.directory.gov.au/portfolios/treasury/department-treasury/data-standards-chair).
 
 ## Version
-These standards represent version **1.34.0** of the high level standards. See the [versioning section](#versioning) for more information on how versions are managed in the standard.
+These standards represent version **1.34.1** of the high level standards. See the [versioning section](#versioning) for more information on how versions are managed in the standard.
 
 
 

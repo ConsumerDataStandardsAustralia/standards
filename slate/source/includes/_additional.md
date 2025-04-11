@@ -15,6 +15,11 @@ Removed Decision Proposal 306 Candidate. Any applicable changes have been incorp
 - Candidate Standards for Banking Decision Proposal 306
 ```
 
+```diff
+Version 1.34.1 amendment:
+The Candidate Standards for the Banking and Non-Bank Lending sector have been updated to incorporate changes up to version 1.34.0
+```
+
 The Consumer Data Standards currently include the following Candidate Standards:
 
 - [Candidate Standards for the Telecommunications sector](./includes/additional/candidates/telco/telco.html).

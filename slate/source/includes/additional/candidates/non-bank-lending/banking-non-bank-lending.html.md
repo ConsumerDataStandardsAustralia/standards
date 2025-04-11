@@ -9,6 +9,8 @@ toc_footers:
   - <a href='../../../../index.html'>Consumer Data Standards</a>
 
 includes:
+  - additional/candidates/non-bank-lending/intro
+  - separator
   - additional/candidates/non-bank-lending/_standards_banking_non_bank_lending
   - separator
   - additional/candidates/non-bank-lending/cx_nbl
@@ -20,6 +22,7 @@ includes:
   - cds_banking_non_bank_lending
   - additional/candidates/non-bank-lending/_product_categories_nbl
   - additional/candidates/non-bank-lending/_product_components_nbl
+  - additional/candidates/non-bank-lending/_npp_services_nbl
   - footer
 
 search: true

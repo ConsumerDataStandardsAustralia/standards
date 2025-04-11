@@ -1,6 +1,30 @@
 # Register APIs
 
+```diff
+Updated Register endpoints with latest revisions from 1.34.0.
 
+The following endoints have been added since the previous NBL candidate:
++ Get Software Statement Assertion (SSA)
++ Get Software Products Statuses
++ Get Data Recipients Statuses
++ Get Data Recipients
+
+For NBL:
+ - the `non-bank-lending` value has been added as an option for the 'industry' path parameter in the below endpoints.
+    - Get Data Holder Brands
+    - Get Data Holder Brands Summary
+    - Get Data Holder Statuses
+
+ - the '{industry}' path parameter has been replaced with the fixed string 'all' in the below endpoints.
+    - Get Software Statement Assertion (SSA)
+    - Get Software Products Statuses
+    - Get Data Recipients Statuses
+    - Get Data Recipients
+
+ - the `non-bank-lending` value has been added as an option for the 'industries' property in the below endpoints.
+    - Get Data Holder Brands
+    - Get Data Holder Brands Summary
+```
 
 The following section provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata.
 These endpoints are exposed by the Register and consumed by Data Holders and Data Recipients.
