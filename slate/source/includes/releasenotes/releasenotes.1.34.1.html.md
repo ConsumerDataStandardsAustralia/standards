@@ -22,16 +22,6 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 - [Standards Staging #485 - Updates to NBL Candidate](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/485)
 
-This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
-
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
-
-
-### Decision Proposals
-This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
-
-- [Decision Proposal #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
-
 
 ## General Changes
 |Change|Description|Link|
@@ -40,43 +30,35 @@ This release addresses the following Decision Proposals published on [Standards]
 
 
 ## Introduction
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## High Level Standards
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## API Endpoints
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Information Security Profile
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Register Standards
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Consumer Experience
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Non-Functional Requirements
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Shared Responsibility
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Additional Standards
