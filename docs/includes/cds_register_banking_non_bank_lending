@@ -1,8 +1,209 @@
 <!-- Endpoint tag group description -->
 
+<!-- Register Operations endpoints -->
+
+<h2 id="cdr-register-api_get-software-statement-assertion-ssa">Get Software Statement Assertion (SSA)</h2>
+
+<p id="get-software-statement-assertion-ssa" class="orig-anchor"></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://secure.api.cdr.gov.au/cdr-register/v1/all/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">secure.api.cdr.gov.au</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">string</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'string'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://secure.api.cdr.gov.au/cdr-register/v1/all/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p><code>GET /cdr-register/v1/all/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa</code></p>
+
+<p>Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.</p>
+
+<p>Obsolete versions: <em>(Refer to Standards.)</em></p>
+
+<h3 id="cdr-register-api_get-software-statement-assertion-ssa_endpoint-version">Endpoint Version</h3>
+
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td><strong>4</strong></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-register-api_get-software-statement-assertion-ssa_parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
+</tr>
+<tr>
+<td>dataRecipientBrandId</td>
+<td>path</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register.</td>
+</tr>
+<tr>
+<td>softwareProductId</td>
+<td>path</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Unique id for the Accredited Data Recipient Software Product in the CDR Register.</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>header</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
+<td>mandatory</td>
+<td></td>
+<td>An Authorisation Token as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong>.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="s2">"string"</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-register-api_get-software-statement-assertion-ssa_responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Successful response</td>
+<td>string</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Missing Required Header / Invalid Version / Invalid Path Parameter</td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Invalid Bearer Token</td>
+<td>None</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>Invalid BrandId</td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>Invalid Software Product</td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
+<td>Unsupported Version</td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+<tr>
+<td>422</td>
+<td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
+<td>SSA validation failed</td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-register-api_get-software-statement-assertion-ssa_response-headers">Response Headers</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td>optional</td>
+<td>The <a href="#response-headers">payload version</a> that the endpoint has responded with.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>WWW-Authenticate</td>
+<td><a href="#common-field-types">ExternalRef</a></td>
+<td>optional</td>
+<td>The Response Header Field as per <strong><a href="#nref-RFC6750">[RFC6750]</a></strong>.</td>
+</tr>
+</tbody></table>
+
+<p><aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">cdr-register:read.</a>
+</aside></p>
+
+<!-- Endpoint tag group description -->
+
 <!-- Register Data Holder discovery endpoints -->
 
-<h2 id="cdr-register-api-modified-for-nbl-_get-data-holder-brands">Get Data Holder Brands</h2>
+<h2 id="cdr-register-api_get-data-holder-brands">Get Data Holder Brands</h2>
 
 <p id="get-data-holder-brands" class="orig-anchor"></p>
 
@@ -36,9 +237,9 @@
 
 <p>Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.</p>
 
-<p>Obsolete versions: <a href="obsolete/get-data-holder-brands-v1.html">v1</a>, <a href="obsolete/get-data-holder-brands-v2.html">v2</a>.</p>
+<p>Obsolete versions: <em>(Refer to Standards.)</em></p>
 
-<h3 id="cdr-register-api-modified-for-nbl-_get-data-holder-brands_endpoint-version">Endpoint Version</h3>
+<h3 id="cdr-register-api_get-data-holder-brands_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
 <tr>
@@ -52,7 +253,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="cdr-register-api-modified-for-nbl-_get-data-holder-brands_parameters">Parameters</h3>
+<h3 id="cdr-register-api_get-data-holder-brands_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -67,7 +268,7 @@
 <tr>
 <td>industry</td>
 <td>path</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-industryenum">IndustryEnum</a></td>
+<td><a href="#schemacdr-register-apiindustryenumv2">IndustryEnumV2</a></td>
 <td>mandatory</td>
 <td></td>
 <td>The industry the participant is retrieving data for (Banking, etc.)</td>
@@ -122,7 +323,7 @@
 </tr>
 </tbody></table>
 
-<h4 id="cdr-register-api-modified-for-nbl-_get-data-holder-brands_enumerated-values-parameters">Enumerated Values</h4>
+<h4 id="cdr-register-api_get-data-holder-brands_enumerated-values-parameters">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -211,7 +412,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_get-data-holder-brands_responses">Responses</h3>
+<h3 id="cdr-register-api_get-data-holder-brands_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -225,13 +426,13 @@
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-responseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</a></td>
+<td><a href="#schemacdr-register-apiresponseregisterdataholderbrandlistv2">ResponseRegisterDataHolderBrandListV2</a></td>
 </tr>
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Missing Required Header / Invalid Version / Invalid Path Parameter</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-responseerrorlistv2">ResponseErrorListV2</a></td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>401</td>
@@ -243,11 +444,11 @@
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>Unsupported Version</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-responseerrorlistv2">ResponseErrorListV2</a></td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
-<h3 id="cdr-register-api-modified-for-nbl-_get-data-holder-brands_response-headers">Response Headers</h3>
+<h3 id="cdr-register-api_get-data-holder-brands_response-headers">Response Headers</h3>
 
 <table><thead>
 <tr>
@@ -279,7 +480,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <a href="#authorisation-scopes">cdr-register:read.</a>
 </aside></p>
 
-<h2 id="cdr-register-api-modified-for-nbl-_get-data-holder-brands-summary">Get Data Holder Brands Summary</h2>
+<h2 id="cdr-register-api_get-data-holder-brands-summary">Get Data Holder Brands Summary</h2>
 
 <p id="get-data-holder-brands-summary" class="orig-anchor"></p>
 
@@ -311,11 +512,11 @@ To perform this operation, you must be authenticated and authorised with the fol
 </code></pre>
 <p><code>GET /cdr-register/v1/{industry}/data-holders/brands/summary</code></p>
 
-<p>Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register</p>
+<p>Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register.</p>
 
-<p>Obsolete versions: <a href="obsolete/get-data-holder-brands-summary-v1.html">v1</a>.</p>
+<p>Obsolete versions: <em>(Refer to Standards.)</em></p>
 
-<h3 id="cdr-register-api-modified-for-nbl-_get-data-holder-brands-summary_endpoint-version">Endpoint Version</h3>
+<h3 id="cdr-register-api_get-data-holder-brands-summary_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
 <tr>
@@ -329,7 +530,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h3 id="cdr-register-api-modified-for-nbl-_get-data-holder-brands-summary_parameters">Parameters</h3>
+<h3 id="cdr-register-api_get-data-holder-brands-summary_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -344,7 +545,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>industry</td>
 <td>path</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-industryenum">IndustryEnum</a></td>
+<td><a href="#schemacdr-register-apiindustryenumv2">IndustryEnumV2</a></td>
 <td>mandatory</td>
 <td></td>
 <td>The industry the participant is retrieving data for (Banking, etc.)</td>
@@ -375,7 +576,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h4 id="cdr-register-api-modified-for-nbl-_get-data-holder-brands-summary_enumerated-values-parameters">Enumerated Values</h4>
+<h4 id="cdr-register-api_get-data-holder-brands-summary_enumerated-values-parameters">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -433,7 +634,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_get-data-holder-brands-summary_responses">Responses</h3>
+<h3 id="cdr-register-api_get-data-holder-brands-summary_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -447,7 +648,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-responsedataholdersbrandsummarylist">ResponseDataHoldersBrandSummaryList</a></td>
+<td><a href="#schemacdr-register-apiresponsedataholdersbrandsummarylist">ResponseDataHoldersBrandSummaryList</a></td>
 </tr>
 <tr>
 <td>304</td>
@@ -459,23 +660,23 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Missing Required Header / Invalid Version / Invalid Path Parameter</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-responseerrorlistv2">ResponseErrorListV2</a></td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>Industry Not Found</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-responseerrorlistv2">ResponseErrorListV2</a></td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>Unsupported Version</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-responseerrorlistv2">ResponseErrorListV2</a></td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
-<h3 id="cdr-register-api-modified-for-nbl-_get-data-holder-brands-summary_response-headers">Response Headers</h3>
+<h3 id="cdr-register-api_get-data-holder-brands-summary_response-headers">Response Headers</h3>
 
 <table><thead>
 <tr>
@@ -513,7 +714,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 This operation does not require authentication.
 </aside></p>
 
-<h2 id="cdr-register-api-modified-for-nbl-_get-data-holder-statuses">Get Data Holder Statuses</h2>
+<h2 id="cdr-register-api_get-data-holder-statuses">Get Data Holder Statuses</h2>
 
 <p id="get-data-holder-statuses" class="orig-anchor"></p>
 
@@ -545,11 +746,11 @@ This operation does not require authentication.
 </code></pre>
 <p><code>GET /cdr-register/v1/{industry}/data-holders/status</code></p>
 
-<p>Endpoint used by participants to discover the statuses for Data Holders from the CDR Register</p>
+<p>Endpoint used by participants to discover the statuses for Data Holders from the CDR Register.</p>
 
-<p>Obsolete versions: <a href="obsolete/get-data-holder-statuses-v1.html">v1</a>.</p>
+<p>Obsolete versions: <em>(Refer to Standards.)</em></p>
 
-<h3 id="cdr-register-api-modified-for-nbl-_get-data-holder-statuses_endpoint-version">Endpoint Version</h3>
+<h3 id="cdr-register-api_get-data-holder-statuses_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
 <tr>
@@ -563,7 +764,7 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 id="cdr-register-api-modified-for-nbl-_get-data-holder-statuses_parameters">Parameters</h3>
+<h3 id="cdr-register-api_get-data-holder-statuses_parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -578,7 +779,7 @@ This operation does not require authentication.
 <tr>
 <td>industry</td>
 <td>path</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-industryenum">IndustryEnum</a></td>
+<td><a href="#schemacdr-register-apiindustryenumv2">IndustryEnumV2</a></td>
 <td>mandatory</td>
 <td></td>
 <td>The industry the participant is retrieving data for (Banking, etc.)</td>
@@ -609,7 +810,7 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h4 id="cdr-register-api-modified-for-nbl-_get-data-holder-statuses_enumerated-values-parameters">Enumerated Values</h4>
+<h4 id="cdr-register-api_get-data-holder-statuses_enumerated-values-parameters">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -657,7 +858,7 @@ This operation does not require authentication.
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_get-data-holder-statuses_responses">Responses</h3>
+<h3 id="cdr-register-api_get-data-holder-statuses_responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -671,7 +872,7 @@ This operation does not require authentication.
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-dataholdersstatuslist">DataHoldersStatusList</a></td>
+<td><a href="#schemacdr-register-apidataholdersstatuslist">DataHoldersStatusList</a></td>
 </tr>
 <tr>
 <td>304</td>
@@ -683,17 +884,17 @@ This operation does not require authentication.
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Missing Required Header / Invalid Version / Invalid Path Parameter</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-responseerrorlistv2">ResponseErrorListV2</a></td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>Unsupported Version</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-responseerrorlistv2">ResponseErrorListV2</a></td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
-<h3 id="cdr-register-api-modified-for-nbl-_get-data-holder-statuses_response-headers">Response Headers</h3>
+<h3 id="cdr-register-api_get-data-holder-statuses_response-headers">Response Headers</h3>
 
 <table><thead>
 <tr>
@@ -731,15 +932,581 @@ This operation does not require authentication.
 This operation does not require authentication.
 </aside></p>
 
-<h2 class="schema-heading" id="cdr-register-api-modified-for-nbl--schemas">Schemas</h2>
+<!-- Endpoint tag group description -->
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h3>
+<!-- Register Data Recipient discovery endpoints -->
 
-<p id="tocSresponseregisterdataholderbrandlist" class="orig-anchor"></p>
+<h2 id="cdr-register-api_get-software-products-statuses">Get Software Products Statuses</h2>
+
+<p id="get-software-products-statuses" class="orig-anchor"></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.cdr.gov.au/cdr-register/v1/all/data-recipients/brands/software-products/status</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.cdr.gov.au</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">If-None-Match</span><span class="p">:</span> <span class="s">string</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.cdr.gov.au/cdr-register/v1/all/data-recipients/brands/software-products/status'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p><code>GET /cdr-register/v1/all/data-recipients/brands/software-products/status</code></p>
+
+<p>Endpoint used by participants to discover the statuses for software products from the CDR Register.</p>
+
+<p>Obsolete versions: <em>(Refer to Standards.)</em></p>
+
+<h3 id="cdr-register-api_get-software-products-statuses_endpoint-version">Endpoint Version</h3>
+
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td><strong>3</strong></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-register-api_get-software-products-statuses_parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
+</tr>
+<tr>
+<td>If-None-Match</td>
+<td>header</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
+<td>optional</td>
+<td></td>
+<td>Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-register-api_get-software-products-statuses_responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Successful response</td>
+<td><a href="#schemacdr-register-apisoftwareproductsstatuslist">SoftwareProductsStatusList</a></td>
+</tr>
+<tr>
+<td>304</td>
+<td><a href="https://tools.ietf.org/html/rfc7232#section-4.1">Not Modified</a></td>
+<td>Not Modified - The current representation of the target resource matches with the entity-tag provided in the <em>If-None-Match</em> request header</td>
+<td>None</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Missing Required Header / Invalid Version / Invalid Path Parameter</td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
+<td>Unsupported Version</td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-register-api_get-software-products-statuses_response-headers">Response Headers</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The <a href="#response-headers">payload version</a> that the endpoint has responded with.</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Etag</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
+<td>optional</td>
+<td>Entity tag that uniquely represents the requested resource.</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Etag</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
+<td>optional</td>
+<td>Entity tag that uniquely represents the requested resource.</td>
+</tr>
+</tbody></table>
+
+<p><aside class="success">
+This operation does not require authentication.
+</aside></p>
+
+<h2 id="cdr-register-api_get-data-recipients-statuses">Get Data Recipients Statuses</h2>
+
+<p id="get-data-recipients-statuses" class="orig-anchor"></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.cdr.gov.au/cdr-register/v1/all/data-recipients/status</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.cdr.gov.au</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">If-None-Match</span><span class="p">:</span> <span class="s">string</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.cdr.gov.au/cdr-register/v1/all/data-recipients/status'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p><code>GET /cdr-register/v1/all/data-recipients/status</code></p>
+
+<p>Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.</p>
+
+<p>Obsolete versions: <em>(Refer to Standards.)</em></p>
+
+<h3 id="cdr-register-api_get-data-recipients-statuses_endpoint-version">Endpoint Version</h3>
+
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td><strong>3</strong></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-register-api_get-data-recipients-statuses_parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
+</tr>
+<tr>
+<td>If-None-Match</td>
+<td>header</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
+<td>optional</td>
+<td></td>
+<td>Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-register-api_get-data-recipients-statuses_responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Successful response</td>
+<td><a href="#schemacdr-register-apidatarecipientsstatuslist">DataRecipientsStatusList</a></td>
+</tr>
+<tr>
+<td>304</td>
+<td><a href="https://tools.ietf.org/html/rfc7232#section-4.1">Not Modified</a></td>
+<td>Not Modified - The current representation of the target resource matches with the entity-tag provided in the <em>If-None-Match</em> request header</td>
+<td>None</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Missing Required Header / Invalid Version / Invalid Path Parameter</td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
+<td>Unsupported Version</td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-register-api_get-data-recipients-statuses_response-headers">Response Headers</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The <a href="#response-headers">payload version</a> that the endpoint has responded with.</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Etag</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
+<td>optional</td>
+<td>Entity tag that uniquely represents the requested resource.</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Etag</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
+<td>optional</td>
+<td>Entity tag that uniquely represents the requested resource.</td>
+</tr>
+</tbody></table>
+
+<p><aside class="success">
+This operation does not require authentication.
+</aside></p>
+
+<h2 id="cdr-register-api_get-data-recipients">Get Data Recipients</h2>
+
+<p id="get-data-recipients" class="orig-anchor"></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.cdr.gov.au/cdr-register/v1/all/data-recipients</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.cdr.gov.au</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">If-None-Match</span><span class="p">:</span> <span class="s">string</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.cdr.gov.au/cdr-register/v1/all/data-recipients'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p><code>GET /cdr-register/v1/all/data-recipients</code></p>
+
+<p>Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.</p>
+
+<p>Obsolete versions: <em>(Refer to Standards.)</em></p>
+
+<h3 id="cdr-register-api_get-data-recipients_endpoint-version">Endpoint Version</h3>
+
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td><strong>4</strong></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-register-api_get-data-recipients_parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
+</tr>
+<tr>
+<td>If-None-Match</td>
+<td>header</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
+<td>optional</td>
+<td></td>
+<td>Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accreditationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accreditationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNRESTRICTED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dataRecipientBrands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"dataRecipientBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"softwareProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"softwareProductName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"softwareProductDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-register-api_get-data-recipients_responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Successful response</td>
+<td><a href="#schemacdr-register-apiresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</a></td>
+</tr>
+<tr>
+<td>304</td>
+<td><a href="https://tools.ietf.org/html/rfc7232#section-4.1">Not Modified</a></td>
+<td>Not Modified - The current representation of the target resource matches with the entity-tag provided in the <em>If-None-Match</em> request header</td>
+<td>None</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Missing Required Header / Invalid Version / Invalid Path Parameter</td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
+<td>Unsupported Version</td>
+<td><a href="#schemacdr-register-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-register-api_get-data-recipients_response-headers">Response Headers</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The <a href="#response-headers">payload version</a> that the endpoint has responded with.</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Etag</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
+<td>optional</td>
+<td>Entity tag that uniquely represents the requested resource.</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Etag</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
+<td>optional</td>
+<td>Entity tag that uniquely represents the requested resource.</td>
+</tr>
+</tbody></table>
+
+<p><aside class="success">
+This operation does not require authentication.
+</aside></p>
+
+<h2 class="schema-heading" id="cdr-register-api-schemas">Schemas</h2>
+
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponseregisterdataholderbrandlistv2">ResponseRegisterDataHolderBrandListV2</h3>
+
+<p id="tocSresponseregisterdataholderbrandlistv2" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_responseregisterdataholderbrandlist"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-responseregisterdataholderbrandlist"></a>
+  <a id="cdr-register-api_schema-base_responseregisterdataholderbrandlist"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiresponseregisterdataholderbrandlistv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -797,7 +1564,7 @@ This operation does not require authentication.
 </span></code></pre>
 <p><em>Response containing a list of CDR Register Data Holder Brand objects.</em></p>
 
-<h3 id="cdr-register-api-modified-for-nbl-_responseregisterdataholderbrandlist_properties">Properties</h3>
+<h3 id="cdr-register-api_responseregisterdataholderbrandlistv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -810,34 +1577,34 @@ This operation does not require authentication.
 </thead><tbody>
 <tr>
 <td>data</td>
-<td>[<a href="#schemacdr-register-api-modified-for-nbl-registerdataholderbrand">RegisterDataHolderBrand</a>]</td>
+<td>[<a href="#schemacdr-register-apiregisterdataholderbrandv2">RegisterDataHolderBrandV2</a>]</td>
 <td>mandatory</td>
 <td></td>
 <td>Response data for the query.</td>
 </tr>
 <tr>
 <td>links</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-linkspaginated">LinksPaginated</a></td>
+<td><a href="#schemacdr-register-apilinkspaginated">LinksPaginated</a></td>
 <td>mandatory</td>
 <td></td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-metapaginated">MetaPaginated</a></td>
+<td><a href="#schemacdr-register-apimetapaginated">MetaPaginated</a></td>
 <td>mandatory</td>
 <td></td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSregisterdataholderbrand">RegisterDataHolderBrand</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSregisterdataholderbrandv2">RegisterDataHolderBrandV2</h3>
 
-<p id="tocSregisterdataholderbrand" class="orig-anchor"></p>
+<p id="tocSregisterdataholderbrandv2" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_registerdataholderbrand"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-registerdataholderbrand"></a>
+  <a id="cdr-register-api_schema-base_registerdataholderbrand"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiregisterdataholderbrandv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -878,7 +1645,7 @@ This operation does not require authentication.
   </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_registerdataholderbrand_properties">Properties</h3>
+<h3 id="cdr-register-api_registerdataholderbrandv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -905,7 +1672,7 @@ This operation does not require authentication.
 </tr>
 <tr>
 <td>industries</td>
-<td>[<a href="#schemacdr-register-api-modified-for-nbl-industriesenum">IndustriesEnum</a>]</td>
+<td>[<a href="#schemacdr-register-apiindustriesenumv2">IndustriesEnumV2</a>]</td>
 <td>mandatory</td>
 <td></td>
 <td>The industries the Data Holder Brand belongs to.</td>
@@ -919,7 +1686,7 @@ This operation does not require authentication.
 </tr>
 <tr>
 <td>legalEntity</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-legalentitydetail">LegalEntityDetail</a></td>
+<td><a href="#schemacdr-register-apilegalentitydetail">LegalEntityDetail</a></td>
 <td>mandatory</td>
 <td></td>
 <td>The data that is common to all organisations, regardless of the type (e.g., company, trust, partnership, government).</td>
@@ -933,14 +1700,14 @@ This operation does not require authentication.
 </tr>
 <tr>
 <td>endpointDetail</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-registerdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</a></td>
+<td><a href="#schemacdr-register-apiregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</a></td>
 <td>mandatory</td>
 <td></td>
 <td>Endpoints related to Data Holder Brand services.</td>
 </tr>
 <tr>
 <td>authDetails</td>
-<td>[<a href="#schemacdr-register-api-modified-for-nbl-registerdataholderauth">RegisterDataHolderAuth</a>]</td>
+<td>[<a href="#schemacdr-register-apiregisterdataholderauth">RegisterDataHolderAuth</a>]</td>
 <td>mandatory</td>
 <td></td>
 <td>[Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication.]</td>
@@ -954,7 +1721,7 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h4 id="cdr-register-api-modified-for-nbl-_registerdataholderbrand_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-register-api_registerdataholderbrandv2_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -976,13 +1743,13 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSresponsedataholdersbrandsummarylist">ResponseDataHoldersBrandSummaryList</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponsedataholdersbrandsummarylist">ResponseDataHoldersBrandSummaryList</h3>
 
 <p id="tocSresponsedataholdersbrandsummarylist" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_responsedataholdersbrandsummarylist"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-responsedataholdersbrandsummarylist"></a>
+  <a id="cdr-register-api_schema-base_responsedataholdersbrandsummarylist"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiresponsedataholdersbrandsummarylist"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1007,7 +1774,7 @@ This operation does not require authentication.
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_responsedataholdersbrandsummarylist_properties">Properties</h3>
+<h3 id="cdr-register-api_responsedataholdersbrandsummarylist_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1020,34 +1787,34 @@ This operation does not require authentication.
 </thead><tbody>
 <tr>
 <td>data</td>
-<td>[<a href="#schemacdr-register-api-modified-for-nbl-dataholderbrandsummary">DataHolderBrandSummary</a>]</td>
+<td>[<a href="#schemacdr-register-apidataholderbrandsummaryv2">DataHolderBrandSummaryV2</a>]</td>
 <td>mandatory</td>
 <td></td>
 <td>Response data for the query.</td>
 </tr>
 <tr>
 <td>links</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-links">Links</a></td>
+<td><a href="#schemacdr-register-apilinks">Links</a></td>
 <td>mandatory</td>
 <td></td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-meta">Meta</a></td>
+<td><a href="#schemacdr-register-apimeta">Meta</a></td>
 <td>mandatory</td>
 <td></td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSdataholderbrandsummary">DataHolderBrandSummary</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSdataholderbrandsummaryv2">DataHolderBrandSummaryV2</h3>
 
-<p id="tocSdataholderbrandsummary" class="orig-anchor"></p>
+<p id="tocSdataholderbrandsummaryv2" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_dataholderbrandsummary"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-dataholderbrandsummary"></a>
+  <a id="cdr-register-api_schema-base_dataholderbrandsummary"></a>
+  <a class="schema-anchor" id="schemacdr-register-apidataholderbrandsummaryv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1064,7 +1831,7 @@ This operation does not require authentication.
   </span><span class="s2">"arbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_dataholderbrandsummary_properties">Properties</h3>
+<h3 id="cdr-register-api_dataholderbrandsummaryv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1112,7 +1879,7 @@ This operation does not require authentication.
 </tr>
 <tr>
 <td>industries</td>
-<td>[<a href="#schemacdr-register-api-modified-for-nbl-industriesenum">IndustriesEnum</a>]</td>
+<td>[<a href="#schemacdr-register-apiindustriesenumv2">IndustriesEnumV2</a>]</td>
 <td>mandatory</td>
 <td></td>
 <td>The industries the Data Holder Brand belongs to.</td>
@@ -1147,17 +1914,17 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSindustryenum">IndustryEnum</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSindustryenumv2">IndustryEnumV2</h3>
 
-<p id="tocSindustryenum" class="orig-anchor"></p>
+<p id="tocSindustryenumv2" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_industryenum"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-industryenum"></a>
+  <a id="cdr-register-api_schema-base_industryenum"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiindustryenumv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="s2">"banking"</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_industryenum_properties">Properties</h3>
+<h3 id="cdr-register-api_industryenumv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1177,7 +1944,7 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h4 id="cdr-register-api-modified-for-nbl-_industryenum_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-register-api_industryenumv2_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -1207,17 +1974,17 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSindustriesenum">IndustriesEnum</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSindustriesenumv2">IndustriesEnumV2</h3>
 
-<p id="tocSindustriesenum" class="orig-anchor"></p>
+<p id="tocSindustriesenumv2" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_industriesenum"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-industriesenum"></a>
+  <a id="cdr-register-api_schema-base_industriesenum"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiindustriesenumv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="s2">"banking"</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_industriesenum_properties">Properties</h3>
+<h3 id="cdr-register-api_industriesenumv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1237,7 +2004,7 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h4 id="cdr-register-api-modified-for-nbl-_industriesenum_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-register-api_industriesenumv2_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -1263,13 +2030,13 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSdataholdersstatuslist">DataHoldersStatusList</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSdataholdersstatuslist">DataHoldersStatusList</h3>
 
 <p id="tocSdataholdersstatuslist" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_dataholdersstatuslist"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-dataholdersstatuslist"></a>
+  <a id="cdr-register-api_schema-base_dataholdersstatuslist"></a>
+  <a class="schema-anchor" id="schemacdr-register-apidataholdersstatuslist"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1284,7 +2051,7 @@ This operation does not require authentication.
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_dataholdersstatuslist_properties">Properties</h3>
+<h3 id="cdr-register-api_dataholdersstatuslist_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1297,41 +2064,41 @@ This operation does not require authentication.
 </thead><tbody>
 <tr>
 <td>data</td>
-<td>[<a href="#schemacdr-register-api-modified-for-nbl-dataholderstatus">DataHolderStatus</a>]</td>
+<td>[<a href="#schemacdr-register-apidataholderstatus">DataHolderStatus</a>]</td>
 <td>mandatory</td>
 <td></td>
 <td>Response data for the query.</td>
 </tr>
 <tr>
 <td>links</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-links">Links</a></td>
+<td><a href="#schemacdr-register-apilinks">Links</a></td>
 <td>mandatory</td>
 <td></td>
 <td>none</td>
 </tr>
 <tr>
 <td>meta</td>
-<td><a href="#schemacdr-register-api-modified-for-nbl-meta">Meta</a></td>
+<td><a href="#schemacdr-register-apimeta">Meta</a></td>
 <td>mandatory</td>
 <td></td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSdataholderstatus">DataHolderStatus</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSdataholderstatus">DataHolderStatus</h3>
 
 <p id="tocSdataholderstatus" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_dataholderstatus"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-dataholderstatus"></a>
+  <a id="cdr-register-api_schema-base_dataholderstatus"></a>
+  <a class="schema-anchor" id="schemacdr-register-apidataholderstatus"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_dataholderstatus_properties">Properties</h3>
+<h3 id="cdr-register-api_dataholderstatus_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1358,7 +2125,7 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h4 id="cdr-register-api-modified-for-nbl-_dataholderstatus_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-register-api_dataholderstatus_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -1376,13 +2143,652 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSlegalentitydetail">LegalEntityDetail</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSsoftwareproductsstatuslist">SoftwareProductsStatusList</h3>
+
+<p id="tocSsoftwareproductsstatuslist" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-register-api_schema-base_softwareproductsstatuslist"></a>
+  <a class="schema-anchor" id="schemacdr-register-apisoftwareproductsstatuslist"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-register-api_softwareproductsstatuslist_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>[<a href="#schemacdr-register-apisoftwareproductstatus">SoftwareProductStatus</a>]</td>
+<td>mandatory</td>
+<td></td>
+<td>Response data for the query.</td>
+</tr>
+<tr>
+<td>links</td>
+<td><a href="#schemacdr-register-apilinks">Links</a></td>
+<td>mandatory</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemacdr-register-apimeta">Meta</a></td>
+<td>mandatory</td>
+<td></td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSsoftwareproductstatus">SoftwareProductStatus</h3>
+
+<p id="tocSsoftwareproductstatus" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-register-api_schema-base_softwareproductstatus"></a>
+  <a class="schema-anchor" id="schemacdr-register-apisoftwareproductstatus"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-register-api_softwareproductstatus_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>softwareProductId</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Unique id of the software product issued by the CDR Register.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Software product status in the CDR Register.</td>
+</tr>
+</tbody></table>
+
+<h4 id="cdr-register-api_softwareproductstatus_enumerated-values-main">Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>ACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>INACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>REMOVED</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSdatarecipientsstatuslist">DataRecipientsStatusList</h3>
+
+<p id="tocSdatarecipientsstatuslist" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-register-api_schema-base_datarecipientsstatuslist"></a>
+  <a class="schema-anchor" id="schemacdr-register-apidatarecipientsstatuslist"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-register-api_datarecipientsstatuslist_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>[<a href="#schemacdr-register-apidatarecipientstatus">DataRecipientStatus</a>]</td>
+<td>mandatory</td>
+<td></td>
+<td>Response data for the query.</td>
+</tr>
+<tr>
+<td>links</td>
+<td><a href="#schemacdr-register-apilinks">Links</a></td>
+<td>mandatory</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemacdr-register-apimeta">Meta</a></td>
+<td>mandatory</td>
+<td></td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSdatarecipientstatus">DataRecipientStatus</h3>
+
+<p id="tocSdatarecipientstatus" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-register-api_schema-base_datarecipientstatus"></a>
+  <a class="schema-anchor" id="schemacdr-register-apidatarecipientstatus"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-register-api_datarecipientstatus_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>legalEntityId</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Unique id of the Data Recipient Legal Entity issued by the CDR Register.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Data Recipient status in the CDR Register.</td>
+</tr>
+</tbody></table>
+
+<h4 id="cdr-register-api_datarecipientstatus_enumerated-values-main">Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>ACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>SUSPENDED</td>
+</tr>
+<tr>
+<td>status</td>
+<td>REVOKED</td>
+</tr>
+<tr>
+<td>status</td>
+<td>SURRENDERED</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</h3>
+
+<p id="tocSresponseregisterdatarecipientlist" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-register-api_schema-base_responseregisterdatarecipientlist"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiresponseregisterdatarecipientlist"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accreditationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accreditationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNRESTRICTED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dataRecipientBrands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"dataRecipientBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"softwareProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"softwareProductName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"softwareProductDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><em>Response containing a list of Data Recipients in the CDR Register.</em></p>
+
+<h3 id="cdr-register-api_responseregisterdatarecipientlist_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>[<a href="#schemacdr-register-apiregisterdatarecipient">RegisterDataRecipient</a>]</td>
+<td>mandatory</td>
+<td></td>
+<td>Response data for the query.</td>
+</tr>
+<tr>
+<td>links</td>
+<td><a href="#schemacdr-register-apilinks">Links</a></td>
+<td>mandatory</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemacdr-register-apimeta">Meta</a></td>
+<td>mandatory</td>
+<td></td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSregisterdatarecipient">RegisterDataRecipient</h3>
+
+<p id="tocSregisterdatarecipient" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-register-api_schema-base_registerdatarecipient"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiregisterdatarecipient"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"legalEntityName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"accreditationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"accreditationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNRESTRICTED"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dataRecipientBrands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"dataRecipientBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"softwareProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"softwareProductName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"softwareProductDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-register-api_registerdatarecipient_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>legalEntityId</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Unique id of the Data Recipient Legal Entity issued by the CDR Register.</td>
+</tr>
+<tr>
+<td>legalEntityName</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Legal name of the Data Recipient.</td>
+</tr>
+<tr>
+<td>accreditationNumber</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>CDR Register issued human readable unique number given to Data Recipients upon accreditation.</td>
+</tr>
+<tr>
+<td>accreditationLevel</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Accreditation level of the Data Recipient in the CDR Register.</td>
+</tr>
+<tr>
+<td>logoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Legal Entity logo URI.</td>
+</tr>
+<tr>
+<td>dataRecipientBrands</td>
+<td>[<a href="#schemacdr-register-apidatarecipientbrandmetadata">DataRecipientBrandMetaData</a>]</td>
+<td>optional</td>
+<td></td>
+<td>[Metadata related to Data Recipient Brand.]</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Data Recipient status in the CDR Register.</td>
+</tr>
+<tr>
+<td>lastUpdated</td>
+<td><a href="#common-field-types">DateTimeString</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The date/time that the Legal Entity was last updated in the CDR Register.</td>
+</tr>
+</tbody></table>
+
+<h4 id="cdr-register-api_registerdatarecipient_enumerated-values-main">Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accreditationLevel</td>
+<td>UNRESTRICTED</td>
+</tr>
+<tr>
+<td>accreditationLevel</td>
+<td>SPONSORED</td>
+</tr>
+<tr>
+<td>status</td>
+<td>ACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>SUSPENDED</td>
+</tr>
+<tr>
+<td>status</td>
+<td>REVOKED</td>
+</tr>
+<tr>
+<td>status</td>
+<td>SURRENDERED</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSdatarecipientbrandmetadata">DataRecipientBrandMetaData</h3>
+
+<p id="tocSdatarecipientbrandmetadata" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-register-api_schema-base_datarecipientbrandmetadata"></a>
+  <a class="schema-anchor" id="schemacdr-register-apidatarecipientbrandmetadata"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"dataRecipientBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"softwareProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"softwareProductName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"softwareProductDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><em>Metadata related to Data Recipient Brand.</em></p>
+
+<h3 id="cdr-register-api_datarecipientbrandmetadata_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dataRecipientBrandId</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Unique id of the Data Recipient brand issued by the CDR Register.</td>
+</tr>
+<tr>
+<td>brandName</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Data Recipient Brand name.</td>
+</tr>
+<tr>
+<td>logoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Data Recipient Brand logo URI.</td>
+</tr>
+<tr>
+<td>softwareProducts</td>
+<td>[<a href="#schemacdr-register-apisoftwareproductmetadata">SoftwareProductMetaData</a>]</td>
+<td>optional</td>
+<td></td>
+<td>[Data Recipient Brand Software Products.]</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Data Recipient Brand status in the CDR Register.</td>
+</tr>
+</tbody></table>
+
+<h4 id="cdr-register-api_datarecipientbrandmetadata_enumerated-values-main">Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>ACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>INACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>REMOVED</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSsoftwareproductmetadata">SoftwareProductMetaData</h3>
+
+<p id="tocSsoftwareproductmetadata" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-register-api_schema-base_softwareproductmetadata"></a>
+  <a class="schema-anchor" id="schemacdr-register-apisoftwareproductmetadata"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"softwareProductId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"softwareProductName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"softwareProductDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><em>Data Recipient Brand Software Products.</em></p>
+
+<h3 id="cdr-register-api_softwareproductmetadata_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>softwareProductId</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Unique id of the Data Recipient software product issued by the CDR Register.</td>
+</tr>
+<tr>
+<td>softwareProductName</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Name of the software product.</td>
+</tr>
+<tr>
+<td>softwareProductDescription</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Description of the software product.</td>
+</tr>
+<tr>
+<td>logoUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Software product logo URI.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Software Product status in the CDR Register.</td>
+</tr>
+</tbody></table>
+
+<h4 id="cdr-register-api_softwareproductmetadata_enumerated-values-main">Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>ACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>INACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>REMOVED</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSlegalentitydetail">LegalEntityDetail</h3>
 
 <p id="tocSlegalentitydetail" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_legalentitydetail"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-legalentitydetail"></a>
+  <a id="cdr-register-api_schema-base_legalentitydetail"></a>
+  <a class="schema-anchor" id="schemacdr-register-apilegalentitydetail"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"legalEntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1401,7 +2807,7 @@ This operation does not require authentication.
 </span></code></pre>
 <p><em>The data that is common to all organisations, regardless of the type (e.g., company, trust, partnership, government).</em></p>
 
-<h3 id="cdr-register-api-modified-for-nbl-_legalentitydetail_properties">Properties</h3>
+<h3 id="cdr-register-api_legalentitydetail_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1498,7 +2904,7 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h4 id="cdr-register-api-modified-for-nbl-_legalentitydetail_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-register-api_legalentitydetail_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -1540,13 +2946,13 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h3>
 
 <p id="tocSregisterdataholderbrandserviceendpoint" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_registerdataholderbrandserviceendpoint"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-registerdataholderbrandserviceendpoint"></a>
+  <a id="cdr-register-api_schema-base_registerdataholderbrandserviceendpoint"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiregisterdataholderbrandserviceendpoint"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1559,7 +2965,7 @@ This operation does not require authentication.
 </span></code></pre>
 <p><em>Endpoints related to Data Holder Brand services.</em></p>
 
-<h3 id="cdr-register-api-modified-for-nbl-_registerdataholderbrandserviceendpoint_properties">Properties</h3>
+<h3 id="cdr-register-api_registerdataholderbrandserviceendpoint_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1614,13 +3020,13 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSregisterdataholderauth">RegisterDataHolderAuth</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSregisterdataholderauth">RegisterDataHolderAuth</h3>
 
 <p id="tocSregisterdataholderauth" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_registerdataholderauth"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-registerdataholderauth"></a>
+  <a id="cdr-register-api_schema-base_registerdataholderauth"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiregisterdataholderauth"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"registerUType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SIGNED-JWT"</span><span class="p">,</span><span class="w">
@@ -1629,7 +3035,7 @@ This operation does not require authentication.
 </span></code></pre>
 <p><em>Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication.</em></p>
 
-<h3 id="cdr-register-api-modified-for-nbl-_registerdataholderauth_properties">Properties</h3>
+<h3 id="cdr-register-api_registerdataholderauth_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1656,7 +3062,7 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h4 id="cdr-register-api-modified-for-nbl-_registerdataholderauth_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-register-api_registerdataholderauth_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -1670,13 +3076,13 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSlinkspaginated">LinksPaginated</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
 
 <p id="tocSlinkspaginated" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_linkspaginated"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-linkspaginated"></a>
+  <a id="cdr-register-api_schema-base_linkspaginated"></a>
+  <a class="schema-anchor" id="schemacdr-register-apilinkspaginated"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1686,7 +3092,7 @@ This operation does not require authentication.
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_linkspaginated_properties">Properties</h3>
+<h3 id="cdr-register-api_linkspaginated_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1734,20 +3140,20 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSmetapaginated">MetaPaginated</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSmetapaginated">MetaPaginated</h3>
 
 <p id="tocSmetapaginated" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_metapaginated"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-metapaginated"></a>
+  <a id="cdr-register-api_schema-base_metapaginated"></a>
+  <a class="schema-anchor" id="schemacdr-register-apimetapaginated"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_metapaginated_properties">Properties</h3>
+<h3 id="cdr-register-api_metapaginated_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1774,19 +3180,19 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSlinks">Links</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSlinks">Links</h3>
 
 <p id="tocSlinks" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_links"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-links"></a>
+  <a id="cdr-register-api_schema-base_links"></a>
+  <a class="schema-anchor" id="schemacdr-register-apilinks"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_links_properties">Properties</h3>
+<h3 id="cdr-register-api_links_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1806,27 +3212,27 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSmeta">Meta</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSmeta">Meta</h3>
 
 <p id="tocSmeta" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_meta"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-meta"></a>
+  <a id="cdr-register-api_schema-base_meta"></a>
+  <a class="schema-anchor" id="schemacdr-register-apimeta"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_meta_properties">Properties</h3>
+<h3 id="cdr-register-api_meta_properties">Properties</h3>
 
 <p><em>None</em></p>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_responseerrorlist"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-responseerrorlistv2"></a>
+  <a id="cdr-register-api_schema-base_responseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiresponseerrorlistv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1841,7 +3247,7 @@ This operation does not require authentication.
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_responseerrorlistv2_properties">Properties</h3>
+<h3 id="cdr-register-api_responseerrorlistv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1854,20 +3260,20 @@ This operation does not require authentication.
 </thead><tbody>
 <tr>
 <td>errors</td>
-<td>[<a href="#schemacdr-register-api-modified-for-nbl-errorv2">ErrorV2</a>]</td>
+<td>[<a href="#schemacdr-register-apierrorv2">ErrorV2</a>]</td>
 <td>mandatory</td>
 <td></td>
 <td>List of errors.</td>
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api-modified-for-nbl-_schemas_tocSerrorv2">ErrorV2</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSerrorv2">ErrorV2</h3>
 
 <p id="tocSerrorv2" class="orig-anchor"></p>
 
 <p>
-  <a id="cdr-register-api-modified-for-nbl-_schema-base_error"></a>
-  <a class="schema-anchor" id="schemacdr-register-api-modified-for-nbl-errorv2"></a>
+  <a id="cdr-register-api_schema-base_error"></a>
+  <a class="schema-anchor" id="schemacdr-register-apierrorv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1878,7 +3284,7 @@ This operation does not require authentication.
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api-modified-for-nbl-_errorv2_properties">Properties</h3>
+<h3 id="cdr-register-api_errorv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
