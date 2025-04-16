@@ -38,9 +38,7 @@ values that are valid for a Data Recipient to be able to call back to the Data H
 
 #### Additional Requirements
 
-```diff
-Updated Additional Requirements with notes for electricity usage data sharing using Last Consumer Change Date (LCCD) 
-```
+
 
 The following statements also apply to the endpoints published by AEMO:
 

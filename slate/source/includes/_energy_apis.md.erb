@@ -10,23 +10,7 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
 </table>
 
-```diff
-Made following changes to Get Service Points and Get Service Point Detail APIs
-+ Added new field EnergyServicePointV2.lastConsumerChangeDate
-+ Incremented version to v2
 
-Update schema versions of following
-from:
-- EnergyServicePointListResponse
-- EnergyServicePointDetailResponse
-- EnergyServicePoint
-- EnergyServicePointDetail
-to:
-+ EnergyServicePointListResponseV2
-+ EnergyServicePointDetailResponseV2
-+ EnergyServicePointV2
-+ EnergyServicePointDetailV2
-```
 
 
 <%= partial "includes/cds_energy.md" %>

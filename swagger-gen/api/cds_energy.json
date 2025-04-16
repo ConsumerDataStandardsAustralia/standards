@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Energy API",
-    "version": "1.34.1",
+    "version": "1.35.0",
     "description": "Specifications for resource endpoints applicable to data holders in the Energy sector.",
     "contact": {
       "name": "Data Standards Body",
@@ -175,7 +175,7 @@
           "Energy Plans"
         ],
         "x-version": "3",
-        "x-version-notes": "The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.",
+        "x-version-notes": "The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.35.0.html) for more details.",
         "parameters": [
           {
             "name": "planId",
@@ -739,7 +739,7 @@
           "Energy Accounts"
         ],
         "x-version": "4",
-        "x-version-notes": "The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.",
+        "x-version-notes": "The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.35.0.html) for more details.",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathAccountId"

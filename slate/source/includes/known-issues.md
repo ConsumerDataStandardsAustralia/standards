@@ -1,9 +1,6 @@
 # Known Issues
 
-```diff
-Version 1.34.1 amendment:
-Updated Known Issues detail for the Non-Bank Lending Candidate Standards
-```
+
 
 There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.
 

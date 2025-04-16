@@ -10,15 +10,9 @@ These standards fall into three categories:
 
 ## Candidate Standards
 
-```diff
-Removed Decision Proposal 306 Candidate. Any applicable changes have been incorporated through Decision 338
-- Candidate Standards for Banking Decision Proposal 306
-```
 
-```diff
-Version 1.34.1 amendment:
-The Candidate Standards for the Banking and Non-Bank Lending sector have been updated to incorporate changes up to version 1.34.0
-```
+
+
 
 The Consumer Data Standards currently include the following Candidate Standards:
 
