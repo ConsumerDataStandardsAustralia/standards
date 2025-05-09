@@ -208,19 +208,33 @@ In addition to the requirements for [Private Key JWT Client Authentication](#pri
 
 ### Data Recipients calling the CDR Register
 
+```diff
+Updated details in the Non-Normative Example for the Register token endpoint
+- Host: cdr.register
++ Host: secure.api.cdr.gov.au
+
+- scope=cdr-register%3Abank%3Aread
++ scope=cdr-register%3Aread
+
+- "aud": "https://cdr.register/idp/connect/token",
++ "aud": "https://secure.api.cdr.gov.au/idp/connect/token",
+
+- "scope": "cdr-register:bank:read openid"
++ "scope": "cdr-register:read openid"
+```
 
 > Non-Normative Example - Data Recipient Software Product requests CDR Register Access Token
 
 ```
 POST /token HTTP/1.1
-Host: cdr.register
+Host: secure.api.cdr.gov.au
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=client_credentials&
-  client_id=<brand id> OR <software product id> &
+  client_id=<brand id> OR <software product id>&
   client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
   client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey...&
-  scope=cdr-register%3Abank%3Aread
+  scope=cdr-register%3Aread
 
 ## Decoded client assertion JWT
 {
@@ -232,17 +246,16 @@ grant_type=client_credentials&
   "iss": "<brand id> OR <software product id>",
   "sub": "<brand id> OR <software product id>",
   "exp": 1516239322,
-  "aud": "https://cdr.register/idp/connect/token",
+  "aud": "https://secure.api.cdr.gov.au/idp/connect/token",
   "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
 }
-
 
 ## Response
 {
   "access_token": "eyJhbGciOiJQUz...",
   "expires_in": 7200,
   "token_type": "Bearer",
-  "scope": "cdr-register:bank:read openid"
+  "scope": "cdr-register:read openid"
 }
 ```
 
