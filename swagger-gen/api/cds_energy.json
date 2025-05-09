@@ -6656,7 +6656,9 @@
         "x-conditional": [
           "usage",
           "onceOff",
-          "payment"
+          "payment",
+          "demand",
+          "otherCharges"
         ],
         "properties": {
           "accountId": {

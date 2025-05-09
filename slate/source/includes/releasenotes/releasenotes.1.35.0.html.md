@@ -24,7 +24,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #677 - Energy transaction fields should be conditional](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/677)
 
 
 ### Decision Proposals
@@ -36,9 +36,6 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail. | [Standards section](../../#section)
 
 
 ## Introduction
@@ -54,6 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Corrected Energy transaction field requirements | [**Standards Maintenance #677**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/677): Specified the _demand_ and _otherCharges_ fields in EnergyBillingTransactionV3 as conditional, to match their descriptions. | [Energy APIs](../../#energy-apis)
 
 
 ## Information Security Profile
