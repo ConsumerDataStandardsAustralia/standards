@@ -1,7 +1,7 @@
 ## Future Dated Obligations
 
 ```diff
-Specified retirement date for Banking Get Transaction Detail V1 as 10th November 2025.
+Specified retirement date for Banking Get Transaction Detail v1 as 10th November 2025.
 ```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 
