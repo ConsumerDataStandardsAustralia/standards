@@ -24,7 +24,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #683 - Maintenance Iteration 22 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/683)
 
 
 ### Decision Proposals
@@ -36,9 +36,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail. | [Standards section](../../#section)
+| Holistic Feedback | [**Standards Maintenance #683**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/683): Documentation and schema clarifications detailed in Maintenance issue #683 and noted in the Version Delta comments. | N/A
 
 
 ## Introduction

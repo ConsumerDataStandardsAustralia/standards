@@ -1,7 +1,6 @@
 # Known Issues
 
 
-
 There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.
 
 Issue | Description
@@ -11,7 +10,12 @@ Non-Bank Lending Candidate Standards | The Candidate Standards were updated in v
 
 ## Future improvements
 
-The following improvements will be incorporated into future versions of the Standards
+The following improvements will be incorporated into future versions of the Standards.
+
+```diff
+Added Future improvements item
++ Standardise Banking Scheduled Payments endpoint paths
+```
 
 ### Standardise Register API Error Codes
 
@@ -25,3 +29,12 @@ API | Updated Error Codes | New Error Codes
 [Get Software Products Statuses](#cdr-register-api_get-software-products-statuses) | 400: <br>Missing Required Header / Invalid Header / Invalid Version / Invalid Field | 404: <br>Invalid Industry
 [Get Data Recipients Statuses](#cdr-register-api_get-data-recipients-statuses) | 400: <br>Missing Required Header / Invalid Header / Invalid Version / Invalid Field | 404: <br>Invalid Industry
 [Get Data Recipients](#cdr-register-api_get-data-recipients) | 400: <br>Missing Required Header / Invalid Header / Invalid Version / Invalid Field | 404: <br>Invalid Industry
+
+### Standardise Banking Scheduled Payments endpoint paths
+
+Future versions of the Banking _Get Scheduled Payments_ endpoints below could be aligned to the convention of [Get Scheduled Payments for Account](#cdr-banking-api_get-scheduled-payments-for-account) and other Banking 'accounts' endpoints as follows:
+
+API | Current path | Proposed path
+-- | -- | --
+[Get Scheduled Payments Bulk](#cdr-banking-api_get-scheduled-payments-bulk) | `/banking/payments/scheduled` | `/banking/accounts/payments/scheduled`
+[Get Scheduled Payments For Specific Accounts](#cdr-banking-api_get-scheduled-payments-for-specific-accounts) | `/banking/payments/scheduled` | `/banking/accounts/payments/scheduled`
