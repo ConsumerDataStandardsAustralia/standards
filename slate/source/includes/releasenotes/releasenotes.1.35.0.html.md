@@ -24,7 +24,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- [Standards Maintenance #650 - Weaken JARM Encryption Requirements for ADRs](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/650)
 
 
 ### Decision Proposals
@@ -36,9 +36,6 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail. | [Standards section](../../#section)
 
 
 ## Introduction
@@ -59,6 +56,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Weaken JARM Encryption Requirements | [**Standards Maintenance #650**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/650): Updated the condition for when a Data Holder may perform authorization response encryption. | [Authentication Flows](../../#authentication-flows)
 
 
 ## Register Standards
