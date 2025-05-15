@@ -88,7 +88,7 @@ Updated the condition for when a Data Holder may perform authorization response 
 In addition,
 
 - Data Holders **MAY** advertise they do not support authorisation response encryption: either by omitting these values from their OpenID Provider Metadata, or by presenting an empty array for the supported parameters.
-- Only if a valid _authorization_encrypted_response_alg_ is included in a registration request, the Data Holder **SHALL** require response encryption by returning a client registration response with the chosen _authorization_encrypted_response_alg_ value. Otherwise, authorization response encryption **SHALL NOT** be performed.
+- If _authorization_encrypted_response_alg_ is omitted from the registration request, authorisation response encryption **SHALL NOT** be performed.
 
 #### Data Recipient Software Products
 Data Recipients **MUST** support **[[JARM]](#nref-JARM)** in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.3.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm-1).
