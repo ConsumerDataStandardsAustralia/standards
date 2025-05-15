@@ -83,7 +83,7 @@ Data Holders **MUST** support **[[JARM]](#nref-JARM)** in accordance with **[[FA
 ```diff
 Updated the condition for when a Data Holder may perform authorization response encryption.
 - If the Data Holder supports authorisation response encryption and the authorization_encrypted_response_alg is omitted from the registration request, the Data Holder MAY require response encryption by returning a client registration response with the chosen authorization_encrypted_response_alg value.
-+ Only if a valid authorization_encrypted_response_alg is included in a registration request, the Data Holder SHALL require response encryption by returning a client registration response with the chosen authorization_encrypted_response_alg value. Otherwise, authorization response encryption SHALL NOT be performed.
++ If authorization_encrypted_response_alg is omitted from the registration request, authorisation response encryption SHALL NOT be performed.
 ```
 In addition,
 
