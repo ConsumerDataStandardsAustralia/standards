@@ -4731,12 +4731,12 @@
                         }
                       },
                       "startTime": {
-                        "description": "The beginning of the time window per day for which the tariff applies. If absent assumes start of day (i.e. midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+                        "description": "The beginning of the time window per day for which the tariff applies. If absent assumes start of day (i.e. midnight). Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
                         "type": "string",
                         "x-cds-type": "ExternalRef"
                       },
                       "endTime": {
-                        "description": "The end of the time window per day for which the tariff applies. If absent assumes end of day (i.e. one second before midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+                        "description": "The end of the time window per day for which the tariff applies. If absent assumes end of day (i.e. one second before midnight). Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
                         "type": "string",
                         "x-cds-type": "ExternalRef"
                       }
@@ -5055,12 +5055,12 @@
                 "startTime": {
                   "type": "string",
                   "x-cds-type": "ExternalRef",
-                  "description": "Start of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone."
+                  "description": "Start of the period. Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone."
                 },
                 "endTime": {
                   "type": "string",
                   "x-cds-type": "ExternalRef",
-                  "description": "End of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone."
+                  "description": "End of the period. Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone."
                 },
                 "days": {
                   "description": "The days that the demand tariff applies to.",
