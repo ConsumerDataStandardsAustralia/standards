@@ -35,7 +35,7 @@ Host: cdr.register
 
 
 
-Participants will be required to register base URIs against each of their brands to facilitate the implementation of the Consumer Data Standards
+Participants will be required to register base URIs against each of their brands to facilitate the implementation of the CDR Data Standards.
 
 Endpoints specified as MTLS **MUST** be configured according to the [Certificate Trust Model](#certificate-trust-model) in the [Certificate Management](#certificate-management) section.  
 Endpoints specified as TLS **MUST** be configured with a certificate issued by a public CA accepted by major web browsers.

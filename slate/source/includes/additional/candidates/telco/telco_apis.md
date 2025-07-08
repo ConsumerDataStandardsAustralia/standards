@@ -1,6 +1,6 @@
+# Telco APIs
+
 This specification defines the APIs for Data Holders exposing Telecommunications endpoints.
-
-
 
 <table>
 <tr><td><a href='../../../../includes/swagger/cds_telco.json'>Telco OpenAPI Specification (JSON)</a></td></tr>

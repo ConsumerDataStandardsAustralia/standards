@@ -23,4 +23,4 @@
 | Register APIs    | Get Data Recipients                       | ``/{industry}/data-recipients``                              | <span class="method get">GET</span>    | V2     | 2021-10-29&dagger;    | 2023-09-21 | 2021-10-29, V1.14.0&dagger; | 2021-12-23, V1.15.0 |
 | Register APIs    | Get Data Recipients                       | ``/{industry}/data-recipients``                              | <span class="method get">GET</span>    | V3     | 2022-11-15    | N/A              | 2021-12-23, V1.15.0 | N/A |
 
-**&dagger;NOTE:** The CDR Register standards were introduced into the Consumer Data Standards in v1.14.0. Prior to this the CDR Register specifications were hosted by the ACCC.
+**&dagger;NOTE:** The CDR Register standards were introduced into the CDR Data Standards in v1.14.0. Prior to this the CDR Register specifications were hosted by the ACCC.

@@ -76,8 +76,20 @@ html, body {
   // This is the logo at the top of the ToC
   .logo {
     display: block;
-    max-width: 100%;
-    margin-bottom: $logo-margin;
+    max-width: 40%;
+    margin: 14px 0 14px 16px;
+  }
+  
+  // Logo image above replaced with text
+  .site-title {
+    font-size: 16px;
+    display: block;
+    margin: 19px 0 20px 15px;
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
   }
 
   &>.search {
@@ -87,13 +99,18 @@ html, body {
       background: $nav-bg;
       border-width: 0 0 1px 0;
       border-color: $search-box-border-color;
-      padding: 6px 0 6px 20px;
+      padding: 2px 0 6px 20px;
       box-sizing: border-box;
       margin: $nav-v-padding $nav-padding;
       width: $nav-width - ($nav-padding*2);
       outline: none;
-      color: $nav-text;
+      color: white;
       border-radius: 0; /* ios has a default border radius */
+      font-weight: normal;
+    }
+
+    input::placeholder {
+      color: white;
     }
 
     &:before {
@@ -143,7 +160,7 @@ html, body {
     list-style: none;
     margin: 0;
     padding: 0;
-    line-height: 28px;
+    line-height: 26px;
   }
 
   li {
@@ -151,6 +168,14 @@ html, body {
     transition-property: background;
     transition-timing-function: linear;
     transition-duration: 200ms;
+  }
+
+  li.toc-group {
+    border-top: 0.4px solid $nav-footer-border-color;
+  }
+  
+  li.toc-child {
+    line-height: 31px;
   }
 
   // This is the currently selected ToC entry
@@ -182,13 +207,14 @@ html, body {
     border-left: 0;
     border-right: 0;
     border-bottom: 0;
-    border-top: 1px solid rgba(47, 183, 135,0.3);
+    border-top: 0.4px solid $nav-footer-border-color;
+    display: none;
   }
 
   .toc-footer {
     padding: 1em 0;
     margin-top: 1em;
-    border-top: 1px dashed $nav-footer-border-color;
+    border-top: 0.4px dashed $nav-footer-border-color;
 
     li,a {
       color: $nav-text;
@@ -265,7 +291,7 @@ html, body {
 }
 
 .toc-link, .toc-footer li {
-  padding: 0 $nav-padding 0 $nav-padding;
+  padding: 0 $nav-padding 1px $nav-padding;
   display: block;
   overflow-x: hidden;
   white-space: nowrap;
@@ -407,9 +433,21 @@ html, body {
     padding-left: $main-padding + 15px;
   }
 
+  table ul, table ol {
+    padding: 4px 6px 6px 18px;
+    margin: 0;
+  }
+
   // the div is the tocify hidden div for placeholding stuff
   &>h1, &>h2, &>div, &>h3.schema-toc {
     clear:both;
+  }
+
+  a {
+    color: #00698F;
+  }
+  a:visited {
+    color: #0D414D;
   }
 
   h1 {
@@ -419,9 +457,9 @@ html, body {
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background-color: #fdfdfd;
+    border-top: 2px solid rgba(98, 98, 98, 0.3);
+    border-bottom: 1px solid rgba(98, 98, 98, 0.3);
+    background-color: #F5F5F5;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -434,7 +472,7 @@ html, body {
     font-size: 19px;
     margin-top: 4em;
     margin-bottom: 0;
-    border-top: 1px solid #ccc;
+    border-top: 0.4px solid rgba(98, 98, 98, 0.3);
     padding-top: 1.2em;
     padding-bottom: 1.2em;
     background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
@@ -503,11 +541,11 @@ html, body {
     }
 
     tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
+      background-color: darken($main-bg,2.7%);
     }
 
     tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+      background-color: darken($main-bg,5.7%);
     }
   }
 
@@ -549,10 +587,10 @@ html, body {
   }
 
   aside {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+    padding-top: 1.2em;
+    padding-bottom: 1.7em;
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
     background: $aside-notice-bg;
     line-height: 1.6;
 
@@ -566,9 +604,11 @@ html, body {
   }
 
   aside:before {
-    vertical-align: middle;
-    padding-right: 0.5em;
+    vertical-align: bottom;
     font-size: 14px;
+    padding: 0px 15px 0px 0px;
+    width: 25px;
+    display: inline-block;
   }
 
   aside.notice:before {
@@ -581,6 +621,21 @@ html, body {
 
   aside.success:before {
     @extend %icon-ok-sign;
+  }
+
+  aside.notice:before {
+    content: url("/images/banner-icons/info.svg");
+    line-height: 0;
+  }
+
+  aside.warning:before {
+    content: url("/images/banner-icons/warning.svg");
+    line-height: 0;
+  }
+
+  aside.success:before {
+    content: url("/images/banner-icons/success.svg");
+    line-height: 0;
   }
 
   .icon-check:before {
@@ -645,7 +700,7 @@ html, body {
 
   blockquote {
     &>p {
-      background-color: $code-annotation-bg;
+      background-color: $code-annotation-title;
       /* padding: $code-annotation-padding 2em; */
       padding: 0.6em 2em 0.8em 2em;
       color: #eee;
@@ -661,7 +716,7 @@ html, body {
     visibility: hidden;
     position: absolute;
     bottom: 0;
-    left: -120px;
+    left: -140px;
     opacity: 0;
     content: attr(data-text); /* might also use attr(title) */
     font-size: 0.8em;
@@ -757,9 +812,9 @@ html, body {
       }
     }
     &.light-box {
-      background: rgba(128,128,128,0.1);
+      background: #F5F5F5;
       color: initial;
-      border: 1px solid rgba(128,128,128,0.3);
+      border: 0.4px solid rgba(128,128,128,0.3);
       border-width: 1px 0;
     }
 
@@ -857,11 +912,17 @@ html, body {
 }
 
 .highlight .gi {
-  color: #a6e22e;
+  color: #99FF99;
+  background-color: rgba(30, 101, 78, 0.5);
+  padding: 0.2em 0;
+  line-height: 1.5em;
 }
 
 .highlight .gd {
-  color: #e6db74;
+  color: #FFAAAA;
+  background-color: rgba(214, 0, 0, 0.3);
+  padding: 0.2em 0;
+  line-height: 1.5em;
 }
 
 .content-flagged:before {

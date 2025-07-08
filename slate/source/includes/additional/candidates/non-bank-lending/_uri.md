@@ -55,7 +55,7 @@ The components of this URI structure are described as follows:
 <ul><li><b>\<holder-path\></b>  = string.
 The holder path is a path set by the data holder. It can be any URI desired by the holder. While all authenticated endpoints must be accessible under the same holder path the data holder may stipulate a different holder path for unauthenticated endpoints.</li>
 <li><b>cds-au</b>         = "cds-au" string.
-This is a static string representing the endpoints defined by the Consumer Data Standards for Australia. This static string allows for separation from other APIs available at the same base holder path and also allows for extension if the standards are adopted by another jurisdiction in whole or in part.</li>
+This is a static string representing the endpoints defined by the CDR Data Standards for Australia. This static string allows for separation from other APIs available at the same base holder path and also allows for extension if the standards are adopted by another jurisdiction in whole or in part.</li>
 <li><b>\<version\></b>      = "v1" string.
 The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be "v" followed by the major version of the standards as a positive integer (e.g., `v1`, `v12` or `v76`).</li>
 <li><b>\<industry\></b>     = banking / energy / telco / common

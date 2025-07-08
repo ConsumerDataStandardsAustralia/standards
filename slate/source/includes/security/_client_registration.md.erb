@@ -115,8 +115,8 @@ The SSA will conform to the requirements of **[[DCR]](#nref-DCR)** with the foll
 |**tos_uri**| Optional | <i class="icon-check"></i> | URL string that points to a human-readable terms of service document for the Software Product.
 |**policy_uri**| Optional | <i class="icon-check"></i> | URL string that points to a human-readable policy document for the Software Product.
 |**jwks_uri**| Required | <i class="icon-check"></i> | URL string referencing the client's JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client's public keys.
-|**revocation_uri**| Required | <i class="icon-check"></i> | URI string that references the location of the Software Product consent revocation endpoint as per Consumer Data Standards [Endpoints](#security-endpoints).
-|**recipient_base_uri**| Required | <i class="icon-check"></i> | Base URI for the Consumer Data Standard Data Recipient endpoints. This **SHOULD** be the base to provide reference to all other [Data Recipient Endpoints](#security-endpoints)
+|**revocation_uri**| Required | <i class="icon-check"></i> | URI string that references the location of the Software Product consent revocation endpoint as per CDR Data Standards [Endpoints](#security-endpoints).
+|**recipient_base_uri**| Required | <i class="icon-check"></i> | Base URI for the CDR Data Standard Data Recipient endpoints. This **SHOULD** be the base to provide reference to all other [Data Recipient Endpoints](#security-endpoints)
 |**software_id**| Required | | String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. <br><br>The _software_id_ will remain the same across multiple updates or versions of the same piece of software.<br>The _software_id_ **SHOULD** be used as the primary external identifier for the client to prevent duplicate client registrations.
 |**software_roles**| Required | | String containing a role of the software in the CDR Regime. Initially the only value used will be `data-recipient-software-product`.
 |**scope**| Required | <i class="icon-check"></i> | String containing a space-separated list of scope values that the client can use when requesting access tokens. <br>These CDS scope values are defined at: [Authorisation Scopes](#authorisation-scopes).<br>The DCR scope value is defined at: [Client Registration Management](#registration-management).<br><br>As per the [CDS Scopes and Claims](#scopes-and-claims), `openid` and `profile` are included in the SSA.
@@ -221,7 +221,7 @@ Data Holders **MUST** support at a minimum, 1 algorithm for each claim.
 
 Data Recipients **MUST** support all the algorithms used in the ecosystem to ensure they can communicate with all Data Holders.
 
-ID Token algorithm considerations remain relevant where the OIDC Hybrid Flow is leveraged as defined in the Consumer Data Standards and in accordance with sections [5.1.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature), [5.2.2.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-1), and [5.2.3.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-2) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
+ID Token algorithm considerations remain relevant where the OIDC Hybrid Flow is leveraged as defined in the CDR Data Standards and in accordance with sections [5.1.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature), [5.2.2.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-1), and [5.2.3.1](https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-2) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
 
 #### JARM Response Encryption Considerations
 
@@ -341,7 +341,7 @@ Duplicate registrations are not permitted so attempts to create a registration w
 
 Registration error responses schemas are defined in the [DCR APIs](#dcr-apis) section.
 
-For those Registration errors which do not map to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[[DCR]](#nref-DCR)**, [HTTP Response Codes](#http-response-codes) in the Consumer Data Standards **SHOULD** be used.
+For those Registration errors which do not map to [Section 3.2.2](https://tools.ietf.org/html/rfc7591#section-3.2.2) of **[[DCR]](#nref-DCR)**, [HTTP Response Codes](#http-response-codes) in the CDR Data Standards **SHOULD** be used.
 
 
 ### Registration Management

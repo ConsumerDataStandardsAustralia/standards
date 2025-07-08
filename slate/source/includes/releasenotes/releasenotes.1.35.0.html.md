@@ -1,10 +1,10 @@
 ---
-title: Consumer Data Standards - v1.35.0 Release Notes
+title: CDR Data Standards - v1.35.0 Release Notes
 
 #language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
-  - <a href='../../'>Consumer Data Standards</a>
+  - <a href='../../'>CDR Data Standards</a>
 
 includes:
   - footer
@@ -13,14 +13,14 @@ search: false
 ---
 
 # V1.35.0 Release Notes
-Release notes for version **1.35.0** of the [CDR Standards](../../).
+Release notes for version **1.35.0** of the [CDR Data Standards](../../).
 
 ## Changes Made
 ### Change Requests
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #476 - Maintenance Iteration 22 - typos and formatting](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/476)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -36,9 +36,8 @@ This release addresses the following Decision Proposals published on [Standards]
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail. | [Standards section](../../#section)
+| Branding and minor UI updates | [**Standards Staging #476**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/476): Applied updated DSB branding/colour palette, replaced references to 'Consumer Data Standards' and 'CDR standards' with 'CDR Data Standards', UI updates for Version Delta scrolling, updated process for adding the 'archived version' message to historical versions, CSS adjustments to avoid horizontal scrollbars in schema tables. | N/A
+| Known Issues | [**Standards Staging #476**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/476): Added a Known Issues item for a pending change to the Certificate Management section and a Future improvements item for Metadata Update endpoint inconsistency. | [Known Issues](../../#known-issues)
 
 
 ## Introduction
@@ -89,4 +88,5 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Known Issues
 |Change|Description|Link|
 |------|-----------|----|
+| Metadata Update Future improvement | [**Standards Staging #476**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/476#issuecomment-2767684074): Added a Future improvements item for the specification of the Metadata Update endpoint. | [Future improvements](../../#future-improvements)
 

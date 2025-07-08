@@ -1,10 +1,10 @@
 ---
-title: Consumer Data Standards - v{version_number} Release Notes
+title: CDR Data Standards - v{version_number} Release Notes
 
 #language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
-  - <a href='../../'>Consumer Data Standards</a>
+  - <a href='../../'>CDR Data Standards</a>
 
 includes:
   - footer
@@ -13,7 +13,7 @@ search: false
 ---
 
 # V{version_number} Release Notes
-Release notes for version **{version_number}** of the [CDR Standards](../../).
+Release notes for version **{version_number}** of the [CDR Data Standards](../../).
 
 ## Changes Made
 ### Change Requests

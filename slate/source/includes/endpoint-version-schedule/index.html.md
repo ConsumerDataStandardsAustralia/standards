@@ -1,6 +1,6 @@
 ---
 layout: no_code_panel_layout
-title: Consumer Data Standards - Endpoint Versioning Schedule
+title: CDR Data Standards - Endpoint Versioning Schedule
 
 #language_tabs: # must be one of https://git.io/vQNgJ
 
@@ -14,7 +14,7 @@ includes:
   - footer
 
 toc_footers:
-  - <a href='../../'>Consumer Data Standards</a>
+  - <a href='../../'>CDR Data Standards</a>
 
 search: false
 ---

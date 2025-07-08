@@ -34,6 +34,12 @@
                 }
             });
 
+            var scrolledToEnd = (Math.ceil(window.scrollY) + window.innerHeight) >= document.body.scrollHeight;
+            if (scrolledToEnd) {
+              // Even when there is another element to scroll to, it's not possible when already at the end of the page. Reset to the first element.
+              $nextElement = null;
+            }
+
             if (!$nextElement) { $nextElement = $($elementList[0]); }
 
             if($nextElement.length) {
