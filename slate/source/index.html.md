@@ -20,6 +20,8 @@ includes:
   - separator
   - standards
   - separator
+  - authentication_schedule
+  - separator
   - cx
   - cx_standards
   - separator

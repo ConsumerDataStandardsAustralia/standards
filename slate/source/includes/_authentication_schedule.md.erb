@@ -1,0 +1,27 @@
+# Authentication Schedule
+
+```diff
+Added new Authentication Schedule section with the followin sub-sections:
++ Redirect to App
++ Decoupled Authentication
++ Fallback Authentication Flows
+```
+
+This schedule outlines specific terms and approaches supported by the data standards for the purposes of a consumer authenticating themselves with a data holder.
+
+**Definitions**
+
+|Term|Meaning|
+|--------------------|------------------------------------------|
+|**Authentication Provider** |A system entity that provides authentication of a Customer in order to access data or a service provided by that entity.|
+|**Consumption Device**|The device the Customer uses to interact with the Data Recipient Software Product. This is the device that initiates the consent flow.|
+|**Authentication Device**|The device the Customer uses for authentication and the authorisation grant.|
+|**Authenticator**|Something the Customer possesses and controls that is used to authenticate the user’s identity.|
+|**Authentication Factor**|The three types of authentication factors are:<ul><li>something the Customer knows (like a password or PIN),</li><li>something the Customer has (like a registered device or security key),</li><li>something the Customer is (like their fingerprint or face biometric).</li></ul>|
+|**Single Factor Authentication**| An authentication challenge where the Authentication Provider requires only one Authentication Factor for successful authentication.|
+|**Multi-Factor Authentication (MFA)**| An authentication challenge where the Authentication Provider requires two or more distinct types of Authentication Factors for successful authentication. MFA can be performed using a multi-factor authenticator or by combining single-factor authenticators that provide different types of factors.|
+
+
+<%= partial "includes/authentication-schedule/redirect_to_app.md" %>
+<%= partial "includes/authentication-schedule/decoupled_authentication.md" %>
+<%= partial "includes/authentication-schedule/fallback_authentication_flows.md" %>

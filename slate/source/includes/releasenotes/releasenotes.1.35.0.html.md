@@ -27,10 +27,20 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
 
 
-### Decision Proposals
-This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
+### Decisions
+This release addresses the following Decisions published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Decision Proposal #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
+- [Consultation Draft #369 - Redirect to App - Draft Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369)
+
+#### Errata
+The following corrections have been made to the changes resulting from [Decision 369](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369):
+
+|Standard Section|Decision text|Corrected text|
+|------|-----------|------|
+|[Baseline Credential Requirements](../../#baseline-credential-requirements)|**MUST ONLY** support authenticator types as permitted by the Levels of Assurance (LoA) requirements defined by **[_TDIF_]** unless otherwise excluded by the Restricted Credentials requirements.| **MUST ONLY** support authenticator types as permitted by the Levels of Assurance (LoA) requirements defined by **[_DigitalID-Accreditation_]** unless otherwise excluded by the Restricted Credentials requirements.|
+|[Authorisation Standards](../../#authorisation-standards)|**_Authentication_**: Add or Switch Profiles|**_Authorisation:_** Add or Switch Profiles|
+|[Redirect to App: Data Holders](../../#redirect-to-app_data-holders)|**_Redirect to App:_** Data Holders|Data Holders|
+|[Redirect to App: Data Recipients](../../#redirect-to-app_data-recipients)|**_Redirect to App:_** Data Recipients|Data Recipients|
 
 
 ## General Changes
@@ -44,7 +54,8 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Introduction
 |Change|Description|Link|
 |------|-----------|----|
-
+| FDO for Redirect to App changes | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Added FDOs for Redirect to App related changes. | [FDO](../../#future-dated-obligations) |
+| Normative References update | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Replaced TDIF with DigitalID-Accreditation in Normative References. | [Normative References](../../#normative-references) |
 
 ## High Level Standards
 |Change|Description|Link|
@@ -59,6 +70,12 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Authentication Schedule | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Added new section **"Authentication Schedule"** with following sub-sections:<ul><li>Redirect to App</li><li>Decoupled Authentication</li><li>Fallback Authentication Flows</li></ui> | [Authentication Schedule](../../#authentication-schedule) |
+| Overview update | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Removed "TDIF" from Symbols and Abbreviated terms list. | [Overview](../../#overview) |
+| Authentication Flows changes | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): <ul><li>Moved credential requirements from Baseline Security Provisions: Data Holders section to new Credential Requirements section.</li><li>Added  new section **"Redirect to App"**</li></ui>  | [Authentication Flows](../../#authentication-flows) |
+| LoAs changes | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Update LoA Single Ordinal section by amending LoA 2 and LoA 3 and adding LoA 4  | [Levels of Assurance (LoAs)](../../#levels-of-assurance-loas) |
+| Credential Requirements | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Added new **"Credential Requirements"** section with the following sub-sections:<ul><li>User Identifiers</li><li>Baseline Credential Requirements</li><li>One Time Password Credential Requirements</li><li>Restricted Credentials</li></ul> | [Credential Requirements](../../#credential-requirements) |
+
 
 
 ## Register Standards
@@ -69,7 +86,8 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Consumer Experience
 |Change|Description|Link|
 |------|-----------|----|
-
+| Authentication Standards | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Added following new sections to **"Authentication Standards"**:<ul><li>Common Authentication Standards</li><li>Redirect to web with One Time Password (OTP)</li><li>Redirect to App</li></ul> | [Authentication Standards](../../#consumer-experience_authentication-standards) |
+| Authorisation Standards | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Added new authorisation standard **"Authorisation: Add or Switch Profiles"**. | [Authorisation Standards](../../#authorisation-standards) |
 
 ## Non-Functional Requirements
 |Change|Description|Link|
