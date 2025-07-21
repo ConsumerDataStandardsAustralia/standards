@@ -27,10 +27,10 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
 
 
-### Decision Proposals
-This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
+### Decisions
+This release addresses the following Decision published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Decision Proposal #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
+- [Consultation Draft #370 - Amendment of Banking Decision 338 Obligation Date - Draft Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/370)
 
 
 ## General Changes
@@ -38,12 +38,12 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail. | [Standards section](../../#section)
 | Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail. | [Standards section](../../#section)
 
 
 ## Introduction
 |Change|Description|Link|
 |------|-----------|----|
+| Amend Decision 338 FDOs | [**Decision #370**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/370): Amendment of Banking Decision 338 Obligation Dates. | [Future Dated Obligations](../../#future-dated-obligations)
 
 
 ## High Level Standards
