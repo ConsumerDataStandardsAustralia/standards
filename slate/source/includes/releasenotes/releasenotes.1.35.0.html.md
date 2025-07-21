@@ -33,14 +33,14 @@ This release addresses the following Decisions published on [Standards](https://
 - [Consultation Draft #369 - Redirect to App - Draft Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369)
 
 #### Errata
-The following corrections have been made to the changes resulting from [Decision 369](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369):
+The following <mark>corrections</mark> have been made to the changes resulting from [Decision 369](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369):
 
 |Standard Section|Decision text|Corrected text|
 |------|-----------|------|
-|[Baseline Credential Requirements](../../#baseline-credential-requirements)|**MUST ONLY** support authenticator types as permitted by the Levels of Assurance (LoA) requirements defined by **[_TDIF_]** unless otherwise excluded by the Restricted Credentials requirements.| **MUST ONLY** support authenticator types as permitted by the Levels of Assurance (LoA) requirements defined by **[_DigitalID-Accreditation_]** unless otherwise excluded by the Restricted Credentials requirements.|
-|[Authorisation Standards](../../#authorisation-standards)|**_Authentication_**: Add or Switch Profiles|**_Authorisation:_** Add or Switch Profiles|
-|[Redirect to App: Data Holders](../../#redirect-to-app_data-holders)|**_Redirect to App:_** Data Holders|Data Holders|
-|[Redirect to App: Data Recipients](../../#redirect-to-app_data-recipients)|**_Redirect to App:_** Data Recipients|Data Recipients|
+|[Baseline Credential Requirements](../../#baseline-credential-requirements)|**MUST ONLY** support authenticator types as permitted by the Levels of Assurance (LoA) requirements defined by <mark>**[TDIF]**</mark> unless otherwise excluded by the Restricted Credentials requirements.| **MUST ONLY** support authenticator types as permitted by the Levels of Assurance (LoA) requirements defined by <mark>**[DigitalID-Accreditation]**</mark> unless otherwise excluded by the Restricted Credentials requirements.|
+|[Authorisation Standards](../../#authorisation-standards)|<mark>**Authentication:**</mark> Add or Switch Profiles|<mark>**Authorisation:**</mark> Add or Switch Profiles|
+|[Redirect to App: Data Holders](../../#redirect-to-app_data-holders)|<mark>**Redirect to App:</mark> Data Holders**|**Data Holders**|
+|[Redirect to App: Data Recipients](../../#redirect-to-app_data-recipients)|<mark>**Redirect to App:</mark> Data Recipients**|**Data Recipients**|
 
 
 ## General Changes
