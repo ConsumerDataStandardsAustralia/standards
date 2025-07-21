@@ -76,7 +76,7 @@
           "Register Data Holder discovery"
         ],
         "summary": "Get Data Holder Brands",
-        "description": "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html).",
+        "description": "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html), [v2](includes/obsolete/get-data-holder-brands-v2.html).",
         "operationId": "getDataHolderBrands",
         "parameters": [
           {
@@ -115,7 +115,7 @@
             "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
-        "x-version": "2",
+        "x-version": "3",
         "x-scopes": [
           "cdr-register:read"
         ]
@@ -127,7 +127,7 @@
           "Register Data Holder discovery"
         ],
         "summary": "Get Data Holder Brands Summary",
-        "description": "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register.",
+        "description": "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-data-holder-brands-summary-v1.html).",
         "operationId": "getDataHolderBrandsSummary",
         "parameters": [
           {
@@ -160,7 +160,7 @@
             "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa": {
@@ -175,11 +175,11 @@
           "Register Operations"
         ],
         "summary": "Get Software Statement Assertion (SSA)",
-        "description": "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.html), [v2](includes/obsolete/get-software-statement-assertion-v2.html).",
+        "description": "Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.\n\nObsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.html), [v2](includes/obsolete/get-software-statement-assertion-v2.html), [v3](includes/obsolete/get-software-statement-assertion-v3.html).",
         "operationId": "getSoftwareStatementAssertion",
         "parameters": [
           {
-            "$ref": "#/components/parameters/PathIndustry"
+            "$ref": "#/components/parameters/PathIndustryRecipients"
           },
           {
             "$ref": "#/components/parameters/HeaderXV"
@@ -253,7 +253,7 @@
             }
           }
         },
-        "x-version": "3",
+        "x-version": "4",
         "x-scopes": [
           "cdr-register:read"
         ]
@@ -265,28 +265,17 @@
           "Register Data Holder discovery"
         ],
         "summary": "Get Data Holder Statuses",
-        "description": "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register.",
+        "description": "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-data-holder-statuses-v1.html).",
         "operationId": "getDataHolderStatuses",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathIndustry"
           },
           {
-            "name": "x-v",
-            "in": "header",
-            "description": "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to `1` if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained.",
-            "schema": {
-              "type": "string",
-              "default": "1"
-            }
+            "$ref": "#/components/parameters/HeaderXV"
           },
           {
-            "name": "x-min-v",
-            "in": "header",
-            "description": "The [minimum version](#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/HeaderXMinV"
           },
           {
             "$ref": "#/components/parameters/HeaderIfNoneMatch"
@@ -306,7 +295,7 @@
             "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/cdr-register/v1/{industry}/data-recipients/brands/software-products/status": {
@@ -315,11 +304,11 @@
           "Register Data Recipient discovery"
         ],
         "summary": "Get Software Products Statuses",
-        "description": "Endpoint used by participants to discover the statuses for software products from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html).",
+        "description": "Endpoint used by participants to discover the statuses for software products from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html), [v2](includes/obsolete/get-software-product-statuses-v2.html).",
         "operationId": "getSoftwareProductsStatuses",
         "parameters": [
           {
-            "$ref": "#/components/parameters/PathIndustry"
+            "$ref": "#/components/parameters/PathIndustryRecipients"
           },
           {
             "$ref": "#/components/parameters/HeaderXV"
@@ -345,7 +334,7 @@
             "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
-        "x-version": "2"
+        "x-version": "3"
       }
     },
     "/cdr-register/v1/{industry}/data-recipients/status": {
@@ -354,11 +343,11 @@
           "Register Data Recipient discovery"
         ],
         "summary": "Get Data Recipients Statuses",
-        "description": "Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html).",
+        "description": "Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.\n\nObsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html), [v2](includes/obsolete/get-data-recipient-statuses-v2.html).",
         "operationId": "getDataRecipientsStatuses",
         "parameters": [
           {
-            "$ref": "#/components/parameters/PathIndustry"
+            "$ref": "#/components/parameters/PathIndustryRecipients"
           },
           {
             "$ref": "#/components/parameters/HeaderXV"
@@ -384,7 +373,7 @@
             "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
-        "x-version": "2"
+        "x-version": "3"
       }
     },
     "/cdr-register/v1/{industry}/data-recipients": {
@@ -393,11 +382,11 @@
           "Register Data Recipient discovery"
         ],
         "summary": "Get Data Recipients",
-        "description": "Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.\n\nObsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html).",
+        "description": "Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.\n\nObsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html), [v3](includes/obsolete/get-data-recipients-v3.html).",
         "operationId": "getDataRecipients",
         "parameters": [
           {
-            "$ref": "#/components/parameters/PathIndustry"
+            "$ref": "#/components/parameters/PathIndustryRecipients"
           },
           {
             "$ref": "#/components/parameters/HeaderXV"
@@ -423,7 +412,7 @@
             "$ref": "#/components/responses/RegisterGeneric406"
           }
         },
-        "x-version": "3"
+        "x-version": "4"
       }
     }
   },
@@ -462,7 +451,16 @@
         "description": "The industry the participant is retrieving data for (Banking, etc.)",
         "required": true,
         "schema": {
-          "$ref": "#/components/schemas/IndustryEnum"
+          "$ref": "#/components/schemas/IndustryEnumV2"
+        }
+      },
+      "PathIndustryRecipients": {
+        "name": "industry",
+        "in": "path",
+        "description": "Filters the response to participants associated with an industry.",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/IndustryEnumRecipients"
         }
       },
       "HeaderIfNoneMatch": {
@@ -551,7 +549,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ResponseRegisterDataHolderBrandList"
+              "$ref": "#/components/schemas/ResponseRegisterDataHolderBrandListV2"
             }
           }
         }
@@ -883,7 +881,7 @@
         },
         "description": "Object representing a JSON Web Key."
       },
-      "ResponseRegisterDataHolderBrandList": {
+      "ResponseRegisterDataHolderBrandListV2": {
         "required": [
           "data",
           "links",
@@ -896,7 +894,7 @@
             "type": "array",
             "description": "Response data for the query.",
             "items": {
-              "$ref": "#/components/schemas/RegisterDataHolderBrand"
+              "$ref": "#/components/schemas/RegisterDataHolderBrandV2"
             }
           },
           "links": {
@@ -908,7 +906,7 @@
         },
         "description": "Response containing a list of CDR Register Data Holder Brand objects."
       },
-      "RegisterDataHolderBrand": {
+      "RegisterDataHolderBrandV2": {
         "required": [
           "authDetails",
           "brandName",
@@ -937,7 +935,7 @@
             "type": "array",
             "description": "The industries the Data Holder Brand belongs to.",
             "items": {
-              "$ref": "#/components/schemas/IndustriesEnum"
+              "$ref": "#/components/schemas/IndustriesEnumV2"
             }
           },
           "logoUri": {
@@ -987,7 +985,7 @@
             "type": "array",
             "description": "Response data for the query.",
             "items": {
-              "$ref": "#/components/schemas/DataHolderBrandSummary"
+              "$ref": "#/components/schemas/DataHolderBrandSummaryV2"
             }
           },
           "links": {
@@ -998,7 +996,7 @@
           }
         }
       },
-      "DataHolderBrandSummary": {
+      "DataHolderBrandSummaryV2": {
         "required": [
           "brandName",
           "publicBaseUri",
@@ -1042,7 +1040,7 @@
             "type": "array",
             "description": "The industries the Data Holder Brand belongs to.",
             "items": {
-              "$ref": "#/components/schemas/IndustriesEnum"
+              "$ref": "#/components/schemas/IndustriesEnumV2"
             }
           },
           "lastUpdated": {
@@ -1067,21 +1065,29 @@
           }
         }
       },
-      "IndustryEnum": {
+      "IndustryEnumV2": {
         "type": "string",
         "enum": [
           "banking",
           "energy",
+          "non-bank-lending",
           "telco",
           "all"
         ]
       },
-      "IndustriesEnum": {
+      "IndustriesEnumV2": {
         "type": "string",
         "enum": [
           "banking",
           "energy",
+          "non-bank-lending",
           "telco"
+        ]
+      },
+      "IndustryEnumRecipients": {
+        "type": "string",
+        "enum": [
+          "all"
         ]
       },
       "DataHoldersStatusList": {

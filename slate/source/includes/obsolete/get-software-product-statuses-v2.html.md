@@ -1,5 +1,5 @@
 ---
-title: Get Data Holder Statuses v1
+title: Get Software Products Statuses v2
 
 #language_tabs: # must be one of https://git.io/vQNgJ
 #  - shell
@@ -14,22 +14,22 @@ includes:
 search: false
 ---
 
-# Get Data Holder Statuses V1
-This page documents the obsolete version 1 of the Get Data Holder Statuses endpoint.
+# Get Software Products Statuses V2
+This page documents the obsolete version 2 of the Get Software Products Statuses endpoint.
 
 This version was deprecated in V1.35.0.
 
 
-<h2 id="cdr-register-api_get-data-holder-statuses">Get Data Holder Statuses</h2>
-<p id="get-data-holder-statuses" class="orig-anchor"></p>
+<h2 id="cdr-register-api_get-software-products-statuses">Get Software Products Statuses</h2>
+<p id="get-software-products-statuses" class="orig-anchor"></p>
 
 > Code samples
 
 ```http
-GET https://api.cdr.gov.au/cdr-register/v1/{industry}/data-holders/status HTTP/1.1
+GET https://api.cdr.gov.au/cdr-register/v1/{industry}/data-recipients/brands/software-products/status HTTP/1.1
 Host: api.cdr.gov.au
 Accept: application/json
-x-v: 1
+x-v: string
 x-min-v: string
 If-None-Match: string
 ```
@@ -38,12 +38,12 @@ If-None-Match: string
 const fetch = require('node-fetch');
 const headers = {
   'Accept':'application/json',
-  'x-v':'1',
+  'x-v':'string',
   'x-min-v':'string',
   'If-None-Match':'string'
 };
 
-fetch('https://api.cdr.gov.au/cdr-register/v1/{industry}/data-holders/status', {
+fetch('https://api.cdr.gov.au/cdr-register/v1/{industry}/data-recipients/brands/software-products/status', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -53,25 +53,27 @@ fetch('https://api.cdr.gov.au/cdr-register/v1/{industry}/data-holders/status', {
 });
 ```
 
-`GET /cdr-register/v1/{industry}/data-holders/status`
+`GET /cdr-register/v1/{industry}/data-recipients/brands/software-products/status`
 
-Endpoint used by participants to discover the statuses for Data Holders from the CDR Register.
+Endpoint used by participants to discover the statuses for software products from the CDR Register.
 
-<h3 id="cdr-register-api_get-data-holder-statuses_endpoint-version">Endpoint Version</h3>
+Obsolete versions: [v1](../../includes/obsolete/get-software-product-statuses-v1.html).
+
+<h3 id="cdr-register-api_get-software-products-statuses_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
-<h3 id="cdr-register-api_get-data-holder-statuses_parameters">Parameters</h3>
+<h3 id="cdr-register-api_get-software-products-statuses_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Default|Description|
 |---|---|---|---|---|---|
 |industry|path|[IndustryEnum](#schemacdr-register-apiindustryenum)|mandatory||The industry the participant is retrieving data for (Banking, etc.)|
-|x-v|header|string|optional|`1`|The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to `1` if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained.|
-|x-min-v|header|string|optional||The [minimum version](#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.|
+|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
 |If-None-Match|header|[ASCIIString](#common-field-types)|optional||Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
 
-<h4 id="cdr-register-api_get-data-holder-statuses_enumerated-values-parameters">Enumerated Values</h4>
+<h4 id="cdr-register-api_get-software-products-statuses_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -88,7 +90,7 @@ Endpoint used by participants to discover the statuses for Data Holders from the
 {
   "data": [
     {
-      "legalEntityId": "string",
+      "softwareProductId": "string",
       "status": "ACTIVE"
     }
   ],
@@ -99,16 +101,16 @@ Endpoint used by participants to discover the statuses for Data Holders from the
 }
 ```
 
-<h3 id="cdr-register-api_get-data-holder-statuses_responses">Responses</h3>
+<h3 id="cdr-register-api_get-software-products-statuses_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[DataHoldersStatusList](#schemacdr-register-apidataholdersstatuslist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[SoftwareProductsStatusList](#schemacdr-register-apisoftwareproductsstatuslist)|
 |304|[Not Modified](https://tools.ietf.org/html/rfc7232#section-4.1)|Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header|None|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Missing Required Header / Invalid Version / Invalid Path Parameter|[ResponseErrorListV2](#schemacdr-register-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Unsupported Version|[ResponseErrorListV2](#schemacdr-register-apiresponseerrorlistv2)|
 
-<h3 id="cdr-register-api_get-data-holder-statuses_response-headers">Response Headers</h3>
+<h3 id="cdr-register-api_get-software-products-statuses_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Required|Description|
 |---|---|---|---|---|
@@ -120,6 +122,7 @@ Endpoint used by participants to discover the statuses for Data Holders from the
     <aside class="success">
 This operation does not require authentication.
 </aside>
+
 
 
 <h2 class="schema-heading" id="cdr-register-api-schemas">Schemas</h2>

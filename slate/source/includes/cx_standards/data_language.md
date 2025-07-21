@@ -1,5 +1,11 @@
 ## Data Language Standards: Common
 
+```diff
+Updates to accommodate non-bank lending
+- See the Banking Language section
++ See the Banking and Non-Bank Lending Language section
+```
+
 > <img src="./images/cx_standards0.png" width="375px"><br>
 Example of data language standards presented in a consumer-facing interaction, where [1] refers to Data cluster language, and [2] refers to Data permission language.
 
@@ -7,8 +13,8 @@ In accordance with CDR Rule 8.11(1)(d), a data standard must be made to provide 
 
 |Area|CX Standard|
 |--------------------|------------------------------------------|
-|**Data Language Standards:** Language to be used|<p>Data Recipients and Data Holders **MUST** use data language standards to describe data clusters and permissions in consumer-facing interactions. See the [Banking Language](#banking-language) section for language to be used when requesting banking data; and the [Energy Language](#energy-language) section for language to be used when requesting energy data.</p><p>Data language standards **MUST** be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</p><p>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an '\*' for the relevant data.</p><p>Data Recipients and Data Holders **SHOULD** expand on the proposed language where appropriate to communicate further details of what is being shared.</p><p>Additional details **MAY** include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist.</p><p>Examples of permission details that **MAY** be used and provided as in-line help are denoted with an '&dagger;' for the relevant data.</p>|
-|**Data Language Standards:** Detailed scope requests|<p>If a scenario requires it, Data Holders and Data Recipients **MUST** merge and amend *Basic* and *Detailed* data cluster and permission language to show that *Detailed* scopes include *Basic* data.</p><p>Data Holders and Data Recipients **MUST** use the alternative language denoted with an '&Dagger;' for the relevant scope(s). See the [Banking Language](#banking-language) section for banking data and the [Energy Language](#energy-language) section for energy data.</p><p>**Example:** A Data Recipient presents the *Detailed* data cluster in a data request to a consumer, but does not present the *Basic* data cluster. The *Detailed* scope includes *Basic* data, but this is not apparent to the consumer based on the data cluster language and permissions used for the *Detailed* scope.</p>|
+|**Data Language Standards:** Language to be used|<p>Data Recipients and Data Holders **MUST** use data language standards to describe data clusters and permissions in consumer-facing interactions. See the [Banking and Non-Bank Lending Language](#banking-and-non-bank-lending-language) section for language to be used when requesting banking and non-bank lending data; and the [Energy Language](#energy-language) section for language to be used when requesting energy data.</p><p>Data language standards **MUST** be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</p><p>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an '\*' for the relevant data.</p><p>Data Recipients and Data Holders **SHOULD** expand on the proposed language where appropriate to communicate further details of what is being shared.</p><p>Additional details **MAY** include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist.</p><p>Examples of permission details that **MAY** be used and provided as in-line help are denoted with an '&dagger;' for the relevant data.</p>|
+|**Data Language Standards:** Detailed scope requests|<p>If a scenario requires it, Data Holders and Data Recipients **MUST** merge and amend *Basic* and *Detailed* data cluster and permission language to show that *Detailed* scopes include *Basic* data.</p><p>Data Holders and Data Recipients **MUST** use the alternative language denoted with an '&Dagger;' for the relevant scope(s). See the [Banking and Non-Bank Lending Language](#banking-and-non-bank-lending-language) section for banking and non-bank lending data and the [Energy Language](#energy-language) section for energy data.</p><p>**Example:** A Data Recipient presents the *Detailed* data cluster in a data request to a consumer but does not present the *Basic* data cluster. The *Detailed* scope includes *Basic* data, but this is not apparent to the consumer based on the data cluster language and permissions used for the *Detailed* scope.</p>|
 
 ## Customer Language: Common
 
@@ -44,12 +50,28 @@ In accordance with **[[OIDC]](#nref-OIDC)** [section 5.4](https://openid.net/spe
 
 **Note:** For non-individual consumers, claims available via the profile scope will only return the details of the authenticated End-User and not the organisation or non-individual consumer.
 
-<br/>
+<br>
 
-## Banking Language
+## Banking and Non-Bank Lending Language
 
-### Banking Accounts
-See below for the data language standards for the banking account scopes:
+```diff
+ - Updated main title:
+- Banking Language
++ Banking and Non-Bank Lending Language
+
+ - Updated title and preamble:
+- Banking Accounts
+- See below for the data language standards for the banking account scopes:
++ Banking and Non-Bank Lending Accounts
++ See below for the data language standards for the banking and non-bank lending account scopes:
+
+ - Updated preamble:
+- See below for the data language standards for the banking transactions scope:
++ See below for the data language standards for the transactions scope:
+```
+
+### Banking and Non-Bank Lending Accounts
+See below for the data language standards for the banking and non-bank lending account scopes:
 
 |Data cluster language|<div style="width:250px">Permission language</div>|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
@@ -58,7 +80,7 @@ See below for the data language standards for the banking account scopes:
 |**Account balance and details** &Dagger;|Name of account;<br>Type of account;<br>Account balance;<br>Account number;<br>Interest rates;<br>Fees;<br>Discounts;<br>Account terms;<br>Account mail address;|`bank:accounts.detail:read`|
 
 ### Transactions
-See below for the data language standards for the banking transactions scope:
+See below for the data language standards for the transactions scope:
 
 |Data cluster language|Permission language|Authorisation Scopes|
 |----------------------|------------------------------|-------------------|
@@ -78,7 +100,7 @@ See below for the data language standards for the payees scope:
 |----------------------|------------------------------|-------------------|
 |**Saved payees**|Names and details of accounts you have saved; *(e.g. their BSB and Account Number, BPAY CRN and Biller code, or NPP PayID)* &dagger;|`bank:payees:read`|
 
-<br/>
+<br>
 
 ## Energy Language
 

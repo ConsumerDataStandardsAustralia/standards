@@ -1,7 +1,7 @@
 ## Definitions
 
 ```diff
-Updated Definitions section to cover terminology and applicability for Banking and Non-Bank Lending
++ Added Definitions section to cover terminology and applicability for Banking and Non-Bank Lending
 ```
 
 This section outlines specific descriptions, terminology, and conditions that relate to the interpretation of the data standards.

@@ -1,6 +1,9 @@
 ## Product Categories
 
-
+```diff
+Added product category with associated description:
++ BUY_NOW_PAY_LATER
+```
 
 The [_productCategory_ enumeration](#cdr-banking-api_schemas_tocSbankingproductcategory) provides the values for categorising products and accounts. These are explained in the following tables:
 
@@ -18,6 +21,7 @@ The [_productCategory_ enumeration](#cdr-banking-api_schemas_tocSbankingproductc
 | Enum | Description |
 | ---- | ----------- |
 | BUSINESS_LOANS | This grouping of products incorporates all types of lending for business purpose that is not a trade finance facility, lease, overdraft, residential mortgage, credit card or margin lending. It includes traditional term loans, bank guarantees and commercial bills. This category would incorporate both secured and unsecured business purpose lending including all business purpose equipment finance that is not covered by a lease. |
+| BUY_NOW_PAY_LATER | This grouping includes products regulated as a buy now pay later arrangement under the _National Consumer Credit Protection Act 2009_ and other Buy Now, Pay Later (BNPL) products with key characteristics which may include (but are not limited to): the provision of finance (excluding supplying cash), the involvement of a third-party financing entity, a fixed charge for providing credit under a prescribed limit instead of charging interest, and a fixed charge for missing a payment. |
 | CRED_AND_CHRG_CARDS | This grouping of products includes all lending products that are issued for the purpose of allowing a flexible line of credit accessed through use of a card. These may be called various names including Credit Cards, Charge Cards and Store Cards. |
 | LEASES | This grouping of products will include all types of leases including Financial Lease, Operating Lease, Sale and leaseback, etc. |
 | MARGIN_LOANS | This grouping of products includes all types of margin loans which let you borrow money to invest in traded assets including shares & commodities or in managed funds. |

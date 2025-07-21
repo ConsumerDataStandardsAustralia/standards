@@ -10,14 +10,14 @@ These standards fall into three categories:
 
 ## Candidate Standards
 
-
-
-
+```diff
+- Removed the Candidate Standards for the Banking and Non-Bank Lending sector
+```
 
 The Consumer Data Standards currently include the following Candidate Standards:
 
 - [Candidate Standards for the Telecommunications sector](./includes/additional/candidates/telco/telco.html).
-- [Candidate Standards for the Banking and Non-Bank Lending sector](./includes/additional/candidates/non-bank-lending/banking-non-bank-lending.html).
+
 
 ## Draft Standards
 

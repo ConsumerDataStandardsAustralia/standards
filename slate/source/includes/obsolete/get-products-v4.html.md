@@ -1,7 +1,24 @@
+---
+title: Get Products v4
 
+#language_tabs: # must be one of https://git.io/vQNgJ
+#  - shell
+#  - javascript
 
-<!-- Endpoint tag group description -->
-<!-- Banking Product endpoints -->
+toc_footers:
+  - <a href='../../index.html'>Consumer Data Standards</a>
+
+includes:
+  - footer
+
+search: false
+---
+
+# Get Products V4
+This page documents the obsolete version 4 of the Get Products endpoint.
+
+Data Holders can retire this version after **August 10th 2026**. Data Recipients must update to newer versions prior to this date.
+
 
 <h2 id="cdr-banking-api_get-products">Get Products</h2>
 <p id="get-products" class="orig-anchor"></p>
@@ -72,12 +89,12 @@ It is expected that data consumers needing this data will call relatively freque
 
 In addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no longer offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
 
-Obsolete versions: _(Refer to Standards.)_
+Obsolete versions: [v1](../../includes/obsolete/get-products-v1.html), [v2](../../includes/obsolete/get-products-v2.html), [v3](../../includes/obsolete/get-products-v3.html).
 
 <h3 id="cdr-banking-api_get-products_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**5**
+|Version|**4**
 
 <h3 id="cdr-banking-api_get-products_parameters">Parameters</h3>
 
@@ -86,7 +103,7 @@ Obsolete versions: _(Refer to Standards.)_
 |effective|query|[Enum](#common-field-types)|optional|`CURRENT`|Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the _effectiveFrom_ and _effectiveTo_ fields. Valid values are `CURRENT`, `FUTURE` and `ALL`. If absent defaults to `CURRENT`.|
 |updated-since|query|[DateTimeString](#common-field-types)|optional||Only include products that have been updated after the specified date and time. If absent defaults to include all products.|
 |brand|query|string|optional||Filter results based on a specific brand.|
-|product-category|query|[BankingProductCategoryV2](#schemacdr-banking-apibankingproductcategoryv2)|optional||Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
+|product-category|query|[BankingProductCategory](#schemacdr-banking-apibankingproductcategory)|optional||Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
 |page|query|[PositiveInteger](#common-field-types)|optional|`1`|Page of results to request (standard pagination).|
 |page-size|query|[PositiveInteger](#common-field-types)|optional|`25`|Page size to request. Default is 25 (standard pagination).|
 |x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
@@ -100,7 +117,6 @@ Obsolete versions: _(Refer to Standards.)_
 |effective|CURRENT|
 |effective|FUTURE|
 |product-category|BUSINESS_LOANS|
-|product-category|BUY_NOW_PAY_LATER|
 |product-category|CRED_AND_CHRG_CARDS|
 |product-category|LEASES|
 |product-category|MARGIN_LOANS|
@@ -199,7 +215,7 @@ Obsolete versions: _(Refer to Standards.)_
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingProductListV4](#schemacdr-banking-apiresponsebankingproductlistv4)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingProductListV3](#schemacdr-banking-apiresponsebankingproductlistv3)|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
@@ -215,3005 +231,7 @@ Obsolete versions: _(Refer to Standards.)_
 This operation does not require authentication.
 </aside>
 
-  
 
-<h2 id="cdr-banking-api_get-product-detail">Get Product Detail</h2>
-<p id="get-product-detail" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-GET https://tls.dh.example.com/cds-au/v1/banking/products/{productId} HTTP/1.1
-Host: tls.dh.example.com
-Accept: application/json
-x-v: string
-x-min-v: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const headers = {
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string'
-};
-
-fetch('https://tls.dh.example.com/cds-au/v1/banking/products/{productId}', {
-  method: 'GET',
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`GET /banking/products/{productId}`
-
-Obtain detailed information on a single product offered openly to the market.
-
-Obsolete versions: _(Refer to Standards.)_
-
-<h3 id="cdr-banking-api_get-product-detail_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**7**
-
-<h3 id="cdr-banking-api_get-product-detail_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|productId|path|[BankingProductId](#schemacdr-banking-apibankingproductid)|mandatory||The _productId_ to obtain data for. _productId_ values are returned by product list endpoints.|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "productId": "string",
-    "effectiveFrom": "string",
-    "effectiveTo": "string",
-    "lastUpdated": "string",
-    "productCategory": "BUSINESS_LOANS",
-    "name": "string",
-    "description": "string",
-    "brand": "string",
-    "brandName": "string",
-    "applicationUri": "string",
-    "isTailored": true,
-    "additionalInformation": {
-      "overviewUri": "string",
-      "termsUri": "string",
-      "eligibilityUri": "string",
-      "feesAndPricingUri": "string",
-      "bundleUri": "string",
-      "additionalOverviewUris": [
-        {
-          "description": "string",
-          "additionalInfoUri": "string"
-        }
-      ],
-      "additionalTermsUris": [
-        {
-          "description": "string",
-          "additionalInfoUri": "string"
-        }
-      ],
-      "additionalEligibilityUris": [
-        {
-          "description": "string",
-          "additionalInfoUri": "string"
-        }
-      ],
-      "additionalFeesAndPricingUris": [
-        {
-          "description": "string",
-          "additionalInfoUri": "string"
-        }
-      ],
-      "additionalBundleUris": [
-        {
-          "description": "string",
-          "additionalInfoUri": "string"
-        }
-      ]
-    },
-    "cardArt": [
-      {
-        "cardScheme": "AMEX",
-        "cardType": "CHARGE",
-        "title": "string",
-        "imageUri": "string"
-      }
-    ],
-    "bundles": [
-      {
-        "name": "string",
-        "description": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string",
-        "productIds": [
-          "string"
-        ]
-      }
-    ],
-    "features": [
-      {
-        "featureType": "ADDITIONAL_CARDS",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      }
-    ],
-    "constraints": [
-      {
-        "constraintType": "MAX_BALANCE",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      }
-    ],
-    "eligibility": [
-      {
-        "eligibilityType": "BUSINESS",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      }
-    ],
-    "fees": [
-      {
-        "name": "string",
-        "feeType": "CASH_ADVANCE",
-        "feeMethodUType": "fixedAmount",
-        "fixedAmount": {
-          "amount": "string"
-        },
-        "rateBased": {
-          "rateType": "BALANCE",
-          "rate": "string",
-          "accrualFrequency": "string",
-          "amountRange": {
-            "feeMinimum": "string",
-            "feeMaximum": "string"
-          }
-        },
-        "variable": {
-          "feeMinimum": "string",
-          "feeMaximum": "string"
-        },
-        "feeCap": "string",
-        "feeCapPeriod": "string",
-        "currency": "AUD",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string",
-        "discounts": [
-          {
-            "description": "string",
-            "discountType": "BALANCE",
-            "discountMethodUType": "fixedAmount",
-            "fixedAmount": {
-              "amount": "string"
-            },
-            "rateBased": {
-              "rateType": "BALANCE",
-              "rate": "string",
-              "amountRange": {
-                "discountMinimum": "string",
-                "discountMaximum": "string"
-              }
-            },
-            "additionalValue": "string",
-            "additionalInfo": "string",
-            "additionalInfoUri": "string",
-            "eligibility": [
-              {
-                "discountEligibilityType": "BUSINESS",
-                "additionalValue": "string",
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "depositRates": [
-      {
-        "depositRateType": "VARIABLE",
-        "rate": "string",
-        "calculationFrequency": "string",
-        "applicationType": "PERIODIC",
-        "applicationFrequency": "string",
-        "tiers": [
-          {
-            "name": "string",
-            "unitOfMeasure": "DAY",
-            "minimumValue": "string",
-            "maximumValue": "string",
-            "rateApplicationMethod": "PER_TIER",
-            "applicabilityConditions": [
-              {
-                "rateApplicabilityType": "NEW_CUSTOMER",
-                "additionalValue": "string",
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ],
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          }
-        ],
-        "applicabilityConditions": [
-          {
-            "rateApplicabilityType": "NEW_CUSTOMER",
-            "additionalValue": "string",
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          }
-        ],
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      }
-    ],
-    "lendingRates": [
-      {
-        "lendingRateType": "FIXED",
-        "rate": "string",
-        "comparisonRate": "string",
-        "calculationFrequency": "string",
-        "applicationType": "PERIODIC",
-        "applicationFrequency": "string",
-        "interestPaymentDue": "IN_ADVANCE",
-        "repaymentType": "INTEREST_ONLY",
-        "loanPurpose": "INVESTMENT",
-        "tiers": [
-          {
-            "name": "string",
-            "unitOfMeasure": "DAY",
-            "minimumValue": "string",
-            "maximumValue": "string",
-            "rateApplicationMethod": "PER_TIER",
-            "applicabilityConditions": [
-              {
-                "rateApplicabilityType": "NEW_CUSTOMER",
-                "additionalValue": "string",
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ],
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          }
-        ],
-        "applicabilityConditions": [
-          {
-            "rateApplicabilityType": "NEW_CUSTOMER",
-            "additionalValue": "string",
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          }
-        ],
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      }
-    ],
-    "instalments": {
-      "maximumPlanCount": 1,
-      "instalmentsLimit": "string",
-      "minimumPlanValue": "string",
-      "maximumPlanValue": "string",
-      "minimumSplit": 4,
-      "maximumSplit": 4
-    }
-  },
-  "links": {
-    "self": "string"
-  },
-  "meta": {}
-}
-```
-
-<h3 id="cdr-banking-api_get-product-detail_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingProductByIdV7](#schemacdr-banking-apiresponsebankingproductbyidv7)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-product-detail_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-
-  
-    <aside class="success">
-This operation does not require authentication.
-</aside>
-
-  
-
-<!-- Endpoint tag group description -->
-<!-- Banking Account endpoints -->
-
-<h2 id="cdr-banking-api_get-accounts">Get Accounts</h2>
-<p id="get-accounts" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-GET https://mtls.dh.example.com/cds-au/v1/banking/accounts HTTP/1.1
-Host: mtls.dh.example.com
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const headers = {
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts', {
-  method: 'GET',
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`GET /banking/accounts`
-
-Obtain a list of accounts.
-
-Obsolete versions: _(Refer to Standards.)_
-
-<h3 id="cdr-banking-api_get-accounts_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**3**
-
-<h3 id="cdr-banking-api_get-accounts_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|product-category|query|[BankingProductCategoryV2](#schemacdr-banking-apibankingproductcategoryv2)|optional||Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|open-status|query|[Enum](#common-field-types)|optional|`ALL`|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.|
-|is-owned|query|[Boolean](#common-field-types)|optional||Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.|
-|page|query|[PositiveInteger](#common-field-types)|optional|`1`|Page of results to request (standard pagination).|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|`25`|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-
-<h4 id="cdr-banking-api_get-accounts_enumerated-values-parameters">Enumerated Values</h4>
-
-|Parameter|Value|
-|---|---|
-|product-category|BUSINESS_LOANS|
-|product-category|BUY_NOW_PAY_LATER|
-|product-category|CRED_AND_CHRG_CARDS|
-|product-category|LEASES|
-|product-category|MARGIN_LOANS|
-|product-category|OVERDRAFTS|
-|product-category|PERS_LOANS|
-|product-category|REGULATED_TRUST_ACCOUNTS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|TERM_DEPOSITS|
-|product-category|TRADE_FINANCE|
-|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|product-category|TRAVEL_CARDS|
-|open-status|ALL|
-|open-status|CLOSED|
-|open-status|OPEN|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "accounts": [
-      {
-        "accountId": "string",
-        "creationDate": "string",
-        "displayName": "string",
-        "nickname": "string",
-        "openStatus": "CLOSED",
-        "isOwned": true,
-        "accountOwnership": "UNKNOWN",
-        "maskedNumber": "string",
-        "productCategory": "BUSINESS_LOANS",
-        "productName": "string"
-      }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
-}
-```
-
-<h3 id="cdr-banking-api_get-accounts_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingAccountListV3](#schemacdr-banking-apiresponsebankingaccountlistv3)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-accounts_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
-</aside>
-
-    
-  
-
-<h2 id="cdr-banking-api_get-account-detail">Get Account Detail</h2>
-<p id="get-account-detail" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId} HTTP/1.1
-Host: mtls.dh.example.com
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const headers = {
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}', {
-  method: 'GET',
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`GET /banking/accounts/{accountId}`
-
-Obtain detailed information on a single account.
-
-Obsolete versions: _(Refer to Standards.)_
-
-<h3 id="cdr-banking-api_get-account-detail_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**5**
-
-<h3 id="cdr-banking-api_get-account-detail_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|accountId|path|[BankingAccountId](#schemacdr-banking-apibankingaccountid)|mandatory||The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "accountId": "string",
-    "creationDate": "string",
-    "displayName": "string",
-    "nickname": "string",
-    "openStatus": "CLOSED",
-    "isOwned": true,
-    "accountOwnership": "UNKNOWN",
-    "maskedNumber": "string",
-    "productCategory": "BUSINESS_LOANS",
-    "productName": "string",
-    "bsb": "string",
-    "accountNumber": "string",
-    "bundleName": "string",
-    "instalments": {
-      "maximumPlanCount": 1,
-      "instalmentsLimit": "string",
-      "minimumPlanValue": "string",
-      "maximumPlanValue": "string",
-      "minimumSplit": 4,
-      "maximumSplit": 4,
-      "plans": [
-        {
-          "planNickname": "string",
-          "creationDate": "string",
-          "amount": "string",
-          "duration": "string",
-          "instalmentInterval": "string",
-          "schedule": [
-            {
-              "amountDue": "string",
-              "dueDate": "string"
-            }
-          ]
-        }
-      ]
-    },
-    "specificAccountUType": "creditCard",
-    "termDeposit": [
-      {
-        "lodgementDate": "string",
-        "maturityDate": "string",
-        "maturityAmount": "string",
-        "maturityCurrency": "AUD",
-        "maturityInstructions": "HOLD_ON_MATURITY"
-      }
-    ],
-    "creditCard": {
-      "minPaymentAmount": "string",
-      "paymentDueAmount": "string",
-      "paymentCurrency": "AUD",
-      "paymentDueDate": "string"
-    },
-    "loan": {
-      "originalStartDate": "string",
-      "originalLoanAmount": "string",
-      "originalLoanCurrency": "AUD",
-      "loanEndDate": "string",
-      "nextInstalmentDate": "string",
-      "minInstalmentAmount": "string",
-      "minInstalmentCurrency": "AUD",
-      "maxRedraw": "string",
-      "maxRedrawCurrency": "AUD",
-      "minRedraw": "string",
-      "minRedrawCurrency": "AUD",
-      "offsetAccountEnabled": true,
-      "offsetAccountIds": [
-        "string"
-      ],
-      "repaymentType": "INTEREST_ONLY",
-      "repaymentFrequency": "string"
-    },
-    "depositRate": "string",
-    "lendingRate": "string",
-    "depositRates": [
-      {
-        "depositRateType": "VARIABLE",
-        "rate": "string",
-        "calculationFrequency": "string",
-        "applicationType": "PERIODIC",
-        "applicationFrequency": "string",
-        "tiers": [
-          {
-            "name": "string",
-            "unitOfMeasure": "DAY",
-            "minimumValue": "string",
-            "maximumValue": "string",
-            "rateApplicationMethod": "PER_TIER",
-            "applicabilityConditions": [
-              {
-                "rateApplicabilityType": "NEW_CUSTOMER",
-                "additionalValue": "string",
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ],
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          }
-        ],
-        "applicabilityConditions": [
-          {
-            "rateApplicabilityType": "NEW_CUSTOMER",
-            "additionalValue": "string",
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          }
-        ],
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      }
-    ],
-    "lendingRates": [
-      {
-        "lendingRateType": "FIXED",
-        "rate": "string",
-        "comparisonRate": "string",
-        "calculationFrequency": "string",
-        "applicationType": "PERIODIC",
-        "applicationFrequency": "string",
-        "interestPaymentDue": "IN_ADVANCE",
-        "repaymentType": "INTEREST_ONLY",
-        "loanPurpose": "INVESTMENT",
-        "tiers": [
-          {
-            "name": "string",
-            "unitOfMeasure": "DAY",
-            "minimumValue": "string",
-            "maximumValue": "string",
-            "rateApplicationMethod": "PER_TIER",
-            "applicabilityConditions": [
-              {
-                "rateApplicabilityType": "NEW_CUSTOMER",
-                "additionalValue": "string",
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ],
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          }
-        ],
-        "applicabilityConditions": [
-          {
-            "rateApplicabilityType": "NEW_CUSTOMER",
-            "additionalValue": "string",
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          }
-        ],
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string"
-      }
-    ],
-    "features": [
-      {
-        "featureType": "ADDITIONAL_CARDS",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string",
-        "isActivated": "ACTIVATED"
-      }
-    ],
-    "fees": [
-      {
-        "name": "string",
-        "feeType": "CASH_ADVANCE",
-        "feeMethodUType": "fixedAmount",
-        "fixedAmount": {
-          "amount": "string"
-        },
-        "rateBased": {
-          "rateType": "BALANCE",
-          "rate": "string",
-          "accrualFrequency": "string",
-          "amountRange": {
-            "feeMinimum": "string",
-            "feeMaximum": "string"
-          }
-        },
-        "variable": {
-          "feeMinimum": "string",
-          "feeMaximum": "string"
-        },
-        "feeCap": "string",
-        "feeCapPeriod": "string",
-        "currency": "AUD",
-        "additionalValue": "string",
-        "additionalInfo": "string",
-        "additionalInfoUri": "string",
-        "discounts": [
-          {
-            "description": "string",
-            "discountType": "BALANCE",
-            "discountMethodUType": "fixedAmount",
-            "fixedAmount": {
-              "amount": "string"
-            },
-            "rateBased": {
-              "rateType": "BALANCE",
-              "rate": "string",
-              "amountRange": {
-                "discountMinimum": "string",
-                "discountMaximum": "string"
-              }
-            },
-            "additionalValue": "string",
-            "additionalInfo": "string",
-            "additionalInfoUri": "string",
-            "eligibility": [
-              {
-                "discountEligibilityType": "BUSINESS",
-                "additionalValue": "string",
-                "additionalInfo": "string",
-                "additionalInfoUri": "string"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "addresses": [
-      {
-        "addressUType": "paf",
-        "simple": {
-          "mailingName": "string",
-          "addressLine1": "string",
-          "addressLine2": "string",
-          "addressLine3": "string",
-          "postcode": "string",
-          "city": "string",
-          "state": "string",
-          "country": "AUS"
-        },
-        "paf": {
-          "dpid": "string",
-          "thoroughfareNumber1": 0,
-          "thoroughfareNumber1Suffix": "string",
-          "thoroughfareNumber2": 0,
-          "thoroughfareNumber2Suffix": "string",
-          "flatUnitType": "string",
-          "flatUnitNumber": "string",
-          "floorLevelType": "string",
-          "floorLevelNumber": "string",
-          "lotNumber": "string",
-          "buildingName1": "string",
-          "buildingName2": "string",
-          "streetName": "string",
-          "streetType": "string",
-          "streetSuffix": "string",
-          "postalDeliveryType": "string",
-          "postalDeliveryNumber": 0,
-          "postalDeliveryNumberPrefix": "string",
-          "postalDeliveryNumberSuffix": "string",
-          "localityName": "string",
-          "postcode": "string",
-          "state": "string"
-        }
-      }
-    ]
-  },
-  "links": {
-    "self": "string"
-  },
-  "meta": {}
-}
-```
-
-<h3 id="cdr-banking-api_get-account-detail_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingAccountByIdV5](#schemacdr-banking-apiresponsebankingaccountbyidv5)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-account-detail_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.detail:read.</a>
-</aside>
-
-    
-  
-
-<!-- Endpoint tag group description -->
-<!-- Banking Account Balance endpoints -->
-
-<h2 id="cdr-banking-api_get-bulk-balances">Get Bulk Balances</h2>
-<p id="get-bulk-balances" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances HTTP/1.1
-Host: mtls.dh.example.com
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const headers = {
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances', {
-  method: 'GET',
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`GET /banking/accounts/balances`
-
-Obtain balances for multiple, filtered accounts.
-
-Obsolete versions: _(Refer to Standards.)_
-
-<h3 id="cdr-banking-api_get-bulk-balances_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**2**
-
-<h3 id="cdr-banking-api_get-bulk-balances_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|product-category|query|[BankingProductCategoryV2](#schemacdr-banking-apibankingproductcategoryv2)|optional||Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|open-status|query|[Enum](#common-field-types)|optional|`ALL`|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.|
-|is-owned|query|[Boolean](#common-field-types)|optional||Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.|
-|page|query|[PositiveInteger](#common-field-types)|optional|`1`|Page of results to request (standard pagination).|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|`25`|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-
-<h4 id="cdr-banking-api_get-bulk-balances_enumerated-values-parameters">Enumerated Values</h4>
-
-|Parameter|Value|
-|---|---|
-|product-category|BUSINESS_LOANS|
-|product-category|BUY_NOW_PAY_LATER|
-|product-category|CRED_AND_CHRG_CARDS|
-|product-category|LEASES|
-|product-category|MARGIN_LOANS|
-|product-category|OVERDRAFTS|
-|product-category|PERS_LOANS|
-|product-category|REGULATED_TRUST_ACCOUNTS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|TERM_DEPOSITS|
-|product-category|TRADE_FINANCE|
-|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|product-category|TRAVEL_CARDS|
-|open-status|ALL|
-|open-status|CLOSED|
-|open-status|OPEN|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "balances": [
-      {
-        "accountId": "string",
-        "currentBalance": "string",
-        "availableBalance": "string",
-        "creditLimit": "string",
-        "amortisedLimit": "string",
-        "currency": "AUD",
-        "purses": [
-          {
-            "amount": "string",
-            "currency": "string"
-          }
-        ]
-      }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
-}
-```
-
-<h3 id="cdr-banking-api_get-bulk-balances_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingAccountsBalanceList](#schemacdr-banking-apiresponsebankingaccountsbalancelist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-bulk-balances_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
-</aside>
-
-    
-  
-
-<h2 id="cdr-banking-api_get-balances-for-specific-accounts">Get Balances For Specific Accounts</h2>
-<p id="get-balances-for-specific-accounts" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-POST https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances HTTP/1.1
-Host: mtls.dh.example.com
-Content-Type: application/json
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const inputBody = '{
-  "data": {
-    "accountIds": [
-      "string"
-    ]
-  },
-  "meta": {}
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances', {
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`POST /banking/accounts/balances`
-
-Obtain balances for a specified list of accounts.
-
-> Body parameter
-
-```json
-{
-  "data": {
-    "accountIds": [
-      "string"
-    ]
-  },
-  "meta": {}
-}
-```
-
-<h3 id="cdr-banking-api_get-balances-for-specific-accounts_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**1**
-
-<h3 id="cdr-banking-api_get-balances-for-specific-accounts_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|page|query|[PositiveInteger](#common-field-types)|optional|`1`|Page of results to request (standard pagination).|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|`25`|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-|body|body|[RequestAccountIdListV1](#schemacdr-banking-apirequestaccountidlistv1)|mandatory||Request payload containing a list of _accountId_ values to obtain data for.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "balances": [
-      {
-        "accountId": "string",
-        "currentBalance": "string",
-        "availableBalance": "string",
-        "creditLimit": "string",
-        "amortisedLimit": "string",
-        "currency": "AUD",
-        "purses": [
-          {
-            "amount": "string",
-            "currency": "string"
-          }
-        ]
-      }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
-}
-```
-
-<h3 id="cdr-banking-api_get-balances-for-specific-accounts_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingAccountsBalanceList](#schemacdr-banking-apiresponsebankingaccountsbalancelist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-balances-for-specific-accounts_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
-</aside>
-
-    
-  
-
-<h2 id="cdr-banking-api_get-account-balance">Get Account Balance</h2>
-<p id="get-account-balance" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/balance HTTP/1.1
-Host: mtls.dh.example.com
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const headers = {
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/balance', {
-  method: 'GET',
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`GET /banking/accounts/{accountId}/balance`
-
-Obtain the balance for a single specified account.
-
-<h3 id="cdr-banking-api_get-account-balance_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**1**
-
-<h3 id="cdr-banking-api_get-account-balance_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|accountId|path|[BankingAccountId](#schemacdr-banking-apibankingaccountid)|mandatory||The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "accountId": "string",
-    "currentBalance": "string",
-    "availableBalance": "string",
-    "creditLimit": "string",
-    "amortisedLimit": "string",
-    "currency": "AUD",
-    "purses": [
-      {
-        "amount": "string",
-        "currency": "string"
-      }
-    ]
-  },
-  "links": {
-    "self": "string"
-  },
-  "meta": {}
-}
-```
-
-<h3 id="cdr-banking-api_get-account-balance_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingAccountsBalanceById](#schemacdr-banking-apiresponsebankingaccountsbalancebyid)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-account-balance_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
-</aside>
-
-    
-  
-
-<!-- Endpoint tag group description -->
-<!-- Banking Account Transaction endpoints -->
-
-<h2 id="cdr-banking-api_get-transactions-for-account">Get Transactions For Account</h2>
-<p id="get-transactions-for-account" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions HTTP/1.1
-Host: mtls.dh.example.com
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const headers = {
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions', {
-  method: 'GET',
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`GET /banking/accounts/{accountId}/transactions`
-
-Obtain transactions for a specific account.
-
-Some general notes that apply to all endpoints that retrieve transactions:<ul><li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the "effective" date/time which will be defined as:<ul><li>Posted date/time if available, then<li>Execution date/time if available, then<li>A reasonable date/time nominated by the data holder using internal data structures</ul><li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</ul>
-
-<h3 id="cdr-banking-api_get-transactions-for-account_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**1**
-
-<h3 id="cdr-banking-api_get-transactions-for-account_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|accountId|path|[BankingAccountId](#schemacdr-banking-apibankingaccountid)|mandatory||The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.|
-|oldest-time|query|[DateTimeString](#common-field-types)|optional||Constrain the transaction history request to transactions with effective time at or after this date/time. If absent defaults to _newest-time_ minus 90 days. Format is aligned to [DateTimeString](#common-field-types) common type.|
-|newest-time|query|[DateTimeString](#common-field-types)|optional||Constrain the transaction history request to transactions with effective time at or before this date/time. If absent defaults to today. Format is aligned to [DateTimeString](#common-field-types) common type.|
-|min-amount|query|[AmountString](#common-field-types)|optional||Filter transactions to only transactions with amounts higher than or equal to this amount.|
-|max-amount|query|[AmountString](#common-field-types)|optional||Filter transactions to only transactions with amounts less than or equal to this amount.|
-|text|query|string|optional||Filter transactions to only transactions where this string value is found as a substring of either the _reference_ or _description_ fields. Format is arbitrary ASCII string. This parameter is optionally implemented by data holders. If it is not implemented then a response should be provided as normal without text filtering applied and an additional boolean field named _isQueryParamUnsupported_ should be included in the meta object and set to `true` (whether the text parameter is supplied or not).|
-|page|query|[PositiveInteger](#common-field-types)|optional|`1`|Page of results to request (standard pagination).|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|`25`|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "transactions": [
-      {
-        "accountId": "string",
-        "transactionId": "string",
-        "isDetailAvailable": true,
-        "type": "DIRECT_DEBIT",
-        "status": "PENDING",
-        "description": "string",
-        "postingDateTime": "string",
-        "valueDateTime": "string",
-        "executionDateTime": "string",
-        "amount": "string",
-        "currency": "AUD",
-        "reference": "string",
-        "merchantName": "string",
-        "merchantCategoryCode": "string",
-        "billerCode": "string",
-        "billerName": "string",
-        "crn": "string",
-        "apcaNumber": "string"
-      }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0,
-    "isQueryParamUnsupported": false
-  }
-}
-```
-
-<h3 id="cdr-banking-api_get-transactions-for-account_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingTransactionList](#schemacdr-banking-apiresponsebankingtransactionlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-transactions-for-account_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:transactions:read.</a>
-</aside>
-
-    
-  
-
-<h2 id="cdr-banking-api_get-transaction-detail">Get Transaction Detail</h2>
-<p id="get-transaction-detail" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId} HTTP/1.1
-Host: mtls.dh.example.com
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const headers = {
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}', {
-  method: 'GET',
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`GET /banking/accounts/{accountId}/transactions/{transactionId}`
-
-Obtain detailed information on a transaction for a specific account.
-
-Obsolete versions: _(Refer to Standards.)_
-
-<h3 id="cdr-banking-api_get-transaction-detail_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**2**
-
-<h3 id="cdr-banking-api_get-transaction-detail_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|accountId|path|[BankingAccountId](#schemacdr-banking-apibankingaccountid)|mandatory||The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.|
-|transactionId|path|[BankingTransactionId](#schemacdr-banking-apibankingtransactionid)|mandatory||The _transactionId_ to obtain data for. _transactionId_ values are returned by transaction list endpoints.|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "accountId": "string",
-    "transactionId": "string",
-    "isDetailAvailable": true,
-    "type": "DIRECT_DEBIT",
-    "status": "PENDING",
-    "description": "string",
-    "postingDateTime": "string",
-    "valueDateTime": "string",
-    "executionDateTime": "string",
-    "amount": "string",
-    "currency": "AUD",
-    "reference": "string",
-    "merchantName": "string",
-    "merchantCategoryCode": "string",
-    "billerCode": "string",
-    "billerName": "string",
-    "crn": "string",
-    "apcaNumber": "string",
-    "extendedData": {
-      "payer": "string",
-      "payee": "string",
-      "extensionUType": "nppPayload",
-      "nppPayload": {
-        "extendedDescription": "string",
-        "endToEndId": "string",
-        "purposeCode": "string",
-        "service": "X2P1",
-        "serviceVersion": "03"
-      }
-    }
-  },
-  "links": {
-    "self": "string"
-  },
-  "meta": {}
-}
-```
-
-<h3 id="cdr-banking-api_get-transaction-detail_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingTransactionByIdV2](#schemacdr-banking-apiresponsebankingtransactionbyidv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-transaction-detail_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:transactions:read.</a>
-</aside>
-
-    
-  
-
-<!-- Endpoint tag group description -->
-<!-- Banking Account Direct Debit endpoints -->
-
-<h2 id="cdr-banking-api_get-direct-debits-for-account">Get Direct Debits For Account</h2>
-<p id="get-direct-debits-for-account" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/direct-debits HTTP/1.1
-Host: mtls.dh.example.com
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const headers = {
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/direct-debits', {
-  method: 'GET',
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`GET /banking/accounts/{accountId}/direct-debits`
-
-Obtain direct debit authorisations for a specific account.
-
-<h3 id="cdr-banking-api_get-direct-debits-for-account_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**1**
-
-<h3 id="cdr-banking-api_get-direct-debits-for-account_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|accountId|path|[BankingAccountId](#schemacdr-banking-apibankingaccountid)|mandatory||The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.|
-|page|query|[PositiveInteger](#common-field-types)|optional|`1`|Page of results to request (standard pagination).|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|`25`|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "directDebitAuthorisations": [
-      {
-        "accountId": "string",
-        "authorisedEntity": {
-          "description": "string",
-          "financialInstitution": "string",
-          "abn": "string",
-          "acn": "string",
-          "arbn": "string"
-        },
-        "lastDebitDateTime": "string",
-        "lastDebitAmount": "string"
-      }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
-}
-```
-
-<h3 id="cdr-banking-api_get-direct-debits-for-account_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-direct-debits-for-account_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read.</a>
-</aside>
-
-    
-  
-
-<h2 id="cdr-banking-api_get-bulk-direct-debits">Get Bulk Direct Debits</h2>
-<p id="get-bulk-direct-debits" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
-Host: mtls.dh.example.com
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const headers = {
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits', {
-  method: 'GET',
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`GET /banking/accounts/direct-debits`
-
-Obtain direct debit authorisations for multiple, filtered accounts.
-
-Obsolete versions: _(Refer to Standards.)_
-
-<h3 id="cdr-banking-api_get-bulk-direct-debits_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**2**
-
-<h3 id="cdr-banking-api_get-bulk-direct-debits_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|product-category|query|[BankingProductCategoryV2](#schemacdr-banking-apibankingproductcategoryv2)|optional||Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|open-status|query|[Enum](#common-field-types)|optional|`ALL`|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.|
-|is-owned|query|[Boolean](#common-field-types)|optional||Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.|
-|page|query|[PositiveInteger](#common-field-types)|optional|`1`|Page of results to request (standard pagination).|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|`25`|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-
-<h4 id="cdr-banking-api_get-bulk-direct-debits_enumerated-values-parameters">Enumerated Values</h4>
-
-|Parameter|Value|
-|---|---|
-|product-category|BUSINESS_LOANS|
-|product-category|BUY_NOW_PAY_LATER|
-|product-category|CRED_AND_CHRG_CARDS|
-|product-category|LEASES|
-|product-category|MARGIN_LOANS|
-|product-category|OVERDRAFTS|
-|product-category|PERS_LOANS|
-|product-category|REGULATED_TRUST_ACCOUNTS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|TERM_DEPOSITS|
-|product-category|TRADE_FINANCE|
-|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|product-category|TRAVEL_CARDS|
-|open-status|ALL|
-|open-status|CLOSED|
-|open-status|OPEN|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "directDebitAuthorisations": [
-      {
-        "accountId": "string",
-        "authorisedEntity": {
-          "description": "string",
-          "financialInstitution": "string",
-          "abn": "string",
-          "acn": "string",
-          "arbn": "string"
-        },
-        "lastDebitDateTime": "string",
-        "lastDebitAmount": "string"
-      }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
-}
-```
-
-<h3 id="cdr-banking-api_get-bulk-direct-debits_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-bulk-direct-debits_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read.</a>
-</aside>
-
-    
-  
-
-<h2 id="cdr-banking-api_get-direct-debits-for-specific-accounts">Get Direct Debits For Specific Accounts</h2>
-<p id="get-direct-debits-for-specific-accounts" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-POST https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits HTTP/1.1
-Host: mtls.dh.example.com
-Content-Type: application/json
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const inputBody = '{
-  "data": {
-    "accountIds": [
-      "string"
-    ]
-  },
-  "meta": {}
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits', {
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`POST /banking/accounts/direct-debits`
-
-Obtain direct debit authorisations for a specified list of accounts.
-
-> Body parameter
-
-```json
-{
-  "data": {
-    "accountIds": [
-      "string"
-    ]
-  },
-  "meta": {}
-}
-```
-
-<h3 id="cdr-banking-api_get-direct-debits-for-specific-accounts_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**1**
-
-<h3 id="cdr-banking-api_get-direct-debits-for-specific-accounts_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|page|query|[PositiveInteger](#common-field-types)|optional|`1`|Page of results to request (standard pagination).|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|`25`|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-|body|body|[RequestAccountIdListV1](#schemacdr-banking-apirequestaccountidlistv1)|mandatory||Request payload containing a list of _accountId_ values to obtain data for.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "directDebitAuthorisations": [
-      {
-        "accountId": "string",
-        "authorisedEntity": {
-          "description": "string",
-          "financialInstitution": "string",
-          "abn": "string",
-          "acn": "string",
-          "arbn": "string"
-        },
-        "lastDebitDateTime": "string",
-        "lastDebitAmount": "string"
-      }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
-}
-```
-
-<h3 id="cdr-banking-api_get-direct-debits-for-specific-accounts_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingDirectDebitAuthorisationList](#schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-direct-debits-for-specific-accounts_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read.</a>
-</aside>
-
-    
-  
-
-<!-- Endpoint tag group description -->
-<!-- Banking Account Scheduled Payment endpoints -->
-
-<h2 id="cdr-banking-api_get-scheduled-payments-for-account">Get Scheduled Payments for Account</h2>
-<p id="get-scheduled-payments-for-account" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/payments/scheduled HTTP/1.1
-Host: mtls.dh.example.com
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const headers = {
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/payments/scheduled', {
-  method: 'GET',
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`GET /banking/accounts/{accountId}/payments/scheduled`
-
-Obtain scheduled, outgoing payments for a specific account.
-
-Obsolete versions: _(Refer to Standards.)_
-
-<h3 id="cdr-banking-api_get-scheduled-payments-for-account_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**2**
-
-<h3 id="cdr-banking-api_get-scheduled-payments-for-account_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|accountId|path|[BankingAccountId](#schemacdr-banking-apibankingaccountid)|mandatory||The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.|
-|page|query|[PositiveInteger](#common-field-types)|optional|`1`|Page of results to request (standard pagination).|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|`25`|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "scheduledPayments": [
-      {
-        "scheduledPaymentId": "string",
-        "nickname": "string",
-        "payerReference": "string",
-        "payeeReference": "string",
-        "status": "ACTIVE",
-        "from": {
-          "accountId": "string"
-        },
-        "paymentSet": [
-          {
-            "to": {
-              "toUType": "accountId",
-              "accountId": "string",
-              "payeeId": "string",
-              "nickname": "string",
-              "payeeReference": "string",
-              "digitalWallet": {
-                "name": "string",
-                "identifier": "string",
-                "type": "EMAIL",
-                "provider": "PAYPAL_AU"
-              },
-              "domestic": {
-                "payeeAccountUType": "account",
-                "account": {
-                  "accountName": "string",
-                  "bsb": "string",
-                  "accountNumber": "string"
-                },
-                "card": {
-                  "cardNumber": "string"
-                },
-                "payId": {
-                  "name": "string",
-                  "identifier": "string",
-                  "type": "ABN"
-                }
-              },
-              "biller": {
-                "billerCode": "string",
-                "crn": "string",
-                "billerName": "string"
-              },
-              "international": {
-                "beneficiaryDetails": {
-                  "name": "string",
-                  "country": "string",
-                  "message": "string"
-                },
-                "bankDetails": {
-                  "country": "string",
-                  "accountNumber": "string",
-                  "bankAddress": {
-                    "name": "string",
-                    "address": "string"
-                  },
-                  "beneficiaryBankBIC": "string",
-                  "fedWireNumber": "string",
-                  "sortCode": "string",
-                  "chipNumber": "string",
-                  "routingNumber": "string",
-                  "legalEntityIdentifier": "string"
-                }
-              }
-            },
-            "isAmountCalculated": false,
-            "amount": "string",
-            "currency": "AUD"
-          }
-        ],
-        "recurrence": {
-          "nextPaymentDate": "string",
-          "recurrenceUType": "eventBased",
-          "onceOff": {
-            "paymentDate": "string"
-          },
-          "intervalSchedule": {
-            "finalPaymentDate": "string",
-            "paymentsRemaining": 1,
-            "nonBusinessDayTreatment": "AFTER",
-            "intervals": [
-              {
-                "interval": "string",
-                "dayInInterval": "string"
-              }
-            ]
-          },
-          "lastWeekDay": {
-            "finalPaymentDate": "string",
-            "paymentsRemaining": 1,
-            "interval": "string",
-            "lastWeekDay": "FRI",
-            "nonBusinessDayTreatment": "AFTER"
-          },
-          "eventBased": {
-            "description": "string"
-          }
-        }
-      }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
-}
-```
-
-<h3 id="cdr-banking-api_get-scheduled-payments-for-account_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-scheduled-payments-for-account_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read.</a>
-</aside>
-
-    
-  
-
-<h2 id="cdr-banking-api_get-scheduled-payments-bulk">Get Scheduled Payments Bulk</h2>
-<p id="get-scheduled-payments-bulk" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-GET https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled HTTP/1.1
-Host: mtls.dh.example.com
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const headers = {
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled', {
-  method: 'GET',
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`GET /banking/payments/scheduled`
-
-Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments.
-
-Obsolete versions: _(Refer to Standards.)_
-
-<h3 id="cdr-banking-api_get-scheduled-payments-bulk_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**3**
-
-<h3 id="cdr-banking-api_get-scheduled-payments-bulk_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|product-category|query|[BankingProductCategoryV2](#schemacdr-banking-apibankingproductcategoryv2)|optional||Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|open-status|query|[Enum](#common-field-types)|optional|`ALL`|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.|
-|is-owned|query|[Boolean](#common-field-types)|optional||Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.|
-|page|query|[PositiveInteger](#common-field-types)|optional|`1`|Page of results to request (standard pagination).|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|`25`|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-
-<h4 id="cdr-banking-api_get-scheduled-payments-bulk_enumerated-values-parameters">Enumerated Values</h4>
-
-|Parameter|Value|
-|---|---|
-|product-category|BUSINESS_LOANS|
-|product-category|BUY_NOW_PAY_LATER|
-|product-category|CRED_AND_CHRG_CARDS|
-|product-category|LEASES|
-|product-category|MARGIN_LOANS|
-|product-category|OVERDRAFTS|
-|product-category|PERS_LOANS|
-|product-category|REGULATED_TRUST_ACCOUNTS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|TERM_DEPOSITS|
-|product-category|TRADE_FINANCE|
-|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|product-category|TRAVEL_CARDS|
-|open-status|ALL|
-|open-status|CLOSED|
-|open-status|OPEN|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "scheduledPayments": [
-      {
-        "scheduledPaymentId": "string",
-        "nickname": "string",
-        "payerReference": "string",
-        "payeeReference": "string",
-        "status": "ACTIVE",
-        "from": {
-          "accountId": "string"
-        },
-        "paymentSet": [
-          {
-            "to": {
-              "toUType": "accountId",
-              "accountId": "string",
-              "payeeId": "string",
-              "nickname": "string",
-              "payeeReference": "string",
-              "digitalWallet": {
-                "name": "string",
-                "identifier": "string",
-                "type": "EMAIL",
-                "provider": "PAYPAL_AU"
-              },
-              "domestic": {
-                "payeeAccountUType": "account",
-                "account": {
-                  "accountName": "string",
-                  "bsb": "string",
-                  "accountNumber": "string"
-                },
-                "card": {
-                  "cardNumber": "string"
-                },
-                "payId": {
-                  "name": "string",
-                  "identifier": "string",
-                  "type": "ABN"
-                }
-              },
-              "biller": {
-                "billerCode": "string",
-                "crn": "string",
-                "billerName": "string"
-              },
-              "international": {
-                "beneficiaryDetails": {
-                  "name": "string",
-                  "country": "string",
-                  "message": "string"
-                },
-                "bankDetails": {
-                  "country": "string",
-                  "accountNumber": "string",
-                  "bankAddress": {
-                    "name": "string",
-                    "address": "string"
-                  },
-                  "beneficiaryBankBIC": "string",
-                  "fedWireNumber": "string",
-                  "sortCode": "string",
-                  "chipNumber": "string",
-                  "routingNumber": "string",
-                  "legalEntityIdentifier": "string"
-                }
-              }
-            },
-            "isAmountCalculated": false,
-            "amount": "string",
-            "currency": "AUD"
-          }
-        ],
-        "recurrence": {
-          "nextPaymentDate": "string",
-          "recurrenceUType": "eventBased",
-          "onceOff": {
-            "paymentDate": "string"
-          },
-          "intervalSchedule": {
-            "finalPaymentDate": "string",
-            "paymentsRemaining": 1,
-            "nonBusinessDayTreatment": "AFTER",
-            "intervals": [
-              {
-                "interval": "string",
-                "dayInInterval": "string"
-              }
-            ]
-          },
-          "lastWeekDay": {
-            "finalPaymentDate": "string",
-            "paymentsRemaining": 1,
-            "interval": "string",
-            "lastWeekDay": "FRI",
-            "nonBusinessDayTreatment": "AFTER"
-          },
-          "eventBased": {
-            "description": "string"
-          }
-        }
-      }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
-}
-```
-
-<h3 id="cdr-banking-api_get-scheduled-payments-bulk_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-scheduled-payments-bulk_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read.</a>
-</aside>
-
-    
-  
-
-<h2 id="cdr-banking-api_get-scheduled-payments-for-specific-accounts">Get Scheduled Payments For Specific Accounts</h2>
-<p id="get-scheduled-payments-for-specific-accounts" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-POST https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled HTTP/1.1
-Host: mtls.dh.example.com
-Content-Type: application/json
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const inputBody = '{
-  "data": {
-    "accountIds": [
-      "string"
-    ]
-  },
-  "meta": {}
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled', {
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`POST /banking/payments/scheduled`
-
-Obtain scheduled payments for a specified list of accounts.
-
-Obsolete versions: _(Refer to Standards.)_
-
-> Body parameter
-
-```json
-{
-  "data": {
-    "accountIds": [
-      "string"
-    ]
-  },
-  "meta": {}
-}
-```
-
-<h3 id="cdr-banking-api_get-scheduled-payments-for-specific-accounts_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**2**
-
-<h3 id="cdr-banking-api_get-scheduled-payments-for-specific-accounts_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|page|query|[PositiveInteger](#common-field-types)|optional|`1`|Page of results to request (standard pagination).|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|`25`|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-|body|body|[RequestAccountIdListV1](#schemacdr-banking-apirequestaccountidlistv1)|mandatory||Request payload containing a list of _accountId_ values to obtain data for.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "scheduledPayments": [
-      {
-        "scheduledPaymentId": "string",
-        "nickname": "string",
-        "payerReference": "string",
-        "payeeReference": "string",
-        "status": "ACTIVE",
-        "from": {
-          "accountId": "string"
-        },
-        "paymentSet": [
-          {
-            "to": {
-              "toUType": "accountId",
-              "accountId": "string",
-              "payeeId": "string",
-              "nickname": "string",
-              "payeeReference": "string",
-              "digitalWallet": {
-                "name": "string",
-                "identifier": "string",
-                "type": "EMAIL",
-                "provider": "PAYPAL_AU"
-              },
-              "domestic": {
-                "payeeAccountUType": "account",
-                "account": {
-                  "accountName": "string",
-                  "bsb": "string",
-                  "accountNumber": "string"
-                },
-                "card": {
-                  "cardNumber": "string"
-                },
-                "payId": {
-                  "name": "string",
-                  "identifier": "string",
-                  "type": "ABN"
-                }
-              },
-              "biller": {
-                "billerCode": "string",
-                "crn": "string",
-                "billerName": "string"
-              },
-              "international": {
-                "beneficiaryDetails": {
-                  "name": "string",
-                  "country": "string",
-                  "message": "string"
-                },
-                "bankDetails": {
-                  "country": "string",
-                  "accountNumber": "string",
-                  "bankAddress": {
-                    "name": "string",
-                    "address": "string"
-                  },
-                  "beneficiaryBankBIC": "string",
-                  "fedWireNumber": "string",
-                  "sortCode": "string",
-                  "chipNumber": "string",
-                  "routingNumber": "string",
-                  "legalEntityIdentifier": "string"
-                }
-              }
-            },
-            "isAmountCalculated": false,
-            "amount": "string",
-            "currency": "AUD"
-          }
-        ],
-        "recurrence": {
-          "nextPaymentDate": "string",
-          "recurrenceUType": "eventBased",
-          "onceOff": {
-            "paymentDate": "string"
-          },
-          "intervalSchedule": {
-            "finalPaymentDate": "string",
-            "paymentsRemaining": 1,
-            "nonBusinessDayTreatment": "AFTER",
-            "intervals": [
-              {
-                "interval": "string",
-                "dayInInterval": "string"
-              }
-            ]
-          },
-          "lastWeekDay": {
-            "finalPaymentDate": "string",
-            "paymentsRemaining": 1,
-            "interval": "string",
-            "lastWeekDay": "FRI",
-            "nonBusinessDayTreatment": "AFTER"
-          },
-          "eventBased": {
-            "description": "string"
-          }
-        }
-      }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
-}
-```
-
-<h3 id="cdr-banking-api_get-scheduled-payments-for-specific-accounts_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingScheduledPaymentsListV2](#schemacdr-banking-apiresponsebankingscheduledpaymentslistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-scheduled-payments-for-specific-accounts_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:regular_payments:read.</a>
-</aside>
-
-    
-  
-
-<!-- Endpoint tag group description -->
-<!-- Banking Payee endpoints -->
-
-<h2 id="cdr-banking-api_get-payees">Get Payees</h2>
-<p id="get-payees" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-GET https://mtls.dh.example.com/cds-au/v1/banking/payees HTTP/1.1
-Host: mtls.dh.example.com
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const headers = {
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/payees', {
-  method: 'GET',
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`GET /banking/payees`
-
-Obtain a list of pre-registered payees.
-
-Obsolete versions: _(Refer to Standards.)_
-
-<h3 id="cdr-banking-api_get-payees_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**2**
-
-<h3 id="cdr-banking-api_get-payees_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|type|query|[Enum](#common-field-types)|optional|`ALL`|Filter on the payee _type_ field. In addition to normal _type_ field values, `ALL` can be specified to retrieve all payees. If absent the assumed value is `ALL`.|
-|page|query|[PositiveInteger](#common-field-types)|optional|`1`|Page of results to request (standard pagination).|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|`25`|Page size to request. Default is 25 (standard pagination).|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-
-<h4 id="cdr-banking-api_get-payees_enumerated-values-parameters">Enumerated Values</h4>
-
-|Parameter|Value|
-|---|---|
-|type|ALL|
-|type|BILLER|
-|type|DIGITAL_WALLET|
-|type|DOMESTIC|
-|type|INTERNATIONAL|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "payees": [
-      {
-        "payeeId": "string",
-        "nickname": "string",
-        "description": "string",
-        "type": "BILLER",
-        "creationDate": "string"
-      }
-    ]
-  },
-  "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
-  },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
-}
-```
-
-<h3 id="cdr-banking-api_get-payees_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingPayeeListV2](#schemacdr-banking-apiresponsebankingpayeelistv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-payees_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:payees:read.</a>
-</aside>
-
-    
-  
-
-<h2 id="cdr-banking-api_get-payee-detail">Get Payee Detail</h2>
-<p id="get-payee-detail" class="orig-anchor"></p>
-
-> Code samples
-
-```http
-GET https://mtls.dh.example.com/cds-au/v1/banking/payees/{payeeId} HTTP/1.1
-Host: mtls.dh.example.com
-Accept: application/json
-x-v: string
-x-min-v: string
-x-fapi-interaction-id: string
-x-fapi-auth-date: string
-x-fapi-customer-ip-address: string
-x-cds-client-headers: string
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const headers = {
-  'Accept':'application/json',
-  'x-v':'string',
-  'x-min-v':'string',
-  'x-fapi-interaction-id':'string',
-  'x-fapi-auth-date':'string',
-  'x-fapi-customer-ip-address':'string',
-  'x-cds-client-headers':'string'
-};
-
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/payees/{payeeId}', {
-  method: 'GET',
-  headers: headers
-}).then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-`GET /banking/payees/{payeeId}`
-
-Obtain detailed information on a single payee.
-
-Note that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.
-
-Obsolete versions: _(Refer to Standards.)_
-
-<h3 id="cdr-banking-api_get-payee-detail_endpoint-version">Endpoint Version</h3>
-|   |  |
-|---|--|
-|Version|**2**
-
-<h3 id="cdr-banking-api_get-payee-detail_parameters">Parameters</h3>
-
-|Name|In|Type|Required|Default|Description|
-|---|---|---|---|---|---|
-|payeeId|path|[BankingPayeeId](#schemacdr-banking-apibankingpayeeid)|mandatory||The _payeeId_ to obtain data for. _payeeId_ values are returned by payee list endpoints.|
-|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
-|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
-|x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
-|x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
-|x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "data": {
-    "payeeId": "string",
-    "nickname": "string",
-    "description": "string",
-    "type": "BILLER",
-    "creationDate": "string",
-    "payeeUType": "biller",
-    "biller": {
-      "billerCode": "string",
-      "crn": "string",
-      "billerName": "string"
-    },
-    "domestic": {
-      "payeeAccountUType": "account",
-      "account": {
-        "accountName": "string",
-        "bsb": "string",
-        "accountNumber": "string"
-      },
-      "card": {
-        "cardNumber": "string"
-      },
-      "payId": {
-        "name": "string",
-        "identifier": "string",
-        "type": "ABN"
-      }
-    },
-    "digitalWallet": {
-      "name": "string",
-      "identifier": "string",
-      "type": "EMAIL",
-      "provider": "PAYPAL_AU"
-    },
-    "international": {
-      "beneficiaryDetails": {
-        "name": "string",
-        "country": "string",
-        "message": "string"
-      },
-      "bankDetails": {
-        "country": "string",
-        "accountNumber": "string",
-        "bankAddress": {
-          "name": "string",
-          "address": "string"
-        },
-        "beneficiaryBankBIC": "string",
-        "fedWireNumber": "string",
-        "sortCode": "string",
-        "chipNumber": "string",
-        "routingNumber": "string",
-        "legalEntityIdentifier": "string"
-      }
-    }
-  },
-  "links": {
-    "self": "string"
-  },
-  "meta": {}
-}
-```
-
-<h3 id="cdr-banking-api_get-payee-detail_responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingPayeeByIdV2](#schemacdr-banking-apiresponsebankingpayeebyidv2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-
-<h3 id="cdr-banking-api_get-payee-detail_response-headers">Response Headers</h3>
-
-|Status|Header|Type|Required|Description|
-|---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|404|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-
-  
-    
-      <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:payees:read.</a>
-</aside>
-
-    
-  
 
 <h2 class="schema-heading" id="cdr-banking-api-schemas">Schemas</h2>
 
@@ -3244,12 +262,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» accountIds|[[BankingAccountId](#schemacdr-banking-apibankingaccountid)]|mandatory||Array of _accountId_ values to obtain data for.|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional||none|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductlistv4">ResponseBankingProductListV4</h3>
-<p id="tocSresponsebankingproductlistv4" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductlistv3">ResponseBankingProductListV3</h3>
+<p id="tocSresponsebankingproductlistv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingproductlist"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductlistv4"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductlistv3"></a>
 </p>
 
 ```json
@@ -3330,21 +348,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_responsebankingproductlistv4_properties">Properties</h3>
+<h3 id="cdr-banking-api_responsebankingproductlistv3_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
 |data|object|mandatory||none|
-|» products|[[BankingProductV6](#schemacdr-banking-apibankingproductv6)]|mandatory||The list of products returned. If the filter results in an empty set then this array may have no records.|
+|» products|[[BankingProductV5](#schemacdr-banking-apibankingproductv5)]|mandatory||The list of products returned. If the filter results in an empty set then this array may have no records.|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory||none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory||none|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductv6">BankingProductV6</h3>
-<p id="tocSbankingproductv6" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductv5">BankingProductV5</h3>
+<p id="tocSbankingproductv5" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproduct"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductv6"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductv5"></a>
 </p>
 
 ```json
@@ -3408,7 +426,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingproductv6_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductv5_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
@@ -3416,7 +434,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |effectiveFrom|[DateTimeString](#common-field-types)|optional||The date and time from which this product is effective (i.e. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate.|
 |effectiveTo|[DateTimeString](#common-field-types)|optional||The date and time at which this product will be retired and will no longer be offered. Used to enable the managed deprecation of products.|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory||The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered).|
-|productCategory|[BankingProductCategoryV2](#schemacdr-banking-apibankingproductcategoryv2)|mandatory||The category to which a product or account belongs. See [here](#product-categories) for more details.|
+|productCategory|[BankingProductCategory](#schemacdr-banking-apibankingproductcategory)|mandatory||The category to which a product or account belongs. See [here](#product-categories) for more details.|
 |name|string|mandatory||The display name of the product.|
 |description|string|mandatory||A description of the product.|
 |brand|string|mandatory||A label of the brand for the product. Able to be used for filtering. For data holders with single brands this value is still required.|
@@ -3552,12 +570,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |description|string|optional||Display text providing more information about the document URI.|
 |additionalInfoUri|[URIString](#common-field-types)|mandatory||The URI describing the additional information.|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductbyidv7">ResponseBankingProductByIdV7</h3>
-<p id="tocSresponsebankingproductbyidv7" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductbyidv6">ResponseBankingProductByIdV6</h3>
+<p id="tocSresponsebankingproductbyidv6" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingproductbyid"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductbyidv7"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingproductbyidv6"></a>
 </p>
 
 ```json
@@ -3793,15 +811,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "additionalInfo": "string",
         "additionalInfoUri": "string"
       }
-    ],
-    "instalments": {
-      "maximumPlanCount": 1,
-      "instalmentsLimit": "string",
-      "minimumPlanValue": "string",
-      "maximumPlanValue": "string",
-      "minimumSplit": 4,
-      "maximumSplit": 4
-    }
+    ]
   },
   "links": {
     "self": "string"
@@ -3810,20 +820,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_responsebankingproductbyidv7_properties">Properties</h3>
+<h3 id="cdr-banking-api_responsebankingproductbyidv6_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
-|data|[BankingProductDetailV7](#schemacdr-banking-apibankingproductdetailv7)|mandatory||none|
+|data|[BankingProductDetailV6](#schemacdr-banking-apibankingproductdetailv6)|mandatory||none|
 |links|[Links](#schemacdr-banking-apilinks)|mandatory||none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional||none|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdetailv7">BankingProductDetailV7</h3>
-<p id="tocSbankingproductdetailv7" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdetailv6">BankingProductDetailV6</h3>
+<p id="tocSbankingproductdetailv6" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductdetail"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdetailv7"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductdetailv6"></a>
 </p>
 
 ```json
@@ -4058,25 +1068,17 @@ To perform this operation, you must be authenticated and authorised with the fol
       "additionalInfo": "string",
       "additionalInfoUri": "string"
     }
-  ],
-  "instalments": {
-    "maximumPlanCount": 1,
-    "instalmentsLimit": "string",
-    "minimumPlanValue": "string",
-    "maximumPlanValue": "string",
-    "minimumSplit": 4,
-    "maximumSplit": 4
-  }
+  ]
 }
 ```
 
-<h3 id="cdr-banking-api_bankingproductdetailv7_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductdetailv6_properties">Properties</h3>
 
 *allOf*
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
-|*anonymous*|[BankingProductV6](#schemacdr-banking-apibankingproductv6)|mandatory||none|
+|*anonymous*|[BankingProductV5](#schemacdr-banking-apibankingproductv5)|mandatory||none|
 
 *and*
 
@@ -4084,13 +1086,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |*anonymous*|object|mandatory||none|
 |» bundles|[[BankingProductBundle](#schemacdr-banking-apibankingproductbundle)]|optional||An array of bundles that this product participates in. Each bundle is described by free form information but also by a list of _productID_ values of the other products that are included in the bundle. It is assumed that the current product is included in the bundle also.|
-|» features|[[BankingProductFeatureV4](#schemacdr-banking-apibankingproductfeaturev4)]|optional||Array of features and limitations of the product.|
+|» features|[[BankingProductFeatureV3](#schemacdr-banking-apibankingproductfeaturev3)]|optional||Array of features and limitations of the product.|
 |» constraints|[[BankingProductConstraintV3](#schemacdr-banking-apibankingproductconstraintv3)]|optional||Constraints on the application for the product such as minimum balances or limit thresholds.|
 |» eligibility|[[BankingProductEligibilityV2](#schemacdr-banking-apibankingproducteligibilityv2)]|optional||Eligibility criteria for the product.|
 |» fees|[[BankingProductFeeV2](#schemacdr-banking-apibankingproductfeev2)]|optional||Fees applicable to the product.|
 |» depositRates|[[BankingProductDepositRateV2](#schemacdr-banking-apibankingproductdepositratev2)]|optional||Interest rates available for deposits.|
 |» lendingRates|[[BankingProductLendingRateV3](#schemacdr-banking-apibankingproductlendingratev3)]|optional||Interest rates charged against lending balances.|
-|» instalments|[BankingProductInstalments](#schemacdr-banking-apibankingproductinstalments)|optional||Details of instalment features on the account.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductbundle">BankingProductBundle</h3>
 <p id="tocSbankingproductbundle" class="orig-anchor"></p>
@@ -4122,12 +1123,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |additionalInfoUri|[URIString](#common-field-types)|optional||Link to a web page with more information on the bundle criteria and benefits.|
 |productIds|[[BankingProductId](#schemacdr-banking-apibankingproductid)]|optional||Array of _productID_ values for products included in the bundle that are available via the product endpoints. Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference endpoints.|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductfeaturev4">BankingProductFeatureV4</h3>
-<p id="tocSbankingproductfeaturev4" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductfeaturev3">BankingProductFeatureV3</h3>
+<p id="tocSbankingproductfeaturev3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductfeature"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductfeaturev4"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductfeaturev3"></a>
 </p>
 
 ```json
@@ -4139,7 +1140,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingproductfeaturev4_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductfeaturev3_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
@@ -4148,7 +1149,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |additionalInfo|string|conditional||Display text providing more information on the feature. Mandatory if [_featureType_](#tocSproductfeaturetypedoc) is set to `OTHER`.|
 |additionalInfoUri|[URIString](#common-field-types)|optional||Link to a web page with more information on this feature.|
 
-<h4 id="cdr-banking-api_bankingproductfeaturev4_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingproductfeaturev3_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -4159,7 +1160,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 |featureType|CARD_ACCESS|
 |featureType|CASHBACK_OFFER|
 |featureType|COMPLEMENTARY_PRODUCT_DISCOUNTS|
-|featureType|EXTRA_DOWN_PAYMENT|
 |featureType|DIGITAL_BANKING|
 |featureType|DIGITAL_WALLET|
 |featureType|DONATE_INTEREST|
@@ -4925,42 +1925,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |rateApplicabilityType|MAX_WITHDRAWALS|
 |rateApplicabilityType|MAX_WITHDRAWAL_AMOUNT|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductinstalments">BankingProductInstalments</h3>
-<p id="tocSbankingproductinstalments" class="orig-anchor"></p>
-
-<p>
-  <a id="cdr-banking-api_schema-base_bankingproductinstalments"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductinstalments"></a>
-</p>
-
-```json
-{
-  "maximumPlanCount": 1,
-  "instalmentsLimit": "string",
-  "minimumPlanValue": "string",
-  "maximumPlanValue": "string",
-  "minimumSplit": 4,
-  "maximumSplit": 4
-}
-```
-
-<h3 id="cdr-banking-api_bankingproductinstalments_properties">Properties</h3>
-
-|Name|Type|Required|Default|Description|
-|---|---|---|---|---|
-|maximumPlanCount|[PositiveInteger](#common-field-types)|mandatory||Total number of plans that may be created.|
-|instalmentsLimit|[AmountString](#common-field-types)|mandatory||Maximum combined limit of all instalment plans that may be created.|
-|minimumPlanValue|[AmountString](#common-field-types)|mandatory||Minimum value that can be opened as an instalment plan.|
-|maximumPlanValue|[AmountString](#common-field-types)|mandatory||Maximum value that can be opened as an instalment plan.|
-|minimumSplit|[PositiveInteger](#common-field-types)|mandatory||Minimum number of instalment payments a plan can be created with.|
-|maximumSplit|[PositiveInteger](#common-field-types)|mandatory||Maximum number of instalment payments a plan can be created with.|
-
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountlistv3">ResponseBankingAccountListV3</h3>
-<p id="tocSresponsebankingaccountlistv3" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountlistv2">ResponseBankingAccountListV2</h3>
+<p id="tocSresponsebankingaccountlistv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingaccountlist"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountlistv3"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountlistv2"></a>
 </p>
 
 ```json
@@ -4995,21 +1965,21 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_responsebankingaccountlistv3_properties">Properties</h3>
+<h3 id="cdr-banking-api_responsebankingaccountlistv2_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
 |data|object|mandatory||none|
-|» accounts|[[BankingAccountV3](#schemacdr-banking-apibankingaccountv3)]|mandatory||The list of accounts returned. If the filter results in an empty set then this array may have no records.|
+|» accounts|[[BankingAccountV2](#schemacdr-banking-apibankingaccountv2)]|mandatory||The list of accounts returned. If the filter results in an empty set then this array may have no records.|
 |links|[LinksPaginated](#schemacdr-banking-apilinkspaginated)|mandatory||none|
 |meta|[MetaPaginated](#schemacdr-banking-apimetapaginated)|mandatory||none|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountv3">BankingAccountV3</h3>
-<p id="tocSbankingaccountv3" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountv2">BankingAccountV2</h3>
+<p id="tocSbankingaccountv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingaccount"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingaccountv3"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingaccountv2"></a>
 </p>
 
 ```json
@@ -5027,7 +1997,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingaccountv3_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingaccountv2_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
@@ -5039,10 +2009,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |isOwned|[Boolean](#common-field-types)|optional|`true`|Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then `true` is assumed.|
 |accountOwnership|[Enum](#common-field-types)|mandatory||Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers.|
 |maskedNumber|[MaskedAccountString](#common-field-types)|mandatory||A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number.|
-|productCategory|[BankingProductCategoryV2](#schemacdr-banking-apibankingproductcategoryv2)|mandatory||The category to which a product or account belongs. See [here](#product-categories) for more details.|
+|productCategory|[BankingProductCategory](#schemacdr-banking-apibankingproductcategory)|mandatory||The category to which a product or account belongs. See [here](#product-categories) for more details.|
 |productName|string|mandatory||The unique identifier of the account as defined by the data holder (akin to model number for the account).|
 
-<h4 id="cdr-banking-api_bankingaccountv3_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingaccountv2_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -5054,12 +2024,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |accountOwnership|MANY_PARTY|
 |accountOwnership|OTHER|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountbyidv5">ResponseBankingAccountByIdV5</h3>
-<p id="tocSresponsebankingaccountbyidv5" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountbyidv4">ResponseBankingAccountByIdV4</h3>
+<p id="tocSresponsebankingaccountbyidv4" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingaccountbyid"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountbyidv5"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountbyidv4"></a>
 </p>
 
 ```json
@@ -5078,29 +2048,6 @@ To perform this operation, you must be authenticated and authorised with the fol
     "bsb": "string",
     "accountNumber": "string",
     "bundleName": "string",
-    "instalments": {
-      "maximumPlanCount": 1,
-      "instalmentsLimit": "string",
-      "minimumPlanValue": "string",
-      "maximumPlanValue": "string",
-      "minimumSplit": 4,
-      "maximumSplit": 4,
-      "plans": [
-        {
-          "planNickname": "string",
-          "creationDate": "string",
-          "amount": "string",
-          "duration": "string",
-          "instalmentInterval": "string",
-          "schedule": [
-            {
-              "amountDue": "string",
-              "dueDate": "string"
-            }
-          ]
-        }
-      ]
-    },
     "specificAccountUType": "creditCard",
     "termDeposit": [
       {
@@ -5334,20 +2281,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_responsebankingaccountbyidv5_properties">Properties</h3>
+<h3 id="cdr-banking-api_responsebankingaccountbyidv4_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
-|data|[BankingAccountDetailV5](#schemacdr-banking-apibankingaccountdetailv5)|mandatory||none|
+|data|[BankingAccountDetailV4](#schemacdr-banking-apibankingaccountdetailv4)|mandatory||none|
 |links|[Links](#schemacdr-banking-apilinks)|mandatory||none|
 |meta|[Meta](#schemacdr-banking-apimeta)|optional||none|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountdetailv5">BankingAccountDetailV5</h3>
-<p id="tocSbankingaccountdetailv5" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountdetailv4">BankingAccountDetailV4</h3>
+<p id="tocSbankingaccountdetailv4" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingaccountdetail"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingaccountdetailv5"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingaccountdetailv4"></a>
 </p>
 
 ```json
@@ -5365,29 +2312,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   "bsb": "string",
   "accountNumber": "string",
   "bundleName": "string",
-  "instalments": {
-    "maximumPlanCount": 1,
-    "instalmentsLimit": "string",
-    "minimumPlanValue": "string",
-    "maximumPlanValue": "string",
-    "minimumSplit": 4,
-    "maximumSplit": 4,
-    "plans": [
-      {
-        "planNickname": "string",
-        "creationDate": "string",
-        "amount": "string",
-        "duration": "string",
-        "instalmentInterval": "string",
-        "schedule": [
-          {
-            "amountDue": "string",
-            "dueDate": "string"
-          }
-        ]
-      }
-    ]
-  },
   "specificAccountUType": "creditCard",
   "termDeposit": [
     {
@@ -5616,13 +2540,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 }
 ```
 
-<h3 id="cdr-banking-api_bankingaccountdetailv5_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingaccountdetailv4_properties">Properties</h3>
 
 *allOf*
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
-|*anonymous*|[BankingAccountV3](#schemacdr-banking-apibankingaccountv3)|mandatory||none|
+|*anonymous*|[BankingAccountV2](#schemacdr-banking-apibankingaccountv2)|mandatory||none|
 
 *and*
 
@@ -5632,7 +2556,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» bsb|string|optional||The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.|
 |» accountNumber|string|optional||The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.|
 |» bundleName|string|optional||Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer.|
-|» instalments|[BankingAccountInstalments](#schemacdr-banking-apibankingaccountinstalments)|optional||Details of instalment features on the account.|
 |» specificAccountUType|[Enum](#common-field-types)|optional||The type of structure to present account specific fields.|
 |» termDeposit|[[BankingTermDepositAccount](#schemacdr-banking-apibankingtermdepositaccount)]|conditional||Mandatory if the _specificAccountUType_ value is `termDeposit`.|
 |» creditCard|[BankingCreditCardAccount](#schemacdr-banking-apibankingcreditcardaccount)|conditional||Mandatory if the _specificAccountUType_ value is `creditCard`.|
@@ -5647,7 +2570,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
-|»» *anonymous*|[BankingProductFeatureV4](#schemacdr-banking-apibankingproductfeaturev4)|mandatory||none|
+|»» *anonymous*|[BankingProductFeatureV3](#schemacdr-banking-apibankingproductfeaturev3)|mandatory||none|
 
 *and*
 
@@ -5663,7 +2586,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» fees|[[BankingProductFeeV2](#schemacdr-banking-apibankingproductfeev2)]|optional||Fees and charges applicable to the account based on the equivalent structure in Product Reference.|
 |» addresses|[[CommonPhysicalAddress](#schemacdr-banking-apicommonphysicaladdress)]|optional||The addresses for the account to be used for correspondence.|
 
-<h4 id="cdr-banking-api_bankingaccountdetailv5_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingaccountdetailv4_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
@@ -5673,114 +2596,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 |isActivated|ACTIVATED|
 |isActivated|NOT_ACTIVATED|
 |isActivated|UNKNOWN|
-
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountinstalments">BankingAccountInstalments</h3>
-<p id="tocSbankingaccountinstalments" class="orig-anchor"></p>
-
-<p>
-  <a id="cdr-banking-api_schema-base_bankingaccountinstalments"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingaccountinstalments"></a>
-</p>
-
-```json
-{
-  "maximumPlanCount": 1,
-  "instalmentsLimit": "string",
-  "minimumPlanValue": "string",
-  "maximumPlanValue": "string",
-  "minimumSplit": 4,
-  "maximumSplit": 4,
-  "plans": [
-    {
-      "planNickname": "string",
-      "creationDate": "string",
-      "amount": "string",
-      "duration": "string",
-      "instalmentInterval": "string",
-      "schedule": [
-        {
-          "amountDue": "string",
-          "dueDate": "string"
-        }
-      ]
-    }
-  ]
-}
-```
-
-*Details of instalment features on the account.*
-
-<h3 id="cdr-banking-api_bankingaccountinstalments_properties">Properties</h3>
-
-*allOf*
-
-|Name|Type|Required|Default|Description|
-|---|---|---|---|---|
-|*anonymous*|[BankingProductInstalments](#schemacdr-banking-apibankingproductinstalments)|mandatory||none|
-
-*and*
-
-|Name|Type|Required|Default|Description|
-|---|---|---|---|---|
-|*anonymous*|object|mandatory||none|
-|» plans|[[BankingInstalmentPlans](#schemacdr-banking-apibankinginstalmentplans)]|optional||Array of instalment plans.|
-
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankinginstalmentplans">BankingInstalmentPlans</h3>
-<p id="tocSbankinginstalmentplans" class="orig-anchor"></p>
-
-<p>
-  <a id="cdr-banking-api_schema-base_bankinginstalmentplans"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankinginstalmentplans"></a>
-</p>
-
-```json
-{
-  "planNickname": "string",
-  "creationDate": "string",
-  "amount": "string",
-  "duration": "string",
-  "instalmentInterval": "string",
-  "schedule": [
-    {
-      "amountDue": "string",
-      "dueDate": "string"
-    }
-  ]
-}
-```
-
-<h3 id="cdr-banking-api_bankinginstalmentplans_properties">Properties</h3>
-
-|Name|Type|Required|Default|Description|
-|---|---|---|---|---|
-|planNickname|string|mandatory||The short display name of the plan as provided by the customer. Where a customer has not provided a nickname, a display name derived by the data holder consistent with existing channels.|
-|creationDate|[DateString](#common-field-types)|mandatory||The date the plan was created.|
-|amount|[AmountString](#common-field-types)|mandatory||The total amount of the plan.|
-|duration|[ExternalRef](#common-field-types)|mandatory||The original expected repayment duration. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
-|instalmentInterval|[ExternalRef](#common-field-types)|mandatory||The expected repayment interval. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
-|schedule|[[BankingInstalmentPlanSchedule](#schemacdr-banking-apibankinginstalmentplanschedule)]|mandatory||Array of expected repayment amounts and dates.|
-
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankinginstalmentplanschedule">BankingInstalmentPlanSchedule</h3>
-<p id="tocSbankinginstalmentplanschedule" class="orig-anchor"></p>
-
-<p>
-  <a id="cdr-banking-api_schema-base_bankinginstalmentplanschedule"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankinginstalmentplanschedule"></a>
-</p>
-
-```json
-{
-  "amountDue": "string",
-  "dueDate": "string"
-}
-```
-
-<h3 id="cdr-banking-api_bankinginstalmentplanschedule_properties">Properties</h3>
-
-|Name|Type|Required|Default|Description|
-|---|---|---|---|---|
-|amountDue|[AmountString](#common-field-types)|mandatory||Amount due with this repayment.|
-|dueDate|[DateString](#common-field-types)|mandatory||Date this repayment is due.|
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtermdepositaccount">BankingTermDepositAccount</h3>
 <p id="tocSbankingtermdepositaccount" class="orig-anchor"></p>
@@ -7928,12 +4743,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 |meta|object|conditional||Additional data for customised error codes.|
 |» urn|string|conditional||The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code.|
 
-<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductcategoryv2">BankingProductCategoryV2</h3>
-<p id="tocSbankingproductcategoryv2" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductcategory">BankingProductCategory</h3>
+<p id="tocSbankingproductcategory" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductcategory"></a>
-  <a class="schema-anchor" id="schemacdr-banking-apibankingproductcategoryv2"></a>
+  <a class="schema-anchor" id="schemacdr-banking-apibankingproductcategory"></a>
 </p>
 
 ```json
@@ -7942,18 +4757,17 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 *The category to which a product or account belongs. See [here](#product-categories) for more details.*
 
-<h3 id="cdr-banking-api_bankingproductcategoryv2_properties">Properties</h3>
+<h3 id="cdr-banking-api_bankingproductcategory_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
 |*anonymous*|[Enum](#common-field-types)|mandatory||The category to which a product or account belongs. See [here](#product-categories) for more details.|
 
-<h4 id="cdr-banking-api_bankingproductcategoryv2_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-banking-api_bankingproductcategory_enumerated-values-main">Enumerated Values</h4>
 
 |Property|Value|
 |---|---|
 |*anonymous*|BUSINESS_LOANS|
-|*anonymous*|BUY_NOW_PAY_LATER|
 |*anonymous*|CRED_AND_CHRG_CARDS|
 |*anonymous*|LEASES|
 |*anonymous*|MARGIN_LOANS|
@@ -8095,3 +4909,351 @@ To perform this operation, you must be authenticated and authorised with the fol
 |---|---|---|---|---|
 |*anonymous*|[ASCIIString](#common-field-types)|mandatory||A unique identifier for a Banking payee, generated according to [CDR ID Permanence](#id-permanence) requirements.|
 
+
+## Product Categories
+
+The [_productCategory_ enumeration](#cdr-banking-api_schemas_tocSbankingproductcategory) provides the values for categorising products and accounts. These are explained in the following tables:
+
+**Deposit Products**
+
+| Enum | Description |
+| ---- | ----------- |
+| REGULATED_TRUST_ACCOUNTS | This grouping of products includes accounts where funds are held in trust in regulated industries with complex rules embedded on how the products must operate. Industries that require this sort of product include real estate agents, solicitors and conveyancers. |
+| TERM_DEPOSITS | This grouping of products includes all accounts where cash is deposited in the account for a set time period with restrictions on when funds can be withdrawn. Includes traditional Term Deposits and specialised deposits with either fixed terms or notice periods for withdrawal of funds. |
+| TRANS_AND_SAVINGS_ACCOUNTS | This grouping of products includes all accounts where cash is deposited in the account and is accessible to the customer when they choose. These are given many names on the market including Cash Accounts, Saving Accounts, Transaction Accounts, Current Accounts, Cheque Accounts, Passbook Accounts, etc. |
+| TRAVEL_CARDS | This grouping of products includes prepaid cards with multi-currency capabilities. |
+
+ **Lending Products**
+
+| Enum | Description |
+| ---- | ----------- |
+| BUSINESS_LOANS | This grouping of products incorporates all types of lending for business purpose that is not a trade finance facility, lease, overdraft, residential mortgage, credit card or margin lending. It includes traditional term loans, bank guarantees and commercial bills. This category would incorporate both secured and unsecured business purpose lending including all business purpose equipment finance that is not covered by a lease. |
+| CRED_AND_CHRG_CARDS | This grouping of products includes all lending products that are issued for the purpose of allowing a flexible line of credit accessed through use of a card. These may be called various names including Credit Cards, Charge Cards and Store Cards. |
+| LEASES | This grouping of products will include all types of leases including Financial Lease, Operating Lease, Sale and leaseback, etc. |
+| MARGIN_LOANS | This grouping of products includes all types of margin loans which let you borrow money to invest in traded assets including shares & commodities or in managed funds. |
+| OVERDRAFTS | This grouping of products includes all types of lending which allows for the loan amount to be withdrawn, repaid, and redrawn again in any manner and any number of times, until the arrangement expires. These loans may be secured or unsecured, and generally don’t have set / minimum repayment requirements. |
+| PERS_LOANS | This grouping of products includes all lending for personal purposes that is not a residential mortgage, credit card or margin lending. These loans may be unsecured loans and term loans for purchase assets used as security such as motor vehicles. These may be called various names including Personal Loans and Car Loans. |
+| RESIDENTIAL_MORTGAGES | This grouping of products includes all lending products that are available for the primary purpose of borrowing for the purpose of purchasing or renovating residential property, where a residential property will be used as security. This group will include both fixed, variable & secured overdraft types of product and may include both owner-occupied and investment purpose borrowing. |
+| TRADE_FINANCE | This grouping of products includes specialised lending products specifically designed to facilitate domestic & international trade. This includes the issuance of letters of credit, factoring, export credit. |
+
+
+## Product & Account Components
+
+<a id="productfeaturetypedoc"></a>
+<h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3>
+
+```diff
+Added featureType:
++ FUNDS_AVAILABLE_AFTER
+```
+
+Description of the usage of the _featureType_ field as it applies to products.
+
+| Value | Description | Use of _additionalValue_ Field |
+| ----- | ----------- | ------------------------------ |
+| ADDITIONAL_CARDS | Additional cards can be requested. | The maximum number of additional cards. If no maximum then should be set to `null`. |
+| BALANCE_TRANSFERS | Balance transfers can be made to the account (e.g., for credit cards). | N/A |
+| BILL_PAYMENT | The product can be attached to an automatic budgeting and bill payment service. | Optional name of the service. |
+| BONUS_REWARDS | Bonus loyalty rewards points are available. | Number of points available. |
+| CARD_ACCESS | A card is available for the product to access funds. | Text describing list of card types that this product can be linked to. |
+| CASHBACK_OFFER | Subject to terms, conditions and eligibility criteria, the product has a cashback offer for opening an account or by spending at a certain retailer. | The amount of the cashback offer (in AUD). |
+| COMPLEMENTARY_PRODUCT_DISCOUNTS | Indicates that complementary, discounted offerings (such as gift cards, or discounted travel) is available. | Description of the complementary offering. |
+| DIGITAL_BANKING | Access is available to online banking features for the product. | N/A |
+| DIGITAL_WALLET | A Digital wallet can be attached to the product. | The name or brand of the wallet. |
+| DONATE_INTEREST | Indicates that interest generated from the product can be automatically donated to a charity or community group. | N/A |
+| EXTRA_REPAYMENTS | Indicates that the product has the option to accept extra repayments without incurring additional charges (for example Buy Now, Pay Later (BNPL) or line of credit products may offer the facility to repay instalments on an adhoc basis). | N/A |
+| FRAUD_PROTECTION | The product includes fraud protection features. | N/A |
+| FREE_TXNS | A set number of free transactions available per month. | The number of free transactions. |
+| FREE_TXNS_ALLOWANCE | A set amount of transaction fee value that is discounted per month. | The amount of transaction fee discounted (in AUD). |
+| FUNDS_AVAILABLE_AFTER | Deposited funds are available after a specified time period. This is distinct from a term deposit duration. | The specified time period. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| GUARANTOR | Subject to terms and conditions, the customer may be able to nominate a guarantor during the origination process. | N/A |
+| INSTALMENT_PLAN | The product has the option to pay for eligible purchases over time with a set number of payments. | N/A |
+| INSURANCE | Insurance is provided as an additional feature of the product. | Text description of the type of insurance (e.g., Travel Insurance). |
+| INTEREST_FREE | Interest free period for purchases. | Interest free period. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| INTEREST_FREE_TRANSFERS | Interest free period for balance transfers. | Interest free period. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| LOYALTY_PROGRAM | A points based loyalty program is available. | Name of the loyalty program. |
+| NOTIFICATIONS | Advanced notifications are available for the product. | Description of the notification capability. |
+| NPP_ENABLED | An account of this product type can be used to receive funds as a result of a BSB/Number based NPP payment. | N/A |
+| NPP_PAYID | An account of this product type can be used as the target of an NPP PayID. | N/A |
+| OFFSET | An offset account can be connected to the product. | N/A |
+| OTHER | Another feature that can not be included in any of the other categories. The _additionalInfo_ field is mandatory for this type. | N/A |
+| OVERDRAFT | An overdraft can be applied for. | N/A |
+| REDRAW | Redraw of repaid principal above minimum required is available. | N/A |
+| RELATIONSHIP_MANAGEMENT | Relationship management is available for eligible customers. | N/A |
+| UNLIMITED_TXNS | Unlimited free transactions available. | N/A |
+
+
+
+<a id="productconstrainttypedoc"></a>
+<h3 id="tocSproductconstrainttypedoc">Product Constraint Types</h3>
+
+```diff
+Added constraintType:
++ OTHER
+```
+
+Description of the usage of the _constraintType_ field as it applies to products.
+
+| Value | Description | Use of _additionalValue_ Field |
+| ----- | ----------- | ------------------------------ |
+| MAX_BALANCE | A maximum balance is required for the product. | The maximum balance in [AmountString](#common-field-types) format. |
+| MAX_LIMIT | A maximum limit exists (such as a maximum loan balance denoting the borrowable amount or maximum allowable credit limit). | The maximum limit in [AmountString](#common-field-types) format. |
+| MAX_LVR | A maximum LVR (Loan to Value Ratio) exists. | The maximum LVR in [RateString](#common-field-types) format. |
+| MIN_BALANCE | A minimum balance is required for the product. | The minimum balance in [AmountString](#common-field-types) format. |
+| MIN_LIMIT | A minimum limit exists (such as a minimum loan balance denoting the borrowable amount or minimum credit limit). | The minimum limit in [AmountString](#common-field-types) format. |
+| MIN_LVR | A minimum LVR (Loan to Value Ratio) exists. | The minimum LVR in [RateString](#common-field-types) format. |
+| OPENING_BALANCE | An opening balance is required for the product. | The minimum opening balance in [AmountString](#common-field-types) format. |
+| OTHER | Another constraint that can not be included in any of the other categories. The _additionalInfo_ field is mandatory for this type. | N/A |
+
+
+
+<a id="producteligibilitytypedoc"></a>
+<h3 id="tocSproducteligibilitytypedoc">Product Eligibility Types</h3>
+
+```diff
+Updated eligibilityType 'Use of additionalValue Field' details:
+
+PENSION_RECIPIENT
+- N/A
++ Optional. If present, MUST contain a description of which pensions qualify.
+
+STUDENT
+- N/A
++ Optional. If present, MUST contain a description of who qualifies as a student, e.g., do apprentices qualify?
+```
+
+Description of the usage of the _eligibilityType_ field as it applies to products.
+
+| Value | Description | Use of _additionalValue_ Field |
+| ----- | ----------- | ------------------------------ |
+| BUSINESS | Only business may apply for the account. | N/A |
+| EMPLOYMENT_STATUS | An eligibility constraint based on employment status applies. | A description of the status required. |
+| MAX_AGE | Only customers younger than a maximum age may apply. | The maximum age in years. |
+| MIN_AGE | Only customers older than a minimum age may apply. | The minimum age in years. |
+| MIN_INCOME | The customer must have an income greater than a specified threshold to obtain the product. | Minimum income in [AmountString](#common-field-types) format. |
+| MIN_TURNOVER | Only a business with greater than a minimum turnover may apply. | Minimum turnover in [AmountString](#common-field-types) format. |
+| NATURAL_PERSON | The customer must be a natural person rather than another legal entity. | N/A |
+| OTHER | Another eligibility criteria exists as described in the _additionalInfo_ field. The _additionalInfo_ field is mandatory for this type. | N/A |
+| PENSION_RECIPIENT | Only a recipient of a government pension may apply for the product. | Optional. If present, **MUST** contain a description of which pensions qualify. |
+| RESIDENCY_STATUS | An eligibility constraint based on residency status applies. | A description of the status required. |
+| STAFF | Only a staff member of the provider may apply. | N/A |
+| STUDENT | Only students may apply for the product. | Optional. If present, **MUST** contain a description of who qualifies as a student, e.g., do apprentices qualify? |
+
+
+
+<a id="productfeetypedoc"></a>
+<h3 id="tocSproductfeetypedoc">Product Fee Types</h3>
+
+```diff
+Updated feeType values:
+- VARIABLE
++ CASH_ADVANCE
++ DISHONOUR
++ ENQUIRY
++ LATE_PAYMENT
++ OTHER
++ REPLACEMENT
++ UPFRONT_PER_PLAN
++ VARIATION
+```
+
+Description of the usage of the _feeType_ field as it applies to products.
+
+| Value | Description | Use of _additionalValue_ Field |
+| ----- | ----------- | ------------------------------ |
+| CASH_ADVANCE | A fee associated with a cash advance. | N/A |
+| DEPOSIT | A fee associated with making a deposit. | N/A |
+| DISHONOUR | A fee associated with a dishonour. | N/A |
+| ENQUIRY | A fee associated with an enquiry, including a balance enquiry. | N/A |
+| EVENT | A fee in relation to a particular event (e.g., ordering a new card, viewing a balance or stopping a cheque). | N/A |
+| EXIT | A fee for closing the product. | N/A |
+| LATE_PAYMENT | A fee associated with making a payment after a due date. | Number of days late, after which the associated fee will be applied. |
+| OTHER | Another fee that can not be included in any of the other categories. The _additionalInfo_ field is mandatory for this type. | N/A |
+| PAYMENT | A fee associated with making a payment. | N/A |
+| PERIODIC | A periodic fee such as a monthly account servicing fee. | The period of charge. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| PURCHASE | A fee associated with making a purchase at a merchant. | N/A |
+| REPLACEMENT | A fee associated with a receiving a replacement, including cards, cheques, statements, security tokens. | N/A |
+| TRANSACTION | A fee associated with any transaction (incorporates `WITHDRAWAL`, `DEPOSIT`, `PAYMENT` and `PURCHASE`). | N/A |
+| UPFRONT | A fee paid at the beginning of the product lifecycle, such as an establishment fee, loyalty program fee or application fee. | N/A |
+| UPFRONT_PER_PLAN | A fee paid at the creation of a new payment plan, such as an instalment plan. | N/A |
+| VARIATION | A fee associated with a request for a variation, including to an existing process, instruction or terms. | N/A |
+| WITHDRAWAL | A fee associated with making a withdrawal. | N/A |
+
+
+
+<a id="productdiscounttypedoc"></a>
+<h3 id="tocSproductdiscounttypedoc">Product Discount Types</h3>
+
+Description of the usage of the _discountType_ field as it applies to products.
+
+| Value | Description | Use of _additionalValue_ Field |
+| ----- | ----------- | ------------------------------ |
+| BALANCE | Discount on a fee for maintaining a set balance. As the discount applies to a fee the period is the same as for the fee. | The minimum balance in [AmountString](#common-field-types) format. |
+| DEPOSITS | Discount for depositing a certain amount of money in a period. As the discount applies to a fee the period is the same as for the fee. | The minimum deposit amount in [AmountString](#common-field-types) format. |
+| ELIGIBILITY_ONLY | Discount applies based on customer eligibility (_eligibility_ array must be populated). | N/A |
+| FEE_CAP | The _amount_, _balanceRate_, _transactionRate_, _accruedRate_ or _feeRate_ fields of the discount represent the maximum amount charged in a time period. | The time period for which the fee cap applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| PAYMENTS | Discount for outbound payments from the account under a certain amount of money in a period. As the discount applies to a fee the period is the same as for the fee. | The payment threshold amount in [AmountString](#common-field-types) format. |
+
+
+
+<a id="productdiscounteligibilitydoc"></a>
+<h3 id="tocSproductdiscounteligibilitydoc">Product Discount Eligibility Types</h3>
+
+```diff
+Updated discountEligibilityType 'Use of additionalValue Field' details:
+
+PENSION_RECIPIENT
+- Optional. Should contain a description of which pensions qualify.
++ Optional. If present, MUST contain a description of which pensions qualify.
+
+STUDENT
+- Optional. Should contain a description of who qualifies as a student, e.g., do apprentices qualify?
++ Optional. If present, MUST contain a description of who qualifies as a student, e.g., do apprentices qualify?
+```
+
+Description of the usage of the _discountEligibilityType_ field as it applies to products.
+
+| Value | Description | Use of _additionalValue_ Field |
+| ----- | ----------- | ------------------------------ |
+| BUSINESS | A business or other non-person legal entity. | N/A |
+| EMPLOYMENT_STATUS | An eligibility constraint based on employment status applies. | A description of the status required. |
+| INTRODUCTORY | The discount is only available during an introductory period. | The period of time for the introductory discount. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| MAX_AGE | Only customers younger than a maximum age receive the discount. | The maximum age in years. |
+| MIN_AGE | Only customers older than a minimum age receive the discount. | The minimum age in years. |
+| MIN_INCOME | The customer must have an income greater than a specified threshold to obtain the discount. | Minimum income in [AmountString](#common-field-types) format. |
+| MIN_TURNOVER | Only a business with greater than a minimum turnover is eligible. | Minimum turnover in [AmountString](#common-field-types) format. |
+| NATURAL_PERSON | The customer must be a natural person rather than another legal entity. | N/A |
+| OTHER | Another eligibility criteria exists as described in the _additionalInfo_ field. The _additionalInfo_ field is mandatory for this type. | N/A |
+| PENSION_RECIPIENT | Only a recipient of a government pension may receive the discount. | Optional. If present, **MUST** contain a description of which pensions qualify. |
+| RESIDENCY_STATUS | An eligibility constraint based on residency status applies. | A description of the status required. |
+| STAFF | Only a staff member of the provider may receive the discount. | N/A |
+| STUDENT | Only students may receive the discount. | Optional. If present, **MUST** contain a description of who qualifies as a student, e.g., do apprentices qualify? |
+
+
+
+<a id="productdepositratetypedoc"></a>
+<h3 id="tocSproductdepositratetypedoc">Product Deposit Rate Types</h3>
+
+Description of the usage of the _depositRateType_ field as it applies to products.
+
+<a id="productdepositbaseratetypedoc"></a>
+<ul><li id="tocSproductdepositbaseratetypedoc"><b>Deposit Base Rate Types</b></li></ul>
+
+A deposit product is expected to present a single Base rate corresponding to relevant selection criteria including the rate _tiers_ and _additionalValue_, where applicable.
+
+| Value | Description | Use of _additionalValue_ Field |
+| ----- | ----------- | ------------------------------ |
+| FIXED | Fixed rate for a period of time. | The period of time fixed. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| FLOATING | A floating rate is relatively fixed but still adjusts under specific circumstances. | Details of the float parameters. |
+| MARKET_LINKED | A rate that is linked to a specific market, commodity or asset class. | Details of the market linkage. |
+| VARIABLE | A variable base rate for the product. | N/A |
+
+
+
+<a id="productdepositadjustmentratetypedoc"></a>
+<ul><li id="tocSproductdepositadjustmentratetypedoc"><b>Deposit Adjustment Rate Types</b></li></ul>
+
+A product may have zero, one, or multiple adjustment rates that are taken to apply to a Base rate.
+
+| Value | Description | Use of _additionalValue_ Field |
+| ----- | ----------- | ------------------------------ |
+| BONUS | A bonus rate available by meeting a specific criteria. A deposit 'bonus' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Bonus). | A description of the criteria to obtain the bonus. |
+| BUNDLE_BONUS | A bonus rate obtained by originating a bundle instead of a standalone product. A deposit 'bonus' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Bonus). | The name of the bundle. |
+| INTRODUCTORY | An introductory bonus that will expire after a set period. A deposit 'bonus' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Bonus). | The period of time for the introductory rate. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+
+
+
+<a id="productlendingratetypedoc"></a>
+<h3 id="tocSproductlendingratetypedoc">Product Lending Rate Types</h3>
+
+Description of the usage of the _lendingRateType_ field as it applies to products.
+
+<a id="productlendingbaseratetypedoc"></a>
+<ul><li id="tocSproductlendingbaseratetypedoc"><b>Lending Base Rate Types</b></li></ul>
+
+```diff
+Added lendingRateType:
++ BALANCE_TRANSFER
+```
+
+A lending product is expected to present a single Base rate corresponding to relevant selection criteria including the rate _tiers_ and _additionalValue_, where applicable.
+
+Card products may have two or more base rates, including `CASH_ADVANCE` and `PURCHASE` as they may apply to different transaction types within an account. The `PURCHASE` _lendingRateType_ is considered the rate commonly applicable to a card.
+
+| Value | Description | Use of _additionalValue_ Field |
+| ----- | ----------- | ------------------------------ |
+| BALANCE_TRANSFER | Specific rate applied to balance transfers to the account. This is expected to apply to products in the `CRED_AND_CHRG_CARDS` category only. | N/A |
+| CASH_ADVANCE | Specific rate applied to cash advances from the account. This is expected to apply to products in the `CRED_AND_CHRG_CARDS` category only. | N/A |
+| FIXED | Fixed rate for a period of time. | The period of time fixed. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| FLOATING | A floating rate is relatively fixed but still adjusts under specific circumstances. | Details of the float parameters. |
+| MARKET_LINKED | A rate that is linked to a specific market, commodity or asset class. | Details of the market linkage. |
+| PURCHASE | Specific rate applied to purchases from the account. This is expected to apply to products in the `CRED_AND_CHRG_CARDS` category only. | N/A |
+| VARIABLE | A variable base rate for the product. | N/A |
+
+
+
+<a id="productlendingadjustmentratetypedoc"></a>
+<ul><li id="tocSproductlendingadjustmentratetypedoc"><b>Lending Adjustment Rate Types</b></li></ul>
+
+A product may have zero, one, or multiple adjustment rates that are taken to apply to a Base rate.
+
+| Value | Description | Use of _additionalValue_ Field |
+| ----- | ----------- | ------------------------------ |
+| BUNDLE_DISCOUNT_FIXED | A discount rate off the fixed rate obtained by originating a bundle instead of a standalone product. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | The name of the bundle. |
+| BUNDLE_DISCOUNT_VARIABLE | A discount rate off the variable rate obtained by originating a bundle instead of a standalone product. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | The name of the bundle. |
+| DISCOUNT | A specific discount rate that may be applied. A discount rate reduces the interest payable. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | Description of the discount rate that is applicable. |
+| INTRODUCTORY | An introductory discount that will expire after a set period. A lending 'discount' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base-Discount). | The period of time for the introductory rate. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| PENALTY | A specific penalty rate that may be applied. A penalty rate increases the interest payable. A lending 'penalty' _rate_ value **MUST** be specified as zero or a positive number in the RateString format. The formula to calculate an Effective rate would be (Base+Penalty). | Description of the penalty rate that is applicable. |
+
+
+
+<a id="bankingtermdepositaccountedoc"></a>
+<h3 id="tocSbankingtermdepositaccountypedoc">Banking Term Deposit Account Types</h3>
+
+Description of the usage of the _maturityInstructions_ field as it applies to accounts.
+
+| Value | Description | Use of _additionalValue_ Field |
+| ----- | ----------- | ------------------------------ |
+| HOLD_ON_MATURITY | Funds are held in a facility or similar mechanism managed by the data holder for a period of time until the customer provides instructions or the maximum period of the hold has elapsed. Funds may be renewed or withdrawn upon instructions by the customer. | N/A |
+| PAID_OUT_AT_MATURITY | Funds are to be paid out at maturity. | N/A |
+| ROLLED_OVER | Funds are to be rolled over at maturity. | N/A |
+
+
+
+<a id="bankingproductrateconditiondoc"></a>
+<h3 id="tocSbankingproductrateconditiondoc">Rate and Tier Applicability Types</h3>
+
+```diff
++ Added Rate and Tier Applicability Types section
+```
+
+Description of the usage of the _rateApplicabilityType_ field as it applies to products.
+
+| Value | Description | Use of _additionalValue_ Field |
+| ----- | ----------- | ------------------------------ |
+| MIN_DEPOSITS | When a minimum number of deposits is made in a month, or the month prior. | Minimum number of deposits. |
+| MIN_DEPOSIT_AMOUNT | When a minimum deposit amount is made in a month, or the month prior. | Minimum deposit in [AmountString](#common-field-types) format. |
+| DEPOSIT_BALANCE_INCREASED | When the overall balance of the account, excluding interest, has increased over the month prior. | Minimum amount in [AmountString](#common-field-types) format. |
+| EXISTING_CUST | Applicable to existing customers of the brand. | N/A |
+| NEW_ACCOUNTS | Applicable to new accounts. | N/A |
+| NEW_CUSTOMER | Applicable to new customers to the brand. | N/A |
+| NEW_CUSTOMER_TO_GROUP | Applicable to new customers to a group of brands. | N/A |
+| ONLINE_ONLY | Applicable to accounts originated online. | N/A |
+| OTHER | Applicable under other conditions. The _additionalInfo_ field is mandatory for this type. | N/A |
+| MIN_PURCHASES | When a minimum number of purchases is made and settled in a month, or the month prior. | Minimum number of purchases. |
+| MAX_WITHDRAWALS | Applicable up to a maximum number of withdrawals in a month, or the month prior. | Maximum number of withdrawals. |
+| MAX_WITHDRAWAL_AMOUNT | Applicable up to a maximum amount withdrawn in a month, or the month prior. | Maximum withdrawn in [AmountString](#common-field-types) format. |
+
+
+## NPP Services
+
+The [_service_ enumeration](#cdr-banking-api_schemas_tocSnpppaymentservice) provides the values for specifying New Payments Platform (NPP) payments by their NPP service category. These are explained in the following tables:
+
+**NPP Service Overlay Codes**
+
+| Value | Description |
+| ----- | ----------- |
+| X2P1 | Represents the Osko payment service that allow consumers and businesses to send money between eligible accounts in near real-time. |
+| BSCT | Basic Single Credit Transfers means a credit payment message sent over the NPP without an overlay. It is an individual transaction that will be cleared then settled. |
+| CATSCT | Category Purpose Payments denote categorised payments for super, tax and payroll payments. This service helps third parties to instruct financial institutions on the purpose of the payment and priority. These payments may represent additional reference information in the payment message, which can be presented to the payee. For example, "Adjustment pay for week ending 20/1/19" or "Commission payment for Quarter 1", up to date details of hours paid, superannuation contributions or details relevant to the employee payslip. |
+| IFTI | International Funds Transfers Instructions (IFTIs) are payments sent between an Australian financial institution and an overseas financial institution. |
