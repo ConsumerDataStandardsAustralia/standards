@@ -87,10 +87,10 @@ Data holders **MUST** support Redirect to App in accordance with the [Authentica
 
 - Data holders **MUST** use a single issuer identifier per app.
 - Data holders **MUST** only support Authorization Code Flow for Redirect to App authentication.
-- Data holders **MUST** support Claimed “https” Scheme URI redirection in accordance with section 7.2 and section 8 of [**[RFC8252]**](#rfc8252).
+- Data holders **MUST** support Claimed "https" Scheme URI redirection in accordance with section 7.2 and section 8 of [**[RFC8252]**](#nref-RFC8252).
 - After authentication, the data holder **MUST** continue the authorisation flow within the data holder app.
 - Data holders **SHOULD** implement additional controls to minimise the risk of enumeration attacks via the redirect page.
 
 Data recipients **MUST** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
-<ul><li>Data recipients **MUST** register separate Redirect URIs where they provide both appbased and web-based redirection.</li>
-<li>If data recipients initiate consent from an app, they **MUST** support Claimed “https” Scheme URI redirection in accordance with section 7.2 and section 8 of [**[RFC8252]**](#rfc8252) for their app Redirect URI.</li></ul>
+<ul><li>Data recipients **MUST** register separate Redirect URIs where they provide both app-based and web-based redirection.</li>
+<li>If data recipients initiate consent from an app, they **MUST** support Claimed "https" Scheme URI redirection in accordance with section 7.2 and section 8 of [**[RFC8252]**](#nref-RFC8252) for their app Redirect URI.</li></ul>

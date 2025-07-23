@@ -1,6 +1,6 @@
 <h2 class="schema-heading" id="consumer-experience_authentication-standards">Authentication Standards</h2>
 ```diff
-Added followng new sections:
+Added following new sections:
 + Common Authentication Standards
 + Redirect to web with One Time Password (OTP)
 + Redirect to App

@@ -1,6 +1,6 @@
 ## Credential Requirements
 ```diff
-Added new Credential Requirements section with the followin sub-sections:
+Added new Credential Requirements section with the following sub-sections:
 + User Identifiers
 + Baseline Credential Requirements
 + One Time Password Credential Requirements
