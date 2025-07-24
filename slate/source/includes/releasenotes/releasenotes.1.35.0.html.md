@@ -55,7 +55,7 @@ The following <mark>corrections</mark> have been made to the changes resulting f
 |Change|Description|Link|
 |------|-----------|----|
 | FDO for Redirect to App changes | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Added FDOs for Redirect to App related changes. | [FDO](../../#future-dated-obligations) |
-| Normative References update | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Updated Normative References with following:<ul><li>Replaced TDIF with DigitalID-Accreditation.</li><li>Added refernce to RFC8252: OAuth 2.0 for Native Apps.</li></ul> | [Normative References](../../#normative-references) |
+| Normative References update | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Updated Normative References with following:<ul><li>Replaced TDIF with DigitalID-Accreditation.</li><li>Added reference to RFC8252: OAuth 2.0 for Native Apps.</li></ul> | [Normative References](../../#normative-references) |
 
 ## High Level Standards
 |Change|Description|Link|
