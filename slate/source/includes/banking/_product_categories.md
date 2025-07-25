@@ -5,7 +5,7 @@ Added product category with associated description:
 + BUY_NOW_PAY_LATER
 ```
 
-The [_productCategory_ enumeration](#cdr-banking-api_schemas_tocSbankingproductcategory) provides the values for categorising products and accounts. These are explained in the following tables:
+The [_productCategory_ enumeration](#cdr-banking-api_schema-base_bankingproductcategory) provides the values for categorising products and accounts. These are explained in the following tables:
 
 **Deposit Products**
 
