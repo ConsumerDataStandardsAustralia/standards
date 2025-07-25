@@ -82,15 +82,19 @@ In addition,
 
 Additional requirements and guidelines for the authentication flows are contained in the [Consumer Experience](#consumer-experience) section.
 
-### Redirect to App
+<h3 id="authentication-flows_redirect-to-app">Redirect to App</h3>
+<strong>Data Holders</strong>
+
 Data holders **MUST** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
 
 - Data holders **MUST** use a single issuer identifier per app.
 - Data holders **MUST** only support Authorization Code Flow for Redirect to App authentication.
-- Data holders **MUST** support Claimed "https" Scheme URI redirection in accordance with section 7.2 and section 8 of [**[RFC8252]**](#nref-RFC8252).
+- Data holders **MUST** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252).
 - After authentication, the data holder **MUST** continue the authorisation flow within the data holder app.
 - Data holders **SHOULD** implement additional controls to minimise the risk of enumeration attacks via the redirect page.
 
+<strong>Data Recipients</strong>
+
 Data recipients **MUST** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
 <ul><li>Data recipients **MUST** register separate Redirect URIs where they provide both app-based and web-based redirection.</li>
-<li>If data recipients initiate consent from an app, they **MUST** support Claimed "https" Scheme URI redirection in accordance with section 7.2 and section 8 of [**[RFC8252]**](#nref-RFC8252) for their app Redirect URI.</li></ul>
+<li>If data recipients initiate consent from an app, they **MUST** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252) for their app Redirect URI.</li></ul>

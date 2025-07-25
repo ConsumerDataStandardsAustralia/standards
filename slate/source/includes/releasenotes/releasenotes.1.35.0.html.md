@@ -39,9 +39,10 @@ The following <mark>corrections</mark> have been made to the changes resulting f
 |------|-----------|------|
 |[Baseline Credential Requirements](../../#baseline-credential-requirements)|**MUST ONLY** support authenticator types as permitted by the Levels of Assurance (LoA) requirements defined by <mark>**[TDIF]**</mark> unless otherwise excluded by the Restricted Credentials requirements.| **MUST ONLY** support authenticator types as permitted by the Levels of Assurance (LoA) requirements defined by <mark>**[DigitalID-Accreditation]**</mark> unless otherwise excluded by the Restricted Credentials requirements.|
 |[Authorisation Standards](../../#authorisation-standards)|<mark>**Authentication:**</mark> Add or Switch Profiles|<mark>**Authorisation:**</mark> Add or Switch Profiles|
-|[Redirect to App: Data Holders](../../#redirect-to-app_data-holders)|<mark>**Redirect to App:</mark> Data Holders**|**Data Holders**|
-|[Redirect to App: Data Recipients](../../#redirect-to-app_data-recipients)|<mark>**Redirect to App:</mark> Data Recipients**|**Data Recipients**|
-
+|[Redirect to App: Data Holders](../../#authentication-schedule_redirect-to-app_data-holders)|<mark>**Redirect to App:</mark> Data Holders**|**Data Holders**|
+|[Redirect to App: Data Recipients](../../#authentication-schedule_redirect-to-app_data-recipients)|<mark>**Redirect to App:</mark> Data Recipients**|**Data Recipients**|
+|[Authentication Flows: Redirect to App](../../#authentication-flows_redirect-to-app)|No heading |Add headings <mark>**Data Holders**</mark> and <mark>**Data Recipients**</mark> |
+|[Baseline Credential Requirements](../../#baseline-credential-requirements)|**MUST ONLY** support authenticator types as permitted by the <mark>Levels of Assurance (LoA)</mark> requirements defined <mark>by</mark> **[DigitalID-Accreditation]** unless otherwise excluded by the Restricted Credentials requirements. |**MUST ONLY** support authenticator types as permitted by the <mark>Authentication levels (AL)</mark> requirements defined <mark>in</mark> **[DigitalID-Accreditation]** unless otherwise excluded by the Restricted Credentials requirements. |
 
 ## General Changes
 |Change|Description|Link|

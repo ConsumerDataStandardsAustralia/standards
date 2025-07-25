@@ -15,7 +15,7 @@ If a data holder requests a user identifier for the purposes of identifying the 
 ### Baseline Credential Requirements
 Data holders:
 
-- **MUST ONLY** support authenticator types as permitted by the Levels of Assurance (LoA) requirements defined by **[[DigitalID-Accreditation]](#nref-DigitalID-Accreditation)** unless otherwise excluded by the [Restricted Credentials](#restricted-credentials) requirements.
+- **MUST ONLY** support authenticator types as permitted by the Authentication levels (AL) requirements defined in **[[DigitalID-Accreditation]](#nref-DigitalID-Accreditation)** unless otherwise excluded by the [Restricted Credentials](#restricted-credentials) requirements.
 - **SHOULD** implement [Multi-Factor Authentication](#authentication-schedule) for user access to CDR data containing personal information.
 
 ### One Time Password Credential Requirements

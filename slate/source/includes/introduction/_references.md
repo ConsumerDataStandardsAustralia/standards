@@ -39,8 +39,8 @@ Amended Normative References:
 | <a id="nref-RFC7521"></a>**[RFC7521]** | Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants: <br><https://tools.ietf.org/html/rfc7521> | May 2015 |
 | <a id="nref-RFC7523"></a>**[RFC7523]** | JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants: <br><https://tools.ietf.org/html/rfc7523> | May 2015 |
 | <a id="nref-RFC7662"></a>**[RFC7662]** | OAuth 2.0 Token Introspection: <https://tools.ietf.org/html/rfc7662> | October 2015 |
-| <a id="nref-RFC8414"></a>**[RFC8414]** | OAuth 2.0 Authorization Server Metadata: <https://tools.ietf.org/html/rfc8414> | June 2018 |
 | <a id="nref-RFC8252"></a>**[RFC8252]** | OAuth 2.0 for Native Apps: <https://tools.ietf.org/html/rfc8252> | October 2017 |
+| <a id="nref-RFC8414"></a>**[RFC8414]** | OAuth 2.0 Authorization Server Metadata: <https://tools.ietf.org/html/rfc8414> | June 2018 |
 
 
 ## Informative References
