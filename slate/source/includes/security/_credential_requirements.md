@@ -19,7 +19,7 @@ Data holders:
 - **SHOULD** implement [Multi-Factor Authentication](#authentication-schedule) for user access to CDR data containing personal information.
 
 ### One Time Password Credential Requirements
-Where a data holder supports the ‘Redirect to Web with OTP’ flow:
+Where a data holder supports the 'Redirect to Web with OTP' flow:
 
 - The data holder **MUST** request a user identifier in accordance with [User Identifiers](#user-identifiers).
 - The data holder **MUST** provide a one-time password (OTP) to the customer through an existing channel or mechanism that the customer can then enter into the redirected page.
@@ -34,4 +34,4 @@ Where a data holder supports the ‘Redirect to Web with OTP’ flow:
 ### Restricted Credentials
 The following credential constraints apply such that Authenticators:
 
-- **MUST NOT** permit Memorised Secrets defined by **[[DigitalID-Accreditation]](#nref-DigitalID-Accreditation)** to achieve ‘LoA 2’ (as a single factor of authentication only).
+- **MUST NOT** permit Memorised Secrets defined by **[[DigitalID-Accreditation]](#nref-DigitalID-Accreditation)** to achieve 'LoA 2' (as a single factor of authentication only).

@@ -10,12 +10,12 @@ A Single LoA value is carried in the _acr_ claim which is described in [section 
 
 - An LoA of 2 is represented by the URI: `urn:cds.au:cdr:2`
   - The authenticators used to attain this level **MUST** achieve Single Factor Authentication as defined in [Authentication Schedule](#authentication-schedule).
-  - The authenticators used to attain this level **MAY** conform with the Authentication Level ‘AL1’ rules specified under the Digital ID Accreditation Data Standards **[[DigitalID-Accreditation]](#nref-DigitalID-Accreditation)** Authentication Levels (Chapter 2) requirements.
+  - The authenticators used to attain this level **MAY** conform with the Authentication Level 'AL1' rules specified under the Digital ID Accreditation Data Standards **[[DigitalID-Accreditation]](#nref-DigitalID-Accreditation)** Authentication Levels (Chapter 2) requirements.
 - An LoA of 3 is represented by the URI: `urn:cds.au:cdr:3`
   - The authenticators used to attain this level **MUST** achieve Multi-Factor Authentication as defined in [Authentication Schedule](#authentication-schedule).
-  - The authenticators used to attain this level **MAY** conform with the Authentication Level ‘AL2’ rules specified under the Digital ID Accreditation Data Standards **[[DigitalID-Accreditation]](#nref-DigitalID-Accreditation)** Authentication Levels (Chapter 2) requirements.
+  - The authenticators used to attain this level **MAY** conform with the Authentication Level 'AL2' rules specified under the Digital ID Accreditation Data Standards **[[DigitalID-Accreditation]](#nref-DigitalID-Accreditation)** Authentication Levels (Chapter 2) requirements.
 - An LoA of 4 is represented by the URI: `urn:cds.au:cdr:4`
-  - The authenticators used to attain this level **MUST** conform with the Authentication Level ‘AL3’ rules specified under the Digital ID Accreditation Data Standards **[[DigitalID-Accreditation]](#nref-DigitalID-Accreditation)** Authentication Levels (Chapter 2) requirements.
+  - The authenticators used to attain this level **MUST** conform with the Authentication Level 'AL3' rules specified under the Digital ID Accreditation Data Standards **[[DigitalID-Accreditation]](#nref-DigitalID-Accreditation)** Authentication Levels (Chapter 2) requirements.
 
 
 *READ* operations **SHALL** only be allowed where __at least__ an LoA of 2 has been achieved during the establishment of consent.
