@@ -1,4 +1,11 @@
 ## Authentication Flows
+
+```diff
+Added following new sections:
++ Redirect to App
+
+Moved credential requirements from Baseline Security Provisions: Data Holders section to new Credential Requirements section.
+```
 This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)** as constrained further by **[[FAPI]](#iref-FAPI)**.
 
 
@@ -13,36 +20,13 @@ No other flows are currently supported.
 ### Baseline Security Provisions
 
 #### Data Holders
-The _request_uri_ parameter is only supported if the Data Holder supports PAR.
-
-
+The *request_uri* parameter is only supported if the Data Holder supports PAR.
 
 In addition, the following statements are applicable:
 
-
-- Data Holders **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
+- Data Holders **MUST** support FAPI 1.0 Advanced Profile **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
 - Data Holders **MUST** support Authorization Code Flow.
-- Data Holders **MUST** request a user identifier that can uniquely identify the customer and that is already known by the customer in the redirected page.
-- Data Holders **MUST NOT** request that the customer enter an existing password in the redirected page.
-- Data Holders **MUST** provide a one-time password (OTP) to the customer through an existing channel or mechanism that the customer can then enter into the redirected page.
-- The delivery mechanism for the OTP is at the discretion of the Data Holder but **MUST** align to existing and preferred channels for the customer and **MUST NOT** introduce unwarranted friction into the authentication process.
-- Data Holders **SHOULD** implement additional controls to minimise the risk of interception of the OTP through the selected delivery mechanism.
-- The provided OTP **MUST** be used only for authentication for CDR based sharing and **MUST NOT** be usable for the authorisation of other transactions or actions.
-- The provided OTP **MUST** be invalidated after a period of time at the discretion of the Data Holder. This expiry period **SHOULD** facilitate enough time for the customer to reasonably complete the authorisation process.
-- The provided OTP **MUST** be numeric digits and be between 4 and 6 digits in length.
-- The algorithm for the creation of the OTP is at the discretion of the Data Holder but **SHOULD** incorporate a level of pseudorandomness appropriate for the use case.
-- Data Holders **SHOULD** implement additional controls to minimise the risk of enumeration attacks via the redirect page.
-
-**From May 12th 2025**, 
-
-- Data Holders **SHALL** require the value of _response_type_ described in [**[RFC6749]**](#nref-RFC6749) to be `code`
-
-In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authorise disclosure of CDR data, unwarranted friction for OTP delivery is considered to include:
-
-- the addition of any requirements beyond normal data holder practices for verification code delivery
-- providing or requesting additional information beyond normal data holder practices for verification code delivery
-- offering additional or alternative services
-- reference or inclusion of other documents.
+- Data Holders **SHALL** require the value of *response_type* described in **[[RFC6749]](#nref-RFC6749)** to be `code`.
 
 
 #### Data Recipient Software Products
@@ -102,3 +86,20 @@ In addition,
 
 
 Additional requirements and guidelines for the authentication flows are contained in the [Consumer Experience](#consumer-experience) section.
+
+<h3 id="authentication-flows_redirect-to-app">Redirect to App</h3>
+<strong>Data Holders</strong>
+
+Data holders **MUST** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
+
+- Data holders **MUST** use a single issuer identifier per app.
+- Data holders **MUST** only support Authorization Code Flow for Redirect to App authentication.
+- Data holders **MUST** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252).
+- After authentication, the data holder **MUST** continue the authorisation flow within the data holder app.
+- Data holders **SHOULD** implement additional controls to minimise the risk of enumeration attacks via the redirect page.
+
+<strong>Data Recipients</strong>
+
+Data recipients **MUST** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
+<ul><li>Data recipients **MUST** register separate Redirect URIs where they provide both app-based and web-based redirection.</li>
+<li>If data recipients initiate consent from an app, they **MUST** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252) for their app Redirect URI.</li></ul>
