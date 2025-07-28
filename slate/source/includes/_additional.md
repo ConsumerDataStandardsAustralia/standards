@@ -10,9 +10,9 @@ These standards fall into three categories:
 
 ## Candidate Standards
 
-
-
-
+```diff
+Applied non-breaking Banking API changes to the Non-Banking Lending Candidate to maintain alignment.
+```
 
 The Consumer Data Standards currently include the following Candidate Standards:
 

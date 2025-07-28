@@ -28,6 +28,7 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance #671 - Remove deprecated Register scope detail](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/671)
 - [Standards Maintenance #677 - Energy transaction fields should be conditional](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/677)
 - [Standards Maintenance #681 - Retirement date for Get Transaction Detail V1](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/681)
+- [Standards Maintenance #683 - Maintenance Iteration 22 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/683)
 
 
 ### Decision Proposals
@@ -40,6 +41,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |Change|Description|Link|
 |------|-----------|----|
 | Remove deprecated Register scope detail | [**Standards Maintenance #671**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/671): Updated Admin & Registration scope table and Non-Normative Examples for the Register token and openid-configuration endpoints to replace placeholders and deprecated details with current values. | [Admin & Registration](../../#admin-amp-registration)<br>[Security Profile](../../#security-profile)
+| Holistic Feedback | [**Standards Maintenance #683**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/683): Documentation and schema clarifications detailed in Maintenance issue #683 and noted in the Version Delta comments. | N/A
 
 
 ## Introduction

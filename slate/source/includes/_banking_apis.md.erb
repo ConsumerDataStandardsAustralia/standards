@@ -1,8 +1,19 @@
 # Banking APIs
 
-
-
 This specification defines the APIs for Data Holders exposing Banking endpoints.
+
+```diff
+Updated the description of the tiers field in BankingProductDepositRateV2 and BankingProductLendingRateV3
+- Rate tiers applicable for this rate.
++ Qualifying criteria or conditions relevant to the associated rate.
+
+Added default field value to the schema specification for the following fields: 
+ - BankingBalance > creditLimit
+ - BankingBalance > amortisedLimit
+ - BankingScheduledPaymentInterval > dayInInterval
+
+Applied consistent wording to conditional field statements (detailed in Maintenance issue #683).
+```
 
 <table>
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>

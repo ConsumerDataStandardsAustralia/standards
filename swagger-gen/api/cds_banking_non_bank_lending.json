@@ -2801,7 +2801,7 @@
           },
           "additionalInfo": {
             "type": "string",
-            "description": "Display text providing more information on the feature. Mandatory if [_featureType_](#tocSproductfeaturetypedoc) is set to `OTHER`."
+            "description": "Display text providing more information on the feature. Mandatory if the [_featureType_](#tocSproductfeaturetypedoc) value is `OTHER`."
           },
           "additionalInfoUri": {
             "type": "string",
@@ -2883,7 +2883,7 @@
           },
           "additionalInfo": {
             "type": "string",
-            "description": "Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to `OTHER`."
+            "description": "Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the [_eligibilityType_](#tocSproducteligibilitytypedoc) value is `OTHER`."
           },
           "additionalInfoUri": {
             "type": "string",
@@ -3138,7 +3138,7 @@
           },
           "eligibility": {
             "type": "array",
-            "description": "Eligibility constraints that apply to this discount. Mandatory if _discountType_ is `ELIGIBILITY_ONLY`.",
+            "description": "Eligibility constraints that apply to this discount. Mandatory if the [_discountType_](#tocSproductdiscounttypedoc) value is `ELIGIBILITY_ONLY`.",
             "items": {
               "$ref": "#/components/schemas/BankingProductDiscountEligibility"
             }
@@ -3238,7 +3238,7 @@
           },
           "additionalInfo": {
             "type": "string",
-            "description": "Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [_discountEligibilityType_](#tocSproductdiscounteligibilitydoc)."
+            "description": "Display text providing more information on this eligibility constraint. Mandatory if the [_discountEligibilityType_](#tocSproductdiscounteligibilitydoc) value is `OTHER`."
           },
           "additionalInfoUri": {
             "type": "string",
@@ -3300,7 +3300,7 @@
           },
           "tiers": {
             "type": "array",
-            "description": "Rate tiers applicable for this rate.",
+            "description": "Qualifying criteria or conditions relevant to the associated rate.",
             "items": {
               "$ref": "#/components/schemas/BankingProductRateTierV4"
             }
@@ -3420,7 +3420,7 @@
           },
           "tiers": {
             "type": "array",
-            "description": "Rate tiers applicable for this rate.",
+            "description": "Qualifying criteria or conditions relevant to the associated rate.",
             "items": {
               "$ref": "#/components/schemas/BankingProductRateTierV4"
             }
@@ -4293,7 +4293,7 @@
                   },
                   "nppPayload": {
                     "type": "object",
-                    "description": "Required if the _extensionUType_ value is `nppPayload`.",
+                    "description": "Mandatory if the _extensionUType_ value is `nppPayload`.",
                     "required": [
                       "service",
                       "serviceVersion"
@@ -4304,7 +4304,7 @@
                     "properties": {
                       "extendedDescription": {
                         "type": "string",
-                        "description": "An extended string description. Required if the _extensionUType_ value is `nppPayload`."
+                        "description": "An extended string description. Mandatory if the _extensionUType_ value is `nppPayload`."
                       },
                       "endToEndId": {
                         "type": "string",
@@ -4415,11 +4415,13 @@
           "creditLimit": {
             "type": "string",
             "description": "Object representing the maximum amount of credit that is available for this account. Assumed to be zero if absent.",
+            "default": "0.00",
             "x-cds-type": "AmountString"
           },
           "amortisedLimit": {
             "type": "string",
             "description": "Object representing the available limit amortised according to payment schedule. Assumed to be zero if absent.",
+            "default": "0.00",
             "x-cds-type": "AmountString"
           },
           "currency": {
@@ -5177,7 +5179,7 @@
             "x-cds-type": "DateString"
           }
         },
-        "description": "Indicates that the payment is a once off payment on a specific future date. Mandatory if _recurrenceUType_ is set to `onceOff`."
+        "description": "Indicates that the payment is a once off payment on a specific future date. Mandatory if the _recurrenceUType_ value is `onceOff`."
       },
       "BankingScheduledPaymentRecurrenceIntervalSchedule": {
         "required": [
@@ -5215,7 +5217,7 @@
             }
           }
         },
-        "description": "Indicates that the schedule of payments is defined by a series of intervals. Mandatory if _recurrenceUType_ is set to `intervalSchedule`."
+        "description": "Indicates that the schedule of payments is defined by a series of intervals. Mandatory if the _recurrenceUType_ value is `intervalSchedule`."
       },
       "BankingScheduledPaymentInterval": {
         "required": [
@@ -5231,6 +5233,7 @@
           "dayInInterval": {
             "type": "string",
             "description": "Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is `P1D`. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. The first day of a week is considered to be Monday.",
+            "default": "P1D",
             "x-cds-type": "ExternalRef"
           }
         }
@@ -5283,7 +5286,7 @@
             ]
           }
         },
-        "description": "Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if _recurrenceUType_ is set to `lastWeekDay`."
+        "description": "Indicates that the schedule of payments is defined according to the last occurrence of a specific weekday in an interval. Mandatory if the _recurrenceUType_ value is `lastWeekDay`."
       },
       "BankingScheduledPaymentRecurrenceEventBased": {
         "required": [
@@ -5296,7 +5299,7 @@
             "description": "Description of the event and conditions that will result in the payment. Expected to be formatted for display to a customer."
           }
         },
-        "description": "Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if _recurrenceUType_ is set to `eventBased`."
+        "description": "Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if the _recurrenceUType_ value is `eventBased`."
       },
       "CommonPhysicalAddress": {
         "required": [
@@ -5325,7 +5328,7 @@
         ]
       },
       "CommonSimpleAddress": {
-        "description": "Required if _addressUType_ is set to `simple`.",
+        "description": "Mandatory if the _addressUType_ value is `simple`.",
         "required": [
           "addressLine1",
           "city",
@@ -5472,7 +5475,7 @@
             "description": "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). `NSW`, `QLD`, `VIC`, `NT`, `WA`, `SA`, `TAS`, `ACT`, `AAT`."
           }
         },
-        "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if _addressUType_ is set to `paf`."
+        "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Mandatory if the _addressUType_ value is `paf`."
       },
       "Links": {
         "required": [
