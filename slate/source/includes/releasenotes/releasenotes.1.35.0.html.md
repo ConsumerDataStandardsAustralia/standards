@@ -31,10 +31,10 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance #683 - Maintenance Iteration 22 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/683)
 
 
-### Decision Proposals
-This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
+### Decisions
+This release addresses the following Decision published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Decision Proposal #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
+- [Consultation Draft #370 - Amendment of Banking Decision 338 Obligation Date - Draft Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/370)
 
 
 ## General Changes
@@ -47,6 +47,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## Introduction
 |Change|Description|Link|
 |------|-----------|----|
+| Amend Decision 338 FDOs | [**Decision #370**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/370): Amendment of Banking Decision 338 Obligation Dates. | [Future Dated Obligations](../../#future-dated-obligations)
 | Retirement date for Get Transaction Detail v1 | [**Standards Maintenance #681**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/681): Specified retirement date for Banking Get Transaction Detail v1 as 10th November 2025. | [Future Dated Obligations](../../#future-dated-obligations)
 
 
