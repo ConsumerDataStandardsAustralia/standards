@@ -26,6 +26,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 - [Standards Maintenance #650 - Weaken JARM Encryption Requirements for ADRs](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/650)
 - [Standards Maintenance #671 - Remove deprecated Register scope detail](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/671)
+- [Standards Maintenance #677 - Energy transaction fields should be conditional](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/677)
 - [Standards Maintenance #681 - Retirement date for Get Transaction Detail V1](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/681)
 
 
@@ -55,6 +56,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Corrected Energy transaction field requirements | [**Standards Maintenance #677**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/677): Specified the _demand_ and _otherCharges_ fields in EnergyBillingTransactionV3 as conditional, to match their descriptions. | [Energy APIs](../../#energy-apis)
 
 
 ## Information Security Profile
