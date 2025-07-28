@@ -1,6 +1,6 @@
 # Additional Standards
 
-The Consumer Data Standards also incorporate other non-binding standards that are developed to facilitate consultation and feedback or to facilitate voluntary extension of CDR implementations.
+The CDR Data Standards also incorporate other non-binding standards that are developed to facilitate consultation and feedback or to facilitate voluntary extension of CDR implementations.
 
 These standards fall into three categories:
 
@@ -14,14 +14,14 @@ These standards fall into three categories:
 Applied non-breaking Banking API changes to the Non-Banking Lending Candidate to maintain alignment.
 ```
 
-The Consumer Data Standards currently include the following Candidate Standards:
+The CDR Data Standards currently include the following Candidate Standards:
 
 - [Candidate Standards for the Telecommunications sector](./includes/additional/candidates/telco/telco.html).
 - [Candidate Standards for the Banking and Non-Bank Lending sector](./includes/additional/candidates/non-bank-lending/banking-non-bank-lending.html).
 
 ## Draft Standards
 
-The Consumer Data Standards do not currently include any Draft Standards.
+The CDR Data Standards do not currently include any Draft Standards.
 
 ## Experimental Standards
 

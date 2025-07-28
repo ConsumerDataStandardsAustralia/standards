@@ -35,10 +35,10 @@
 
     // Set Standards category and archive ribbon
     function setCssForCategories() {
-        var cdsLogoElem = document.querySelector('body > div.toc-wrapper > img.logo');
+        var cdsLogoElem = document.querySelector('body > div.toc-wrapper > .site-title');
         var cdsCategoryElem = document.createElement('p');
         cdsCategoryElem.id = 'cdsCategoryMessage';
-        cdsCategoryElem.style.cssText = 'font-size: 16px; padding: 10px; margin: 2px 0 16px 0; background-color: #b60000; color: white;';
+        cdsCategoryElem.style.cssText = 'font-size: 16px; padding: 10px 10px 10px 15px; margin: 7px 0 4px 0; background-color: #D60000; color: white;';
 
         // Pages
         if (settings.draft) {

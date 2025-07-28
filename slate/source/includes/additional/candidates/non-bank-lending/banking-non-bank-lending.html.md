@@ -1,12 +1,12 @@
 ---
-title: DSB Candidate Standard - Banking and Non-Bank Lending
+title: Candidate Standard - Banking and Non-Bank Lending
 
 language_tabs:
   - examples: Non-normative Examples
   - diff: Version Delta
 
 toc_footers:
-  - <a href='../../../../index.html'>Consumer Data Standards</a>
+  - <a href='../../../../'>CDR Data Standards</a>
 
 includes:
   - additional/candidates/non-bank-lending/intro

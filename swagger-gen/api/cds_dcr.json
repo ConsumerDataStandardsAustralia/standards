@@ -489,7 +489,7 @@
           },
           "software_statement": {
             "type": "string",
-            "description": "The Software Statement Assertion, as defined in CDR standards.",
+            "description": "The Software Statement Assertion, as defined in the CDR Data Standards.",
             "format": "JWT"
           },
           "software_id": {
