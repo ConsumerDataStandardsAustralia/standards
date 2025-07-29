@@ -10,7 +10,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Common API
-  version: 1.34.1
+  version: 1.35.0
 servers:
 - description: MTLS
   url: https://mtls.dh.example.com/cds-au/v1
@@ -957,6 +957,7 @@ components:
           - WORK
           type: string
         countryCode:
+          default: +61
           description: If absent, assumed to be Australia (`+61`). The `+` should
             be included.
           type: string

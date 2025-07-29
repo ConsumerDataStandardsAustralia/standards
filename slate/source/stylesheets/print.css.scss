@@ -42,6 +42,30 @@ body {
   width:100%;
 }
 
+// Logo image above replaced with text
+.site-title {
+  font-size: 28px;
+  display: block;
+  margin: 19px 0 20px 15px;
+
+  a {
+    color: black;
+    font-weight: bold;
+  }
+}
+
+
+#cdsCategoryMessage {
+  width: 300px;
+  box-sizing: border-box;
+  color: white;
+  font-weight: bold;
+  background-color: #D60000;
+  print-color-adjust: exact;
+  border: 1px #D60000 solid;
+}
+
+
 .content {
   font-size: 12px;
 
@@ -67,13 +91,19 @@ body {
     padding: 0.2em;
   }
 
+  code span {
+    color: black !important;
+  }
+
   table {
     border: 1px solid $print-color;
     tr {
       border-bottom: 1px solid $print-color;
     }
     td,th {
-      padding: 0.7em;
+      padding: 0.6em;
+      border: 1px solid $print-color-light;
+      vertical-align: top;
     }
   }
 
@@ -88,10 +118,10 @@ body {
 
   h1 {
     @extend %header-font;
-    font-size: 2.5em;
+    font-size: 2.2em;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    margin-top: 1em;
+    margin-top: 0.4em;
     margin-bottom: $h1-margin-bottom;
     border: 2px solid $print-color-light;
     border-width: 2px 0;
@@ -101,7 +131,7 @@ body {
 
   h2 {
     @extend %header-font;
-    font-size: 1.8em;
+    font-size: 1.6em;
     margin-top: 2em;
     border-top: 2px solid $print-color-light;
     padding-top: 0.8em;
@@ -115,14 +145,12 @@ body {
 
   h3, h4 {
     @extend %header-font;
-    font-size: 0.8em;
+    font-size: 1.1em;
     margin-top: 1.5em;
     margin-bottom: 0.8em;
-    text-transform: uppercase;
   }
 
   h5, h6 {
-    text-transform: uppercase;
   }
 
   aside {
@@ -135,9 +163,11 @@ body {
   }
 
   aside:before {
-    vertical-align: middle;
-    padding-right: 0.5em;
+    vertical-align: bottom;
     font-size: 14px;
+    padding: 0px 15px 0px 0px;
+    width: 25px;
+    display: inline-block;
   }
 
   aside.notice:before {
@@ -150,5 +180,20 @@ body {
 
   aside.success:before {
     @extend %icon-ok-sign;
+  }
+
+  aside.notice:before {
+    content: url("/images/banner-icons/info.svg");
+    line-height: 0;
+  }
+
+  aside.warning:before {
+    content: url("/images/banner-icons/warning.svg");
+    line-height: 0;
+  }
+
+  aside.success:before {
+    content: url("/images/banner-icons/success.svg");
+    line-height: 0;
   }
 }

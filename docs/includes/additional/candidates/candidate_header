@@ -1,5 +1,5 @@
 <aside class="notice">
-This standard is part of the Consumer Data Standards and is classified as a <strong>Candidate Standard</strong><br/>
+This standard is part of the CDR Data Standards and is classified as a <strong>Candidate Standard</strong><br/>
 This means that:
 <ul>
   <li>The standard <i>is not</i> binding</li>

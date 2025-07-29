@@ -33,7 +33,7 @@ under the License.
     <%= favicon_tag 'images/favicon.ico' %>
 
     <script src="https://cdn.usefathom.com/script.js" data-spa="hash" data-site="GWAEHCUX" defer></script>
-    
+
     <style>
       <%= Rouge::Themes::MonokaiSublime.render(:scope => '.highlight') %>
     </style>
@@ -54,7 +54,9 @@ under the License.
       </span>
     </a>
     <div class="toc-wrapper">
-      <%= image_tag "logo.png", class: 'logo' %>
+      <span class="site-title">
+        <a href="https://consumerdatastandardsaustralia.github.io/standards">CDR Data Standards</a>
+      </span>
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
@@ -118,6 +120,11 @@ under the License.
           <% current_page.data.toc_footers.each do |footer| %>
             <li><%= footer %></li>
           <% end %>
+          <li>
+            <a href='https://dsb.gov.au/' style="display:block;margin-top:15px">
+              <img src="/images/DSB_Logomark_Cerulean.svg" width="65px" alt="Data Standards Body Home">
+            </a>
+          </li>
         </ul>
       <% end %>
     </div>

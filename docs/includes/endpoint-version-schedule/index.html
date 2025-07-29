@@ -5,8 +5,10 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Consumer Data Standards - Endpoint Versioning Schedule</title>
+    <title>CDR Data Standards - Endpoint Versioning Schedule</title>
     <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <script src="https://cdn.usefathom.com/script.js" data-spa="hash" data-site="GWAEHCUX" defer></script>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -210,15 +212,17 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="../../images/logo.png" class="logo" alt="Logo" />
+      <span class="site-title">
+        <a href="https://consumerdatastandardsaustralia.github.io/standards">CDR Data Standards</a>
+      </span>
       <ul id="toc" class="toc-list-h1">
-          <li>
+          <li class="toc-child">
             <a href="#obligation-date-schedule" class="toc-h1 toc-link" data-title="Obligation Date Schedule">Obligation Date Schedule</a>
           </li>
-          <li>
+          <li class="toc-child">
             <a href="#endpoint-version-schedule" class="toc-h1 toc-link" data-title="Endpoint Version Schedule">Endpoint Version Schedule</a>
           </li>
-          <li>
+          <li class="toc-child">
             <a href="#data-holders" class="toc-h1 toc-link" data-title="Data Holders">Data Holders</a>
               <ul class="toc-list-h2">
                   <li>
@@ -244,15 +248,20 @@
                   </li>
               </ul>
           </li>
-          <li>
+          <li class="toc-child">
             <a href="#register-apis" class="toc-h1 toc-link" data-title="Register APIs">Register APIs</a>
           </li>
-          <li>
+          <li class="toc-child">
             <a href="#data-recipients" class="toc-h1 toc-link" data-title="Data Recipients">Data Recipients</a>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='../../'>Consumer Data Standards</a></li>
+            <li><a href='../../'>CDR Data Standards</a></li>
+          <li>
+            <a href='https://dsb.gov.au/' style="display:block;margin-top:15px">
+              <img src="../../images/DSB_Logomark_Cerulean.svg" width="65px" alt="Data Standards Body Home">
+            </a>
+          </li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -319,12 +328,12 @@
 <tr>
 <td style="text-align: left"><strong>Y25 #5</strong></td>
 <td style="text-align: center">2025-11-10</td>
-<td style="text-align: center">8</td>
+<td style="text-align: center">6</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Y26 #1</strong></td>
 <td style="text-align: center">2026-03-16</td>
-<td style="text-align: center">0</td>
+<td style="text-align: center">3</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Y26 #2</strong></td>
@@ -334,7 +343,7 @@
 <tr>
 <td style="text-align: left"><strong>Y26 #3</strong></td>
 <td style="text-align: center">2026-07-13</td>
-<td style="text-align: center">0</td>
+<td style="text-align: center">2</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Y26 #4</strong></td>
@@ -344,7 +353,7 @@
 <tr>
 <td style="text-align: left"><strong>Y26 #5</strong></td>
 <td style="text-align: center">2026-11-09</td>
-<td style="text-align: center">0</td>
+<td style="text-align: center">9</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Y27 #1</strong></td>
@@ -354,7 +363,7 @@
 <tr>
 <td style="text-align: left"><strong>Y27 #2</strong></td>
 <td style="text-align: center">2027-05-10</td>
-<td style="text-align: center">0</td>
+<td style="text-align: center">2</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>Y27 #3</strong></td>
@@ -469,9 +478,20 @@
 <td><code>/banking/products</code></td>
 <td><span class="method get">GET</span></td>
 <td>V4</td>
-<td>2025-11-10</td>
-<td>N/A</td>
+<td>2026-03-16</td>
+<td>2026-08-10</td>
 <td>2025-03-13, V1.34.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Products</td>
+<td><code>/banking/products</code></td>
+<td><span class="method get">GET</span></td>
+<td>V5</td>
+<td>2026-07-13</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -535,9 +555,20 @@
 <td><code>/banking/product/{productId}</code></td>
 <td><span class="method get">GET</span></td>
 <td>V6</td>
-<td>2025-11-10</td>
-<td>N/A</td>
+<td>2026-03-16</td>
+<td>2026-08-10</td>
 <td>2025-03-13, V1.34.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Product Detail</td>
+<td><code>/banking/product/{productId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V7</td>
+<td>2026-07-13</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -558,8 +589,19 @@
 <td><span class="method get">GET</span></td>
 <td>V2</td>
 <td>2023-07-10</td>
-<td>N/A</td>
+<td>2026-12-07</td>
 <td>2022-12-22, v1.22.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Accounts</td>
+<td><code>/banking/accounts/</code></td>
+<td><span class="method get">GET</span></td>
+<td>V3</td>
+<td>2026-11-09</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -571,6 +613,28 @@
 <td>2020-07-01</td>
 <td>N/A</td>
 <td>2019-09-30, V1.0.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Bulk Balances</td>
+<td><code>/banking/accounts/balances</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2020-07-01</td>
+<td>2026-12-07</td>
+<td>2019-09-30, V1.0.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Bulk Balances</td>
+<td><code>/banking/accounts/balances</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2026-11-09</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -634,9 +698,20 @@
 <td><code>/banking/accounts/{accountId}</code></td>
 <td><span class="method get">GET</span></td>
 <td>V4</td>
-<td>2025-11-10</td>
-<td>N/A</td>
+<td>2026-03-16</td>
+<td>2026-12-07</td>
 <td>2025-03-13, V1.34.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Account Detail</td>
+<td><code>/banking/accounts/{accountId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V5</td>
+<td>2026-11-09</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -646,8 +721,19 @@
 <td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-07-01</td>
-<td>N/A</td>
+<td>2026-12-07</td>
 <td>2019-09-30, V1.0.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Transactions For Account</td>
+<td><code>/banking/accounts/{accountId}/transactions</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2026-11-09</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -657,7 +743,7 @@
 <td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-07-01</td>
-<td>N/A</td>
+<td>2025-11-10</td>
 <td>2019-09-30, V1.0.0</td>
 <td>2024-12-18, V1.33.0</td>
 </tr>
@@ -668,8 +754,19 @@
 <td><span class="method get">GET</span></td>
 <td>V2</td>
 <td>2025-07-14</td>
-<td>N/A</td>
+<td>2026-12-07</td>
 <td>2024-12-18, V1.33.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Transaction Detail</td>
+<td><code>/banking/accounts/{accountId}/</code><br/><code>transactions/{transactionId}</code></td>
+<td><span class="method get">GET</span></td>
+<td>V3</td>
+<td>2026-11-09</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -690,8 +787,19 @@
 <td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2020-11-01</td>
-<td>N/A</td>
+<td>2026-12-07</td>
 <td>2019-09-30, V1.0.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Bulk Direct Debits</td>
+<td><code>/banking/accounts/direct-debits</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>2026-11-09</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -745,8 +853,19 @@
 <td><span class="method get">GET</span></td>
 <td>V2</td>
 <td>2024-03-11</td>
-<td>N/A</td>
+<td>2026-12-07</td>
 <td>2023-07-08, V1.25.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Scheduled Payments Bulk</td>
+<td><code>/banking/payments/scheduled</code></td>
+<td><span class="method get">GET</span></td>
+<td>V3</td>
+<td>2026-11-09</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -769,6 +888,28 @@
 <td>2024-03-11</td>
 <td>N/A</td>
 <td>2023-07-08, V1.25.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Instalment Plans for Account</td>
+<td><code>/banking/accounts/{accountId}/payments/plans</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2026-11-09</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Banking APIs</td>
+<td>Get Instalment Plans Bulk</td>
+<td><code>/banking/accounts/payments/plans</code></td>
+<td><span class="method get">GET</span></td>
+<td>V1</td>
+<td>2026-11-09</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -1401,7 +1542,7 @@
 </tr>
 </tbody></table>
 
-<p><strong>NOTE:</strong> The CDR Register standards including Dynamic Client Registration were introduced into the Consumer Data Standards in v1.14.0. Prior to this the CDR Register specifications were hosted by the ACCC.</p>
+<p><strong>NOTE:</strong> The CDR Register standards including Dynamic Client Registration were introduced into the CDR Data Standards in v1.14.0. Prior to this the CDR Register specifications were hosted by the ACCC.</p>
 <h2 id='security-apis'>Security APIs</h2>
 <table><thead>
 <tr>
@@ -1648,8 +1789,19 @@
 <td><span class="method get">GET</span></td>
 <td>V2</td>
 <td>2022-11-15</td>
-<td>N/A</td>
+<td>Refer to ACCC^</td>
 <td>2021-12-23, V1.15.0*</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Register APIs</td>
+<td>Get Data Holder Brands</td>
+<td><code>/{industry}/data-holders/brands</code></td>
+<td><span class="method get">GET</span></td>
+<td>V3</td>
+<td>Refer to ACCC^</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -1659,8 +1811,19 @@
 <td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2022-05-12</td>
-<td>N/A</td>
+<td>Refer to ACCC^</td>
 <td>2022-05-23, V1.17.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Register APIs</td>
+<td>Get Data Holder Brands Summary</td>
+<td><code>/{industry}/data-holders/brands/summary</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>Refer to ACCC^</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -1670,8 +1833,19 @@
 <td><span class="method get">GET</span></td>
 <td>V1</td>
 <td>2022-11-15</td>
-<td>N/A</td>
+<td>Refer to ACCC^</td>
 <td>2021-12-23, V1.15.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Register APIs</td>
+<td>Get Data Holder Statuses</td>
+<td><code>/{industry}/data-holders/status</code></td>
+<td><span class="method get">GET</span></td>
+<td>V2</td>
+<td>Refer to ACCC^</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -1703,8 +1877,19 @@
 <td><span class="method get">GET</span></td>
 <td>V3</td>
 <td>2022-11-15</td>
-<td>N/A</td>
+<td>Refer to ACCC^</td>
 <td>2021-12-23, V1.15.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Register APIs</td>
+<td>Get Software Statement Assertion (SSA)</td>
+<td><code>/{industry}/data-recipients/</code><br/><code>brands/{dataRecipientBrandId}/</code><br/><code>software-products/{softwareProductId}/ssa</code></td>
+<td><span class="method get">GET</span></td>
+<td>V4</td>
+<td>Refer to ACCC^</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -1725,13 +1910,24 @@
 <td><span class="method get">GET</span></td>
 <td>V2</td>
 <td>2022-11-15</td>
-<td>N/A</td>
+<td>Refer to ACCC^</td>
 <td>2021-12-23, V1.15.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Register APIs</td>
+<td>Get Software Products Statuses</td>
+<td><code>/{industry}/data-recipients/</code><br/><code>brands/software-products/status</code></td>
+<td><span class="method get">GET</span></td>
+<td>V3</td>
+<td>Refer to ACCC^</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>Register APIs</td>
-<td>Get Data Recipient Statuses</td>
+<td>Get Data Recipients Statuses</td>
 <td><code>/{industry}/data-recipients/status</code></td>
 <td><span class="method get">GET</span></td>
 <td>V1</td>
@@ -1742,13 +1938,24 @@
 </tr>
 <tr>
 <td>Register APIs</td>
-<td>Get Data Recipient Statuses</td>
+<td>Get Data Recipients Statuses</td>
 <td><code>/{industry}/data-recipients/status</code></td>
 <td><span class="method get">GET</span></td>
 <td>V2</td>
 <td>2022-11-15</td>
-<td>N/A</td>
+<td>Refer to ACCC^</td>
 <td>2021-12-23, V1.15.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Register APIs</td>
+<td>Get Data Recipients Statuses</td>
+<td><code>/{industry}/data-recipients/status</code></td>
+<td><span class="method get">GET</span></td>
+<td>V3</td>
+<td>Refer to ACCC^</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -1769,13 +1976,26 @@
 <td><span class="method get">GET</span></td>
 <td>V3</td>
 <td>2022-11-15</td>
-<td>N/A</td>
+<td>Refer to ACCC^</td>
 <td>2021-12-23, V1.15.0</td>
+<td>2025-07-29, V1.35.0</td>
+</tr>
+<tr>
+<td>Register APIs</td>
+<td>Get Data Recipients</td>
+<td><code>/{industry}/data-recipients</code></td>
+<td><span class="method get">GET</span></td>
+<td>V4</td>
+<td>Refer to ACCC^</td>
+<td>N/A</td>
+<td>2025-07-29, V1.35.0</td>
 <td>N/A</td>
 </tr>
 </tbody></table>
 
-<p><strong>&dagger;NOTE:</strong> The CDR Register standards were introduced into the Consumer Data Standards in v1.14.0. Prior to this the CDR Register specifications were hosted by the ACCC.</p>
+<p><strong>&dagger;NOTE:</strong> The CDR Register standards were introduced into the CDR Data Standards in v1.14.0. Prior to this the CDR Register specifications were hosted by the ACCC.</p>
+
+<p><strong>^NOTE:</strong> For details of Register endpoint availability and retirement dates, refer to the ACCC <a href="https://consumerdataright.atlassian.net/wiki/spaces/DP/pages/30081043/Delivery+Dates">Delivery Dates</a> page.</p>
 <h1 id='data-recipients'>Data Recipients</h1>
 <p>The following versioning schedule is reflective of the endpoints hosted by Data Recipient Software Products.
 Data Recipients should take into account their commencement date within the CDR, relevant obligations in accordance with the CDR Rules, as well as any exemptions granted when factoring in which API versions are considered applicable.</p>

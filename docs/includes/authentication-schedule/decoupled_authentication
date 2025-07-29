@@ -1,0 +1,9 @@
+<h2 id='decoupled-authentication'>Decoupled Authentication</h2>
+<p>Where Redirect to App is unable to be used for the purposes of CDR authentication:</p>
+
+<ul>
+<li>Data recipients <strong>MAY</strong> provide decoupled consent experiences that facilitate separation of the Consumption Device from the authorisation flow.</li>
+<li>Data holders <strong>MAY</strong> provide decoupled authorisation experiences that facilitate separation of the Consumption Device from the Authentication Device. </li>
+</ul>
+
+<p>If implemented, data holders and data recipients <strong>MUST</strong> support decoupled authentication in accordance with any relevant <a href="#consumer-experience_authentication-standards">consumer experience authentication</a> and <a href="#security-profile">security profile</a> standards.</p>

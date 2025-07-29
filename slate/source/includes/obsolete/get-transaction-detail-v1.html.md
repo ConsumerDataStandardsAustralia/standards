@@ -1,5 +1,5 @@
 ---
-title: Get Account Transaction v1
+title: Get Transaction Detail v1
 
 #language_tabs: # must be one of https://git.io/vQNgJ
 #  - shell
@@ -8,11 +8,18 @@ title: Get Account Transaction v1
 toc_footers:
   - <a href='../../index.html'>Consumer Data Standards</a>
 
+includes:
+  - footer
+
 search: false
 ---
 
 # Get Transaction Detail V1
-This page documents the obsolete version 1 of the Get Transaction Detail end point.
+This page documents the obsolete version 1 of the Get Transaction Detail endpoint.
+
+Data Holders can retire this version after **November 10th 2025**. Data Recipients must update to newer versions prior to this date.
+
+
 
 ## Get Transaction Detail
 

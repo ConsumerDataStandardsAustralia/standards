@@ -1,0 +1,589 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>CDR Data Standards - v1.35.0 Release Notes</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <script src="https://cdn.usefathom.com/script.js" data-spa="hash" data-site="GWAEHCUX" defer></script>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="no-code-layout includes includes_releasenotes includes_releasenotes_releasenotes" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <span class="site-title">
+        <a href="https://consumerdatastandardsaustralia.github.io/standards">CDR Data Standards</a>
+      </span>
+      <ul id="toc" class="toc-list-h1">
+          <li class="toc-child">
+            <a href="#v1-35-0-release-notes" class="toc-h1 toc-link" data-title="V1.35.0 Release Notes">V1.35.0 Release Notes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#changes-made" class="toc-h2 toc-link" data-title="Changes Made">Changes Made</a>
+                  </li>
+                  <li>
+                    <a href="#general-changes" class="toc-h2 toc-link" data-title="General Changes">General Changes</a>
+                  </li>
+                  <li>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
+                  <li>
+                    <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
+                  </li>
+                  <li>
+                    <a href="#api-endpoints" class="toc-h2 toc-link" data-title="API Endpoints">API Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#information-security-profile" class="toc-h2 toc-link" data-title="Information Security Profile">Information Security Profile</a>
+                  </li>
+                  <li>
+                    <a href="#register-standards" class="toc-h2 toc-link" data-title="Register Standards">Register Standards</a>
+                  </li>
+                  <li>
+                    <a href="#consumer-experience" class="toc-h2 toc-link" data-title="Consumer Experience">Consumer Experience</a>
+                  </li>
+                  <li>
+                    <a href="#non-functional-requirements" class="toc-h2 toc-link" data-title="Non-Functional Requirements">Non-Functional Requirements</a>
+                  </li>
+                  <li>
+                    <a href="#shared-responsibility" class="toc-h2 toc-link" data-title="Shared Responsibility">Shared Responsibility</a>
+                  </li>
+                  <li>
+                    <a href="#additional-standards" class="toc-h2 toc-link" data-title="Additional Standards">Additional Standards</a>
+                  </li>
+                  <li>
+                    <a href="#known-issues" class="toc-h2 toc-link" data-title="Known Issues">Known Issues</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../'>CDR Data Standards</a></li>
+          <li>
+            <a href='https://dsb.gov.au/' style="display:block;margin-top:15px">
+              <img src="../../images/DSB_Logomark_Cerulean.svg" width="65px" alt="Data Standards Body Home">
+            </a>
+          </li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="content">
+        <h1 id='v1-35-0-release-notes'>V1.35.0 Release Notes</h1>
+<p>Release notes for version <strong>1.35.0</strong> of the <a href="../../">CDR Data Standards</a>.</p>
+<h2 id='changes-made'>Changes Made</h2><h3 id='change-requests'>Change Requests</h3>
+<p>This release addresses the following minor defects raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues">Standards Staging</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/476">Standards Staging #476 - Maintenance Iteration 22 - typos and formatting</a></li>
+</ul>
+
+<p>This release addresses the following change requests raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues">Standards Maintenance</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/650">Standards Maintenance #650 - Weaken JARM Encryption Requirements for ADRs</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/671">Standards Maintenance #671 - Remove deprecated Register scope detail</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/677">Standards Maintenance #677 - Energy transaction fields should be conditional</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/681">Standards Maintenance #681 - Retirement date for Get Transaction Detail V1</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/683">Standards Maintenance #683 - Maintenance Iteration 22 Holistic Feedback</a></li>
+</ul>
+<h3 id='decisions'>Decisions</h3>
+<p>This release addresses the following Decisions published on <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues">Standards</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/364">Consultation Draft #364 - Maintenance Iteration 22</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/367">Consultation Draft #367 - March 2025 Rules - Draft Standards</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/369">Consultation Draft #369 - Redirect to App - Draft Standards</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/370">Consultation Draft #370 - Amendment of Banking Decision 338 Obligation Date - Draft Standards</a></li>
+</ul>
+<h4 id='errata'>Errata</h4>
+<p>The following <mark>corrections</mark> have been made to the changes resulting from <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/367">Decision 367</a>:</p>
+
+<table><thead>
+<tr>
+<th>Standard Section</th>
+<th>Decision text</th>
+<th>Corrected text</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="../../#future-dated-obligations">Future Dated Obligations</a></td>
+<td>Get Transactions for Account <mark>v3</mark><br><ul><li>Data Holders <strong>MUST</strong> implement <mark>v3</mark> of this endpoint by <strong>November 9th 2026</strong></li><li>Data Holders <strong>MAY</strong> retire <mark>v2</mark> of this endpoint from <strong>December 7th 2026</strong></li></ul></td>
+<td>Get Transactions for Account <mark>v2</mark><br><ul><li>Data Holders <strong>MUST</strong> implement <mark>v2</mark> of this endpoint by <strong>November 9th 2026</strong></li><li>Data Holders <strong>MAY</strong> retire <mark>v1</mark> of this endpoint from <strong>December 7th 2026</strong></li></ul></td>
+</tr>
+<tr>
+<td><a href="../../#future-dated-obligations">Future Dated Obligations</a></td>
+<td>Get Transaction Detail <mark>v4</mark><br><ul><li>Data Holders <strong>MUST</strong> implement <mark>v4</mark> of this endpoint by <strong>November 9th 2026</strong></li><li>Data Holders <strong>MAY</strong> retire <mark>v3</mark> of this endpoint from <strong>December 7th 2026</strong></li></ul></td>
+<td>Get Transaction Detail <mark>v3</mark><br><ul><li>Data Holders <strong>MUST</strong> implement <mark>v3</mark> of this endpoint by <strong>November 9th 2026</strong></li><li>Data Holders <strong>MAY</strong> retire <mark>v2</mark> of this endpoint from <strong>December 7th 2026</strong></li></ul></td>
+</tr>
+</tbody></table>
+
+<p><br>
+The following <mark>corrections</mark> have been made to the changes resulting from <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/369">Decision 369</a>:</p>
+
+<table><thead>
+<tr>
+<th>Standard Section</th>
+<th>Decision text</th>
+<th>Corrected text</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="../../#baseline-credential-requirements">Baseline Credential Requirements</a></td>
+<td><strong>MUST ONLY</strong> support authenticator types as permitted by the Levels of Assurance (LoA) requirements defined by <mark><strong>[TDIF]</strong></mark> unless otherwise excluded by the Restricted Credentials requirements.</td>
+<td><strong>MUST ONLY</strong> support authenticator types as permitted by the Levels of Assurance (LoA) requirements defined by <mark><strong>[DigitalID-Accreditation]</strong></mark> unless otherwise excluded by the Restricted Credentials requirements.</td>
+</tr>
+<tr>
+<td><a href="../../#authorisation-standards">Authorisation Standards</a></td>
+<td><mark><strong>Authentication:</strong></mark> Add or Switch Profiles</td>
+<td><mark><strong>Authorisation:</strong></mark> Add or Switch Profiles</td>
+</tr>
+<tr>
+<td><a href="../../#authentication-schedule_redirect-to-app_data-holders">Redirect to App: Data Holders</a></td>
+<td><mark><strong>Redirect to App:</mark> Data Holders</strong></td>
+<td><strong>Data Holders</strong></td>
+</tr>
+<tr>
+<td><a href="../../#authentication-schedule_redirect-to-app_data-recipients">Redirect to App: Data Recipients</a></td>
+<td><mark><strong>Redirect to App:</mark> Data Recipients</strong></td>
+<td><strong>Data Recipients</strong></td>
+</tr>
+<tr>
+<td><a href="../../#authentication-flows_redirect-to-app">Authentication Flows: Redirect to App</a></td>
+<td>No heading</td>
+<td>Add headings <mark><strong>Data Holders</strong></mark> and <mark><strong>Data Recipients</strong></mark></td>
+</tr>
+<tr>
+<td><a href="../../#baseline-credential-requirements">Baseline Credential Requirements</a></td>
+<td><strong>MUST ONLY</strong> support authenticator types as permitted by the <mark>Levels of Assurance (LoA)</mark> requirements defined <mark>by</mark> <strong>[DigitalID-Accreditation]</strong> unless otherwise excluded by the Restricted Credentials requirements.</td>
+<td><strong>MUST ONLY</strong> support authenticator types as permitted by the <mark>Authentication levels (AL)</mark> requirements defined <mark>in</mark> <strong>[DigitalID-Accreditation]</strong> unless otherwise excluded by the Restricted Credentials requirements.</td>
+</tr>
+</tbody></table>
+<h2 id='general-changes'>General Changes</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Authentication Schedule</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/369"><strong>Decision #369</strong></a>: Added new section <strong>&quot;Authentication Schedule&quot;</strong> with following sub-sections:<ul><li>Redirect to App</li><li>Decoupled Authentication</li><li>Fallback Authentication Flows</li></ui></td>
+<td><a href="../../#authentication-schedule">Authentication Schedule</a></td>
+</tr>
+<tr>
+<td>Branding and minor UI updates</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/476"><strong>Standards Staging #476</strong></a>: Applied updated DSB branding/colour palette, replaced references to &#39;Consumer Data Standards&#39; and &#39;CDR standards&#39; with &#39;CDR Data Standards&#39;, UI updates for Version Delta scrolling, updated process for adding the &#39;archived version&#39; message to historical versions, CSS adjustments to avoid horizontal scrollbars in schema tables.</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Known Issues</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/476"><strong>Standards Staging #476</strong></a>: Added a Known Issues item for a pending change to the Certificate Management section and a Future improvements item for Metadata Update endpoint inconsistency.</td>
+<td><a href="../../#known-issues">Known Issues</a></td>
+</tr>
+<tr>
+<td>Remove deprecated Register scope detail</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/671"><strong>Standards Maintenance #671</strong></a>: Updated Admin &amp; Registration scope table and Non-Normative Examples for the Register token and openid-configuration endpoints to replace placeholders and deprecated details with current values.</td>
+<td><a href="../../#admin-amp-registration">Admin &amp; Registration</a><br><a href="../../#security-profile">Security Profile</a></td>
+</tr>
+<tr>
+<td>Holistic Feedback</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/683"><strong>Standards Maintenance #683</strong></a>: Documentation and schema clarifications detailed in Maintenance issue #683 and noted in the Version Delta comments.</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+<h2 id='introduction'>Introduction</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>March 2025 Rules including NBL and BNPL</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/367"><strong>Decision #367</strong></a>: Changes related to the March 2025 Rules, including the introduction of the NBL sector and BNPL products.</td>
+<td><a href="../../#future-dated-obligations">Future Dated Obligations</a></td>
+</tr>
+<tr>
+<td>FDO for Redirect to App changes</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/369"><strong>Decision #369</strong></a>: Added FDOs for Redirect to App related changes.</td>
+<td><a href="../../#future-dated-obligations">Future Dated Obligations</a></td>
+</tr>
+<tr>
+<td>Normative References update</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/369"><strong>Decision #369</strong></a>: Updated Normative References with following:<ul><li>Replaced TDIF with DigitalID-Accreditation.</li><li>Added reference to RFC8252: OAuth 2.0 for Native Apps.</li></ul></td>
+<td><a href="../../#normative-references">Normative References</a></td>
+</tr>
+<tr>
+<td>Amend Decision 338 FDOs</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/370"><strong>Decision #370</strong></a>: Amendment of Banking Decision 338 Obligation Dates.</td>
+<td><a href="../../#future-dated-obligations">Future Dated Obligations</a></td>
+</tr>
+<tr>
+<td>Retirement date for Get Transaction Detail v1</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/681"><strong>Standards Maintenance #681</strong></a>: Specified retirement date for Banking Get Transaction Detail v1 as 10th November 2025.</td>
+<td><a href="../../#future-dated-obligations">Future Dated Obligations</a></td>
+</tr>
+</tbody></table>
+<h2 id='high-level-standards'>High Level Standards</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Added Definitions section</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/367"><strong>Decision #367</strong></a>: Added Definitions section to address usage of Banking and Non-Bank Lending language.</td>
+<td><a href="../../#high-level-standards_definitions">Definitions</a></td>
+</tr>
+</tbody></table>
+<h2 id='api-endpoints'>API Endpoints</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Added BNPL detail</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/367"><strong>Decision #367</strong></a>: Updated affected Banking endpoints to accommodate BNPL products and features, and added &#39;400 - Missing Required Header&#39; error response.</td>
+<td><a href="../../#banking-apis">Banking APIs</a></td>
+</tr>
+<tr>
+<td>Corrected Energy transaction field requirements</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/677"><strong>Standards Maintenance #677</strong></a>: Specified the <em>demand</em> and <em>otherCharges</em> fields in EnergyBillingTransactionV3 as conditional, to match their descriptions.</td>
+<td><a href="../../#energy-apis">Energy APIs</a></td>
+</tr>
+</tbody></table>
+<h2 id='information-security-profile'>Information Security Profile</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Overview update</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/369"><strong>Decision #369</strong></a>: Removed &quot;TDIF&quot; from Symbols and Abbreviated terms list.</td>
+<td><a href="../../#overview">Overview</a></td>
+</tr>
+<tr>
+<td>Authentication Flows changes</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/369"><strong>Decision #369</strong></a>: <ul><li>Moved credential requirements from Baseline Security Provisions: Data Holders section to new Credential Requirements section.</li><li>Added  new section <strong>&quot;Redirect to App&quot;</strong></li></ui></td>
+<td><a href="../../#authentication-flows">Authentication Flows</a></td>
+</tr>
+<tr>
+<td>LoAs changes</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/369"><strong>Decision #369</strong></a>: Update LoA Single Ordinal section by amending LoA 2 and LoA 3 and adding LoA 4</td>
+<td><a href="../../#levels-of-assurance-loas">Levels of Assurance (LoAs)</a></td>
+</tr>
+<tr>
+<td>Credential Requirements</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/369"><strong>Decision #369</strong></a>: Added new <strong>&quot;Credential Requirements&quot;</strong> section with the following sub-sections:<ul><li>User Identifiers</li><li>Baseline Credential Requirements</li><li>One Time Password Credential Requirements</li><li>Restricted Credentials</li></ul></td>
+<td><a href="../../#credential-requirements">Credential Requirements</a></td>
+</tr>
+<tr>
+<td>Weaken JARM Encryption Requirements</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/650"><strong>Standards Maintenance #650</strong></a>: Updated the condition for when a Data Holder may perform authorization response encryption.</td>
+<td><a href="../../#authentication-flows">Authentication Flows</a></td>
+</tr>
+</tbody></table>
+<h2 id='register-standards'>Register Standards</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Added NBL detail</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/367"><strong>Decision #367</strong></a>: Updated Register endpoints to accommodate Non-Bank Lending.</td>
+<td><a href="../../#register-apis">Register APIs</a></td>
+</tr>
+</tbody></table>
+<h2 id='consumer-experience'>Consumer Experience</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Added NBL detail</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/367"><strong>Decision #367</strong></a>: Updated CX language sections to refer to Non-Bank Lending.</td>
+<td><a href="../../#data-language-standards-common">Data Language Standards: Common</a><br><a href="../../#banking-and-non-bank-lending-language">Banking and Non-Bank Lending Language</a></td>
+</tr>
+<tr>
+<td>Authentication Standards</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/369"><strong>Decision #369</strong></a>: Added following new sections to <strong>&quot;Authentication Standards&quot;</strong>:<ul><li>Common Authentication Standards</li><li>Redirect to web with One Time Password (OTP)</li><li>Redirect to App</li></ul></td>
+<td><a href="../../#consumer-experience_authentication-standards">Authentication Standards</a></td>
+</tr>
+<tr>
+<td>Authorisation Standards</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/369"><strong>Decision #369</strong></a>: Added new authorisation standard <strong>&quot;Authorisation: Add or Switch Profiles&quot;</strong>.</td>
+<td><a href="../../#authorisation-standards">Authorisation Standards</a></td>
+</tr>
+</tbody></table>
+<h2 id='non-functional-requirements'>Non-Functional Requirements</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Added Get Instalments endpoints</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/367"><strong>Decision #367</strong></a>: Specified performance requirements for new Get Instalments endpoints.</td>
+<td><a href="../../#performance-requirements">Performance Requirements</a></td>
+</tr>
+</tbody></table>
+<h2 id='shared-responsibility'>Shared Responsibility</h2>
+<p>None</p>
+<h2 id='additional-standards'>Additional Standards</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Removed Non-Bank Lending Candidate</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/367"><strong>Decision #367</strong></a>: Removed the Non-Bank Lending Candidate as the standards have now been integrated.</td>
+<td><a href="../../#additional-standards">Additional Standards</a></td>
+</tr>
+</tbody></table>
+<h2 id='known-issues'>Known Issues</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Removed Non-Bank Lending Known Issues item</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/367"><strong>Decision #367</strong></a>: Removed Non-Bank Lending Known Issues item regarding prior updates to the NBL Candidate.</td>
+<td><a href="../../#known-issues">Known Issues</a></td>
+</tr>
+<tr>
+<td>Metadata Update Future improvement</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/476#issuecomment-2767684074"><strong>Standards Staging #476</strong></a>: Added a Future improvements item for the specification of the Metadata Update endpoint.</td>
+<td><a href="../../#future-improvements">Future improvements</a></td>
+</tr>
+</tbody></table>
+<p style="margin-bottom:300px"></p>
+
+      </div>
+    </div>
+  </body>
+</html>

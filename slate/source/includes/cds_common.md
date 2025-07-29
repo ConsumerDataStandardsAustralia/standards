@@ -231,7 +231,7 @@ Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html).
         {
           "isPreferred": false,
           "purpose": "HOME",
-          "countryCode": "string",
+          "countryCode": "+61",
           "areaCode": "string",
           "number": "string",
           "extension": "string",
@@ -764,7 +764,7 @@ This operation does not require authentication.
         {
           "isPreferred": false,
           "purpose": "HOME",
-          "countryCode": "string",
+          "countryCode": "+61",
           "areaCode": "string",
           "number": "string",
           "extension": "string",
@@ -971,7 +971,7 @@ This operation does not require authentication.
     {
       "isPreferred": false,
       "purpose": "HOME",
-      "countryCode": "string",
+      "countryCode": "+61",
       "areaCode": "string",
       "number": "string",
       "extension": "string",
@@ -1201,7 +1201,7 @@ This operation does not require authentication.
 {
   "isPreferred": false,
   "purpose": "HOME",
-  "countryCode": "string",
+  "countryCode": "+61",
   "areaCode": "string",
   "number": "string",
   "extension": "string",
@@ -1215,7 +1215,7 @@ This operation does not require authentication.
 |---|---|---|---|---|
 |isPreferred|[Boolean](#common-field-types)|optional|`false`|May be `true` for one and only one entry to indicate the preferred phone number. Assumed to be `false` if not present.|
 |purpose|[Enum](#common-field-types)|mandatory||The purpose of the number as specified by the customer.|
-|countryCode|string|optional||If absent, assumed to be Australia (`+61`). The `+` should be included.|
+|countryCode|string|optional|`+61`|If absent, assumed to be Australia (`+61`). The `+` should be included.|
 |areaCode|string|conditional||Required for non Mobile Phones, if field is present and refers to Australian code - the leading `0` should be omitted.|
 |number|string|mandatory||The actual phone number, with leading zeros as appropriate.|
 |extension|string|optional||An extension number (if applicable).|

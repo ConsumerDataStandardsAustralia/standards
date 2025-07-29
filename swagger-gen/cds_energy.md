@@ -892,9 +892,9 @@ Other Versions: [v1](includes/obsolete/get-service-points-v1.html).
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyServicePointListResponseV2](#schemacdr-energy-apienergyservicepointlistresponsev2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
 
 <h3 id="cdr-energy-api_get-service-points_response-headers">Response Headers</h3>
 
@@ -1086,9 +1086,9 @@ Other Versions: [v1](includes/obsolete/get-service-point-detail-v1.html).
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyServicePointDetailResponseV2](#schemacdr-energy-apienergyservicepointdetailresponsev2)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
 
 <h3 id="cdr-energy-api_get-service-point-detail_response-headers">Response Headers</h3>
 
@@ -1244,10 +1244,10 @@ Obtain a list of electricity usage data from a particular service point.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-apienergyusagelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
 
 <h3 id="cdr-energy-api_get-usage-for-service-point_response-headers">Response Headers</h3>
 
@@ -1400,9 +1400,9 @@ Obtain usage data for all service points associated with the customer.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-apienergyusagelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
 
 <h3 id="cdr-energy-api_get-bulk-usage_response-headers">Response Headers</h3>
 
@@ -1579,9 +1579,9 @@ Obtain the electricity usage data for a specific set of service points.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyUsageListResponse](#schemacdr-energy-apienergyusagelistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
 
 <h3 id="cdr-energy-api_get-usage-for-specific-service-points_response-headers">Response Headers</h3>
 
@@ -1735,9 +1735,9 @@ Obtain a list of DER data from a particular service point.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyDerDetailResponse](#schemacdr-energy-apienergyderdetailresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
 
 <h3 id="cdr-energy-api_get-der-for-service-point_response-headers">Response Headers</h3>
 
@@ -1900,9 +1900,9 @@ Obtain DER data for all service points associated with the customer.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyDerListResponse](#schemacdr-energy-apienergyderlistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
 
 <h3 id="cdr-energy-api_get-bulk-der_response-headers">Response Headers</h3>
 
@@ -2090,9 +2090,9 @@ Obtain DER data for a specific set of service points.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[EnergyDerListResponse](#schemacdr-energy-apienergyderlistresponse)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[ResponseErrorListV2](#schemacdr-energy-apiresponseerrorlistv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>|[PrimaryResponseErrorListV1](#schemacdr-energy-apiprimaryresponseerrorlistv1)|
 
 <h3 id="cdr-energy-api_get-der-for-specific-service-points_response-headers">Response Headers</h3>
 
@@ -2993,7 +2993,7 @@ Obtain the details of any concessions or arrangements applied to a specific ener
         "amount": "string",
         "percentage": "string",
         "appliedTo": [
-          "INVOICE"
+          "USAGE"
         ]
       }
     ]
@@ -6201,7 +6201,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "amount": "string",
         "percentage": "string",
         "appliedTo": [
-          "INVOICE"
+          "USAGE"
         ]
       }
     ]
@@ -6507,6 +6507,71 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» transactions|[[EnergyBillingTransactionV3](#schemacdr-energy-apienergybillingtransactionv3)]|mandatory||Array of transactions sorted by date and time in descending order.|
 |links|[LinksPaginated](#schemacdr-energy-apilinkspaginated)|mandatory||none|
 |meta|[MetaPaginated](#schemacdr-energy-apimetapaginated)|mandatory||none|
+
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSprimaryresponseerrorlistv1">PrimaryResponseErrorListV1</h3>
+<p id="tocSprimaryresponseerrorlistv1" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-energy-api_schema-base_primaryresponseerrorlist"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apiprimaryresponseerrorlistv1"></a>
+</p>
+
+```json
+{
+  "errors": [
+    {
+      "isSecondaryDataHolderError": false,
+      "code": "string",
+      "title": "string",
+      "detail": "string",
+      "meta": {
+        "urn": "string"
+      }
+    }
+  ]
+}
+```
+
+<h3 id="cdr-energy-api_primaryresponseerrorlistv1_properties">Properties</h3>
+
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|errors|[[PrimaryErrorV1](#schemacdr-energy-apiprimaryerrorv1)]|mandatory||List of errors.|
+
+<h3 class="schema-toc" id="cdr-energy-api_schemas_tocSprimaryerrorv1">PrimaryErrorV1</h3>
+<p id="tocSprimaryerrorv1" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-energy-api_schema-base_primaryerror"></a>
+  <a class="schema-anchor" id="schemacdr-energy-apiprimaryerrorv1"></a>
+</p>
+
+```json
+{
+  "isSecondaryDataHolderError": false,
+  "code": "string",
+  "title": "string",
+  "detail": "string",
+  "meta": {
+    "urn": "string"
+  }
+}
+```
+
+<h3 id="cdr-energy-api_primaryerrorv1_properties">Properties</h3>
+
+*allOf*
+
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|*anonymous*|object|mandatory||none|
+|» isSecondaryDataHolderError|[Boolean](#common-field-types)|optional|`false`|Indicates the error was propagated from a designated secondary data holder.|
+
+*and*
+
+|Name|Type|Required|Default|Description|
+|---|---|---|---|---|
+|*anonymous*|[ErrorV2](#schemacdr-energy-apierrorv2)|mandatory||none|
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 <p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
@@ -7490,14 +7555,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 |paymentOption|[[Enum](#common-field-types)]|mandatory||Payment options for this contract.|
 |intrinsicGreenPower|object|optional||Describes intrinsic green power for the plan. If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts.|
 |» greenPercentage|[RateString](#common-field-types)|mandatory||Percentage of green power intrinsically included in the plan.|
-|controlledLoad|[EnergyPlanControlledLoadV2](#schemacdr-energy-apienergyplancontrolledloadv2)|conditional||Required if pricing model is `SINGLE_RATE_CONT_LOAD` or `TIME_OF_USE_CONT_LOAD` or `FLEXIBLE_CONT_LOAD`.|
-|incentives|[EnergyPlanIncentives](#schemacdr-energy-apienergyplanincentives)|optional||Optional list of incentives available for the contract.|
-|discounts|[EnergyPlanDiscounts](#schemacdr-energy-apienergyplandiscounts)|optional||Optional list of discounts available for the contract.|
-|greenPowerCharges|[EnergyPlanGreenPowerCharges](#schemacdr-energy-apienergyplangreenpowercharges)|optional||Optional list of charges applicable to green power.|
-|eligibility|[EnergyPlanEligibility](#schemacdr-energy-apienergyplaneligibility)|optional||Eligibility restrictions or requirements.|
-|fees|[EnergyPlanFees](#schemacdr-energy-apienergyplanfees)|optional||An array of fees applicable to the plan.|
-|solarFeedInTariff|[EnergyPlanSolarFeedInTariffV3](#schemacdr-energy-apienergyplansolarfeedintariffv3)|optional||Array of feed in tariffs for solar power.|
-|tariffPeriod|[EnergyPlanTariffPeriodV2](#schemacdr-energy-apienergyplantariffperiodv2)|mandatory||Array of tariff periods.|
+|controlledLoad|[[EnergyPlanControlledLoadV2](#schemacdr-energy-apienergyplancontrolledloadv2)]|conditional||Required if pricing model is `SINGLE_RATE_CONT_LOAD` or `TIME_OF_USE_CONT_LOAD` or `FLEXIBLE_CONT_LOAD`.|
+|incentives|[[EnergyPlanIncentives](#schemacdr-energy-apienergyplanincentives)]|optional||Optional list of incentives available for the contract.|
+|discounts|[[EnergyPlanDiscounts](#schemacdr-energy-apienergyplandiscounts)]|optional||Optional list of discounts available for the contract.|
+|greenPowerCharges|[[EnergyPlanGreenPowerCharges](#schemacdr-energy-apienergyplangreenpowercharges)]|optional||Optional list of charges applicable to green power.|
+|eligibility|[[EnergyPlanEligibility](#schemacdr-energy-apienergyplaneligibility)]|optional||Eligibility restrictions or requirements.|
+|fees|[[EnergyPlanFees](#schemacdr-energy-apienergyplanfees)]|optional||An array of fees applicable to the plan.|
+|solarFeedInTariff|[[EnergyPlanSolarFeedInTariffV3](#schemacdr-energy-apienergyplansolarfeedintariffv3)]|optional||Array of feed in tariffs for solar power.|
+|tariffPeriod|[[EnergyPlanTariffPeriodV2](#schemacdr-energy-apienergyplantariffperiodv2)]|mandatory||Array of tariffs that apply to periods throughout the year.|
 
 <h4 id="cdr-energy-api_energyplancontractv3_enumerated-values-main">Enumerated Values</h4>
 
@@ -7821,13 +7886,26 @@ To perform this operation, you must be authenticated and authorised with the fol
 </p>
 
 ```json
-[
-  {
+{
+  "displayName": "string",
+  "rateBlockUType": "singleRate",
+  "startDate": "string",
+  "endDate": "string",
+  "singleRate": {
     "displayName": "string",
-    "rateBlockUType": "singleRate",
-    "startDate": "string",
-    "endDate": "string",
-    "singleRate": {
+    "description": "string",
+    "dailySupplyCharge": "string",
+    "rates": [
+      {
+        "unitPrice": "string",
+        "measureUnit": "KWH",
+        "volume": 0
+      }
+    ],
+    "period": "P1Y"
+  },
+  "timeOfUseRates": [
+    {
       "displayName": "string",
       "description": "string",
       "dailySupplyCharge": "string",
@@ -7838,40 +7916,23 @@ To perform this operation, you must be authenticated and authorised with the fol
           "volume": 0
         }
       ],
-      "period": "P1Y"
-    },
-    "timeOfUseRates": [
-      {
-        "displayName": "string",
-        "description": "string",
-        "dailySupplyCharge": "string",
-        "rates": [
-          {
-            "unitPrice": "string",
-            "measureUnit": "KWH",
-            "volume": 0
-          }
-        ],
-        "period": "P1Y",
-        "timeOfUse": [
-          {
-            "days": [
-              "SUN"
-            ],
-            "startTime": "string",
-            "endTime": "string",
-            "additionalInfo": "string",
-            "additionalInfoUri": "string"
-          }
-        ],
-        "type": "PEAK"
-      }
-    ]
-  }
-]
+      "period": "P1Y",
+      "timeOfUse": [
+        {
+          "days": [
+            "SUN"
+          ],
+          "startTime": "string",
+          "endTime": "string",
+          "additionalInfo": "string",
+          "additionalInfoUri": "string"
+        }
+      ],
+      "type": "PEAK"
+    }
+  ]
+}
 ```
-
-*Required if pricing model is `SINGLE_RATE_CONT_LOAD` or `TIME_OF_USE_CONT_LOAD` or `FLEXIBLE_CONT_LOAD`.*
 
 <h3 id="cdr-energy-api_energyplancontrolledloadv2_properties">Properties</h3>
 
@@ -7899,10 +7960,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» measureUnit|[MeasureUnitEnum](#schemacdr-energy-apimeasureunitenum)|optional|`KWH`|The measurement unit of rate. Assumed to be `KWH` if absent.|
 |»» volume|number|optional||Volume in kWh that this rate applies to. Only applicable for 'stepped' rates where different rates apply for different volumes of usage in a period.|
 |» period|[ExternalRef](#common-field-types)|optional|`P1Y`|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to `P1Y` if absent.|
-|» timeOfUse|[object]|mandatory||Array of times of use.|
-|»» days|[[EnergyDaysEnum](#schemacdr-energy-apienergydaysenum)]|optional||The days that the rate applies to.|
-|»» startTime|[ExternalRef](#common-field-types)|conditional||The beginning of the time period per day for which the controlled load rate applies. Required if _endTime_ provided.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
-|»» endTime|[ExternalRef](#common-field-types)|conditional||The end of the time period per day for which the controlled load rate applies. Required if _startTime_ provided.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|» timeOfUse|[object]|mandatory||Array of time windows for which this time of use rate applies.|
+|»» days|[[EnergyDaysEnum](#schemacdr-energy-apienergydaysenum)]|optional||The days that this time window applies to.|
+|»» startTime|[ExternalRef](#common-field-types)|conditional||The beginning of the time window per day for which the controlled load rate applies. Required if _endTime_ provided. Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|»» endTime|[ExternalRef](#common-field-types)|conditional||The end of the time window per day for which the controlled load rate applies. Required if _startTime_ provided. Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
 |»» additionalInfo|string|conditional||Display text providing more information on the controlled load, for e.g., controlled load availability if specific day/time is not known. Required if _startTime_ and _endTime_ absent or if _additionalInfoUri_ provided.|
 |»» additionalInfoUri|[URIString](#common-field-types)|optional||Optional link to additional information regarding the controlled load.|
 |» type|[Enum](#common-field-types)|mandatory||The type of usage that the rate applies to.|
@@ -7927,17 +7988,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 </p>
 
 ```json
-[
-  {
-    "displayName": "string",
-    "description": "string",
-    "category": "GIFT",
-    "eligibility": "string"
-  }
-]
+{
+  "displayName": "string",
+  "description": "string",
+  "category": "GIFT",
+  "eligibility": "string"
+}
 ```
-
-*Optional list of incentives available for the contract.*
 
 <h3 id="cdr-energy-api_energyplanincentives_properties">Properties</h3>
 
@@ -7965,32 +8022,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 </p>
 
 ```json
-[
-  {
-    "displayName": "string",
-    "description": "string",
-    "type": "CONDITIONAL",
-    "category": "PAY_ON_TIME",
-    "endDate": "string",
-    "methodUType": "percentOfBill",
-    "percentOfBill": {
-      "rate": "string"
-    },
-    "percentOfUse": {
-      "rate": "string"
-    },
-    "fixedAmount": {
-      "amount": "string"
-    },
-    "percentOverThreshold": {
-      "rate": "string",
-      "usageAmount": "string"
-    }
+{
+  "displayName": "string",
+  "description": "string",
+  "type": "CONDITIONAL",
+  "category": "PAY_ON_TIME",
+  "endDate": "string",
+  "methodUType": "percentOfBill",
+  "percentOfBill": {
+    "rate": "string"
+  },
+  "percentOfUse": {
+    "rate": "string"
+  },
+  "fixedAmount": {
+    "amount": "string"
+  },
+  "percentOverThreshold": {
+    "rate": "string",
+    "usageAmount": "string"
   }
-]
+}
 ```
-
-*Optional list of discounts available for the contract.*
 
 <h3 id="cdr-energy-api_energyplandiscounts_properties">Properties</h3>
 
@@ -8037,24 +8090,20 @@ To perform this operation, you must be authenticated and authorised with the fol
 </p>
 
 ```json
-[
-  {
-    "displayName": "string",
-    "description": "string",
-    "scheme": "GREENPOWER",
-    "type": "FIXED_PER_DAY",
-    "tiers": [
-      {
-        "percentGreen": "string",
-        "rate": "string",
-        "amount": "string"
-      }
-    ]
-  }
-]
+{
+  "displayName": "string",
+  "description": "string",
+  "scheme": "GREENPOWER",
+  "type": "FIXED_PER_DAY",
+  "tiers": [
+    {
+      "percentGreen": "string",
+      "rate": "string",
+      "amount": "string"
+    }
+  ]
+}
 ```
-
-*Optional list of charges applicable to green power.*
 
 <h3 id="cdr-energy-api_energyplangreenpowercharges_properties">Properties</h3>
 
@@ -8091,16 +8140,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 </p>
 
 ```json
-[
-  {
-    "type": "EXISTING_CUST",
-    "information": "string",
-    "description": "string"
-  }
-]
+{
+  "type": "EXISTING_CUST",
+  "information": "string",
+  "description": "string"
+}
 ```
-
-*Eligibility restrictions or requirements.*
 
 <h3 id="cdr-energy-api_energyplaneligibility_properties">Properties</h3>
 
@@ -8145,18 +8190,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 </p>
 
 ```json
-[
-  {
-    "type": "EXIT",
-    "term": "FIXED",
-    "amount": "string",
-    "rate": "string",
-    "description": "string"
-  }
-]
+{
+  "type": "EXIT",
+  "term": "FIXED",
+  "amount": "string",
+  "rate": "string",
+  "description": "string"
+}
 ```
-
-*An array of fees applicable to the plan.*
 
 <h3 id="cdr-energy-api_energyplanfees_properties">Properties</h3>
 
@@ -8211,16 +8252,28 @@ To perform this operation, you must be authenticated and authorised with the fol
 </p>
 
 ```json
-[
-  {
-    "displayName": "string",
-    "description": "string",
-    "startDate": "string",
-    "endDate": "string",
-    "scheme": "PREMIUM",
-    "payerType": "GOVERNMENT",
-    "tariffUType": "singleTariff",
-    "singleTariff": {
+{
+  "displayName": "string",
+  "description": "string",
+  "startDate": "string",
+  "endDate": "string",
+  "scheme": "PREMIUM",
+  "payerType": "GOVERNMENT",
+  "tariffUType": "singleTariff",
+  "singleTariff": {
+    "rates": [
+      {
+        "unitPrice": "string",
+        "measureUnit": "KWH",
+        "volume": 0
+      }
+    ],
+    "period": "P1Y"
+  },
+  "timeVaryingTariffs": [
+    {
+      "type": "PEAK",
+      "displayName": "string",
       "rates": [
         {
           "unitPrice": "string",
@@ -8228,36 +8281,20 @@ To perform this operation, you must be authenticated and authorised with the fol
           "volume": 0
         }
       ],
-      "period": "P1Y"
-    },
-    "timeVaryingTariffs": [
-      {
-        "type": "PEAK",
-        "displayName": "string",
-        "rates": [
-          {
-            "unitPrice": "string",
-            "measureUnit": "KWH",
-            "volume": 0
-          }
-        ],
-        "period": "P1Y",
-        "timeVariations": [
-          {
-            "days": [
-              "SUN"
-            ],
-            "startTime": "string",
-            "endTime": "string"
-          }
-        ]
-      }
-    ]
-  }
-]
+      "period": "P1Y",
+      "timeVariations": [
+        {
+          "days": [
+            "SUN"
+          ],
+          "startTime": "string",
+          "endTime": "string"
+        }
+      ]
+    }
+  ]
+}
 ```
-
-*Array of feed in tariffs for solar power.*
 
 <h3 id="cdr-energy-api_energyplansolarfeedintariffv3_properties">Properties</h3>
 
@@ -8276,7 +8313,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» measureUnit|[MeasureUnitEnum](#schemacdr-energy-apimeasureunitenum)|optional|`KWH`|The measurement unit of rate. Assumed to be `KWH` if absent.|
 |»» volume|number|optional||Volume that this rate applies to. Only applicable for 'stepped' rates where different rates apply for different volumes of usage in a period.|
 |» period|[ExternalRef](#common-field-types)|optional|`P1Y`|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to `P1Y` if absent.|
-|timeVaryingTariffs|[object]|conditional||Represents a tariff based on time. Mandatory if _tariffUType_ is set to `timeVaryingTariffs`.|
+|timeVaryingTariffs|[object]|conditional||Represents a tariff based on time of day. Mandatory if _tariffUType_ is set to `timeVaryingTariffs`.|
 |» type|[Enum](#common-field-types)|optional||The type of the charging time period. If absent applies to all periods.|
 |» displayName|string|mandatory||Display name of the tariff.|
 |» rates|[object]|optional||Array of feed in rates.|
@@ -8284,10 +8321,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 |»» measureUnit|[MeasureUnitEnum](#schemacdr-energy-apimeasureunitenum)|optional|`KWH`|The measurement unit of rate. Assumed to be `KWH` if absent.|
 |»» volume|number|optional||Volume that this rate applies to. Only applicable for 'stepped' rates where different rates apply for different volumes of usage in a period.|
 |» period|[ExternalRef](#common-field-types)|optional|`P1Y`|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to `P1Y` if absent.|
-|» timeVariations|[object]|mandatory||Array of time periods for which this tariff is applicable.|
-|»» days|[[EnergyDaysEnum](#schemacdr-energy-apienergydaysenum)]|mandatory||The days that the tariff applies to. At least one entry required.|
-|»» startTime|[ExternalRef](#common-field-types)|optional||The beginning of the time period per day for which the tariff applies. If absent assumes start of day (i.e. midnight).  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
-|»» endTime|[ExternalRef](#common-field-types)|optional||The end of the time period per day for which the tariff applies. If absent assumes end of day (i.e. one second before midnight).  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|» timeVariations|[object]|mandatory||Array of time windows for which this tariff is applicable.|
+|»» days|[[EnergyDaysEnum](#schemacdr-energy-apienergydaysenum)]|mandatory||The days that this time window applies to. At least one entry required.|
+|»» startTime|[ExternalRef](#common-field-types)|optional||The beginning of the time window per day for which the tariff applies. If absent assumes start of day (i.e. midnight). Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|»» endTime|[ExternalRef](#common-field-types)|optional||The end of the time window per day for which the tariff applies. If absent assumes end of day (i.e. one second before midnight). Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
 
 <h4 id="cdr-energy-api_energyplansolarfeedintariffv3_enumerated-values-main">Enumerated Values</h4>
 
@@ -8314,27 +8351,39 @@ To perform this operation, you must be authenticated and authorised with the fol
 </p>
 
 ```json
-[
-  {
-    "type": "ENVIRONMENTAL",
+{
+  "type": "ENVIRONMENTAL",
+  "displayName": "string",
+  "startDate": "string",
+  "endDate": "string",
+  "dailySupplyChargeType": "SINGLE",
+  "dailySupplyCharge": "string",
+  "bandedDailySupplyCharges": [
+    {
+      "unitPrice": "string",
+      "measureUnit": "DAYS",
+      "volume": 0
+    }
+  ],
+  "timeZone": "LOCAL",
+  "rateBlockUType": "singleRate",
+  "singleRate": {
     "displayName": "string",
-    "startDate": "string",
-    "endDate": "string",
-    "dailySupplyChargeType": "SINGLE",
-    "dailySupplyCharge": "string",
-    "bandedDailySupplyCharges": [
+    "description": "string",
+    "generalUnitPrice": "string",
+    "rates": [
       {
         "unitPrice": "string",
-        "measureUnit": "DAYS",
+        "measureUnit": "KWH",
         "volume": 0
       }
     ],
-    "timeZone": "LOCAL",
-    "rateBlockUType": "singleRate",
-    "singleRate": {
+    "period": "string"
+  },
+  "timeOfUseRates": [
+    {
       "displayName": "string",
       "description": "string",
-      "generalUnitPrice": "string",
       "rates": [
         {
           "unitPrice": "string",
@@ -8342,54 +8391,38 @@ To perform this operation, you must be authenticated and authorised with the fol
           "volume": 0
         }
       ],
-      "period": "string"
-    },
-    "timeOfUseRates": [
-      {
-        "displayName": "string",
-        "description": "string",
-        "rates": [
-          {
-            "unitPrice": "string",
-            "measureUnit": "KWH",
-            "volume": 0
-          }
-        ],
-        "period": "P1Y",
-        "timeOfUse": [
-          {
-            "days": [
-              "SUN"
-            ],
-            "startTime": "string",
-            "endTime": "string"
-          }
-        ],
-        "type": "PEAK"
-      }
-    ],
-    "demandCharges": [
-      {
-        "displayName": "string",
-        "description": "string",
-        "amount": "string",
-        "measureUnit": "KWH",
-        "startTime": "string",
-        "endTime": "string",
-        "days": [
-          "SUN"
-        ],
-        "minDemand": "0.00",
-        "maxDemand": "string",
-        "measurementPeriod": "DAY",
-        "chargePeriod": "DAY"
-      }
-    ]
-  }
-]
+      "period": "P1Y",
+      "timeOfUse": [
+        {
+          "days": [
+            "SUN"
+          ],
+          "startTime": "string",
+          "endTime": "string"
+        }
+      ],
+      "type": "PEAK"
+    }
+  ],
+  "demandCharges": [
+    {
+      "displayName": "string",
+      "description": "string",
+      "amount": "string",
+      "measureUnit": "KWH",
+      "startTime": "string",
+      "endTime": "string",
+      "days": [
+        "SUN"
+      ],
+      "minDemand": "0.00",
+      "maxDemand": "string",
+      "measurementPeriod": "DAY",
+      "chargePeriod": "DAY"
+    }
+  ]
+}
 ```
-
-*Array of tariff periods.*
 
 <h3 id="cdr-energy-api_energyplantariffperiodv2_properties">Properties</h3>
 
@@ -8411,31 +8444,31 @@ To perform this operation, you must be authenticated and authorised with the fol
 |» displayName|string|mandatory||Display name of the rate.|
 |» description|string|optional||Description of the rate.|
 |» generalUnitPrice|[AmountString](#common-field-types)|conditional||The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST. Only required if _pricingModel_ field is `QUOTA`.|
-|» rates|[object]|mandatory||Array of controlled load rates in order of usage volume.|
+|» rates|[object]|mandatory||Array of rates in order of usage volume.|
 |»» unitPrice|[AmountString](#common-field-types)|mandatory||Unit price of usage per measure unit (exclusive of GST).|
 |»» measureUnit|[MeasureUnitEnum](#schemacdr-energy-apimeasureunitenum)|optional|`KWH`|The measurement unit of rate. Assumed to be `KWH` if absent.|
 |»» volume|number|optional||Volume in kWh that this rate applies to. Only applicable for 'stepped' rates where different rates apply for different volumes of usage in a period.|
 |» period|[ExternalRef](#common-field-types)|optional||Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
-|timeOfUseRates|[object]|conditional||Array of objects representing time of use rates. Required if _rateBlockUType_ is `timeOfUseRates`.|
+|timeOfUseRates|[object]|conditional||Array of objects representing time of use rates that apply throughout the _tariffPeriod_. Required if _rateBlockUType_ is `timeOfUseRates`.|
 |» displayName|string|mandatory||Display name of the rate.|
 |» description|string|optional||Description of the rate.|
-|» rates|[object]|mandatory||Array of controlled load rates in order of usage volume.|
+|» rates|[object]|mandatory||Array of rates in order of usage volume.|
 |»» unitPrice|[AmountString](#common-field-types)|mandatory||Unit price of usage per measure unit (exclusive of GST).|
 |»» measureUnit|[MeasureUnitEnum](#schemacdr-energy-apimeasureunitenum)|optional|`KWH`|The measurement unit of rate. Assumed to be `KWH` if absent.|
 |»» volume|number|optional||Volume in kWh that this rate applies to. Only applicable for 'stepped' rates where different rates apply for different volumes of usage in a period.|
 |» period|[ExternalRef](#common-field-types)|optional|`P1Y`|Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to `P1Y` if absent.|
-|» timeOfUse|[object]|mandatory||Array of times of use.|
-|»» days|[[EnergyDaysEnum](#schemacdr-energy-apienergydaysenum)]|mandatory||The days that the rate applies to.|
-|»» startTime|[ExternalRef](#common-field-types)|mandatory||Start of the period.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
-|»» endTime|[ExternalRef](#common-field-types)|mandatory||End of the period.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|» timeOfUse|[object]|mandatory||Array of time windows for which this time of use rate applies.|
+|»» days|[[EnergyDaysEnum](#schemacdr-energy-apienergydaysenum)]|mandatory||The days that this time window applies to.|
+|»» startTime|[ExternalRef](#common-field-types)|mandatory||The beginning of the time window per day for which the rate applies. Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|»» endTime|[ExternalRef](#common-field-types)|mandatory||The end of the time window per day for which the rate applies. Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
 |» type|[Enum](#common-field-types)|mandatory||The type of usage that the rate applies to.|
 |demandCharges|[object]|conditional||Array of demand charges. Required if _rateBlockUType_ is `demandCharges`.|
 |» displayName|string|mandatory||Display name of the charge.|
 |» description|string|optional||Description of the charge.|
 |» amount|[AmountString](#common-field-types)|mandatory||The charge amount per measure unit exclusive of GST.|
 |» measureUnit|[MeasureUnitEnum](#schemacdr-energy-apimeasureunitenum)|optional|`KWH`|The measurement unit of charge amount. Assumed to be `KWH` if absent.|
-|» startTime|[ExternalRef](#common-field-types)|mandatory||Start of the period.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
-|» endTime|[ExternalRef](#common-field-types)|mandatory||End of the period.  Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|» startTime|[ExternalRef](#common-field-types)|mandatory||Start of the period. Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
+|» endTime|[ExternalRef](#common-field-types)|mandatory||End of the period. Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.|
 |» days|[[EnergyDaysEnum](#schemacdr-energy-apienergydaysenum)]|optional||The days that the demand tariff applies to.|
 |» minDemand|[AmountString](#common-field-types)|optional|`0.00`|Minimum demand for this demand tariff in kW. If absent then `0.00` is assumed.|
 |» maxDemand|[AmountString](#common-field-types)|optional||Maximum demand for this demand tariff in kW. If present, must be higher than the value of the _minDemand_ field.|
@@ -9688,7 +9721,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "amount": "string",
   "percentage": "string",
   "appliedTo": [
-    "INVOICE"
+    "USAGE"
   ]
 }
 ```
@@ -9706,7 +9739,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |discountFrequency|[ExternalRef](#common-field-types)|conditional||Conditional attribute for frequency at which a concession is applied. Required if type is `FIXED_AMOUNT` or `FIXED_PERCENTAGE`. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).|
 |amount|[AmountString](#common-field-types)|conditional||Conditional attribute for the amount of discount for the concession- required if type is `FIXED_AMOUNT`.|
 |percentage|[RateString](#common-field-types)|conditional||Conditional attribute for the percentage of discount of concession - required if type is `FIXED_PERCENTAGE`.|
-|appliedTo|[[Enum](#common-field-types)]|optional||Array of ENUMs to specify what the concession applies to. Multiple ENUM values can be provided. If absent, `USAGE` is assumed.|
+|appliedTo|[[Enum](#common-field-types)]|optional|`USAGE`|Array of ENUMs to specify what the concession applies to. Multiple ENUM values can be provided. If absent, `USAGE` is assumed.|
 
 <h4 id="cdr-energy-api_energyconcession_enumerated-values-main">Enumerated Values</h4>
 
@@ -10051,9 +10084,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 |gst|[AmountString](#common-field-types)|optional|`0.00`|The GST incurred in the transaction. Should not be included for credits or payments. If absent then zero is assumed.|
 |transactionUType|[Enum](#common-field-types)|mandatory||Indicator of the type of transaction object present in this record.|
 |usage|[EnergyBillingUsageTransactionV2](#schemacdr-energy-apienergybillingusagetransactionv2)|conditional||Represents a usage charge or generation credit. Mandatory if _transactionUType_ is equal to `usage`.|
-|demand|[EnergyBillingDemandTransactionV3](#schemacdr-energy-apienergybillingdemandtransactionv3)|optional||Represents a demand charge or generation credit. Mandatory if _transactionUType_ is equal to `demand`.|
+|demand|[EnergyBillingDemandTransactionV3](#schemacdr-energy-apienergybillingdemandtransactionv3)|conditional||Represents a demand charge or generation credit. Mandatory if _transactionUType_ is equal to `demand`.|
 |onceOff|[EnergyBillingOnceOffTransaction](#schemacdr-energy-apienergybillingonceofftransaction)|conditional||Represents a once off charge or credit. Mandatory if _transactionUType_ is equal to `onceOff`.|
-|otherCharges|[EnergyBillingOtherTransaction](#schemacdr-energy-apienergybillingothertransaction)|optional||Represents charge other than usage and once off. Mandatory if _transactionUType_ is equal to `otherCharges`.|
+|otherCharges|[EnergyBillingOtherTransaction](#schemacdr-energy-apienergybillingothertransaction)|conditional||Represents charge other than usage and once off. Mandatory if _transactionUType_ is equal to `otherCharges`.|
 |payment|[EnergyBillingPaymentTransaction](#schemacdr-energy-apienergybillingpaymenttransaction)|conditional||Represents a payment to the account. Mandatory if _transactionUType_ is equal to `payment`.|
 
 <h4 id="cdr-energy-api_energybillingtransactionv3_enumerated-values-main">Enumerated Values</h4>

@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Dynamic Client Registration API",
-    "version": "1.34.1",
+    "version": "1.35.0",
     "description": "Specifications for Dynamic Client Registration endpoints applicable to all data holders (except secondary data holders).",
     "contact": {
       "name": "Data Standards Body",
@@ -489,7 +489,7 @@
           },
           "software_statement": {
             "type": "string",
-            "description": "The Software Statement Assertion, as defined in CDR standards.",
+            "description": "The Software Statement Assertion, as defined in the CDR Data Standards.",
             "format": "JWT"
           },
           "software_id": {

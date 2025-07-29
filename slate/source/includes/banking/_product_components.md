@@ -6,7 +6,9 @@
 
 ```diff
 Added featureType:
-+ FUNDS_AVAILABLE_AFTER
++ EXTRA_DOWN_PAYMENT
+
+Updated the description of the EXTRA_REPAYMENTS feature
 ```
 
 Description of the usage of the _featureType_ field as it applies to products.
@@ -23,7 +25,8 @@ Description of the usage of the _featureType_ field as it applies to products.
 | DIGITAL_BANKING | Access is available to online banking features for the product. | N/A |
 | DIGITAL_WALLET | A Digital wallet can be attached to the product. | The name or brand of the wallet. |
 | DONATE_INTEREST | Indicates that interest generated from the product can be automatically donated to a charity or community group. | N/A |
-| EXTRA_REPAYMENTS | Indicates that the product has the option to accept extra repayments without incurring additional charges (for example Buy Now, Pay Later (BNPL) or line of credit products may offer the facility to repay instalments on an adhoc basis). | N/A |
+| EXTRA_DOWN_PAYMENT | When a transaction value would exceed the credit limit available for an instalment plan, there is an ability to make a larger than usual initial down payment to enable the creation of a plan based on a reduced amount outstanding, so it remains within the limit. | N/A |
+| EXTRA_REPAYMENTS | Indicates that the product has the option to accept extra repayments without incurring additional charges. For example, Buy Now, Pay Later (BNPL) or line of credit products may offer the facility to repay instalments (after any initial down payment) on an ad hoc basis. | N/A |
 | FRAUD_PROTECTION | The product includes fraud protection features. | N/A |
 | FREE_TXNS | A set number of free transactions available per month. | The number of free transactions. |
 | FREE_TXNS_ALLOWANCE | A set amount of transaction fee value that is discounted per month. | The amount of transaction fee discounted (in AUD). |
@@ -49,10 +52,7 @@ Description of the usage of the _featureType_ field as it applies to products.
 <a id="productconstrainttypedoc"></a>
 <h3 id="tocSproductconstrainttypedoc">Product Constraint Types</h3>
 
-```diff
-Added constraintType:
-+ OTHER
-```
+
 
 Description of the usage of the _constraintType_ field as it applies to products.
 
@@ -72,17 +72,7 @@ Description of the usage of the _constraintType_ field as it applies to products
 <a id="producteligibilitytypedoc"></a>
 <h3 id="tocSproducteligibilitytypedoc">Product Eligibility Types</h3>
 
-```diff
-Updated eligibilityType 'Use of additionalValue Field' details:
 
-PENSION_RECIPIENT
-- N/A
-+ Optional. If present, MUST contain a description of which pensions qualify.
-
-STUDENT
-- N/A
-+ Optional. If present, MUST contain a description of who qualifies as a student, e.g., do apprentices qualify?
-```
 
 Description of the usage of the _eligibilityType_ field as it applies to products.
 
@@ -106,18 +96,7 @@ Description of the usage of the _eligibilityType_ field as it applies to product
 <a id="productfeetypedoc"></a>
 <h3 id="tocSproductfeetypedoc">Product Fee Types</h3>
 
-```diff
-Updated feeType values:
-- VARIABLE
-+ CASH_ADVANCE
-+ DISHONOUR
-+ ENQUIRY
-+ LATE_PAYMENT
-+ OTHER
-+ REPLACEMENT
-+ UPFRONT_PER_PLAN
-+ VARIATION
-```
+
 
 Description of the usage of the _feeType_ field as it applies to products.
 
@@ -161,17 +140,7 @@ Description of the usage of the _discountType_ field as it applies to products.
 <a id="productdiscounteligibilitydoc"></a>
 <h3 id="tocSproductdiscounteligibilitydoc">Product Discount Eligibility Types</h3>
 
-```diff
-Updated discountEligibilityType 'Use of additionalValue Field' details:
 
-PENSION_RECIPIENT
-- Optional. Should contain a description of which pensions qualify.
-+ Optional. If present, MUST contain a description of which pensions qualify.
-
-STUDENT
-- Optional. Should contain a description of who qualifies as a student, e.g., do apprentices qualify?
-+ Optional. If present, MUST contain a description of who qualifies as a student, e.g., do apprentices qualify?
-```
 
 Description of the usage of the _discountEligibilityType_ field as it applies to products.
 
@@ -233,10 +202,7 @@ Description of the usage of the _lendingRateType_ field as it applies to product
 <a id="productlendingbaseratetypedoc"></a>
 <ul><li id="tocSproductlendingbaseratetypedoc"><b>Lending Base Rate Types</b></li></ul>
 
-```diff
-Added lendingRateType:
-+ BALANCE_TRANSFER
-```
+
 
 A lending product is expected to present a single Base rate corresponding to relevant selection criteria including the rate _tiers_ and _additionalValue_, where applicable.
 
@@ -285,9 +251,7 @@ Description of the usage of the _maturityInstructions_ field as it applies to ac
 <a id="bankingproductrateconditiondoc"></a>
 <h3 id="tocSbankingproductrateconditiondoc">Rate and Tier Applicability Types</h3>
 
-```diff
-+ Added Rate and Tier Applicability Types section
-```
+
 
 Description of the usage of the _rateApplicabilityType_ field as it applies to products.
 

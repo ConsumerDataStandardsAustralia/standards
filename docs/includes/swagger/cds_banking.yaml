@@ -10,7 +10,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Banking API
-  version: 1.34.1
+  version: 1.35.0
 servers:
 - description: MTLS
   url: https://mtls.dh.example.com/cds-au/v1
@@ -42,7 +42,7 @@ paths:
       description: |-
         Obtain a list of accounts.
 
-        Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html).
+        Obsolete versions: [v1](includes/obsolete/get-accounts-v1.html), [v2](includes/obsolete/get-accounts-v2.html).
       operationId: listBankingAccounts
       parameters:
       - description: Used to filter results on the _productCategory_ field applicable
@@ -53,7 +53,7 @@ paths:
         name: product-category
         required: false
         schema:
-          $ref: '#/components/schemas/BankingProductCategory'
+          $ref: '#/components/schemas/BankingProductCategoryV2'
         style: form
       - description: Used to filter results according to open/closed status. Values
           can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.
@@ -178,7 +178,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBankingAccountListV2'
+                $ref: '#/components/schemas/ResponseBankingAccountListV3'
           description: Successful response
           headers:
             x-v:
@@ -192,8 +192,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -222,10 +223,13 @@ paths:
       - Banking Accounts
       x-scopes:
       - bank:accounts.basic:read
-      x-version: "2"
+      x-version: "3"
   /banking/accounts/balances:
     get:
-      description: Obtain balances for multiple, filtered accounts.
+      description: |-
+        Obtain balances for multiple, filtered accounts.
+
+        Obsolete versions: [v1](includes/obsolete/get-bulk-balances-v1.html).
       operationId: listBankingBalancesBulk
       parameters:
       - description: Used to filter results on the _productCategory_ field applicable
@@ -236,7 +240,7 @@ paths:
         name: product-category
         required: false
         schema:
-          $ref: '#/components/schemas/BankingProductCategory'
+          $ref: '#/components/schemas/BankingProductCategoryV2'
         style: form
       - description: Used to filter results according to open/closed status. Values
           can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.
@@ -375,8 +379,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -405,7 +410,7 @@ paths:
       - Banking Account Balances
       x-scopes:
       - bank:accounts.basic:read
-      x-version: "1"
+      x-version: "2"
     post:
       description: Obtain balances for a specified list of accounts.
       operationId: listBankingBalancesSpecificAccounts
@@ -525,8 +530,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -665,7 +671,8 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -701,7 +708,7 @@ paths:
       description: |-
         Obtain detailed information on a single account.
 
-        Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html), [v3](includes/obsolete/get-account-detail-v3.html).
+        Obsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html), [v3](includes/obsolete/get-account-detail-v3.html), [v4](includes/obsolete/get-account-detail-v4.html).
       operationId: getBankingAccountDetail
       parameters:
       - description: The _accountId_ to obtain data for. _accountId_ values are returned
@@ -792,7 +799,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBankingAccountByIdV4'
+                $ref: '#/components/schemas/ResponseBankingAccountByIdV5'
           description: Successful response
           headers:
             x-v:
@@ -806,7 +813,8 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -836,13 +844,15 @@ paths:
       - Banking Accounts
       x-scopes:
       - bank:accounts.detail:read
-      x-version: "4"
+      x-version: "5"
   /banking/accounts/{accountId}/transactions:
     get:
       description: |-
         Obtain transactions for a specific account.
 
         Some general notes that apply to all endpoints that retrieve transactions:<ul><li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the "effective" date/time which will be defined as:<ul><li>Posted date/time if available, then<li>Execution date/time if available, then<li>A reasonable date/time nominated by the data holder using internal data structures</ul><li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</ul>
+
+        Obsolete versions: [v1](includes/obsolete/get-transactions-for-account-v1.html).
       operationId: listBankingTransactions
       parameters:
       - description: The _accountId_ to obtain data for. _accountId_ values are returned
@@ -1010,7 +1020,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBankingTransactionList'
+                $ref: '#/components/schemas/ResponseBankingTransactionListV2'
           description: Successful response
           headers:
             x-v:
@@ -1024,9 +1034,10 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400
-            - Invalid Date](#error-400-field-invalid-date-time)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
+            Date](#error-400-field-invalid-date-time)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -1066,13 +1077,13 @@ paths:
       - Banking Account Transactions
       x-scopes:
       - bank:transactions:read
-      x-version: "1"
+      x-version: "2"
   /banking/accounts/{accountId}/transactions/{transactionId}:
     get:
       description: |-
         Obtain detailed information on a transaction for a specific account.
 
-        Obsolete versions: [v1](includes/obsolete/get-transaction-detail-v1.html).
+        Obsolete versions: [v1](includes/obsolete/get-transaction-detail-v1.html), [v2](includes/obsolete/get-transaction-detail-v2.html).
       operationId: getBankingTransactionDetail
       parameters:
       - description: The _accountId_ to obtain data for. _accountId_ values are returned
@@ -1172,7 +1183,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBankingTransactionByIdV2'
+                $ref: '#/components/schemas/ResponseBankingTransactionByIdV3'
           description: Successful response
           headers:
             x-v:
@@ -1186,8 +1197,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Date](#error-400-field-invalid-date-time)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Date](#error-400-field-invalid-date-time)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -1219,7 +1231,7 @@ paths:
       - Banking Account Transactions
       x-scopes:
       - bank:transactions:read
-      x-version: "2"
+      x-version: "3"
   /banking/accounts/{accountId}/direct-debits:
     get:
       description: Obtain direct debit authorisations for a specific account.
@@ -1347,8 +1359,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -1391,7 +1404,10 @@ paths:
       x-version: "1"
   /banking/accounts/direct-debits:
     get:
-      description: Obtain direct debit authorisations for multiple, filtered accounts.
+      description: |-
+        Obtain direct debit authorisations for multiple, filtered accounts.
+
+        Obsolete versions: [v1](includes/obsolete/get-bulk-direct-debits-v1.html).
       operationId: listDirectDebitsBulk
       parameters:
       - description: Used to filter results on the _productCategory_ field applicable
@@ -1402,7 +1418,7 @@ paths:
         name: product-category
         required: false
         schema:
-          $ref: '#/components/schemas/BankingProductCategory'
+          $ref: '#/components/schemas/BankingProductCategoryV2'
         style: form
       - description: Used to filter results according to open/closed status. Values
           can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.
@@ -1541,8 +1557,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -1571,7 +1588,7 @@ paths:
       - Banking Account Direct Debits
       x-scopes:
       - bank:regular_payments:read
-      x-version: "1"
+      x-version: "2"
     post:
       description: Obtain direct debit authorisations for a specified list of accounts.
       operationId: listDirectDebitsSpecificAccounts
@@ -1691,8 +1708,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -1854,8 +1872,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -1901,7 +1920,7 @@ paths:
       description: |-
         Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments.
 
-        Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html).
+        Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html), [v2](includes/obsolete/get-scheduled-payments-bulk-v2.html).
       operationId: listScheduledPaymentsBulk
       parameters:
       - description: Used to filter results on the _productCategory_ field applicable
@@ -1912,7 +1931,7 @@ paths:
         name: product-category
         required: false
         schema:
-          $ref: '#/components/schemas/BankingProductCategory'
+          $ref: '#/components/schemas/BankingProductCategoryV2'
         style: form
       - description: Used to filter results according to open/closed status. Values
           can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.
@@ -2051,8 +2070,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -2081,7 +2101,7 @@ paths:
       - Banking Account Scheduled Payments
       x-scopes:
       - bank:regular_payments:read
-      x-version: "2"
+      x-version: "3"
     post:
       description: |-
         Obtain scheduled payments for a specified list of accounts.
@@ -2204,8 +2224,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -2237,6 +2258,368 @@ paths:
       x-scopes:
       - bank:regular_payments:read
       x-version: "2"
+  /banking/accounts/{accountId}/payments/plans:
+    get:
+      description: Obtain instalment plans for a single specified account. The response
+        **MUST** be ordered by plan _creationDate_ in descending order. If _isInstalmentDetailAvailable_
+        was specified as `true` for the provided _accountId_ but no plans match the
+        provided parameters, an empty array **MUST** be returned. If _isInstalmentDetailAvailable_
+        was specified as `false` for the provided _accountId_, then the endpoint **MAY**
+        respond with [404 - Resource Not Implemented](#error-404-resource-not-implemented).
+      operationId: listInstalmentPlans
+      parameters:
+      - description: The _accountId_ to obtain data for. _accountId_ values are returned
+          by account list endpoints.
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          $ref: '#/components/schemas/BankingAccountId'
+        style: simple
+      - description: Allows for the filtering of plans based on their schedule status:<ul><li>`ACTIVE`
+          requests plans where one or more scheduled instalments have _isPaid_ equal
+          to `false`,</li><li>`INACTIVE` requests plans where all scheduled instalments
+          have _isPaid_ equal to `true`,</li><li>`ALL` requests all `ACTIVE` and `INACTIVE`
+          plans.</li></ul>
+        explode: true
+        in: query
+        name: plan-status
+        required: false
+        schema:
+          default: ACTIVE
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - ALL
+          type: string
+        style: form
+      - description: Page of results to request (standard pagination).
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          type: integer
+        style: form
+        x-cds-type: PositiveInteger
+      - description: Page size to request. Default is 25 (standard pagination).
+        explode: true
+        in: query
+        name: page-size
+        required: false
+        schema:
+          default: 25
+          type: integer
+        style: form
+        x-cds-type: PositiveInteger
+      - description: Version of the API endpoint requested by the client. Must be
+          set to a positive integer. The endpoint should respond with the highest
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
+        explode: false
+        in: header
+        name: x-v
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Minimum version of the API endpoint requested by the client.
+          Must be set to a positive integer if provided. The endpoint should respond
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the endpoint **MUST** respond with a `406 Not Acceptable`.
+        explode: false
+        in: header
+        name: x-min-v
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
+        explode: false
+        in: header
+        name: x-fapi-interaction-id
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.
+          Required for all resource calls (customer present and unattended). Not required
+          for unauthenticated calls.
+        explode: false
+        in: header
+        name: x-fapi-auth-date
+        required: false
+        schema:
+          type: string
+        style: simple
+        x-conditional: true
+      - description: The customer's original IP address if the customer is currently
+          logged in to the Data Recipient Software Product. The presence of this header
+          indicates that the API is being called in a customer present context. Not
+          to be included for unauthenticated calls.
+        explode: false
+        in: header
+        name: x-fapi-customer-ip-address
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: The customer's original standard http headers [Base64](#common-field-types)
+          encoded, including the original User-Agent header, if the customer is currently
+          logged in to the Data Recipient Software Product. Mandatory for customer
+          present calls. Not required for unattended or unauthenticated calls.
+        explode: false
+        in: header
+        name: x-cds-client-headers
+        required: false
+        schema:
+          type: string
+        style: simple
+        x-conditional: true
+        x-cds-type: Base64
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBankingInstalmentPlanList'
+          description: Successful response
+          headers:
+            x-v:
+              $ref: '#/components/headers/XV'
+            x-fapi-interaction-id:
+              $ref: '#/components/headers/XFAPIInteractionId'
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              $ref: '#/components/headers/XFAPIInteractionId'
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404
+            - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404
+            - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              $ref: '#/components/headers/XFAPIInteractionId'
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
+            - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              $ref: '#/components/headers/XFAPIInteractionId'
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422
+            - Invalid Page](#error-422-field-invalid-page)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              $ref: '#/components/headers/XFAPIInteractionId'
+      summary: Get Instalment Plans for Account
+      tags:
+      - Banking Account Scheduled Payments
+      x-scopes:
+      - bank:regular_payments:read
+      x-version: "1"
+  /banking/accounts/payments/plans:
+    get:
+      description: Obtain instalment plans for multiple accounts. The response **MUST**
+        be ordered by plan _creationDate_ in descending order. If instalments are
+        not supported for any account type, the endpoint **MAY** respond with [404
+        - Resource Not Implemented](#error-404-resource-not-implemented).
+      operationId: listInstalmentPlansBulk
+      parameters:
+      - description: Allows for the filtering of plans based on their schedule status:<ul><li>`ACTIVE`
+          requests plans where one or more scheduled instalments have _isPaid_ equal
+          to `false`,</li><li>`INACTIVE` requests plans where all scheduled instalments
+          have _isPaid_ equal to `true`,</li><li>`ALL` requests all `ACTIVE` and `INACTIVE`
+          plans.</li></ul>
+        explode: true
+        in: query
+        name: plan-status
+        required: false
+        schema:
+          default: ACTIVE
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - ALL
+          type: string
+        style: form
+      - description: Page of results to request (standard pagination).
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          type: integer
+        style: form
+        x-cds-type: PositiveInteger
+      - description: Page size to request. Default is 25 (standard pagination).
+        explode: true
+        in: query
+        name: page-size
+        required: false
+        schema:
+          default: 25
+          type: integer
+        style: form
+        x-cds-type: PositiveInteger
+      - description: Version of the API endpoint requested by the client. Must be
+          set to a positive integer. The endpoint should respond with the highest
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
+        explode: false
+        in: header
+        name: x-v
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Minimum version of the API endpoint requested by the client.
+          Must be set to a positive integer if provided. The endpoint should respond
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the endpoint **MUST** respond with a `406 Not Acceptable`.
+        explode: false
+        in: header
+        name: x-min-v
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation
+          id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
+          response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value
+          is required to be provided in the response header to track the interaction.
+        explode: false
+        in: header
+        name: x-fapi-interaction-id
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: The time when the customer last logged in to the Data Recipient
+          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.
+          Required for all resource calls (customer present and unattended). Not required
+          for unauthenticated calls.
+        explode: false
+        in: header
+        name: x-fapi-auth-date
+        required: false
+        schema:
+          type: string
+        style: simple
+        x-conditional: true
+      - description: The customer's original IP address if the customer is currently
+          logged in to the Data Recipient Software Product. The presence of this header
+          indicates that the API is being called in a customer present context. Not
+          to be included for unauthenticated calls.
+        explode: false
+        in: header
+        name: x-fapi-customer-ip-address
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: The customer's original standard http headers [Base64](#common-field-types)
+          encoded, including the original User-Agent header, if the customer is currently
+          logged in to the Data Recipient Software Product. Mandatory for customer
+          present calls. Not required for unattended or unauthenticated calls.
+        explode: false
+        in: header
+        name: x-cds-client-headers
+        required: false
+        schema:
+          type: string
+        style: simple
+        x-conditional: true
+        x-cds-type: Base64
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBankingInstalmentPlanList'
+          description: Successful response
+          headers:
+            x-v:
+              $ref: '#/components/headers/XV'
+            x-fapi-interaction-id:
+              $ref: '#/components/headers/XFAPIInteractionId'
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              $ref: '#/components/headers/XFAPIInteractionId'
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
+            - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              $ref: '#/components/headers/XFAPIInteractionId'
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422
+            - Invalid Page](#error-422-field-invalid-page)</li></ul>
+          headers:
+            x-fapi-interaction-id:
+              $ref: '#/components/headers/XFAPIInteractionId'
+      summary: Get Instalment Plans Bulk
+      tags:
+      - Banking Account Scheduled Payments
+      x-scopes:
+      - bank:regular_payments:read
+      x-version: "1"
   /banking/payees:
     get:
       description: |-
@@ -2375,8 +2758,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -2518,8 +2902,9 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Page Size](#error-400-field-invalid-page-size)</li></ul>
           headers:
             x-fapi-interaction-id:
               $ref: '#/components/headers/XFAPIInteractionId'
@@ -2599,7 +2984,7 @@ paths:
 
         In addition, the concept of effective date and time has also been included. This allows for a product to be marked for obsolescence, or introduction, from a certain time without the need for an update to show that a product has been changed. The inclusion of these dates also removes the need to represent deleted products in the payload. Products that are no longer offered can be marked not effective for a few weeks before they are then removed from the product set as an option entirely.
 
-        Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/obsolete/get-products-v2.html), [v3](includes/obsolete/get-products-v3.html).
+        Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/obsolete/get-products-v2.html), [v3](includes/obsolete/get-products-v3.html), [v4](includes/obsolete/get-products-v4.html).
       operationId: listBankingProducts
       parameters:
       - description: Allows for the filtering of products based on whether the current
@@ -2644,7 +3029,7 @@ paths:
         name: product-category
         required: false
         schema:
-          $ref: '#/components/schemas/BankingProductCategory'
+          $ref: '#/components/schemas/BankingProductCategoryV2'
         style: form
       - description: Page of results to request (standard pagination).
         explode: true
@@ -2698,7 +3083,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBankingProductListV3'
+                $ref: '#/components/schemas/ResponseBankingProductListV4'
           description: Successful response
           headers:
             x-v:
@@ -2710,9 +3095,10 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-            - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
-            Page Size](#error-400-field-invalid-page-size)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+            Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page
+            Size](#error-400-field-invalid-page-size)</li></ul>
         "406":
           content:
             application/json:
@@ -2733,13 +3119,13 @@ paths:
       summary: Get Products
       tags:
       - Banking Products
-      x-version: "4"
+      x-version: "5"
   /banking/products/{productId}:
     get:
       description: |-
         Obtain detailed information on a single product offered openly to the market.
 
-        Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](includes/obsolete/get-product-detail-v2.html), [v3](includes/obsolete/get-product-detail-v3.html), [v4](includes/obsolete/get-product-detail-v4.html), [v5](includes/obsolete/get-product-detail-v5.html).
+        Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](includes/obsolete/get-product-detail-v2.html), [v3](includes/obsolete/get-product-detail-v3.html), [v4](includes/obsolete/get-product-detail-v4.html), [v5](includes/obsolete/get-product-detail-v5.html), [v6](includes/obsolete/get-product-detail-v6.html).
       operationId: getBankingProductDetail
       parameters:
       - description: The _productId_ to obtain data for. _productId_ values are returned
@@ -2784,7 +3170,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBankingProductByIdV6'
+                $ref: '#/components/schemas/ResponseBankingProductByIdV7'
           description: Successful response
           headers:
             x-v:
@@ -2796,7 +3182,8 @@ paths:
                 $ref: '#/components/schemas/ResponseErrorListV2'
           description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
             - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+            Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+            - Invalid Version](#error-400-header-invalid-version)</li></ul>
         "404":
           content:
             application/json:
@@ -2818,7 +3205,7 @@ paths:
       summary: Get Product Detail
       tags:
       - Banking Products
-      x-version: "6"
+      x-version: "7"
 components:
   headers:
     XV:
@@ -2954,7 +3341,7 @@ components:
       name: product-category
       required: false
       schema:
-        $ref: '#/components/schemas/BankingProductCategory'
+        $ref: '#/components/schemas/BankingProductCategoryV2'
       style: form
     QueryBankingAccountIsOwned:
       description: Filters accounts based on whether they are owned by the authorised
@@ -2966,6 +3353,24 @@ components:
       required: false
       schema:
         type: boolean
+      style: form
+    QueryPlanStatus:
+      description: Allows for the filtering of plans based on their schedule status:<ul><li>`ACTIVE`
+        requests plans where one or more scheduled instalments have _isPaid_ equal
+        to `false`,</li><li>`INACTIVE` requests plans where all scheduled instalments
+        have _isPaid_ equal to `true`,</li><li>`ALL` requests all `ACTIVE` and `INACTIVE`
+        plans.</li></ul>
+      explode: true
+      in: query
+      name: plan-status
+      required: false
+      schema:
+        default: ACTIVE
+        enum:
+        - ACTIVE
+        - INACTIVE
+        - ALL
+        type: string
       style: form
     QueryPage:
       description: Page of results to request (standard pagination).
@@ -3065,7 +3470,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ResponseBankingAccountListV2'
+            $ref: '#/components/schemas/ResponseBankingAccountListV3'
       description: Successful response
       headers:
         x-v:
@@ -3079,8 +3484,9 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-        - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Page Size](#error-400-field-invalid-page-size)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3122,8 +3528,9 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-        - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Page Size](#error-400-field-invalid-page-size)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3165,8 +3572,9 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-        - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Page Size](#error-400-field-invalid-page-size)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3210,7 +3618,8 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3239,7 +3648,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ResponseBankingAccountByIdV4'
+            $ref: '#/components/schemas/ResponseBankingAccountByIdV5'
       description: Successful response
       headers:
         x-v:
@@ -3253,7 +3662,8 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3282,7 +3692,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ResponseBankingTransactionList'
+            $ref: '#/components/schemas/ResponseBankingTransactionListV2'
       description: Successful response
       headers:
         x-v:
@@ -3296,9 +3706,9 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-        - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid
-        Date](#error-400-field-invalid-date-time)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3337,7 +3747,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ResponseBankingTransactionByIdV2'
+            $ref: '#/components/schemas/ResponseBankingTransactionByIdV3'
       description: Successful response
       headers:
         x-v:
@@ -3351,8 +3761,9 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-        - Invalid Date](#error-400-field-invalid-date-time)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Date](#error-400-field-invalid-date-time)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3397,8 +3808,9 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-        - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Page Size](#error-400-field-invalid-page-size)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3451,8 +3863,9 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-        - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Page Size](#error-400-field-invalid-page-size)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3494,8 +3907,9 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-        - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Page Size](#error-400-field-invalid-page-size)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3539,8 +3953,9 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-        - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Page Size](#error-400-field-invalid-page-size)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3593,8 +4008,9 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-        - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Page Size](#error-400-field-invalid-page-size)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3636,8 +4052,9 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-        - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Page Size](#error-400-field-invalid-page-size)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3663,6 +4080,105 @@ components:
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
+    ListInstalmentPlans200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseBankingInstalmentPlanList'
+      description: Successful response
+      headers:
+        x-v:
+          $ref: '#/components/headers/XV'
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListInstalmentPlans400:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
+        - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Page Size](#error-400-field-invalid-page-size)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListInstalmentPlans404:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404
+        - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404
+        - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListInstalmentPlans406:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
+        - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListInstalmentPlans422:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422
+        - Invalid Page](#error-422-field-invalid-page)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListInstalmentPlansBulk200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseBankingInstalmentPlanList'
+      description: Successful response
+      headers:
+        x-v:
+          $ref: '#/components/headers/XV'
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListInstalmentPlansBulk400:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
+        - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Page Size](#error-400-field-invalid-page-size)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListInstalmentPlansBulk406:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
+        - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
+    ListInstalmentPlansBulk422:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422
+        - Invalid Page](#error-422-field-invalid-page)</li></ul>
+      headers:
+        x-fapi-interaction-id:
+          $ref: '#/components/headers/XFAPIInteractionId'
     ListBankingPayees200:
       content:
         application/json:
@@ -3681,8 +4197,9 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-        - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Page Size](#error-400-field-invalid-page-size)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3724,8 +4241,9 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-        - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Page Size](#error-400-field-invalid-page-size)</li></ul>
       headers:
         x-fapi-interaction-id:
           $ref: '#/components/headers/XFAPIInteractionId'
@@ -3764,7 +4282,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ResponseBankingProductListV3'
+            $ref: '#/components/schemas/ResponseBankingProductListV4'
       description: Successful response
       headers:
         x-v:
@@ -3776,9 +4294,9 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400
-        - Invalid Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid
-        Page Size](#error-400-field-invalid-page-size)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid
+        Date](#error-400-field-invalid-date-time)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>
     ListBankingProducts406:
       content:
         application/json:
@@ -3797,7 +4315,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ResponseBankingProductByIdV6'
+            $ref: '#/components/schemas/ResponseBankingProductByIdV7'
       description: Successful response
       headers:
         x-v:
@@ -3809,7 +4327,8 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
         - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+        Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400
+        - Invalid Version](#error-400-header-invalid-version)</li></ul>
     GetBankingProductDetail404:
       content:
         application/json:
@@ -3841,7 +4360,7 @@ components:
       required:
       - data
       type: object
-    ResponseBankingProductListV3:
+    ResponseBankingProductListV4:
       example:
         data:
           products:
@@ -3956,7 +4475,7 @@ components:
           first: first
       properties:
         data:
-          $ref: '#/components/schemas/ResponseBankingProductListV3_data'
+          $ref: '#/components/schemas/ResponseBankingProductListV4_data'
         links:
           $ref: '#/components/schemas/LinksPaginated'
         meta:
@@ -3966,7 +4485,7 @@ components:
       - links
       - meta
       type: object
-    BankingProductV5:
+    BankingProductV6:
       example:
         additionalInformation:
           eligibilityUri: eligibilityUri
@@ -4043,7 +4562,7 @@ components:
           type: string
           x-cds-type: DateTimeString
         productCategory:
-          $ref: '#/components/schemas/BankingProductCategory'
+          $ref: '#/components/schemas/BankingProductCategoryV2'
         name:
           description: The display name of the product.
           type: string
@@ -4242,14 +4761,14 @@ components:
       required:
       - additionalInfoUri
       type: object
-    ResponseBankingProductByIdV6:
+    ResponseBankingProductByIdV7:
       example:
         meta: '{}'
         links:
           self: self
       properties:
         data:
-          $ref: '#/components/schemas/BankingProductDetailV6'
+          $ref: '#/components/schemas/BankingProductDetailV7'
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -4258,10 +4777,10 @@ components:
       - data
       - links
       type: object
-    BankingProductDetailV6:
+    BankingProductDetailV7:
       allOf:
-      - $ref: '#/components/schemas/BankingProductV5'
-      - $ref: '#/components/schemas/BankingProductDetailV6_allOf'
+      - $ref: '#/components/schemas/BankingProductV6'
+      - $ref: '#/components/schemas/BankingProductDetailV7_allOf'
     BankingProductBundle:
       properties:
         name:
@@ -4291,7 +4810,7 @@ components:
       - description
       - name
       type: object
-    BankingProductFeatureV3:
+    BankingProductFeatureV4:
       properties:
         featureType:
           description: The type of feature described. For further details, refer to
@@ -4304,6 +4823,7 @@ components:
           - CARD_ACCESS
           - CASHBACK_OFFER
           - COMPLEMENTARY_PRODUCT_DISCOUNTS
+          - EXTRA_DOWN_PAYMENT
           - DIGITAL_BANKING
           - DIGITAL_WALLET
           - DONATE_INTEREST
@@ -4335,7 +4855,7 @@ components:
           type: string
         additionalInfo:
           description: Display text providing more information on the feature. Mandatory
-            if [_featureType_](#tocSproductfeaturetypedoc) is set to `OTHER`.
+            if the [_featureType_](#tocSproductfeaturetypedoc) value is `OTHER`.
           type: string
         additionalInfoUri:
           description: Link to a web page with more information on this feature.
@@ -4408,7 +4928,8 @@ components:
           type: string
         additionalInfo:
           description: Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc)
-            criteria. Mandatory if the field is set to `OTHER`.
+            criteria. Mandatory if the [_eligibilityType_](#tocSproducteligibilitytypedoc)
+            value is `OTHER`.
           type: string
         additionalInfoUri:
           description: Link to a web page with more information on this eligibility
@@ -4618,7 +5139,7 @@ components:
           x-cds-type: URIString
         eligibility:
           description: Eligibility constraints that apply to this discount. Mandatory
-            if _discountType_ is `ELIGIBILITY_ONLY`.
+            if the [_discountType_](#tocSproductdiscounttypedoc) value is `ELIGIBILITY_ONLY`.
           items:
             $ref: '#/components/schemas/BankingProductDiscountEligibility'
           type: array
@@ -4706,7 +5227,8 @@ components:
           type: string
         additionalInfo:
           description: Display text providing more information on this eligibility
-            constraint. Whether mandatory or not is dependent on the value of [_discountEligibilityType_](#tocSproductdiscounteligibilitydoc).
+            constraint. Mandatory if the [_discountEligibilityType_](#tocSproductdiscounteligibilitydoc)
+            value is `OTHER`.
           type: string
         additionalInfoUri:
           description: Link to a web page with more information on this eligibility
@@ -4764,7 +5286,8 @@ components:
           type: string
           x-cds-type: ExternalRef
         tiers:
-          description: Rate tiers applicable for this rate.
+          description: Qualifying criteria or conditions relevant to the associated
+            rate.
           items:
             $ref: '#/components/schemas/BankingProductRateTierV4'
           type: array
@@ -4870,7 +5393,8 @@ components:
           - UNCONSTRAINED
           type: string
         tiers:
-          description: Rate tiers applicable for this rate.
+          description: Qualifying criteria or conditions relevant to the associated
+            rate.
           items:
             $ref: '#/components/schemas/BankingProductRateTierV4'
           type: array
@@ -5001,7 +5525,48 @@ components:
       x-conditional:
       - additionalValue
       - additionalInfo
-    ResponseBankingAccountListV2:
+    BankingProductInstalments:
+      description: Details of instalment features on the account.
+      properties:
+        maximumConcurrentPlans:
+          description: Maximum number of concurrent active instalment plans that may
+            be created on the account. If `null`, there is no predetermined maximum
+            number.
+          type: integer
+          x-cds-type: NaturalNumber
+        instalmentsLimit:
+          description: Maximum combined limit of all instalment plans that may be
+            created on the account. If `null` or not present, an opened account balance
+            _creditLimit_ may be assumed to provide a maximum limit for instalments.
+          type: string
+          x-cds-type: AmountString
+        minimumPlanValue:
+          description: Minimum value that can be opened as an instalment plan.
+          type: string
+          x-cds-type: AmountString
+        maximumPlanValue:
+          description: Maximum value that can be opened as an instalment plan. If
+            `null` or not present, _instalmentsLimit_ is assumed to be the maximum
+            individual plan value.
+          type: string
+          x-cds-type: AmountString
+        minimumSplit:
+          description: Minimum number of instalment payments a plan can be created
+            with.
+          example: 4
+          type: integer
+          x-cds-type: PositiveInteger
+        maximumSplit:
+          description: Maximum number of instalment payments a plan can be created
+            with.
+          example: 4
+          type: integer
+          x-cds-type: PositiveInteger
+      required:
+      - maximumSplit
+      - minimumSplit
+      type: object
+    ResponseBankingAccountListV3:
       example:
         data:
           accounts:
@@ -5013,6 +5578,7 @@ components:
             nickname: nickname
             creationDate: creationDate
             productName: productName
+            isInstalmentDetailAvailable: false
             accountOwnership: UNKNOWN
           - accountId: ""
             maskedNumber: maskedNumber
@@ -5022,6 +5588,7 @@ components:
             nickname: nickname
             creationDate: creationDate
             productName: productName
+            isInstalmentDetailAvailable: false
             accountOwnership: UNKNOWN
         meta:
           totalRecords: 0
@@ -5034,7 +5601,7 @@ components:
           first: first
       properties:
         data:
-          $ref: '#/components/schemas/ResponseBankingAccountListV2_data'
+          $ref: '#/components/schemas/ResponseBankingAccountListV3_data'
         links:
           $ref: '#/components/schemas/LinksPaginated'
         meta:
@@ -5044,7 +5611,7 @@ components:
       - links
       - meta
       type: object
-    BankingAccountV2:
+    BankingAccountV3:
       example:
         accountId: ""
         maskedNumber: maskedNumber
@@ -5054,6 +5621,7 @@ components:
         nickname: nickname
         creationDate: creationDate
         productName: productName
+        isInstalmentDetailAvailable: false
         accountOwnership: UNKNOWN
       properties:
         accountId:
@@ -5104,11 +5672,17 @@ components:
           type: string
           x-cds-type: MaskedAccountString
         productCategory:
-          $ref: '#/components/schemas/BankingProductCategory'
+          $ref: '#/components/schemas/BankingProductCategoryV2'
         productName:
           description: The unique identifier of the account as defined by the data
             holder (akin to model number for the account).
           type: string
+        isInstalmentDetailAvailable:
+          default: false
+          description: '`true` if any active or inactive instalment plans are available
+            in the Get Instalment Plans endpoints. `false` if instalment plans are
+            not applicable to the account.'
+          type: boolean
       required:
       - accountId
       - accountOwnership
@@ -5117,14 +5691,14 @@ components:
       - productCategory
       - productName
       type: object
-    ResponseBankingAccountByIdV4:
+    ResponseBankingAccountByIdV5:
       example:
         meta: '{}'
         links:
           self: self
       properties:
         data:
-          $ref: '#/components/schemas/BankingAccountDetailV4'
+          $ref: '#/components/schemas/BankingAccountDetailV5'
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -5133,10 +5707,139 @@ components:
       - data
       - links
       type: object
-    BankingAccountDetailV4:
+    BankingAccountDetailV5:
       allOf:
-      - $ref: '#/components/schemas/BankingAccountV2'
-      - $ref: '#/components/schemas/BankingAccountDetailV4_allOf'
+      - $ref: '#/components/schemas/BankingAccountV3'
+      - $ref: '#/components/schemas/BankingAccountDetailV5_allOf'
+    BankingInstalmentPlan:
+      example:
+        amount: amount
+        planCharge: planCharge
+        planReference: planReference
+        instalmentInterval: instalmentInterval
+        creationDate: creationDate
+        merchantName: merchantName
+        planCurrency: AUD
+        duration: duration
+        accountId: ""
+        schedule:
+        - amountDue: amountDue
+          isPaid: false
+          dueDate: dueDate
+        - amountDue: amountDue
+          isPaid: false
+          dueDate: dueDate
+        planRate: planRate
+        merchantCategoryCode: merchantCategoryCode
+        planNickname: planNickname
+        planId: ""
+      properties:
+        accountId:
+          allOf:
+          - $ref: '#/components/schemas/BankingAccountId'
+          description: Unique identifier for the account.
+        planId:
+          allOf:
+          - $ref: '#/components/schemas/BankingInstalmentPlanId'
+          description: Unique identifier for this plan in accordance with ID Permanence
+            requirements.
+        planReference:
+          description: Unique purchase or order number for this plan, aligned to other
+            channels.
+          type: string
+        merchantName:
+          description: Name of the merchant associated with the instalment plan.
+          type: string
+        merchantCategoryCode:
+          description: The merchant category code (MCC) for the merchant associated
+            with the instalment plan.
+          type: string
+        planNickname:
+          description: The short display name of the plan as provided by the customer.
+            Where a customer has not provided a nickname, a display name derived by
+            the data holder consistent with other channels.
+          type: string
+        creationDate:
+          description: The date the plan was created.
+          type: string
+          x-cds-type: DateString
+        amount:
+          description: The original transaction amount the instalment plan was created
+            for, including any upfront payment. E.g., For a $100 purchase split into
+            four repayments, this would be `100.00`.
+          type: string
+          x-cds-type: AmountString
+        planCurrency:
+          default: AUD
+          description: The currency of the plan amount. If absent assumed to be `AUD`.
+          type: string
+          x-cds-type: CurrencyString
+        planCharge:
+          description: Any charges incorporated into the scheduled amounts due, excluding
+            other fees. E.g., If the consumer agrees to repay a $100 purchase plus
+            a $5 charge split across four instalments, this would be `5.00`.
+          type: string
+          x-cds-type: AmountString
+        planRate:
+          description: If displayed to the consumer, the percentage value of any charges
+            incorporated into the scheduled amounts due, excluding other fees. E.g.,
+            If the consumer agrees to repay a $1000 purchase plus 10% interest split
+            across twelve instalments, this would be `0.1`.
+          type: string
+          x-cds-type: RateString
+        duration:
+          description: The expected repayment period as at the creation of the plan.
+            Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+            (excludes recurrence syntax). E.g., For a further three fortnightly repayments
+            from the _creationDate_, this would be `P6W`.
+          type: string
+          x-cds-type: ExternalRef
+        instalmentInterval:
+          description: The expected repayment interval. Formatted according to [ISO
+            8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes
+            recurrence syntax). E.g., For fortnightly repayments, this would be `P2W`.
+          type: string
+          x-cds-type: ExternalRef
+        schedule:
+          description: Array of scheduled repayment amounts and dates.
+          items:
+            $ref: '#/components/schemas/BankingInstalmentPlanSchedule'
+          type: array
+      required:
+      - accountId
+      - amount
+      - creationDate
+      - duration
+      - instalmentInterval
+      - merchantName
+      - planId
+      - planNickname
+      - planReference
+      - schedule
+      type: object
+    BankingInstalmentPlanSchedule:
+      example:
+        amountDue: amountDue
+        isPaid: false
+        dueDate: dueDate
+      properties:
+        amountDue:
+          description: Amount due with this repayment.
+          type: string
+          x-cds-type: AmountString
+        dueDate:
+          description: Date this repayment is or was due.
+          type: string
+          x-cds-type: DateString
+        isPaid:
+          default: false
+          description: Whether the associated _amountDue_ has been paid or is otherwise
+            considered as not outstanding. `false` is assumed if absent.
+          type: boolean
+      required:
+      - amountDue
+      - dueDate
+      type: object
     BankingTermDepositAccount:
       properties:
         lodgementDate:
@@ -5278,7 +5981,7 @@ components:
       required:
       - repaymentType
       type: object
-    ResponseBankingTransactionList:
+    ResponseBankingTransactionListV2:
       example:
         data:
           transactions:
@@ -5294,6 +5997,7 @@ components:
             merchantName: merchantName
             billerCode: billerCode
             reference: reference
+            instalmentPlanId: ""
             accountId: ""
             merchantCategoryCode: merchantCategoryCode
             valueDateTime: valueDateTime
@@ -5312,6 +6016,7 @@ components:
             merchantName: merchantName
             billerCode: billerCode
             reference: reference
+            instalmentPlanId: ""
             accountId: ""
             merchantCategoryCode: merchantCategoryCode
             valueDateTime: valueDateTime
@@ -5326,7 +6031,7 @@ components:
           first: first
       properties:
         data:
-          $ref: '#/components/schemas/ResponseBankingTransactionList_data'
+          $ref: '#/components/schemas/ResponseBankingTransactionListV2_data'
         links:
           $ref: '#/components/schemas/LinksPaginated'
         meta:
@@ -5336,7 +6041,7 @@ components:
       - links
       - meta
       type: object
-    BankingTransaction:
+    BankingTransactionV2:
       example:
         postingDateTime: postingDateTime
         amount: amount
@@ -5350,6 +6055,7 @@ components:
         merchantName: merchantName
         billerCode: billerCode
         reference: reference
+        instalmentPlanId: ""
         accountId: ""
         merchantCategoryCode: merchantCategoryCode
         valueDateTime: valueDateTime
@@ -5434,6 +6140,13 @@ components:
           description: The merchant category code (or MCC) for an outgoing payment
             to a merchant.
           type: string
+        instalmentPlanId:
+          allOf:
+          - $ref: '#/components/schemas/BankingInstalmentPlanId'
+          description: If the transaction is associated with an instalment plan, the
+            corresponding _planId_ value. It should be noted that if the transaction
+            is for a fee associated with a plan, or any amount of repayment, the _amount_
+            of the transaction may not match a scheduled instalment amount.
         billerCode:
           description: BPAY Biller Code for the transaction (if available).
           type: string
@@ -5467,14 +6180,14 @@ components:
       - transactionId
       - postingDateTime
       - crn
-    ResponseBankingTransactionByIdV2:
+    ResponseBankingTransactionByIdV3:
       example:
         meta: '{}'
         links:
           self: self
       properties:
         data:
-          $ref: '#/components/schemas/BankingTransactionDetailV2'
+          $ref: '#/components/schemas/BankingTransactionDetailV3'
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -5483,10 +6196,10 @@ components:
       - data
       - links
       type: object
-    BankingTransactionDetailV2:
+    BankingTransactionDetailV3:
       allOf:
-      - $ref: '#/components/schemas/BankingTransaction'
-      - $ref: '#/components/schemas/BankingTransactionDetailV2_allOf'
+      - $ref: '#/components/schemas/BankingTransactionV2'
+      - $ref: '#/components/schemas/BankingTransactionDetailV3_allOf'
     ResponseBankingAccountsBalanceList:
       example:
         data:
@@ -5497,9 +6210,9 @@ components:
               currency: currency
             - amount: amount
               currency: currency
-            amortisedLimit: amortisedLimit
+            amortisedLimit: "0.00"
             currentBalance: currentBalance
-            creditLimit: creditLimit
+            creditLimit: "0.00"
             currency: AUD
             availableBalance: availableBalance
           - accountId: ""
@@ -5508,9 +6221,9 @@ components:
               currency: currency
             - amount: amount
               currency: currency
-            amortisedLimit: amortisedLimit
+            amortisedLimit: "0.00"
             currentBalance: currentBalance
-            creditLimit: creditLimit
+            creditLimit: "0.00"
             currency: AUD
             availableBalance: availableBalance
         meta:
@@ -5543,9 +6256,9 @@ components:
             currency: currency
           - amount: amount
             currency: currency
-          amortisedLimit: amortisedLimit
+          amortisedLimit: "0.00"
           currentBalance: currentBalance
-          creditLimit: creditLimit
+          creditLimit: "0.00"
           currency: AUD
           availableBalance: availableBalance
         meta: '{}'
@@ -5570,9 +6283,9 @@ components:
           currency: currency
         - amount: amount
           currency: currency
-        amortisedLimit: amortisedLimit
+        amortisedLimit: "0.00"
         currentBalance: currentBalance
-        creditLimit: creditLimit
+        creditLimit: "0.00"
         currency: AUD
         availableBalance: availableBalance
       properties:
@@ -5592,11 +6305,13 @@ components:
           type: string
           x-cds-type: AmountString
         creditLimit:
+          default: "0.00"
           description: Object representing the maximum amount of credit that is available
             for this account. Assumed to be zero if absent.
           type: string
           x-cds-type: AmountString
         amortisedLimit:
+          default: "0.00"
           description: Object representing the available limit amortised according
             to payment schedule. Assumed to be zero if absent.
           type: string
@@ -6026,9 +6741,9 @@ components:
               intervalSchedule:
                 intervals:
                 - interval: interval
-                  dayInInterval: dayInInterval
+                  dayInInterval: P1D
                 - interval: interval
-                  dayInInterval: dayInInterval
+                  dayInInterval: P1D
                 paymentsRemaining: 1
                 finalPaymentDate: finalPaymentDate
                 nonBusinessDayTreatment: "ON"
@@ -6150,9 +6865,9 @@ components:
               intervalSchedule:
                 intervals:
                 - interval: interval
-                  dayInInterval: dayInInterval
+                  dayInInterval: P1D
                 - interval: interval
-                  dayInInterval: dayInInterval
+                  dayInInterval: P1D
                 paymentsRemaining: 1
                 finalPaymentDate: finalPaymentDate
                 nonBusinessDayTreatment: "ON"
@@ -6297,9 +7012,9 @@ components:
           intervalSchedule:
             intervals:
             - interval: interval
-              dayInInterval: dayInInterval
+              dayInInterval: P1D
             - interval: interval
-              dayInInterval: dayInInterval
+              dayInInterval: P1D
             paymentsRemaining: 1
             finalPaymentDate: finalPaymentDate
             nonBusinessDayTreatment: "ON"
@@ -6666,9 +7381,9 @@ components:
         intervalSchedule:
           intervals:
           - interval: interval
-            dayInInterval: dayInInterval
+            dayInInterval: P1D
           - interval: interval
-            dayInInterval: dayInInterval
+            dayInInterval: P1D
           paymentsRemaining: 1
           finalPaymentDate: finalPaymentDate
           nonBusinessDayTreatment: "ON"
@@ -6709,7 +7424,7 @@ components:
       - eventBased
     BankingScheduledPaymentRecurrenceOnceOff:
       description: Indicates that the payment is a once off payment on a specific
-        future date. Mandatory if _recurrenceUType_ is set to `onceOff`.
+        future date. Mandatory if the _recurrenceUType_ value is `onceOff`.
       example:
         paymentDate: paymentDate
       properties:
@@ -6722,13 +7437,13 @@ components:
       type: object
     BankingScheduledPaymentRecurrenceIntervalSchedule:
       description: Indicates that the schedule of payments is defined by a series
-        of intervals. Mandatory if _recurrenceUType_ is set to `intervalSchedule`.
+        of intervals. Mandatory if the _recurrenceUType_ value is `intervalSchedule`.
       example:
         intervals:
         - interval: interval
-          dayInInterval: dayInInterval
+          dayInInterval: P1D
         - interval: interval
-          dayInInterval: dayInInterval
+          dayInInterval: P1D
         paymentsRemaining: 1
         finalPaymentDate: finalPaymentDate
         nonBusinessDayTreatment: "ON"
@@ -6780,7 +7495,7 @@ components:
     BankingScheduledPaymentInterval:
       example:
         interval: interval
-        dayInInterval: dayInInterval
+        dayInInterval: P1D
       properties:
         interval:
           description: An interval for the payment. Formatted according to [ISO 8601
@@ -6790,6 +7505,7 @@ components:
           type: string
           x-cds-type: ExternalRef
         dayInInterval:
+          default: P1D
           description: Uses an interval to define the ordinal day within the interval
             defined by the interval field on which the payment occurs. If the resulting
             duration is 0 days in length or larger than the number of days in the
@@ -6805,8 +7521,8 @@ components:
       type: object
     BankingScheduledPaymentRecurrenceLastWeekday:
       description: Indicates that the schedule of payments is defined according to
-        the last occurrence of a specific weekday in an interval. Mandatory if _recurrenceUType_
-        is set to `lastWeekDay`.
+        the last occurrence of a specific weekday in an interval. Mandatory if the
+        _recurrenceUType_ value is `lastWeekDay`.
       example:
         paymentsRemaining: 1
         interval: interval
@@ -6872,8 +7588,8 @@ components:
       type: object
     BankingScheduledPaymentRecurrenceEventBased:
       description: Indicates that the schedule of payments is defined according to
-        an external event that cannot be predetermined. Mandatory if _recurrenceUType_
-        is set to `eventBased`.
+        an external event that cannot be predetermined. Mandatory if the _recurrenceUType_
+        value is `eventBased`.
       example:
         description: description
       properties:
@@ -6903,7 +7619,7 @@ components:
       - simple
       - paf
     CommonSimpleAddress:
-      description: Required if _addressUType_ is set to `simple`.
+      description: Mandatory if the _addressUType_ value is `simple`.
       properties:
         mailingName:
           description: Name of the individual or business formatted for inclusion
@@ -6946,7 +7662,7 @@ components:
     CommonPAFAddress:
       description: Australian address formatted according to the file format defined
         by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf).
-        Required if _addressUType_ is set to `paf`.
+        Mandatory if the _addressUType_ value is `paf`.
       properties:
         dpid:
           description: Unique identifier for an address as defined by Australia Post.
@@ -7146,11 +7862,12 @@ components:
       type: object
       x-conditional:
       - meta
-    BankingProductCategory:
+    BankingProductCategoryV2:
       description: The category to which a product or account belongs. See [here](#product-categories)
         for more details.
       enum:
       - BUSINESS_LOANS
+      - BUY_NOW_PAY_LATER
       - CRED_AND_CHRG_CARDS
       - LEASES
       - MARGIN_LOANS
@@ -7174,6 +7891,71 @@ components:
       - CATSCT
       example: X2P1
       type: string
+    ResponseBankingInstalmentPlanList:
+      example:
+        data:
+          plans:
+          - amount: amount
+            planCharge: planCharge
+            planReference: planReference
+            instalmentInterval: instalmentInterval
+            creationDate: creationDate
+            merchantName: merchantName
+            planCurrency: AUD
+            duration: duration
+            accountId: ""
+            schedule:
+            - amountDue: amountDue
+              isPaid: false
+              dueDate: dueDate
+            - amountDue: amountDue
+              isPaid: false
+              dueDate: dueDate
+            planRate: planRate
+            merchantCategoryCode: merchantCategoryCode
+            planNickname: planNickname
+            planId: ""
+          - amount: amount
+            planCharge: planCharge
+            planReference: planReference
+            instalmentInterval: instalmentInterval
+            creationDate: creationDate
+            merchantName: merchantName
+            planCurrency: AUD
+            duration: duration
+            accountId: ""
+            schedule:
+            - amountDue: amountDue
+              isPaid: false
+              dueDate: dueDate
+            - amountDue: amountDue
+              isPaid: false
+              dueDate: dueDate
+            planRate: planRate
+            merchantCategoryCode: merchantCategoryCode
+            planNickname: planNickname
+            planId: ""
+        meta:
+          totalRecords: 0
+          totalPages: 6
+        links:
+          next: next
+          last: last
+          prev: prev
+          self: self
+          first: first
+      properties:
+        data:
+          $ref: '#/components/schemas/ResponseBankingInstalmentPlanList_data'
+        links:
+          $ref: '#/components/schemas/LinksPaginated'
+        meta:
+          $ref: '#/components/schemas/MetaPaginated'
+      required:
+      - data
+      - links
+      - meta
+      type: object
     BankingProductId:
       description: A data holder-specific unique identifier for a Banking product.
         This identifier must be unique to a product but does not otherwise need to
@@ -7200,6 +7982,11 @@ components:
         [CDR ID Permanence](#id-permanence) requirements.
       type: string
       x-cds-type: ASCIIString
+    BankingInstalmentPlanId:
+      description: A unique identifier for a Banking instalment plan, generated according
+        to [CDR ID Permanence](#id-permanence) requirements.
+      type: string
+      x-cds-type: ASCIIString
     RequestAccountIdListV1_data:
       example:
         accountIds:
@@ -7214,7 +8001,7 @@ components:
       required:
       - accountIds
       type: object
-    ResponseBankingProductListV3_data:
+    ResponseBankingProductListV4_data:
       example:
         products:
         - additionalInformation:
@@ -7322,12 +8109,12 @@ components:
           description: The list of products returned. If the filter results in an
             empty set then this array may have no records.
           items:
-            $ref: '#/components/schemas/BankingProductV5'
+            $ref: '#/components/schemas/BankingProductV6'
           type: array
       required:
       - products
       type: object
-    BankingProductDetailV6_allOf:
+    BankingProductDetailV7_allOf:
       properties:
         bundles:
           description: An array of bundles that this product participates in. Each
@@ -7340,7 +8127,7 @@ components:
         features:
           description: Array of features and limitations of the product.
           items:
-            $ref: '#/components/schemas/BankingProductFeatureV3'
+            $ref: '#/components/schemas/BankingProductFeatureV4'
           type: array
         constraints:
           description: Constraints on the application for the product such as minimum
@@ -7368,8 +8155,10 @@ components:
           items:
             $ref: '#/components/schemas/BankingProductLendingRateV3'
           type: array
+        instalments:
+          $ref: '#/components/schemas/BankingProductInstalments'
       type: object
-    ResponseBankingAccountListV2_data:
+    ResponseBankingAccountListV3_data:
       example:
         accounts:
         - accountId: ""
@@ -7380,6 +8169,7 @@ components:
           nickname: nickname
           creationDate: creationDate
           productName: productName
+          isInstalmentDetailAvailable: false
           accountOwnership: UNKNOWN
         - accountId: ""
           maskedNumber: maskedNumber
@@ -7389,18 +8179,19 @@ components:
           nickname: nickname
           creationDate: creationDate
           productName: productName
+          isInstalmentDetailAvailable: false
           accountOwnership: UNKNOWN
       properties:
         accounts:
           description: The list of accounts returned. If the filter results in an
             empty set then this array may have no records.
           items:
-            $ref: '#/components/schemas/BankingAccountV2'
+            $ref: '#/components/schemas/BankingAccountV3'
           type: array
       required:
       - accounts
       type: object
-    BankingAccountDetailV4_allOf:
+    BankingAccountDetailV5_allOf:
       properties:
         bsb:
           description: The unmasked BSB for the account. Is expected to be formatted
@@ -7416,6 +8207,8 @@ components:
           description: Optional field to indicate if this account is part of a bundle
             that is providing additional benefit to the customer.
           type: string
+        instalments:
+          $ref: '#/components/schemas/BankingProductInstalments'
         specificAccountUType:
           description: The type of structure to present account specific fields.
           enum:
@@ -7463,7 +8256,7 @@ components:
             in Product Reference with the following additional field.
           items:
             allOf:
-            - $ref: '#/components/schemas/BankingProductFeatureV3'
+            - $ref: '#/components/schemas/BankingProductFeatureV4'
             - properties:
                 isActivated:
                   default: UNKNOWN
@@ -7497,7 +8290,7 @@ components:
       - termDeposit
       - creditCard
       - loan
-    ResponseBankingTransactionList_data:
+    ResponseBankingTransactionListV2_data:
       example:
         transactions:
         - postingDateTime: postingDateTime
@@ -7512,6 +8305,7 @@ components:
           merchantName: merchantName
           billerCode: billerCode
           reference: reference
+          instalmentPlanId: ""
           accountId: ""
           merchantCategoryCode: merchantCategoryCode
           valueDateTime: valueDateTime
@@ -7530,6 +8324,7 @@ components:
           merchantName: merchantName
           billerCode: billerCode
           reference: reference
+          instalmentPlanId: ""
           accountId: ""
           merchantCategoryCode: merchantCategoryCode
           valueDateTime: valueDateTime
@@ -7539,16 +8334,16 @@ components:
       properties:
         transactions:
           items:
-            $ref: '#/components/schemas/BankingTransaction'
+            $ref: '#/components/schemas/BankingTransactionV2'
           type: array
       required:
       - transactions
       type: object
-    BankingTransactionDetailV2_allOf_extendedData_nppPayload:
-      description: Required if the _extensionUType_ value is `nppPayload`.
+    BankingTransactionDetailV3_allOf_extendedData_nppPayload:
+      description: Mandatory if the _extensionUType_ value is `nppPayload`.
       properties:
         extendedDescription:
-          description: An extended string description. Required if the _extensionUType_
+          description: An extended string description. Mandatory if the _extensionUType_
             value is `nppPayload`.
           type: string
         endToEndId:
@@ -7572,7 +8367,7 @@ components:
       type: object
       x-conditional:
       - extendedDescription
-    BankingTransactionDetailV2_allOf_extendedData:
+    BankingTransactionDetailV3_allOf_extendedData:
       properties:
         payer:
           description: Label of the originating payer. Mandatory for inbound payment.
@@ -7589,16 +8384,16 @@ components:
           - nppPayload
           type: string
         nppPayload:
-          $ref: '#/components/schemas/BankingTransactionDetailV2_allOf_extendedData_nppPayload'
+          $ref: '#/components/schemas/BankingTransactionDetailV3_allOf_extendedData_nppPayload'
       type: object
       x-conditional:
       - payer
       - payee
       - nppPayload
-    BankingTransactionDetailV2_allOf:
+    BankingTransactionDetailV3_allOf:
       properties:
         extendedData:
-          $ref: '#/components/schemas/BankingTransactionDetailV2_allOf_extendedData'
+          $ref: '#/components/schemas/BankingTransactionDetailV3_allOf_extendedData'
       required:
       - extendedData
       type: object
@@ -7611,9 +8406,9 @@ components:
             currency: currency
           - amount: amount
             currency: currency
-          amortisedLimit: amortisedLimit
+          amortisedLimit: "0.00"
           currentBalance: currentBalance
-          creditLimit: creditLimit
+          creditLimit: "0.00"
           currency: AUD
           availableBalance: availableBalance
         - accountId: ""
@@ -7622,9 +8417,9 @@ components:
             currency: currency
           - amount: amount
             currency: currency
-          amortisedLimit: amortisedLimit
+          amortisedLimit: "0.00"
           currentBalance: currentBalance
-          creditLimit: creditLimit
+          creditLimit: "0.00"
           currency: AUD
           availableBalance: availableBalance
       properties:
@@ -7811,9 +8606,9 @@ components:
             intervalSchedule:
               intervals:
               - interval: interval
-                dayInInterval: dayInInterval
+                dayInInterval: P1D
               - interval: interval
-                dayInInterval: dayInInterval
+                dayInInterval: P1D
               paymentsRemaining: 1
               finalPaymentDate: finalPaymentDate
               nonBusinessDayTreatment: "ON"
@@ -7935,9 +8730,9 @@ components:
             intervalSchedule:
               intervals:
               - interval: interval
-                dayInInterval: dayInInterval
+                dayInInterval: P1D
               - interval: interval
-                dayInInterval: dayInInterval
+                dayInInterval: P1D
               paymentsRemaining: 1
               finalPaymentDate: finalPaymentDate
               nonBusinessDayTreatment: "ON"
@@ -8076,3 +8871,57 @@ components:
       type: object
       x-conditional:
       - urn
+    ResponseBankingInstalmentPlanList_data:
+      example:
+        plans:
+        - amount: amount
+          planCharge: planCharge
+          planReference: planReference
+          instalmentInterval: instalmentInterval
+          creationDate: creationDate
+          merchantName: merchantName
+          planCurrency: AUD
+          duration: duration
+          accountId: ""
+          schedule:
+          - amountDue: amountDue
+            isPaid: false
+            dueDate: dueDate
+          - amountDue: amountDue
+            isPaid: false
+            dueDate: dueDate
+          planRate: planRate
+          merchantCategoryCode: merchantCategoryCode
+          planNickname: planNickname
+          planId: ""
+        - amount: amount
+          planCharge: planCharge
+          planReference: planReference
+          instalmentInterval: instalmentInterval
+          creationDate: creationDate
+          merchantName: merchantName
+          planCurrency: AUD
+          duration: duration
+          accountId: ""
+          schedule:
+          - amountDue: amountDue
+            isPaid: false
+            dueDate: dueDate
+          - amountDue: amountDue
+            isPaid: false
+            dueDate: dueDate
+          planRate: planRate
+          merchantCategoryCode: merchantCategoryCode
+          planNickname: planNickname
+          planId: ""
+      properties:
+        plans:
+          description: Array of instalment plans. An instalment plan describes the
+            terms of repayment for a specified loan amount such as a Buy Now, Pay
+            Later (BNPL) purchase or a specific card transaction.
+          items:
+            $ref: '#/components/schemas/BankingInstalmentPlan'
+          type: array
+      required:
+      - plans
+      type: object

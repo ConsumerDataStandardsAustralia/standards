@@ -14,14 +14,6 @@ echo "*** Generate cds_banking.md"
 diff -w cds_banking.md ../slate/source/includes/cds_banking.md > diff_banking.txt
 
 
-echo "*** Generate cds_banking_non_bank_lending.md"
-{
-  node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript--nodejs:Javascript' --summary api/cds_banking_non_bank_lending.json -o cds_banking_non_bank_lending.md >> create-markdown-log.txt
-} >> create-markdown-log.txt 2>&1
-
-diff -w cds_banking_non_bank_lending.md ../slate/source/includes/cds_banking_non_bank_lending.md > diff_banking_non_bank_lending.txt
-
-
 echo "*** Generate cds_energy.md"
 {
   node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript--nodejs:Javascript' --summary api/cds_energy.json -o cds_energy.md >> create-markdown-log.txt
@@ -73,14 +65,6 @@ echo "*** Generate cds_register.md"
 } >> create-markdown-log.txt 2>&1
 
 diff -w cds_register.md ../slate/source/includes/cds_register.md > diff_register.txt
-
-
-echo "*** Generate cds_register_banking_non_bank_lending.md"
-{
-  node ./widdershins-cdr/widdershins.js --environment ./widdershins-cdr/cdr_widdershins.json --search false --language_tabs 'http:HTTP' 'javascript--nodejs:Javascript' --summary api/cds_register_banking_non_bank_lending.json -o cds_register_banking_non_bank_lending.md >> create-markdown-log.txt
-} >> create-markdown-log.txt 2>&1
-
-diff -w cds_register_banking_non_bank_lending.md ../slate/source/includes/cds_register_banking_non_bank_lending.md > diff_register.txt
 
 
 echo "*** Generate cds_dcr.md"

@@ -1,5 +1,7 @@
 <h2 class="schema-heading" id="consumer-experience_dashboard-standards">Dashboard Standards</h2>
-
+<pre class="highlight diff tab-diff"><code>Removed historical obligation date for two Data Holder Dashboard CX Standards
+<span class="gd">- Effective from July 1st 2024:
+</span></code></pre>
 <p>This section outlines standards for consumer dashboards. These are expected to be implemented on each specific data sharing arrangement.</p>
 
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_dashboard-standards_data-holder-dashboards">Data Holder Dashboards</h3>
@@ -12,10 +14,10 @@
 </thead><tbody>
 <tr>
 <td><strong>Data Holder Dashboard:</strong><br>Amending authorisation details</td>
-<td><strong>Effective from July 1st 2024:</strong><br><br>When a consumer amends an authorisation in accordance with rule 4.22A, which is linked to a <em>cdr_arrangement_id</em> supplied by the data recipient as per the <a href="#amending-authorisation-standards">amending authorisation standards</a>, data holders <strong>MUST</strong> display the details of each authorisation’s amendment on the consumer’s dashboard.<br><br><strong>Note:</strong> this requirement gives effect to rule 1.15(3)(h).</td>
+<td>When a consumer amends an authorisation in accordance with rule 4.22A, which is linked to a <em>cdr_arrangement_id</em> supplied by the data recipient as per the <a href="#amending-authorisation-standards">amending authorisation standards</a>, data holders <strong>MUST</strong> display the details of each authorisation’s amendment on the consumer’s dashboard.<br><br><strong>Note:</strong> this requirement gives effect to rule 1.15(3)(h).</td>
 </tr>
 <tr>
 <td><strong>Data Holder Dashboard:</strong><br>Data recipient handling details</td>
-<td><strong>Effective from July 1st 2024:</strong><br><br>Data holders <strong>MUST</strong> advise consumers to check with the relevant data recipient for information about how their data may be handled.<br><br>The precise wording of this message is at the discretion of the data holder. The data holder <strong>MAY</strong> consider using or paraphrasing the following message:<br><ul><li><i>‘You should check with [ADR brand/the data recipient] for more information on how they are handling your data, and for any other permissions you may have given them. See [ADR]’s CDR policy or their Dashboard for more information.’</i><ul></td>
+<td>Data holders <strong>MUST</strong> advise consumers to check with the relevant data recipient for information about how their data may be handled.<br><br>The precise wording of this message is at the discretion of the data holder. The data holder <strong>MAY</strong> consider using or paraphrasing the following message:<br><ul><li><i>‘You should check with [ADR brand/the data recipient] for more information on how they are handling your data, and for any other permissions you may have given them. See [ADR]’s CDR policy or their Dashboard for more information.’</i><ul></td>
 </tr>
 </tbody></table>

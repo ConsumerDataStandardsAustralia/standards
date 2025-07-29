@@ -1,4 +1,7 @@
-<h2 id='data-language-standards-common'>Data Language Standards: Common</h2>
+<h2 id='data-language-standards-common'>Data Language Standards: Common</h2><pre class="highlight diff tab-diff"><code>Updates to accommodate non-bank lending
+<span class="gd">- See the Banking Language section
+</span><span class="gi">+ See the Banking and Non-Bank Lending Language section
+</span></code></pre>
 <blockquote>
 <p><img src="./images/cx_standards0.png" width="375px"><br>
 Example of data language standards presented in a consumer-facing interaction, where [1] refers to Data cluster language, and [2] refers to Data permission language.</p>
@@ -14,11 +17,11 @@ Example of data language standards presented in a consumer-facing interaction, w
 </thead><tbody>
 <tr>
 <td><strong>Data Language Standards:</strong> Language to be used</td>
-<td><p>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions. See the <a href="#banking-language">Banking Language</a> section for language to be used when requesting banking data; and the <a href="#energy-language">Energy Language</a> section for language to be used when requesting energy data.</p><p>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</p><p>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an &#39;*&#39; for the relevant data.</p><p>Data Recipients and Data Holders <strong>SHOULD</strong> expand on the proposed language where appropriate to communicate further details of what is being shared.</p><p>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist.</p><p>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an &#39;&dagger;&#39; for the relevant data.</p></td>
+<td><p>Data Recipients and Data Holders <strong>MUST</strong> use data language standards to describe data clusters and permissions in consumer-facing interactions. See the <a href="#banking-and-non-bank-lending-language">Banking and Non-Bank Lending Language</a> section for language to be used when requesting banking and non-bank lending data; and the <a href="#energy-language">Energy Language</a> section for language to be used when requesting energy data.</p><p>Data language standards <strong>MUST</strong> be used when CDR data is being requested, reviewed, or access to such data is withdrawn.</p><p>Data Recipients and Data Holders <b>MUST</b> use the appropriate data standards language for business consumers as denoted with an &#39;*&#39; for the relevant data.</p><p>Data Recipients and Data Holders <strong>SHOULD</strong> expand on the proposed language where appropriate to communicate further details of what is being shared.</p><p>Additional details <strong>MAY</strong> include additional information in context, such as in-line help or tool tips, and/or additional permissions where they may exist.</p><p>Examples of permission details that <strong>MAY</strong> be used and provided as in-line help are denoted with an &#39;&dagger;&#39; for the relevant data.</p></td>
 </tr>
 <tr>
 <td><strong>Data Language Standards:</strong> Detailed scope requests</td>
-<td><p>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend <em>Basic</em> and <em>Detailed</em> data cluster and permission language to show that <em>Detailed</em> scopes include <em>Basic</em> data.</p><p>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an &#39;&Dagger;&#39; for the relevant scope(s). See the <a href="#banking-language">Banking Language</a> section for banking data and the <a href="#energy-language">Energy Language</a> section for energy data.</p><p><strong>Example:</strong> A Data Recipient presents the <em>Detailed</em> data cluster in a data request to a consumer, but does not present the <em>Basic</em> data cluster. The <em>Detailed</em> scope includes <em>Basic</em> data, but this is not apparent to the consumer based on the data cluster language and permissions used for the <em>Detailed</em> scope.</p></td>
+<td><p>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend <em>Basic</em> and <em>Detailed</em> data cluster and permission language to show that <em>Detailed</em> scopes include <em>Basic</em> data.</p><p>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an &#39;&Dagger;&#39; for the relevant scope(s). See the <a href="#banking-and-non-bank-lending-language">Banking and Non-Bank Lending Language</a> section for banking and non-bank lending data and the <a href="#energy-language">Energy Language</a> section for energy data.</p><p><strong>Example:</strong> A Data Recipient presents the <em>Detailed</em> data cluster in a data request to a consumer but does not present the <em>Basic</em> data cluster. The <em>Detailed</em> scope includes <em>Basic</em> data, but this is not apparent to the consumer based on the data cluster language and permissions used for the <em>Detailed</em> scope.</p></td>
 </tr>
 </tbody></table>
 <h2 id='customer-language-common'>Customer Language: Common</h2>
@@ -100,9 +103,22 @@ Example of data language standards presented in a consumer-facing interaction, w
 
 <p><strong>Note:</strong> For non-individual consumers, claims available via the profile scope will only return the details of the authenticated End-User and not the organisation or non-individual consumer.</p>
 
-<p><br/></p>
-<h2 id='banking-language'>Banking Language</h2><h3 id='banking-accounts'>Banking Accounts</h3>
-<p>See below for the data language standards for the banking account scopes:</p>
+<p><br></p>
+<h2 id='banking-and-non-bank-lending-language'>Banking and Non-Bank Lending Language</h2><pre class="highlight diff tab-diff"><code> - Updated main title:
+<span class="gd">- Banking Language
+</span><span class="gi">+ Banking and Non-Bank Lending Language
+</span>
+ - Updated title and preamble:
+<span class="gd">- Banking Accounts
+- See below for the data language standards for the banking account scopes:
+</span><span class="gi">+ Banking and Non-Bank Lending Accounts
++ See below for the data language standards for the banking and non-bank lending account scopes:
+</span>
+ - Updated preamble:
+<span class="gd">- See below for the data language standards for the banking transactions scope:
+</span><span class="gi">+ See below for the data language standards for the transactions scope:
+</span></code></pre><h3 id='banking-and-non-bank-lending-accounts'>Banking and Non-Bank Lending Accounts</h3>
+<p>See below for the data language standards for the banking and non-bank lending account scopes:</p>
 
 <table><thead>
 <tr>
@@ -128,7 +144,7 @@ Example of data language standards presented in a consumer-facing interaction, w
 </tr>
 </tbody></table>
 <h3 id='transactions'>Transactions</h3>
-<p>See below for the data language standards for the banking transactions scope:</p>
+<p>See below for the data language standards for the transactions scope:</p>
 
 <table><thead>
 <tr>
@@ -176,7 +192,7 @@ Example of data language standards presented in a consumer-facing interaction, w
 </tr>
 </tbody></table>
 
-<p><br/></p>
+<p><br></p>
 <h2 id='energy-language'>Energy Language</h2><h3 id='energy-accounts'>Energy Accounts</h3>
 <p>See below for the data language standards for the energy accounts scopes:</p>
 

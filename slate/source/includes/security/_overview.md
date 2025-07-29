@@ -1,5 +1,9 @@
 
 ## Overview
+```diff
+Removed the following from Symbols and Abbreviated terms section:
+- TDIF: Trusted Digital Identity Framework
+```
 
 This information security profile builds upon the foundations of the [Financial-grade API Advanced Profile](https://openid.net/specs/openid-financial-api-part-2-1_0.html) **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** and other standards relating to
 [Open ID Connect 1.0](http://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)**.
@@ -39,5 +43,4 @@ For information on the specific normative references that underpin this profile 
 - **PPID:** Pairwise Pseudonymous Identifier
 - **REST:** Representational State Transfer
 - **SP:** Data Recipient Software Product
-- **TDIF:** Trusted Digital Identity Framework
 - **TLS:** Transport Layer Security

@@ -1,4 +1,6 @@
-<h2 id='authorisation-standards'>Authorisation Standards</h2>
+<h2 id='authorisation-standards'>Authorisation Standards</h2><pre class="highlight diff tab-diff"><code>Added following new standards:
+<span class="gi">+ Authorisation: Add or Switch Profiles
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -16,6 +18,10 @@
 <tr>
 <td><strong>Authorisation:</strong><br/>Profile selection</td>
 <td><p>Data holders <strong>MAY</strong> add a &#39;profile selection&#39; step or equivalent prior to the account selection step if a single identifier provides access to different customer accounts. For example, one customer ID may give access to business customer and individual customer accounts.</p><p>The &#39;profile selection&#39; step <strong>SHOULD</strong> only be considered if it is an existing customer experience, and <strong>SHOULD</strong> be as minimal as possible to avoid introducing unwarranted friction (having regard to CDR Rule 4.24).</p></td>
+</tr>
+<tr>
+<td><strong>Authorisation:</strong><br/>Add or Switch Profiles</td>
+<td>Where the authorisation flow is presented to the consumer in a data holder app, the data holder <strong>MUST</strong> provide the consumer with the ability to switch or add user profiles based on the profiles supported by that app.</td>
 </tr>
 <tr>
 <td><strong>Authorisation:</strong><br>Account confirm</td>

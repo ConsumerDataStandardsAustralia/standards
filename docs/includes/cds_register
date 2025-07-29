@@ -227,7 +227,7 @@ This operation does not require authentication.
 
 <p>Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-software-statement-assertion-v1.html">v1</a>, <a href="includes/obsolete/get-software-statement-assertion-v2.html">v2</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-software-statement-assertion-v1.html">v1</a>, <a href="includes/obsolete/get-software-statement-assertion-v2.html">v2</a>, <a href="includes/obsolete/get-software-statement-assertion-v3.html">v3</a>.</p>
 
 <h3 id="cdr-register-api_get-software-statement-assertion-ssa_endpoint-version">Endpoint Version</h3>
 
@@ -239,7 +239,7 @@ This operation does not require authentication.
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>3</strong></td>
+<td><strong>4</strong></td>
 </tr>
 </tbody></table>
 
@@ -258,10 +258,10 @@ This operation does not require authentication.
 <tr>
 <td>industry</td>
 <td>path</td>
-<td><a href="#schemacdr-register-apiindustryenum">IndustryEnum</a></td>
+<td><a href="#schemacdr-register-apiindustryenumrecipients">IndustryEnumRecipients</a></td>
 <td>mandatory</td>
 <td></td>
-<td>The industry the participant is retrieving data for (Banking, etc.)</td>
+<td>Filters the response to participants associated with an industry.</td>
 </tr>
 <tr>
 <td>x-v</td>
@@ -313,18 +313,6 @@ This operation does not require authentication.
 <th>Value</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>industry</td>
-<td>banking</td>
-</tr>
-<tr>
-<td>industry</td>
-<td>energy</td>
-</tr>
-<tr>
-<td>industry</td>
-<td>telco</td>
-</tr>
 <tr>
 <td>industry</td>
 <td>all</td>
@@ -462,7 +450,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-data-holder-brands-v1.html">v1</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-data-holder-brands-v1.html">v1</a>, <a href="includes/obsolete/get-data-holder-brands-v2.html">v2</a>.</p>
 
 <h3 id="cdr-register-api_get-data-holder-brands_endpoint-version">Endpoint Version</h3>
 
@@ -474,7 +462,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -493,7 +481,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>industry</td>
 <td>path</td>
-<td><a href="#schemacdr-register-apiindustryenum">IndustryEnum</a></td>
+<td><a href="#schemacdr-register-apiindustryenumv2">IndustryEnumV2</a></td>
 <td>mandatory</td>
 <td></td>
 <td>The industry the participant is retrieving data for (Banking, etc.)</td>
@@ -563,6 +551,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>industry</td>
 <td>energy</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>non-bank-lending</td>
 </tr>
 <tr>
 <td>industry</td>
@@ -647,7 +639,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-register-apiresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</a></td>
+<td><a href="#schemacdr-register-apiresponseregisterdataholderbrandlistv2">ResponseRegisterDataHolderBrandListV2</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -735,6 +727,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register.</p>
 
+<p>Obsolete versions: <a href="includes/obsolete/get-data-holder-brands-summary-v1.html">v1</a>.</p>
+
 <h3 id="cdr-register-api_get-data-holder-brands-summary_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -745,7 +739,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -764,7 +758,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>industry</td>
 <td>path</td>
-<td><a href="#schemacdr-register-apiindustryenum">IndustryEnum</a></td>
+<td><a href="#schemacdr-register-apiindustryenumv2">IndustryEnumV2</a></td>
 <td>mandatory</td>
 <td></td>
 <td>The industry the participant is retrieving data for (Banking, etc.)</td>
@@ -810,6 +804,10 @@ To perform this operation, you must be authenticated and authorised with the fol
 <tr>
 <td>industry</td>
 <td>energy</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>non-bank-lending</td>
 </tr>
 <tr>
 <td>industry</td>
@@ -939,13 +937,13 @@ This operation does not require authentication.
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.cdr.gov.au/cdr-register/v1/{industry}/data-holders/status</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.cdr.gov.au</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">x-v</span><span class="p">:</span> <span class="s">1</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">If-None-Match</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'1'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'If-None-Match'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
@@ -963,6 +961,8 @@ This operation does not require authentication.
 
 <p>Endpoint used by participants to discover the statuses for Data Holders from the CDR Register.</p>
 
+<p>Obsolete versions: <a href="includes/obsolete/get-data-holder-statuses-v1.html">v1</a>.</p>
+
 <h3 id="cdr-register-api_get-data-holder-statuses_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -973,7 +973,7 @@ This operation does not require authentication.
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -992,7 +992,7 @@ This operation does not require authentication.
 <tr>
 <td>industry</td>
 <td>path</td>
-<td><a href="#schemacdr-register-apiindustryenum">IndustryEnum</a></td>
+<td><a href="#schemacdr-register-apiindustryenumv2">IndustryEnumV2</a></td>
 <td>mandatory</td>
 <td></td>
 <td>The industry the participant is retrieving data for (Banking, etc.)</td>
@@ -1001,9 +1001,9 @@ This operation does not require authentication.
 <td>x-v</td>
 <td>header</td>
 <td>string</td>
-<td>optional</td>
-<td><code>1</code></td>
-<td>The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to <code>1</code> if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained.</td>
+<td>mandatory</td>
+<td></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
 </tr>
 <tr>
 <td>x-min-v</td>
@@ -1011,7 +1011,7 @@ This operation does not require authentication.
 <td>string</td>
 <td>optional</td>
 <td></td>
-<td>The <a href="#http-headers">minimum version</a> of the API endpoint requested by the client. Must be set to a positive integer if provided.</td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
 </tr>
 <tr>
 <td>If-None-Match</td>
@@ -1038,6 +1038,10 @@ This operation does not require authentication.
 <tr>
 <td>industry</td>
 <td>energy</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>non-bank-lending</td>
 </tr>
 <tr>
 <td>industry</td>
@@ -1179,7 +1183,7 @@ This operation does not require authentication.
 
 <p>Endpoint used by participants to discover the statuses for software products from the CDR Register.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-software-product-statuses-v1.html">v1</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-software-product-statuses-v1.html">v1</a>, <a href="includes/obsolete/get-software-product-statuses-v2.html">v2</a>.</p>
 
 <h3 id="cdr-register-api_get-software-products-statuses_endpoint-version">Endpoint Version</h3>
 
@@ -1191,7 +1195,7 @@ This operation does not require authentication.
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -1210,10 +1214,10 @@ This operation does not require authentication.
 <tr>
 <td>industry</td>
 <td>path</td>
-<td><a href="#schemacdr-register-apiindustryenum">IndustryEnum</a></td>
+<td><a href="#schemacdr-register-apiindustryenumrecipients">IndustryEnumRecipients</a></td>
 <td>mandatory</td>
 <td></td>
-<td>The industry the participant is retrieving data for (Banking, etc.)</td>
+<td>Filters the response to participants associated with an industry.</td>
 </tr>
 <tr>
 <td>x-v</td>
@@ -1249,18 +1253,6 @@ This operation does not require authentication.
 <th>Value</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>industry</td>
-<td>banking</td>
-</tr>
-<tr>
-<td>industry</td>
-<td>energy</td>
-</tr>
-<tr>
-<td>industry</td>
-<td>telco</td>
-</tr>
 <tr>
 <td>industry</td>
 <td>all</td>
@@ -1393,7 +1385,7 @@ This operation does not require authentication.
 
 <p>Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-data-recipient-statuses-v1.html">v1</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-data-recipient-statuses-v1.html">v1</a>, <a href="includes/obsolete/get-data-recipient-statuses-v2.html">v2</a>.</p>
 
 <h3 id="cdr-register-api_get-data-recipients-statuses_endpoint-version">Endpoint Version</h3>
 
@@ -1405,7 +1397,7 @@ This operation does not require authentication.
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -1424,10 +1416,10 @@ This operation does not require authentication.
 <tr>
 <td>industry</td>
 <td>path</td>
-<td><a href="#schemacdr-register-apiindustryenum">IndustryEnum</a></td>
+<td><a href="#schemacdr-register-apiindustryenumrecipients">IndustryEnumRecipients</a></td>
 <td>mandatory</td>
 <td></td>
-<td>The industry the participant is retrieving data for (Banking, etc.)</td>
+<td>Filters the response to participants associated with an industry.</td>
 </tr>
 <tr>
 <td>x-v</td>
@@ -1463,18 +1455,6 @@ This operation does not require authentication.
 <th>Value</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>industry</td>
-<td>banking</td>
-</tr>
-<tr>
-<td>industry</td>
-<td>energy</td>
-</tr>
-<tr>
-<td>industry</td>
-<td>telco</td>
-</tr>
 <tr>
 <td>industry</td>
 <td>all</td>
@@ -1607,7 +1587,7 @@ This operation does not require authentication.
 
 <p>Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-data-recipients-v2.html">v2</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-data-recipients-v2.html">v2</a>, <a href="includes/obsolete/get-data-recipients-v3.html">v3</a>.</p>
 
 <h3 id="cdr-register-api_get-data-recipients_endpoint-version">Endpoint Version</h3>
 
@@ -1619,7 +1599,7 @@ This operation does not require authentication.
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>3</strong></td>
+<td><strong>4</strong></td>
 </tr>
 </tbody></table>
 
@@ -1638,10 +1618,10 @@ This operation does not require authentication.
 <tr>
 <td>industry</td>
 <td>path</td>
-<td><a href="#schemacdr-register-apiindustryenum">IndustryEnum</a></td>
+<td><a href="#schemacdr-register-apiindustryenumrecipients">IndustryEnumRecipients</a></td>
 <td>mandatory</td>
 <td></td>
-<td>The industry the participant is retrieving data for (Banking, etc.)</td>
+<td>Filters the response to participants associated with an industry.</td>
 </tr>
 <tr>
 <td>x-v</td>
@@ -1677,18 +1657,6 @@ This operation does not require authentication.
 <th>Value</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>industry</td>
-<td>banking</td>
-</tr>
-<tr>
-<td>industry</td>
-<td>energy</td>
-</tr>
-<tr>
-<td>industry</td>
-<td>telco</td>
-</tr>
 <tr>
 <td>industry</td>
 <td>all</td>
@@ -2080,13 +2048,13 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponseregisterdataholderbrandlist">ResponseRegisterDataHolderBrandList</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponseregisterdataholderbrandlistv2">ResponseRegisterDataHolderBrandListV2</h3>
 
-<p id="tocSresponseregisterdataholderbrandlist" class="orig-anchor"></p>
+<p id="tocSresponseregisterdataholderbrandlistv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_responseregisterdataholderbrandlist"></a>
-  <a class="schema-anchor" id="schemacdr-register-apiresponseregisterdataholderbrandlist"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiresponseregisterdataholderbrandlistv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2144,7 +2112,7 @@ This operation does not require authentication.
 </span></code></pre>
 <p><em>Response containing a list of CDR Register Data Holder Brand objects.</em></p>
 
-<h3 id="cdr-register-api_responseregisterdataholderbrandlist_properties">Properties</h3>
+<h3 id="cdr-register-api_responseregisterdataholderbrandlistv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -2157,7 +2125,7 @@ This operation does not require authentication.
 </thead><tbody>
 <tr>
 <td>data</td>
-<td>[<a href="#schemacdr-register-apiregisterdataholderbrand">RegisterDataHolderBrand</a>]</td>
+<td>[<a href="#schemacdr-register-apiregisterdataholderbrandv2">RegisterDataHolderBrandV2</a>]</td>
 <td>mandatory</td>
 <td></td>
 <td>Response data for the query.</td>
@@ -2178,13 +2146,13 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api_schemas_tocSregisterdataholderbrand">RegisterDataHolderBrand</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSregisterdataholderbrandv2">RegisterDataHolderBrandV2</h3>
 
-<p id="tocSregisterdataholderbrand" class="orig-anchor"></p>
+<p id="tocSregisterdataholderbrandv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_registerdataholderbrand"></a>
-  <a class="schema-anchor" id="schemacdr-register-apiregisterdataholderbrand"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiregisterdataholderbrandv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2225,7 +2193,7 @@ This operation does not require authentication.
   </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api_registerdataholderbrand_properties">Properties</h3>
+<h3 id="cdr-register-api_registerdataholderbrandv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -2252,7 +2220,7 @@ This operation does not require authentication.
 </tr>
 <tr>
 <td>industries</td>
-<td>[<a href="#schemacdr-register-apiindustriesenum">IndustriesEnum</a>]</td>
+<td>[<a href="#schemacdr-register-apiindustriesenumv2">IndustriesEnumV2</a>]</td>
 <td>mandatory</td>
 <td></td>
 <td>The industries the Data Holder Brand belongs to.</td>
@@ -2301,7 +2269,7 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h4 id="cdr-register-api_registerdataholderbrand_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-register-api_registerdataholderbrandv2_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -2367,7 +2335,7 @@ This operation does not require authentication.
 </thead><tbody>
 <tr>
 <td>data</td>
-<td>[<a href="#schemacdr-register-apidataholderbrandsummary">DataHolderBrandSummary</a>]</td>
+<td>[<a href="#schemacdr-register-apidataholderbrandsummaryv2">DataHolderBrandSummaryV2</a>]</td>
 <td>mandatory</td>
 <td></td>
 <td>Response data for the query.</td>
@@ -2388,13 +2356,13 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api_schemas_tocSdataholderbrandsummary">DataHolderBrandSummary</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSdataholderbrandsummaryv2">DataHolderBrandSummaryV2</h3>
 
-<p id="tocSdataholderbrandsummary" class="orig-anchor"></p>
+<p id="tocSdataholderbrandsummaryv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_dataholderbrandsummary"></a>
-  <a class="schema-anchor" id="schemacdr-register-apidataholderbrandsummary"></a>
+  <a class="schema-anchor" id="schemacdr-register-apidataholderbrandsummaryv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2411,7 +2379,7 @@ This operation does not require authentication.
   </span><span class="s2">"arbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api_dataholderbrandsummary_properties">Properties</h3>
+<h3 id="cdr-register-api_dataholderbrandsummaryv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -2459,7 +2427,7 @@ This operation does not require authentication.
 </tr>
 <tr>
 <td>industries</td>
-<td>[<a href="#schemacdr-register-apiindustriesenum">IndustriesEnum</a>]</td>
+<td>[<a href="#schemacdr-register-apiindustriesenumv2">IndustriesEnumV2</a>]</td>
 <td>mandatory</td>
 <td></td>
 <td>The industries the Data Holder Brand belongs to.</td>
@@ -2494,17 +2462,17 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api_schemas_tocSindustryenum">IndustryEnum</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSindustryenumv2">IndustryEnumV2</h3>
 
-<p id="tocSindustryenum" class="orig-anchor"></p>
+<p id="tocSindustryenumv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_industryenum"></a>
-  <a class="schema-anchor" id="schemacdr-register-apiindustryenum"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiindustryenumv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="s2">"banking"</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api_industryenum_properties">Properties</h3>
+<h3 id="cdr-register-api_industryenumv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -2524,7 +2492,7 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h4 id="cdr-register-api_industryenum_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-register-api_industryenumv2_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -2539,6 +2507,10 @@ This operation does not require authentication.
 <tr>
 <td><em>anonymous</em></td>
 <td>energy</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>non-bank-lending</td>
 </tr>
 <tr>
 <td><em>anonymous</em></td>
@@ -2550,17 +2522,17 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api_schemas_tocSindustriesenum">IndustriesEnum</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSindustriesenumv2">IndustriesEnumV2</h3>
 
-<p id="tocSindustriesenum" class="orig-anchor"></p>
+<p id="tocSindustriesenumv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_industriesenum"></a>
-  <a class="schema-anchor" id="schemacdr-register-apiindustriesenum"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiindustriesenumv2"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="s2">"banking"</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-register-api_industriesenum_properties">Properties</h3>
+<h3 id="cdr-register-api_industriesenumv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -2580,7 +2552,7 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h4 id="cdr-register-api_industriesenum_enumerated-values-main">Enumerated Values</h4>
+<h4 id="cdr-register-api_industriesenumv2_enumerated-values-main">Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -2598,7 +2570,55 @@ This operation does not require authentication.
 </tr>
 <tr>
 <td><em>anonymous</em></td>
+<td>non-bank-lending</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
 <td>telco</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSindustryenumrecipients">IndustryEnumRecipients</h3>
+
+<p id="tocSindustryenumrecipients" class="orig-anchor"></p>
+
+<p>
+  <a id="cdr-register-api_schema-base_industryenumrecipients"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiindustryenumrecipients"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="s2">"all"</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-register-api_industryenumrecipients_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h4 id="cdr-register-api_industryenumrecipients_enumerated-values-main">Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>all</td>
 </tr>
 </tbody></table>
 

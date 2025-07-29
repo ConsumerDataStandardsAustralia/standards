@@ -8,7 +8,8 @@ version_regex = r"\b\d{1}\.\d{2}\.\d{1}\b" #regex for version
 diff_regex = re.compile(r'```diff(.*?)```', re.DOTALL) #regex for diff blocks
 new_version = "-1.-1.-1"
 current_version = "-2.-2.-2"
-exclude_list = ["_version_delta_intro.md"] # Define the exclude_list for diff block removal
+file_exclude_list = ["_version_delta_intro.md"] # Define the file exclude_list for diff block removal
+dir_exclude_list = [] # Define the directory exclude_list for diff block removal, e.g. "non-bank-lending". NOTE: DOES NOT support subdirectories, e.g. "slate/nbl"
 changelog_table_header = "| Date | Version | Description | Detail of change |"
 SWAGGERGENAPIPATH = '../swagger-gen/api'
 INTROMDPATH = '../slate/source/includes/introduction/_intro.md'
@@ -179,9 +180,12 @@ def remove_diff_blocks(file_name):
 
 # Function to recursively search for Markdown files and remove "```diff" blocks
 def search_and_remove_diff_blocks(directory='.'):
-    for root, _, files in os.walk(directory):
+    for root, dirs, files in os.walk(directory):
+
+        dirs[:] = [d for d in dirs if d not in dir_exclude_list]
+        
         for file_name in files:
-            if (file_name.endswith('.md') or file_name.endswith('.md.erb')) and file_name not in exclude_list:
+            if (file_name.endswith('.md') or file_name.endswith('.md.erb')) and file_name not in file_exclude_list:
                 file_path = os.path.join(root, file_name)
                 remove_diff_blocks(file_path)
 
