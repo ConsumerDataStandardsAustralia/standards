@@ -1526,7 +1526,7 @@ Obtain transactions for a specific account.
 
 Some general notes that apply to all endpoints that retrieve transactions:<ul><li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the "effective" date/time which will be defined as:<ul><li>Posted date/time if available, then<li>Execution date/time if available, then<li>A reasonable date/time nominated by the data holder using internal data structures</ul><li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</ul>
 
-Obsolete versions: [v1](includes/obsolete/get-transactions-for-account-v1.html)
+Obsolete versions: [v1](includes/obsolete/get-transactions-for-account-v1.html).
 
 <h3 id="cdr-banking-api_get-transactions-for-account_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -1942,7 +1942,7 @@ fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/direct-debits', {
 
 Obtain direct debit authorisations for multiple, filtered accounts.
 
-Obsolete versions: [v1](includes/obsolete/get-bulk-direct-debits-v1.html)
+Obsolete versions: [v1](includes/obsolete/get-bulk-direct-debits-v1.html).
 
 <h3 id="cdr-banking-api_get-bulk-direct-debits_endpoint-version">Endpoint Version</h3>
 |   |  |
@@ -2467,7 +2467,7 @@ fetch('https://mtls.dh.example.com/cds-au/v1/banking/payments/scheduled', {
 
 Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments.
 
-Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html), [v2](includes/obsolete/get-scheduled-payments-bulk-v2.html)
+Obsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html), [v2](includes/obsolete/get-scheduled-payments-bulk-v2.html).
 
 <h3 id="cdr-banking-api_get-scheduled-payments-bulk_endpoint-version">Endpoint Version</h3>
 |   |  |

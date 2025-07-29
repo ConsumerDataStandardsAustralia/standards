@@ -16045,7 +16045,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Some general notes that apply to all endpoints that retrieve transactions:<ul><li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the &quot;effective&quot; date/time which will be defined as:<ul><li>Posted date/time if available, then<li>Execution date/time if available, then<li>A reasonable date/time nominated by the data holder using internal data structures</ul><li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</ul></p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-transactions-for-account-v1.html">v1</a></p>
+<p>Obsolete versions: <a href="includes/obsolete/get-transactions-for-account-v1.html">v1</a>.</p>
 
 <h3 id="cdr-banking-api_get-transactions-for-account_endpoint-version">Endpoint Version</h3>
 
@@ -16923,7 +16923,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain direct debit authorisations for multiple, filtered accounts.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-bulk-direct-debits-v1.html">v1</a></p>
+<p>Obsolete versions: <a href="includes/obsolete/get-bulk-direct-debits-v1.html">v1</a>.</p>
 
 <h3 id="cdr-banking-api_get-bulk-direct-debits_endpoint-version">Endpoint Version</h3>
 
@@ -17937,7 +17937,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-scheduled-payments-bulk-v1.html">v1</a>, <a href="includes/obsolete/get-scheduled-payments-bulk-v2.html">v2</a></p>
+<p>Obsolete versions: <a href="includes/obsolete/get-scheduled-payments-bulk-v1.html">v1</a>, <a href="includes/obsolete/get-scheduled-payments-bulk-v2.html">v2</a>.</p>
 
 <h3 id="cdr-banking-api_get-scheduled-payments-bulk_endpoint-version">Endpoint Version</h3>
 
