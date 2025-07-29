@@ -1,6 +1,8 @@
 # Known Issues
 
 ```diff
+- Removed Non-Bank Lending Known Issues item regarding prior updates to the NBL Candidate
+
 Added Known Issue item
 + Certificate Management
 ```
@@ -10,8 +12,8 @@ There are certain aspects of the standards that are actively under review. These
 Issue | Description
 :---- | :----------
 Inconsistencies in Telco Candidate Standards | <ul><li>The Get Telco Products endpoint schema references an array of _plans_, which should be _products_.</li><li>Transaction endpoints reference a _serviceIds_ (plural) property described as an 'Array list', but with a Type as 'string'.</li><li>Redundant _service_ object in Telco Usage list endpoints.</li><li>Redundant _balance_ object in Telco Balance list endpoints.</li><li>Telco Usage list endpoints should have pagination links.</li><li>Some mandatory fields are not specified with valid 'required' statements, and some are incorrectly specified with default values.</li></ul>
-Non-Bank Lending Candidate Standards | The Candidate Standards were updated in v1.34.1 to align to Decisions affecting the Banking endpoints that they have been based on, as of v1.34.0. Further details are in the Version Delta comments of the Candidate Standards.
 Certificate Management | The [Certificate Management](#certificate-management) section is under review, pending a change expected to impact participants on 1 October 2025.<br>For more information refer to issue [#695 - Digicert Certificate Trust Chain Migration](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/695).
+
 
 ## Future improvements
 

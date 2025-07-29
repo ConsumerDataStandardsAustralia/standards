@@ -11,13 +11,11 @@ These standards fall into three categories:
 ## Candidate Standards
 
 ```diff
-Applied non-breaking Banking API changes to the Non-Banking Lending Candidate to maintain alignment.
+- Removed the Candidate Standards for the Banking and Non-Bank Lending sector
 ```
-
-The CDR Data Standards currently include the following Candidate Standards:
+The Consumer Data Standards currently include the following Candidate Standards:
 
 - [Candidate Standards for the Telecommunications sector](./includes/additional/candidates/telco/telco.html).
-- [Candidate Standards for the Banking and Non-Bank Lending sector](./includes/additional/candidates/non-bank-lending/banking-non-bank-lending.html).
 
 ## Draft Standards
 

@@ -12,6 +12,19 @@ Updated FDO for:
 - November 10th 2025
 + March 16th 2026
 
+Added Future Dated Obligations for the following new endpoint versions:
++ Get Products v5
++ Get Product Detail v7
++ Get Accounts v3
++ Get Account Detail v5
++ Get Bulk Balances v2
++ Get Bulk Direct Debits v2
++ Get Scheduled Payments Bulk v3
++ Get Transactions for Account v2
++ Get Transaction Detail v3
++ Get Instalment Plans for Account v1
++ Get Instalment Plans Bulk v1
+
 Added FDOs for Redirect to App and Authentication Flows
 ```
 
@@ -45,3 +58,14 @@ The table below highlights these areas of the standards.
 |[Get Account Detail v4](#cdr-banking-api_get-account-detail)|<ul><li>Data Holders **MUST** implement v4 of this endpoint by **March 16th 2026**</li><li>Data Holders **MAY** retire v3 of this endpoint from **May 11th 2026**</li></ul> | March 16th 2026 |
 |[Redirect to App](#redirect-to-app)| Data holders and data recipients **MUST** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
 |[Authentication Flows](#authentication-flows)| Data holders and data recipients **MUST** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
+|[Get Products v5](#cdr-banking-api_get-products)|<ul><li>Data Holders **MUST** implement v5 of this endpoint by **July 13th 2026**</li><li>Data Holders **MAY** retire v4 of this endpoint from **August 10th 2026**</li></ul> | July 13th 2026 |
+|[Get Product Detail v7](#cdr-banking-api_get-product-detail)|<ul><li>Data Holders **MUST** implement v7 of this endpoint by **July 13th 2026**</li><li>Data Holders **MAY** retire v6 of this endpoint from **August 10th 2026**</li></ul> | July 13th 2026 |
+|[Get Accounts v3](#cdr-banking-api_get-accounts)|<ul><li>Data Holders **MUST** implement v3 of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire v2 of this endpoint from **December 7th 2026**</li></ul> | November 9th 2026 |
+|[Get Account Detail v5](#cdr-banking-api_get-account-detail)|<ul><li>Data Holders **MUST** implement v5 of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire v4 of this endpoint from **December 7th 2026**</li></ul> | November 9th 2026 |
+|[Get Bulk Balances v2](#cdr-banking-api_get-bulk-balances)|<ul><li>Data Holders **MUST** implement v2 of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire v1 of this endpoint from **December 7th 2026**</li></ul> | November 9th 2026 |
+|[Get Bulk Direct Debits v2](#cdr-banking-api_get-bulk-direct-debits)|<ul><li>Data Holders **MUST** implement v2 of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire v1 of this endpoint from **December 7th 2026**</li></ul> | November 9th 2026 |
+|[Get Scheduled Payments Bulk v3](#cdr-banking-api_get-scheduled-payments-bulk)|<ul><li>Data Holders **MUST** implement v3 of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire v2 of this endpoint from **December 7th 2026**</li></ul> | November 9th 2026 |
+|[Get Transactions for Account v2](#cdr-banking-api_get-transactions-for-account)|<ul><li>Data Holders **MUST** implement v2 of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire v1 of this endpoint from **December 7th 2026**</li></ul> | November 9th 2026 |
+|[Get Transaction Detail v3](#cdr-banking-api_get-transaction-detail)|<ul><li>Data Holders **MUST** implement v3 of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire v2 of this endpoint from **December 7th 2026**</li></ul> | November 9th 2026 |
+|[Get Instalment Plans for Account v1](#cdr-banking-api_get-instalment-plans-for-account)|<ul><li>Data Holders **MUST** implement v1 of this endpoint by **November 9th 2026**</li></ul> | November 9th 2026 |
+|[Get Instalment Plans Bulk v1](#cdr-banking-api_get-instalment-plans-bulk)|<ul><li>Data Holders **MUST** implement v1 of this endpoint by **November 9th 2026**</li></ul> | November 9th 2026 |

@@ -1,5 +1,5 @@
 ---
-title: Get Bulk Balances v1
+title: Get Transaction Detail v2
 
 #language_tabs: # must be one of https://git.io/vQNgJ
 #  - shell
@@ -14,20 +14,20 @@ includes:
 search: false
 ---
 
-# Get Bulk Balances V1
-This page documents the obsolete version 1 of the Get Bulk Balances endpoint.
+# Get Transaction Detail V2
+This page documents the obsolete version 2 of the Get Transaction Detail endpoint.
 
 Data Holders can retire this version after **December 7th 2026**. Data Recipients must update to newer versions prior to this date.
 
 
 
-<h2 id="cdr-banking-api_get-bulk-balances">Get Bulk Balances</h2>
-<p id="get-bulk-balances" class="orig-anchor"></p>
+<h2 id="cdr-banking-api_get-transaction-detail">Get Transaction Detail</h2>
+<p id="get-transaction-detail" class="orig-anchor"></p>
 
 > Code samples
 
 ```http
-GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances HTTP/1.1
+GET https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId} HTTP/1.1
 Host: mtls.dh.example.com
 Accept: application/json
 x-v: string
@@ -50,7 +50,7 @@ const headers = {
   'x-cds-client-headers':'string'
 };
 
-fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances', {
+fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/{accountId}/transactions/{transactionId}', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -60,50 +60,29 @@ fetch('https://mtls.dh.example.com/cds-au/v1/banking/accounts/balances', {
 });
 ```
 
-`GET /banking/accounts/balances`
+`GET /banking/accounts/{accountId}/transactions/{transactionId}`
 
-Obtain balances for multiple, filtered accounts.
+Obtain detailed information on a transaction for a specific account.
 
-<h3 id="cdr-banking-api_get-bulk-balances_endpoint-version">Endpoint Version</h3>
+Obsolete versions: [v1](../../includes/obsolete/get-transaction-detail-v1.html).
+
+<h3 id="cdr-banking-api_get-transaction-detail_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**2**
 
-<h3 id="cdr-banking-api_get-bulk-balances_parameters">Parameters</h3>
+<h3 id="cdr-banking-api_get-transaction-detail_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Default|Description|
 |---|---|---|---|---|---|
-|product-category|query|[BankingProductCategory](#schemacdr-banking-apibankingproductcategory)|optional||Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.|
-|open-status|query|[Enum](#common-field-types)|optional|`ALL`|Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.|
-|is-owned|query|[Boolean](#common-field-types)|optional||Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts.|
-|page|query|[PositiveInteger](#common-field-types)|optional|`1`|Page of results to request (standard pagination).|
-|page-size|query|[PositiveInteger](#common-field-types)|optional|`25`|Page size to request. Default is 25 (standard pagination).|
+|accountId|path|[BankingAccountId](#schemacdr-banking-apibankingaccountid)|mandatory||The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.|
+|transactionId|path|[BankingTransactionId](#schemacdr-banking-apibankingtransactionid)|mandatory||The _transactionId_ to obtain data for. _transactionId_ values are returned by transaction list endpoints.|
 |x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
 |x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
 |x-fapi-interaction-id|header|string|optional||An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |x-fapi-auth-date|header|string|conditional||The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.|
 |x-fapi-customer-ip-address|header|string|optional||The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.|
 |x-cds-client-headers|header|[Base64](#common-field-types)|conditional||The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.|
-
-<h4 id="cdr-banking-api_get-bulk-balances_enumerated-values-parameters">Enumerated Values</h4>
-
-|Parameter|Value|
-|---|---|
-|product-category|BUSINESS_LOANS|
-|product-category|CRED_AND_CHRG_CARDS|
-|product-category|LEASES|
-|product-category|MARGIN_LOANS|
-|product-category|OVERDRAFTS|
-|product-category|PERS_LOANS|
-|product-category|REGULATED_TRUST_ACCOUNTS|
-|product-category|RESIDENTIAL_MORTGAGES|
-|product-category|TERM_DEPOSITS|
-|product-category|TRADE_FINANCE|
-|product-category|TRANS_AND_SAVINGS_ACCOUNTS|
-|product-category|TRAVEL_CARDS|
-|open-status|ALL|
-|open-status|CLOSED|
-|open-status|OPEN|
 
 > Example responses
 
@@ -112,61 +91,68 @@ Obtain balances for multiple, filtered accounts.
 ```json
 {
   "data": {
-    "balances": [
-      {
-        "accountId": "string",
-        "currentBalance": "string",
-        "availableBalance": "string",
-        "creditLimit": "string",
-        "amortisedLimit": "string",
-        "currency": "AUD",
-        "purses": [
-          {
-            "amount": "string",
-            "currency": "string"
-          }
-        ]
+    "accountId": "string",
+    "transactionId": "string",
+    "isDetailAvailable": true,
+    "type": "DIRECT_DEBIT",
+    "status": "PENDING",
+    "description": "string",
+    "postingDateTime": "string",
+    "valueDateTime": "string",
+    "executionDateTime": "string",
+    "amount": "string",
+    "currency": "AUD",
+    "reference": "string",
+    "merchantName": "string",
+    "merchantCategoryCode": "string",
+    "billerCode": "string",
+    "billerName": "string",
+    "crn": "string",
+    "apcaNumber": "string",
+    "extendedData": {
+      "payer": "string",
+      "payee": "string",
+      "extensionUType": "nppPayload",
+      "nppPayload": {
+        "extendedDescription": "string",
+        "endToEndId": "string",
+        "purposeCode": "string",
+        "service": "X2P1",
+        "serviceVersion": "03"
       }
-    ]
+    }
   },
   "links": {
-    "self": "string",
-    "first": "string",
-    "prev": "string",
-    "next": "string",
-    "last": "string"
+    "self": "string"
   },
-  "meta": {
-    "totalRecords": 0,
-    "totalPages": 0
-  }
+  "meta": {}
 }
 ```
 
-<h3 id="cdr-banking-api_get-bulk-balances_responses">Responses</h3>
+<h3 id="cdr-banking-api_get-transaction-detail_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingAccountsBalanceList](#schemacdr-banking-apiresponsebankingaccountsbalancelist)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseBankingTransactionByIdV2](#schemacdr-banking-apiresponsebankingtransactionbyidv2)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Date](#error-400-field-invalid-date-time)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li><li>[404 - Unavailable Resource](#error-404-resource-unavailable)</li><li>[404 - Invalid Resource](#error-404-resource-invalid)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
-|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>|[ResponseErrorListV2](#schemacdr-banking-apiresponseerrorlistv2)|
 
-<h3 id="cdr-banking-api_get-bulk-balances_response-headers">Response Headers</h3>
+<h3 id="cdr-banking-api_get-transaction-detail_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Required|Description|
 |---|---|---|---|---|
 |200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
 |200|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |400|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
+|404|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 |406|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
-|422|x-fapi-interaction-id|string|mandatory|An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.|
 
   
     
       <aside class="notice">
 To perform this operation, you must be authenticated and authorised with the following scopes:
-<a href="#authorisation-scopes">bank:accounts.basic:read.</a>
+<a href="#authorisation-scopes">bank:transactions:read.</a>
 </aside>
 
 

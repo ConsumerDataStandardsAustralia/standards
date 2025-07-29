@@ -1,5 +1,5 @@
 ---
-title: Get Data Holder Statuses v1
+title: Get Software Statement Assertion (SSA) v3
 
 #language_tabs: # must be one of https://git.io/vQNgJ
 #  - shell
@@ -14,36 +14,44 @@ includes:
 search: false
 ---
 
-# Get Data Holder Statuses V1
-This page documents the obsolete version 1 of the Get Data Holder Statuses endpoint.
+# Get Software Statement Assertion (SSA) V3
+This page documents the obsolete version 3 of the Get Software Statement Assertion (SSA) endpoint.
 
 This version was deprecated in V1.35.0.
 
 
-<h2 id="cdr-register-api_get-data-holder-statuses">Get Data Holder Statuses</h2>
-<p id="get-data-holder-statuses" class="orig-anchor"></p>
+The authorisation scopes returned in v3 of the Get Software Statement Assertion (SSA) endpoint are explicitly defined as follows:
+
+Version | Categories returned | Authorisation Scopes returned in SSA
+------- | ------------------- | ------------------------------------
+v3 | OIDC<br>Banking<br>Energy<br>Common<br>Registration | openid<br>profile<br><br>bank:accounts.basic:read<br>bank:accounts.detail:read<br>bank:transactions:read<br>bank:payees:read<br>bank:regular_payments:read<br><br>energy:electricity.servicepoints.basic:read<br>energy:electricity.servicepoints.detail:read<br>energy:electricity.usage:read<br>energy:electricity.der:read<br>energy:accounts.basic:read<br>energy:accounts.detail:read<br>energy:accounts.paymentschedule:read<br>energy:accounts.concessions:read<br>energy:billing:read<br><br>common:customer.basic:read<br>common:customer.detail:read<br><br>cdr:registration
+
+
+
+<h2 id="cdr-register-api_get-software-statement-assertion-ssa">Get Software Statement Assertion (SSA)</h2>
+<p id="get-software-statement-assertion-ssa" class="orig-anchor"></p>
 
 > Code samples
 
 ```http
-GET https://api.cdr.gov.au/cdr-register/v1/{industry}/data-holders/status HTTP/1.1
-Host: api.cdr.gov.au
+GET https://secure.api.cdr.gov.au/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa HTTP/1.1
+Host: secure.api.cdr.gov.au
 Accept: application/json
-x-v: 1
+x-v: string
 x-min-v: string
-If-None-Match: string
+Authorization: string
 ```
 
 ```javascript--nodejs
 const fetch = require('node-fetch');
 const headers = {
   'Accept':'application/json',
-  'x-v':'1',
+  'x-v':'string',
   'x-min-v':'string',
-  'If-None-Match':'string'
+  'Authorization':'string'
 };
 
-fetch('https://api.cdr.gov.au/cdr-register/v1/{industry}/data-holders/status', {
+fetch('https://secure.api.cdr.gov.au/cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa', {
   method: 'GET',
   headers: headers
 }).then(function(res) {
@@ -53,25 +61,29 @@ fetch('https://api.cdr.gov.au/cdr-register/v1/{industry}/data-holders/status', {
 });
 ```
 
-`GET /cdr-register/v1/{industry}/data-holders/status`
+`GET /cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa`
 
-Endpoint used by participants to discover the statuses for Data Holders from the CDR Register.
+Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.
 
-<h3 id="cdr-register-api_get-data-holder-statuses_endpoint-version">Endpoint Version</h3>
+Obsolete versions: [v1](../../includes/obsolete/get-software-statement-assertion-v1.html), [v2](../../includes/obsolete/get-software-statement-assertion-v2.html).
+
+<h3 id="cdr-register-api_get-software-statement-assertion-ssa_endpoint-version">Endpoint Version</h3>
 |   |  |
 |---|--|
-|Version|**1**
+|Version|**3**
 
-<h3 id="cdr-register-api_get-data-holder-statuses_parameters">Parameters</h3>
+<h3 id="cdr-register-api_get-software-statement-assertion-ssa_parameters">Parameters</h3>
 
 |Name|In|Type|Required|Default|Description|
 |---|---|---|---|---|---|
 |industry|path|[IndustryEnum](#schemacdr-register-apiindustryenum)|mandatory||The industry the participant is retrieving data for (Banking, etc.)|
-|x-v|header|string|optional|`1`|The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to `1` if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained.|
-|x-min-v|header|string|optional||The [minimum version](#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.|
-|If-None-Match|header|[ASCIIString](#common-field-types)|optional||Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.|
+|x-v|header|string|mandatory||Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).|
+|x-min-v|header|string|optional||Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.|
+|dataRecipientBrandId|path|string|mandatory||Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register.|
+|softwareProductId|path|string|mandatory||Unique id for the Accredited Data Recipient Software Product in the CDR Register.|
+|Authorization|header|[ExternalRef](#common-field-types)|mandatory||An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.|
 
-<h4 id="cdr-register-api_get-data-holder-statuses_enumerated-values-parameters">Enumerated Values</h4>
+<h4 id="cdr-register-api_get-software-statement-assertion-ssa_enumerated-values-parameters">Enumerated Values</h4>
 
 |Parameter|Value|
 |---|---|
@@ -85,40 +97,33 @@ Endpoint used by participants to discover the statuses for Data Holders from the
 > 200 Response
 
 ```json
-{
-  "data": [
-    {
-      "legalEntityId": "string",
-      "status": "ACTIVE"
-    }
-  ],
-  "links": {
-    "self": "string"
-  },
-  "meta": {}
-}
+"string"
 ```
 
-<h3 id="cdr-register-api_get-data-holder-statuses_responses">Responses</h3>
+<h3 id="cdr-register-api_get-software-statement-assertion-ssa_responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[DataHoldersStatusList](#schemacdr-register-apidataholdersstatuslist)|
-|304|[Not Modified](https://tools.ietf.org/html/rfc7232#section-4.1)|Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header|None|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|string|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Missing Required Header / Invalid Version / Invalid Path Parameter|[ResponseErrorListV2](#schemacdr-register-apiresponseerrorlistv2)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Invalid Bearer Token|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Invalid BrandId|[ResponseErrorListV2](#schemacdr-register-apiresponseerrorlistv2)|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Invalid Software Product|[ResponseErrorListV2](#schemacdr-register-apiresponseerrorlistv2)|
 |406|[Not Acceptable](https://tools.ietf.org/html/rfc7231#section-6.5.6)|Unsupported Version|[ResponseErrorListV2](#schemacdr-register-apiresponseerrorlistv2)|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|SSA validation failed|[ResponseErrorListV2](#schemacdr-register-apiresponseerrorlistv2)|
 
-<h3 id="cdr-register-api_get-data-holder-statuses_response-headers">Response Headers</h3>
+<h3 id="cdr-register-api_get-software-statement-assertion-ssa_response-headers">Response Headers</h3>
 
 |Status|Header|Type|Required|Description|
 |---|---|---|---|---|
-|200|x-v|string|mandatory|The [payload version](#response-headers) that the endpoint has responded with.|
-|200|Etag|[ASCIIString](#common-field-types)|optional|Entity tag that uniquely represents the requested resource.|
-|304|Etag|[ASCIIString](#common-field-types)|optional|Entity tag that uniquely represents the requested resource.|
+|200|x-v|string|optional|The [payload version](#response-headers) that the endpoint has responded with.|
+|401|WWW-Authenticate|[ExternalRef](#common-field-types)|optional|The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.|
 
   
-    <aside class="success">
-This operation does not require authentication.
+    
+      <aside class="notice">
+To perform this operation, you must be authenticated and authorised with the following scopes:
+<a href="#authorisation-scopes">cdr-register:read.</a>
 </aside>
 
 
@@ -1179,4 +1184,3 @@ This operation does not require authentication.
 |detail|string|mandatory||A human-readable explanation specific to this occurrence of the problem.|
 |meta|object|conditional||Additional data for customised error codes.|
 |» urn|string|conditional||The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code.|
-

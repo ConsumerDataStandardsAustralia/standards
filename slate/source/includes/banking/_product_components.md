@@ -4,7 +4,12 @@
 <a id="productfeaturetypedoc"></a>
 <h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3>
 
+```diff
+Added featureType:
++ EXTRA_DOWN_PAYMENT
 
+Updated the description of the EXTRA_REPAYMENTS feature
+```
 
 Description of the usage of the _featureType_ field as it applies to products.
 
@@ -20,7 +25,8 @@ Description of the usage of the _featureType_ field as it applies to products.
 | DIGITAL_BANKING | Access is available to online banking features for the product. | N/A |
 | DIGITAL_WALLET | A Digital wallet can be attached to the product. | The name or brand of the wallet. |
 | DONATE_INTEREST | Indicates that interest generated from the product can be automatically donated to a charity or community group. | N/A |
-| EXTRA_REPAYMENTS | Indicates that the product has the option to accept extra repayments without incurring additional charges (for example Buy Now, Pay Later (BNPL) or line of credit products may offer the facility to repay instalments on an adhoc basis). | N/A |
+| EXTRA_DOWN_PAYMENT | When a transaction value would exceed the credit limit available for an instalment plan, there is an ability to make a larger than usual initial down payment to enable the creation of a plan based on a reduced amount outstanding, so it remains within the limit. | N/A |
+| EXTRA_REPAYMENTS | Indicates that the product has the option to accept extra repayments without incurring additional charges. For example, Buy Now, Pay Later (BNPL) or line of credit products may offer the facility to repay instalments (after any initial down payment) on an ad hoc basis. | N/A |
 | FRAUD_PROTECTION | The product includes fraud protection features. | N/A |
 | FREE_TXNS | A set number of free transactions available per month. | The number of free transactions. |
 | FREE_TXNS_ALLOWANCE | A set amount of transaction fee value that is discounted per month. | The amount of transaction fee discounted (in AUD). |

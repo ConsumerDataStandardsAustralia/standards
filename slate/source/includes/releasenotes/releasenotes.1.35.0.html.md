@@ -34,8 +34,17 @@ This release addresses the following change requests raised on [Standards Mainte
 ### Decisions
 This release addresses the following Decisions published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
+- [Consultation Draft #367 - March 2025 Rules - Draft Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/367)
 - [Consultation Draft #369 - Redirect to App - Draft Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369)
 - [Consultation Draft #370 - Amendment of Banking Decision 338 Obligation Date - Draft Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/370)
+
+#### Errata
+The following <mark>corrections</mark> have been made to the changes resulting from [Decision 367](https://github.com/ConsumerDataStandardsAustralia/standards/issues/367):
+
+|Standard Section|Decision text|Corrected text|
+|----------------|-------------|--------------|
+| [Future Dated Obligations](../../#future-dated-obligations)| Get Transactions for Account <mark>v3</mark><br><ul><li>Data Holders **MUST** implement <mark>v3</mark> of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire <mark>v2</mark> of this endpoint from **December 7th 2026**</li></ul> | Get Transactions for Account <mark>v2</mark><br><ul><li>Data Holders **MUST** implement <mark>v2</mark> of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire <mark>v1</mark> of this endpoint from **December 7th 2026**</li></ul> |
+| [Future Dated Obligations](../../#future-dated-obligations)| Get Transaction Detail <mark>v4</mark><br><ul><li>Data Holders **MUST** implement <mark>v4</mark> of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire <mark>v3</mark> of this endpoint from **December 7th 2026**</li></ul> | Get Transaction Detail <mark>v3</mark><br><ul><li>Data Holders **MUST** implement <mark>v3</mark> of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire <mark>v2</mark> of this endpoint from **December 7th 2026**</li></ul> |
 
 
 #### Errata
@@ -62,6 +71,7 @@ The following <mark>corrections</mark> have been made to the changes resulting f
 ## Introduction
 |Change|Description|Link|
 |------|-----------|----|
+| March 2025 Rules including NBL and BNPL | [**Decision #367**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/367): Changes related to the March 2025 Rules, including the introduction of the NBL sector and BNPL products. | [Future Dated Obligations](../../#future-dated-obligations)
 | FDO for Redirect to App changes | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Added FDOs for Redirect to App related changes. | [FDO](../../#future-dated-obligations) |
 | Normative References update | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Updated Normative References with following:<ul><li>Replaced TDIF with DigitalID-Accreditation.</li><li>Added reference to RFC8252: OAuth 2.0 for Native Apps.</li></ul> | [Normative References](../../#normative-references) |
 | Amend Decision 338 FDOs | [**Decision #370**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/370): Amendment of Banking Decision 338 Obligation Dates. | [Future Dated Obligations](../../#future-dated-obligations)
@@ -71,11 +81,13 @@ The following <mark>corrections</mark> have been made to the changes resulting f
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Added Definitions section | [**Decision #367**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/367): Added Definitions section to address usage of Banking and Non-Bank Lending language. | [Definitions](../../#definitions)
 
 
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
+| Added BNPL detail | [**Decision #367**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/367): Updated affected Banking endpoints to accommodate BNPL products and features, and added '400 - Missing Required Header' error response. | [Banking APIs](../../#banking-apis)
 | Corrected Energy transaction field requirements | [**Standards Maintenance #677**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/677): Specified the _demand_ and _otherCharges_ fields in EnergyBillingTransactionV3 as conditional, to match their descriptions. | [Energy APIs](../../#energy-apis)
 
 
@@ -93,17 +105,21 @@ The following <mark>corrections</mark> have been made to the changes resulting f
 ## Register Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Added NBL detail | [**Decision #367**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/367): Updated Register endpoints to accommodate Non-Bank Lending. | [Register APIs](../../#register-apis)
 
 
 ## Consumer Experience
 |Change|Description|Link|
 |------|-----------|----|
+| Added NBL detail | [**Decision #367**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/367): Updated CX language sections to refer to Non-Bank Lending. | [Data Language Standards: Common](../../#data-language-standards-common)<br>[Banking and Non-Bank Lending Language](../../#banking-and-non-bank-lending-language)
 | Authentication Standards | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Added following new sections to **"Authentication Standards"**:<ul><li>Common Authentication Standards</li><li>Redirect to web with One Time Password (OTP)</li><li>Redirect to App</li></ul> | [Authentication Standards](../../#consumer-experience_authentication-standards) |
 | Authorisation Standards | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Added new authorisation standard **"Authorisation: Add or Switch Profiles"**. | [Authorisation Standards](../../#authorisation-standards) |
+
 
 ## Non-Functional Requirements
 |Change|Description|Link|
 |------|-----------|----|
+| Added Get Instalments endpoints | [**Decision #367**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/367): Specified performance requirements for new Get Instalments endpoints. | [Performance Requirements](../../#performance-requirements)
 
 
 ## Shared Responsibility
@@ -114,10 +130,11 @@ The following <mark>corrections</mark> have been made to the changes resulting f
 ## Additional Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Removed Non-Bank Lending Candidate | [**Decision #367**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/367): Removed the Non-Bank Lending Candidate as the standards have now been integrated. | [Additional Standards](../../#additional-standards)
 
 
 ## Known Issues
 |Change|Description|Link|
 |------|-----------|----|
+| Removed Non-Bank Lending Known Issues item | [**Decision #367**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/367): Removed Non-Bank Lending Known Issues item regarding prior updates to the NBL Candidate. | [Known Issues](../../#known-issues)
 | Metadata Update Future improvement | [**Standards Staging #476**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/476#issuecomment-2767684074): Added a Future improvements item for the specification of the Metadata Update endpoint. | [Future improvements](../../#future-improvements)
-

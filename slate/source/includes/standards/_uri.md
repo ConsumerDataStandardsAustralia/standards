@@ -40,6 +40,12 @@
 5. https://mtls.dh.example.com/api/cds-au/v1/ACME/apply
 ```
 
+```diff
+Updated description of the `banking` <industry> value to accommodate non-bank lending/non-bank lenders
+- `banking` = "banking" string. For APIs related to banking and potentially wider financial services data,
++ `banking` = "banking" string. For APIs related to banking and non-bank lending,
+```
+
 The URI structure for API endpoints in the standards **MUST** be implemented as follows: 
 <pre class="display-inline light-box">
 <b>uri-string</b> =  "https://" <b>\<holder-path\></b> "/" <b>cds-au</b> "/" <b>\<version\></b> "/" ( <b>\<industry\></b> | <b>\<HID\></b> ) "/" <b>\<resource\></b>
@@ -54,7 +60,7 @@ The major version of the high level standards. This is not the version of the en
 <li><b>\<industry\></b>     = banking / energy / telco / common
 A static string used to separate APIs for a specific industry. As standards for new industries are defined the list of industry strings will be extended.
 Note that the currently accepted values for the _industry_ component of the Base Path are:
-<ul><li>`banking` = "banking" string. For APIs related to banking and potentially wider financial services data,</li><li>`energy`  = "energy" string. For APIs related to the energy distribution industry,</li><li>`telco`   = "telco" string. For APIs related to telecommunications,</li><li>`common`  = "common" string. For APIs that potentially span industries.</li></ul></li>
+<ul><li>`banking` = "banking" string. For APIs related to banking and non-bank lending,</li><li>`energy`  = "energy" string. For APIs related to the energy distribution industry,</li><li>`telco`   = "telco" string. For APIs related to telecommunications,</li><li>`common`  = "common" string. For APIs that potentially span industries.</li></ul></li>
 <li><b>\<HID\></b>          = string.
 The Holder Identifier used to denote extension API categories for a specific holder.</li>
 <li><b>\<resource\></b>     = string.
