@@ -2,7 +2,7 @@
 ```diff
 Added following new sections:
 + Common Authentication Standards
-+ Redirect to web with One Time Password (OTP)
++ Redirect to Web with One Time Password (OTP)
 + Redirect to App
 ```
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_common-authentication-standards">Common Authentication Standards</h3>
@@ -14,7 +14,7 @@ Added following new sections:
 |**Authentication:**<br>Friction|<p>Data holders **MUST NOT** introduce unwarranted friction into the authentication process.</p><p>In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authorise the disclosure of CDR data, unwarranted friction for authentication flows and methods is considered to include, but is not limited to:<br><ul><li>The addition of any requirements beyond normal data holder practices for authenticating the consumer including, but not limited to, One Time Password (OTP) verification code delivery.</li><li>Providing or requesting additional information beyond normal data holder practices for authenticating the consumer including, but not limited to, OTP verification code delivery.</li><li>Offering additional or alternative services.</li><li>Referencing or including other documents.</li></ul></p>|
 
 
-<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_redirect-to-web-with-one-time-password">Redirect to web with One Time Password (OTP)</h3>
+<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_redirect-to-web-with-one-time-password">Redirect to Web with One Time Password (OTP)</h3>
 
 |Area|CX Standard|
 |-------------------|------------------------------|
