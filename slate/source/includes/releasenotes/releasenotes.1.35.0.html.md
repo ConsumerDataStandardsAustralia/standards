@@ -34,6 +34,7 @@ This release addresses the following change requests raised on [Standards Mainte
 ### Decisions
 This release addresses the following Decisions published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
+- [Consultation Draft #364 - Maintenance Iteration 22](https://github.com/ConsumerDataStandardsAustralia/standards/issues/364)
 - [Consultation Draft #367 - March 2025 Rules - Draft Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/367)
 - [Consultation Draft #369 - Redirect to App - Draft Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369)
 - [Consultation Draft #370 - Amendment of Banking Decision 338 Obligation Date - Draft Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues/370)
@@ -46,8 +47,7 @@ The following <mark>corrections</mark> have been made to the changes resulting f
 | [Future Dated Obligations](../../#future-dated-obligations)| Get Transactions for Account <mark>v3</mark><br><ul><li>Data Holders **MUST** implement <mark>v3</mark> of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire <mark>v2</mark> of this endpoint from **December 7th 2026**</li></ul> | Get Transactions for Account <mark>v2</mark><br><ul><li>Data Holders **MUST** implement <mark>v2</mark> of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire <mark>v1</mark> of this endpoint from **December 7th 2026**</li></ul> |
 | [Future Dated Obligations](../../#future-dated-obligations)| Get Transaction Detail <mark>v4</mark><br><ul><li>Data Holders **MUST** implement <mark>v4</mark> of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire <mark>v3</mark> of this endpoint from **December 7th 2026**</li></ul> | Get Transaction Detail <mark>v3</mark><br><ul><li>Data Holders **MUST** implement <mark>v3</mark> of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire <mark>v2</mark> of this endpoint from **December 7th 2026**</li></ul> |
 
-
-#### Errata
+<br>
 The following <mark>corrections</mark> have been made to the changes resulting from [Decision 369](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369):
 
 |Standard Section|Decision text|Corrected text|
@@ -123,8 +123,7 @@ The following <mark>corrections</mark> have been made to the changes resulting f
 
 
 ## Shared Responsibility
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Additional Standards
