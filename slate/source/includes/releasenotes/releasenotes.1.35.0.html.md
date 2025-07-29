@@ -73,7 +73,7 @@ The following <mark>corrections</mark> have been made to the changes resulting f
 |Change|Description|Link|
 |------|-----------|----|
 | March 2025 Rules including NBL and BNPL | [**Decision #367**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/367): Changes related to the March 2025 Rules, including the introduction of the NBL sector and BNPL products. | [Future Dated Obligations](../../#future-dated-obligations)
-| FDO for Redirect to App changes | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Added FDOs for Redirect to App related changes. | [FDO](../../#future-dated-obligations) |
+| FDO for Redirect to App changes | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Added FDOs for Redirect to App related changes. | [Future Dated Obligations](../../#future-dated-obligations) |
 | Normative References update | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Updated Normative References with following:<ul><li>Replaced TDIF with DigitalID-Accreditation.</li><li>Added reference to RFC8252: OAuth 2.0 for Native Apps.</li></ul> | [Normative References](../../#normative-references) |
 | Amend Decision 338 FDOs | [**Decision #370**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/370): Amendment of Banking Decision 338 Obligation Dates. | [Future Dated Obligations](../../#future-dated-obligations)
 | Retirement date for Get Transaction Detail v1 | [**Standards Maintenance #681**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/681): Specified retirement date for Banking Get Transaction Detail v1 as 10th November 2025. | [Future Dated Obligations](../../#future-dated-obligations)
@@ -82,7 +82,7 @@ The following <mark>corrections</mark> have been made to the changes resulting f
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
-| Added Definitions section | [**Decision #367**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/367): Added Definitions section to address usage of Banking and Non-Bank Lending language. | [Definitions](../../#definitions)
+| Added Definitions section | [**Decision #367**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/367): Added Definitions section to address usage of Banking and Non-Bank Lending language. | [Definitions](../../#high-level-standards_definitions)
 
 
 ## API Endpoints
