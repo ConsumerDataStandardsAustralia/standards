@@ -4179,6 +4179,7 @@
           "planCurrency": {
             "type": "string",
             "description": "The currency of the plan amount. If absent assumed to be `AUD`.",
+            "default": "AUD",
             "x-cds-type": "CurrencyString"
           },
           "planCharge": {
