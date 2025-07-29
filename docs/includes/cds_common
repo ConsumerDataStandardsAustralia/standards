@@ -391,7 +391,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"areaCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"extension"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1278,7 +1278,7 @@ This operation does not require authentication.
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"areaCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"extension"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1609,7 +1609,7 @@ This operation does not require authentication.
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"areaCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"extension"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2040,7 +2040,7 @@ This operation does not require authentication.
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"isPreferred"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOME"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"areaCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"extension"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2076,7 +2076,7 @@ This operation does not require authentication.
 <td>countryCode</td>
 <td>string</td>
 <td>optional</td>
-<td></td>
+<td><code>+61</code></td>
 <td>If absent, assumed to be Australia (<code>+61</code>). The <code>+</code> should be included.</td>
 </tr>
 <tr>

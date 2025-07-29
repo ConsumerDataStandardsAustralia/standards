@@ -975,7 +975,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>string(JWT)</td>
 <td>mandatory</td>
 <td></td>
-<td>The Software Statement Assertion, as defined in CDR standards.</td>
+<td>The Software Statement Assertion, as defined in the CDR Data Standards.</td>
 </tr>
 <tr>
 <td>software_id</td>

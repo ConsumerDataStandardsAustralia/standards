@@ -1,6 +1,8 @@
-<h1 id='known-issues'>Known Issues</h1><pre class="highlight diff tab-diff"><code>Version 1.34.1 amendment:
-Updated Known Issues detail for the Non-Bank Lending Candidate Standards
-</code></pre>
+<h1 id='known-issues'>Known Issues</h1><pre class="highlight diff tab-diff"><code><span class="gd">- Removed Non-Bank Lending Known Issues item regarding prior updates to the NBL Candidate
+</span>
+Added Known Issue item
+<span class="gi">+ Certificate Management
+</span></code></pre>
 <p>There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.</p>
 
 <table><thead>
@@ -14,13 +16,16 @@ Updated Known Issues detail for the Non-Bank Lending Candidate Standards
 <td style="text-align: left"><ul><li>The Get Telco Products endpoint schema references an array of <em>plans</em>, which should be <em>products</em>.</li><li>Transaction endpoints reference a <em>serviceIds</em> (plural) property described as an &#39;Array list&#39;, but with a Type as &#39;string&#39;.</li><li>Redundant <em>service</em> object in Telco Usage list endpoints.</li><li>Redundant <em>balance</em> object in Telco Balance list endpoints.</li><li>Telco Usage list endpoints should have pagination links.</li><li>Some mandatory fields are not specified with valid &#39;required&#39; statements, and some are incorrectly specified with default values.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align: left">Non-Bank Lending Candidate Standards</td>
-<td style="text-align: left">The Candidate Standards were updated in v1.34.1 to align to Decisions affecting the Banking endpoints that they have been based on, as of v1.34.0. Further details are in the Version Delta comments of the Candidate Standards.</td>
+<td style="text-align: left">Certificate Management</td>
+<td style="text-align: left">The <a href="#certificate-management">Certificate Management</a> section is under review, pending a change expected to impact participants on 1 October 2025.<br>For more information refer to issue <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/695">#695 - Digicert Certificate Trust Chain Migration</a>.</td>
 </tr>
 </tbody></table>
 <h2 id='future-improvements'>Future improvements</h2>
-<p>The following improvements will be incorporated into future versions of the Standards</p>
-<h3 id='standardise-register-api-error-codes'>Standardise Register API Error Codes</h3>
+<p>The following improvements will be incorporated into future versions of the Standards.</p>
+<pre class="highlight diff tab-diff"><code>Added Future improvements items
+<span class="gi">+ Standardise Banking Scheduled Payments endpoint paths
++ Address inconsistency in the Metadata Update endpoint response
+</span></code></pre><h3 id='standardise-register-api-error-codes'>Standardise Register API Error Codes</h3>
 <p>Future versions of the CDR Register API error codes are to be aligned to the <a href="#error-codes">Standards high-level error codes</a> as follows:</p>
 
 <table><thead>
@@ -61,3 +66,30 @@ Updated Known Issues detail for the Non-Bank Lending Candidate Standards
 <td>404: <br>Invalid Industry</td>
 </tr>
 </tbody></table>
+<h3 id='standardise-banking-scheduled-payments-endpoint-paths'>Standardise Banking Scheduled Payments endpoint paths</h3>
+<p>Future versions of the Banking <em>Get Scheduled Payments</em> endpoints below could be aligned to the convention of <a href="#cdr-banking-api_get-scheduled-payments-for-account">Get Scheduled Payments for Account</a> and other Banking &#39;accounts&#39; endpoints as follows:</p>
+
+<table><thead>
+<tr>
+<th>API</th>
+<th>Current path</th>
+<th>Proposed path</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#cdr-banking-api_get-scheduled-payments-bulk">Get Scheduled Payments Bulk</a></td>
+<td><code>/banking/payments/scheduled</code></td>
+<td><code>/banking/accounts/payments/scheduled</code></td>
+</tr>
+<tr>
+<td><a href="#cdr-banking-api_get-scheduled-payments-for-specific-accounts">Get Scheduled Payments For Specific Accounts</a></td>
+<td><code>/banking/payments/scheduled</code></td>
+<td><code>/banking/accounts/payments/scheduled</code></td>
+</tr>
+</tbody></table>
+<h3 id='address-inconsistency-in-the-metadata-update-endpoint-response'>Address inconsistency in the Metadata Update endpoint response</h3>
+<ul>
+<li>The <code>200 OK</code> response for the <a href="#cdr-admin-api_metadata-update">Metadata Update</a> endpoint is currently presented as an &#39;Inline&#39; schema, rendering as a <code>null</code> example response, where the specification defines an empty object <code>{}</code>. </li>
+<li>The <a href="#response-payload-structure">Response Payload Structure</a> section states that <code>200 OK</code> responses <strong>MUST</strong> contain <em>data</em> and <em>links</em> objects. </li>
+<li>As this endpoint is expected to trigger an asynchronous process, a <code>202 Accepted</code> response code and an alternate response body may address these inconsistencies.</li>
+</ul>

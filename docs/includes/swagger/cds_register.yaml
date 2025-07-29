@@ -6,7 +6,7 @@ info:
     url: https://dsb.gov.au/
   description: Specifications for Register endpoints made available to participants.
   title: CDR Register API
-  version: 1.34.1
+  version: 1.35.0
 servers:
 - description: Production TLS
   url: https://api.cdr.gov.au
@@ -60,7 +60,7 @@ paths:
       description: |-
         Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.
 
-        Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html).
+        Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html), [v2](includes/obsolete/get-data-holder-brands-v2.html).
       operationId: getDataHolderBrands
       parameters:
       - description: The industry the participant is retrieving data for (Banking,
@@ -70,7 +70,7 @@ paths:
         name: industry
         required: true
         schema:
-          $ref: '#/components/schemas/IndustryEnum'
+          $ref: '#/components/schemas/IndustryEnumV2'
         style: simple
       - description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
         explode: false
@@ -142,7 +142,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseRegisterDataHolderBrandList'
+                $ref: '#/components/schemas/ResponseRegisterDataHolderBrandListV2'
           description: Successful response
           headers:
             x-v:
@@ -175,13 +175,15 @@ paths:
       summary: Get Data Holder Brands
       tags:
       - Register Data Holder discovery
-      x-version: "2"
+      x-version: "3"
       x-scopes:
       - cdr-register:read
   /cdr-register/v1/{industry}/data-holders/brands/summary:
     get:
-      description: Endpoint used by participants to discover public details of Data
-        Holder Brands from the CDR Register.
+      description: |-
+        Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register.
+
+        Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-summary-v1.html).
       operationId: getDataHolderBrandsSummary
       parameters:
       - description: The industry the participant is retrieving data for (Banking,
@@ -191,7 +193,7 @@ paths:
         name: industry
         required: true
         schema:
-          $ref: '#/components/schemas/IndustryEnum'
+          $ref: '#/components/schemas/IndustryEnumV2'
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The endpoint should respond with the highest
@@ -270,23 +272,22 @@ paths:
       summary: Get Data Holder Brands Summary
       tags:
       - Register Data Holder discovery
-      x-version: "1"
+      x-version: "2"
   /cdr-register/v1/{industry}/data-recipients/brands/{dataRecipientBrandId}/software-products/{softwareProductId}/ssa:
     get:
       description: |-
         Get a Software Statement Assertion (SSA) for a software product on the CDR Register to be used for Dynamic Client Registration with a Data Holder Brand.
 
-        Obsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.html), [v2](includes/obsolete/get-software-statement-assertion-v2.html).
+        Obsolete versions: [v1](includes/obsolete/get-software-statement-assertion-v1.html), [v2](includes/obsolete/get-software-statement-assertion-v2.html), [v3](includes/obsolete/get-software-statement-assertion-v3.html).
       operationId: getSoftwareStatementAssertion
       parameters:
-      - description: The industry the participant is retrieving data for (Banking,
-          etc.)
+      - description: Filters the response to participants associated with an industry.
         explode: false
         in: path
         name: industry
         required: true
         schema:
-          $ref: '#/components/schemas/IndustryEnum'
+          $ref: '#/components/schemas/IndustryEnumRecipients'
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The endpoint should respond with the highest
@@ -404,13 +405,15 @@ paths:
       summary: Get Software Statement Assertion (SSA)
       tags:
       - Register Operations
-      x-version: "3"
+      x-version: "4"
       x-scopes:
       - cdr-register:read
   /cdr-register/v1/{industry}/data-holders/status:
     get:
-      description: Endpoint used by participants to discover the statuses for Data
-        Holders from the CDR Register.
+      description: |-
+        Endpoint used by participants to discover the statuses for Data Holders from the CDR Register.
+
+        Obsolete versions: [v1](includes/obsolete/get-data-holder-statuses-v1.html).
       operationId: getDataHolderStatuses
       parameters:
       - description: The industry the participant is retrieving data for (Banking,
@@ -420,22 +423,28 @@ paths:
         name: industry
         required: true
         schema:
-          $ref: '#/components/schemas/IndustryEnum'
+          $ref: '#/components/schemas/IndustryEnumV2'
         style: simple
-      - description: The version of the API endpoint requested by the client. Must
-          be set to a positive integer. For backwards compatiblity defaults to `1`
-          if absent. Note that once version 1 is decommissioned the header will be
-          mandatory for a valid response to be obtained.
+      - description: Version of the API endpoint requested by the client. Must be
+          set to a positive integer. The endpoint should respond with the highest
+          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
+          If the value of [_x-min-v_](#request-headers) is equal to or higher than
+          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
+          header should be treated as absent. If all versions requested are not supported
+          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
+          Headers](#request-headers).
         explode: false
         in: header
         name: x-v
-        required: false
+        required: true
         schema:
-          default: "1"
           type: string
         style: simple
-      - description: The [minimum version](#http-headers) of the API endpoint requested
-          by the client. Must be set to a positive integer if provided.
+      - description: Minimum version of the API endpoint requested by the client.
+          Must be set to a positive integer if provided. The endpoint should respond
+          with the highest supported version between [_x-min-v_](#request-headers)
+          and [_x-v_](#request-headers). If all versions requested are not supported
+          then the endpoint **MUST** respond with a `406 Not Acceptable`.
         explode: false
         in: header
         name: x-min-v
@@ -487,23 +496,22 @@ paths:
       summary: Get Data Holder Statuses
       tags:
       - Register Data Holder discovery
-      x-version: "1"
+      x-version: "2"
   /cdr-register/v1/{industry}/data-recipients/brands/software-products/status:
     get:
       description: |-
         Endpoint used by participants to discover the statuses for software products from the CDR Register.
 
-        Obsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html).
+        Obsolete versions: [v1](includes/obsolete/get-software-product-statuses-v1.html), [v2](includes/obsolete/get-software-product-statuses-v2.html).
       operationId: getSoftwareProductsStatuses
       parameters:
-      - description: The industry the participant is retrieving data for (Banking,
-          etc.)
+      - description: Filters the response to participants associated with an industry.
         explode: false
         in: path
         name: industry
         required: true
         schema:
-          $ref: '#/components/schemas/IndustryEnum'
+          $ref: '#/components/schemas/IndustryEnumRecipients'
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The endpoint should respond with the highest
@@ -576,23 +584,22 @@ paths:
       summary: Get Software Products Statuses
       tags:
       - Register Data Recipient discovery
-      x-version: "2"
+      x-version: "3"
   /cdr-register/v1/{industry}/data-recipients/status:
     get:
       description: |-
         Endpoint used by participants to discover the statuses for Data Recipients from the CDR Register.
 
-        Obsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html).
+        Obsolete versions: [v1](includes/obsolete/get-data-recipient-statuses-v1.html), [v2](includes/obsolete/get-data-recipient-statuses-v2.html).
       operationId: getDataRecipientsStatuses
       parameters:
-      - description: The industry the participant is retrieving data for (Banking,
-          etc.)
+      - description: Filters the response to participants associated with an industry.
         explode: false
         in: path
         name: industry
         required: true
         schema:
-          $ref: '#/components/schemas/IndustryEnum'
+          $ref: '#/components/schemas/IndustryEnumRecipients'
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The endpoint should respond with the highest
@@ -665,23 +672,22 @@ paths:
       summary: Get Data Recipients Statuses
       tags:
       - Register Data Recipient discovery
-      x-version: "2"
+      x-version: "3"
   /cdr-register/v1/{industry}/data-recipients:
     get:
       description: |-
         Endpoint used by participants to discover data recipients and associated brands and software products, available in the CDR ecosystem.
 
-        Obsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html).
+        Obsolete versions: [v2](includes/obsolete/get-data-recipients-v2.html), [v3](includes/obsolete/get-data-recipients-v3.html).
       operationId: getDataRecipients
       parameters:
-      - description: The industry the participant is retrieving data for (Banking,
-          etc.)
+      - description: Filters the response to participants associated with an industry.
         explode: false
         in: path
         name: industry
         required: true
         schema:
-          $ref: '#/components/schemas/IndustryEnum'
+          $ref: '#/components/schemas/IndustryEnumRecipients'
         style: simple
       - description: Version of the API endpoint requested by the client. Must be
           set to a positive integer. The endpoint should respond with the highest
@@ -754,7 +760,7 @@ paths:
       summary: Get Data Recipients
       tags:
       - Register Data Recipient discovery
-      x-version: "3"
+      x-version: "4"
 components:
   headers:
     XV:
@@ -819,7 +825,16 @@ components:
       name: industry
       required: true
       schema:
-        $ref: '#/components/schemas/IndustryEnum'
+        $ref: '#/components/schemas/IndustryEnumV2'
+      style: simple
+    PathIndustryRecipients:
+      description: Filters the response to participants associated with an industry.
+      explode: false
+      in: path
+      name: industry
+      required: true
+      schema:
+        $ref: '#/components/schemas/IndustryEnumRecipients'
       style: simple
     HeaderIfNoneMatch:
       description: Makes the request method conditional on a recipient cache or origin
@@ -882,7 +897,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ResponseRegisterDataHolderBrandList'
+            $ref: '#/components/schemas/ResponseRegisterDataHolderBrandListV2'
       description: Successful response
       headers:
         x-v:
@@ -1203,7 +1218,7 @@ components:
       - kty
       - "n"
       type: object
-    ResponseRegisterDataHolderBrandList:
+    ResponseRegisterDataHolderBrandListV2:
       description: Response containing a list of CDR Register Data Holder Brand objects.
       example:
         data:
@@ -1286,7 +1301,7 @@ components:
         data:
           description: Response data for the query.
           items:
-            $ref: '#/components/schemas/RegisterDataHolderBrand'
+            $ref: '#/components/schemas/RegisterDataHolderBrandV2'
           type: array
           uniqueItems: true
         links:
@@ -1298,7 +1313,7 @@ components:
       - links
       - meta
       type: object
-    RegisterDataHolderBrand:
+    RegisterDataHolderBrandV2:
       example:
         lastUpdated: lastUpdated
         brandName: brandName
@@ -1345,7 +1360,7 @@ components:
         industries:
           description: The industries the Data Holder Brand belongs to.
           items:
-            $ref: '#/components/schemas/IndustriesEnum'
+            $ref: '#/components/schemas/IndustriesEnumV2'
           type: array
           uniqueItems: true
         logoUri:
@@ -1418,7 +1433,7 @@ components:
         data:
           description: Response data for the query.
           items:
-            $ref: '#/components/schemas/DataHolderBrandSummary'
+            $ref: '#/components/schemas/DataHolderBrandSummaryV2'
           type: array
           uniqueItems: true
         links:
@@ -1430,7 +1445,7 @@ components:
       - links
       - meta
       type: object
-    DataHolderBrandSummary:
+    DataHolderBrandSummaryV2:
       example:
         arbn: arbn
         lastUpdated: lastUpdated
@@ -1475,7 +1490,7 @@ components:
         industries:
           description: The industries the Data Holder Brand belongs to.
           items:
-            $ref: '#/components/schemas/IndustriesEnum'
+            $ref: '#/components/schemas/IndustriesEnumV2'
           type: array
           uniqueItems: true
         lastUpdated:
@@ -1503,18 +1518,24 @@ components:
       - logoUri
       - publicBaseUri
       type: object
-    IndustryEnum:
+    IndustryEnumV2:
       enum:
       - banking
       - energy
+      - non-bank-lending
       - telco
       - all
       type: string
-    IndustriesEnum:
+    IndustriesEnumV2:
       enum:
       - banking
       - energy
+      - non-bank-lending
       - telco
+      type: string
+    IndustryEnumRecipients:
+      enum:
+      - all
       type: string
     DataHoldersStatusList:
       example:

@@ -1,0 +1,2 @@
+<h2 id='fallback-authentication-flows'>Fallback Authentication Flows</h2>
+<p>Where Redirect to App is unable to be used for the purposes of CDR authentication, and Decoupled Authentication is not supported, data holders <strong>MUST</strong> continue to support the &#39;Redirect to Web with OTP&#39; flow in accordance with the relevant <a href="#consumer-experience_authentication-standards">consumer experience authentication</a> and <a href="#security-profile">security profile</a> standards.</p>

@@ -552,7 +552,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |authorization_encrypted_response_alg|[Enum](#common-field-types)|conditional||The JWE _alg_ algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if _authorization_encrypted_response_enc_ is included.|
 |authorization_encrypted_response_enc|[Enum](#common-field-types)|optional||The JWE _enc_ algorithm required for encrypting authorization responses. If _authorization_encrypted_response_alg_ is specified, the default for this value is `A128CBC-HS256`.|
 |request_object_signing_alg|[Enum](#common-field-types)|mandatory||Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder.|
-|software_statement|string(JWT)|mandatory||The Software Statement Assertion, as defined in CDR standards.|
+|software_statement|string(JWT)|mandatory||The Software Statement Assertion, as defined in the CDR Data Standards.|
 |software_id|string|mandatory||String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. <br><br>The _software_id_ will remain the same for the lifetime of the product, across multiple updates and versions.|
 |software_roles|[Enum](#common-field-types)|optional|`data-recipient-software-product`|String containing a role of the software in the CDR Regime. Initially the only value used will be `data-recipient-software-product`.|
 |scope|string|mandatory||String containing a space-separated list of scope values that the client can use when requesting access tokens.|

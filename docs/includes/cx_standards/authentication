@@ -1,4 +1,11 @@
-<h2 id='authentication-standards'>Authentication Standards</h2>
+<h2 class="schema-heading" id="consumer-experience_authentication-standards">Authentication Standards</h2>
+<pre class="highlight diff tab-diff"><code>Added following new sections:
+<span class="gi">+ Common Authentication Standards
++ Redirect to web with One Time Password (OTP)
++ Redirect to App
+</span></code></pre>
+<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_common-authentication-standards">Common Authentication Standards</h3>
+
 <table><thead>
 <tr>
 <th>Area</th>
@@ -6,19 +13,47 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>Authentication:</strong><br>&#39;One Time Password&#39; (OTP)</td>
-<td><p>Data Holders and Data Recipients <strong>MUST</strong> clearly refer to a &quot;One Time Password&quot; in consumer-facing interactions and communications.</p><p>The use of the term &quot;One Time Password&quot; <strong>MAY</strong> be presented alongside an existing term used by a data holder (e.g. Netcode, one time pin etc.).</p></td>
+<td><strong>Authentication:</strong><br>App Install</td>
+<td>Data holders <strong>MAY</strong> invite consumers using &#39;Redirect to Web&#39; flows to install the data holder app used for the purposes of CDR authentication. This invitation <strong>MUST NOT</strong> introduce unwarranted friction.</td>
 </tr>
 <tr>
 <td><strong>Authentication:</strong><br >Passwords</td>
-<td>Data Holders and Data Recipients <strong>MUST</strong> state in consumer-facing interactions and communications that services utilising the CDR do not need access to consumer passwords for the purposes of sharing data. The exact phrasing of this is at the discretion of the Data Holder and Data Recipient.</td>
+<td><p>Data holders and data recipients <strong>MUST</strong> state in consumer-facing interactions and communications that third parties do not need consumer passwords to access CDR data. The exact phrasing of this is at the discretion of the data holder and data recipient.</p><p><strong>Note:</strong> In this context, &#39;third parties&#39; refers to entities on the ADR-side and does not include any third parties that the data holder may engage.</p></td>
 </tr>
 <tr>
-<td><strong>Authentication:</strong><br>Password link</td>
-<td>Data Holders <strong>MUST NOT</strong> include forgotten details links in redirect screens. The inclusion of such links is considered to increase the likelihood of phishing attacks.</td>
+<td><strong>Authentication:</strong><br>Friction</td>
+<td><p>Data holders <strong>MUST NOT</strong> introduce unwarranted friction into the authentication process.</p><p>In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authorise the disclosure of CDR data, unwarranted friction for authentication flows and methods is considered to include, but is not limited to:<br><ul><li>The addition of any requirements beyond normal data holder practices for authenticating the consumer including, but not limited to, One Time Password (OTP) verification code delivery.</li><li>Providing or requesting additional information beyond normal data holder practices for authenticating the consumer including, but not limited to, OTP verification code delivery.</li><li>Offering additional or alternative services.</li><li>Referencing or including other documents.</li></ul></p></td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_redirect-to-web-with-one-time-password">Redirect to web with One Time Password (OTP)</h3>
+
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Authentication:</strong><br>Password Link</td>
+<td>Data holders <strong>MUST NOT</strong> include forgotten details links in redirect screens.</td>
 </tr>
 <tr>
-<td><strong>Authentication:</strong><br>OTP expiry</td>
-<td>Data Holders <strong>MUST</strong> communicate the expiry period of the OTP to the consumer in the authentication flow.</td>
+<td><strong>Authentication:</strong><br>OTP Expiry</td>
+<td>Data holders <strong>MUST</strong> communicate the expiry period of the OTP to the consumer in the authentication flow.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_redirect-to-app">Redirect to App</h3>
+
+<table><thead>
+<tr>
+<th>Area</th>
+<th>CX Standard</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Authentication:</strong><br>Steps</td>
+<td>Where a data holder implements Redirect to App, the authentication flow and method <strong>MUST NOT</strong> involve more steps than the consumer would reasonably encounter when logging in to the data holder&#39;s app for non-CDR purposes, unless otherwise specified in the data standards.</td>
 </tr>
 </tbody></table>
