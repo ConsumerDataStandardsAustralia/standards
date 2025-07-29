@@ -1,7 +1,7 @@
 <h2 class="schema-heading" id="consumer-experience_authentication-standards">Authentication Standards</h2>
 <pre class="highlight diff tab-diff"><code>Added following new sections:
 <span class="gi">+ Common Authentication Standards
-+ Redirect to web with One Time Password (OTP)
++ Redirect to Web with One Time Password (OTP)
 + Redirect to App
 </span></code></pre>
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_common-authentication-standards">Common Authentication Standards</h3>
@@ -26,7 +26,7 @@
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_redirect-to-web-with-one-time-password">Redirect to web with One Time Password (OTP)</h3>
+<h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_redirect-to-web-with-one-time-password">Redirect to Web with One Time Password (OTP)</h3>
 
 <table><thead>
 <tr>
