@@ -62,6 +62,7 @@ The following <mark>corrections</mark> have been made to the changes resulting f
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
+| Authentication Schedule | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Added new section **"Authentication Schedule"** with following sub-sections:<ul><li>Redirect to App</li><li>Decoupled Authentication</li><li>Fallback Authentication Flows</li></ui> | [Authentication Schedule](../../#authentication-schedule) |
 | Branding and minor UI updates | [**Standards Staging #476**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/476): Applied updated DSB branding/colour palette, replaced references to 'Consumer Data Standards' and 'CDR standards' with 'CDR Data Standards', UI updates for Version Delta scrolling, updated process for adding the 'archived version' message to historical versions, CSS adjustments to avoid horizontal scrollbars in schema tables. | N/A
 | Known Issues | [**Standards Staging #476**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/476): Added a Known Issues item for a pending change to the Certificate Management section and a Future improvements item for Metadata Update endpoint inconsistency. | [Known Issues](../../#known-issues)
 | Remove deprecated Register scope detail | [**Standards Maintenance #671**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/671): Updated Admin & Registration scope table and Non-Normative Examples for the Register token and openid-configuration endpoints to replace placeholders and deprecated details with current values. | [Admin & Registration](../../#admin-amp-registration)<br>[Security Profile](../../#security-profile)
@@ -94,7 +95,6 @@ The following <mark>corrections</mark> have been made to the changes resulting f
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-| Authentication Schedule | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Added new section **"Authentication Schedule"** with following sub-sections:<ul><li>Redirect to App</li><li>Decoupled Authentication</li><li>Fallback Authentication Flows</li></ui> | [Authentication Schedule](../../#authentication-schedule) |
 | Overview update | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Removed "TDIF" from Symbols and Abbreviated terms list. | [Overview](../../#overview) |
 | Authentication Flows changes | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): <ul><li>Moved credential requirements from Baseline Security Provisions: Data Holders section to new Credential Requirements section.</li><li>Added  new section **"Redirect to App"**</li></ui>  | [Authentication Flows](../../#authentication-flows) |
 | LoAs changes | [**Decision #369**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/369): Update LoA Single Ordinal section by amending LoA 2 and LoA 3 and adding LoA 4  | [Levels of Assurance (LoAs)](../../#levels-of-assurance-loas) |
