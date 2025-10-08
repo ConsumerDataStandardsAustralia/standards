@@ -20,108 +20,88 @@ Release notes for version **1.35.1** of the [CDR Data Standards](../../).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+None
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+None
 
 
 ### Decisions
 This release addresses the following Decisions published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Consultation Draft #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
+- [Decision #377 - Certificate management consequential amendments](https://github.com/ConsumerDataStandardsAustralia/standards/issues/377)
 
 
 ## General Changes
-|Change|Description|Link|
-|------|-----------|----|
-| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Decision #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail. | [Standards section](../../#section)
+None
 
 
 ## Introduction
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## High Level Standards
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Authentication Schedule
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Consumer Experience
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Security Profile
 |Change|Description|Link|
 |------|-----------|----|
-
+| Certificate management detail | [**Decision #377**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/377): Amendments to certificate management section to support ACCC operations. | [Certificate Management](../../#certificate-management)
 
 ## DCR APIs
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Register APIs
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Authorisation Scopes
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Non-functional Requirements
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Banking APIs
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Energy APIs
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Common APIs
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Admin APIs
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Shared Responsibility
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Energy Secondary DH APIs
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Additional Standards
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Known Issues
-|Change|Description|Link|
-|------|-----------|----|
+None
 
