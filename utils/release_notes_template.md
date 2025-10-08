@@ -27,10 +27,10 @@ This release addresses the following change requests raised on [Standards Mainte
 - [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
 
 
-### Decision Proposals
-This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
+### Decisions
+This release addresses the following Decisions published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Decision Proposal #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
+- [Consultation Draft #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
 
 
 ## General Changes
@@ -38,7 +38,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail. | [Standards section](../../#section)
 | Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Decision Proposal #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail. | [Standards section](../../#section)
+| Change summary | [**Decision #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail. | [Standards section](../../#section)
 
 
 ## Introduction
@@ -51,17 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 
 
-## API Endpoints
-|Change|Description|Link|
-|------|-----------|----|
-
-
-## Information Security Profile
-|Change|Description|Link|
-|------|-----------|----|
-
-
-## Register Standards
+## Authentication Schedule
 |Change|Description|Link|
 |------|-----------|----|
 
@@ -71,12 +61,57 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 
 
-## Non-Functional Requirements
+## Security Profile
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## DCR APIs
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Register APIs
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Authorisation Scopes
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Non-functional Requirements
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Banking APIs
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Energy APIs
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Common APIs
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Admin APIs
 |Change|Description|Link|
 |------|-----------|----|
 
 
 ## Shared Responsibility
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Energy Secondary DH APIs
 |Change|Description|Link|
 |------|-----------|----|
 
