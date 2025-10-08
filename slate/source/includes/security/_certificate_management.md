@@ -1,7 +1,9 @@
 
 ## Certificate Management
 
-
+```diff
+Amendments to certificate management section to support ACCC operations
+```
 
 ### Issued by the Register for Data Holders
 Certificate | Function | Notes
@@ -17,9 +19,6 @@ Certificate | Function | Notes
 | **Client Certificate** | Secures the following:<ul><li>Consuming Register APIs.</li><li>Consuming Data Holder APIs.</li></ul>
 | <span style="white-space: nowrap;">**Server Certificate(s)**</span> | Certificate is issued to a FQDN. | Not currently required by Data Recipients.
 
-### CDR Certificate Authority
-[DigiCert](https://www.digicert.com) acts as the certificate authority that issues and manages certificates to CDR participants as directed by the ACCC Register in its capacity as the CDR Registrar.
-
 
 ### Certificate Trust Model
 
@@ -27,13 +26,7 @@ Certificate | Function | Notes
 
 The CDR utilises a private certificate trust chain for all Register CA secured endpoints being hosted by [Data Holders](#participant-endpoints), [Data Recipients](#participant-endpoints) and the [Register](#register-apis).
 
-This trust chain encompasses a set of root and intermediate CAs issued for the test and production environments.
-
-|||
-|---|---|
-|**Test Environment**| Details provided to participants when they begin CTS process. |
-|**Production Environment**|[CA Root Production](includes/register/certificates/production/ca_root_prod.cer)<br>[CA Intermediate Production](includes/register/certificates/production/ca_intermediate_prod.cer)|
-
+Operational detail related to the CDR Certificate Authority is maintained by the ACCC, and is [available here](https://consumerdataright.atlassian.net/wiki/spaces/DP/pages/360415310/Certificate+Management).
 
 
 ### Certificate Signing Request Profile
@@ -58,7 +51,7 @@ CSR Field | Required | Server | Client
 Please refer to the [Register onboarding guide](https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0/on-boarding-guide) for further information on certificate issuance.
 
 ### Certificate Usage
-Further details on the Register CA issued certificates can be found in the [ACCC Certificate Practice Statement V1.0](https://www.cdr.gov.au/sites/default/files/2020-12/CDR%20-%20ACCC%20Certification%20practice%20statement.pdf).
+Further details on the Register CA issued certificates can be found on the [Digital certificate agreements](https://www.cdr.gov.au/resources/agreements/digital-certificate-agreements) page.
 
 ### Certificate Validation
 Certificate validation must check:
@@ -79,7 +72,7 @@ Each certificate has the applicable and appropriate x.509 certificate extensions
 
 Status is checked through Certificate Revocation Lists (CRL) or Online Certificate Status Protocol (OCSP) responders, identified in each certificate in the chain.
 
-The Certificate Practice Statement provides details for DigiCert's certificate validation requirements and a summary has been provided in the CDR Support Portal article: [Certificate Validation](https://cdr-support.zendesk.com/hc/en-us/articles/900005826963-Certificate-Validation).
+The Certificate Practice Statement provides details for certificate validation requirements and a summary has been provided in the CDR Support Portal article: [Certificate Validation](https://cdr-support.zendesk.com/hc/en-us/articles/900005826963-Certificate-Validation).
 
 ### OCSP stapling
 The use of OCSP Stapling within the CDR ecosystem is not recommended.
