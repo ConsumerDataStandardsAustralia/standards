@@ -1,32 +1,6 @@
 ## Future Dated Obligations
 
-```diff
-Removed FDOs prior to November 2024.
 
-Specified retirement date for Banking Get Transaction Detail v1 as 10th November 2025.
-
-Updated FDO for:
- - Get Products v4
- - Get Product Detail v6
- - Get Account Detail v4
-- November 10th 2025
-+ March 16th 2026
-
-Added Future Dated Obligations for the following new endpoint versions:
-+ Get Products v5
-+ Get Product Detail v7
-+ Get Accounts v3
-+ Get Account Detail v5
-+ Get Bulk Balances v2
-+ Get Bulk Direct Debits v2
-+ Get Scheduled Payments Bulk v3
-+ Get Transactions for Account v2
-+ Get Transaction Detail v3
-+ Get Instalment Plans for Account v1
-+ Get Instalment Plans Bulk v1
-
-Added FDOs for Redirect to App and Authentication Flows
-```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 
 

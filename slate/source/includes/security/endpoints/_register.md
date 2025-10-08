@@ -2,26 +2,7 @@
 
 The CDR Register exposes an OIDC Configuration Endpoint with associated JWKS and token endpoints to facilitate issuance of access tokens to consume the protected Register APIs.
 
-```diff
-Updated details in the Non-Normative Example for the Register openid-configuration endpoint
-- GET /.well-known/openid-configuration HTTP/1.1
-+ GET /idp/.well-known/openid-configuration HTTP/1.1
 
-- Host: cdr.register
-+ Host: api.cdr.gov.au
-
-- "issuer": "https://cdr.register/idp",
-+ "issuer": "https://api.cdr.gov.au/idp",
-
-- "jwks_uri": "https://cdr.register/idp/.well-known/openid-configuration/jwks",
-+ "jwks_uri": "https://api.cdr.gov.au/idp/.well-known/openid-configuration/jwks",
-
-- "token_endpoint": "https://cdr.register/idp/connect/token",
-+ "token_endpoint": "https://secure.api.cdr.gov.au/idp/connect/token",
-
-- "scopes_supported": ["cdr-register:bank:read"],
-+ "scopes_supported": ["cdr-register:read"],
-```
 
 > Retrieve CDR Register OIDC Discovery Endpoint
 

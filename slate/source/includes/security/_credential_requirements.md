@@ -1,11 +1,5 @@
 ## Credential Requirements
-```diff
-Added new Credential Requirements section with the following sub-sections:
-+ User Identifiers
-+ Baseline Credential Requirements
-+ One Time Password Credential Requirements
-+ Restricted Credentials
-```
+
 ### User Identifiers
 If a data holder requests a user identifier for the purposes of identifying the customer during authentication, then the data holder:
 

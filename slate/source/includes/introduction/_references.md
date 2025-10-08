@@ -1,11 +1,6 @@
 ## Normative References
 
-```diff
-Amended Normative References:
-- TDIF
-+ Digital ID Accreditation
-+ RFC8252: OAuth 2.0 for Native Apps
-```
+
 
 | Reference | Description | Version |
 |-----------|-------------|---------|

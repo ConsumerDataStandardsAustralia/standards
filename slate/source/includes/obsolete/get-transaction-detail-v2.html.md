@@ -4866,10 +4866,7 @@ The [_productCategory_ enumeration](#cdr-banking-api_schemas_tocSbankingproductc
 <a id="productfeaturetypedoc"></a>
 <h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3>
 
-```diff
-Added featureType:
-+ FUNDS_AVAILABLE_AFTER
-```
+
 
 Description of the usage of the _featureType_ field as it applies to products.
 
@@ -4911,10 +4908,7 @@ Description of the usage of the _featureType_ field as it applies to products.
 <a id="productconstrainttypedoc"></a>
 <h3 id="tocSproductconstrainttypedoc">Product Constraint Types</h3>
 
-```diff
-Added constraintType:
-+ OTHER
-```
+
 
 Description of the usage of the _constraintType_ field as it applies to products.
 
@@ -4934,17 +4928,7 @@ Description of the usage of the _constraintType_ field as it applies to products
 <a id="producteligibilitytypedoc"></a>
 <h3 id="tocSproducteligibilitytypedoc">Product Eligibility Types</h3>
 
-```diff
-Updated eligibilityType 'Use of additionalValue Field' details:
 
-PENSION_RECIPIENT
-- N/A
-+ Optional. If present, MUST contain a description of which pensions qualify.
-
-STUDENT
-- N/A
-+ Optional. If present, MUST contain a description of who qualifies as a student, e.g., do apprentices qualify?
-```
 
 Description of the usage of the _eligibilityType_ field as it applies to products.
 
@@ -4968,18 +4952,7 @@ Description of the usage of the _eligibilityType_ field as it applies to product
 <a id="productfeetypedoc"></a>
 <h3 id="tocSproductfeetypedoc">Product Fee Types</h3>
 
-```diff
-Updated feeType values:
-- VARIABLE
-+ CASH_ADVANCE
-+ DISHONOUR
-+ ENQUIRY
-+ LATE_PAYMENT
-+ OTHER
-+ REPLACEMENT
-+ UPFRONT_PER_PLAN
-+ VARIATION
-```
+
 
 Description of the usage of the _feeType_ field as it applies to products.
 
@@ -5023,17 +4996,7 @@ Description of the usage of the _discountType_ field as it applies to products.
 <a id="productdiscounteligibilitydoc"></a>
 <h3 id="tocSproductdiscounteligibilitydoc">Product Discount Eligibility Types</h3>
 
-```diff
-Updated discountEligibilityType 'Use of additionalValue Field' details:
 
-PENSION_RECIPIENT
-- Optional. Should contain a description of which pensions qualify.
-+ Optional. If present, MUST contain a description of which pensions qualify.
-
-STUDENT
-- Optional. Should contain a description of who qualifies as a student, e.g., do apprentices qualify?
-+ Optional. If present, MUST contain a description of who qualifies as a student, e.g., do apprentices qualify?
-```
 
 Description of the usage of the _discountEligibilityType_ field as it applies to products.
 
@@ -5095,10 +5058,7 @@ Description of the usage of the _lendingRateType_ field as it applies to product
 <a id="productlendingbaseratetypedoc"></a>
 <ul><li id="tocSproductlendingbaseratetypedoc"><b>Lending Base Rate Types</b></li></ul>
 
-```diff
-Added lendingRateType:
-+ BALANCE_TRANSFER
-```
+
 
 A lending product is expected to present a single Base rate corresponding to relevant selection criteria including the rate _tiers_ and _additionalValue_, where applicable.
 
@@ -5147,9 +5107,7 @@ Description of the usage of the _maturityInstructions_ field as it applies to ac
 <a id="bankingproductrateconditiondoc"></a>
 <h3 id="tocSbankingproductrateconditiondoc">Rate and Tier Applicability Types</h3>
 
-```diff
-+ Added Rate and Tier Applicability Types section
-```
+
 
 Description of the usage of the _rateApplicabilityType_ field as it applies to products.
 

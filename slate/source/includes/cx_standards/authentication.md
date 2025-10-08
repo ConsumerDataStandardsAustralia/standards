@@ -1,10 +1,5 @@
 <h2 class="schema-heading" id="consumer-experience_authentication-standards">Authentication Standards</h2>
-```diff
-Added following new sections:
-+ Common Authentication Standards
-+ Redirect to Web with One Time Password (OTP)
-+ Redirect to App
-```
+
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_common-authentication-standards">Common Authentication Standards</h3>
 
 |Area|CX Standard|

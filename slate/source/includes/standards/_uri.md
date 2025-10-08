@@ -40,11 +40,7 @@
 5. https://mtls.dh.example.com/api/cds-au/v1/ACME/apply
 ```
 
-```diff
-Updated description of the `banking` <industry> value to accommodate non-bank lending/non-bank lenders
-- `banking` = "banking" string. For APIs related to banking and potentially wider financial services data,
-+ `banking` = "banking" string. For APIs related to banking and non-bank lending,
-```
+
 
 The URI structure for API endpoints in the standards **MUST** be implemented as follows: 
 <pre class="display-inline light-box">

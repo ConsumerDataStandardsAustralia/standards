@@ -2,58 +2,7 @@
 
 This specification defines the APIs for Data Holders exposing Energy endpoints.
 
-```diff
-Specified the demand and otherCharges fields in EnergyBillingTransactionV3 as conditional, to match their descriptions.
 
-Added the isSecondaryDataHolderError field to the following Energy APIs by having them reference a new 'PrimaryResponseErrorListV1' schema.
-The new schema was created to ensure it remains distinct from the original 'ResponseErrorListV2' schema already referenced by most other APIs.
- - Get Service Points
- - Get Service Point Detail
- - Get Usage For Service Point
- - Get Bulk Usage
- - Get Usage For Specific Service Points
- - Get DER For Service Point
- - Get Bulk DER
- - Get DER For Specific Service Points
-+ isSecondaryDataHolderError: Indicates the error was propagated from a designated secondary data holder.
-
-Adjusted the following fields in EnergyPlanContractV3 to reference their array values at one level higher in the Open API specification. This makes the documentation appear consistent, but does not change the overall response structure.
- - controlledLoad
- - incentives
- - discounts
- - greenPowerCharges
- - eligibility
- - fees
- - solarFeedInTariff
- - tariffPeriod
-
-Updated the description of the tariffPeriod field in EnergyPlanContractV3
-- Array of tariff periods.
-+ Array of tariffs that apply to periods throughout the year.
-
-Added default field value to the schema specification for the following fields: 
- - EnergyConcession > appliedTo
-
-Updated the description of the two rates field in EnergyPlanTariffPeriodV2
-- Array of controlled load rates in order of usage volume.
-+ Array of rates in order of usage volume.
-
-Updated the description of the following field in EnergyPlanTariffPeriodV2
- - timeOfUseRates
-
-Updated the description of the following fields in EnergyPlanTariffPeriodV2 and EnergyPlanControlledLoadV2
- - timeOfUseRates[].timeOfUse
- - timeOfUseRates[].timeOfUse[].days
- - timeOfUseRates[].timeOfUse[].startTime
- - timeOfUseRates[].timeOfUse[].endTime
-
-Updated the description of the following fields in EnergyPlanSolarFeedInTariffV3
- - timeVaryingTariffs
- - timeVaryingTariffs[].timeVariations
- - timeVaryingTariffs[].timeVariations[].days
- - timeVaryingTariffs[].timeVariations[].startTime
- - timeVaryingTariffs[].timeVariations[].endTime
-```
 
 <table>
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy OpenAPI Specification (JSON)</a></td></tr>

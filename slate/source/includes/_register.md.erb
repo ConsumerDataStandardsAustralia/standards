@@ -9,36 +9,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
   These statuses are provided authoritatively by the Register to allow participants to determine whether a connecting third-party is permitted to perform registration requests or data sharing requests.
 </aside>
 
-```diff
-Register endpoint changes:
-+ Get Data Holder Brands v3
-+ Get Data Holder Brands Summary v2
-+ Get Data Holder Statuses v2
-+ Get Software Statement Assertion (SSA) v4
-+ Get Software Products Statuses v3
-+ Get Data Recipients Statuses v3
-+ Get Data Recipients v4
 
-The `non-bank-lending` value has been added as an option for the 'industry' path parameter in the below endpoints:
- - Get Data Holder Brands
- - Get Data Holder Brands Summary
- - Get Data Holder Statuses
-+ non-bank-lending
-
-The `non-bank-lending` value has been added as an option for the 'industries' property in the below endpoints:
- - Get Data Holder Brands
- - Get Data Holder Brands Summary
-+ non-bank-lending
-
-The '{industry}' path parameter enum has been modified to leave only the 'all' value as valid in the below endpoints:
- - Get Software Statement Assertion (SSA)
- - Get Software Products Statuses
- - Get Data Recipients Statuses
- - Get Data Recipients
-- banking
-- energy
-- telco
-```
 
 <table>
 <tr><td><a href='./includes/swagger/cds_register.json'>Register OpenAPI Specification (JSON)</a></td></tr>

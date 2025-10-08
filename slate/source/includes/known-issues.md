@@ -1,11 +1,6 @@
 # Known Issues
 
-```diff
-- Removed Non-Bank Lending Known Issues item regarding prior updates to the NBL Candidate
 
-Added Known Issue item
-+ Certificate Management
-```
 
 There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.
 
@@ -19,11 +14,7 @@ Certificate Management | The [Certificate Management](#certificate-management) s
 
 The following improvements will be incorporated into future versions of the Standards.
 
-```diff
-Added Future improvements items
-+ Standardise Banking Scheduled Payments endpoint paths
-+ Address inconsistency in the Metadata Update endpoint response
-```
+
 
 ### Standardise Register API Error Codes
 

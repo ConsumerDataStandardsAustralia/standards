@@ -1,10 +1,6 @@
 ## Performance Requirements
 
-```diff
-Added entries to the Low Priority and Unattended tiers for Banking:
-+ Get Instalment Plans For Account
-+ Get Instalment Plans Bulk
-```
+
 
 API endpoint performance will be measured in response time of individual API requests from receipt of request to delivery of response.
 

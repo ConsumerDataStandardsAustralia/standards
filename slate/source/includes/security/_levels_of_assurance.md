@@ -1,7 +1,5 @@
 ## Levels of Assurance (LoAs)
-```diff
-Update LoA Single Ordinal section by amending LoA 2 and LoA 3 and adding LoA 4
-```
+
 Levels Of Assurance (LoAs), returned after a successful authentication **MUST** be represented in Single Ordinal form where a single LoA value is represented.
 
 <a id="ordinal-loa"></a>

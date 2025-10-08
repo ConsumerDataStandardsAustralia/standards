@@ -1,9 +1,6 @@
 ## Authorisation Standards
 
-```diff
-Added following new standards:
-+ Authorisation: Add or Switch Profiles
-```
+
 
 |Area|CX Standard|
 |-------------------|------------------------------|

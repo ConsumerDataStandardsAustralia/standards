@@ -1,8 +1,6 @@
 <h2 id="high-level-standards_definitions">Definitions</h2>
 
-```diff
-+ Added Definitions section to cover terminology and applicability for Banking and Non-Bank Lending
-```
+
 
 This section outlines specific descriptions, terminology, and conditions that relate to the interpretation of the data standards.
 
