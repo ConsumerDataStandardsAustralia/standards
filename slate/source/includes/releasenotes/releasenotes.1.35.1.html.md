@@ -103,5 +103,7 @@ None
 
 
 ## Known Issues
-None
+|Change|Description|Link|
+|------|-----------|----|
+| Certificate management detail | [**Decision #377**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/377): Removed Certificate Management known issue, as it has been addressed. | [Known Issues](../../#known-issues)
 
