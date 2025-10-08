@@ -1657,38 +1657,14 @@ This text is an example of a new addition to the standards:
 
 <h2 id='version'>Version</h2>
 
-<p>These standards represent version <strong>1.35.0</strong> of the high level standards. See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
+<p>These standards represent version <strong>1.35.1</strong> of the high level standards. See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
 
 <h2 id='interpretation'>Interpretation</h2>
 
 <p>Note that, in these standards, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <strong><a href="#nref-RFC2119">[RFC2119]</a></strong>.</p>
 
-<h2 id='future-dated-obligations'>Future Dated Obligations</h2><pre class="highlight diff tab-diff"><code>Removed FDOs prior to November 2024.
+<h2 id='future-dated-obligations'>Future Dated Obligations</h2>
 
-Specified retirement date for Banking Get Transaction Detail v1 as 10th November 2025.
-
-Updated FDO for:
- - Get Products v4
- - Get Product Detail v6
- - Get Account Detail v4
-<span class="gd">- November 10th 2025
-</span><span class="gi">+ March 16th 2026
-</span>
-Added Future Dated Obligations for the following new endpoint versions:
-<span class="gi">+ Get Products v5
-+ Get Product Detail v7
-+ Get Accounts v3
-+ Get Account Detail v5
-+ Get Bulk Balances v2
-+ Get Bulk Direct Debits v2
-+ Get Scheduled Payments Bulk v3
-+ Get Transactions for Account v2
-+ Get Transaction Detail v3
-+ Get Instalment Plans for Account v1
-+ Get Instalment Plans Bulk v1
-</span>
-Added FDOs for Redirect to App and Authentication Flows
-</code></pre>
 <p>The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. </p>
 
 <p>Please also refer to the <a href="includes/endpoint-version-schedule/#obligation-date-schedule">Obligation Date Schedule</a> which summarises obligation milestones.</p>
@@ -1875,30 +1851,12 @@ Added FDOs for Redirect to App and Authentication Flows
 
 <p>Their implementation schedule is <a href="https://consumerdataright.atlassian.net/wiki/spaces/DP/pages/30081043/Delivery+Dates">published here</a>.</p>
 
-<h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2><pre class="highlight diff tab-diff"><code>Updated the Obligation Date Schedule and Banking APIs Endpoint Version Schedule with the following changes:
- - Y26 #3 (2026-07-13): 2 endpoint version obligations
- - Y26 #5 (2026-11-09): 9 endpoint version obligations
+<h2 id='endpoint-version-schedule'>Endpoint Version Schedule</h2>
 
-Added Future Dated Obligations for the following endpoint versions:
-<span class="gi">+ Get Products v5
-+ Get Product Detail v7
-+ Get Accounts v3
-+ Get Account Detail v5
-+ Get Bulk Balances v2
-+ Get Bulk Direct Debits v2
-+ Get Scheduled Payments Bulk v3
-+ Get Transactions For Account v2
-+ Get Transaction Detail v3
-+ Get Instalment Plans for Account v1
-+ Get Instalment Plans Bulk v1
-</span></code></pre>
 <p>A table-view of all endpoint versioning is available <a href='includes/endpoint-version-schedule/#endpoint-version-schedule'>here</a>.</p>
 
-<h2 id='normative-references'>Normative References</h2><pre class="highlight diff tab-diff"><code>Amended Normative References:
-<span class="gd">- TDIF
-</span><span class="gi">+ Digital ID Accreditation
-+ RFC8252: OAuth 2.0 for Native Apps
-</span></code></pre>
+<h2 id='normative-references'>Normative References</h2>
+
 <table><thead>
 <tr>
 <th>Reference</th>
@@ -2067,6 +2025,7 @@ Added Future Dated Obligations for the following endpoint versions:
 <td>June 2018</td>
 </tr>
 </tbody></table>
+
 <h2 id='informative-references'>Informative References</h2>
 
 <table><thead>
@@ -2273,8 +2232,6 @@ their background, situation, experience, or personal characteristics.</p>
 
 <h2 id="high-level-standards_definitions">Definitions</h2>
 
-<pre class="highlight diff tab-diff"><code><span class="gi">+ Added Definitions section to cover terminology and applicability for Banking and Non-Bank Lending
-</span></code></pre>
 <p>This section outlines specific descriptions, terminology, and conditions that relate to the interpretation of the data standards.</p>
 
 <h3 id="high-level-standards_definitions_sectors">Sectors</h3>
@@ -2292,9 +2249,11 @@ their background, situation, experience, or personal characteristics.</p>
 </tbody></table>
 
 <h2 id='uri-structure'>URI Structure</h2>
+
 <blockquote>
 <p>Some example URIs that meet this standard are:  </p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>1. https://mtls.dh.example.com/api/cds-au/v1/banking/accounts
 2. https://mtls.dh.example.com/api/cds-au/v1/banking/accounts/abc123/transactions/?x=y#bar
 3. https://tls.dh.example.com/complex/uri/taxonomy/cds-au/v1/banking/products?page=2
@@ -2327,10 +2286,7 @@ their background, situation, experience, or personal characteristics.</p>
 3. https://tls.dh.example.com/complex/uri/taxonomy/cds-au/v1/banking/products
 4. https://mtls.dh.example.com/api/cds-au/v1/energy/usage
 5. https://mtls.dh.example.com/api/cds-au/v1/ACME/apply
-</code></pre><pre class="highlight diff tab-diff"><code>Updated description of the `banking` &lt;industry&gt; value to accommodate non-bank lending/non-bank lenders
-<span class="gd">- `banking` = "banking" string. For APIs related to banking and potentially wider financial services data,
-</span><span class="gi">+ `banking` = "banking" string. For APIs related to banking and non-bank lending,
-</span></code></pre>
+</code></pre>
 <p>The URI structure for API endpoints in the standards <strong>MUST</strong> be implemented as follows: 
 <pre class="display-inline light-box">
 <b>uri-string</b> =  &quot;https://&quot; <b>&lt;holder-path&gt;</b> &quot;/&quot; <b>cds-au</b> &quot;/&quot; <b>&lt;version&gt;</b> &quot;/&quot; ( <b>&lt;industry&gt;</b> | <b>&lt;HID&gt;</b> ) &quot;/&quot; <b>&lt;resource&gt;</b></p>
@@ -3760,11 +3716,7 @@ Content-Type: application/json
 
 <p>An optional header <i>x-&lt;HID&gt;-v</i> will be supported for all endpoints that can be used by the data consumer to request a specific version of extension fields to include in the response. See the section on <a href="#http-headers">HTTP Headers</a> for more information on the use of this header.</p>
 <h1 style="display:none"></h1>
-<h1 id='authentication-schedule'>Authentication Schedule</h1><pre class="highlight diff tab-diff"><code>Added new Authentication Schedule section with the following sub-sections:
-<span class="gi">+ Redirect to App
-+ Decoupled Authentication
-+ Fallback Authentication Flows
-</span></code></pre>
+<h1 id='authentication-schedule'>Authentication Schedule</h1>
 <p>This schedule outlines specific terms and approaches supported by the data standards for the purposes of a consumer authenticating themselves with a data holder.</p>
 
 <p><strong>Definitions</strong></p>
@@ -3842,10 +3794,8 @@ Content-Type: application/json
 <p>The Consumer Experience (CX) Standards contain requirements for the creation of implementations by both Data Recipients and Data Holders. The full list of CX Standards can be found below.</p>
 
 <p>The CX Guidelines provide examples and recommendations for how to implement key rules and standards that relate to the consumer experience. They can be accessed along with additional CX commentary from the <a href="https://cx.dsb.gov.au">CX Guidelines</a> page.</p>
-<h2 id='data-language-standards-common'>Data Language Standards: Common</h2><pre class="highlight diff tab-diff"><code>Updates to accommodate non-bank lending
-<span class="gd">- See the Banking Language section
-</span><span class="gi">+ See the Banking and Non-Bank Lending Language section
-</span></code></pre>
+<h2 id='data-language-standards-common'>Data Language Standards: Common</h2>
+
 <blockquote>
 <p><img src="./images/cx_standards0.png" width="375px"><br>
 Example of data language standards presented in a consumer-facing interaction, where [1] refers to Data cluster language, and [2] refers to Data permission language.</p>
@@ -3868,6 +3818,7 @@ Example of data language standards presented in a consumer-facing interaction, w
 <td><p>If a scenario requires it, Data Holders and Data Recipients <strong>MUST</strong> merge and amend <em>Basic</em> and <em>Detailed</em> data cluster and permission language to show that <em>Detailed</em> scopes include <em>Basic</em> data.</p><p>Data Holders and Data Recipients <strong>MUST</strong> use the alternative language denoted with an &#39;&Dagger;&#39; for the relevant scope(s). See the <a href="#banking-and-non-bank-lending-language">Banking and Non-Bank Lending Language</a> section for banking and non-bank lending data and the <a href="#energy-language">Energy Language</a> section for energy data.</p><p><strong>Example:</strong> A Data Recipient presents the <em>Detailed</em> data cluster in a data request to a consumer but does not present the <em>Basic</em> data cluster. The <em>Detailed</em> scope includes <em>Basic</em> data, but this is not apparent to the consumer based on the data cluster language and permissions used for the <em>Detailed</em> scope.</p></td>
 </tr>
 </tbody></table>
+
 <h2 id='customer-language-common'>Customer Language: Common</h2>
 
 <p>See below for the customer data language standards, which are common across all sectors.</p>
@@ -3956,20 +3907,7 @@ Example of data language standards presented in a consumer-facing interaction, w
 
 <p><br></p>
 
-<h2 id='banking-and-non-bank-lending-language'>Banking and Non-Bank Lending Language</h2><pre class="highlight diff tab-diff"><code> - Updated main title:
-<span class="gd">- Banking Language
-</span><span class="gi">+ Banking and Non-Bank Lending Language
-</span>
- - Updated title and preamble:
-<span class="gd">- Banking Accounts
-- See below for the data language standards for the banking account scopes:
-</span><span class="gi">+ Banking and Non-Bank Lending Accounts
-+ See below for the data language standards for the banking and non-bank lending account scopes:
-</span>
- - Updated preamble:
-<span class="gd">- See below for the data language standards for the banking transactions scope:
-</span><span class="gi">+ See below for the data language standards for the transactions scope:
-</span></code></pre><h3 id='banking-and-non-bank-lending-accounts'>Banking and Non-Bank Lending Accounts</h3>
+<h2 id='banking-and-non-bank-lending-language'>Banking and Non-Bank Lending Language</h2><h3 id='banking-and-non-bank-lending-accounts'>Banking and Non-Bank Lending Accounts</h3>
 <p>See below for the data language standards for the banking and non-bank lending account scopes:</p>
 
 <table><thead>
@@ -4334,12 +4272,6 @@ Example of data language standards presented in a consumer-facing interaction, w
 
 <h2 class="schema-heading" id="consumer-experience_authentication-standards">Authentication Standards</h2>
 
-<pre class="highlight diff tab-diff"><code>Added following new sections:
-<span class="gi">+ Common Authentication Standards
-+ Redirect to Web with One Time Password (OTP)
-+ Redirect to App
-</span></code></pre>
-
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_common-authentication-standards">Common Authentication Standards</h3>
 
 <table><thead>
@@ -4394,9 +4326,8 @@ Example of data language standards presented in a consumer-facing interaction, w
 </tr>
 </tbody></table>
 
-<h2 id='authorisation-standards'>Authorisation Standards</h2><pre class="highlight diff tab-diff"><code>Added following new standards:
-<span class="gi">+ Authorisation: Add or Switch Profiles
-</span></code></pre>
+<h2 id='authorisation-standards'>Authorisation Standards</h2>
+
 <table><thead>
 <tr>
 <th>Area</th>
@@ -4592,10 +4523,6 @@ Example of data language standards presented in a consumer-facing interaction, w
 
 <h2 class="schema-heading" id="consumer-experience_dashboard-standards">Dashboard Standards</h2>
 
-<pre class="highlight diff tab-diff"><code>Removed historical obligation date for two Data Holder Dashboard CX Standards
-<span class="gd">- Effective from July 1st 2024:
-</span></code></pre>
-
 <p>This section outlines standards for consumer dashboards. These are expected to be implemented on each specific data sharing arrangement.</p>
 
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_dashboard-standards_data-holder-dashboards">Data Holder Dashboards</h3>
@@ -4651,14 +4578,15 @@ Example of data language standards presented in a consumer-facing interaction, w
 </tbody></table>
 <h1 style="display:none"></h1>
 <h1 id='security-profile'>Security Profile</h1>
-<h2 id='overview'>Overview</h2><pre class="highlight diff tab-diff"><code>Removed the following from Symbols and Abbreviated terms section:
-<span class="gd">- TDIF: Trusted Digital Identity Framework
-</span></code></pre>
+<h2 id='overview'>Overview</h2>
+
 <p>This information security profile builds upon the foundations of the <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html">Financial-grade API Advanced Profile</a> <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> and other standards relating to
 <a href="http://openid.net/specs/openid-connect-core-1_0.html">Open ID Connect 1.0</a> <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p>
 
 <p>For information on the specific normative references that underpin this profile refer to the <a href="#normative-references">Normative References section</a>.</p>
+
 <h3 id='symbols-and-abbreviated-terms'>Symbols and Abbreviated terms</h3>
+
 <ul>
 <li><strong>API</strong>: Application Programming Interface</li>
 <li><strong>CA</strong>: Certificate Authority</li>
@@ -4787,11 +4715,8 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 
 <p>For the purposes of this standard a single person or individual <strong>MAY</strong> be represented as multiple Customers according to the practice of the Data Holder according to their existing digital channels.</p>
 
-<h2 id='authentication-flows'>Authentication Flows</h2><pre class="highlight diff tab-diff"><code>Added following new sections:
-<span class="gi">+ Redirect to App
-</span>
-Moved credential requirements from Baseline Security Provisions: Data Holders section to new Credential Requirements section.
-</code></pre>
+<h2 id='authentication-flows'>Authentication Flows</h2>
+
 <p>This profile supports the authentication flows specified by <a href="https://openid.net/specs/openid-connect-core-1_0.html">OpenID Connect</a> <strong><a href="#nref-OIDC">[OIDC]</a></strong> as constrained further by <strong><a href="#iref-FAPI">[FAPI]</a></strong>.</p>
 
 <p>Authorization Code Flow outlined at <a href="https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">section 3.1</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong> is supported.</p>
@@ -4799,6 +4724,7 @@ Moved credential requirements from Baseline Security Provisions: Data Holders se
 <p><strong>Until May 12th 2025</strong>, Data Holders <strong>MAY</strong> support OIDC Hybrid Flow outlined at <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p>
 
 <p>No other flows are currently supported.</p>
+
 <h3 id='baseline-security-provisions'>Baseline Security Provisions</h3><h4 id='data-holders'>Data Holders</h4>
 <p>The <em>request_uri</em> parameter is only supported if the Data Holder supports PAR.</p>
 
@@ -4823,17 +4749,22 @@ Moved credential requirements from Baseline Security Provisions: Data Holders se
 <li>Data Recipient Software Products <strong>MUST</strong> use <strong><a href="#nref-RFC9126">[RFC9126]</a></strong> (PAR) with <strong><a href="#nref-PKCE">[PKCE]</a></strong> (<strong><a href="#nref-RFC7636">[RFC7636]</a></strong>) and, if supported, <strong>MUST</strong> use <code>S256</code> as the code challenge method.</li>
 </ul>
 <h3 id='oidc-hybrid-flow'>OIDC Hybrid Flow</h3>
+
 <p>The <strong><a href="#nref-OIDC">[OIDC]</a></strong> Hybrid Flow is a type of redirection flow where the consumer&#39;s user agent is redirected from a Data Recipient Software Product’s (Relying Party) web site to a Data Holder’s Authorization endpoint in the context of an <strong><a href="#nref-OIDC">[OIDC]</a></strong> authentication request. The OIDC Hybrid Flow incorporates aspects of the both the Implicit Flow and Authorization Code Flow detailed under <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p>
 
 <p>Only a <em>response_type</em> (see <a href="https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth">section 3.3</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>) of <code>code id_token</code> <strong>SHALL</strong> be allowed.</p>
+
 <h3 id='authorization-code-flow'>Authorization Code Flow</h3>
+
 <p>The following statements are applicable for this flow:</p>
 
 <ul>
 <li>Only a <em>response_type</em> (see <a href="https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">section 3.1</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>) of <code>code</code> <strong>SHALL</strong> be allowed.</li>
 <li>Data Holders <strong>MUST</strong> also support <strong><a href="#nref-JARM">[JARM]</a></strong> and <strong><a href="#nref-PKCE">[PKCE]</a></strong></li>
 </ul>
+
 <h4 id='data-holders-2'>Data Holders</h4>
+
 <p>Data Holders <strong>MUST</strong> support <strong><a href="#nref-JARM">[JARM]</a></strong> in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm">section 5.2.2.2</a>.</p>
 
 <blockquote>
@@ -4842,17 +4773,16 @@ Data Holders <strong>MAY</strong> support Authorization Response encryption.</p>
 
 <p>However, at present, there is no confidential information in the authorization response, hence encryption of the authorization response is not required for the purposes of security or confidentiality. In addition, whilst response encryption <strong>MAY</strong> be used, to achieve greater interoperability, it is not recommended to use encryption in this case at this time.</p>
 </blockquote>
-<pre class="highlight diff tab-diff"><code>Updated the condition for when a Data Holder may perform authorization response encryption.
-<span class="gd">- If the Data Holder supports authorisation response encryption and the authorization_encrypted_response_alg is omitted from the registration request, the Data Holder MAY require response encryption by returning a client registration response with the chosen authorization_encrypted_response_alg value.
-</span><span class="gi">+ If authorization_encrypted_response_alg is omitted from the registration request, authorisation response encryption SHALL NOT be performed.
-</span></code></pre>
+
 <p>In addition,</p>
 
 <ul>
 <li>Data Holders <strong>MAY</strong> advertise they do not support authorisation response encryption: either by omitting these values from their OpenID Provider Metadata, or by presenting an empty array for the supported parameters.</li>
 <li>If <em>authorization_encrypted_response_alg</em> is omitted from the registration request, authorisation response encryption <strong>SHALL NOT</strong> be performed.</li>
 </ul>
+
 <h4 id='data-recipient-software-products-2'>Data Recipient Software Products</h4>
+
 <p>Data Recipients <strong>MUST</strong> support <strong><a href="#nref-JARM">[JARM]</a></strong> in accordance with <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm-1">section 5.2.3.2</a>.</p>
 
 <p>In addition,</p>
@@ -5112,22 +5042,12 @@ grant_type=authorization_code&amp;
 <li>The authorisation grant&#39;s <em>grant_type</em> parameter value <strong>MUST</strong> only be included when invoking the Token endpoint and <strong>MUST</strong> be set to <code>authorization_code</code> or <code>client_credentials</code>. The value <code>refresh_token</code> is also valid when refreshing an access token.</li>
 </ul>
 
-<h3 id='data-recipients-calling-the-cdr-register'>Data Recipients calling the CDR Register</h3><pre class="highlight diff tab-diff"><code>Updated details in the Non-Normative Example for the Register token endpoint
-<span class="gd">- Host: cdr.register
-</span><span class="gi">+ Host: secure.api.cdr.gov.au
-</span>
-<span class="gd">- scope=cdr-register%3Abank%3Aread
-</span><span class="gi">+ scope=cdr-register%3Aread
-</span>
-<span class="gd">- "aud": "https://cdr.register/idp/connect/token",
-</span><span class="gi">+ "aud": "https://secure.api.cdr.gov.au/idp/connect/token",
-</span>
-<span class="gd">- "scope": "cdr-register:bank:read openid"
-</span><span class="gi">+ "scope": "cdr-register:read openid"
-</span></code></pre>
+<h3 id='data-recipients-calling-the-cdr-register'>Data Recipients calling the CDR Register</h3>
+
 <blockquote>
 <p>Non-Normative Example - Data Recipient Software Product requests CDR Register Access Token</p>
 </blockquote>
+
 <pre class="highlight plaintext"><code>POST /token HTTP/1.1
 Host: secure.api.cdr.gov.au
 Content-Type: application/x-www-form-urlencoded
@@ -5160,6 +5080,7 @@ grant_type=client_credentials&amp;
   "scope": "cdr-register:read openid"
 }
 </code></pre>
+
 <p>In addition to the requirements for <a href="#private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> the following requirements <strong>MUST</strong> be supported:</p>
 
 <ul>
@@ -5174,11 +5095,8 @@ grant_type=client_credentials&amp;
 </aside>
 
 <h2 id='client-registration'>Client Registration</h2><h3 id='dynamic-client-registration'>Dynamic Client Registration</h3>
-
 <p>Data Recipients register with Data Holders according to <strong><a href="#nref-DCR">[DCR]</a></strong> to obtain client credentials used to retrieve consumer data on behalf of a consumer.</p>
-
 <h4 id='software-statement-assertion-ssa'>Software Statement Assertion (SSA)</h4>
-
 <p>As per <strong><a href="#nref-DCR">[DCR]</a></strong>, a Software Statement is defined as: &quot;A digitally signed JSON Web Token (JWT) created in accordance with <strong><a href="#nref-JWT">[JWT]</a></strong> that asserts metadata values about the client software&quot;.</p>
 
 <blockquote>
@@ -5199,20 +5117,15 @@ grant_type=client_credentials&amp;
 </ul>
 
 <p>Refer to the <a href="#register-apis">Register APIs</a> section for the endpoint definitions that will be used to retrieve and validate SSAs.</p>
-
 <h4 id='ssa-definition'>SSA Definition</h4>
-
 <blockquote>
 <p>Example SSA:</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>eyJhbGciOiJQUzI1NiIsImtpZCI6ImI4ZmFjZjJmZjM5NDQ0Zjc4MWUwYmU1ZGI0YjE0ZjE2IiwidHlwIjoiSldUIn0.eyJpc3MiOiJjZHItcmVnaXN0ZXIiLCJpYXQiOjE1NzE4MDgxMTEsImV4cCI6MjE0NzQ4MzY0NiwianRpIjoiM2JjMjA1YTFlYmM5NDNmYmI2MjRiMTRmY2IyNDExOTYiLCJjbGllbnRfbmFtZSI6Ik1vY2sgU29mdHdhcmUiLCJjbGllbnRfZGVzY3JpcHRpb24iOiJBIG1vY2sgc29mdHdhcmUgcHJvZHVjdCIsImNsaWVudF91cmkiOiJodHRwczovL2Fkci5leGFtcGxlLmNvbSIsImxlZ2FsX2VudGl0eV9pZCI6IjNCMEIwQTdCLTNFN0ItNEEyQy05NDk3LUUzNTdBNzFEMDdDNyIsImxlZ2FsX2VudGl0eV9uYW1lIjoiTW9jayBDb21wYW55IFB0eSBMdGQuIiwib3JnX2lkIjoiM0IwQjBBN0ItM0U3Qi00QTJDLTk0OTctRTM1N0E3MUQwN0M4Iiwib3JnX25hbWUiOiJNb2NrIENvbXBhbnkgQnJhbmQiLCJyZWRpcmVjdF91cmlzIjpbImh0dHBzOi8vYWRyLmV4YW1wbGUuY29tL3JlZGlyZWN0cy9yZWRpcmVjdDEiLCJodHRwczovL2Fkci5leGFtcGxlLmNvbS9yZWRpcmVjdHMvcmVkaXJlY3QyIl0sInNlY3Rvcl9pZGVudGlmaWVyX3VyaSI6Imh0dHBzOi8vYWRyLmV4YW1wbGUuY29tL3NlY3Rvcl9pZGVudGlmaWVyLmpzb24iLCJsb2dvX3VyaSI6Imh0dHBzOi8vYWRyLmV4YW1wbGUuY29tL2xvZ29zL2xvZ28xLnBuZyIsInRvc191cmkiOiJodHRwczovL2Fkci5leGFtcGxlLmNvbS90b3MuaHRtbCIsInBvbGljeV91cmkiOiJodHRwczovL2Fkci5leGFtcGxlLmNvbS9wb2xpY3kuaHRtbCIsImp3a3NfdXJpIjoiaHR0cHM6Ly9hZHIuZXhhbXBsZS5jb20vandrcyIsInJldm9jYXRpb25fdXJpIjoiaHR0cHM6Ly9hZHIuZXhhbXBsZS5jb20vcmV2b2NhdGlvbiIsInJlY2lwaWVudF9iYXNlX3VyaSI6Imh0dHBzOi8vYWRyLmV4YW1wbGUuY29tIiwic29mdHdhcmVfaWQiOiI3NDBDMzY4Ri1FQ0Y5LTREMjktQTJFQS0wNTE0QTY2QjBDREUiLCJzb2Z0d2FyZV9yb2xlcyI6ImRhdGEtcmVjaXBpZW50LXNvZnR3YXJlLXByb2R1Y3QiLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGJhbms6YWNjb3VudHMuYmFzaWM6cmVhZCBiYW5rOmFjY291bnRzLmRldGFpbDpyZWFkIGJhbms6dHJhbnNhY3Rpb25zOnJlYWQgYmFuazpwYXllZXM6cmVhZCBiYW5rOnJlZ3VsYXJfcGF5bWVudHM6cmVhZCBlbmVyZ3k6ZWxlY3RyaWNpdHkuc2VydmljZXBvaW50cy5iYXNpYzpyZWFkIGVuZXJneTplbGVjdHJpY2l0eS5zZXJ2aWNlcG9pbnRzLmRldGFpbDpyZWFkIGVuZXJneTplbGVjdHJpY2l0eS51c2FnZTpyZWFkIGVuZXJneTplbGVjdHJpY2l0eS5kZXI6cmVhZCBlbmVyZ3k6YWNjb3VudHMuYmFzaWM6cmVhZCBlbmVyZ3k6YWNjb3VudHMuZGV0YWlsOnJlYWQgZW5lcmd5OmFjY291bnRzLnBheW1lbnRzY2hlZHVsZTpyZWFkIGVuZXJneTphY2NvdW50cy5jb25jZXNzaW9uczpyZWFkIGVuZXJneTpiaWxsaW5nOnJlYWQgY29tbW9uOmN1c3RvbWVyLmJhc2ljOnJlYWQgY29tbW9uOmN1c3RvbWVyLmRldGFpbDpyZWFkIGNkcjpyZWdpc3RyYXRpb24ifQ.XTSst96xOifAnaMaBj0I5nO5vbtNwvz304hJ9I_jPOcdD6vitmLiyWdkdW5GKA4JAa62_DmRIU_3zXQL0gSSJxoWhCSbuIlfwDtXFpFZzQAnTv-hOul-5clYmXvQqqEqWvbZZ4g7IKdWdROp4fzWFXB0VKf-_qzue_Kksy3A9CwdZRmNMDFtIApkSULqxK3S8D2nFa3lvGzegl76Ji7p0Zjkyu8YexFyKCahTEGzQrRQeVILpaN107XHNlSWlhsv4hr1PXwG2Pn1z54SCG9tVOZ10WaqZ5SMjRqsQN-lVYSVe5BCTpQ-N_GnYuUeWh0rOJ9CrA8CUN_twCJXyW3I5w
 </code></pre>
-
 <blockquote>
 <p>Associated JWKS:</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>{
   "keys": [
     {
@@ -5228,11 +5141,9 @@ grant_type=client_credentials&amp;
   ]
 }
 </code></pre>
-
 <blockquote>
 <p>Decoded SSA</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>{
   "alg": "PS256",
   "kid": "b8facf2ff39444f781e0be5db4b14f16",
@@ -5267,7 +5178,6 @@ grant_type=client_credentials&amp;
 }
 
 </code></pre>
-
 <p>The SSA will conform to the requirements of <strong><a href="#nref-DCR">[DCR]</a></strong> with the following clarifications:</p>
 
 <table><thead>
@@ -5413,14 +5323,11 @@ grant_type=client_credentials&amp;
 </tbody></table>
 
 <p>Get Software Statement Assertion API <a href="includes/obsolete/get-software-statement-assertion-v1.html">v1</a> &amp; <a href="includes/obsolete/get-software-statement-assertion-v2.html">v2</a> has the <code>scope</code> claim explicitly defined.</p>
-
 <h3 id='registration-request-using-jwt'>Registration Request using JWT</h3>
-
 <blockquote>
 <p>Example Request<br>
 This example creates a FAPI 1.0 client registration that uses Authorization Code Flow with JARM encryption</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>HTTP/1.1 POST /register
 Host: mtls.dh.example.com
 Content-Type: application/jwt
@@ -5464,7 +5371,6 @@ Accept: application/json
   "signature":...
 }
 </code></pre>
-
 <p>To register with a Data Holder, the Data Recipient sends an HTTP POST to the Data Holder registration endpoint.</p>
 
 <ul>
@@ -5578,9 +5484,7 @@ Accept: application/json
 <td>Software statement assertion issued by the CDR Register.</td>
 </tr>
 </tbody></table>
-
 <h4 id='id-token-algorithm-selection-considerations'>ID Token Algorithm Selection Considerations</h4>
-
 <p>When requiring ID Token encryption, the following requirements are applicable.</p>
 
 <p>Participants <strong>MUST</strong> support, at a minimum, the following ID Token algorithms:</p>
@@ -5606,9 +5510,7 @@ Accept: application/json
 <p>Data Recipients <strong>MUST</strong> support all the algorithms used in the ecosystem to ensure they can communicate with all Data Holders.</p>
 
 <p>ID Token algorithm considerations remain relevant where the OIDC Hybrid Flow is leveraged as defined in the CDR Data Standards and in accordance with sections <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature">5.1.1</a>, <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-1">5.2.2.1</a>, and <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#id-token-as-detached-signature-2">5.2.3.1</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong>.</p>
-
 <h4 id='jarm-response-encryption-considerations'>JARM Response Encryption Considerations</h4>
-
 <p>If Data Holders support authorisation response encryption, they <strong>MUST</strong> support, at a minimum, one of each of the following <em>alg</em> and <em>enc</em> algorithms:</p>
 
 <table><thead>
@@ -5628,9 +5530,7 @@ Accept: application/json
 </tbody></table>
 
 <p>Data Recipients <strong>MUST</strong> support the minimum required algorithms.</p>
-
 <h3 id='registration-validation'>Registration Validation</h3>
-
 <p>Validation and use of the JWT and the claims described above <strong>MUST</strong> be performed in accordance with <strong><a href="#nref-JWT">[JWT]</a></strong>.</p>
 
 <p>SSA JWT signatures <strong>MUST</strong> be verified against the associated JWK published at the CDR Register <a href="#cdr-register-api_get-jwks">JWKS endpoint</a>.</p>
@@ -5642,15 +5542,12 @@ Accept: application/json
 <p><strong>From 31st August 2022</strong>, Data Holders <strong>MUST</strong> ignore unsupported authorisation scopes presented in the SSA for the creation and update of client registrations.</p>
 
 <p>Data Holders <strong>MUST</strong> adhere to the <a href="#performance-requirements">NFR performance requirements</a> when validating and responding to registration requests. Additional validation processes (such as outbound white-listing of data recipient endpoints) <strong>MUST NOT</strong> prevent specified response times being met.</p>
-
 <h3 id='registration-response'>Registration Response</h3>
-
 <blockquote>
 <p>Example Created Response<br>
 Authorization Code Flow<br>
 This example creates a FAPI 1.0 compliant registration that uses Authorization Code Flow with JARM encryption</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>HTTP/1.1 201 Created
 Content-Type: application/json
 
@@ -5697,7 +5594,6 @@ Content-Type: application/json
   "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"
 }
 </code></pre>
-
 <p>On successful registration, the response <strong>MUST</strong> be returned to the Data Recipient conforming to <a href="https://tools.ietf.org/html/rfc7591#section-3.2.1">Section 3.2.1</a> of <strong><a href="#nref-DCR">[DCR]</a></strong>.</p>
 
 <table><thead>
@@ -5724,13 +5620,10 @@ Content-Type: application/json
 <p>The Software Statement value <strong>MUST</strong> be returned unmodified. Client metadata elements used from the software statement <strong>MUST</strong> also be returned directly as top-level client metadata values in the registration response.</p>
 
 <p>Any additional claims <strong>MUST</strong> be ignored and not returned on completion of the request.</p>
-
 <h3 id='registration-errors'>Registration Errors</h3>
-
 <blockquote>
 <p>Example Error Response</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>HTTP/1.1 400 Bad Request
 Content-Type: application/json
 
@@ -5739,7 +5632,6 @@ Content-Type: application/json
   "error_description": "Duplicate registrations for a given software_id are not valid"
 }
 </code></pre>
-
 <p>When an error condition occurs during a registration request, the response <strong>MUST</strong> be returned to the Accredited Data Recipient conforming to <a href="https://tools.ietf.org/html/rfc7591#section-3.2.2">Section 3.2.2</a> of <strong><a href="#nref-DCR">[DCR]</a></strong>.</p>
 
 <p>Duplicate registrations are not permitted so attempts to create a registration which already exists <strong>MUST</strong> return an HTTP 400 error.</p>
@@ -5747,13 +5639,10 @@ Content-Type: application/json
 <p>Registration error responses schemas are defined in the <a href="#dcr-apis">DCR APIs</a> section.</p>
 
 <p>For those Registration errors which do not map to <a href="https://tools.ietf.org/html/rfc7591#section-3.2.2">Section 3.2.2</a> of <strong><a href="#nref-DCR">[DCR]</a></strong>, <a href="#http-response-codes">HTTP Response Codes</a> in the CDR Data Standards <strong>SHOULD</strong> be used.</p>
-
 <h3 id='registration-management'>Registration Management</h3>
-
 <blockquote>
 <p>Non-Normative Example for access token retrieval to perform registration management</p>
 </blockquote>
-
 <pre class="highlight plaintext"><code>HTTP/1.1 POST /token
 Host: mtls.dh.example.com
 Content-Type: application/x-www-form-urlencoded
@@ -5779,7 +5668,6 @@ grant_type=client_credentials&amp;
 }
 
 </code></pre>
-
 <p>Data Holders <strong>MUST</strong> expose Client Registration Management endpoints as defined in the <a href="#dcr-apis">DCR APIs</a></p>
 
 <table><thead>
@@ -5827,9 +5715,7 @@ grant_type=client_credentials&amp;
 <li>Fields data holders do not support are not persisted.</li>
 <li>Access tokens issued for consuming CDR Data <strong>SHOULD NOT</strong> be used for client registration maintenance and vice-versa.</li>
 </ul>
-
 <h3 id='put-operations'>PUT Operations</h3>
-
 <p>Registrations <strong>MUST</strong> only be updated via Registration PUT operations.</p>
 
 <p>PUT operations are to be used for one of two scenarios:</p>
@@ -6279,12 +6165,14 @@ client_id=s6BhdRkqt3
 <h4 id='obtaining-a-cdr-arrangement-id'>Obtaining a CDR Arrangement ID</h4>
 <p>A Data Recipient Software Product can call either the Token or Token Introspection endpoints at any point post-consent to obtain the CDR Arrangement ID in the response JSON as the claim <em>cdr_arrangement_id</em>.</p>
 
-<h2 id='levels-of-assurance-loas'>Levels of Assurance (LoAs)</h2><pre class="highlight diff tab-diff"><code>Update LoA Single Ordinal section by amending LoA 2 and LoA 3 and adding LoA 4
-</code></pre>
+<h2 id='levels-of-assurance-loas'>Levels of Assurance (LoAs)</h2>
+
 <p>Levels Of Assurance (LoAs), returned after a successful authentication <strong>MUST</strong> be represented in Single Ordinal form where a single LoA value is represented.</p>
 
 <p><a id="ordinal-loa"></a></p>
+
 <h3 id='single-ordinal'>Single Ordinal</h3>
+
 <p>A Single LoA value is carried in the <em>acr</em> claim which is described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">section 2</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p>
 
 <ul>
@@ -6316,12 +6204,7 @@ client_id=s6BhdRkqt3
 <li><strong>At least</strong> an LoA of 2 has been achieved during the establishment of consent and a subsequent challenge/response has resulted in an LoA of 3 being achieved within the lifespan of the current Access Token.</li>
 </ul>
 
-<h2 id='credential-requirements'>Credential Requirements</h2><pre class="highlight diff tab-diff"><code>Added new Credential Requirements section with the following sub-sections:
-<span class="gi">+ User Identifiers
-+ Baseline Credential Requirements
-+ One Time Password Credential Requirements
-+ Restricted Credentials
-</span></code></pre><h3 id='user-identifiers'>User Identifiers</h3>
+<h2 id='credential-requirements'>Credential Requirements</h2><h3 id='user-identifiers'>User Identifiers</h3>
 <p>If a data holder requests a user identifier for the purposes of identifying the customer during authentication, then the data holder:</p>
 
 <ul>
@@ -6398,7 +6281,8 @@ client_id=s6BhdRkqt3
 
 <p>In addition to <a href="https://openid.net/specs/openid-financial-api-part-2-1_0.html#tls-considerations">section 8.5</a> of <strong><a href="#nref-FAPI-1-0-Advanced">[FAPI-1.0-Advanced]</a></strong> only cipher suites recommended in <strong><a href="#nref-BCP195">[BCP195]</a></strong> <strong>SHALL</strong> be permitted.</p>
 
-<h2 id='certificate-management'>Certificate Management</h2><h3 id='issued-by-the-register-for-data-holders'>Issued by the Register for Data Holders</h3>
+<h2 id='certificate-management'>Certificate Management</h2><pre class="highlight diff tab-diff"><code>Amendments to certificate management section to support ACCC operations
+</code></pre><h3 id='issued-by-the-register-for-data-holders'>Issued by the Register for Data Holders</h3>
 <table><thead>
 <tr>
 <th>Certificate</th>
@@ -6431,28 +6315,10 @@ client_id=s6BhdRkqt3
 <td>Not currently required by Data Recipients.</td>
 </tr>
 </tbody></table>
-<h3 id='cdr-certificate-authority'>CDR Certificate Authority</h3>
-<p><a href="https://www.digicert.com">DigiCert</a> acts as the certificate authority that issues and manages certificates to CDR participants as directed by the ACCC Register in its capacity as the CDR Registrar.</p>
 <h3 id='certificate-trust-model'>Certificate Trust Model</h3>
 <p>The CDR utilises a private certificate trust chain for all Register CA secured endpoints being hosted by <a href="#participant-endpoints">Data Holders</a>, <a href="#participant-endpoints">Data Recipients</a> and the <a href="#register-apis">Register</a>.</p>
 
-<p>This trust chain encompasses a set of root and intermediate CAs issued for the test and production environments.</p>
-
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td><strong>Test Environment</strong></td>
-<td>Details provided to participants when they begin CTS process.</td>
-</tr>
-<tr>
-<td><strong>Production Environment</strong></td>
-<td><a href="includes/register/certificates/production/ca_root_prod.cer">CA Root Production</a><br><a href="includes/register/certificates/production/ca_intermediate_prod.cer">CA Intermediate Production</a></td>
-</tr>
-</tbody></table>
+<p>Operational detail related to the CDR Certificate Authority is maintained by the ACCC, and is <a href="https://consumerdataright.atlassian.net/wiki/spaces/DP/pages/360415310/Certificate+Management">available here</a>.</p>
 <h3 id='certificate-signing-request-profile'>Certificate Signing Request Profile</h3>
 <p>When requesting the Register CA certificates, certificate signing requests will need to be provided, conforming to the following profile:</p>
 
@@ -6536,7 +6402,7 @@ client_id=s6BhdRkqt3
 
 <p>Please refer to the <a href="https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0/on-boarding-guide">Register onboarding guide</a> for further information on certificate issuance.</p>
 <h3 id='certificate-usage'>Certificate Usage</h3>
-<p>Further details on the Register CA issued certificates can be found in the <a href="https://www.cdr.gov.au/sites/default/files/2020-12/CDR%20-%20ACCC%20Certification%20practice%20statement.pdf">ACCC Certificate Practice Statement V1.0</a>.</p>
+<p>Further details on the Register CA issued certificates can be found on the <a href="https://www.cdr.gov.au/resources/agreements/digital-certificate-agreements">Digital certificate agreements</a> page.</p>
 <h3 id='certificate-validation'>Certificate Validation</h3>
 <p>Certificate validation must check:</p>
 
@@ -6556,7 +6422,7 @@ client_id=s6BhdRkqt3
 
 <p>Status is checked through Certificate Revocation Lists (CRL) or Online Certificate Status Protocol (OCSP) responders, identified in each certificate in the chain.</p>
 
-<p>The Certificate Practice Statement provides details for DigiCert&#39;s certificate validation requirements and a summary has been provided in the CDR Support Portal article: <a href="https://cdr-support.zendesk.com/hc/en-us/articles/900005826963-Certificate-Validation">Certificate Validation</a>.</p>
+<p>The Certificate Practice Statement provides details for certificate validation requirements and a summary has been provided in the CDR Support Portal article: <a href="https://cdr-support.zendesk.com/hc/en-us/articles/900005826963-Certificate-Validation">Certificate Validation</a>.</p>
 <h3 id='ocsp-stapling'>OCSP stapling</h3>
 <p>The use of OCSP Stapling within the CDR ecosystem is not recommended.</p>
 
@@ -7451,26 +7317,6 @@ Host: tls.dh.example.com
 <h3 id='register-endpoints'>Register Endpoints</h3>
 
 <p>The CDR Register exposes an OIDC Configuration Endpoint with associated JWKS and token endpoints to facilitate issuance of access tokens to consume the protected Register APIs.</p>
-
-<pre class="highlight diff tab-diff"><code>Updated details in the Non-Normative Example for the Register openid-configuration endpoint
-<span class="gd">- GET /.well-known/openid-configuration HTTP/1.1
-</span><span class="gi">+ GET /idp/.well-known/openid-configuration HTTP/1.1
-</span>
-<span class="gd">- Host: cdr.register
-</span><span class="gi">+ Host: api.cdr.gov.au
-</span>
-<span class="gd">- "issuer": "https://cdr.register/idp",
-</span><span class="gi">+ "issuer": "https://api.cdr.gov.au/idp",
-</span>
-<span class="gd">- "jwks_uri": "https://cdr.register/idp/.well-known/openid-configuration/jwks",
-</span><span class="gi">+ "jwks_uri": "https://api.cdr.gov.au/idp/.well-known/openid-configuration/jwks",
-</span>
-<span class="gd">- "token_endpoint": "https://cdr.register/idp/connect/token",
-</span><span class="gi">+ "token_endpoint": "https://secure.api.cdr.gov.au/idp/connect/token",
-</span>
-<span class="gd">- "scopes_supported": ["cdr-register:bank:read"],
-</span><span class="gi">+ "scopes_supported": ["cdr-register:read"],
-</span></code></pre>
 
 <blockquote>
 <p>Retrieve CDR Register OIDC Discovery Endpoint</p>
@@ -8895,35 +8741,7 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
   Data Holders and Data Recipient Software Products are required to call these endpoints to obtain metadata that enables connection and registration between participants as well as obtaining the status of participants in the CDR.
   These statuses are provided authoritatively by the Register to allow participants to determine whether a connecting third-party is permitted to perform registration requests or data sharing requests.
 </aside>
-<pre class="highlight diff tab-diff"><code>Register endpoint changes:
-<span class="gi">+ Get Data Holder Brands v3
-+ Get Data Holder Brands Summary v2
-+ Get Data Holder Statuses v2
-+ Get Software Statement Assertion (SSA) v4
-+ Get Software Products Statuses v3
-+ Get Data Recipients Statuses v3
-+ Get Data Recipients v4
-</span>
-The `non-bank-lending` value has been added as an option for the 'industry' path parameter in the below endpoints:
- - Get Data Holder Brands
- - Get Data Holder Brands Summary
- - Get Data Holder Statuses
-<span class="gi">+ non-bank-lending
-</span>
-The `non-bank-lending` value has been added as an option for the 'industries' property in the below endpoints:
- - Get Data Holder Brands
- - Get Data Holder Brands Summary
-<span class="gi">+ non-bank-lending
-</span>
-The '{industry}' path parameter enum has been modified to leave only the 'all' value as valid in the below endpoints:
- - Get Software Statement Assertion (SSA)
- - Get Software Products Statuses
- - Get Data Recipients Statuses
- - Get Data Recipients
-<span class="gd">- banking
-- energy
-- telco
-</span></code></pre>
+
 <table>
 <tr><td><a href='./includes/swagger/cds_register.json'>Register OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_register.yaml'>Register OpenAPI Specification (YAML)</a></td></tr>
@@ -13141,9 +12959,7 @@ This operation does not require authentication.
 </tbody></table>
 <h2 id='admin-amp-registration'>Admin &amp; Registration</h2>
 <p>The following scopes are used for administrative interactions. These scopes <strong>MUST</strong> never be included in the same access token as a CDR Data scope.</p>
-<pre class="highlight diff tab-diff"><code>Removed deprecated Register scope detail and updated the description of the Participant Data scope.
-<span class="gd">- cdr-register:bank:read
-</span></code></pre>
+
 <table><thead>
 <tr>
 <th>Scope Name</th>
@@ -13226,10 +13042,8 @@ This operation does not require authentication.
 
 <p>The unavailability of a secondary data holder will mean that some requests cannot be fulfilled by a data holder making a Shared Responsibility Data Request. This will not be taken to mean that the data holder is unavailable.</p>
 
-<h2 id='performance-requirements'>Performance Requirements</h2><pre class="highlight diff tab-diff"><code>Added entries to the Low Priority and Unattended tiers for Banking:
-<span class="gi">+ Get Instalment Plans For Account
-+ Get Instalment Plans Bulk
-</span></code></pre>
+<h2 id='performance-requirements'>Performance Requirements</h2>
+
 <p>API endpoint performance will be measured in response time of individual API requests from receipt of request to delivery of response.</p>
 
 <p>It is understood that different response times can be measured depending on which technical layer of an API implementation stack is instrumented and that not all of the technical layers between the Data Recipient Software Product and the Data Holder will be in the control of the Data Holder. As this is implementation specific it is expected that the Data Holder will ensure that the measurement of response time occurs as close to the Data Recipient Software Product as practicable.</p>
@@ -13421,65 +13235,7 @@ This operation does not require authentication.
 <h1 style="display:none"></h1>
 <h1 id='banking-apis'>Banking APIs</h1>
 <p>This specification defines the APIs for Data Holders exposing Banking endpoints.</p>
-<pre class="highlight diff tab-diff"><code>Changes to Banking endpoints to accommodate NBL and BNPL. Updated versions are: 
-<span class="gi">+ Get Products v5
-+ Get Product Detail v7
-+ Get Accounts v3
-+ Get Account Detail v5
-+ Get Bulk Balances v2
-+ Get Bulk Direct Debits v2
-+ Get Scheduled Payments Bulk v3
-+ Get Transactions For Account v2
-+ Get Transaction Detail v3
-+ Get Instalment Plans for Account v1
-+ Get Instalment Plans Bulk v1
-</span>
-The `BUY_NOW_PAY_LATER` value has been added as an option for the 'product-category' query parameter in the below endpoints:
- - Get Products
- - Get Accounts
- - Get Bulk Balances
- - Get Bulk Direct Debits
- - Get Scheduled Payments Bulk
-<span class="gi">+ BUY_NOW_PAY_LATER
-</span>
-The `BUY_NOW_PAY_LATER` value has been added as an option for the 'productCategory' property in the below endpoints:
- - Get Products
- - Get Product Detail
- - Get Accounts
- - Get Account Detail
-<span class="gi">+ BUY_NOW_PAY_LATER
-</span>
-The 'instalments' object has been added to the below endpoints:
- - Get Product Detail
- - Get Account Detail
-<span class="gi">+ instalments
-</span>
-The `EXTRA_DOWN_PAYMENT` featureType has been added and the `EXTRA_REPAYMENTS` featureType description updated, applicable to the below endpoints:
- - Get Product Detail
- - Get Account Detail
-<span class="gi">+ EXTRA_DOWN_PAYMENT
-</span>
-New field added to the below endpoints:
- - Get Accounts
- - Get Account Detail
-<span class="gi">+ isInstalmentDetailAvailable
-</span>
-New field added to the below endpoints:
- - Get Transactions
- - Get Transaction Detail
-<span class="gi">+ instalmentPlanId
-</span>
-Updated the description of the tiers field in BankingProductDepositRateV2 and BankingProductLendingRateV3
-<span class="gd">- Rate tiers applicable for this rate.
-</span><span class="gi">+ Qualifying criteria or conditions relevant to the associated rate.
-</span>
-Added default field value to the schema specification for the following fields: 
- - BankingBalance &gt; creditLimit
- - BankingBalance &gt; amortisedLimit
- - BankingScheduledPaymentInterval &gt; dayInInterval
 
-Applied consistent wording to conditional field statements (detailed in Maintenance issue #683).
-</code></pre>
 <table>
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_banking.yaml'>Banking OpenAPI Specification (YAML)</a></td></tr>
@@ -29234,9 +28990,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
-<h2 id='product-categories'>Product Categories</h2><pre class="highlight diff tab-diff"><code>Added product category with associated description:
-<span class="gi">+ BUY_NOW_PAY_LATER
-</span></code></pre>
+<h2 id='product-categories'>Product Categories</h2>
+
 <p>The <a href="#cdr-banking-api_schema-base_bankingproductcategory"><em>productCategory</em> enumeration</a> provides the values for categorising products and accounts. These are explained in the following tables:</p>
 
 <p><strong>Deposit Products</strong></p>
@@ -29315,12 +29070,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><a id="productfeaturetypedoc"></a>
 <h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3></p>
-
-<pre class="highlight diff tab-diff"><code>Added featureType:
-<span class="gi">+ EXTRA_DOWN_PAYMENT
-</span>
-Updated the description of the EXTRA_REPAYMENTS feature
-</code></pre>
 
 <p>Description of the usage of the <em>featureType</em> field as it applies to products.</p>
 
@@ -30130,57 +29879,7 @@ Updated the description of the EXTRA_REPAYMENTS feature
 </tbody></table>
 <h1 id='energy-apis'>Energy APIs</h1>
 <p>This specification defines the APIs for Data Holders exposing Energy endpoints.</p>
-<pre class="highlight diff tab-diff"><code>Specified the demand and otherCharges fields in EnergyBillingTransactionV3 as conditional, to match their descriptions.
 
-Added the isSecondaryDataHolderError field to the following Energy APIs by having them reference a new 'PrimaryResponseErrorListV1' schema.
-The new schema was created to ensure it remains distinct from the original 'ResponseErrorListV2' schema already referenced by most other APIs.
- - Get Service Points
- - Get Service Point Detail
- - Get Usage For Service Point
- - Get Bulk Usage
- - Get Usage For Specific Service Points
- - Get DER For Service Point
- - Get Bulk DER
- - Get DER For Specific Service Points
-<span class="gi">+ isSecondaryDataHolderError: Indicates the error was propagated from a designated secondary data holder.
-</span>
-Adjusted the following fields in EnergyPlanContractV3 to reference their array values at one level higher in the Open API specification. This makes the documentation appear consistent, but does not change the overall response structure.
- - controlledLoad
- - incentives
- - discounts
- - greenPowerCharges
- - eligibility
- - fees
- - solarFeedInTariff
- - tariffPeriod
-
-Updated the description of the tariffPeriod field in EnergyPlanContractV3
-<span class="gd">- Array of tariff periods.
-</span><span class="gi">+ Array of tariffs that apply to periods throughout the year.
-</span>
-Added default field value to the schema specification for the following fields: 
- - EnergyConcession &gt; appliedTo
-
-Updated the description of the two rates field in EnergyPlanTariffPeriodV2
-<span class="gd">- Array of controlled load rates in order of usage volume.
-</span><span class="gi">+ Array of rates in order of usage volume.
-</span>
-Updated the description of the following field in EnergyPlanTariffPeriodV2
- - timeOfUseRates
-
-Updated the description of the following fields in EnergyPlanTariffPeriodV2 and EnergyPlanControlledLoadV2
- - timeOfUseRates[].timeOfUse
- - timeOfUseRates[].timeOfUse[].days
- - timeOfUseRates[].timeOfUse[].startTime
- - timeOfUseRates[].timeOfUse[].endTime
-
-Updated the description of the following fields in EnergyPlanSolarFeedInTariffV3
- - timeVaryingTariffs
- - timeVaryingTariffs[].timeVariations
- - timeVaryingTariffs[].timeVariations[].days
- - timeVaryingTariffs[].timeVariations[].startTime
- - timeVaryingTariffs[].timeVariations[].endTime
-</code></pre>
 <table>
 <tr><td><a href='./includes/swagger/cds_energy.json'>Energy OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_energy.yaml'>Energy OpenAPI Specification (YAML)</a></td></tr>
@@ -49444,9 +49143,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 <h1 id='common-apis'>Common APIs</h1>
 <p>This specification defines the Common APIs that apply to Data Holders in all sectors.</p>
-<pre class="highlight diff tab-diff"><code>Added default field value to the schema specification for the following fields: 
- - CommonPhoneNumber &gt; countryCode
-</code></pre>
+
 <table>
 <tr><td><a href='./includes/swagger/cds_common.json'>Common OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='./includes/swagger/cds_common.yaml'>Common OpenAPI Specification (YAML)</a></td></tr>
@@ -60884,8 +60581,7 @@ This operation may only be called by an Energy Retailer using the information se
 <li><strong>Draft</strong> standards that are non-binding but volatile as they are under development.</li>
 <li><strong>Experimental</strong> standards that are transient and created to test concepts.</li>
 </ol>
-<h2 id='candidate-standards'>Candidate Standards</h2><pre class="highlight diff tab-diff"><code><span class="gd">- Removed the Candidate Standards for the Banking and Non-Bank Lending sector
-</span></code></pre>
+<h2 id='candidate-standards'>Candidate Standards</h2>
 <p>The Consumer Data Standards currently include the following Candidate Standards:</p>
 
 <ul>
@@ -60896,11 +60592,8 @@ This operation may only be called by an Energy Retailer using the information se
 <h2 id='experimental-standards'>Experimental Standards</h2>
 <p>The experimental standards developed by the Data Standards Body are developed in this <a href="https://github.com/ConsumerDataStandardsAustralia/standards-experimental">GitHub repository</a> and are <a href="https://consumerdatastandardsaustralia.github.io/standards-experimental/">published here</a>.</p>
 <h1 style="display:none"></h1>
-<h1 id='known-issues'>Known Issues</h1><pre class="highlight diff tab-diff"><code><span class="gd">- Removed Non-Bank Lending Known Issues item regarding prior updates to the NBL Candidate
-</span>
-Added Known Issue item
-<span class="gi">+ Certificate Management
-</span></code></pre>
+<h1 id='known-issues'>Known Issues</h1><pre class="highlight diff tab-diff"><code>Removed Certificate Management known issue, as it has been addressed
+</code></pre>
 <p>There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.</p>
 
 <table><thead>
@@ -60913,17 +60606,10 @@ Added Known Issue item
 <td style="text-align: left">Inconsistencies in Telco Candidate Standards</td>
 <td style="text-align: left"><ul><li>The Get Telco Products endpoint schema references an array of <em>plans</em>, which should be <em>products</em>.</li><li>Transaction endpoints reference a <em>serviceIds</em> (plural) property described as an &#39;Array list&#39;, but with a Type as &#39;string&#39;.</li><li>Redundant <em>service</em> object in Telco Usage list endpoints.</li><li>Redundant <em>balance</em> object in Telco Balance list endpoints.</li><li>Telco Usage list endpoints should have pagination links.</li><li>Some mandatory fields are not specified with valid &#39;required&#39; statements, and some are incorrectly specified with default values.</li></ul></td>
 </tr>
-<tr>
-<td style="text-align: left">Certificate Management</td>
-<td style="text-align: left">The <a href="#certificate-management">Certificate Management</a> section is under review, pending a change expected to impact participants on 1 October 2025.<br>For more information refer to issue <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/695">#695 - Digicert Certificate Trust Chain Migration</a>.</td>
-</tr>
 </tbody></table>
 <h2 id='future-improvements'>Future improvements</h2>
 <p>The following improvements will be incorporated into future versions of the Standards.</p>
-<pre class="highlight diff tab-diff"><code>Added Future improvements items
-<span class="gi">+ Standardise Banking Scheduled Payments endpoint paths
-+ Address inconsistency in the Metadata Update endpoint response
-</span></code></pre><h3 id='standardise-register-api-error-codes'>Standardise Register API Error Codes</h3>
+<h3 id='standardise-register-api-error-codes'>Standardise Register API Error Codes</h3>
 <p>Future versions of the CDR Register API error codes are to be aligned to the <a href="#error-codes">Standards high-level error codes</a> as follows:</p>
 
 <table><thead>
@@ -61007,6 +60693,12 @@ Added Known Issue item
 <th>Detail of change</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>08/10/2025</td>
+<td><a href="https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.35.1/">1.35.1</a></td>
+<td>Changes from Decision 377 (Amendments to certificate management section)</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.35.1.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/377">Decision 377</a> for details.</td>
+</tr>
 <tr>
 <td>29/07/2025</td>
 <td><a href="https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.35.0/">1.35.0</a></td>

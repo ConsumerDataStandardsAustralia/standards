@@ -51,10 +51,8 @@
 
 <p>The unavailability of a secondary data holder will mean that some requests cannot be fulfilled by a data holder making a Shared Responsibility Data Request. This will not be taken to mean that the data holder is unavailable.</p>
 
-<h2 id='performance-requirements'>Performance Requirements</h2><pre class="highlight diff tab-diff"><code>Added entries to the Low Priority and Unattended tiers for Banking:
-<span class="gi">+ Get Instalment Plans For Account
-+ Get Instalment Plans Bulk
-</span></code></pre>
+<h2 id='performance-requirements'>Performance Requirements</h2>
+
 <p>API endpoint performance will be measured in response time of individual API requests from receipt of request to delivery of response.</p>
 
 <p>It is understood that different response times can be measured depending on which technical layer of an API implementation stack is instrumented and that not all of the technical layers between the Data Recipient Software Product and the Data Holder will be in the control of the Data Holder. As this is implementation specific it is expected that the Data Holder will ensure that the measurement of response time occurs as close to the Data Recipient Software Product as practicable.</p>
