@@ -208,20 +208,7 @@ In addition to the requirements for [Private Key JWT Client Authentication](#pri
 
 ### Data Recipients calling the CDR Register
 
-```diff
-Updated details in the Non-Normative Example for the Register token endpoint
-- Host: cdr.register
-+ Host: secure.api.cdr.gov.au
 
-- scope=cdr-register%3Abank%3Aread
-+ scope=cdr-register%3Aread
-
-- "aud": "https://cdr.register/idp/connect/token",
-+ "aud": "https://secure.api.cdr.gov.au/idp/connect/token",
-
-- "scope": "cdr-register:bank:read openid"
-+ "scope": "cdr-register:read openid"
-```
 
 > Non-Normative Example - Data Recipient Software Product requests CDR Register Access Token
 

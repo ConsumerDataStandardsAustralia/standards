@@ -1,11 +1,6 @@
 ## Authentication Flows
 
-```diff
-Added following new sections:
-+ Redirect to App
 
-Moved credential requirements from Baseline Security Provisions: Data Holders section to new Credential Requirements section.
-```
 This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)** as constrained further by **[[FAPI]](#iref-FAPI)**.
 
 
@@ -64,11 +59,7 @@ Data Holders **MUST** support **[[JARM]](#nref-JARM)** in accordance with **[[FA
 >
 > However, at present, there is no confidential information in the authorization response, hence encryption of the authorization response is not required for the purposes of security or confidentiality. In addition, whilst response encryption **MAY** be used, to achieve greater interoperability, it is not recommended to use encryption in this case at this time.
 
-```diff
-Updated the condition for when a Data Holder may perform authorization response encryption.
-- If the Data Holder supports authorisation response encryption and the authorization_encrypted_response_alg is omitted from the registration request, the Data Holder MAY require response encryption by returning a client registration response with the chosen authorization_encrypted_response_alg value.
-+ If authorization_encrypted_response_alg is omitted from the registration request, authorisation response encryption SHALL NOT be performed.
-```
+
 In addition,
 
 - Data Holders **MAY** advertise they do not support authorisation response encryption: either by omitting these values from their OpenID Provider Metadata, or by presenting an empty array for the supported parameters.

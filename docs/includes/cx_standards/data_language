@@ -1,7 +1,4 @@
-<h2 id='data-language-standards-common'>Data Language Standards: Common</h2><pre class="highlight diff tab-diff"><code>Updates to accommodate non-bank lending
-<span class="gd">- See the Banking Language section
-</span><span class="gi">+ See the Banking and Non-Bank Lending Language section
-</span></code></pre>
+<h2 id='data-language-standards-common'>Data Language Standards: Common</h2>
 <blockquote>
 <p><img src="./images/cx_standards0.png" width="375px"><br>
 Example of data language standards presented in a consumer-facing interaction, where [1] refers to Data cluster language, and [2] refers to Data permission language.</p>
@@ -104,20 +101,7 @@ Example of data language standards presented in a consumer-facing interaction, w
 <p><strong>Note:</strong> For non-individual consumers, claims available via the profile scope will only return the details of the authenticated End-User and not the organisation or non-individual consumer.</p>
 
 <p><br></p>
-<h2 id='banking-and-non-bank-lending-language'>Banking and Non-Bank Lending Language</h2><pre class="highlight diff tab-diff"><code> - Updated main title:
-<span class="gd">- Banking Language
-</span><span class="gi">+ Banking and Non-Bank Lending Language
-</span>
- - Updated title and preamble:
-<span class="gd">- Banking Accounts
-- See below for the data language standards for the banking account scopes:
-</span><span class="gi">+ Banking and Non-Bank Lending Accounts
-+ See below for the data language standards for the banking and non-bank lending account scopes:
-</span>
- - Updated preamble:
-<span class="gd">- See below for the data language standards for the banking transactions scope:
-</span><span class="gi">+ See below for the data language standards for the transactions scope:
-</span></code></pre><h3 id='banking-and-non-bank-lending-accounts'>Banking and Non-Bank Lending Accounts</h3>
+<h2 id='banking-and-non-bank-lending-language'>Banking and Non-Bank Lending Language</h2><h3 id='banking-and-non-bank-lending-accounts'>Banking and Non-Bank Lending Accounts</h3>
 <p>See below for the data language standards for the banking and non-bank lending account scopes:</p>
 
 <table><thead>

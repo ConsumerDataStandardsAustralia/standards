@@ -4,12 +4,7 @@
 <a id="productfeaturetypedoc"></a>
 <h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3>
 
-```diff
-Added featureType:
-+ EXTRA_DOWN_PAYMENT
 
-Updated the description of the EXTRA_REPAYMENTS feature
-```
 
 Description of the usage of the _featureType_ field as it applies to products.
 

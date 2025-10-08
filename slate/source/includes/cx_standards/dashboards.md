@@ -1,9 +1,6 @@
 <h2 class="schema-heading" id="consumer-experience_dashboard-standards">Dashboard Standards</h2>
 
-```diff
-Removed historical obligation date for two Data Holder Dashboard CX Standards
-- Effective from July 1st 2024:
-```
+
 
 This section outlines standards for consumer dashboards. These are expected to be implemented on each specific data sharing arrangement.
 

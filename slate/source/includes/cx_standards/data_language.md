@@ -1,10 +1,6 @@
 ## Data Language Standards: Common
 
-```diff
-Updates to accommodate non-bank lending
-- See the Banking Language section
-+ See the Banking and Non-Bank Lending Language section
-```
+
 
 > <img src="./images/cx_standards0.png" width="375px"><br>
 Example of data language standards presented in a consumer-facing interaction, where [1] refers to Data cluster language, and [2] refers to Data permission language.
@@ -54,21 +50,7 @@ In accordance with **[[OIDC]](#nref-OIDC)** [section 5.4](https://openid.net/spe
 
 ## Banking and Non-Bank Lending Language
 
-```diff
- - Updated main title:
-- Banking Language
-+ Banking and Non-Bank Lending Language
 
- - Updated title and preamble:
-- Banking Accounts
-- See below for the data language standards for the banking account scopes:
-+ Banking and Non-Bank Lending Accounts
-+ See below for the data language standards for the banking and non-bank lending account scopes:
-
- - Updated preamble:
-- See below for the data language standards for the banking transactions scope:
-+ See below for the data language standards for the transactions scope:
-```
 
 ### Banking and Non-Bank Lending Accounts
 See below for the data language standards for the banking and non-bank lending account scopes:

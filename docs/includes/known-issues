@@ -1,8 +1,5 @@
-<h1 id='known-issues'>Known Issues</h1><pre class="highlight diff tab-diff"><code><span class="gd">- Removed Non-Bank Lending Known Issues item regarding prior updates to the NBL Candidate
-</span>
-Added Known Issue item
-<span class="gi">+ Certificate Management
-</span></code></pre>
+<h1 id='known-issues'>Known Issues</h1><pre class="highlight diff tab-diff"><code>Removed Certificate Management known issue, as it has been addressed
+</code></pre>
 <p>There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.</p>
 
 <table><thead>
@@ -15,17 +12,10 @@ Added Known Issue item
 <td style="text-align: left">Inconsistencies in Telco Candidate Standards</td>
 <td style="text-align: left"><ul><li>The Get Telco Products endpoint schema references an array of <em>plans</em>, which should be <em>products</em>.</li><li>Transaction endpoints reference a <em>serviceIds</em> (plural) property described as an &#39;Array list&#39;, but with a Type as &#39;string&#39;.</li><li>Redundant <em>service</em> object in Telco Usage list endpoints.</li><li>Redundant <em>balance</em> object in Telco Balance list endpoints.</li><li>Telco Usage list endpoints should have pagination links.</li><li>Some mandatory fields are not specified with valid &#39;required&#39; statements, and some are incorrectly specified with default values.</li></ul></td>
 </tr>
-<tr>
-<td style="text-align: left">Certificate Management</td>
-<td style="text-align: left">The <a href="#certificate-management">Certificate Management</a> section is under review, pending a change expected to impact participants on 1 October 2025.<br>For more information refer to issue <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/695">#695 - Digicert Certificate Trust Chain Migration</a>.</td>
-</tr>
 </tbody></table>
 <h2 id='future-improvements'>Future improvements</h2>
 <p>The following improvements will be incorporated into future versions of the Standards.</p>
-<pre class="highlight diff tab-diff"><code>Added Future improvements items
-<span class="gi">+ Standardise Banking Scheduled Payments endpoint paths
-+ Address inconsistency in the Metadata Update endpoint response
-</span></code></pre><h3 id='standardise-register-api-error-codes'>Standardise Register API Error Codes</h3>
+<h3 id='standardise-register-api-error-codes'>Standardise Register API Error Codes</h3>
 <p>Future versions of the CDR Register API error codes are to be aligned to the <a href="#error-codes">Standards high-level error codes</a> as follows:</p>
 
 <table><thead>

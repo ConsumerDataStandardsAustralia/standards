@@ -9690,9 +9690,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <h2 id='product-amp-account-components'>Product &amp; Account Components</h2>
 <p><a id="productfeaturetypedoc"></a>
 <h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3></p>
-<pre class="highlight diff tab-diff"><code>Added featureType:
-<span class="gi">+ FUNDS_AVAILABLE_AFTER
-</span></code></pre>
+
 <p>Description of the usage of the <em>featureType</em> field as it applies to products.</p>
 
 <table><thead>
@@ -9856,9 +9854,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><a id="productconstrainttypedoc"></a>
 <h3 id="tocSproductconstrainttypedoc">Product Constraint Types</h3></p>
-<pre class="highlight diff tab-diff"><code>Added constraintType:
-<span class="gi">+ OTHER
-</span></code></pre>
+
 <p>Description of the usage of the <em>constraintType</em> field as it applies to products.</p>
 
 <table><thead>
@@ -9912,16 +9908,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><a id="producteligibilitytypedoc"></a>
 <h3 id="tocSproducteligibilitytypedoc">Product Eligibility Types</h3></p>
-<pre class="highlight diff tab-diff"><code>Updated eligibilityType 'Use of additionalValue Field' details:
 
-PENSION_RECIPIENT
-<span class="gd">- N/A
-</span><span class="gi">+ Optional. If present, MUST contain a description of which pensions qualify.
-</span>
-STUDENT
-<span class="gd">- N/A
-</span><span class="gi">+ Optional. If present, MUST contain a description of who qualifies as a student, e.g., do apprentices qualify?
-</span></code></pre>
 <p>Description of the usage of the <em>eligibilityType</em> field as it applies to products.</p>
 
 <table><thead>
@@ -9995,17 +9982,7 @@ STUDENT
 
 <p><a id="productfeetypedoc"></a>
 <h3 id="tocSproductfeetypedoc">Product Fee Types</h3></p>
-<pre class="highlight diff tab-diff"><code>Updated feeType values:
-<span class="gd">- VARIABLE
-</span><span class="gi">+ CASH_ADVANCE
-+ DISHONOUR
-+ ENQUIRY
-+ LATE_PAYMENT
-+ OTHER
-+ REPLACEMENT
-+ UPFRONT_PER_PLAN
-+ VARIATION
-</span></code></pre>
+
 <p>Description of the usage of the <em>feeType</em> field as it applies to products.</p>
 
 <table><thead>
@@ -10143,16 +10120,7 @@ STUDENT
 
 <p><a id="productdiscounteligibilitydoc"></a>
 <h3 id="tocSproductdiscounteligibilitydoc">Product Discount Eligibility Types</h3></p>
-<pre class="highlight diff tab-diff"><code>Updated discountEligibilityType 'Use of additionalValue Field' details:
 
-PENSION_RECIPIENT
-<span class="gd">- Optional. Should contain a description of which pensions qualify.
-</span><span class="gi">+ Optional. If present, MUST contain a description of which pensions qualify.
-</span>
-STUDENT
-<span class="gd">- Optional. Should contain a description of who qualifies as a student, e.g., do apprentices qualify?
-</span><span class="gi">+ Optional. If present, MUST contain a description of who qualifies as a student, e.g., do apprentices qualify?
-</span></code></pre>
 <p>Description of the usage of the <em>discountEligibilityType</em> field as it applies to products.</p>
 
 <table><thead>
@@ -10304,9 +10272,7 @@ STUDENT
 
 <p><a id="productlendingbaseratetypedoc"></a>
 <ul><li id="tocSproductlendingbaseratetypedoc"><b>Lending Base Rate Types</b></li></ul></p>
-<pre class="highlight diff tab-diff"><code>Added lendingRateType:
-<span class="gi">+ BALANCE_TRANSFER
-</span></code></pre>
+
 <p>A lending product is expected to present a single Base rate corresponding to relevant selection criteria including the rate <em>tiers</em> and <em>additionalValue</em>, where applicable.</p>
 
 <p>Card products may have two or more base rates, including <code>CASH_ADVANCE</code> and <code>PURCHASE</code> as they may apply to different transaction types within an account. The <code>PURCHASE</code> <em>lendingRateType</em> is considered the rate commonly applicable to a card.</p>
@@ -10425,8 +10391,7 @@ STUDENT
 
 <p><a id="bankingproductrateconditiondoc"></a>
 <h3 id="tocSbankingproductrateconditiondoc">Rate and Tier Applicability Types</h3></p>
-<pre class="highlight diff tab-diff"><code><span class="gi">+ Added Rate and Tier Applicability Types section
-</span></code></pre>
+
 <p>Description of the usage of the <em>rateApplicabilityType</em> field as it applies to products.</p>
 
 <table><thead>

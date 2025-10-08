@@ -2,66 +2,7 @@
 
 This specification defines the APIs for Data Holders exposing Banking endpoints.
 
-```diff
-Changes to Banking endpoints to accommodate NBL and BNPL. Updated versions are: 
-+ Get Products v5
-+ Get Product Detail v7
-+ Get Accounts v3
-+ Get Account Detail v5
-+ Get Bulk Balances v2
-+ Get Bulk Direct Debits v2
-+ Get Scheduled Payments Bulk v3
-+ Get Transactions For Account v2
-+ Get Transaction Detail v3
-+ Get Instalment Plans for Account v1
-+ Get Instalment Plans Bulk v1
 
-The `BUY_NOW_PAY_LATER` value has been added as an option for the 'product-category' query parameter in the below endpoints:
- - Get Products
- - Get Accounts
- - Get Bulk Balances
- - Get Bulk Direct Debits
- - Get Scheduled Payments Bulk
-+ BUY_NOW_PAY_LATER
-
-The `BUY_NOW_PAY_LATER` value has been added as an option for the 'productCategory' property in the below endpoints:
- - Get Products
- - Get Product Detail
- - Get Accounts
- - Get Account Detail
-+ BUY_NOW_PAY_LATER
-
-The 'instalments' object has been added to the below endpoints:
- - Get Product Detail
- - Get Account Detail
-+ instalments
-
-The `EXTRA_DOWN_PAYMENT` featureType has been added and the `EXTRA_REPAYMENTS` featureType description updated, applicable to the below endpoints:
- - Get Product Detail
- - Get Account Detail
-+ EXTRA_DOWN_PAYMENT
-
-New field added to the below endpoints:
- - Get Accounts
- - Get Account Detail
-+ isInstalmentDetailAvailable
-
-New field added to the below endpoints:
- - Get Transactions
- - Get Transaction Detail
-+ instalmentPlanId
-
-Updated the description of the tiers field in BankingProductDepositRateV2 and BankingProductLendingRateV3
-- Rate tiers applicable for this rate.
-+ Qualifying criteria or conditions relevant to the associated rate.
-
-Added default field value to the schema specification for the following fields: 
- - BankingBalance > creditLimit
- - BankingBalance > amortisedLimit
- - BankingScheduledPaymentInterval > dayInInterval
-
-Applied consistent wording to conditional field statements (detailed in Maintenance issue #683).
-```
 
 <table>
 <tr><td><a href='./includes/swagger/cds_banking.json'>Banking OpenAPI Specification (JSON)</a></td></tr>
