@@ -1,9 +1,7 @@
 
 ## Certificate Management
 
-```diff
-Amendments to certificate management section to support ACCC operations
-```
+
 
 ### Issued by the Register for Data Holders
 Certificate | Function | Notes
