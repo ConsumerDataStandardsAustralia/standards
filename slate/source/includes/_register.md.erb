@@ -9,7 +9,13 @@ These endpoints are exposed by the Register and consumed by Data Holders and Dat
   These statuses are provided authoritatively by the Register to allow participants to determine whether a connecting third-party is permitted to perform registration requests or data sharing requests.
 </aside>
 
-
+```diff
+Changes to Get Data Holder Brands and Get Data Holder Brands Summary endpoints
+ - Added brandGroup field to support white labelled brands
+ - Added productBaseUri field to provide flexibility in PRD obligations and endpoint discovery
++ brandGroup
++ productBaseUri
+```
 
 <table>
 <tr><td><a href='./includes/swagger/cds_register.json'>Register OpenAPI Specification (JSON)</a></td></tr>

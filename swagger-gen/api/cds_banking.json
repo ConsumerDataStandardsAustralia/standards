@@ -2757,6 +2757,11 @@
             "type": "string",
             "description": "An optional display name of the brand."
           },
+          "brandGroup": {
+            "type": "string",
+            "x-cds-type": "ASCIIString",
+            "description": "The *brandGroup* of a consumer data sharing brand that the product is associated with."
+          },
           "applicationUri": {
             "type": "string",
             "description": "A link to an application web page where this product can be applied for.",
