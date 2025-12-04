@@ -10,7 +10,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Banking API
-  version: 1.35.1
+  version: 1.36.0
 servers:
 - description: MTLS
   url: https://mtls.dh.example.com/cds-au/v1
@@ -4364,7 +4364,8 @@ components:
       example:
         data:
           products:
-          - additionalInformation:
+          - brandGroup: brandGroup
+            additionalInformation:
               eligibilityUri: eligibilityUri
               additionalFeesAndPricingUris:
               - additionalInfoUri: additionalInfoUri
@@ -4414,7 +4415,8 @@ components:
             applicationUri: applicationUri
             effectiveFrom: effectiveFrom
             brand: brand
-          - additionalInformation:
+          - brandGroup: brandGroup
+            additionalInformation:
               eligibilityUri: eligibilityUri
               additionalFeesAndPricingUris:
               - additionalInfoUri: additionalInfoUri
@@ -4487,6 +4489,7 @@ components:
       type: object
     BankingProductV6:
       example:
+        brandGroup: brandGroup
         additionalInformation:
           eligibilityUri: eligibilityUri
           additionalFeesAndPricingUris:
@@ -4576,6 +4579,11 @@ components:
         brandName:
           description: An optional display name of the brand.
           type: string
+        brandGroup:
+          description: The *brandGroup* of a consumer data sharing brand that the
+            product is associated with.
+          type: string
+          x-cds-type: ASCIIString
         applicationUri:
           description: A link to an application web page where this product can be
             applied for.
@@ -8004,7 +8012,8 @@ components:
     ResponseBankingProductListV4_data:
       example:
         products:
-        - additionalInformation:
+        - brandGroup: brandGroup
+          additionalInformation:
             eligibilityUri: eligibilityUri
             additionalFeesAndPricingUris:
             - additionalInfoUri: additionalInfoUri
@@ -8054,7 +8063,8 @@ components:
           applicationUri: applicationUri
           effectiveFrom: effectiveFrom
           brand: brand
-        - additionalInformation:
+        - brandGroup: brandGroup
+          additionalInformation:
             eligibilityUri: eligibilityUri
             additionalFeesAndPricingUris:
             - additionalInfoUri: additionalInfoUri

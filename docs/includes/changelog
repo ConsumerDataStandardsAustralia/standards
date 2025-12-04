@@ -15,6 +15,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>04/12/2025</td>
+<td><a href="https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.36.0/">1.36.0</a></td>
+<td>Changes from Decision 376 (White label brand arrangements).</td>
+<td>See <a href="includes/releasenotes/releasenotes.1.36.0.html">release notes</a> and <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/376">Decision 376</a> for details.</td>
+</tr>
+<tr>
 <td>08/10/2025</td>
 <td><a href="https://consumerdatastandardsaustralia.github.io/standards-archives/standards-1.35.1/">1.35.1</a></td>
 <td>Changes from Decision 377 (Amendments to certificate management section)</td>

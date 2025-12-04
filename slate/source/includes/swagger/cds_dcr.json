@@ -8,7 +8,7 @@
     },
     "description" : "Specifications for Dynamic Client Registration endpoints applicable to all data holders (except secondary data holders).",
     "title" : "CDR Dynamic Client Registration API",
-    "version" : "1.35.1"
+    "version" : "1.36.0"
   },
   "servers" : [ {
     "description" : "MTLS",

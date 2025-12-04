@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Telco API",
-    "version": "1.35.1",
+    "version": "1.36.0",
     "description": "Specifications for resource endpoints applicable to data holders in the Telco sector.",
     "license": {
       "name": "MIT License",

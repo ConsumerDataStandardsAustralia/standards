@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CDR Common API",
-    "version": "1.35.1",
+    "version": "1.36.0",
     "description": "Specifications for common endpoints applicable to all data holders (except secondary data holders).",
     "license": {
       "name": "MIT License",

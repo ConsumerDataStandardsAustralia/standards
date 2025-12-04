@@ -343,6 +343,7 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html), [v2](
     {
       "dataHolderBrandId": "string",
       "brandName": "string",
+      "brandGroup": "string",
       "industries": [
         "banking"
       ],
@@ -365,6 +366,7 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html), [v2](
       "endpointDetail": {
         "version": "string",
         "publicBaseUri": "string",
+        "productBaseUri": "string",
         "resourceBaseUri": "string",
         "infosecBaseUri": "string",
         "extensionBaseUri": "string",
@@ -493,7 +495,9 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-summary-v1.html
       "dataHolderBrandId": "string",
       "interimId": "string",
       "brandName": "string",
+      "brandGroup": "string",
       "publicBaseUri": "string",
+      "productBaseUri": "string",
       "logoUri": "string",
       "industries": [
         "banking"
@@ -515,7 +519,7 @@ Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-summary-v1.html
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseDataHoldersBrandSummaryList](#schemacdr-register-apiresponsedataholdersbrandsummarylist)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful response|[ResponseDataHoldersBrandSummaryListV2](#schemacdr-register-apiresponsedataholdersbrandsummarylistv2)|
 |304|[Not Modified](https://tools.ietf.org/html/rfc7232#section-4.1)|Not Modified - The current representation of the target resource matches with the entity-tag provided in the _If-None-Match_ request header|None|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Missing Required Header / Invalid Version / Invalid Path Parameter|[ResponseErrorListV2](#schemacdr-register-apiresponseerrorlistv2)|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Industry Not Found|[ResponseErrorListV2](#schemacdr-register-apiresponseerrorlistv2)|
@@ -1120,6 +1124,7 @@ This operation does not require authentication.
     {
       "dataHolderBrandId": "string",
       "brandName": "string",
+      "brandGroup": "string",
       "industries": [
         "banking"
       ],
@@ -1142,6 +1147,7 @@ This operation does not require authentication.
       "endpointDetail": {
         "version": "string",
         "publicBaseUri": "string",
+        "productBaseUri": "string",
         "resourceBaseUri": "string",
         "infosecBaseUri": "string",
         "extensionBaseUri": "string",
@@ -1192,6 +1198,7 @@ This operation does not require authentication.
 {
   "dataHolderBrandId": "string",
   "brandName": "string",
+  "brandGroup": "string",
   "industries": [
     "banking"
   ],
@@ -1214,6 +1221,7 @@ This operation does not require authentication.
   "endpointDetail": {
     "version": "string",
     "publicBaseUri": "string",
+    "productBaseUri": "string",
     "resourceBaseUri": "string",
     "infosecBaseUri": "string",
     "extensionBaseUri": "string",
@@ -1235,11 +1243,12 @@ This operation does not require authentication.
 |---|---|---|---|---|
 |dataHolderBrandId|string|mandatory||Unique id of the Data Holder Brand issued by the CDR Register.|
 |brandName|string|mandatory||The name of Data Holder Brand.|
+|brandGroup|[ASCIIString](#common-field-types)|optional||The brand group that the consumer data sharing brand is associated with.|
 |industries|[[IndustriesEnumV2](#schemacdr-register-apiindustriesenumv2)]|mandatory||The industries the Data Holder Brand belongs to.|
 |logoUri|[URIString](#common-field-types)|mandatory||Brand logo URI.|
 |legalEntity|[LegalEntityDetail](#schemacdr-register-apilegalentitydetail)|mandatory||The data that is common to all organisations, regardless of the type (e.g., company, trust, partnership, government).|
 |status|[Enum](#common-field-types)|mandatory||none|
-|endpointDetail|[RegisterDataHolderBrandServiceEndpoint](#schemacdr-register-apiregisterdataholderbrandserviceendpoint)|mandatory||Endpoints related to Data Holder Brand services.|
+|endpointDetail|[RegisterDataHolderBrandServiceEndpointV2](#schemacdr-register-apiregisterdataholderbrandserviceendpointv2)|mandatory||Endpoints related to Data Holder Brand services.|
 |authDetails|[[RegisterDataHolderAuth](#schemacdr-register-apiregisterdataholderauth)]|mandatory||[Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication.]|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory||The date/time that the Data Holder Brand data was last updated in the Register.|
 
@@ -1251,12 +1260,12 @@ This operation does not require authentication.
 |status|INACTIVE|
 |status|REMOVED|
 
-<h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponsedataholdersbrandsummarylist">ResponseDataHoldersBrandSummaryList</h3>
-<p id="tocSresponsedataholdersbrandsummarylist" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponsedataholdersbrandsummarylistv2">ResponseDataHoldersBrandSummaryListV2</h3>
+<p id="tocSresponsedataholdersbrandsummarylistv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_responsedataholdersbrandsummarylist"></a>
-  <a class="schema-anchor" id="schemacdr-register-apiresponsedataholdersbrandsummarylist"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiresponsedataholdersbrandsummarylistv2"></a>
 </p>
 
 ```json
@@ -1266,7 +1275,9 @@ This operation does not require authentication.
       "dataHolderBrandId": "string",
       "interimId": "string",
       "brandName": "string",
+      "brandGroup": "string",
       "publicBaseUri": "string",
+      "productBaseUri": "string",
       "logoUri": "string",
       "industries": [
         "banking"
@@ -1284,7 +1295,7 @@ This operation does not require authentication.
 }
 ```
 
-<h3 id="cdr-register-api_responsedataholdersbrandsummarylist_properties">Properties</h3>
+<h3 id="cdr-register-api_responsedataholdersbrandsummarylistv2_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
@@ -1305,7 +1316,9 @@ This operation does not require authentication.
   "dataHolderBrandId": "string",
   "interimId": "string",
   "brandName": "string",
+  "brandGroup": "string",
   "publicBaseUri": "string",
+  "productBaseUri": "string",
   "logoUri": "string",
   "industries": [
     "banking"
@@ -1324,7 +1337,9 @@ This operation does not require authentication.
 |dataHolderBrandId|string|optional||Unique id of the Data Holder Brand issued by the CDR Register.|
 |interimId|string|optional||Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when _dataHolderBrandId_ is not populated and is not to be reused.|
 |brandName|string|mandatory||The name of Data Holder Brand.|
+|brandGroup|[ASCIIString](#common-field-types)|optional||The brand group that the consumer data sharing brand is associated with.|
 |publicBaseUri|[URIString](#common-field-types)|mandatory||Base URI for the Data Holder's Consumer Data Standard public endpoints.|
+|productBaseUri|[URIString](#common-field-types)|optional||Base URI for the Data Holder's Consumer Data Standard Product Reference Data (PRD) endpoints. If `null` or not present, indicates that PRD endpoints are not available.|
 |logoUri|[URIString](#common-field-types)|mandatory||Brand logo URI.|
 |industries|[[IndustriesEnumV2](#schemacdr-register-apiindustriesenumv2)]|mandatory||The industries the Data Holder Brand belongs to.|
 |lastUpdated|[DateTimeString](#common-field-types)|mandatory||The date/time that the Data Holder Brand data was last updated in the Register.|
@@ -1851,18 +1866,19 @@ This operation does not require authentication.
 |status|ACTIVE|
 |status|REMOVED|
 
-<h3 class="schema-toc" id="cdr-register-api_schemas_tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h3>
-<p id="tocSregisterdataholderbrandserviceendpoint" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSregisterdataholderbrandserviceendpointv2">RegisterDataHolderBrandServiceEndpointV2</h3>
+<p id="tocSregisterdataholderbrandserviceendpointv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_registerdataholderbrandserviceendpoint"></a>
-  <a class="schema-anchor" id="schemacdr-register-apiregisterdataholderbrandserviceendpoint"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiregisterdataholderbrandserviceendpointv2"></a>
 </p>
 
 ```json
 {
   "version": "string",
   "publicBaseUri": "string",
+  "productBaseUri": "string",
   "resourceBaseUri": "string",
   "infosecBaseUri": "string",
   "extensionBaseUri": "string",
@@ -1872,12 +1888,13 @@ This operation does not require authentication.
 
 *Endpoints related to Data Holder Brand services.*
 
-<h3 id="cdr-register-api_registerdataholderbrandserviceendpoint_properties">Properties</h3>
+<h3 id="cdr-register-api_registerdataholderbrandserviceendpointv2_properties">Properties</h3>
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
 |version|string|mandatory||The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be "`v`" followed by the major version of the standards as a positive integer (e.g., `v1`, `v12` or `v76`).|
 |publicBaseUri|[URIString](#common-field-types)|mandatory||Base URI for the Data Holder's Consumer Data Standard public endpoints.|
+|productBaseUri|[URIString](#common-field-types)|optional||Base URI for the Data Holder's Consumer Data Standard Product Reference Data (PRD) endpoints. If `null` or not present, indicates that PRD endpoints are not available.|
 |resourceBaseUri|[URIString](#common-field-types)|mandatory||Base URI for the Data Holder's Consumer Data Standard resource endpoints.|
 |infosecBaseUri|[URIString](#common-field-types)|mandatory||Base URI for the Data Holder's Consumer Data Standard information security endpoints.|
 |extensionBaseUri|[URIString](#common-field-types)|optional||Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional).|

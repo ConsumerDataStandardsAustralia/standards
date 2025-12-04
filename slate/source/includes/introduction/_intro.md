@@ -26,7 +26,7 @@ Some of these standards will be binding data standards under the Competition and
 Further details of Data Standards Chair appointments can be found [here](https://www.directory.gov.au/portfolios/treasury/department-treasury/data-standards-chair).
 
 ## Version
-These standards represent version **1.35.1** of the high level standards. See the [versioning section](#versioning) for more information on how versions are managed in the standard.
+These standards represent version **1.36.0** of the high level standards. See the [versioning section](#versioning) for more information on how versions are managed in the standard.
 
 
 

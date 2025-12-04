@@ -1,9 +1,7 @@
 
 ## Certificate Management
 
-```diff
-Amendments to certificate management section to support ACCC operations
-```
+
 
 ### Issued by the Register for Data Holders
 Certificate | Function | Notes
@@ -22,21 +20,25 @@ Certificate | Function | Notes
 
 ### Certificate Trust Model
 
-
-
 The CDR utilises a private certificate trust chain for all Register CA secured endpoints being hosted by [Data Holders](#participant-endpoints), [Data Recipients](#participant-endpoints) and the [Register](#register-apis).
 
 Operational detail related to the CDR Certificate Authority is maintained by the ACCC, and is [available here](https://consumerdataright.atlassian.net/wiki/spaces/DP/pages/360415310/Certificate+Management).
 
-
 ### Certificate Signing Request Profile
+
+```diff
+Updated Organization (O) field for the Server in the Certificate Signing Request Profile
+- Brand Name
++ Legal Entity Name or Brand Name
+```
+
 When requesting the Register CA certificates, certificate signing requests will need to be provided, conforming to the following profile:
 
 CSR Field | Required | Server | Client
 -----------|----------|----------|----------
 |**Common Name (CN)**| Mandatory | Primary DNS Name<br>*e.g. api1.test.entity.com* | _Software Product Name_
 |**SAN**| Optional | Secondary DNS Name(s) <br>*e.g. api2.test.entity.com* | N/A
-|**Organization (O)**| Mandatory| _Brand Name_ | _Brand Name_
+|**Organization (O)**| Mandatory| _Legal Entity Name or Brand Name_ | _Brand Name_
 |**Organizational Unit (OU)**| Mandatory| `Consumer Data Right` | `Consumer Data Right`
 |**Country (C)**| Mandatory | _Country of participant_<br>*e.g. AU* | _Country of participant_<br>*e.g. AU*
 |**State (ST)**| Optional | _State of the Participant_<br>*e.g. New South Wales* | _State of the Participant_<br>*e.g. New South Wales*
