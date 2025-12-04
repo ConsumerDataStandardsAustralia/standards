@@ -8,7 +8,7 @@
     },
     "description" : "Specifications for Register endpoints made available to participants.",
     "title" : "CDR Register API",
-    "version" : "1.35.1"
+    "version" : "1.36.0"
   },
   "servers" : [ {
     "description" : "Production TLS",
@@ -261,7 +261,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/ResponseDataHoldersBrandSummaryList"
+                  "$ref" : "#/components/schemas/ResponseDataHoldersBrandSummaryListV2"
                 }
               }
             },
@@ -1048,7 +1048,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/ResponseDataHoldersBrandSummaryList"
+              "$ref" : "#/components/schemas/ResponseDataHoldersBrandSummaryListV2"
             }
           }
         },
@@ -1385,6 +1385,12 @@
             "maxLength" : 200,
             "type" : "string"
           },
+          "brandGroup" : {
+            "description" : "The brand group that the consumer data sharing brand is associated with.",
+            "maxLength" : 200,
+            "type" : "string",
+            "x-cds-type" : "ASCIIString"
+          },
           "industries" : {
             "description" : "The industries the Data Holder Brand belongs to.",
             "items" : {
@@ -1407,7 +1413,7 @@
             "type" : "string"
           },
           "endpointDetail" : {
-            "$ref" : "#/components/schemas/RegisterDataHolderBrandServiceEndpoint"
+            "$ref" : "#/components/schemas/RegisterDataHolderBrandServiceEndpointV2"
           },
           "authDetails" : {
             "items" : {
@@ -1425,7 +1431,7 @@
         "required" : [ "authDetails", "brandName", "dataHolderBrandId", "endpointDetail", "industries", "lastUpdated", "legalEntity", "logoUri", "status" ],
         "type" : "object"
       },
-      "ResponseDataHoldersBrandSummaryList" : {
+      "ResponseDataHoldersBrandSummaryListV2" : {
         "properties" : {
           "data" : {
             "description" : "Response data for the query.",
@@ -1464,8 +1470,20 @@
             "maxLength" : 200,
             "type" : "string"
           },
+          "brandGroup" : {
+            "description" : "The brand group that the consumer data sharing brand is associated with.",
+            "maxLength" : 200,
+            "type" : "string",
+            "x-cds-type" : "ASCIIString"
+          },
           "publicBaseUri" : {
             "description" : "Base URI for the Data Holder's Consumer Data Standard public endpoints.",
+            "maxLength" : 1000,
+            "type" : "string",
+            "x-cds-type" : "URIString"
+          },
+          "productBaseUri" : {
+            "description" : "Base URI for the Data Holder's Consumer Data Standard Product Reference Data (PRD) endpoints. If `null` or not present, indicates that PRD endpoints are not available.",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"
@@ -1833,7 +1851,7 @@
         "required" : [ "legalEntityId", "legalEntityName", "logoUri", "status" ],
         "type" : "object"
       },
-      "RegisterDataHolderBrandServiceEndpoint" : {
+      "RegisterDataHolderBrandServiceEndpointV2" : {
         "description" : "Endpoints related to Data Holder Brand services.",
         "properties" : {
           "version" : {
@@ -1842,6 +1860,12 @@
           },
           "publicBaseUri" : {
             "description" : "Base URI for the Data Holder's Consumer Data Standard public endpoints.",
+            "maxLength" : 1000,
+            "type" : "string",
+            "x-cds-type" : "URIString"
+          },
+          "productBaseUri" : {
+            "description" : "Base URI for the Data Holder's Consumer Data Standard Product Reference Data (PRD) endpoints. If `null` or not present, indicates that PRD endpoints are not available.",
             "maxLength" : 1000,
             "type" : "string",
             "x-cds-type" : "URIString"

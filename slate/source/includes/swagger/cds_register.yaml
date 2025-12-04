@@ -6,7 +6,7 @@ info:
     url: https://dsb.gov.au/
   description: Specifications for Register endpoints made available to participants.
   title: CDR Register API
-  version: 1.35.1
+  version: 1.36.0
 servers:
 - description: Production TLS
   url: https://api.cdr.gov.au
@@ -238,7 +238,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseDataHoldersBrandSummaryList'
+                $ref: '#/components/schemas/ResponseDataHoldersBrandSummaryListV2'
           description: Successful response
           headers:
             x-v:
@@ -906,7 +906,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ResponseDataHoldersBrandSummaryList'
+            $ref: '#/components/schemas/ResponseDataHoldersBrandSummaryListV2'
       description: Successful response
       headers:
         x-v:
@@ -1222,7 +1222,8 @@ components:
       description: Response containing a list of CDR Register Data Holder Brand objects.
       example:
         data:
-        - lastUpdated: lastUpdated
+        - brandGroup: brandGroup
+          lastUpdated: lastUpdated
           brandName: brandName
           industries:
           - null
@@ -1235,6 +1236,7 @@ components:
             extensionBaseUri: extensionBaseUri
             resourceBaseUri: resourceBaseUri
             version: version
+            productBaseUri: productBaseUri
           logoUri: logoUri
           authDetails:
           - registerUType: SIGNED-JWT
@@ -1255,7 +1257,8 @@ components:
             organisationType: SOLE_TRADER
             status: ACTIVE
           status: ACTIVE
-        - lastUpdated: lastUpdated
+        - brandGroup: brandGroup
+          lastUpdated: lastUpdated
           brandName: brandName
           industries:
           - null
@@ -1268,6 +1271,7 @@ components:
             extensionBaseUri: extensionBaseUri
             resourceBaseUri: resourceBaseUri
             version: version
+            productBaseUri: productBaseUri
           logoUri: logoUri
           authDetails:
           - registerUType: SIGNED-JWT
@@ -1315,6 +1319,7 @@ components:
       type: object
     RegisterDataHolderBrandV2:
       example:
+        brandGroup: brandGroup
         lastUpdated: lastUpdated
         brandName: brandName
         industries:
@@ -1328,6 +1333,7 @@ components:
           extensionBaseUri: extensionBaseUri
           resourceBaseUri: resourceBaseUri
           version: version
+          productBaseUri: productBaseUri
         logoUri: logoUri
         authDetails:
         - registerUType: SIGNED-JWT
@@ -1357,6 +1363,12 @@ components:
           description: The name of Data Holder Brand.
           maxLength: 200
           type: string
+        brandGroup:
+          description: The brand group that the consumer data sharing brand is associated
+            with.
+          maxLength: 200
+          type: string
+          x-cds-type: ASCIIString
         industries:
           description: The industries the Data Holder Brand belongs to.
           items:
@@ -1377,7 +1389,7 @@ components:
           - REMOVED
           type: string
         endpointDetail:
-          $ref: '#/components/schemas/RegisterDataHolderBrandServiceEndpoint'
+          $ref: '#/components/schemas/RegisterDataHolderBrandServiceEndpointV2'
         authDetails:
           items:
             $ref: '#/components/schemas/RegisterDataHolderAuth'
@@ -1399,10 +1411,11 @@ components:
       - logoUri
       - status
       type: object
-    ResponseDataHoldersBrandSummaryList:
+    ResponseDataHoldersBrandSummaryListV2:
       example:
         data:
-        - arbn: arbn
+        - brandGroup: brandGroup
+          arbn: arbn
           lastUpdated: lastUpdated
           brandName: brandName
           publicBaseUri: publicBaseUri
@@ -1414,7 +1427,9 @@ components:
           abn: abn
           interimId: interimId
           acn: acn
-        - arbn: arbn
+          productBaseUri: productBaseUri
+        - brandGroup: brandGroup
+          arbn: arbn
           lastUpdated: lastUpdated
           brandName: brandName
           publicBaseUri: publicBaseUri
@@ -1426,6 +1441,7 @@ components:
           abn: abn
           interimId: interimId
           acn: acn
+          productBaseUri: productBaseUri
         meta: '{}'
         links:
           self: self
@@ -1447,6 +1463,7 @@ components:
       type: object
     DataHolderBrandSummaryV2:
       example:
+        brandGroup: brandGroup
         arbn: arbn
         lastUpdated: lastUpdated
         brandName: brandName
@@ -1459,6 +1476,7 @@ components:
         abn: abn
         interimId: interimId
         acn: acn
+        productBaseUri: productBaseUri
       properties:
         dataHolderBrandId:
           description: Unique id of the Data Holder Brand issued by the CDR Register.
@@ -1476,9 +1494,22 @@ components:
           description: The name of Data Holder Brand.
           maxLength: 200
           type: string
+        brandGroup:
+          description: The brand group that the consumer data sharing brand is associated
+            with.
+          maxLength: 200
+          type: string
+          x-cds-type: ASCIIString
         publicBaseUri:
           description: Base URI for the Data Holder's Consumer Data Standard public
             endpoints.
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        productBaseUri:
+          description: Base URI for the Data Holder's Consumer Data Standard Product
+            Reference Data (PRD) endpoints. If `null` or not present, indicates that
+            PRD endpoints are not available.
           maxLength: 1000
           type: string
           x-cds-type: URIString
@@ -2043,7 +2074,7 @@ components:
       - logoUri
       - status
       type: object
-    RegisterDataHolderBrandServiceEndpoint:
+    RegisterDataHolderBrandServiceEndpointV2:
       description: Endpoints related to Data Holder Brand services.
       example:
         websiteUri: websiteUri
@@ -2052,6 +2083,7 @@ components:
         extensionBaseUri: extensionBaseUri
         resourceBaseUri: resourceBaseUri
         version: version
+        productBaseUri: productBaseUri
       properties:
         version:
           description: The major version of the high level standards. This is not
@@ -2063,6 +2095,13 @@ components:
         publicBaseUri:
           description: Base URI for the Data Holder's Consumer Data Standard public
             endpoints.
+          maxLength: 1000
+          type: string
+          x-cds-type: URIString
+        productBaseUri:
+          description: Base URI for the Data Holder's Consumer Data Standard Product
+            Reference Data (PRD) endpoints. If `null` or not present, indicates that
+            PRD endpoints are not available.
           maxLength: 1000
           type: string
           x-cds-type: URIString
