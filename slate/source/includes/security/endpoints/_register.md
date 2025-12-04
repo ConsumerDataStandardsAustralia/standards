@@ -35,7 +35,10 @@ Host: api.cdr.gov.au
 <InfoSecBaseUri>/.well-known/openid-configuration
 ```
 
-
+```diff
+Added ProductBaseUri row in Participant Endpoints table
++ ProductBaseUri
+```
 
 Participants will be required to register base URIs against each of their brands to facilitate the implementation of the CDR Data Standards.
 
@@ -44,7 +47,8 @@ Endpoints specified as TLS **MUST** be configured with a certificate issued by a
 
 | Base URI | DH&nbsp;Brand | ADR&nbsp;Brand | Transaction Security | Description
 |-----------|:------:|:------:|----------------------|-----------------|
-|**PublicBaseUri**|	<i class="icon-check"></i> | | TLS | Base URI for the Consumer Data Standard public endpoints. This should encompass all endpoints not requiring authentication.<br>Data Holders designated for the Energy sector are not required to expose energy product reference endpoints via their public base URI and are not required, but **MAY**, provide a redirect to the product reference endpoints hosted by the designated data holder. |
+|**PublicBaseUri**|	<i class="icon-check"></i> | | TLS | Base URI for the Consumer Data Standard public endpoints. This should encompass endpoints not requiring authentication that do not have a dedicated base URI. |
+|**ProductBaseUri**|	<i class="icon-check"></i> | | TLS | Base URI for the Consumer Data Standard product reference data endpoints. **MAY** be the same as the *publicBaseUri*.<br>Data Holders designated for the Energy sector are not required to expose energy product reference endpoints, but **MAY** provide the base URI of the product reference endpoints hosted by the designated data holder. |
 |**ResourceBaseUri**|	<i class="icon-check"></i> | | MTLS | Base URI for the Consumer Data Standard resource endpoints. This **MUST** encompass all CDS resource endpoints requiring authentication. |
 |**InfoSecBaseUri**|	<i class="icon-check"></i> | | TLS | Base URI for the [OIDC Discovery endpoint](https://openid.net/specs/openid-connect-discovery-1_0.html) only.<br>Endpoints specified in the Discovery endpoint have the requirements detailed in the [Security Endpoints](#security-endpoints) section. |
 |**AdminBaseUri**|	<i class="icon-check"></i> | | MTLS | Base URI for the Consumer Data Standard admin endpoints called by the CDR Register. |

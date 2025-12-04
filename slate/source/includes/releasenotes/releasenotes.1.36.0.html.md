@@ -30,7 +30,7 @@ This release addresses the following change requests raised on [Standards Mainte
 ### Decisions
 This release addresses the following Decisions published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Consultation Draft #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
+- [Consultation Draft #376 - White label brand arrangements](https://github.com/ConsumerDataStandardsAustralia/standards/issues/376)
 
 
 ## General Changes
@@ -64,6 +64,8 @@ This release addresses the following Decisions published on [Standards](https://
 ## Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Organization CSR field | [**Decision #376**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/376): Updated Organization (O) field for the Server in the Certificate Signing Request Profile. | [Certificate Management](../../?diff#certificate-management)
+| Added ProductBaseUri row | [**Decision #376**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/376): Added ProductBaseUri row in Participant Endpoints table. | [Participant Endpoints](../../?diff#participant-endpoints)
 
 
 ## DCR APIs
@@ -74,6 +76,8 @@ This release addresses the following Decisions published on [Standards](https://
 ## Register APIs
 |Change|Description|Link|
 |------|-----------|----|
+| Added *brandGroup* field | [**Decision #376**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/376): Added *brandGroup* field to Get Data Holder Brands and Get Data Holder Brands Summary endpoints to support white labelled brands. | [Register APIs](../../#register-apis)
+| Added *productBaseUri* field | [**Decision #376**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/376): Added *productBaseUri* field to Get Data Holder Brands and Get Data Holder Brands Summary endpoints to provide flexibility in PRD obligations and endpoint discovery. | [Register APIs](../../#register-apis)
 
 
 ## Authorisation Scopes
@@ -89,6 +93,7 @@ This release addresses the following Decisions published on [Standards](https://
 ## Banking APIs
 |Change|Description|Link|
 |------|-----------|----|
+| Added *brandGroup* field | [**Decision #376**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/376): Added *brandGroup* field to Banking PRD endpoints to support white labelled brands. | [Banking APIs](../../#banking-apis)
 
 
 ## Energy APIs

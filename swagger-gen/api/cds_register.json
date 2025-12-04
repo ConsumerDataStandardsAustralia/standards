@@ -567,7 +567,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ResponseDataHoldersBrandSummaryList"
+              "$ref": "#/components/schemas/ResponseDataHoldersBrandSummaryListV2"
             }
           }
         }
@@ -930,6 +930,12 @@
             "type": "string",
             "description": "The name of Data Holder Brand."
           },
+          "brandGroup": {
+            "maxLength": 200,
+            "type": "string",
+            "x-cds-type": "ASCIIString",
+            "description": "The brand group that the consumer data sharing brand is associated with."
+          },
           "industries": {
             "uniqueItems": true,
             "type": "array",
@@ -956,7 +962,7 @@
             ]
           },
           "endpointDetail": {
-            "$ref": "#/components/schemas/RegisterDataHolderBrandServiceEndpoint"
+            "$ref": "#/components/schemas/RegisterDataHolderBrandServiceEndpointV2"
           },
           "authDetails": {
             "uniqueItems": true,
@@ -972,7 +978,7 @@
           }
         }
       },
-      "ResponseDataHoldersBrandSummaryList": {
+      "ResponseDataHoldersBrandSummaryListV2": {
         "required": [
           "data",
           "links",
@@ -1023,10 +1029,22 @@
             "type": "string",
             "description": "The name of Data Holder Brand."
           },
+          "brandGroup": {
+            "maxLength": 200,
+            "type": "string",
+            "x-cds-type": "ASCIIString",
+            "description": "The brand group that the consumer data sharing brand is associated with."
+          },
           "publicBaseUri": {
             "maxLength": 1000,
             "type": "string",
             "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints.",
+            "x-cds-type": "URIString"
+          },
+          "productBaseUri": {
+            "maxLength": 1000,
+            "type": "string",
+            "description": "Base URI for the Data Holder's Consumer Data Standard Product Reference Data (PRD) endpoints. If `null` or not present, indicates that PRD endpoints are not available.",
             "x-cds-type": "URIString"
           },
           "logoUri": {
@@ -1490,7 +1508,7 @@
         },
         "description": "The data that is common to all organisations, regardless of the type (e.g., company, trust, partnership, government)."
       },
-      "RegisterDataHolderBrandServiceEndpoint": {
+      "RegisterDataHolderBrandServiceEndpointV2": {
         "required": [
           "infosecBaseUri",
           "publicBaseUri",
@@ -1508,6 +1526,12 @@
             "maxLength": 1000,
             "type": "string",
             "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints.",
+            "x-cds-type": "URIString"
+          },
+          "productBaseUri": {
+            "maxLength": 1000,
+            "type": "string",
+            "description": "Base URI for the Data Holder's Consumer Data Standard Product Reference Data (PRD) endpoints. If `null` or not present, indicates that PRD endpoints are not available.",
             "x-cds-type": "URIString"
           },
           "resourceBaseUri": {
