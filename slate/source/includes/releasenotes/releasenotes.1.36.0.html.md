@@ -20,11 +20,11 @@ Release notes for version **1.36.0** of the [CDR Data Standards](../../).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- None
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
-- [Standards Maintenance #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX)
+- None
 
 
 ### Decisions
@@ -34,31 +34,23 @@ This release addresses the following Decisions published on [Standards](https://
 
 
 ## General Changes
-|Change|Description|Link|
-|------|-----------|----|
-| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Decision #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail. | [Standards section](../../#section)
+None
 
 
 ## Introduction
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## High Level Standards
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Authentication Schedule
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Consumer Experience
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Security Profile
@@ -69,8 +61,7 @@ This release addresses the following Decisions published on [Standards](https://
 
 
 ## DCR APIs
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Register APIs
@@ -81,13 +72,11 @@ This release addresses the following Decisions published on [Standards](https://
 
 
 ## Authorisation Scopes
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Non-functional Requirements
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Banking APIs
@@ -97,36 +86,29 @@ This release addresses the following Decisions published on [Standards](https://
 
 
 ## Energy APIs
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Common APIs
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Admin APIs
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Shared Responsibility
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Energy Secondary DH APIs
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Additional Standards
-|Change|Description|Link|
-|------|-----------|----|
+None
 
 
 ## Known Issues
-|Change|Description|Link|
-|------|-----------|----|
+None
 
