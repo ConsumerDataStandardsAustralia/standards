@@ -556,7 +556,7 @@
                                 <a href="#cdr-register-api_schemas_tocSregisterdataholderbrandv2" class="toc-h3 toc-link" data-title="RegisterDataHolderBrandV2">RegisterDataHolderBrandV2</a>
                               </li>
                               <li>
-                                <a href="#cdr-register-api_schemas_tocSresponsedataholdersbrandsummarylist" class="toc-h3 toc-link" data-title="ResponseDataHoldersBrandSummaryList">ResponseDataHoldersBrandSummaryList</a>
+                                <a href="#cdr-register-api_schemas_tocSresponsedataholdersbrandsummarylistv2" class="toc-h3 toc-link" data-title="ResponseDataHoldersBrandSummaryListV2">ResponseDataHoldersBrandSummaryListV2</a>
                               </li>
                               <li>
                                 <a href="#cdr-register-api_schemas_tocSdataholderbrandsummaryv2" class="toc-h3 toc-link" data-title="DataHolderBrandSummaryV2">DataHolderBrandSummaryV2</a>
@@ -604,7 +604,7 @@
                                 <a href="#cdr-register-api_schemas_tocSlegalentitydetail" class="toc-h3 toc-link" data-title="LegalEntityDetail">LegalEntityDetail</a>
                               </li>
                               <li>
-                                <a href="#cdr-register-api_schemas_tocSregisterdataholderbrandserviceendpoint" class="toc-h3 toc-link" data-title="RegisterDataHolderBrandServiceEndpoint">RegisterDataHolderBrandServiceEndpoint</a>
+                                <a href="#cdr-register-api_schemas_tocSregisterdataholderbrandserviceendpointv2" class="toc-h3 toc-link" data-title="RegisterDataHolderBrandServiceEndpointV2">RegisterDataHolderBrandServiceEndpointV2</a>
                               </li>
                               <li>
                                 <a href="#cdr-register-api_schemas_tocSregisterdataholderauth" class="toc-h3 toc-link" data-title="RegisterDataHolderAuth">RegisterDataHolderAuth</a>
@@ -9445,6 +9445,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"brandGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"industries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"banking"</span><span class="w">
       </span><span class="p">],</span><span class="w">
@@ -9467,6 +9468,7 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"endpointDetail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"publicBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"productBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"resourceBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"infosecBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"extensionBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -9699,7 +9701,9 @@ To perform this operation, you must be authenticated and authorised with the fol
       </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"interimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"brandGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"publicBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"productBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"industries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"banking"</span><span class="w">
@@ -9730,7 +9734,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-register-apiresponsedataholdersbrandsummarylist">ResponseDataHoldersBrandSummaryList</a></td>
+<td><a href="#schemacdr-register-apiresponsedataholdersbrandsummarylistv2">ResponseDataHoldersBrandSummaryListV2</a></td>
 </tr>
 <tr>
 <td>304</td>
@@ -10937,6 +10941,7 @@ This operation does not require authentication.
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"brandGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"industries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"banking"</span><span class="w">
       </span><span class="p">],</span><span class="w">
@@ -10959,6 +10964,7 @@ This operation does not require authentication.
       </span><span class="s2">"endpointDetail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"publicBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"productBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"resourceBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"infosecBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"extensionBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11035,6 +11041,7 @@ This operation does not require authentication.
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brandGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"industries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"banking"</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -11057,6 +11064,7 @@ This operation does not require authentication.
   </span><span class="s2">"endpointDetail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"publicBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"productBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resourceBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"infosecBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"extensionBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -11098,6 +11106,13 @@ This operation does not require authentication.
 <td>The name of Data Holder Brand.</td>
 </tr>
 <tr>
+<td>brandGroup</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
+<td>optional</td>
+<td></td>
+<td>The brand group that the consumer data sharing brand is associated with.</td>
+</tr>
+<tr>
 <td>industries</td>
 <td>[<a href="#schemacdr-register-apiindustriesenumv2">IndustriesEnumV2</a>]</td>
 <td>mandatory</td>
@@ -11127,7 +11142,7 @@ This operation does not require authentication.
 </tr>
 <tr>
 <td>endpointDetail</td>
-<td><a href="#schemacdr-register-apiregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</a></td>
+<td><a href="#schemacdr-register-apiregisterdataholderbrandserviceendpointv2">RegisterDataHolderBrandServiceEndpointV2</a></td>
 <td>mandatory</td>
 <td></td>
 <td>Endpoints related to Data Holder Brand services.</td>
@@ -11170,13 +11185,13 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponsedataholdersbrandsummarylist">ResponseDataHoldersBrandSummaryList</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponsedataholdersbrandsummarylistv2">ResponseDataHoldersBrandSummaryListV2</h3>
 
-<p id="tocSresponsedataholdersbrandsummarylist" class="orig-anchor"></p>
+<p id="tocSresponsedataholdersbrandsummarylistv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_responsedataholdersbrandsummarylist"></a>
-  <a class="schema-anchor" id="schemacdr-register-apiresponsedataholdersbrandsummarylist"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiresponsedataholdersbrandsummarylistv2"></a>
 </p>
 
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -11185,7 +11200,9 @@ This operation does not require authentication.
       </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"interimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"brandGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"publicBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"productBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"industries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"banking"</span><span class="w">
@@ -11203,7 +11220,7 @@ This operation does not require authentication.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="cdr-register-api_responsedataholdersbrandsummarylist_properties">Properties</h3>
+<h3 id="cdr-register-api_responsedataholdersbrandsummarylistv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -11250,7 +11267,9 @@ This operation does not require authentication.
   </span><span class="s2">"dataHolderBrandId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"interimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brandGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"publicBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"productBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"logoUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"industries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"banking"</span><span class="w">
@@ -11295,11 +11314,25 @@ This operation does not require authentication.
 <td>The name of Data Holder Brand.</td>
 </tr>
 <tr>
+<td>brandGroup</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
+<td>optional</td>
+<td></td>
+<td>The brand group that the consumer data sharing brand is associated with.</td>
+</tr>
+<tr>
 <td>publicBaseUri</td>
 <td><a href="#common-field-types">URIString</a></td>
 <td>mandatory</td>
 <td></td>
 <td>Base URI for the Data Holder&#39;s Consumer Data Standard public endpoints.</td>
+</tr>
+<tr>
+<td>productBaseUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>optional</td>
+<td></td>
+<td>Base URI for the Data Holder&#39;s Consumer Data Standard Product Reference Data (PRD) endpoints. If <code>null</code> or not present, indicates that PRD endpoints are not available.</td>
 </tr>
 <tr>
 <td>logoUri</td>
@@ -12449,18 +12482,19 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-register-api_schemas_tocSregisterdataholderbrandserviceendpoint">RegisterDataHolderBrandServiceEndpoint</h3>
+<h3 class="schema-toc" id="cdr-register-api_schemas_tocSregisterdataholderbrandserviceendpointv2">RegisterDataHolderBrandServiceEndpointV2</h3>
 
-<p id="tocSregisterdataholderbrandserviceendpoint" class="orig-anchor"></p>
+<p id="tocSregisterdataholderbrandserviceendpointv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_registerdataholderbrandserviceendpoint"></a>
-  <a class="schema-anchor" id="schemacdr-register-apiregisterdataholderbrandserviceendpoint"></a>
+  <a class="schema-anchor" id="schemacdr-register-apiregisterdataholderbrandserviceendpointv2"></a>
 </p>
 
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"publicBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"productBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"resourceBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"infosecBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"extensionBaseUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -12470,7 +12504,7 @@ This operation does not require authentication.
 
 <p><em>Endpoints related to Data Holder Brand services.</em></p>
 
-<h3 id="cdr-register-api_registerdataholderbrandserviceendpoint_properties">Properties</h3>
+<h3 id="cdr-register-api_registerdataholderbrandserviceendpointv2_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -12494,6 +12528,13 @@ This operation does not require authentication.
 <td>mandatory</td>
 <td></td>
 <td>Base URI for the Data Holder&#39;s Consumer Data Standard public endpoints.</td>
+</tr>
+<tr>
+<td>productBaseUri</td>
+<td><a href="#common-field-types">URIString</a></td>
+<td>optional</td>
+<td></td>
+<td>Base URI for the Data Holder&#39;s Consumer Data Standard Product Reference Data (PRD) endpoints. If <code>null</code> or not present, indicates that PRD endpoints are not available.</td>
 </tr>
 <tr>
 <td>resourceBaseUri</td>
@@ -13524,6 +13565,7 @@ This operation does not require authentication.
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brandGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"applicationUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"isTailored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -13750,6 +13792,7 @@ This operation does not require authentication.
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brandGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"applicationUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"isTailored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"additionalInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -19776,6 +19819,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"brandGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"applicationUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"isTailored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"additionalInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -19900,6 +19944,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brandGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"applicationUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isTailored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -20023,6 +20068,13 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>optional</td>
 <td></td>
 <td>An optional display name of the brand.</td>
+</tr>
+<tr>
+<td>brandGroup</td>
+<td><a href="#common-field-types">ASCIIString</a></td>
+<td>optional</td>
+<td></td>
+<td>The <em>brandGroup</em> of a consumer data sharing brand that the product is associated with.</td>
 </tr>
 <tr>
 <td>applicationUri</td>
@@ -20349,6 +20401,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brandGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"applicationUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"isTailored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"additionalInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -20640,6 +20693,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brandGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"applicationUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isTailored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"additionalInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">

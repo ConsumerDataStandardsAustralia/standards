@@ -131,6 +131,7 @@ Obsolete versions: [v1](includes/obsolete/get-products-v1.html), [v2](includes/o
         "description": "string",
         "brand": "string",
         "brandName": "string",
+        "brandGroup": "string",
         "applicationUri": "string",
         "isTailored": true,
         "additionalInformation": {
@@ -283,6 +284,7 @@ Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html), [v2](incl
     "description": "string",
     "brand": "string",
     "brandName": "string",
+    "brandGroup": "string",
     "applicationUri": "string",
     "isTailored": true,
     "additionalInformation": {
@@ -3550,6 +3552,7 @@ To perform this operation, you must be authenticated and authorised with the fol
         "description": "string",
         "brand": "string",
         "brandName": "string",
+        "brandGroup": "string",
         "applicationUri": "string",
         "isTailored": true,
         "additionalInformation": {
@@ -3642,6 +3645,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "description": "string",
   "brand": "string",
   "brandName": "string",
+  "brandGroup": "string",
   "applicationUri": "string",
   "isTailored": true,
   "additionalInformation": {
@@ -3705,6 +3709,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 |description|string|mandatory||A description of the product.|
 |brand|string|mandatory||A label of the brand for the product. Able to be used for filtering. For data holders with single brands this value is still required.|
 |brandName|string|optional||An optional display name of the brand.|
+|brandGroup|[ASCIIString](#common-field-types)|optional||The *brandGroup* of a consumer data sharing brand that the product is associated with.|
 |applicationUri|[URIString](#common-field-types)|optional||A link to an application web page where this product can be applied for.|
 |isTailored|[Boolean](#common-field-types)|mandatory||Indicates whether the product is specifically tailored to a circumstance. In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable.|
 |additionalInformation|[BankingProductAdditionalInformationV2](#schemacdr-banking-apibankingproductadditionalinformationv2)|optional||Object that contains links to additional information on specific topics.|
@@ -3856,6 +3861,7 @@ To perform this operation, you must be authenticated and authorised with the fol
     "description": "string",
     "brand": "string",
     "brandName": "string",
+    "brandGroup": "string",
     "applicationUri": "string",
     "isTailored": true,
     "additionalInformation": {
@@ -4121,6 +4127,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   "description": "string",
   "brand": "string",
   "brandName": "string",
+  "brandGroup": "string",
   "applicationUri": "string",
   "isTailored": true,
   "additionalInformation": {
